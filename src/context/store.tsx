@@ -8,9 +8,13 @@ import Player from "../classes/Player";
 export type State = {
   save: string;
 
+  settings: {
+    frameRate: number;
+    recalculateCPS: boolean;
+    key: string;
+  };
+
   player: Player;
-  // GAME
-  //   game: typeof game;
 
   query: string;
   pending: boolean;
@@ -28,6 +32,12 @@ export type Action =
 const initialState: State = {
   query: "",
   save: "",
+
+  settings: {
+    frameRate: 30,
+    recalculateCPS: true,
+    key: "cookieclicker",
+  },
 
   // GAME
   player: new Player(),
