@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Header from "../components/Header";
 import styled, { createGlobalStyle } from "styled-components";
 import Footer from "../components/Footer";
+import GameBoard from "../components/GameBoard";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -31,7 +32,9 @@ const Main: FC = () => {
 
       <PageWrapper>
         <Header />
-        <PageContent>This is where the game goes</PageContent>
+        <PageContent>
+          <GameBoard />
+        </PageContent>
         <Footer />
       </PageWrapper>
     </>
