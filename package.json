@@ -22,6 +22,7 @@
     "react-tracked": "^1.7.11",
     "styled-components": "^6.0.8",
     "typescript": "^5.2.2",
+    "use-reducer-async": "^2.1.1",
     "viem": "^1.10.14",
     "wagmi": "^1.4.2",
     "web-vitals": "^2.1.0"
