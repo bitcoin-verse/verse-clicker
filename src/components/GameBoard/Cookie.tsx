@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import verseLogo from "../../assets/verse-logo.png";
 import cookie from "../../assets/cookie.png";
+import { useDispatch } from "../../context/store";
 
 const CookieWrapper = styled.div`
   display: flex;
@@ -58,13 +59,15 @@ const ClickButton = styled.button`
 `;
 
 const Cookie: FC = () => {
+  const dispatch = useDispatch();
+
+  const incrementCookies = () => {
+    dispatch({ type: "COOKIE_CLICKED" });
+  };
+
   return (
     <CookieWrapper>
-      <ClickButton
-        onClick={() => {
-          console.log("clickit");
-        }}
-      >
+      <ClickButton onClick={incrementCookies}>
         <VerseImage src={verseLogo} title="Verse Logo" />
       </ClickButton>
     </CookieWrapper>
