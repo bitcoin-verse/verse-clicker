@@ -8,7 +8,7 @@ import {
 import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { goerli } from "wagmi/chains";
-import { SharedStateProvider } from "./context/store";
+import { Provider } from "./context/store";
 
 const chains = [goerli];
 const projectId = "8000cda0f00ad8e06049c5e030ddaa4c";
@@ -25,9 +25,9 @@ const App: FC = () => {
   return (
     <>
       <WagmiConfig config={wagmiConfig}>
-        <SharedStateProvider>
+        <Provider>
           <Main />
-        </SharedStateProvider>
+        </Provider>
       </WagmiConfig>
 
       <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />

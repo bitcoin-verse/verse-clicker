@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import verseLogo from "../../assets/verse-logo.png";
 import cookie from "../../assets/cookie.png";
-import { useSharedState } from "../../context/store";
+import { useDispatch } from "../../context/store";
 
 const CookieWrapper = styled.div`
   display: flex;
@@ -59,10 +59,10 @@ const ClickButton = styled.button`
 `;
 
 const Cookie: FC = () => {
-  const [, setState] = useSharedState();
+  const dispatch = useDispatch();
 
   const incrementCookies = () => {
-    setState((prev) => ({ ...prev, cookies: prev.cookies + 1 }));
+    dispatch({ type: "COOKIE_CLICKED" });
   };
 
   return (

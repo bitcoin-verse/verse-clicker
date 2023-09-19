@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { useSharedState } from "../../context/store";
+import { useTrackedState } from "../../context/store";
 
 const DisplayWrapper = styled.div`
   display: flex;
@@ -21,10 +21,11 @@ const StatCount = styled.div`
 `;
 
 const Display: FC = () => {
-  const [state] = useSharedState();
+  const { cookies } = useTrackedState();
+
   return (
     <DisplayWrapper>
-      <CookieCount>Cookies: {state.cookies}</CookieCount>
+      <CookieCount>Cookies: {cookies}</CookieCount>
       <StatCount>CPS: 0</StatCount>
       <StatCount>CPC: 1.0</StatCount>
     </DisplayWrapper>
