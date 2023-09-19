@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/verse-clicker/static/js/main.63307532.js",
+    "main.js": "/verse-clicker/static/js/main.20e22ffb.js",
     "static/js/44.4ed125cc.chunk.js": "/verse-clicker/static/js/44.4ed125cc.chunk.js",
     "static/js/406.e63f253e.chunk.js": "/verse-clicker/static/js/406.e63f253e.chunk.js",
     "static/js/871.2ccbf989.chunk.js": "/verse-clicker/static/js/871.2ccbf989.chunk.js",
     "static/js/27.8c1f39b9.chunk.js": "/verse-clicker/static/js/27.8c1f39b9.chunk.js",
-    "static/js/199.5551d626.chunk.js": "/verse-clicker/static/js/199.5551d626.chunk.js",
+    "static/js/199.4ac29778.chunk.js": "/verse-clicker/static/js/199.4ac29778.chunk.js",
     "static/js/326.d69774f1.chunk.js": "/verse-clicker/static/js/326.d69774f1.chunk.js",
-    "static/js/667.e712d661.chunk.js": "/verse-clicker/static/js/667.e712d661.chunk.js",
+    "static/js/178.af47ac7c.chunk.js": "/verse-clicker/static/js/178.af47ac7c.chunk.js",
     "index.html": "/verse-clicker/index.html"
   },
   "entrypoints": [
-    "static/js/main.63307532.js"
+    "static/js/main.20e22ffb.js"
   ]
 }
