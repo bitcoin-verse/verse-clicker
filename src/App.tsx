@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import Main from "./views/Main";
 import {
   EthereumClient,
   w3mConnectors,
@@ -8,10 +9,8 @@ import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { arbitrum, mainnet, polygon } from "wagmi/chains";
 
-import Main from "./views/Main";
-
 const chains = [arbitrum, mainnet, polygon];
-const projectId = "YOUR_PROJECT_ID";
+const projectId = "8000cda0f00ad8e06049c5e030ddaa4c";
 
 const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
 const wagmiConfig = createConfig({

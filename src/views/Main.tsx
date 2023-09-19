@@ -1,7 +1,12 @@
+import { Web3Button } from "@web3modal/react";
 import React, { FC } from "react";
 
 const Main: FC = () => {
-  return <>main content here</>;
+  return (
+    <>
+      <Web3Button />
+    </>
+  );
 };
 
 export default Main;
