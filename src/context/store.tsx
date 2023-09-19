@@ -6,7 +6,7 @@ import { reducer } from "./reducer";
 import Player from "../classes/Player";
 
 export type State = {
-  save: string;
+  save?: string;
 
   settings: {
     frameRate: number;
@@ -22,7 +22,7 @@ export type State = {
 };
 
 export type Action =
-  | { type: "GAME_SAVED"; save: string }
+  | { type: "GAME_SAVED"; payload: string }
   | { type: "CLICK_COOKIE" }
   | { type: "SPEND_COOKIE"; payload: number }
   | { type: "STARTED" }
@@ -31,7 +31,6 @@ export type Action =
 
 const initialState: State = {
   query: "",
-  save: "",
 
   settings: {
     frameRate: 30,

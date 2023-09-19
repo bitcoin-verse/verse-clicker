@@ -13,7 +13,7 @@ export const reducer: Reducer<State, Action> = (state, action) => {
     case "GAME_SAVED":
       return {
         ...state,
-        save: action.save,
+        save: action.payload,
         pending: false,
       };
 
