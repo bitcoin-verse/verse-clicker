@@ -10,6 +10,13 @@ export const reducer: Reducer<State, Action> = (state, action) => {
       };
 
     // ASCYNC ACTION STATES
+    case "GAME_SAVED":
+      return {
+        ...state,
+        save: action.save,
+        pending: false,
+      };
+
     case "STARTED":
       return {
         ...state,

@@ -20,7 +20,7 @@ export const asyncActionHandlers: AsyncActionHandlers<
         // some async action
         // const response = await axios(action)....
 
-        dispatch({ type: "SAVE_GAME", save: "" });
+        dispatch({ type: "GAME_SAVED", save: "" });
       } catch (error) {
         dispatch({ type: "FAILED", error: error as unknown as Error });
       }
