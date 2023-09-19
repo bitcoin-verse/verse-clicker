@@ -1380,7 +1380,7 @@ const game = {
     },
   },
   player: new Player(),
-  logic() {
+  /* logic() {
     game.updateDisplays();
     // Only recalculate it when needed, saves on some processing power because this can turn out to be quite a lot of maths.
     if (game.settings.recalculateCPS == true) {
@@ -1401,7 +1401,7 @@ const game = {
       game.saving.export();
       setTimeout(game.logic, 1000);
     }
-  },
+  }, */
   updateDisplays() {
     // Create temporary shorthand aliases for ease of use.
     const updateText = game.utilities.updateText;
@@ -1435,17 +1435,17 @@ const game = {
     finalHtml += building.generateShopHTML();
     game.utilities.updateText("shop", finalHtml);
   },
-  buyBuilding(name: string, amount: number) {
+  /* buyBuilding(name: string, amount: number) {
     const building = game.utilities.getBuildingByName(name);
     if (!building) return;
     building.buy(amount);
-  },
-  buyUpgrade(buildingName: string, upgrade: string) {
+  }, */
+  /* buyUpgrade(buildingName: string, upgrade: string) {
     const building = game.utilities.getBuildingByName(buildingName);
     if (!building) return;
     building.buyUpgrade(upgrade);
-  },
-  start() {
+  }, */
+  /* start() {
     // This prevents the user from holding down enter to click the cookie very quickly.
     window.addEventListener("keydown", (e) => {
       if (e.key === "enter" || e.key == "space") {
@@ -1470,7 +1470,7 @@ const game = {
 
     game.constructShop();
     game.logic();
-  },
+  }, */
 };
 
 export default game;
