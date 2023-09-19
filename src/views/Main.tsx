@@ -1,5 +1,5 @@
-import { Web3Button } from "@web3modal/react";
 import React, { FC } from "react";
+import { Web3Button } from "@web3modal/react";
 
 const Main: FC = () => {
   return (

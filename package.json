@@ -2,6 +2,10 @@
   "name": "verse-clicker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://porlybe.github.io/verse-clicker",
+  "repository": {
+    "url": "https://github.com/PorlyBe/verse-clicker"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -23,9 +27,11 @@
   },
   "scripts": {
     "start": "GENERATE_SOURCEMAP=false react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +63,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.33.2",
+    "gh-pages": "^6.0.0",
     "prettier": "3.0.3"
   }
 }
