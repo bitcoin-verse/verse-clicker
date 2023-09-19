@@ -1,11 +1,38 @@
 import React, { FC } from "react";
-import { Web3Button } from "@web3modal/react";
+import Header from "../components/Header";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  html, body, * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Open-Sans, Helvetica, Sans-Serif;
+  }
+`;
+
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  flex: 1;
+  padding: 16px;
+`;
+
+const PageContent = styled.section`
+  flex: 1;
+`;
 
 const Main: FC = () => {
   return (
     <>
-      <h1>Verse Clicker</h1>
-      <Web3Button />
+      <GlobalStyle />
+
+      <PageWrapper>
+        <Header />
+        <PageContent>This is where the game goes</PageContent>
+        <footer>Footer stuff</footer>
+      </PageWrapper>
     </>
   );
 };
