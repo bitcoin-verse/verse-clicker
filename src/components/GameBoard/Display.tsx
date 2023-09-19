@@ -26,8 +26,8 @@ const Display: FC = () => {
   return (
     <DisplayWrapper>
       <CookieCount>Cookies: {player.cookies}</CookieCount>
-      <StatCount>CPS: 0</StatCount>
-      <StatCount>CPC: 1.0</StatCount>
+      <StatCount>CPS: {player.aMPF}</StatCount>
+      <StatCount>CPC: {player.aMPC}</StatCount>
     </DisplayWrapper>
   );
 };
