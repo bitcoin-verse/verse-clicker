@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { useTrackedState } from "../../context/store";
+import { formatNumber } from "../../helpers/formatNumber";
 
 const DisplayWrapper = styled.div`
   display: flex;
@@ -21,13 +22,16 @@ const StatCount = styled.div`
 `;
 
 const Display: FC = () => {
-  const { player } = useTrackedState();
+  const {
+    player,
+    settings: { frameRate },
+  } = useTrackedState();
 
   return (
     <DisplayWrapper>
-      <CookieCount>Cookies: {player.cookies}</CookieCount>
-      <StatCount>CPS: {player.aMPF}</StatCount>
-      <StatCount>CPC: {player.aMPC}</StatCount>
+      <CookieCount>Cookies: {formatNumber(player.cookies)}</CookieCount>
+      <StatCount>CPS: {formatNumber(player.aMPF * frameRate)}</StatCount>
+      <StatCount>CPC: {formatNumber(player.aMPC)}</StatCount>
     </DisplayWrapper>
   );
 };
