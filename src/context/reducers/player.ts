@@ -24,6 +24,10 @@ export const spendCookie = (state: State, amount: number) => {
     player: {
       ...state.player,
       cookies: state.player.cookies - amount,
+      cookieStats: {
+        ...state.player.cookieStats,
+        Spent: state.player.cookieStats.Spent + amount,
+      },
     },
   };
 };

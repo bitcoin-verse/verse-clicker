@@ -8,6 +8,7 @@ export const reducer: Reducer<State, Action> = (state, action) => {
       return clickCookie(state);
     case "SPEND_COOKIE":
       return spendCookie(state, action.payload);
+
     // ASCYNC ACTION STATES
     case "GAME_SAVED":
       return {
