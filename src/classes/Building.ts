@@ -1,4 +1,6 @@
-import game from "../game";
+// import game from "../game";
+// import { getBuildingCount } from "../helpers/buildings";
+import { formatNumber } from "../helpers/formatNumber";
 import Upgrade from "./Upgrade";
 
 class Building {
@@ -32,13 +34,13 @@ class Building {
     this.locked = locked;
   }
 
-  buy(amount: number) {
+  /*   buy(amount: number) {
     const player = game.player;
     if (player.spendCookies(this.getCost(amount)) == true) {
       this.amount += amount;
       this.cost = Math.round(this.cost * Math.pow(1.15, amount));
       game.settings.recalculateCPS = true;
-      const curIndex = game.utilities.getBuildingIndexByName(this.name);
+      const curIndex = getBuildingIndexByName(this.name, game.buildings);
 
       if (!curIndex) return;
       if (curIndex + 1 <= game.buildings.length - 1) {
@@ -49,7 +51,7 @@ class Building {
         }
       }
     }
-  }
+  } */
 
   setCost() {
     this.cost = this.originalCost;
@@ -58,7 +60,7 @@ class Building {
     }
   }
 
-  buyUpgrade(name: string) {
+  /*   buyUpgrade(name: string) {
     const player = game.player;
     this.upgrades.forEach((upgrade) => {
       if (upgrade.name == name) {
@@ -69,12 +71,12 @@ class Building {
         }
       }
     });
-  }
+  } */
 
-  calculateEffectOfUpgrades() {
+  /* calculateEffectOfUpgrades() {
     const player = game.player;
     let multiplier = 1;
-    const buildingCount = game.utilities.getBuildingCount();
+    const buildingCount = getBuildingCount(game.buildings);
     this.specialCPS = 0;
     if (this.name == "Cursor") {
       game.player.aMPC = 1;
@@ -100,14 +102,14 @@ class Building {
       }
     });
     return multiplier;
-  }
+  } */
 
-  getCPS() {
+  /* getCPS() {
     this.multiplier = this.calculateEffectOfUpgrades();
     this.effect =
       this.baseEffect * this.amount * this.multiplier + this.specialCPS;
     return this.effect;
-  }
+  } */
 
   getCost(amount: number) {
     let bulkCost = this.cost;
@@ -123,7 +125,7 @@ class Building {
   }
 
   generateBuyButtons() {
-    const format = game.utilities.formatNumber;
+    const format = formatNumber;
     let html = '<div class="btnBuyGroup">';
     html += `<button onclick="game.buyBuilding('${
       this.name
@@ -142,7 +144,7 @@ class Building {
     let html = "";
     let notMet = false;
     this.upgrades.forEach((upgrade) => {
-      const format = game.utilities.formatNumber;
+      const format = formatNumber;
       if (upgrade.owned == false) {
         if (upgrade.requirementMet(this.amount)) {
           html += `<button class="upgBtn" onclick="game.buyUpgrade('${
@@ -164,7 +166,7 @@ class Building {
   }
 
   generateShopHTML() {
-    const format = game.utilities.formatNumber;
+    const format = formatNumber;
     let singleEffect = this.baseEffect * this.multiplier;
     if (this.specialCPS > 0) {
       singleEffect += this.specialCPS / this.amount;

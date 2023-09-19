@@ -21,13 +21,13 @@ const StatCount = styled.div`
 `;
 
 const Display: FC = () => {
-  const { cookies } = useTrackedState();
+  const { player } = useTrackedState();
 
   return (
     <DisplayWrapper>
-      <CookieCount>Cookies: {cookies}</CookieCount>
-      <StatCount>CPS: 0</StatCount>
-      <StatCount>CPC: 1.0</StatCount>
+      <CookieCount>Cookies: {player.cookies}</CookieCount>
+      <StatCount>CPS: {player.aMPF}</StatCount>
+      <StatCount>CPC: {player.aMPC}</StatCount>
     </DisplayWrapper>
   );
 };

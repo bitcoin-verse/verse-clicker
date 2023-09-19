@@ -61,13 +61,13 @@ const ClickButton = styled.button`
 const Cookie: FC = () => {
   const dispatch = useDispatch();
 
-  const incrementCookies = () => {
-    dispatch({ type: "COOKIE_CLICKED" });
-  };
-
   return (
     <CookieWrapper>
-      <ClickButton onClick={incrementCookies}>
+      <ClickButton
+        onClick={() => {
+          dispatch({ type: "CLICK_COOKIE" });
+        }}
+      >
         <VerseImage src={verseLogo} title="Verse Logo" />
       </ClickButton>
     </CookieWrapper>
