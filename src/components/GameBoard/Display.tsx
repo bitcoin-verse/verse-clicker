@@ -21,11 +21,11 @@ const StatCount = styled.div`
 `;
 
 const Display: FC = () => {
-  const { cookies } = useTrackedState();
+  const { player } = useTrackedState();
 
   return (
     <DisplayWrapper>
-      <CookieCount>Cookies: {cookies}</CookieCount>
+      <CookieCount>Cookies: {player.cookies}</CookieCount>
       <StatCount>CPS: 0</StatCount>
       <StatCount>CPC: 1.0</StatCount>
     </DisplayWrapper>
