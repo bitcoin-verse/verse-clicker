@@ -1,14 +1,13 @@
 import { Reducer } from "react";
 import { Action, State } from "./store";
+import { clickCookie, spendCookie } from "./reducers/player";
 
 export const reducer: Reducer<State, Action> = (state, action) => {
   switch (action.type) {
-    case "COOKIE_CLICKED":
-      return {
-        ...state,
-        cookies: state.cookies + 1,
-      };
-
+    case "CLICK_COOKIE":
+      return clickCookie(state);
+    case "SPEND_COOKIE":
+      return spendCookie(state, action.payload);
     // ASCYNC ACTION STATES
     case "GAME_SAVED":
       return {
