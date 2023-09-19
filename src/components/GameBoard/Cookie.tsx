@@ -7,11 +7,13 @@ import cookie from "../../assets/cookie.png";
 const CookieWrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding: 64px;
+  padding: 32px 0;
 `;
 
 const VerseImage = styled.img`
   opacity: 0.9;
+  width: 100%;
+  max-width: 512px;
 `;
 
 const ClickButton = styled.button`
