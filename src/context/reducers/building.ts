@@ -19,39 +19,20 @@ export const buyBuilding = (
   state: State,
   payload: BuyBuildingAction["payload"],
 ): State => {
-  console.log("buuybuilding reducre", payload);
-
   const building = state.buildings.find((b) => b.name === payload.name);
 
   if (!building) return state;
 
   const bulkCost = getBuildingsCost(payload.qty, building.cost);
 
-  // player doesn't have enuf cookies
+  // player doesn't have enough cookies
   if (state.player.cookies < bulkCost) return state;
-  /* 
-  player.cookies = player.cookies - bulkCost;
-  player.cookieStats.Spent = player.cookieStats.Spent + bulkCost; */
-  //   building.buy(amount);
-
-  //   const curIndex = state.buildings.findIndex((b) => b.name == payload.name);
-  //   console.log(curIndex);
-
-  //   if (curIndex === undefined) return state;
-
-  //   let nextBuilding: Building;
-
-  /*   if (curIndex + 1 <= state.buildings.length - 1) {
-    if (state.buildings[curIndex + 1].locked) {
-      nextBuilding = state.buildings[curIndex + 1];
-      nextBuilding.locked = false;
-    }
-  } */
 
   let buildingIndex = 0;
 
   const updatedBuildings = state.buildings.reduce(
     (previousValue, currentBuilding, currentIndex) => {
+      // update selected building
       if (currentBuilding.name === payload.name) {
         buildingIndex = currentIndex;
         return [
@@ -76,7 +57,6 @@ export const buyBuilding = (
     [] as Building[],
   );
 
-  console.log(updatedBuildings);
   return {
     ...state,
     settings: {
