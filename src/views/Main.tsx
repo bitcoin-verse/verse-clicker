@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import styled, { createGlobalStyle } from "styled-components";
 import Footer from "../components/Footer";
 import GameBoard from "../components/GameBoard";
+import { useAccount } from "wagmi";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -26,15 +27,21 @@ const PageContent = styled.section`
 `;
 
 const Main: FC = () => {
+  const { status, address } = useAccount();
+  console.log(address);
   return (
     <>
       <GlobalStyle />
 
       <PageWrapper>
         <Header />
-        <PageContent>
-          <GameBoard />
-        </PageContent>
+        {status === "connected" ? (
+          <PageContent>
+            <GameBoard />
+          </PageContent>
+        ) : (
+          <h1>Connect wallet to start</h1>
+        )}
         <Footer />
       </PageWrapper>
     </>
