@@ -47,7 +47,6 @@ export const earnCookie = (
 ): State => {
   if (state.player.aMPF === 0) return state;
 
-  console.log("earning cookie");
   return {
     ...state,
     player: {

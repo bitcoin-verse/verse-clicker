@@ -32,7 +32,7 @@ const useGameLoop = () => {
       type: "EARN_COOKIE",
       payload: document.hasFocus() ? player.aMPF : player.aMPF * frameRate,
     });
-  }, []);
+  }, [save, player.aMPF, frameRate]);
 
   useInterval(gameLoop, document.hasFocus() ? 1000 / frameRate : 1000);
 };
