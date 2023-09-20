@@ -4,6 +4,7 @@ import { useReducerAsync } from "use-reducer-async";
 import { AsyncAction, asyncActionHandlers } from "./asyncActionHandlers";
 import { reducer } from "./reducer";
 import Player from "../classes/Player";
+import Building from "../classes/Building";
 
 export type State = {
   save?: string;
@@ -15,6 +16,7 @@ export type State = {
   };
 
   player: Player;
+  buildings: Building[];
 
   query: string;
   pending: boolean;
@@ -25,13 +27,13 @@ export type Action =
   | { type: "GAME_SAVED"; payload: string }
   | { type: "CLICK_COOKIE" }
   | { type: "SPEND_COOKIE"; payload: number }
+
+  // ASYNC ACTION STATES
   | { type: "STARTED" }
   | { type: "FAILED"; error: Error }
   | { type: "QUERY_CHANGED"; query: string };
 
 const initialState: State = {
-  query: "",
-
   settings: {
     frameRate: 30,
     recalculateCPS: true,
@@ -40,16 +42,21 @@ const initialState: State = {
 
   // GAME
   player: new Player(),
+  buildings: [],
+
+  // ASYNC
   pending: false,
   error: null,
+  query: "",
 };
 
-const useValue = () =>
-  useReducerAsync<Reducer<State, Action>, AsyncAction>(
+const useValue = () => {
+  return useReducerAsync<Reducer<State, Action>, AsyncAction>(
     reducer,
     initialState,
     asyncActionHandlers,
   );
+};
 
 export const {
   Provider,
