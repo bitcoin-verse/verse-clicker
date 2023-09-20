@@ -1,5 +1,5 @@
 import { Reducer } from "react";
-import { Action, State } from "./store";
+import { Action, State, initialState } from "./store";
 import { clickCookie, spendCookie } from "./reducers/player";
 import { gameSaved, loadSave } from "./reducers/saving";
 
@@ -32,6 +32,9 @@ export const reducer: Reducer<State, Action> = (state, action) => {
         ...state,
         query: action.query,
       };
+
+    case "RESET_GAME":
+      return initialState;
     default:
       throw new Error("unknown action type");
   }

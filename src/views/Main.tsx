@@ -21,10 +21,6 @@ const PageWrapper = styled.div`
   padding: 16px;
 `;
 
-const PageContent = styled.section`
-  flex: 1;
-`;
-
 const Main: FC = () => {
   return (
     <>
@@ -32,9 +28,7 @@ const Main: FC = () => {
 
       <PageWrapper>
         <Header />
-        <PageContent>
-          <GameBoard />
-        </PageContent>
+        <GameBoard />
         <Footer />
       </PageWrapper>
     </>

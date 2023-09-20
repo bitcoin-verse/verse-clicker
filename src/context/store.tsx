@@ -30,13 +30,14 @@ export type Action =
   | LoadSaveAction
   | { type: "CLICK_COOKIE" }
   | { type: "SPEND_COOKIE"; payload: number }
+  | { type: "RESET_GAME" }
 
   // ASYNC ACTION STATES
   | { type: "STARTED" }
   | { type: "FAILED"; error: Error }
   | { type: "QUERY_CHANGED"; query: string };
 
-const initialState: State = {
+export const initialState: State = {
   settings: {
     frameRate: 30,
     recalculateCPS: true,
