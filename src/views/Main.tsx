@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import styled, { createGlobalStyle } from "styled-components";
 import Footer from "../components/Footer";
 import GameBoard from "../components/GameBoard";
+import useGameLoop from "../hooks/useGameLoop";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -22,6 +23,8 @@ const PageWrapper = styled.div`
 `;
 
 const Main: FC = () => {
+  useGameLoop();
+
   return (
     <>
       <GlobalStyle />
