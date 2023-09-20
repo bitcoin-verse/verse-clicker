@@ -13,6 +13,7 @@ import {
   EarnCookieAction,
   SpendCookieAction,
 } from "./reducers/player";
+import { RecalculateCPSAction } from "./reducers/recalculateCPS";
 
 export type State = {
   save?: string;
@@ -38,6 +39,7 @@ export type Action =
   | ClickCookieAction
   | SpendCookieAction
   | EarnCookieAction
+  | RecalculateCPSAction
   | { type: "RESET_GAME" }
   | { type: "SET_BUILDING"; payload: string }
   | BuyBuildingAction
