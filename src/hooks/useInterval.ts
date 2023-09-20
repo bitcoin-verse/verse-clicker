@@ -1,22 +1,27 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
-type Delay = number | null;
-type TimerHandler<T> = (...args: T[]) => void;
+export const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-const useInterval = <T>(callback: TimerHandler<T>, delay: Delay) => {
-  const savedCallbackRef = useRef<TimerHandler<T>>();
+const useInterval = (callback: () => void, delay: number | null) => {
+  const savedCallback = useRef(callback);
 
-  useEffect(() => {
-    savedCallbackRef.current = callback;
+  // Remember the latest callback if it changes.
+  useIsomorphicLayoutEffect(() => {
+    savedCallback.current = callback;
   }, [callback]);
 
+  // Set up the interval.
   useEffect(() => {
-    const handler = (...args: T[]) => savedCallbackRef.current!(...args);
-
-    if (delay !== null) {
-      const intervalId = setInterval(handler, delay);
-      return () => clearInterval(intervalId);
+    // Don't schedule if no delay is specified.
+    // Note: 0 is a valid value for delay.
+    if (!delay && delay !== 0) {
+      return;
     }
+
+    const id = setInterval(() => savedCallback.current(), delay);
+
+    return () => clearInterval(id);
   }, [delay]);
 };
 

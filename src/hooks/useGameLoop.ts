@@ -26,11 +26,11 @@ const useGameLoop = () => {
   const gameLoop = useCallback(() => {
     dispatch({
       type: "EARN_COOKIE",
-      payload: document.hasFocus() ? player.aMPF : player.aMPF * frameRate,
+      payload: player.aMPF,
     });
   }, [player.aMPF, frameRate]);
 
-  useInterval(gameLoop, document.hasFocus() ? 1000 / frameRate : 1000);
+  useInterval(gameLoop, 1000 / frameRate);
 };
 
 export default useGameLoop;
