@@ -1303,7 +1303,7 @@ const game = {
           const nonUpgrade = savedBuilding.split("|");
           const building = game.buildings[i];
           building.amount = parseFloat(nonUpgrade[0]);
-          building.setCost();
+          // building.setCost();
           building.locked = game.utilities.stringToBool(nonUpgrade[1]) || false;
           let j = 0;
           const upgrades = nonUpgrade[2].split(":");
@@ -1335,7 +1335,7 @@ const game = {
           building.amount = 0;
           building.effect = 0;
           building.specialCPS = 0;
-          building.setCost();
+          // building.setCost();
           for (const i in building.upgrades) {
             building.upgrades[i].owned = false;
           }
@@ -1418,22 +1418,22 @@ const game = {
   },
   constructShop() {
     const buildings = game.buildings;
-    let finalHtml = "";
+    // let finalHtml = "";
     buildings.forEach((building) => {
       if (building.locked == false) {
-        finalHtml += building.generateMenuButton();
+        // finalHtml += building.generateMenuButton();
       }
     });
-    game.utilities.updateText("shopList", finalHtml);
+    // game.utilities.updateText("shopList", finalHtml);
   },
   currentShop: "Cursor",
   updateShop(name: string) {
     game.currentShop = name;
-    let finalHtml = "";
+    // let finalHtml = "";
     const building = game.utilities.getBuildingByName(name);
     if (!building) return;
-    finalHtml += building.generateShopHTML();
-    game.utilities.updateText("shop", finalHtml);
+    // finalHtml += building.generateShopHTML();
+    // game.utilities.updateText("shop", finalHtml);
   },
   /* buyBuilding(name: string, amount: number) {
     const building = game.utilities.getBuildingByName(name);

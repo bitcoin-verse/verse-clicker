@@ -1,6 +1,3 @@
-// import game from "../game";
-// import { getBuildingCount } from "../helpers/buildings";
-import { formatNumber } from "../helpers/formatNumber";
 import Upgrade from "./Upgrade";
 
 class Building {
@@ -53,12 +50,12 @@ class Building {
     }
   } */
 
-  setCost() {
+  /* setCost() {
     this.cost = this.originalCost;
     for (let i = 0; i < this.amount; i++) {
       this.cost = Math.round(this.cost * 1.15);
     }
-  }
+  } */
 
   /*   buyUpgrade(name: string) {
     const player = game.player;
@@ -111,20 +108,20 @@ class Building {
     return this.effect;
   } */
 
-  getCost(amount: number) {
+  /* getCost(amount: number) {
     let bulkCost = this.cost;
     let tempPrice = this.cost;
     for (let i = 0; i < amount - 1; i++) {
       bulkCost += Math.round((tempPrice *= 1.15));
     }
     return bulkCost;
-  }
+  } */
 
-  generateMenuButton() {
+  /* generateMenuButton() {
     return `<button onclick="game.updateShop('${this.name}');">${this.name}</button>`;
-  }
+  } */
 
-  generateBuyButtons() {
+  /* generateBuyButtons() {
     const format = formatNumber;
     let html = '<div class="btnBuyGroup">';
     html += `<button onclick="game.buyBuilding('${
@@ -138,9 +135,9 @@ class Building {
     }', 10);">Buy x10</br><b>${format(this.getCost(10))}</b></button>`;
     html += "</div>";
     return html;
-  }
+  } */
 
-  generateUpgradeButtons() {
+  /* generateUpgradeButtons() {
     let html = "";
     let notMet = false;
     this.upgrades.forEach((upgrade) => {
@@ -163,9 +160,9 @@ class Building {
       }
     });
     return html;
-  }
+  } */
 
-  generateShopHTML() {
+  /* generateShopHTML() {
     const format = formatNumber;
     let singleEffect = this.baseEffect * this.multiplier;
     if (this.specialCPS > 0) {
@@ -179,7 +176,7 @@ class Building {
       this.effect,
     )}</b> cookie(s).</br>${this.generateBuyButtons()}</br>${this.generateUpgradeButtons()}`;
     return html;
-  }
+  } */
 }
 
 export default Building;

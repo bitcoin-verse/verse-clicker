@@ -5,6 +5,7 @@ import { AsyncAction, asyncActionHandlers } from "./asyncActionHandlers";
 import { reducer } from "./reducer";
 import Player from "../classes/Player";
 import Building from "../classes/Building";
+import buildings from "./buildings";
 
 export type State = {
   save?: string;
@@ -42,7 +43,7 @@ const initialState: State = {
 
   // GAME
   player: new Player(),
-  buildings: [],
+  buildings,
 
   // ASYNC
   pending: false,
