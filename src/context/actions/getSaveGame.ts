@@ -1,4 +1,3 @@
-// import { getProgress } from "../../api/progress";
 import { getProgress } from "../../api/progress";
 import { magic } from "../../helpers/base64";
 import { Action, State } from "../store";
