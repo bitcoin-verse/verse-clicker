@@ -1,12 +1,16 @@
-import React, { FC } from "react";
+import React, { FC, useCallback, useMemo } from "react";
 import styled from "styled-components";
-import { useTrackedState } from "../../context/store";
+import { useDispatch, useTrackedState } from "../../context/store";
 import { Button } from "../Button";
+import { getBuildingsCost } from "../../context/reducers/building";
+import { formatNumber } from "../../helpers/formatNumber";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
+
 const BuyWrapper = styled.div`
   flex-direction: row;
   display: flex;
@@ -22,32 +26,75 @@ const BuyWrapper = styled.div`
 
 const Upgrades: FC = () => {
   const { buildings, currentBuilding } = useTrackedState();
-  const building = buildings.find((b) => b.name === currentBuilding);
+  const dispatch = useDispatch();
+  const building = useMemo(
+    () => buildings.find((b) => b.name === currentBuilding),
+    [buildings, currentBuilding],
+  );
+
+  const buyBuilding = useCallback(
+    (qty: number) => {
+      if (!building) return;
+
+      dispatch({
+        type: "BUY_BUILDING",
+        payload: { name: building.name, qty },
+      });
+    },
+    [building],
+  );
+
+  if (!building) return null;
 
   return (
     <Wrapper>
       <h3>Upgrades</h3>
       <div>{currentBuilding}</div>
-      <div>You have x {currentBuilding}</div>
-      <div>Each {currentBuilding} produces x cookies.</div>
-      <div>All of your {currentBuilding} combines produces x cookies.</div>
+      <div>
+        You have {building.amount} {currentBuilding}
+      </div>
+      <div>
+        Each {currentBuilding} produces {building.multiplier} cookies.
+      </div>
+      <div>
+        All of your {currentBuilding} combines produces{" "}
+        {building.amount * building.multiplier} cookies.
+      </div>
       <BuyWrapper>
-        <Button>
+        <Button
+          onClick={() => {
+            buyBuilding(1);
+          }}
+        >
           <div>Buy x1</div>
-          <div> 15.0</div>
+          <div>{getBuildingsCost(1, building.cost)}</div>
         </Button>
-        <Button>
+        <Button
+          onClick={() => {
+            buyBuilding(5);
+          }}
+        >
           <div>Buy x5</div>
-          <div> 101.0</div>
+          <div>{getBuildingsCost(5, building.cost)}</div>
         </Button>
-        <Button>
+        <Button
+          onClick={() => {
+            buyBuilding(10);
+          }}
+        >
           <div>Buy x10</div>
-          <div> 305.0</div>
+          <div>{getBuildingsCost(10, building.cost)}</div>
         </Button>
       </BuyWrapper>
-      {building?.upgrades.map((upgrade, i) => (
-        <Button key={i}>{upgrade.name}</Button>
-      ))}
+      {building.upgrades.map((upgrade, i) => {
+        if (upgrade.owned) return null;
+
+        return (
+          <Button key={i}>
+            {upgrade.name} {formatNumber(upgrade.cost)}
+          </Button>
+        );
+      })}
     </Wrapper>
   );
 };

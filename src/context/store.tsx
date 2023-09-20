@@ -7,6 +7,7 @@ import Player from "../classes/Player";
 import Building from "../classes/Building";
 import buildings from "./buildings";
 import { GameSavedAction, LoadSaveAction } from "./reducers/saving";
+import { BuyBuildingAction } from "./reducers/building";
 
 export type State = {
   save?: string;
@@ -33,6 +34,7 @@ export type Action =
   | { type: "SPEND_COOKIE"; payload: number }
   | { type: "RESET_GAME" }
   | { type: "SET_BUILDING"; payload: string }
+  | BuyBuildingAction
 
   // ASYNC ACTION STATES
   | { type: "STARTED" }

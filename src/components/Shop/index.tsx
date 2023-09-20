@@ -6,6 +6,7 @@ import styled from "styled-components";
 const ShopContainer = styled.div`
   display: flex;
   gap: 100px;
+  justify-content: center;
 `;
 
 const Shop: FC = () => {
