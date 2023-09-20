@@ -19,6 +19,7 @@ export type State = {
 
   player: Player;
   buildings: Building[];
+  currentBuilding: string;
 
   query: string;
   pending: boolean;
@@ -31,6 +32,7 @@ export type Action =
   | { type: "CLICK_COOKIE" }
   | { type: "SPEND_COOKIE"; payload: number }
   | { type: "RESET_GAME" }
+  | { type: "SET_BUILDING"; payload: string }
 
   // ASYNC ACTION STATES
   | { type: "STARTED" }
@@ -47,6 +49,7 @@ export const initialState: State = {
   // GAME
   player: new Player(),
   buildings,
+  currentBuilding: buildings[0].name,
 
   // ASYNC
   pending: false,
