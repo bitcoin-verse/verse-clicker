@@ -19,6 +19,7 @@ export const getSave = ({
 
       const response = await getProgress(action.payload);
 
+      console.log("get save", response);
       if (!response) throw new Error("Error getting response");
 
       dispatch({

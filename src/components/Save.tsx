@@ -29,6 +29,9 @@ const Save: FC = () => {
         type="button"
         onClick={() => {
           console.log("loading");
+          if (!address) return;
+
+          dispatch({ type: "GET_SAVE", payload: address });
         }}
       >
         Load
