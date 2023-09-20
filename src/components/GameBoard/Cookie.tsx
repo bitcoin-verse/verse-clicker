@@ -67,6 +67,7 @@ const Cookie: FC = () => {
         onClick={() => {
           dispatch({ type: "CLICK_COOKIE" });
         }}
+        onKeyDown={(e) => e.preventDefault()}
       >
         <VerseImage src={verseLogo} title="Verse Logo" />
       </ClickButton>
