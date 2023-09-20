@@ -8,6 +8,11 @@ import Building from "../classes/Building";
 import buildings from "./buildings";
 import { GameSavedAction, LoadSaveAction } from "./reducers/saving";
 import { BuyBuildingAction } from "./reducers/building";
+import {
+  ClickCookieAction,
+  EarnCookieAction,
+  SpendCookieAction,
+} from "./reducers/player";
 
 export type State = {
   save?: string;
@@ -30,8 +35,9 @@ export type State = {
 export type Action =
   | GameSavedAction
   | LoadSaveAction
-  | { type: "CLICK_COOKIE" }
-  | { type: "SPEND_COOKIE"; payload: number }
+  | ClickCookieAction
+  | SpendCookieAction
+  | EarnCookieAction
   | { type: "RESET_GAME" }
   | { type: "SET_BUILDING"; payload: string }
   | BuyBuildingAction

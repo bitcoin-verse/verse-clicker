@@ -1,16 +1,18 @@
 import { Reducer } from "react";
 import { Action, State, initialState } from "./store";
-import { clickCookie, spendCookie } from "./reducers/player";
+import { clickCookie, earnCookie, spendCookie } from "./reducers/player";
 import { gameSaved, loadSave } from "./reducers/saving";
 import { buyBuilding } from "./reducers/building";
 
 export const reducer: Reducer<State, Action> = (state, action) => {
-  console.log("action", action.type);
   switch (action.type) {
+    // Cookie reducers
     case "CLICK_COOKIE":
       return clickCookie(state);
     case "SPEND_COOKIE":
       return spendCookie(state, action.payload);
+    case "EARN_COOKIE":
+      return earnCookie(state, action.payload);
 
     case "BUY_BUILDING":
       return buyBuilding(state, action.payload);
