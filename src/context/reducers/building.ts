@@ -6,7 +6,7 @@ export type BuyBuildingAction = {
   payload: { name: string; qty: number };
 };
 
-const getCost = (amount: number, cost: number) => {
+export const getBuildingsCost = (amount: number, cost: number) => {
   let bulkCost = cost;
   let tempPrice = cost;
   for (let i = 0; i < amount - 1; i++) {
@@ -25,7 +25,7 @@ export const buyBuilding = (
 
   if (!building) return state;
 
-  const bulkCost = getCost(payload.qty, building.cost);
+  const bulkCost = getBuildingsCost(payload.qty, building.cost);
 
   // player doesn't have enuf cookies
   if (state.player.cookies < bulkCost) return state;
@@ -48,9 +48,12 @@ export const buyBuilding = (
     }
   } */
 
+  let buildingIndex = 0;
+
   const updatedBuildings = state.buildings.reduce(
     (previousValue, currentBuilding, currentIndex) => {
       if (currentBuilding.name === payload.name) {
+        buildingIndex = currentIndex;
         return [
           ...previousValue,
           {
@@ -62,10 +65,11 @@ export const buyBuilding = (
           },
         ];
       }
-      console.log(currentIndex);
-      /*  if (curr.name === nextBuilding.name) {
-      return [...prev, nextBuilding];
-    } */
+
+      // unlock next building if it's locked
+      if (currentIndex - 1 === buildingIndex && currentBuilding.locked) {
+        return [...previousValue, { ...currentBuilding, locked: false }];
+      }
 
       return [...previousValue, currentBuilding];
     },
