@@ -56,11 +56,10 @@ const loadBuildings = (buildingData: string): Building[] => {
 };
 
 export const loadSave = (state: State, payload: string): State => {
-  // do stuff here to rehydrate the load
   const decoded = magic(payload);
 
   if (decoded === false) return state;
-  console.log(decoded);
+
   const saveString = decoded.split("-");
 
   const player = loadPlayer(state.player, saveString[0]);

@@ -23,15 +23,14 @@ export const saveGame = ({
 
       const saveString = generateSaveString(state.player, state.buildings);
 
-      console.log("save string", saveString);
-
-      const response = await saveProgress(action.payload.address, saveString);
-
-      console.log("game save", response);
+      const { progressBase64 } = await saveProgress(
+        action.payload.address,
+        saveString,
+      );
 
       dispatch({
         type: "GAME_SAVED",
-        payload: saveString,
+        payload: progressBase64,
       });
     } catch (error) {
       dispatch({ type: "FAILED", error: error as unknown as Error });
