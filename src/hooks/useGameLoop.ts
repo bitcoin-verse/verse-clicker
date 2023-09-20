@@ -19,8 +19,9 @@ const useGameLoop = () => {
 
     if (recalculateCPS) {
       console.log("recalculate cps");
+      dispatch({ type: "RECALCULATE_CPS" });
     }
-  }, [recalculateCPS]);
+  }, [recalculateCPS, save]);
 
   const gameLoop = useCallback(() => {
     if (!save) {
