@@ -35,6 +35,11 @@ export const reducer: Reducer<State, Action> = (state, action) => {
 
     case "RESET_GAME":
       return initialState;
+    case "SET_BUILDING":
+      return {
+        ...state,
+        currentBuilding: action.payload,
+      };
     default:
       throw new Error("unknown action type");
   }
