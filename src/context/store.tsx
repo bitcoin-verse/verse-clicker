@@ -6,6 +6,7 @@ import { reducer } from "./reducer";
 import Player from "../classes/Player";
 import Building from "../classes/Building";
 import buildings from "./buildings";
+import { GameSavedAction, LoadSaveAction } from "./reducers/saving";
 
 export type State = {
   save?: string;
@@ -25,7 +26,8 @@ export type State = {
 };
 
 export type Action =
-  | { type: "GAME_SAVED"; payload: string }
+  | GameSavedAction
+  | LoadSaveAction
   | { type: "CLICK_COOKIE" }
   | { type: "SPEND_COOKIE"; payload: number }
 

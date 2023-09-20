@@ -1,6 +1,7 @@
 import { Reducer } from "react";
 import { Action, State } from "./store";
 import { clickCookie, spendCookie } from "./reducers/player";
+import { gameSaved, loadSave } from "./reducers/saving";
 
 export const reducer: Reducer<State, Action> = (state, action) => {
   switch (action.type) {
@@ -11,11 +12,9 @@ export const reducer: Reducer<State, Action> = (state, action) => {
 
     // ASCYNC ACTION STATES
     case "GAME_SAVED":
-      return {
-        ...state,
-        save: action.payload,
-        pending: false,
-      };
+      return gameSaved(state, action.payload);
+    case "GAME_LOADED":
+      return loadSave(state, action.payload);
 
     case "STARTED":
       return {

@@ -21,10 +21,10 @@ class Upgrade {
     this.special = special;
   }
 
-  requirementMet(amount: number) {
+  /*   requirementMet(amount: number) {
     if (amount >= this.limit) {
       return true;
     }
-  }
+  } */
 }
 export default Upgrade;

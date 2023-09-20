@@ -1,4 +1,5 @@
 import { getProgress } from "../../api/progress";
+import { magic } from "../../helpers/base64";
 import { Action, State } from "../store";
 
 export type AsyncActionGetSaveGame = {
@@ -17,14 +18,17 @@ export const getSave = ({
     try {
       dispatch({ type: "STARTED" });
 
-      const response = await getProgress(action.payload);
+      const { progressBase64 } = await getProgress(action.payload);
 
-      console.log("get save", response);
-      if (!response) throw new Error("Error getting response");
+      if (!progressBase64) throw new Error("Error getting response");
+
+      const save = magic(progressBase64);
+
+      if (save === false) throw new Error("Save is broken");
 
       dispatch({
-        type: "GAME_SAVED",
-        payload: response,
+        type: "GAME_LOADED",
+        payload: progressBase64,
       });
     } catch (error) {
       dispatch({ type: "FAILED", error: error as unknown as Error });

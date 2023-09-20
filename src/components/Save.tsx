@@ -1,17 +1,17 @@
 import React, { FC } from "react";
-import { useDispatch, useTrackedState } from "../context/store";
+import { useDispatch } from "../context/store";
 import { useAccount } from "wagmi";
 
 const Save: FC = () => {
   const dispatch = useDispatch();
   const { address } = useAccount();
-  const { error } = useTrackedState();
-  console.log(error);
+
   return (
     <div style={{ display: "flex", gap: 16, padding: "16px 0" }}>
       <button
         type="button"
         onClick={() => {
+          console.log("saving");
           if (!address) return;
 
           dispatch({
@@ -20,7 +20,6 @@ const Save: FC = () => {
               address,
             },
           });
-          console.log("saving");
         }}
       >
         Save
