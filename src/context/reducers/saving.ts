@@ -1,5 +1,6 @@
-import Building from "../../classes/Building";
 import { magic } from "../../helpers/base64";
+import { stringToBool } from "../../helpers/stringToBool";
+import buildings from "../buildings";
 import { State } from "../store";
 
 export type GameSavedAction = { type: "GAME_SAVED"; payload: string };
@@ -26,9 +27,28 @@ const loadPlayer = (playerData: string) => {
   };
 };
 
-const loadBuildings = (buildingData: string, allBuildings: Building[]) => {
-  console.log(buildingData, allBuildings);
-  return [];
+const loadBuildings = (buildingData: string) => {
+  const newBuildingData = buildingData.split("#");
+
+  const restoredBuildings = buildings.map((building, index) => {
+    const savedBuilding = newBuildingData[index];
+    const nonUpgrade = savedBuilding.split("|");
+    const savedUpgrades = nonUpgrade[2].split(":");
+
+    const upgrades = building.upgrades.map((upgrade, i) => ({
+      ...upgrade,
+      ownded: stringToBool(savedUpgrades[i]) || false,
+    }));
+
+    return {
+      ...building,
+      amount: parseFloat(nonUpgrade[0]),
+      locked: stringToBool(nonUpgrade[1]) || false,
+      upgrades,
+    };
+  });
+
+  return restoredBuildings;
 };
 
 export const loadSave = (state: State, payload: string) => {
@@ -40,7 +60,7 @@ export const loadSave = (state: State, payload: string) => {
   const saveString = decoded.split("-");
 
   const player = loadPlayer(saveString[0]);
-  const buildings = loadBuildings(saveString[1], state.buildings);
+  const buildings = loadBuildings(saveString[1]);
 
   // add something about updateShop method in game.ts
 

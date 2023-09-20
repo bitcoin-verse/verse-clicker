@@ -11,6 +11,7 @@ const Save: FC = () => {
       <button
         type="button"
         onClick={() => {
+          console.log("saving");
           if (!address) return;
 
           dispatch({
@@ -19,7 +20,6 @@ const Save: FC = () => {
               address,
             },
           });
-          console.log("saving");
         }}
       >
         Save
