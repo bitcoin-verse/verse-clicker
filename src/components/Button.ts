@@ -5,6 +5,7 @@ export const Button = styled.button`
   outline: none;
   box-sizing: border-box;
   padding: 0px 12px;
+  margin: 4px 0px;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
