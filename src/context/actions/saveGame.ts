@@ -1,13 +1,15 @@
 import { saveProgress } from "../../api/progress";
+import generateSaveString from "../../helpers/generateSaveString";
 import { Action, State } from "../store";
 
 export type AsyncActionSaveGame = {
   type: "SAVE_GAME";
-  payload: { address: string; progressBase64: string };
+  payload: { address: string };
 };
 
 export const saveGame = ({
   dispatch,
+  getState,
 }: {
   dispatch: React.Dispatch<Action | AsyncActionSaveGame>;
   getState: () => State;
@@ -17,15 +19,19 @@ export const saveGame = ({
     try {
       dispatch({ type: "STARTED" });
 
-      const response = await saveProgress(
-        action.payload.address,
-        action.payload.progressBase64,
-      );
+      const state = getState();
+
+      const saveString = generateSaveString(state.player, state.buildings);
+
+      console.log("save string", saveString);
+
+      const response = await saveProgress(action.payload.address, saveString);
 
       console.log("game save", response);
+
       dispatch({
         type: "GAME_SAVED",
-        payload: action.payload.progressBase64,
+        payload: saveString,
       });
     } catch (error) {
       dispatch({ type: "FAILED", error: error as unknown as Error });
