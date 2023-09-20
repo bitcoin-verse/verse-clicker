@@ -4,6 +4,7 @@ import { useReducerAsync } from "use-reducer-async";
 import { AsyncAction, asyncActionHandlers } from "./asyncActionHandlers";
 import { reducer } from "./reducer";
 import Player from "../classes/Player";
+import Building from "../classes/Building";
 
 export type State = {
   save?: string;
@@ -15,6 +16,7 @@ export type State = {
   };
 
   player: Player;
+  buildings: Building[];
 
   query: string;
   pending: boolean;
@@ -40,6 +42,7 @@ const initialState: State = {
 
   // GAME
   player: new Player(),
+  buildings: [],
 
   // ASYNC
   pending: false,
