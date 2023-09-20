@@ -1,3 +1,6 @@
+import Building from "../../classes/Building";
+import Player from "../../classes/Player";
+import Upgrade from "../../classes/Upgrade";
 import { magic } from "../../helpers/base64";
 import { stringToBool } from "../../helpers/stringToBool";
 import buildings from "../buildings";
@@ -15,9 +18,10 @@ export const gameSaved = (state: State, save: string) => {
 
 export type LoadSaveAction = { type: "GAME_LOADED"; payload: string };
 
-const loadPlayer = (playerData: string) => {
+const loadPlayer = (player: Player, playerData: string): Player => {
   const newPlayerData = playerData.split("|");
   return {
+    ...player,
     cookies: parseFloat(newPlayerData[0]),
     cookieStats: {
       Earned: parseFloat(newPlayerData[1]),
@@ -27,7 +31,7 @@ const loadPlayer = (playerData: string) => {
   };
 };
 
-const loadBuildings = (buildingData: string) => {
+const loadBuildings = (buildingData: string): Building[] => {
   const newBuildingData = buildingData.split("#");
 
   const restoredBuildings = buildings.map((building, index) => {
@@ -35,7 +39,7 @@ const loadBuildings = (buildingData: string) => {
     const nonUpgrade = savedBuilding.split("|");
     const savedUpgrades = nonUpgrade[2].split(":");
 
-    const upgrades = building.upgrades.map((upgrade, i) => ({
+    const upgrades: Upgrade[] = building.upgrades.map((upgrade, i) => ({
       ...upgrade,
       ownded: stringToBool(savedUpgrades[i]) || false,
     }));
@@ -51,15 +55,15 @@ const loadBuildings = (buildingData: string) => {
   return restoredBuildings;
 };
 
-export const loadSave = (state: State, payload: string) => {
+export const loadSave = (state: State, payload: string): State => {
   // do stuff here to rehydrate the load
   const decoded = magic(payload);
 
-  if (decoded === false) return;
-
+  if (decoded === false) return state;
+  console.log(decoded);
   const saveString = decoded.split("-");
 
-  const player = loadPlayer(saveString[0]);
+  const player = loadPlayer(state.player, saveString[0]);
   const buildings = loadBuildings(saveString[1]);
 
   // add something about updateShop method in game.ts
