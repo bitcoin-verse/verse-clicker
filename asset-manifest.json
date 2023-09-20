@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/verse-clicker/static/js/main.b3c1b32e.js",
-    "static/js/44.4ed125cc.chunk.js": "/verse-clicker/static/js/44.4ed125cc.chunk.js",
+    "main.js": "/verse-clicker/static/js/main.f7b38a4b.js",
     "static/js/406.e63f253e.chunk.js": "/verse-clicker/static/js/406.e63f253e.chunk.js",
+    "static/js/44.4ed125cc.chunk.js": "/verse-clicker/static/js/44.4ed125cc.chunk.js",
     "static/js/871.2ccbf989.chunk.js": "/verse-clicker/static/js/871.2ccbf989.chunk.js",
     "static/js/27.8c1f39b9.chunk.js": "/verse-clicker/static/js/27.8c1f39b9.chunk.js",
     "static/js/199.4ac29778.chunk.js": "/verse-clicker/static/js/199.4ac29778.chunk.js",
@@ -13,6 +13,6 @@
     "index.html": "/verse-clicker/index.html"
   },
   "entrypoints": [
-    "static/js/main.b3c1b32e.js"
+    "static/js/main.f7b38a4b.js"
   ]
 }
