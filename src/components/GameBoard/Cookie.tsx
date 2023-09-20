@@ -4,10 +4,13 @@ import styled from "styled-components";
 import verseLogo from "../../assets/verse-logo.png";
 import cookie from "../../assets/cookie.png";
 import { useDispatch } from "../../context/store";
+import { useAccount } from "wagmi";
 
 const CookieWrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 32px 0;
 `;
 
@@ -18,9 +21,9 @@ const VerseImage = styled.img`
 `;
 
 const ClickButton = styled.button`
+  position: relative;
   max-width: 512px;
   width: 100%;
-  position: relative;
   background: none;
   border: none;
   outline: none;
@@ -58,16 +61,49 @@ const ClickButton = styled.button`
   }
 `;
 
+const LoadingOverlay = styled.div`
+  position: absolute;
+  box-sizing: border-box;
+  top: 32px;
+  left: auto;
+  right: auto;
+  bottom: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+
+  max-width: 512px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1;
+
+  font-size: 24px;
+  font-weight: 700;
+  padding: 32px;
+  text-align: center;
+`;
+
 const Cookie: FC = () => {
   const dispatch = useDispatch();
+  const { status } = useAccount();
 
   return (
     <CookieWrapper>
+      {status !== "connected" && (
+        <LoadingOverlay>
+          Wallet not connected
+          <br />
+          connect wallet to start
+        </LoadingOverlay>
+      )}
       <ClickButton
         onClick={() => {
           dispatch({ type: "CLICK_COOKIE" });
         }}
         onKeyDown={(e) => e.preventDefault()}
+        disabled={status !== "connected"}
       >
         <VerseImage src={verseLogo} title="Verse Logo" />
       </ClickButton>
