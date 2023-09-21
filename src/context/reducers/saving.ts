@@ -16,10 +16,14 @@ export const gameSaved = (state: State, save: string) => {
   };
 };
 
-export type LoadSaveAction = { type: "GAME_LOADED"; payload: string };
+export type LoadSaveAction = {
+  type: "GAME_LOADED";
+  payload: { base64: string; lastSave: string };
+};
 
 const loadPlayer = (player: Player, playerData: string): Player => {
   const newPlayerData = playerData.split("|");
+
   return {
     ...player,
     cookies: parseFloat(newPlayerData[0]),
@@ -55,8 +59,11 @@ const loadBuildings = (buildingData: string): Building[] => {
   return restoredBuildings;
 };
 
-export const loadSave = (state: State, payload: string): State => {
-  const decoded = magic(payload);
+export const loadSave = (
+  state: State,
+  payload: LoadSaveAction["payload"],
+): State => {
+  const decoded = magic(payload.base64);
 
   if (decoded === false) return state;
 
@@ -69,7 +76,9 @@ export const loadSave = (state: State, payload: string): State => {
 
   return {
     ...state,
-    save: payload,
+    save: payload.base64,
+    lastSave: payload.lastSave,
+    settings: { ...state.settings, recalculateCPS: true },
     pending: false,
     player,
     buildings,

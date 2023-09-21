@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useTrackedState } from "../context/store";
 import useInterval from "./useInterval";
-import { useAccount } from "wagmi";
+// import { useAccount } from "wagmi";
 
 const useGameLoop = () => {
   const {
@@ -9,7 +9,7 @@ const useGameLoop = () => {
     settings: { frameRate, recalculateCPS },
     player,
   } = useTrackedState();
-  const { address } = useAccount();
+  // const { address } = useAccount();
 
   const dispatch = useDispatch();
 
@@ -34,13 +34,13 @@ const useGameLoop = () => {
 
   useInterval(gameLoop, 1000 / frameRate);
 
-  const saveGame = useCallback(() => {
+  /*   const saveGame = useCallback(() => {
     if (!address) return;
     dispatch({ type: "SAVE_GAME", payload: { address } });
   }, []);
 
   // save every 30 seconds
-  useInterval(saveGame, 1000 * 30);
+  useInterval(saveGame, 1000 * 30); */
 };
 
 export default useGameLoop;

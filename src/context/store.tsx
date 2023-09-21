@@ -17,6 +17,7 @@ import { RecalculateCPSAction } from "./reducers/recalculateCPS";
 
 export type State = {
   save?: string;
+  lastSave?: string;
 
   settings: {
     frameRate: number;
@@ -53,7 +54,7 @@ export type Action =
 export const initialState: State = {
   settings: {
     frameRate: 30,
-    recalculateCPS: true,
+    recalculateCPS: false,
     key: "cookieclicker",
   },
 

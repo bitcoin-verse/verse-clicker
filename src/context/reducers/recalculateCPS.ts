@@ -1,57 +1,37 @@
-import buildings from "../buildings";
+import { calculateCPS } from "../../helpers/calculateCPS";
 import { State } from "../store";
 
 export type RecalculateCPSAction = { type: "RECALCULATE_CPS" };
 
 export const recalculateCPS = (state: State): State => {
-  const buildingCount = buildings.length;
+  const CPS = calculateCPS(state.player, state.buildings);
 
-  let CPS = 0;
+  let newCookies = state.player.cookies;
+  let newEarned = state.player.cookieStats.Earned;
 
-  state.buildings.forEach((building) => {
-    let multiplier = 1;
+  if (state.lastSave) {
+    const now = Date.now() / 1000;
+    const diffInSec = now - Number(state.lastSave);
 
-    if (building.name === "Cursor") {
-      state.player.aMPC = 1;
-    }
-
-    building.upgrades.forEach((upgrade) => {
-      if (!upgrade.owned) return;
-
-      if (upgrade.special === undefined) {
-        multiplier *= 2;
-        if (building.name == "Cursor") {
-          state.player.aMPC *= 2;
-        }
-      } else {
-        // Special casing for all special types of upgrades
-        // There may at some point be more than just cursors here, as theres special stuff for grandmas as well.
-        switch (building.name) {
-          case "Cursor":
-            const nonCursorBuildingCount = buildingCount - building.amount;
-            building.specialCPS +=
-              upgrade.special * nonCursorBuildingCount * building.amount;
-            state.player.aMPC += upgrade.special * nonCursorBuildingCount;
-        }
-      }
-    });
-
-    CPS +=
-      building.baseEffect * building.amount * multiplier + building.specialCPS;
-  });
+    newCookies = state.player.cookies + diffInSec * CPS;
+    newEarned = state.player.cookies + diffInSec * CPS;
+  }
 
   return {
     ...state,
+    lastSave: undefined,
     settings: {
       ...state.settings,
       recalculateCPS: false,
     },
-
     player: {
       ...state.player,
       aMPF: CPS / state.settings.frameRate,
+      cookies: newCookies,
+      cookieStats: {
+        ...state.player.cookieStats,
+        Earned: newEarned,
+      },
     },
   };
-
-  return state;
 };
