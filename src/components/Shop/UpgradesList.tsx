@@ -83,7 +83,10 @@ const UpgradesList: FC<Props> = ({ upgrades, buildingName }) => {
         return (
           <Button
             key={i}
-            onClick={() => buyUpgrade(upgrade)}
+            onClick={() => {
+              if (player.cookies < upgrade.cost) return;
+              buyUpgrade(upgrade);
+            }}
             disabled={player.cookies < upgrade.cost}
           >
             <Title>{upgrade.name}</Title>
