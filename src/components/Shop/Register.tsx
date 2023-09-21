@@ -19,7 +19,7 @@ const Button = styled.button`
   outline: none;
   flex: 1;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 1rem;
   cursor: pointer;
 
   &:disabled {
