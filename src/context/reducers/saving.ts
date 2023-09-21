@@ -23,6 +23,7 @@ export type LoadSaveAction = {
 
 const loadPlayer = (player: Player, playerData: string): Player => {
   const newPlayerData = playerData.split("|");
+
   return {
     ...player,
     cookies: parseFloat(newPlayerData[0]),
