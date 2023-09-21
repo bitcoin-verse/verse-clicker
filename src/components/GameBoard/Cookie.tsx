@@ -28,7 +28,6 @@ const ClickButton = styled.button`
 
   & :active {
     transform: scale(0.99);
-    opacity: 0.7;
   }
 
   &::after {
