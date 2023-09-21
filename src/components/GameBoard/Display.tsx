@@ -9,7 +9,7 @@ const DisplayWrapper = styled.div`
   width: 100%;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 0.75rem;
+  margin-top: 1.75rem;
 
   gap: 0.75rem;
 `;
