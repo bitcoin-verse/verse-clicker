@@ -25,6 +25,7 @@ const ClickButton = styled.button`
   background: none;
   border: none;
   outline: none;
+  cursor: pointer;
 
   & :active {
     transform: scale(0.99);
