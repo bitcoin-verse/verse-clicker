@@ -2,7 +2,7 @@ import { Reducer } from "react";
 import { Action, State, initialState } from "./store";
 import { clickCookie, earnCookie, spendCookie } from "./reducers/player";
 import { gameSaved, loadSave } from "./reducers/saving";
-import { buyBuilding } from "./reducers/building";
+import { buyBuilding, buyUpgrade } from "./reducers/building";
 import { recalculateCPS } from "./reducers/recalculateCPS";
 
 export const reducer: Reducer<State, Action> = (state, action) => {
@@ -19,8 +19,11 @@ export const reducer: Reducer<State, Action> = (state, action) => {
     case "RECALCULATE_CPS":
       return recalculateCPS(state);
 
+    // Upgrades
     case "BUY_BUILDING":
       return buyBuilding(state, action.payload);
+    case "BUY_UPGRADE":
+      return buyUpgrade(state, action.payload);
 
     // ASCYNC ACTION STATES
     case "GAME_SAVED":

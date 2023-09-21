@@ -1,18 +1,11 @@
 import Building from "../../classes/Building";
+import Upgrade from "../../classes/Upgrade";
+import { getBuildingsCost } from "../../helpers/buildingHelpers";
 import { State } from "../store";
 
 export type BuyBuildingAction = {
   type: "BUY_BUILDING";
   payload: { name: string; qty: number };
-};
-
-export const getBuildingsCost = (amount: number, cost: number) => {
-  let bulkCost = cost;
-  let tempPrice = cost;
-  for (let i = 0; i < amount - 1; i++) {
-    bulkCost += Math.round((tempPrice *= 1.15));
-  }
-  return bulkCost;
 };
 
 export const buyBuilding = (
@@ -72,5 +65,51 @@ export const buyBuilding = (
       },
     },
     buildings: updatedBuildings,
+  };
+};
+
+export type BuyUpgradeAction = {
+  type: "BUY_UPGRADE";
+  payload: { buildingName: string; upgrade: Upgrade };
+};
+
+export const buyUpgrade = (
+  state: State,
+  payload: BuyUpgradeAction["payload"],
+): State => {
+  if (state.player.cookies < payload.upgrade.cost) return state;
+
+  const newBuildings: Building[] = state.buildings.map((building) => {
+    if (building.name === payload.buildingName) {
+      return {
+        ...building,
+        upgrades: building.upgrades.map((upgrade) => {
+          if (upgrade.name === payload.upgrade.name) {
+            return { ...upgrade, owned: true };
+          }
+
+          return upgrade;
+        }),
+      };
+    }
+
+    return building;
+  });
+
+  return {
+    ...state,
+    buildings: newBuildings,
+    settings: {
+      ...state.settings,
+      recalculateCPS: true,
+    },
+    player: {
+      ...state.player,
+      cookies: state.player.cookies - payload.upgrade.cost,
+      cookieStats: {
+        ...state.player.cookieStats,
+        Spent: state.player.cookieStats.Spent - payload.upgrade.cost,
+      },
+    },
   };
 };

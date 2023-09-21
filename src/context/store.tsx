@@ -7,7 +7,7 @@ import Player from "../classes/Player";
 import Building from "../classes/Building";
 import buildings from "./buildings";
 import { GameSavedAction, LoadSaveAction } from "./reducers/saving";
-import { BuyBuildingAction } from "./reducers/building";
+import { BuyBuildingAction, BuyUpgradeAction } from "./reducers/building";
 import {
   ClickCookieAction,
   EarnCookieAction,
@@ -43,6 +43,7 @@ export type Action =
   | { type: "RESET_GAME" }
   | { type: "SET_BUILDING"; payload: string }
   | BuyBuildingAction
+  | BuyUpgradeAction
 
   // ASYNC ACTION STATES
   | { type: "STARTED" }
