@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
+import { Title } from "../Title";
 
 const DisplayWrapper = styled.div`
   display: flex;
@@ -24,9 +25,7 @@ const StatCount = styled.div`
   font-weight: 500;
   font-size: 1.25rem;
 `;
-const Title = styled.span`
-  opacity: 0.45;
-`;
+
 
 const Display: FC = () => {
   const {

@@ -8,11 +8,19 @@ const StyledFooter = styled.footer`
   justify-content: space-between;
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
 const Footer: FC = () => {
   return (
     <>
-      <Save />
-      <Stats />
+      <Wrapper>
+        <Save />
+        <Stats />
+      </Wrapper>
       <StyledFooter>
         <div>Copyright 2023</div>
         <div>Made by: Micah, Paul, Ricky</div>
