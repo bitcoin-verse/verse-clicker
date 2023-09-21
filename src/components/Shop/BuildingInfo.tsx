@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Building from "../../classes/Building";
 import { formatNumber } from "../../helpers/formatNumber";
 import styled from "styled-components";
+import { useProduction } from "../../hooks/useProduction";
 
 const InfoWrapper = styled.div`
   padding: 0 0 1rem 0;
@@ -21,6 +22,8 @@ interface Props {
 }
 
 const BuildingInfo: FC<Props> = ({ building }) => {
+  const [production] = useProduction(building);
+
   return (
     <InfoWrapper>
       <h3>{building.name} Information</h3>
@@ -33,13 +36,19 @@ const BuildingInfo: FC<Props> = ({ building }) => {
       <div>
         <Title>Production: </Title>
         <b>
-          {formatNumber(building.multiplier * building.amount)} /{" "}
-          {building.name}
+          {formatNumber(production)} per second per {building.name}
         </b>
       </div>
       <div>
+        <Title>Upgrades Owned: </Title>
+        <b>{building.upgrades.filter((u) => u.owned).length}</b>
+      </div>
+      <div>
         <Title>Total: </Title>
-        <b>{formatNumber(building.amount * building.multiplier)} cookie/s.</b>
+        <b>
+          {formatNumber(production * building.amount * building.baseEffect)}{" "}
+          cookie/s.
+        </b>
       </div>
     </InfoWrapper>
   );

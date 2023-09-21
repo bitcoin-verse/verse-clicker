@@ -22,6 +22,7 @@ const Button = styled.button`
   text-align: center;
   border-radius: 1rem;
   cursor: pointer;
+  color: black;
 
   &:disabled {
     cursor: default;

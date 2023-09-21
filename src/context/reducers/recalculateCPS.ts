@@ -1,10 +1,10 @@
-import { calculateCPS } from "../../helpers/calculateCPS";
+import { calculateTotalCPS } from "../../helpers/calculateCPS";
 import { State } from "../store";
 
 export type RecalculateCPSAction = { type: "RECALCULATE_CPS" };
 
 export const recalculateCPS = (state: State): State => {
-  const CPS = calculateCPS(state.player, state.buildings);
+  const CPS = calculateTotalCPS(state.player, state.buildings);
 
   let newCookies = state.player.cookies;
   let newEarned = state.player.cookieStats.Earned;
