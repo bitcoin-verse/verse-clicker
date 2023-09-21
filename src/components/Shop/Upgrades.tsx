@@ -75,7 +75,7 @@ const Upgrades: FC = () => {
       </div>
       <div>
         All of your {currentBuilding} combines produces{" "}
-        {building.amount * building.multiplier} cookies.
+        {formatNumber(building.amount * building.multiplier)} cookies.
       </div>
       <BuyWrapper>
         <Button
