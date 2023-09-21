@@ -4,9 +4,11 @@ import Upgrades from "./Upgrades";
 import styled from "styled-components";
 
 const ShopContainer = styled.div`
-  display: flex;
-  gap: 100px;
-  justify-content: center;
+  display: grid;
+  max-width: 50rem;
+  margin: auto;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1rem;
 `;
 
 const Shop: FC = () => {
