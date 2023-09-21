@@ -3,11 +3,16 @@ import { Web3Button } from "@web3modal/react";
 import styled from "styled-components";
 import { useAccount } from "wagmi";
 import { useDispatch } from "../context/store";
+import verseClicker from "../assets/verse-clicker.png";
 
 const StyledHeader = styled.header`
   display: flex;
   width: 100%;
   justify-content: space-between;
+`;
+
+const Logo = styled.img`
+  max-width: 222px;
 `;
 
 const Header: FC = () => {
@@ -27,7 +32,7 @@ const Header: FC = () => {
 
   return (
     <StyledHeader>
-      <h1>Verse Clicker</h1>
+      <Logo src={verseClicker} title="Verse Clicker" />
       <Web3Button />
     </StyledHeader>
   );
