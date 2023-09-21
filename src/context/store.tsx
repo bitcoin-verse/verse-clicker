@@ -54,7 +54,7 @@ export type Action =
 export const initialState: State = {
   settings: {
     frameRate: 30,
-    recalculateCPS: true,
+    recalculateCPS: false,
     key: "cookieclicker",
   },
 

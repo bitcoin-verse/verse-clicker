@@ -42,16 +42,12 @@ export const recalculateCPS = (state: State): State => {
 
   let cookies = state.player.cookies;
   let Earned = state.player.cookieStats.Earned;
-  // console.log(cookies, Earned);
+
   if (state.lastSave) {
     const now = Math.floor(Date.now() / 1000);
     const diff = now - Number(state.lastSave);
-    // const diff = now - state.lastSave;
     cookies = state.player.cookies + diff * (CPS / state.settings.frameRate);
     Earned = state.player.cookies + diff * (CPS / state.settings.frameRate);
-
-    console.log(state.lastSave, now, diff, CPS);
-    console.log("new cookie amount", cookies);
   }
 
   return {
@@ -72,6 +68,4 @@ export const recalculateCPS = (state: State): State => {
       },
     },
   };
-
-  return state;
 };

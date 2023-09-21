@@ -77,6 +77,7 @@ export const loadSave = (
     ...state,
     save: payload.base64,
     lastSave: payload.lastSave,
+    settings: { ...state.settings, recalculateCPS: true },
     pending: false,
     player,
     buildings,
