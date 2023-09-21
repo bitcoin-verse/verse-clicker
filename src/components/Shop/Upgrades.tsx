@@ -9,7 +9,10 @@ import UpgradesList from "./UpgradesList";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
+  border: 1px solid cornflowerblue;
+  padding: 1rem;
+  height: 100%;
 `;
 
 const Upgrades: FC = () => {
@@ -23,7 +26,6 @@ const Upgrades: FC = () => {
 
   return (
     <Wrapper>
-      <h3>Upgrades</h3>
       <BuildingInfo building={building} />
       <Register building={building} />
       <UpgradesList upgrades={building.upgrades} buildingName={building.name} />

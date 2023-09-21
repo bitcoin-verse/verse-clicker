@@ -8,7 +8,7 @@ const ShopContainer = styled.div`
   max-width: 50rem;
   margin: auto;
   grid-template-columns: 1fr 2fr;
-  grid-gap: 1rem;
+  align-items: start;
 `;
 
 const Shop: FC = () => {
