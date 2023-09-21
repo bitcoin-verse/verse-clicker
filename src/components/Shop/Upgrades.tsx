@@ -1,11 +1,10 @@
-import React, { FC, useCallback, useMemo } from "react";
+import React, { FC, useMemo } from "react";
 import styled from "styled-components";
-import { useDispatch, useTrackedState } from "../../context/store";
-import { Button } from "../Button";
-import { formatNumber } from "../../helpers/formatNumber";
-import Upgrade from "../../classes/Upgrade";
+import { useTrackedState } from "../../context/store";
+
 import BuildingInfo from "./BuildingInfo";
 import Register from "./Register";
+import UpgradesList from "./UpgradesList";
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,25 +14,9 @@ const Wrapper = styled.div`
 
 const Upgrades: FC = () => {
   const { buildings, currentBuilding } = useTrackedState();
-  const dispatch = useDispatch();
   const building = useMemo(
     () => buildings.find((b) => b.name === currentBuilding),
     [buildings, currentBuilding],
-  );
-
-  const buyUpgrade = useCallback(
-    (upgrade: Upgrade) => {
-      if (!building) return;
-
-      dispatch({
-        type: "BUY_UPGRADE",
-        payload: {
-          buildingName: building.name,
-          upgrade,
-        },
-      });
-    },
-    [building],
   );
 
   if (!building) return null;
@@ -43,14 +26,7 @@ const Upgrades: FC = () => {
       <h3>Upgrades</h3>
       <BuildingInfo building={building} />
       <Register building={building} />
-      {building.upgrades.map((upgrade, i) => {
-        if (upgrade.owned) return null;
-        return (
-          <Button key={i} onClick={() => buyUpgrade(upgrade)}>
-            {upgrade.name} {formatNumber(upgrade.cost)}
-          </Button>
-        );
-      })}
+      <UpgradesList upgrades={building.upgrades} buildingName={building.name} />
     </Wrapper>
   );
 };
