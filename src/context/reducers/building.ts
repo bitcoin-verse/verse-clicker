@@ -1,19 +1,11 @@
 import Building from "../../classes/Building";
 import Upgrade from "../../classes/Upgrade";
+import { getBuildingsCost } from "../../helpers/buildingHelpers";
 import { State } from "../store";
 
 export type BuyBuildingAction = {
   type: "BUY_BUILDING";
   payload: { name: string; qty: number };
-};
-
-export const getBuildingsCost = (amount: number, cost: number) => {
-  let bulkCost = cost;
-  let tempPrice = cost;
-  for (let i = 0; i < amount - 1; i++) {
-    bulkCost += Math.round((tempPrice *= 1.15));
-  }
-  return bulkCost;
 };
 
 export const buyBuilding = (
