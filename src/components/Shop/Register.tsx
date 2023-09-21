@@ -8,19 +8,19 @@ import { useAccount } from "wagmi";
 
 const BuyWrapper = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   padding: 1rem 0;
 `;
 
 const Button = styled.button`
-  padding: 1rem;
+  padding: 0.5rem;
   background: gold;
   font-weight: 600;
   border: 1px solid grey;
   outline: none;
   flex: 1;
   text-align: center;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   cursor: pointer;
   color: black;
 
@@ -63,7 +63,7 @@ const Register: FC<Props> = ({ building }) => {
 
   return (
     <>
-      <h3>BUY NOW!</h3>
+      <h3>UPGRADES</h3>
       <BuyWrapper>
         <Button
           disabled={player.cookies < getBuildingsCost(1, building.cost)}

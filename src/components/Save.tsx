@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { useDispatch } from "../context/store";
 import { useAccount } from "wagmi";
+import { Button } from "./Button";
 
 const Save: FC = () => {
   const dispatch = useDispatch();
@@ -8,8 +9,7 @@ const Save: FC = () => {
 
   return (
     <div style={{ display: "flex", gap: 16, padding: "16px 0" }}>
-      <button
-        type="button"
+      <Button
         onClick={() => {
           console.log("saving");
           if (!address) return;
@@ -23,9 +23,8 @@ const Save: FC = () => {
         }}
       >
         Save
-      </button>
-      <button
-        type="button"
+      </Button>
+      <Button
         onClick={() => {
           console.log("loading");
           if (!address) return;
@@ -34,15 +33,14 @@ const Save: FC = () => {
         }}
       >
         Load
-      </button>
-      <button
-        type="button"
+      </Button>
+      <Button
         onClick={() => {
           console.log("wiping");
         }}
       >
         Wipe
-      </button>
+      </Button>
     </div>
   );
 };

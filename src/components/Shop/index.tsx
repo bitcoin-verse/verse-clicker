@@ -5,7 +5,8 @@ import styled from "styled-components";
 
 const ShopContainer = styled.div`
   display: grid;
-  max-width: 50rem;
+  width: 100%;
+  max-width: fit-content;
   margin: auto;
   grid-template-columns: 1fr 2fr;
   align-items: start;

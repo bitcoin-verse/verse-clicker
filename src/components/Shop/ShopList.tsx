@@ -6,18 +6,20 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  min-width: 5.25rem;
 `;
 
 const Button = styled.button<{ selected: boolean }>`
   box-sizing: border-box;
   border: none;
   outline: none;
-  padding: 1rem;
+  padding: 0.75rem;
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: 1rem;
   text-align: left;
   font-weight: 600;
   display: grid;
+  overflow-wrap: anywhere;
 
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;

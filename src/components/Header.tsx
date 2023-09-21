@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { useAccount } from "wagmi";
 import { useDispatch } from "../context/store";
 import verseClicker from "../assets/verse-clicker.png";
+import verseLogo from "../assets/verse-logo.png";
+import { checkIsMobile } from "../helpers/checkDevice";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -11,8 +13,8 @@ const StyledHeader = styled.header`
   justify-content: space-between;
 `;
 
-const Logo = styled.img`
-  max-width: 13.875rem;
+const Logo = styled.img<{ isMobile: boolean }>`
+  max-width: ${({ isMobile }) => (isMobile ? "2.5rem" : "13.875rem")};
 `;
 
 const Header: FC = () => {
@@ -30,10 +32,12 @@ const Header: FC = () => {
     },
   });
 
+  const logo = checkIsMobile() ? verseLogo : verseClicker;
+
   return (
     <StyledHeader>
-      <Logo src={verseClicker} title="Verse Clicker" />
-      <Web3Button />
+      <Logo src={logo} title="Verse Clicker" isMobile={checkIsMobile()} />
+      <Web3Button balance="hide" />
     </StyledHeader>
   );
 };

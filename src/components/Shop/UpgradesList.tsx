@@ -15,6 +15,7 @@ const Button = styled.button`
   border-radius: 1rem;
   border: 1px solid grey;
   cursor: pointer;
+  align-items: center;
 
   display: grid;
   grid-template-columns: 4fr 1fr;
