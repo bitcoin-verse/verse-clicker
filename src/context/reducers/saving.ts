@@ -41,7 +41,7 @@ const loadBuildings = (buildingData: string): Building[] => {
 
     const upgrades: Upgrade[] = building.upgrades.map((upgrade, i) => ({
       ...upgrade,
-      ownded: stringToBool(savedUpgrades[i]) || false,
+      owned: stringToBool(savedUpgrades[i]) || false,
     }));
 
     return {
