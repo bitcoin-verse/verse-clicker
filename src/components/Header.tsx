@@ -19,13 +19,13 @@ const Header: FC = () => {
   const dispatch = useDispatch();
 
   useAccount({
-    onConnect: ({ address, connector, isReconnected }) => {
-      console.log("Connected", { address, connector, isReconnected });
+    onConnect: ({ address }) => {
+      // console.log("Connected", { address, connector, isReconnected });
       if (!address) return;
       dispatch({ type: "GET_SAVE", payload: address });
     },
     onDisconnect: () => {
-      console.log("Disconnected");
+      // console.log("Disconnected");
       dispatch({ type: "RESET_GAME" });
     },
   });

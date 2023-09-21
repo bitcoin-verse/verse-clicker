@@ -17,6 +17,7 @@ import { RecalculateCPSAction } from "./reducers/recalculateCPS";
 
 export type State = {
   save?: string;
+  lastSave?: string;
 
   settings: {
     frameRate: number;
