@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/verse-clicker/static/js/main.d23cecc8.js",
+    "main.js": "/verse-clicker/static/js/main.06e9632e.js",
     "static/js/406.e63f253e.chunk.js": "/verse-clicker/static/js/406.e63f253e.chunk.js",
     "static/js/44.4ed125cc.chunk.js": "/verse-clicker/static/js/44.4ed125cc.chunk.js",
     "static/js/871.2ccbf989.chunk.js": "/verse-clicker/static/js/871.2ccbf989.chunk.js",
@@ -10,9 +10,10 @@
     "static/js/178.af47ac7c.chunk.js": "/verse-clicker/static/js/178.af47ac7c.chunk.js",
     "static/media/background.png": "/verse-clicker/static/media/background.5cb3eff01cef9d55df9e.png",
     "static/media/cookie.png": "/verse-clicker/static/media/cookie.837e3ef99b99bfe9c49c.png",
+    "static/media/verse-logo.png": "/verse-clicker/static/media/verse-logo.9985b9fced2cc79ecfac.png",
     "index.html": "/verse-clicker/index.html"
   },
   "entrypoints": [
-    "static/js/main.d23cecc8.js"
+    "static/js/main.06e9632e.js"
   ]
 }
