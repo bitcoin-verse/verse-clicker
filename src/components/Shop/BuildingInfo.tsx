@@ -12,6 +12,10 @@ const InfoWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
+const Title = styled.span`
+  opacity: 0.45;
+`;
+
 interface Props {
   building: Building;
 }
@@ -21,20 +25,21 @@ const BuildingInfo: FC<Props> = ({ building }) => {
     <InfoWrapper>
       <h3>{building.name} Information</h3>
       <div>
-        Owned:{" "}
+        <Title>Owned: </Title>
         <b>
           {building.amount} {building.name}(s)
         </b>
       </div>
       <div>
-        Production:{" "}
+        <Title>Production: </Title>
         <b>
-          {formatNumber(building.multiplier * building.amount)}/{building.name}
+          {formatNumber(building.multiplier * building.amount)} /{" "}
+          {building.name}
         </b>
       </div>
       <div>
-        Total:{" "}
-        <b>{formatNumber(building.amount * building.multiplier)} cookies/s.</b>
+        <Title>Total: </Title>
+        <b>{formatNumber(building.amount * building.multiplier)} cookie/s.</b>
       </div>
     </InfoWrapper>
   );

@@ -8,7 +8,6 @@ import Building from "../../classes/Building";
 const Button = styled.button`
   background: indianred;
   box-sizing: border-box;
-  color: white;
   border: none;
   outline: none;
   padding: 1rem;

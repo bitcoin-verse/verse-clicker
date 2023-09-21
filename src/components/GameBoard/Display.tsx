@@ -11,7 +11,6 @@ const DisplayWrapper = styled.div`
   margin-top: 0.75rem;
 
   gap: 0.75rem;
-  color: white;
 `;
 
 const CookieCount = styled.div`
@@ -26,7 +25,7 @@ const StatCount = styled.div`
   font-size: 1.25rem;
 `;
 const Title = styled.span`
-  color: #8d8d8d;
+  opacity: 0.45;
 `;
 
 const Display: FC = () => {

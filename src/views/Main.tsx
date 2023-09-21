@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: Open-Sans, Helvetica, Sans-Serif;
+    color: white;
   }
 `;
 
@@ -21,10 +22,9 @@ const PageWrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
-  flex: 1;
   padding: 16px;
   background-image: url(${background});
-  background-size: cover;
+  background-attachment: fixed;
 `;
 
 const Main: FC = () => {
