@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch, useTrackedState } from "../../context/store";
 import Building from "../../classes/Building";
@@ -35,8 +35,12 @@ interface Props {
 
 const Register: FC<Props> = ({ building }) => {
   const dispatch = useDispatch();
-  const { player } = useTrackedState();
+  const {
+    player,
+    settings: { recalculateCPS },
+  } = useTrackedState();
   const { address } = useAccount();
+  const [newPurchase, setNewPurchase] = useState(false);
 
   const buyBuilding = useCallback(
     (qty: number) => {
@@ -44,10 +48,17 @@ const Register: FC<Props> = ({ building }) => {
         type: "BUY_BUILDING",
         payload: { name: building.name, qty },
       });
-      if (address) dispatch({ type: "SAVE_GAME", payload: { address } });
+      setNewPurchase(true);
     },
     [building],
   );
+
+  useEffect(() => {
+    if (newPurchase && address && !recalculateCPS) {
+      dispatch({ type: "SAVE_GAME", payload: { address } });
+      setNewPurchase(false);
+    }
+  }, [recalculateCPS, newPurchase]);
 
   return (
     <>
