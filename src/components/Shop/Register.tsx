@@ -48,7 +48,7 @@ const Register: FC<Props> = ({ building }) => {
 
   return (
     <>
-      <div>Buy {building.name}</div>
+      <h3>BUY NOW!</h3>
       <BuyWrapper>
         <Button
           disabled={player.cookies < getBuildingsCost(1, building.cost)}
