@@ -4,6 +4,7 @@ import { useDispatch, useTrackedState } from "../../context/store";
 import { Button } from "../Button";
 import { getBuildingsCost } from "../../context/reducers/building";
 import { formatNumber } from "../../helpers/formatNumber";
+import Upgrade from "../../classes/Upgrade";
 
 const Wrapper = styled.div`
   display: flex;
@@ -44,6 +45,21 @@ const Upgrades: FC = () => {
     [building],
   );
 
+  const buyUpgrade = useCallback(
+    (upgrade: Upgrade) => {
+      if (!building) return;
+
+      dispatch({
+        type: "BUY_UPGRADE",
+        payload: {
+          buildingName: building.name,
+          upgrade,
+        },
+      });
+    },
+    [building],
+  );
+
   if (!building) return null;
 
   return (
@@ -54,7 +70,8 @@ const Upgrades: FC = () => {
         You have {building.amount} {currentBuilding}
       </div>
       <div>
-        Each {currentBuilding} produces {building.multiplier} cookies.
+        Each {currentBuilding} produces{" "}
+        {formatNumber(building.multiplier * building.amount)} cookies.
       </div>
       <div>
         All of your {currentBuilding} combines produces{" "}
@@ -67,7 +84,7 @@ const Upgrades: FC = () => {
           }}
         >
           <div>Buy x1</div>
-          <div>{getBuildingsCost(1, building.cost)}</div>
+          <div>{formatNumber(getBuildingsCost(1, building.cost))}</div>
         </Button>
         <Button
           onClick={() => {
@@ -75,7 +92,7 @@ const Upgrades: FC = () => {
           }}
         >
           <div>Buy x5</div>
-          <div>{getBuildingsCost(5, building.cost)}</div>
+          <div>{formatNumber(getBuildingsCost(5, building.cost))}</div>
         </Button>
         <Button
           onClick={() => {
@@ -83,14 +100,13 @@ const Upgrades: FC = () => {
           }}
         >
           <div>Buy x10</div>
-          <div>{getBuildingsCost(10, building.cost)}</div>
+          <div>{formatNumber(getBuildingsCost(10, building.cost))}</div>
         </Button>
       </BuyWrapper>
       {building.upgrades.map((upgrade, i) => {
         if (upgrade.owned) return null;
-
         return (
-          <Button key={i}>
+          <Button key={i} onClick={() => buyUpgrade(upgrade)}>
             {upgrade.name} {formatNumber(upgrade.cost)}
           </Button>
         );
