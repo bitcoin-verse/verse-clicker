@@ -20,10 +20,12 @@ const Button = styled.button`
   grid-template-columns: 4fr 1fr;
   grid-gap: 0.25rem;
   grid-template-areas: "title price" "desc price";
+  color: black;
 
   &:disabled {
     cursor: default;
     background: lightgrey;
+    color: darkgrey;
   }
 `;
 
@@ -32,6 +34,7 @@ const Title = styled.div`
   font-weight: 600;
   font-size: 1rem;
   text-align: left;
+  color: inherit;
 `;
 
 const Description = styled.div`
@@ -39,12 +42,14 @@ const Description = styled.div`
   font-size: 0.75rem;
   text-align: left;
   text-wrap: wrap;
+  color: inherit;
 `;
 const Price = styled.div`
   grid-area: price;
   font-size: 1.25rem;
   font-weight: 600;
   text-align: right;
+  color: inherit;
 `;
 
 const UpgrdesWrapper = styled.div`
@@ -55,6 +60,8 @@ const UpgrdesWrapper = styled.div`
 `;
 
 const NextUpgrade = styled.div`
+  color: black;
+
   background: pink;
   padding: 1rem;
   font-weight: 600;

@@ -1,7 +1,7 @@
 import Building from "../classes/Building";
 import Player from "../classes/Player";
 
-export const calculateCPS = (player: Player, buildings: Building[]) => {
+export const calculateTotalCPS = (player: Player, buildings: Building[]) => {
   const buildingCount = buildings.length;
 
   let CPS = 0;

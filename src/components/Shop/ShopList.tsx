@@ -23,10 +23,12 @@ const Button = styled.button<{ selected: boolean }>`
   border-bottom-left-radius: 0.5rem;
 
   background: ${({ selected }) => (selected ? "cornflowerblue" : "aliceblue")};
+  color: ${({ selected }) => (selected ? "white" : "black")};
 
   &:disabled {
     cursor: default;
     background: lightgrey;
+    color: black;
     filter: blur(4px);
   }
 `;
