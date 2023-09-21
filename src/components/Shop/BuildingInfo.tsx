@@ -10,7 +10,7 @@ const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1.5px solid #dedede;
   margin-bottom: 1rem;
 `;
 

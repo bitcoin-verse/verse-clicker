@@ -10,8 +10,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  border: 1px solid cornflowerblue;
-  padding: 1rem;
+  padding: 0 1rem;
   height: 100%;
 `;
 
