@@ -38,9 +38,6 @@ const Register: FC<Props> = ({ building }) => {
 
   const buyBuilding = useCallback(
     (qty: number) => {
-      if (!building) return;
-      if (player.cookies < getBuildingsCost(qty, building.cost)) return;
-
       dispatch({
         type: "BUY_BUILDING",
         payload: { name: building.name, qty },
@@ -56,6 +53,8 @@ const Register: FC<Props> = ({ building }) => {
         <Button
           disabled={player.cookies < getBuildingsCost(1, building.cost)}
           onClick={() => {
+            if (player.cookies < getBuildingsCost(1, building.cost)) return;
+
             buyBuilding(1);
           }}
         >
@@ -64,6 +63,8 @@ const Register: FC<Props> = ({ building }) => {
         <Button
           disabled={player.cookies < getBuildingsCost(5, building.cost)}
           onClick={() => {
+            if (player.cookies < getBuildingsCost(5, building.cost)) return;
+
             buyBuilding(5);
           }}
         >
@@ -72,6 +73,8 @@ const Register: FC<Props> = ({ building }) => {
         <Button
           disabled={player.cookies < getBuildingsCost(10, building.cost)}
           onClick={() => {
+            if (player.cookies < getBuildingsCost(10, building.cost)) return;
+
             buyBuilding(10);
           }}
         >
