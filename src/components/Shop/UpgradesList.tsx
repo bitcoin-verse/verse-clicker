@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useDispatch, useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import Building from "../../classes/Building";
+import { useAccount } from "wagmi";
 
 const Button = styled.button`
   background: indianred;
@@ -69,6 +70,7 @@ interface Props {
 const UpgradesList: FC<Props> = ({ upgrades, building }) => {
   const dispatch = useDispatch();
   const { player } = useTrackedState();
+  const { address } = useAccount();
   const buyUpgrade = useCallback(
     (upgrade: Upgrade) => {
       dispatch({
@@ -78,6 +80,7 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
           upgrade,
         },
       });
+      if (address) dispatch({ type: "SAVE_GAME", payload: { address } });
     },
     [building.name],
   );

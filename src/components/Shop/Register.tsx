@@ -4,6 +4,7 @@ import { useDispatch, useTrackedState } from "../../context/store";
 import Building from "../../classes/Building";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getBuildingsCost } from "../../helpers/buildingHelpers";
+import { useAccount } from "wagmi";
 
 const BuyWrapper = styled.div`
   display: flex;
@@ -35,6 +36,7 @@ interface Props {
 const Register: FC<Props> = ({ building }) => {
   const dispatch = useDispatch();
   const { player } = useTrackedState();
+  const { address } = useAccount();
 
   const buyBuilding = useCallback(
     (qty: number) => {
@@ -42,6 +44,7 @@ const Register: FC<Props> = ({ building }) => {
         type: "BUY_BUILDING",
         payload: { name: building.name, qty },
       });
+      if (address) dispatch({ type: "SAVE_GAME", payload: { address } });
     },
     [building],
   );
