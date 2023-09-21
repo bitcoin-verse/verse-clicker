@@ -8,10 +8,10 @@ export const recalculateCPS = (state: State): State => {
 
   let CPS = 0;
 
-  state.buildings.forEach((building) => {
+  state.buildings.forEach((building, index) => {
     let multiplier = 1;
 
-    if (building.name === "Cursor") {
+    if (index === 0) {
       state.player.aMPC = 1;
     }
 
@@ -20,18 +20,18 @@ export const recalculateCPS = (state: State): State => {
 
       if (upgrade.special === undefined) {
         multiplier *= 2;
-        if (building.name == "Cursor") {
+        if (index === 0) {
           state.player.aMPC *= 2;
         }
       } else {
         // Special casing for all special types of upgrades
         // There may at some point be more than just cursors here, as theres special stuff for grandmas as well.
-        switch (building.name) {
-          case "Cursor":
-            const nonCursorBuildingCount = buildingCount - building.amount;
-            building.specialCPS +=
-              upgrade.special * nonCursorBuildingCount * building.amount;
-            state.player.aMPC += upgrade.special * nonCursorBuildingCount;
+
+        if (index === 0) {
+          const nonCursorBuildingCount = buildingCount - building.amount;
+          building.specialCPS +=
+            upgrade.special * nonCursorBuildingCount * building.amount;
+          state.player.aMPC += upgrade.special * nonCursorBuildingCount;
         }
       }
     });
