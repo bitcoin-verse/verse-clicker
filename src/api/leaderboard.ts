@@ -1,7 +1,7 @@
 import axios from "axios";
 import { LEADERBOARD } from "./endpoints";
 
-type LeaderboardResponse = {
+export type LeaderboardResponse = {
   address: string;
   cookies: string;
   earned: string;

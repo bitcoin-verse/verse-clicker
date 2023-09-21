@@ -12,14 +12,12 @@ export const getLeaderboard = ({
   getState: () => State;
   signal: AbortSignal;
 }) => {
-  return async (action: AsyncActionGetLeaderboard) => {
+  return async () => {
     try {
       dispatch({ type: "STARTED" });
-      console.log(action);
       const data = await fetchLeaderboard(10, ["earned"]);
-      console.log(data);
 
-      //   dispatch({ type: "LEADERBOARD_SAVED", payload: data });
+      dispatch({ type: "LEADERBOARD_SAVED", payload: data });
     } catch (error) {
       dispatch({ type: "FAILED", error: error as unknown as Error });
     }

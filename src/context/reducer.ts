@@ -4,6 +4,7 @@ import { clickCookie, earnCookie, spendCookie } from "./reducers/player";
 import { gameSaved, loadSave } from "./reducers/saving";
 import { buyBuilding, buyUpgrade } from "./reducers/building";
 import { recalculateCPS } from "./reducers/recalculateCPS";
+import { leaderboardSaved } from "./reducers/leaderboard";
 
 export const reducer: Reducer<State, Action> = (state, action) => {
   switch (action.type) {
@@ -14,6 +15,9 @@ export const reducer: Reducer<State, Action> = (state, action) => {
       return spendCookie(state, action.payload);
     case "EARN_COOKIE":
       return earnCookie(state, action.payload);
+
+    case "LEADERBOARD_SAVED":
+      return leaderboardSaved(state, action.payload);
 
     // Game loop
     case "RECALCULATE_CPS":
