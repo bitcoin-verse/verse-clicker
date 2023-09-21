@@ -61,7 +61,11 @@ const Cookie: FC = () => {
   return (
     <CookieWrapper>
       <ClickButton
-        onClick={() => {
+        onClick={(e) => {
+          if (!e.isTrusted) {
+            alert("LMB");
+            return;
+          }
           dispatch({ type: "CLICK_COOKIE" });
         }}
         onKeyDown={(e) => e.preventDefault()}
