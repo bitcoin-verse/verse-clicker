@@ -3,6 +3,7 @@ import Upgrade from "../../classes/Upgrade";
 import styled from "styled-components";
 import { useDispatch, useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
+import Building from "../../classes/Building";
 
 const Button = styled.button`
   background: indianred;
@@ -53,12 +54,20 @@ const UpgrdesWrapper = styled.div`
   padding: 1rem 0;
 `;
 
+const NextUpgrade = styled.div`
+  background: pink;
+  padding: 1rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 1rem;
+`;
+
 interface Props {
-  buildingName: string;
+  building: Building;
   upgrades: Upgrade[];
 }
 
-const UpgradesList: FC<Props> = ({ upgrades, buildingName }) => {
+const UpgradesList: FC<Props> = ({ upgrades, building }) => {
   const dispatch = useDispatch();
   const { player } = useTrackedState();
   const buyUpgrade = useCallback(
@@ -66,12 +75,12 @@ const UpgradesList: FC<Props> = ({ upgrades, buildingName }) => {
       dispatch({
         type: "BUY_UPGRADE",
         payload: {
-          buildingName,
+          buildingName: building.name,
           upgrade,
         },
       });
     },
-    [buildingName],
+    [building.name],
   );
 
   const filteredUpgrades = upgrades.filter((upgrade) => !upgrade.owned);
@@ -79,21 +88,31 @@ const UpgradesList: FC<Props> = ({ upgrades, buildingName }) => {
   return (
     <UpgrdesWrapper>
       {filteredUpgrades.map((upgrade, i) => {
-        if (i > 2) return null;
-        return (
-          <Button
-            key={i}
-            onClick={() => {
-              if (player.cookies < upgrade.cost) return;
-              buyUpgrade(upgrade);
-            }}
-            disabled={player.cookies < upgrade.cost}
-          >
-            <Title>{upgrade.name}</Title>
-            <Description>{upgrade.desc}</Description>
-            <Price>{formatNumber(upgrade.cost)}</Price>
-          </Button>
-        );
+        if (building.amount >= upgrade.limit) {
+          return (
+            <Button
+              key={i}
+              onClick={() => {
+                if (player.cookies < upgrade.cost) return;
+                buyUpgrade(upgrade);
+              }}
+              disabled={player.cookies < upgrade.cost}
+            >
+              <Title>{upgrade.name}</Title>
+              <Description>{upgrade.desc}</Description>
+              <Price>{formatNumber(upgrade.cost)}</Price>
+            </Button>
+          );
+        }
+
+        if (building.amount >= filteredUpgrades[i - 1]?.limit) {
+          return (
+            <NextUpgrade key={upgrade.name}>
+              Next upgrade available in {upgrade.limit - building.amount} more{" "}
+              {building.name}(s)
+            </NextUpgrade>
+          );
+        }
       })}
     </UpgrdesWrapper>
   );

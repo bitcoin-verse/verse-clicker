@@ -1,6 +1,16 @@
 import React, { FC } from "react";
 import Building from "../../classes/Building";
 import { formatNumber } from "../../helpers/formatNumber";
+import styled from "styled-components";
+
+const InfoWrapper = styled.div`
+  padding: 0 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
+`;
 
 interface Props {
   building: Building;
@@ -8,20 +18,25 @@ interface Props {
 
 const BuildingInfo: FC<Props> = ({ building }) => {
   return (
-    <>
-      <h4>{building.name}</h4>
+    <InfoWrapper>
+      <h3>{building.name} Information</h3>
       <div>
-        You have {building.amount} {building.name}
+        Owned:{" "}
+        <b>
+          {building.amount} {building.name}(s)
+        </b>
       </div>
       <div>
-        Each {building.name} produces{" "}
-        {formatNumber(building.multiplier * building.amount)} cookies.
+        Production:{" "}
+        <b>
+          {formatNumber(building.multiplier * building.amount)}/{building.name}
+        </b>
       </div>
       <div>
-        All of your {building.name} combines produces{" "}
-        {formatNumber(building.amount * building.multiplier)} cookies.
+        Total:{" "}
+        <b>{formatNumber(building.amount * building.multiplier)} cookies/s.</b>
       </div>
-    </>
+    </InfoWrapper>
   );
 };
 

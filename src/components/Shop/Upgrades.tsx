@@ -28,7 +28,7 @@ const Upgrades: FC = () => {
     <Wrapper>
       <BuildingInfo building={building} />
       <Register building={building} />
-      <UpgradesList upgrades={building.upgrades} buildingName={building.name} />
+      <UpgradesList upgrades={building.upgrades} building={building} />
     </Wrapper>
   );
 };
