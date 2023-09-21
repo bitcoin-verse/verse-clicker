@@ -5,6 +5,8 @@ import Footer from "../components/Footer";
 import GameBoard from "../components/GameBoard";
 import useGameLoop from "../hooks/useGameLoop";
 
+import background from "../assets/background.png";
+
 const GlobalStyle = createGlobalStyle`
   html, body, * {
     margin: 0;
@@ -17,9 +19,12 @@ const GlobalStyle = createGlobalStyle`
 const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
+  min-height: 100vh;
+  width: 100%;
   flex: 1;
   padding: 16px;
+  background-image: url(${background});
+  background-size: cover;
 `;
 
 const Main: FC = () => {

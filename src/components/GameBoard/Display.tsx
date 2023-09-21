@@ -8,17 +8,25 @@ const DisplayWrapper = styled.div`
   width: 100%;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 0.75rem;
 
-  gap: 16px;
+  gap: 0.75rem;
+  color: white;
 `;
 
-const CookieCount = styled.h2`
+const CookieCount = styled.div`
   flex-basis: 100%;
   text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
 `;
 
 const StatCount = styled.div`
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 1.25rem;
+`;
+const Title = styled.span`
+  color: #8d8d8d;
 `;
 
 const Display: FC = () => {
@@ -30,8 +38,12 @@ const Display: FC = () => {
   return (
     <DisplayWrapper>
       <CookieCount>Cookies: {formatNumber(player.cookies)}</CookieCount>
-      <StatCount>CPS: {formatNumber(player.aMPF * frameRate)}</StatCount>
-      <StatCount>CPC: {formatNumber(player.aMPC)}</StatCount>
+      <StatCount>
+        <Title>CPS:</Title> {formatNumber(player.aMPF * frameRate)}
+      </StatCount>
+      <StatCount>
+        <Title>CPC:</Title> {formatNumber(player.aMPC)}
+      </StatCount>
     </DisplayWrapper>
   );
 };
