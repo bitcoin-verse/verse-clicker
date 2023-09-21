@@ -14,6 +14,8 @@ import {
   SpendCookieAction,
 } from "./reducers/player";
 import { RecalculateCPSAction } from "./reducers/recalculateCPS";
+import { LeaderboardResponse } from "../api/leaderboard";
+import { LeaderboardSavedAction } from "./reducers/leaderboard";
 
 export type State = {
   save?: string;
@@ -24,6 +26,8 @@ export type State = {
     recalculateCPS: boolean;
     key: string;
   };
+
+  leaderboard: LeaderboardResponse;
 
   player: Player;
   buildings: Building[];
@@ -45,6 +49,7 @@ export type Action =
   | { type: "SET_BUILDING"; payload: string }
   | BuyBuildingAction
   | BuyUpgradeAction
+  | LeaderboardSavedAction
 
   // ASYNC ACTION STATES
   | { type: "STARTED" }
@@ -57,6 +62,8 @@ export const initialState: State = {
     recalculateCPS: false,
     key: "cookieclicker",
   },
+
+  leaderboard: [],
 
   // GAME
   player: new Player(),

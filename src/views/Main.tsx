@@ -6,6 +6,7 @@ import GameBoard from "../components/GameBoard";
 import useGameLoop from "../hooks/useGameLoop";
 
 import background from "../assets/background.png";
+import Leaderboard from "../components/Leaderboard";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -37,6 +38,7 @@ const Main: FC = () => {
       <PageWrapper>
         <Header />
         <GameBoard />
+        <Leaderboard />
         <Footer />
       </PageWrapper>
     </>
