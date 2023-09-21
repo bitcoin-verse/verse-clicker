@@ -12,7 +12,7 @@ const StyledHeader = styled.header`
 `;
 
 const Logo = styled.img`
-  max-width: 222px;
+  max-width: 13.875rem;
 `;
 
 const Header: FC = () => {

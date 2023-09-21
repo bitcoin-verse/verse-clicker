@@ -16,12 +16,11 @@ const CookieWrapper = styled.div`
 const VerseImage = styled.img`
   opacity: 0.9;
   width: 100%;
-  max-width: 512px;
 `;
 
 const ClickButton = styled.button`
   position: relative;
-  max-width: 512px;
+  max-width: 440px;
   width: 100%;
   background: none;
   border: none;
