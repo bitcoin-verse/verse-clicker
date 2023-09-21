@@ -57,7 +57,6 @@ const UpgrdesWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem 0;
 `;
 
 const NextUpgrade = styled.div`
@@ -106,9 +105,12 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
   }, [recalculateCPS, newPurchase]);
 
   const filteredUpgrades = upgrades.filter((upgrade) => !upgrade.owned);
-
+  const isUpgradesAvail = upgrades.some(
+    (upgrade) => building.amount >= upgrade.limit,
+  );
   return (
     <UpgrdesWrapper>
+      {isUpgradesAvail && <h3>UPGRADES</h3>}
       {filteredUpgrades.map((upgrade, i) => {
         if (building.amount >= upgrade.limit) {
           return (
