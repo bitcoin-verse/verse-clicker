@@ -10,6 +10,7 @@ import Leaderboard from "../components/Leaderboard";
 import { useTrackedState } from "../context/store";
 import { Web3Button } from "@web3modal/react";
 import { useAccount } from "wagmi";
+import Bonuses from "../components/Bonuses";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -19,8 +20,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Helvetica', sans-serif;
     color: white;
   }
-  html,body{
-   overflow:hidden; 
+  html,
+  body {
+   overflow: hidden; 
   }
 `;
 
@@ -68,9 +70,7 @@ const Main: FC = () => {
               {status === "connected" ? (
                 <h1>Loading...</h1>
               ) : (
-                <h1 style={{ margin: "2rem" }}>
-                  Connect Wallet to start
-                </h1>
+                <h1 style={{ margin: "2rem" }}>Connect Wallet to start</h1>
               )}
 
               {status !== "connected" && <Web3Button />}
@@ -82,6 +82,7 @@ const Main: FC = () => {
         {status === "connected" && <Leaderboard />}
         <Footer />
       </ContentsWrapper>
+      <Bonuses />
     </>
   );
 };

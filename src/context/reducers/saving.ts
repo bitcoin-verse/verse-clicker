@@ -25,11 +25,6 @@ export const gameSaved = (state: State, save: string) => {
   };
 };
 
-export type LoadSaveAction = {
-  type: "GAME_LOADED";
-  payload: { base64: string; lastSave: string };
-};
-
 const loadPlayer = (player: Player, playerData: string): Player => {
   const newPlayerData = playerData.split("|");
 
@@ -72,6 +67,11 @@ const loadBuildings = (buildingData: string): Building[] => {
   return restoredBuildings;
 };
 
+export type LoadSaveAction = {
+  type: "GAME_LOADED";
+  payload: { base64: string; lastSave: number; verseHolder: boolean };
+};
+
 export const loadSave = (
   state: State,
   payload: LoadSaveAction["payload"],
@@ -90,6 +90,7 @@ export const loadSave = (
   return {
     ...state,
     save: payload.base64,
+    verseHolder: payload.verseHolder,
     lastSave: payload.lastSave,
     settings: { ...state.settings, recalculateCPS: true },
     pending: false,

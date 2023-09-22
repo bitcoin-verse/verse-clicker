@@ -2,26 +2,32 @@ import React, { FC, PropsWithChildren, RefObject, useRef } from "react";
 import styled from "styled-components";
 
 export const Dialog = styled.dialog`
-  padding: 40px;
+  padding: 3rem;
   border: none;
-  border-radius: 32px;
+  border-radius: 1rem;
 
   background: white;
   box-shadow: 0px 4px 120px 0px #0000000;
-  max-width: 476px;
+  max-width: 30rem;
   box-sizing: border-box;
   width: 100%;
   margin: auto;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+  }
 `;
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1rem;
+  right: 1rem;
   background: none;
   border: none;
   outline: none;
   cursor: pointer;
+  color: black;
+  font-size: 1rem;
 `;
 
 interface Props {
@@ -34,36 +40,14 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   ...rest
 }) => {
   return (
-    <Dialog
-      ref={modalRef}
-      {...rest}
-      onClick={(event) => {
-        if (!event.target) return;
-        if (!modalRef || !modalRef.current) return;
-
-        const rect = (
-          event.target as HTMLDialogElement
-        ).getBoundingClientRect();
-
-        if (
-          rect.top <= event.clientY &&
-          event.clientY <= rect.top + rect.height &&
-          rect.left <= event.clientX &&
-          event.clientX <= rect.left + rect.width
-        ) {
-          return;
-        }
-
-        modalRef.current.close();
-      }}
-    >
+    <Dialog ref={modalRef} {...rest}>
       <CloseButton
         onClick={() => {
           if (!modalRef || !modalRef.current) return;
           modalRef.current.close();
         }}
       >
-        X
+        ✕
       </CloseButton>
       {children}
     </Dialog>
