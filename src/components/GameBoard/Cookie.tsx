@@ -81,8 +81,12 @@ const CpcClick = styled.span`
   width: 3rem;
   z-index: 1;
   animation: click 1s ease-in-out;
-  text-shadow: -1px -1px 0 #0779e0, 1px -1px 0 #0779e0, -1px 1px 0 #0779e0, 1px 1px 0 #0779e0;
-}
+  text-shadow:
+    -1px -1px 0 #0779e0,
+    1px -1px 0 #0779e0,
+    -1px 1px 0 #0779e0,
+    1px 1px 0 #0779e0;
+
   @keyframes click {
     100% {
       opacity: 0;
@@ -138,6 +142,8 @@ const Cookie: FC = () => {
 
     setTimeout(() => {
       if (!wrapperRef.current) return;
+      cookieRoot.unmount();
+      cpcRoot.unmount();
       wrapperRef.current.removeChild(cookieContainer);
       wrapperRef.current.removeChild(cpcContainer);
     }, 500);
