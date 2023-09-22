@@ -7,7 +7,7 @@ const generateSaveString = (player: Player, buildings: Building[]) => {
   saveString += `${player.cookies}|${player.cookieStats.Earned}|${player.cookieStats.Spent}|${player.cookieStats.Clicked}-`;
   let first = true;
 
-  console.log("saving", player, buildings);
+  console.log("Saving...");
   buildings.forEach((building) => {
     if (first) {
       first = false;

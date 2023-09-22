@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useCallback, useRef } from "react";
 import styled from "styled-components";
 
 import cookieBite from "../../assets/cookie-bite.png";
@@ -10,11 +10,10 @@ import { createRoot } from "react-dom/client";
 import { formatNumber } from "../../helpers/formatNumber";
 
 const CookieWrapper = styled.div`
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 32px 0;
+  padding: 2rem 0;
 `;
 
 const ClickButton = styled.button`
@@ -29,63 +28,38 @@ const ClickButton = styled.button`
   background-image: url(${verseCookie});
   background-size: 100%;
   background-repeat: no-repeat;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
-  & :active {
-    transform: scale(0.99);
-  }
-
-  &::after {
-    position: absolute;
-    content: "";
-
-    background-image: url(${verseCookie});
-    background-size: 100%;
-    background-repeat: no-repeat;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-
-  &:hover::after {
+  &:hover {
     transform: scale(1.01);
   }
-  &:active::after {
-    transform: scale(0.99);
+
+  &:active {
+    transform: scale(1);
   }
 `;
 
 const CookieClick = styled.img`
-  position: absolute;
   user-select: none;
-  transform: translate(-50%, -50%);
   width: 3rem;
-  z-index: 1;
-  animation: click 1s ease-in-out;
-
-  @keyframes click {
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -250%);
-    }
-  }
+  pointer-events: none;
 `;
 
-const CpcClick = styled.span`
+const CpcClick = styled.div`
+  pointer-events: none;
   position: absolute;
   user-select: none;
+  display: flex;
+  align-items: center;
   transform: translate(-50%, -50%);
   width: 3rem;
   z-index: 1;
   animation: click 1s ease-in-out;
   text-shadow:
-    -1px -1px 0 #0779e0,
-    1px -1px 0 #0779e0,
-    -1px 1px 0 #0779e0,
-    1px 1px 0 #0779e0;
+    -0.5px -0.5px 0 #0779e0,
+    0.5px -0.5px 0 #0779e0,
+    -0.5px 0.5px 0 #0779e0,
+    0.5px 0.5px 0 #0779e0;
 
   @keyframes click {
     100% {
@@ -98,76 +72,58 @@ const CpcClick = styled.span`
 const Cookie: FC = () => {
   const dispatch = useDispatch();
   const { status } = useAccount();
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const wrapperRef = useRef<HTMLButtonElement | null>(null);
   const { player } = useTrackedState();
 
-  const animateCookieClick = (e: React.MouseEvent<HTMLElement>) => {
-    if (!wrapperRef.current) return;
-
-    const x = e.clientX - wrapperRef.current.offsetLeft;
-    const y = e.clientY - wrapperRef.current.offsetTop;
-
-    const cookie = (
-      <CookieClick
-        src={cookieBite}
-        alt="Cookie"
-        style={{
-          left: `${x}px`,
-          top: `${y}px`,
-        }}
-      />
-    );
-    const cpc = (
-      <CpcClick
-        style={{
-          left: `${x + 50}px`,
-          top: `${y}px`,
-        }}
-      >
-        +{formatNumber(player.aMPC)}
-      </CpcClick>
-    );
-
-    const cookieContainer = document.createElement("div");
-    const cpcContainer = document.createElement("div");
-
-    const cookieRoot = createRoot(cookieContainer);
-    const cpcRoot = createRoot(cpcContainer);
-
-    cookieRoot.render(cookie);
-    cpcRoot.render(cpc);
-
-    wrapperRef.current.appendChild(cookieContainer);
-    wrapperRef.current.appendChild(cpcContainer);
-
-    setTimeout(() => {
+  const animateCookieClick = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
       if (!wrapperRef.current) return;
-      cookieRoot.unmount();
-      cpcRoot.unmount();
-      wrapperRef.current.removeChild(cookieContainer);
-      wrapperRef.current.removeChild(cpcContainer);
-    }, 500);
-  };
 
-  useEffect(() => {
-    if (!wrapperRef.current) return;
-    wrapperRef.current.addEventListener("dblclick", (ev: MouseEvent) => {
-      animateCookieClick(
-        ev as unknown as React.MouseEvent<HTMLElement, MouseEvent>,
+      const x = e.clientX - wrapperRef.current.offsetLeft - 16;
+      const y = e.clientY - wrapperRef.current.offsetTop - 16;
+
+      const cpcContainer = document.createElement("div");
+
+      const cpcRoot = createRoot(cpcContainer);
+
+      cpcRoot.render(
+        <CpcClick
+          style={{
+            left: x,
+            top: y,
+          }}
+        >
+          <CookieClick src={cookieBite} alt="Cookie" />+
+          {formatNumber(player.aMPC)}
+        </CpcClick>,
       );
-    });
-  });
+
+      wrapperRef.current.appendChild(cpcContainer);
+
+      const timer = setTimeout(() => {
+        if (!wrapperRef.current) return;
+        cpcRoot.unmount();
+        wrapperRef.current.removeChild(cpcContainer);
+      }, 500);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    },
+    [player.aMPC],
+  );
 
   return (
-    <CookieWrapper ref={wrapperRef}>
+    <CookieWrapper>
       <ClickButton
+        ref={wrapperRef}
         onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => {
           if (!e.isTrusted) {
             alert("LMB");
             return;
           }
-          animateCookieClick(e);
           dispatch({ type: "CLICK_COOKIE" });
+          animateCookieClick(e);
         }}
         onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => e.preventDefault()}
         disabled={status !== "connected"}
