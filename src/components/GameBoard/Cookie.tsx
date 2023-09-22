@@ -20,7 +20,7 @@ const CookieWrapper = styled.div`
 const ClickButton = styled.button`
   position: relative;
   max-width: 440px;
-  height: 440px;
+  aspect-ratio: 1/1;
   width: 100%;
   background: none;
   border: none;

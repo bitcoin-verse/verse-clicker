@@ -6,7 +6,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  min-width: 5.25rem;
 `;
 
 const Button = styled.button<{ selected: boolean }>`
