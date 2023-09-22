@@ -16,6 +16,7 @@ const LeaderboardWrapper = styled.div`
 const Table = styled.table`
   margin-top: 1rem;
   width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
   border-radius: 1rem;
   overflow: hidden;
@@ -25,7 +26,7 @@ const Table = styled.table`
   }
 
   tr:nth-of-type(odd) {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
   }
 
   td:not(:first-child),
@@ -34,18 +35,23 @@ const Table = styled.table`
   }
 
   th {
-    /* background: rgba(0, 0, 0, 0.6); */
     color: white;
     font-weight: bold;
     font-size: 1.2rem;
     background: none;
   }
 
+  tr {
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 2.5fr 1.5fr 1.5fr;
+  }
+
   td,
   th {
-    padding: 1rem 2rem;
-    /* border: 1px solid #ccc; */
+    padding: 1rem 0.5rem;
     text-align: left;
+    text-wrap: nowrap;
   }
 `;
 
@@ -64,8 +70,8 @@ const Leaderboard = () => {
         <thead>
           <tr>
             <th>Address</th>
-            <th>Total Earned</th>
-            <th>Total Clicked</th>
+            <th>Earned</th>
+            <th>Clicks</th>
           </tr>
         </thead>
         <tbody>
