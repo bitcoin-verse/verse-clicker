@@ -22,8 +22,16 @@ const getTimeDiff = (diffMs: number) => {
   return diffDays + "d " + diffHrs + "h " + diffMins + "m " + diffSecs + "s";
 };
 
+const BonusText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-weight: 600;
+  padding-top: 1fr;
+`;
+
 const Bonuses = () => {
-  const { loading, lastSave, newCookies } = useTrackedState();
+  const { loading, lastSave, newCookies, verseHolder } = useTrackedState();
   const { status, address } = useAccount();
   const dispatch = useDispatch();
   const { modalRef, showModal } = useModal();
@@ -48,9 +56,36 @@ const Bonuses = () => {
   return (
     <Modal modalRef={modalRef}>
       <ModalContent>
-        <h1>Welcome Back!!</h1>
-        <div>It&rsquo;s been {lastSaveDate} since last save</div>
-        <div>You have accumulated {formatNumber(newCookies)} since then</div>
+        <h1>Welcome Back!</h1>
+        <BonusText>
+          <div>It&rsquo;s been {lastSaveDate} since last save</div>
+          <div>
+            You have accumulated {formatNumber(newCookies)} cookies since then
+          </div>
+          {verseHolder ? (
+            <div>
+              You hold VERSE, your clicks are <b>Twice as effective</b> as non
+              Verse holders
+            </div>
+          ) : (
+            <div>
+              You don&rsquo;t hold VERSE. Hodl VERSE to receive a 2x click
+              bonus.{" "}
+              <a
+                href="https://buy.bitcoin.com/verse"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Buy verse
+              </a>{" "}
+              or{" "}
+              <a href="https://verse.bitcoin.com" rel="noreferrer">
+                Swap to verse
+              </a>{" "}
+              NOW!
+            </div>
+          )}
+        </BonusText>
       </ModalContent>
     </Modal>
   );
