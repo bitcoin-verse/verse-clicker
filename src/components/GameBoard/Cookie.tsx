@@ -16,19 +16,18 @@ const CookieWrapper = styled.div`
   padding: 32px 0;
 `;
 
-const VerseImage = styled.img`
-  opacity: 0.9;
-  width: 100%;
-`;
-
 const ClickButton = styled.button`
   position: relative;
   max-width: 440px;
+  height: 440px;
   width: 100%;
   background: none;
   border: none;
   outline: none;
   cursor: pointer;
+  background-image: url(${verseCookie});
+  background-size: 100%;
+  background-repeat: no-repeat;
 
   & :active {
     transform: scale(0.99);
@@ -38,7 +37,7 @@ const ClickButton = styled.button`
     position: absolute;
     content: "";
 
-    background-image: url(${cookieBite});
+    background-image: url(${verseCookie});
     background-size: 100%;
     background-repeat: no-repeat;
     top: 0;
@@ -129,9 +128,7 @@ const Cookie: FC = () => {
         }}
         onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => e.preventDefault()}
         disabled={status !== "connected"}
-      >
-        <VerseImage src={verseCookie} title="Verse Logo" />
-      </ClickButton>
+      />
     </CookieWrapper>
   );
 };
