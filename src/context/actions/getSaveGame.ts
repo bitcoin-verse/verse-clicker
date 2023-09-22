@@ -1,6 +1,7 @@
 import { getProgress } from "../../api/progress";
 import { magic } from "../../helpers/base64";
-import { Action, State } from "../store";
+import { Action } from "../reducer";
+import { State } from "../store";
 
 export type AsyncActionGetSaveGame = {
   type: "GET_SAVE";

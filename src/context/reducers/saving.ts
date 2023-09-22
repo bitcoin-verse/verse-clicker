@@ -6,6 +6,15 @@ import { stringToBool } from "../../helpers/stringToBool";
 import buildings from "../buildings";
 import { State } from "../store";
 
+export type LoadingAction = { type: "SET_LOADING"; payload: boolean };
+
+export const setLoading = (
+  state: State,
+  payload: LoadingAction["payload"],
+): State => {
+  return { ...state, loading: payload };
+};
+
 export type GameSavedAction = { type: "GAME_SAVED"; payload: string };
 
 export const gameSaved = (state: State, save: string) => {

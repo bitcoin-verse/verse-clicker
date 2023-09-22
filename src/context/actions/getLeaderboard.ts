@@ -1,5 +1,6 @@
 import { fetchLeaderboard } from "../../api/leaderboard";
-import { Action, State } from "../store";
+import { Action } from "../reducer";
+import { State } from "../store";
 
 export type AsyncActionGetLeaderboard = {
   type: "GET_LEADERBOARD";

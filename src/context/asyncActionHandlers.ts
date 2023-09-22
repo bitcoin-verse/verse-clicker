@@ -1,5 +1,5 @@
 import { Reducer } from "react";
-import { Action, State } from "./store";
+import { State } from "./store";
 import { AsyncActionHandlers } from "use-reducer-async";
 import { AsyncActionSaveGame, saveGame } from "./actions/saveGame";
 import { AsyncActionGetSaveGame, getSave } from "./actions/getSaveGame";
@@ -7,6 +7,7 @@ import {
   AsyncActionGetLeaderboard,
   getLeaderboard,
 } from "./actions/getLeaderboard";
+import { Action } from "./reducer";
 
 export type AsyncAction =
   | AsyncActionSaveGame

@@ -1,6 +1,7 @@
 import { saveProgress } from "../../api/progress";
 import generateSaveString from "../../helpers/generateSaveString";
-import { Action, State } from "../store";
+import { Action } from "../reducer";
+import { State } from "../store";
 
 export type AsyncActionSaveGame = {
   type: "SAVE_GAME";
