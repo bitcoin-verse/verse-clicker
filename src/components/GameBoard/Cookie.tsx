@@ -60,9 +60,11 @@ const ClickButton = styled.button`
 const CookieClick = styled.img`
   user-select: none;
   width: 3rem;
+  pointer-events: none;
 `;
 
 const CpcClick = styled.div`
+  pointer-events: none;
   position: absolute;
   user-select: none;
   display: flex;
@@ -94,8 +96,8 @@ const Cookie: FC = () => {
   const animateCookieClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
     if (!wrapperRef.current) return;
 
-    const x = e.clientX - wrapperRef.current.offsetLeft;
-    const y = e.clientY - wrapperRef.current.offsetTop;
+    const x = e.clientX - wrapperRef.current.offsetLeft - 16;
+    const y = e.clientY - wrapperRef.current.offsetTop - 16;
 
     const cpcContainer = document.createElement("div");
 
