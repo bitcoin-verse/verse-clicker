@@ -7,7 +7,11 @@ import Player from "../classes/Player";
 import Building from "../classes/Building";
 import buildings from "./buildings";
 import { GameSavedAction, LoadSaveAction } from "./reducers/saving";
-import { BuyBuildingAction, BuyUpgradeAction } from "./reducers/building";
+import {
+  BuyBuildingAction,
+  BuyUpgradeAction,
+  SetBuildingAction,
+} from "./reducers/building";
 import {
   ClickCookieAction,
   EarnCookieAction,
@@ -46,7 +50,7 @@ export type Action =
   | EarnCookieAction
   | RecalculateCPSAction
   | { type: "RESET_GAME" }
-  | { type: "SET_BUILDING"; payload: string }
+  | SetBuildingAction
   | BuyBuildingAction
   | BuyUpgradeAction
   | LeaderboardSavedAction

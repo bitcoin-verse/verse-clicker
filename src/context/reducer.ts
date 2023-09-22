@@ -2,7 +2,7 @@ import { Reducer } from "react";
 import { Action, State, initialState } from "./store";
 import { clickCookie, earnCookie, spendCookie } from "./reducers/player";
 import { gameSaved, loadSave } from "./reducers/saving";
-import { buyBuilding, buyUpgrade } from "./reducers/building";
+import { buyBuilding, buyUpgrade, setBuilding } from "./reducers/building";
 import { recalculateCPS } from "./reducers/recalculateCPS";
 import { leaderboardSaved } from "./reducers/leaderboard";
 
@@ -55,10 +55,7 @@ export const reducer: Reducer<State, Action> = (state, action) => {
     case "RESET_GAME":
       return initialState;
     case "SET_BUILDING":
-      return {
-        ...state,
-        currentBuilding: action.payload,
-      };
+      return setBuilding(state, action.payload);
     default:
       throw new Error("unknown action type");
   }
