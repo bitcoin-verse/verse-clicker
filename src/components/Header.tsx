@@ -11,6 +11,7 @@ const StyledHeader = styled.header`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  margin-top: 1rem;
 `;
 
 const Logo = styled.img<{ isMobile: boolean }>`
@@ -19,6 +20,7 @@ const Logo = styled.img<{ isMobile: boolean }>`
 
 const Header: FC = () => {
   const dispatch = useDispatch();
+  const { isConnected } = useAccount();
 
   useAccount({
     onConnect: ({ address }) => {
@@ -37,7 +39,7 @@ const Header: FC = () => {
   return (
     <StyledHeader>
       <Logo src={logo} title="Verse Clicker" isMobile={checkIsMobile()} />
-      <Web3Button balance="hide" />
+      {isConnected && <Web3Button />}
     </StyledHeader>
   );
 };
