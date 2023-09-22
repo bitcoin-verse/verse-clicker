@@ -17,8 +17,10 @@ const Button = styled.button`
   cursor: pointer;
   align-items: center;
 
+  flex: 1;
+
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-gap: 0.25rem;
   grid-template-areas: "title price" "desc price";
   color: black;

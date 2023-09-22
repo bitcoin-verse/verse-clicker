@@ -7,9 +7,9 @@ const ShopContainer = styled.div`
   display: grid;
   width: 100%;
   max-width: 50rem;
-  max-width: fit-content;
   margin: auto;
-  grid-template-columns: 1fr 2.5fr;
+  overflow: hidden;
+  grid-template-columns: 30% 70%;
   align-items: start;
 `;
 
