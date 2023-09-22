@@ -4,9 +4,10 @@ import styled from "styled-components";
 import cookieBite from "../../assets/cookie-bite.png";
 import verseCookie from "../../assets/verse-cookie.png";
 
-import { useDispatch } from "../../context/store";
+import { useDispatch, useTrackedState } from "../../context/store";
 import { useAccount } from "wagmi";
 import { createRoot } from "react-dom/client";
+import { formatNumber } from "../../helpers/formatNumber";
 
 const CookieWrapper = styled.div`
   position: relative;
@@ -59,8 +60,6 @@ const ClickButton = styled.button`
 
 const CookieClick = styled.img`
   position: absolute;
-  top: 50%;
-  left: 50%;
   user-select: none;
   transform: translate(-50%, -50%);
   width: 3rem;
@@ -75,16 +74,35 @@ const CookieClick = styled.img`
   }
 `;
 
+const CpcClick = styled.span`
+  position: absolute;
+  user-select: none;
+  transform: translate(-50%, -50%);
+  width: 3rem;
+  z-index: 1;
+  animation: click 1s ease-in-out;
+  text-shadow: -1px -1px 0 #0779e0, 1px -1px 0 #0779e0, -1px 1px 0 #0779e0, 1px 1px 0 #0779e0;
+}
+  @keyframes click {
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -250%);
+    }
+  }
+`;
+
 const Cookie: FC = () => {
   const dispatch = useDispatch();
   const { status } = useAccount();
   const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const { player } = useTrackedState();
 
   const animateCookieClick = (e: React.MouseEvent<HTMLElement>) => {
     if (!wrapperRef.current) return;
 
     const x = e.clientX - wrapperRef.current.offsetLeft;
     const y = e.clientY - wrapperRef.current.offsetTop;
+
     const cookie = (
       <CookieClick
         src={cookieBite}
@@ -95,14 +113,33 @@ const Cookie: FC = () => {
         }}
       />
     );
+    const cpc = (
+      <CpcClick
+        style={{
+          left: `${x + 50}px`,
+          top: `${y}px`,
+        }}
+      >
+        +{formatNumber(player.aMPC)}
+      </CpcClick>
+    );
+
     const cookieContainer = document.createElement("div");
-    const root = createRoot(cookieContainer);
-    root.render(cookie);
+    const cpcContainer = document.createElement("div");
+
+    const cookieRoot = createRoot(cookieContainer);
+    const cpcRoot = createRoot(cpcContainer);
+
+    cookieRoot.render(cookie);
+    cpcRoot.render(cpc);
+
     wrapperRef.current.appendChild(cookieContainer);
+    wrapperRef.current.appendChild(cpcContainer);
 
     setTimeout(() => {
       if (!wrapperRef.current) return;
       wrapperRef.current.removeChild(cookieContainer);
+      wrapperRef.current.removeChild(cpcContainer);
     }, 500);
   };
 
