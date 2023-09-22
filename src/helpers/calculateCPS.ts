@@ -1,16 +1,17 @@
 import Building from "../classes/Building";
-import Player from "../classes/Player";
 
-export const calculateTotalCPS = (player: Player, buildings: Building[]) => {
+export const calculateTotalCPS = (buildings: Building[]) => {
   const buildingCount = buildings.length;
 
   let CPS = 0;
 
-  buildings.forEach((building, index) => {
+  let aMPC = 0;
+
+  const newBuildings: Building[] = buildings.map((building, index) => {
     let multiplier = 1;
 
     if (index === 0) {
-      player.aMPC = 1;
+      aMPC = 1;
     }
 
     building.upgrades.forEach((upgrade) => {
@@ -19,7 +20,7 @@ export const calculateTotalCPS = (player: Player, buildings: Building[]) => {
       if (upgrade.special === undefined) {
         multiplier *= 2;
         if (index === 0) {
-          player.aMPC *= 2;
+          aMPC *= 2;
         }
       } else {
         // Special casing for all special types of upgrades
@@ -29,14 +30,16 @@ export const calculateTotalCPS = (player: Player, buildings: Building[]) => {
           const nonCursorBuildingCount = buildingCount - building.amount;
           building.specialCPS +=
             upgrade.special * nonCursorBuildingCount * building.amount;
-          player.aMPC += upgrade.special * nonCursorBuildingCount;
+          aMPC += upgrade.special * nonCursorBuildingCount;
         }
       }
     });
 
     CPS +=
       building.baseEffect * building.amount * multiplier + building.specialCPS;
+
+    return building;
   });
 
-  return CPS;
+  return { CPS, aMPC, newBuildings };
 };

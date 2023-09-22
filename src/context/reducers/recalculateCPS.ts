@@ -4,7 +4,7 @@ import { State } from "../store";
 export type RecalculateCPSAction = { type: "RECALCULATE_CPS" };
 
 export const recalculateCPS = (state: State): State => {
-  const CPS = calculateTotalCPS(state.player, state.buildings);
+  const { CPS, aMPC } = calculateTotalCPS(state.buildings);
 
   let newCookies = state.player.cookies;
   let newEarned = state.player.cookieStats.Earned;
@@ -27,6 +27,7 @@ export const recalculateCPS = (state: State): State => {
     player: {
       ...state.player,
       aMPF: CPS / state.settings.frameRate,
+      aMPC,
       cookies: newCookies,
       cookieStats: {
         ...state.player.cookieStats,
