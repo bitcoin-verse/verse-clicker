@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef } from "react";
 import styled from "styled-components";
 
-import cookie from "../../assets/cookie.png";
+import cookieBite from "../../assets/cookie-bite.png";
 import verseCookie from "../../assets/verse-cookie.png";
 
 import { useDispatch } from "../../context/store";
@@ -38,7 +38,7 @@ const ClickButton = styled.button`
     position: absolute;
     content: "";
 
-    background-image: url(${cookie});
+    background-image: url(${cookieBite});
     background-size: 100%;
     background-repeat: no-repeat;
     top: 0;
@@ -88,7 +88,7 @@ const Cookie: FC = () => {
     const y = e.clientY - wrapperRef.current.offsetTop;
     const cookie = (
       <CookieClick
-        src={verseCookie}
+        src={cookieBite}
         alt="Cookie"
         style={{
           left: `${x}px`,
@@ -130,7 +130,7 @@ const Cookie: FC = () => {
         onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => e.preventDefault()}
         disabled={status !== "connected"}
       >
-        <VerseImage src={cookie} title="Verse Logo" />
+        <VerseImage src={verseCookie} title="Verse Logo" />
       </ClickButton>
     </CookieWrapper>
   );
