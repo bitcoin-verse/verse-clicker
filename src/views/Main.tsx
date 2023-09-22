@@ -20,9 +20,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Helvetica', sans-serif;
     color: white;
   }
-  html,
-  body {
+  html, 
+  body { 
    overflow: hidden; 
+   height: 100dvh;
   }
 `;
 
