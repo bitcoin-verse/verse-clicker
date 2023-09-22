@@ -28,32 +28,14 @@ const ClickButton = styled.button`
   background-image: url(${verseCookie});
   background-size: 100%;
   background-repeat: no-repeat;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
-  & :active {
-    transform: scale(0.99);
-  }
-
-  &::after {
-    position: absolute;
-    content: "";
-
-    background-image: url(${verseCookie});
-    background-size: 100%;
-    background-repeat: no-repeat;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-
-  &:hover::after {
+  &:hover {
     transform: scale(1.01);
   }
-  &:active::after {
-    transform: scale(0.99);
+
+  &:active {
+    transform: scale(1);
   }
 `;
 
@@ -93,40 +75,43 @@ const Cookie: FC = () => {
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
   const { player } = useTrackedState();
 
-  const animateCookieClick = useCallback((e: React.MouseEvent<HTMLElement>) => {
-    if (!wrapperRef.current) return;
-
-    const x = e.clientX - wrapperRef.current.offsetLeft - 16;
-    const y = e.clientY - wrapperRef.current.offsetTop - 16;
-
-    const cpcContainer = document.createElement("div");
-
-    const cpcRoot = createRoot(cpcContainer);
-
-    cpcRoot.render(
-      <CpcClick
-        style={{
-          left: x,
-          top: y,
-        }}
-      >
-        <CookieClick src={cookieBite} alt="Cookie" />+
-        {formatNumber(player.aMPC)}
-      </CpcClick>,
-    );
-
-    wrapperRef.current.appendChild(cpcContainer);
-
-    const timer = setTimeout(() => {
+  const animateCookieClick = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
       if (!wrapperRef.current) return;
-      cpcRoot.unmount();
-      wrapperRef.current.removeChild(cpcContainer);
-    }, 500);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+      const x = e.clientX - wrapperRef.current.offsetLeft - 16;
+      const y = e.clientY - wrapperRef.current.offsetTop - 16;
+
+      const cpcContainer = document.createElement("div");
+
+      const cpcRoot = createRoot(cpcContainer);
+
+      cpcRoot.render(
+        <CpcClick
+          style={{
+            left: x,
+            top: y,
+          }}
+        >
+          <CookieClick src={cookieBite} alt="Cookie" />+
+          {formatNumber(player.aMPC)}
+        </CpcClick>,
+      );
+
+      wrapperRef.current.appendChild(cpcContainer);
+
+      const timer = setTimeout(() => {
+        if (!wrapperRef.current) return;
+        cpcRoot.unmount();
+        wrapperRef.current.removeChild(cpcContainer);
+      }, 500);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    },
+    [player.aMPC],
+  );
 
   return (
     <CookieWrapper>
