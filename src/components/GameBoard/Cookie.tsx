@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useRef } from "react";
+import React, { FC, useCallback, useRef, useState } from "react";
 import styled from "styled-components";
 
 import cookieBite from "../../assets/cookie-bite.png";
@@ -74,6 +74,7 @@ const Cookie: FC = () => {
   const { status } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
   const { player } = useTrackedState();
+  const [clickCount, setClickCount] = useState(0);
 
   const animateCookieClick = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
@@ -113,15 +114,27 @@ const Cookie: FC = () => {
     [player.aMPC],
   );
 
+  const handleCheatPrevention = useCallback(() => {
+    setClickCount((c) => c + 1);
+
+    const timeout = setTimeout(() => {
+      setClickCount(0);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <CookieWrapper>
       <ClickButton
         ref={wrapperRef}
         onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-          if (!e.isTrusted) {
-            alert("LMB");
+          if (clickCount >= 10 || !e.isTrusted) {
+            alert("Something seems fishy... LMB");
             return;
           }
+
+          handleCheatPrevention();
           dispatch({ type: "CLICK_COOKIE" });
           animateCookieClick(e);
         }}
