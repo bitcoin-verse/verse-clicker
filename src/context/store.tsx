@@ -11,7 +11,9 @@ import { LeaderboardResponse } from "../api/leaderboard";
 
 export type State = {
   save?: string;
-  lastSave?: string;
+  lastSave?: number;
+  verseHolder: boolean;
+  newCookies: number;
   loading: boolean;
 
   settings: {
@@ -39,6 +41,8 @@ export const initialState: State = {
   },
 
   leaderboard: [],
+  verseHolder: false,
+  newCookies: 0,
 
   // GAME
   player: new Player(),

@@ -20,9 +20,8 @@ export const getSave = ({
       dispatch({ type: "STARTED" });
 
       dispatch({ type: "SET_LOADING", payload: true });
-      const { progressBase64, lastUpdatedTimestamp } = await getProgress(
-        action.payload,
-      );
+      const { progressBase64, lastUpdatedTimestamp, isVerseHolder } =
+        await getProgress(action.payload);
 
       if (!progressBase64) throw new Error("Error getting response");
 
@@ -32,7 +31,11 @@ export const getSave = ({
 
       dispatch({
         type: "GAME_LOADED",
-        payload: { base64: progressBase64, lastSave: lastUpdatedTimestamp },
+        payload: {
+          base64: progressBase64,
+          lastSave: lastUpdatedTimestamp,
+          verseHolder: isVerseHolder,
+        },
       });
     } catch (error) {
       dispatch({ type: "FAILED", error: error as unknown as Error });

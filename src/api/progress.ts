@@ -1,12 +1,22 @@
 import axios from "axios";
 import { PROGRESS } from "./endpoints";
 
+type GetProgressResponse = {
+  address: string;
+  progressBase64: string;
+  cookies: string;
+  earned: string;
+  spent: string;
+  clicked: string;
+  lastUpdatedTimestamp: number;
+  isVerseHolder: boolean;
+  verseBalance: string;
+};
+
 export const getProgress = async (address: string) => {
-  const { data } = await axios.get<{
-    address: string;
-    progressBase64: string;
-    lastUpdatedTimestamp: string;
-  }>(`${PROGRESS}/${address}`);
+  const { data } = await axios.get<GetProgressResponse>(
+    `${PROGRESS}/${address}`,
+  );
 
   return data;
 };
