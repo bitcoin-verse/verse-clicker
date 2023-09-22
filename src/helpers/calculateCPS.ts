@@ -1,7 +1,8 @@
 import Building from "../classes/Building";
+import { getBuildingCount } from "./buildingHelpers";
 
 export const calculateTotalCPS = (buildings: Building[]) => {
-  const buildingCount = buildings.length;
+  const buildingCount = getBuildingCount(buildings);
 
   let CPS = 0;
 

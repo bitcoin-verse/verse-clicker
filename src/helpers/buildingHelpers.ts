@@ -1,3 +1,5 @@
+import Building from "../classes/Building";
+
 export const getBuildingsCost = (amount: number, cost: number) => {
   let bulkCost = cost;
   let tempPrice = cost;
@@ -5,4 +7,8 @@ export const getBuildingsCost = (amount: number, cost: number) => {
     bulkCost += Math.round((tempPrice *= 1.15));
   }
   return bulkCost;
+};
+
+export const getBuildingCount = (buildings: Building[]) => {
+  return buildings.reduce((prev, curr) => prev + curr.amount, 0);
 };
