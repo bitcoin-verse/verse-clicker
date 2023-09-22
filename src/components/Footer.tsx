@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import Stats from "./Stats";
 import Save from "./Save";
 
 const StyledFooter = styled.footer`
@@ -19,7 +18,6 @@ const Footer: FC = () => {
     <>
       <Wrapper>
         <Save />
-        <Stats />
       </Wrapper>
       <StyledFooter>
         <div>Copyright 2023</div>

@@ -1,28 +1,34 @@
 import React, { FC } from "react";
+import styled from "styled-components";
 import { useTrackedState } from "../context/store";
 import { formatNumber } from "../helpers/formatNumber";
 import { Title } from "./Title";
 
+const Wrapper = styled.div`
+  display: flex;
+  padding: 0.25rem 0.5rem;
+  justify-content: space-between;
+  gap: 1rem;
+  font-weight: 500;
+`;
+
 const Stats: FC = () => {
   const { player } = useTrackedState();
   return (
-    <div style={{ flex: 0, paddingBottom: 32 }}>
-      <h3>Lifetime Totals</h3>
-      <ul style={{ marginLeft: 16 }}>
-        <li>
-          <Title>Earned: </Title>
-          {formatNumber(player.cookieStats.Earned)}
-        </li>
-        <li>
-          <Title>Clicked: </Title>
-          {formatNumber(player.cookieStats.Clicked)}
-        </li>
-        <li>
-          <Title>Spent: </Title>
-          {formatNumber(player.cookieStats.Spent)}
-        </li>
-      </ul>
-    </div>
+    <Wrapper>
+      <div>
+        <Title>Earned: </Title>
+        {formatNumber(player.cookieStats.Earned)}
+      </div>
+      <div>
+        <Title>Clicked: </Title>
+        {formatNumber(player.cookieStats.Clicked)}
+      </div>
+      <div>
+        <Title>Spent: </Title>
+        {formatNumber(player.cookieStats.Spent)}
+      </div>
+    </Wrapper>
   );
 };
 

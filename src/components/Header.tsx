@@ -6,16 +6,21 @@ import { useDispatch } from "../context/store";
 import verseClicker from "../assets/verse-clicker.png";
 import verseLogo from "../assets/verse-logo.png";
 import { checkIsMobile } from "../helpers/checkDevice";
+import Stats from "./Stats";
 
 const StyledHeader = styled.header`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   margin-top: 1rem;
+  align-items: center;
 `;
 
 const Logo = styled.img<{ isMobile: boolean }>`
   max-width: ${({ isMobile }) => (isMobile ? "2.5rem" : "13.875rem")};
+`;
+
+const ConnectWrapper = styled.div`
+  justify-self: flex-end;
 `;
 
 const Header: FC = () => {
@@ -39,7 +44,12 @@ const Header: FC = () => {
   return (
     <StyledHeader>
       <Logo src={logo} title="Verse Clicker" isMobile={checkIsMobile()} />
-      {isConnected && <Web3Button />}
+      <Stats />
+      {isConnected && (
+        <ConnectWrapper>
+          <Web3Button />
+        </ConnectWrapper>
+      )}
     </StyledHeader>
   );
 };
