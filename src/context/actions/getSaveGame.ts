@@ -19,6 +19,7 @@ export const getSave = ({
     try {
       dispatch({ type: "STARTED" });
 
+      dispatch({ type: "SET_LOADING", payload: true });
       const { progressBase64, lastUpdatedTimestamp } = await getProgress(
         action.payload,
       );

@@ -1,7 +1,12 @@
 import { Reducer } from "react";
 import { State, initialState } from "./store";
 import { clickCookie, earnCookie, spendCookie } from "./reducers/player";
-import { LoadingAction, gameSaved, loadSave } from "./reducers/saving";
+import {
+  LoadingAction,
+  gameSaved,
+  loadSave,
+  setLoading,
+} from "./reducers/saving";
 import { buyBuilding, buyUpgrade, setBuilding } from "./reducers/building";
 import { recalculateCPS } from "./reducers/recalculateCPS";
 import { leaderboardSaved } from "./reducers/leaderboard";
@@ -67,6 +72,9 @@ export const reducer: Reducer<State, Action> = (state, action) => {
       return gameSaved(state, action.payload);
     case "GAME_LOADED":
       return loadSave(state, action.payload);
+
+    case "SET_LOADING":
+      return setLoading(state, action.payload);
 
     case "STARTED":
       return {
