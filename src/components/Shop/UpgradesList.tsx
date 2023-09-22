@@ -94,7 +94,6 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
           upgrade,
         },
       });
-      if (address) dispatch({ type: "SAVE_GAME", payload: { address } });
     },
     [building.name],
   );
