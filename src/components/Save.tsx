@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useDispatch } from "../context/store";
 import { useAccount } from "wagmi";
 import { Button } from "./Button";
@@ -6,6 +6,14 @@ import { Button } from "./Button";
 const Save: FC = () => {
   const dispatch = useDispatch();
   const { address } = useAccount();
+  const [wiped, setWiped] = useState(false);
+
+  useEffect(() => {
+    if (wiped && address) {
+      dispatch({ type: "SAVE_GAME", payload: { address } });
+      setWiped(false);
+    }
+  }, [wiped]);
 
   return (
     <div style={{ display: "flex", gap: 16, padding: "16px 0" }}>
@@ -37,6 +45,8 @@ const Save: FC = () => {
       <Button
         onClick={() => {
           console.log("wiping");
+          dispatch({ type: "RESET_GAME" });
+          setWiped(true);
         }}
       >
         Wipe

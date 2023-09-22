@@ -2,24 +2,17 @@ import { Reducer } from "react";
 import { createContainer } from "react-tracked";
 import { useReducerAsync } from "use-reducer-async";
 import { AsyncAction, asyncActionHandlers } from "./asyncActionHandlers";
-import { reducer } from "./reducer";
+import { Action, reducer } from "./reducer";
 import Player from "../classes/Player";
 import Building from "../classes/Building";
 import buildings from "./buildings";
-import { GameSavedAction, LoadSaveAction } from "./reducers/saving";
-import { BuyBuildingAction, BuyUpgradeAction } from "./reducers/building";
-import {
-  ClickCookieAction,
-  EarnCookieAction,
-  SpendCookieAction,
-} from "./reducers/player";
-import { RecalculateCPSAction } from "./reducers/recalculateCPS";
+
 import { LeaderboardResponse } from "../api/leaderboard";
-import { LeaderboardSavedAction } from "./reducers/leaderboard";
 
 export type State = {
   save?: string;
   lastSave?: string;
+  loading: boolean;
 
   settings: {
     frameRate: number;
@@ -37,24 +30,6 @@ export type State = {
   pending: boolean;
   error: Error | null;
 };
-
-export type Action =
-  | GameSavedAction
-  | LoadSaveAction
-  | ClickCookieAction
-  | SpendCookieAction
-  | EarnCookieAction
-  | RecalculateCPSAction
-  | { type: "RESET_GAME" }
-  | { type: "SET_BUILDING"; payload: string }
-  | BuyBuildingAction
-  | BuyUpgradeAction
-  | LeaderboardSavedAction
-
-  // ASYNC ACTION STATES
-  | { type: "STARTED" }
-  | { type: "FAILED"; error: Error }
-  | { type: "QUERY_CHANGED"; query: string };
 
 export const initialState: State = {
   settings: {
@@ -74,6 +49,7 @@ export const initialState: State = {
   pending: false,
   error: null,
   query: "",
+  loading: true,
 };
 
 const useValue = () => {

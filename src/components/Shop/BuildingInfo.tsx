@@ -26,25 +26,20 @@ const BuildingInfo: FC<Props> = ({ building }) => {
       <h3>{building.name} Information</h3>
       <div>
         <Title>Owned: </Title>
-        <b>
-          {building.amount} {building.name}(s)
-        </b>
+        <b>{building.amount}</b>
+      </div>
+      <div>
+        <Title>Upgrades: </Title>
+        <b>{building.upgrades.filter((u) => u.owned).length}</b>
       </div>
       <div>
         <Title>Production: </Title>
-        <b>
-          {formatNumber(production)} per second per {building.name}
-        </b>
-      </div>
-      <div>
-        <Title>Upgrades Owned: </Title>
-        <b>{building.upgrades.filter((u) => u.owned).length}</b>
+        <b>{formatNumber(production)} CPS each</b>
       </div>
       <div>
         <Title>Total: </Title>
         <b>
-          {formatNumber(production * building.amount * building.baseEffect)}{" "}
-          cookie/s.
+          {formatNumber(production * building.amount)} CPS
         </b>
       </div>
     </InfoWrapper>

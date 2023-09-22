@@ -113,3 +113,15 @@ export const buyUpgrade = (
     },
   };
 };
+
+export type SetBuildingAction = { type: "SET_BUILDING"; payload: string };
+
+export const setBuilding = (
+  state: State,
+  payload: SetBuildingAction["payload"],
+): State => {
+  return {
+    ...state,
+    currentBuilding: payload,
+  };
+};

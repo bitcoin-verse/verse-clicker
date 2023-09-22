@@ -1,6 +1,7 @@
 import { getProgress } from "../../api/progress";
 import { magic } from "../../helpers/base64";
-import { Action, State } from "../store";
+import { Action } from "../reducer";
+import { State } from "../store";
 
 export type AsyncActionGetSaveGame = {
   type: "GET_SAVE";
@@ -18,6 +19,7 @@ export const getSave = ({
     try {
       dispatch({ type: "STARTED" });
 
+      dispatch({ type: "SET_LOADING", payload: true });
       const { progressBase64, lastUpdatedTimestamp } = await getProgress(
         action.payload,
       );

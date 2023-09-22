@@ -1,10 +1,48 @@
 import { Reducer } from "react";
-import { Action, State, initialState } from "./store";
+import { State, initialState } from "./store";
 import { clickCookie, earnCookie, spendCookie } from "./reducers/player";
-import { gameSaved, loadSave } from "./reducers/saving";
-import { buyBuilding, buyUpgrade } from "./reducers/building";
+import {
+  LoadingAction,
+  gameSaved,
+  loadSave,
+  setLoading,
+} from "./reducers/saving";
+import { buyBuilding, buyUpgrade, setBuilding } from "./reducers/building";
 import { recalculateCPS } from "./reducers/recalculateCPS";
 import { leaderboardSaved } from "./reducers/leaderboard";
+
+import { GameSavedAction, LoadSaveAction } from "./reducers/saving";
+import {
+  BuyBuildingAction,
+  BuyUpgradeAction,
+  SetBuildingAction,
+} from "./reducers/building";
+import {
+  ClickCookieAction,
+  EarnCookieAction,
+  SpendCookieAction,
+} from "./reducers/player";
+import { RecalculateCPSAction } from "./reducers/recalculateCPS";
+import { LeaderboardSavedAction } from "./reducers/leaderboard";
+
+export type Action =
+  | GameSavedAction
+  | LoadSaveAction
+  | ClickCookieAction
+  | SpendCookieAction
+  | EarnCookieAction
+  | RecalculateCPSAction
+  | { type: "RESET_GAME" }
+  | SetBuildingAction
+  | BuyBuildingAction
+  | BuyUpgradeAction
+  | LeaderboardSavedAction
+  | LoadingAction
+
+  // ASYNC ACTION STATES
+  | { type: "STARTED" }
+  | { type: "FAILED"; error: Error }
+  | { type: "QUERY_CHANGED"; query: string };
 
 export const reducer: Reducer<State, Action> = (state, action) => {
   switch (action.type) {
@@ -35,6 +73,9 @@ export const reducer: Reducer<State, Action> = (state, action) => {
     case "GAME_LOADED":
       return loadSave(state, action.payload);
 
+    case "SET_LOADING":
+      return setLoading(state, action.payload);
+
     case "STARTED":
       return {
         ...state,
@@ -55,10 +96,7 @@ export const reducer: Reducer<State, Action> = (state, action) => {
     case "RESET_GAME":
       return initialState;
     case "SET_BUILDING":
-      return {
-        ...state,
-        currentBuilding: action.payload,
-      };
+      return setBuilding(state, action.payload);
     default:
       throw new Error("unknown action type");
   }

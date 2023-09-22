@@ -7,6 +7,7 @@ import useGameLoop from "../hooks/useGameLoop";
 
 import background from "../assets/background.png";
 import Leaderboard from "../components/Leaderboard";
+import { useTrackedState } from "../context/store";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -31,10 +32,16 @@ const PageWrapper = styled.div`
 const Main: FC = () => {
   useGameLoop();
 
+  const { loading } = useTrackedState();
+
   return (
     <>
       <GlobalStyle />
-
+      {loading && (
+        <div style={{ color: "black", textAlign: "center", padding: "1rem" }}>
+          LOADING...
+        </div>
+      )}
       <PageWrapper>
         <Header />
         <GameBoard />

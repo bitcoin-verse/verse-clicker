@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from "react";
+import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
 import Upgrade from "../../classes/Upgrade";
 import styled from "styled-components";
 import { useDispatch, useTrackedState } from "../../context/store";
@@ -104,13 +104,14 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
     }
   }, [recalculateCPS, newPurchase]);
 
-  const filteredUpgrades = upgrades.filter((upgrade) => !upgrade.owned);
-  const isUpgradesAvail = upgrades.some(
-    (upgrade) => building.amount >= upgrade.limit,
+  const filteredUpgrades = useMemo(
+    () => upgrades.filter((upgrade) => !upgrade.owned),
+    [],
   );
+
   return (
     <UpgrdesWrapper>
-      {isUpgradesAvail && <h3>UPGRADES</h3>}
+      <h3>UPGRADES</h3>
       {filteredUpgrades.map((upgrade, i) => {
         if (building.amount >= upgrade.limit) {
           return (
@@ -129,7 +130,10 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
           );
         }
 
-        if (building.amount >= filteredUpgrades[i - 1]?.limit) {
+        if (
+          building.amount >= filteredUpgrades[i - 1]?.limit ||
+          filteredUpgrades[i - 1] === undefined
+        ) {
           return (
             <NextUpgrade key={upgrade.name}>
               Next upgrade available in {upgrade.limit - building.amount} more{" "}

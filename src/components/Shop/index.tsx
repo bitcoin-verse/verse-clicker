@@ -6,9 +6,10 @@ import styled from "styled-components";
 const ShopContainer = styled.div`
   display: grid;
   width: 100%;
+  max-width: 50rem;
   max-width: fit-content;
   margin: auto;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 2.5fr;
   align-items: start;
 `;
 
