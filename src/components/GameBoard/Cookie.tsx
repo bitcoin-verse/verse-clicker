@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useRef, useState } from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import cookieBite from "../../assets/cookie-bite.png";
@@ -71,10 +71,10 @@ const CpcClick = styled.div`
 
 const Cookie: FC = () => {
   const dispatch = useDispatch();
-  const { status } = useAccount();
+  const { status, address } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
   const { player } = useTrackedState();
-  const [clickCount, setClickCount] = useState(0);
+  const [clickCount, setClickCount] = useState<number>();
 
   const animateCookieClick = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
@@ -115,21 +115,37 @@ const Cookie: FC = () => {
   );
 
   const handleCheatPrevention = useCallback(() => {
-    setClickCount((c) => c + 1);
+    setClickCount((c) => (c || 0) + 1);
 
     const timeout = setTimeout(() => {
       setClickCount(0);
     }, 1000);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
+
+  useEffect(() => {
+    if (clickCount !== 0 || !address) {
+      return;
+    }
+
+    const saveTimout = setTimeout(() => {
+      dispatch({ type: "SAVE_GAME", payload: { address } });
+    }, 3000);
+
+    return () => {
+      clearTimeout(saveTimout);
+    };
+  }, [clickCount, address]);
 
   return (
     <CookieWrapper>
       <ClickButton
         ref={wrapperRef}
         onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-          if (clickCount >= 10 || !e.isTrusted) {
+          if ((clickCount && clickCount >= 10) || !e.isTrusted) {
             alert("Something seems fishy... LMB");
             return;
           }
