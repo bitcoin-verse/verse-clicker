@@ -46,7 +46,6 @@ const loadPlayer = (player: Player, playerData: string): Player => {
 
 const loadBuildings = (buildingData: string): Building[] => {
   const newBuildingData = buildingData.split("#");
-
   const restoredBuildings = buildings.map((building, index) => {
     const savedBuilding = newBuildingData[index];
     const nonUpgrade = savedBuilding.split("|");
@@ -57,9 +56,14 @@ const loadBuildings = (buildingData: string): Building[] => {
       owned: stringToBool(savedUpgrades[i]) || false,
     }));
 
+    const amount = parseFloat(nonUpgrade[0]);
+    const cost =
+      Math.round(building.cost * Math.pow(1.15, amount)) || building.cost;
+
     return {
       ...building,
-      amount: parseFloat(nonUpgrade[0]),
+      amount,
+      cost,
       locked: stringToBool(nonUpgrade[1]) || false,
       upgrades,
     };
@@ -89,6 +93,7 @@ export const loadSave = (
     lastSave: payload.lastSave,
     settings: { ...state.settings, recalculateCPS: true },
     pending: false,
+    loading: false,
     player,
     buildings,
   };
