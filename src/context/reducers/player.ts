@@ -13,7 +13,7 @@ export const clickCookie = (state: State) => {
       cookieStats: {
         ...state.player.cookieStats,
         Earned: state.player.cookieStats.Earned + state.player.aMPC,
-        Clicked: state.player.cookieStats.Clicked + state.player.aMPC,
+        Clicked: state.player.cookieStats.Clicked + 1,
       },
     },
   };
