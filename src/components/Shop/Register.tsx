@@ -63,7 +63,7 @@ const Register: FC<Props> = ({ building }) => {
 
   return (
     <>
-      <h3>MULTIPLIERS</h3>
+      <h3>BUY {building.name.toUpperCase()}(s)</h3>
       <BuyWrapper>
         <Button
           disabled={player.cookies < getBuildingsCost(1, building.cost)}
