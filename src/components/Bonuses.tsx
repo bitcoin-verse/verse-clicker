@@ -36,6 +36,7 @@ const Bonuses = () => {
   const { status } = useAccount();
   const { modalRef, showModal } = useModal();
   const [cachedSave, setCachedSave] = useState<string>();
+  const [, setWasLoaded] = useState(false);
 
   useEffect(() => {
     if (!lastSaveLoaded) return;
@@ -47,7 +48,11 @@ const Bonuses = () => {
 
   useEffect(() => {
     if (status === "connected" && !loading) {
-      showModal();
+      setWasLoaded((wasLoaded) => {
+        if (wasLoaded) return true;
+        showModal();
+        return true;
+      });
     }
   }, [status, loading]);
 
