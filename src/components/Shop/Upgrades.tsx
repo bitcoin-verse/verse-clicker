@@ -15,8 +15,13 @@ const Wrapper = styled.div`
   padding: 1rem;
   border-radius: 0.5rem;
   border: 0.125rem solid #086bc6;
-
   background: #0f518f;
+
+  margin: 0 1rem;
+
+  @media (min-width: 768px) {
+    margin: 0;
+  }
 `;
 
 const Upgrades: FC = () => {

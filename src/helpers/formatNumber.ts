@@ -30,7 +30,6 @@ export const formatNumber = (num: number) => {
       if (num >= divider) {
         formatted =
           (Math.trunc((num / divider) * 1000) / 1000).toFixed(3) +
-          " " +
           ShortNumbers[i];
       }
     }

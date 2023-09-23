@@ -6,16 +6,18 @@ import placeholder from "../../assets/placeholder.png";
 const Wrapper = styled.div`
   display: flex;
   gap: 1rem;
-  max-width: calc(100vw - 2rem);
+  max-width: calc(100vw);
   overflow-x: auto;
   overflow-y: visible;
   padding-bottom: 1rem;
+  padding-left: 1rem;
 
   @media (min-width: 768px) {
     gap: 0.5rem;
     flex-direction: column;
     background: #163756;
     padding-bottom: unset;
+    padding-left: unset;
     max-width: unset;
     overflow: visible;
   }

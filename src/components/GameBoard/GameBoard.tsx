@@ -17,7 +17,6 @@ const StyledGameBoard = styled.section`
   width: 100%;
   max-width: 80rem;
   margin: auto;
-  padding: 1.25rem;
   box-sizing: border-box;
 
   @media (min-width: 768px) {
@@ -31,7 +30,10 @@ const ShopSection = styled.div`
   align-items: flex-end;
   align-self: flex-start;
   justify-content: flex-start;
-  padding: 2rem 0;
+
+  @media (min-width: 768px) {
+    margin-top: 2rem;
+  }
 `;
 
 const TabContent = styled.div`
@@ -46,15 +48,19 @@ const TabContent = styled.div`
   }
 `;
 
+const MainSection = styled.div`
+  margin-top: 1rem;
+`;
+
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
 
   return (
     <StyledGameBoard>
-      <div style={{ padding: "2rem" }}>
+      <MainSection>
         <Display />
         <Cookie />
-      </div>
+      </MainSection>
       <ShopSection>
         <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         <TabContent>

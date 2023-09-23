@@ -9,20 +9,25 @@ const DisplayWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1rem;
+  z-index: 1;
+  text-shadow: 2px 2px 4px black;
 `;
 
 const CookieCount = styled.div`
   flex-basis: 100%;
   text-align: center;
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 `;
 
 const StatCount = styled.div`
   font-weight: 500;
   font-size: 1.25rem;
 `;
-
 
 const Display: FC = () => {
   const {

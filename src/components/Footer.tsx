@@ -5,6 +5,7 @@ import Save from "./Save";
 const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-between;
+  padding: 1rem;
 `;
 
 const Wrapper = styled.div`
@@ -16,10 +17,10 @@ const Wrapper = styled.div`
 const Footer: FC = () => {
   return (
     <>
-      <StyledFooter>
       <Wrapper>
         <Save />
       </Wrapper>
+      <StyledFooter>
         <div>Copyright 2023</div>
         <div>Made by: Micah, Paul, Ricky</div>
       </StyledFooter>

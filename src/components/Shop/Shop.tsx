@@ -22,7 +22,8 @@ const ContentWrapper = styled.div`
 
   @media (min-width: 768px) {
     margin-top: 1rem;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr auto;
   }
 `;
 

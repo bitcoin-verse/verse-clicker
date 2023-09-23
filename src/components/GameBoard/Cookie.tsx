@@ -13,7 +13,6 @@ const CookieWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
 `;
 
 const ClickButton = styled.button`
@@ -53,7 +52,7 @@ const CpcClick = styled.div`
   align-items: center;
   transform: translate(-50%, -50%);
   width: 3rem;
-  z-index: 1;
+  /* z-index: 1; */
   animation: click 1s ease-in-out;
   text-shadow:
     -0.5px -0.5px 0 #0779e0,
@@ -84,8 +83,8 @@ const Cookie: FC = () => {
     (e: React.MouseEvent<HTMLElement>) => {
       if (!wrapperRef.current) return;
 
-      const x = e.clientX - wrapperRef.current.offsetLeft - 16;
-      const y = e.clientY - wrapperRef.current.offsetTop - 16;
+      const x = e.clientX - wrapperRef.current.offsetLeft;
+      const y = e.clientY - wrapperRef.current.offsetTop - 110;
 
       const cpcContainer = document.createElement("div");
 
