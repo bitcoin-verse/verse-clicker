@@ -18,14 +18,29 @@ const StyledGameBoard = styled.section`
   max-width: 80rem;
   margin: auto;
   padding: 1.25rem;
+  box-sizing: border-box;
 
   @media (min-width: 768px) {
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 60% 40%;
   }
 `;
 
 const ShopSection = styled.div`
-  align-self: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: flex-start;
+  justify-content: flex-start;
+  padding: 2rem 0;
+`;
+
+const TabContent = styled.div`
+  margin-top: 1rem;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 1rem;
+  background: #163756;
 `;
 
 const GameBoard: FC = () => {
@@ -33,13 +48,15 @@ const GameBoard: FC = () => {
 
   return (
     <StyledGameBoard>
-      <div>
+      <div style={{ padding: "2rem" }}>
         <Display />
         <Cookie />
       </div>
       <ShopSection>
         <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-        {selectedTab === 0 ? <Shop /> : <Leaderboard />}
+        <TabContent>
+          {selectedTab === 0 ? <Shop /> : <Leaderboard />}
+        </TabContent>
       </ShopSection>
     </StyledGameBoard>
   );

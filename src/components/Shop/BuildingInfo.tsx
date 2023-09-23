@@ -4,6 +4,7 @@ import { formatNumber } from "../../helpers/formatNumber";
 import styled from "styled-components";
 import { useProduction } from "../../hooks/useProduction";
 import { Title } from "../Title";
+import { H4 } from "../H4";
 
 const InfoWrapper = styled.div`
   padding: 0 0 1rem 0;
@@ -23,7 +24,6 @@ const BuildingInfo: FC<Props> = ({ building }) => {
 
   return (
     <InfoWrapper>
-      <h3>{building.name} Information</h3>
       <div>
         <Title>Owned: </Title>
         <b>{building.amount}</b>
@@ -38,9 +38,7 @@ const BuildingInfo: FC<Props> = ({ building }) => {
       </div>
       <div>
         <Title>Total: </Title>
-        <b>
-          {formatNumber(production * building.amount)} CPS
-        </b>
+        <b>{formatNumber(production * building.amount)} CPS</b>
       </div>
     </InfoWrapper>
   );

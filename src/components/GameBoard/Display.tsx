@@ -6,7 +6,6 @@ import { Title } from "../Title";
 
 const DisplayWrapper = styled.div`
   display: flex;
-  width: 100%;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;

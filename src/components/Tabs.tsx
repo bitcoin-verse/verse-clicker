@@ -7,7 +7,6 @@ const TabsWrapper = styled.div`
   border-radius: 2.25rem;
   gap: 0.5rem;
   width: fit-content;
-  justify-self: flex-end;
 `;
 
 const Button = styled.button<{ isSelected: boolean }>`
@@ -15,7 +14,7 @@ const Button = styled.button<{ isSelected: boolean }>`
   border: none;
   background: none;
 
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 2.25rem;
 
   font-size: 0.875rem;
@@ -47,14 +46,14 @@ const Tabs: FC<Props> = ({ selectedTab, setSelectedTab }) => {
         type="button"
         onClick={() => setSelectedTab(0)}
       >
-        Shops
+        Buildings
       </Button>
       <Button
         isSelected={selectedTab === 1}
         type="button"
         onClick={() => setSelectedTab(1)}
       >
-        Scores
+        Leaderboards
       </Button>
     </TabsWrapper>
   );

@@ -4,7 +4,7 @@ import { useDispatch, useTrackedState } from "../../context/store";
 
 const Wrapper = styled.div`
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   width: 100%;
   gap: 0.5rem;
   overflow-x: auto;
