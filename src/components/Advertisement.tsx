@@ -14,6 +14,10 @@ const AdWrapper = styled.div`
   font-size: 0.75rem;
   font-weight: 400;
   padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const AdImage = styled.img`

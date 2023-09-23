@@ -38,6 +38,8 @@ const ShopSection = styled.div`
 `;
 
 const TabContent = styled.div`
+  margin: auto;
+  width: 100%;
   margin-top: 1rem;
   flex-direction: column;
   align-items: flex-start;
@@ -45,6 +47,7 @@ const TabContent = styled.div`
 
   @media (min-width: 768px) {
     padding: 1rem;
+    width: 100%;
     background: #163756;
   }
 `;

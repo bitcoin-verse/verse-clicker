@@ -5,53 +5,51 @@ import styled from "styled-components";
 import { useAccount } from "wagmi";
 import truncateEthAddress from "../helpers/truncateEthAddress";
 import { formatNumber } from "../helpers/formatNumber";
+import { H4 } from "./H4";
 
 const LeaderboardWrapper = styled.div`
   margin: auto;
-  margin-top: 3rem;
-  max-width: 50rem;
   width: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  background: #163756;
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const Table = styled.table`
   margin-top: 1rem;
-  width: 100%;
-  max-width: 100%;
   border-collapse: collapse;
-  border-radius: 1rem;
-  overflow: hidden;
 
-  tr:nth-of-type(even) {
-    background: rgba(0, 0, 0, 0.7);
-  }
-
-  tr:nth-of-type(odd) {
-    background: rgba(0, 0, 0, 0.5);
-  }
-
-  td:not(:first-child),
-  th:not(:first-child) {
+  th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #899bb5;
     text-align: right;
   }
 
-  th {
-    color: white;
-    font-weight: bold;
-    font-size: 1.2rem;
-    background: none;
-  }
-
-  tr {
-    padding: 0 1rem;
-    display: grid;
-    grid-template-columns: 2.5fr 1.5fr 1.5fr;
-  }
-
-  td,
-  th {
-    padding: 1rem 0.5rem;
+  th:nth-child(1),
+  th:nth-child(2),
+  td:nth-child(1),
+  td:nth-child(2) {
     text-align: left;
-    text-wrap: nowrap;
+  }
+
+  td {
+    text-align: right;
+    //styleName: Body 3;
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding: 0.5rem 0;
+  }
+  tr {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 0.5fr 2.5fr 1.5fr 1.5fr;
   }
 `;
 
@@ -65,23 +63,24 @@ const Leaderboard = () => {
 
   return (
     <LeaderboardWrapper>
-      <h2>Leaderboards</h2>
+      <H4>Leaderboards</H4>
       <Table>
         <thead>
           <tr>
+            <th>Rank</th>
             <th>Address</th>
             <th>Earned</th>
             <th>Clicks</th>
           </tr>
         </thead>
         <tbody>
-          {leaderboard.map((item) => {
+          {leaderboard.map((item, index) => {
             return (
               <tr key={item.address}>
                 <td>
-                  {truncateEthAddress(item.address)}
-                  {item.address === address ? " 🌟" : ""}
+                  {index + 1} {item.address === address ? " 🌟" : ""}
                 </td>
+                <td>{truncateEthAddress(item.address)}</td>
                 <td>{formatNumber(Number(item.earned))}</td>
                 <td>{formatNumber(Number(item.clicked))}</td>
               </tr>
