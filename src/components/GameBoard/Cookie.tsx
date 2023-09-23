@@ -80,14 +80,13 @@ const Cookie: FC = () => {
   const [clickCount, setClickCount] = useState<number>();
 
   const animateCookieClick = useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
+    (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!wrapperRef.current) return;
 
-      const x = e.clientX - wrapperRef.current.offsetLeft;
-      const y = e.clientY - wrapperRef.current.offsetTop - 110;
+      const x = e.clientX - wrapperRef.current.getBoundingClientRect().left;
+      const y = e.clientY - wrapperRef.current.getBoundingClientRect().top;
 
       const cpcContainer = document.createElement("div");
-
       const cpcRoot = createRoot(cpcContainer);
 
       cpcRoot.render(
@@ -143,7 +142,7 @@ const Cookie: FC = () => {
     };
   }, [clickCount, address]);
 
-  const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (!e.isTrusted) {
       alert("Bad click... Get outa the console you script kiddy");
       return;
@@ -163,6 +162,7 @@ const Cookie: FC = () => {
   return (
     <CookieWrapper>
       <ClickButton
+        type="button"
         ref={wrapperRef}
         onClick={handleClick}
         onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => e.preventDefault()}
