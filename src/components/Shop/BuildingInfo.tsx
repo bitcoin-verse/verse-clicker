@@ -3,15 +3,31 @@ import Building from "../../classes/Building";
 import { formatNumber } from "../../helpers/formatNumber";
 import styled from "styled-components";
 import { useProduction } from "../../hooks/useProduction";
-import { Title } from "../Title";
 
 const InfoWrapper = styled.div`
   padding: 0 0 1rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
   border-bottom: 1.5px solid #dedede;
   margin-bottom: 1rem;
+`;
+
+const InfoTitle = styled.div`
+  font-weight: 0.875rem;
+  line-height: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+`;
+
+const Stat = styled.div`
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #899bb5;
+
+  & > span {
+    color: #ffffff;
+  }
 `;
 
 interface Props {
@@ -23,22 +39,13 @@ const BuildingInfo: FC<Props> = ({ building }) => {
 
   return (
     <InfoWrapper>
-      <div>
-        <Title>Owned: </Title>
-        <b>{building.amount}</b>
-      </div>
-      <div>
-        <Title>Upgrades: </Title>
-        <b>{building.upgrades.filter((u) => u.owned).length}</b>
-      </div>
-      <div>
-        <Title>Production: </Title>
-        <b>{formatNumber(production)} CPS each</b>
-      </div>
-      <div>
-        <Title>Total: </Title>
-        <b>{formatNumber(production * building.amount)} CPS</b>
-      </div>
+      <InfoTitle>Buy</InfoTitle>
+      <Stat>
+        Production: <span>{formatNumber(production)} CPS each</span>
+      </Stat>
+      <Stat>
+        Total: <span>{formatNumber(production * building.amount)} CPS</span>
+      </Stat>
     </InfoWrapper>
   );
 };

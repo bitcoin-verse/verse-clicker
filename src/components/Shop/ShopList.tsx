@@ -53,7 +53,7 @@ const Button = styled.button<{ isSelected: boolean }>`
     cursor: default;
     background: lightgrey;
     color: black;
-    filter: blur(4px);
+    filter: blur(2px);
   }
 `;
 
