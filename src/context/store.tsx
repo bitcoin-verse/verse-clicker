@@ -20,6 +20,7 @@ export type State = {
     frameRate: number;
     recalculateCPS: boolean;
     key: string;
+    clicksLimit: number;
   };
 
   leaderboard: LeaderboardResponse;
@@ -38,6 +39,7 @@ export const initialState: State = {
     frameRate: 30,
     recalculateCPS: false,
     key: "cookieclicker",
+    clicksLimit: 20,
   },
 
   leaderboard: [],

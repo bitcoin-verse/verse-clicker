@@ -73,7 +73,11 @@ const Cookie: FC = () => {
   const dispatch = useDispatch();
   const { status, address } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
-  const { player } = useTrackedState();
+
+  const {
+    player,
+    settings: { clicksLimit },
+  } = useTrackedState();
   const [clickCount, setClickCount] = useState<number>();
 
   const animateCookieClick = useCallback(
@@ -140,20 +144,28 @@ const Cookie: FC = () => {
     };
   }, [clickCount, address]);
 
+  const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    if (!e.isTrusted) {
+      alert("Bad click... Get outa the console you script kiddy");
+      return;
+    }
+    if (clickCount && clickCount >= clicksLimit) {
+      alert(
+        `How can you click more than ${clicksLimit} per second. You must be superman!`,
+      );
+      return;
+    }
+
+    handleCheatPrevention();
+    dispatch({ type: "CLICK_COOKIE" });
+    animateCookieClick(e);
+  };
+
   return (
     <CookieWrapper>
       <ClickButton
         ref={wrapperRef}
-        onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-          if ((clickCount && clickCount >= 100) || !e.isTrusted) {
-            alert("Something seems fishy... LMB");
-            return;
-          }
-
-          handleCheatPrevention();
-          dispatch({ type: "CLICK_COOKIE" });
-          animateCookieClick(e);
-        }}
+        onClick={handleClick}
         onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => e.preventDefault()}
         disabled={status !== "connected"}
       />
