@@ -1,15 +1,16 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { useTrackedState } from "../context/store";
-import { formatNumber } from "../helpers/formatNumber";
-import { Title } from "./Title";
+import { useTrackedState } from "../../context/store";
+import { formatNumber } from "../../helpers/formatNumber";
+import { Title } from "../Title";
 
 const Wrapper = styled.div`
   display: flex;
-  padding: 0.25rem 0.5rem;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  text-align: center;
   gap: 1rem;
   font-weight: 500;
+  grid-area: stats;
 `;
 
 const Stats: FC = () => {

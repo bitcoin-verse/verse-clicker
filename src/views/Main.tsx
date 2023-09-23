@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import styled, { createGlobalStyle } from "styled-components";
 import Footer from "../components/Footer";
 import GameBoard from "../components/GameBoard";
@@ -20,16 +20,16 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Helvetica', sans-serif;
     color: white;
   }
+  
+  button {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  }
 `;
 
 const ContentsWrapper = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
-  height: 100vh;
-  width: 100%;
-  padding: 16px;
+  height: 100dvh;
   background-image: url(${background});
   background-attachment: fixed;
 `;

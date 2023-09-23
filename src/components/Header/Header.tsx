@@ -1,26 +1,32 @@
 import React, { FC } from "react";
-import { Web3Button } from "@web3modal/react";
 import styled from "styled-components";
 import { useAccount } from "wagmi";
-import { useDispatch } from "../context/store";
-import verseClicker from "../assets/verse-clicker.png";
-import verseLogo from "../assets/verse-logo.png";
-import { checkIsMobile } from "../helpers/checkDevice";
+import { useDispatch } from "../../context/store";
+import verseClicker from "../../assets/verse-clicker.png";
 import Stats from "./Stats";
+import ConnectButton from "./ConnectButton";
 
 const StyledHeader = styled.header`
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  margin-top: 1rem;
+  width: 100%;
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 1rem;
+  grid-template-areas: "logo connect" "stats stats";
   align-items: center;
+  max-width: 80rem;
+  margin: auto;
+  padding: 1.25rem;
+
+  @media (min-width: 768px) {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: "logo stats connect";
+  }
 `;
 
-const Logo = styled.img<{ isMobile: boolean }>`
-  max-width: ${({ isMobile }) => (isMobile ? "2.5rem" : "13.875rem")};
-`;
-
-const ConnectWrapper = styled.div`
-  justify-self: flex-end;
+const Logo = styled.img`
+  height: 2rem;
+  grid-area: logo;
 `;
 
 const Header: FC = () => {
@@ -39,17 +45,12 @@ const Header: FC = () => {
     },
   });
 
-  const logo = checkIsMobile() ? verseLogo : verseClicker;
-
   return (
     <StyledHeader>
-      <Logo src={logo} title="Verse Clicker" isMobile={checkIsMobile()} />
+      <Logo src={verseClicker} alt="Logo" />
+
       <Stats />
-      {isConnected && (
-        <ConnectWrapper>
-          <Web3Button />
-        </ConnectWrapper>
-      )}
+      {isConnected ? <ConnectButton /> : <div />}
     </StyledHeader>
   );
 };
