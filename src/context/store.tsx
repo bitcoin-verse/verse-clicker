@@ -11,7 +11,7 @@ import { LeaderboardResponse } from "../api/leaderboard";
 
 export type State = {
   save?: string;
-  lastSave?: number;
+  lastSaveLoaded?: number;
   verseHolder: boolean;
   newCookies: number;
   loading: boolean;

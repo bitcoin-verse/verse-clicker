@@ -5,12 +5,35 @@ export const calculateTotalCPS = (buildings: Building[]) => {
   const buildingCount = getBuildingCount(buildings);
 
   let CPS = 0;
+  let aMPC = 1;
 
-  let aMPC = 0;
+  buildings.forEach((building, index) => {
+    if (building.locked || building.amount === 0) return;
 
-  const newBuildings: Building[] = buildings.map((building, index) => {
     let multiplier = 1;
 
+    console.log("building unlocked");
+    building.upgrades.forEach((upgrade) => {
+      if (!upgrade.owned) return;
+      if (index === 0) {
+        aMPC *= 2;
+      }
+
+      if (upgrade.special === undefined) {
+        multiplier *= 2;
+        return;
+      }
+
+      if (index === 0) {
+        const nonCursorBuildingCount = buildingCount - building.amount;
+        aMPC += upgrade.special * nonCursorBuildingCount;
+      }
+    });
+
+    CPS +=
+      building.baseEffect * building.amount * multiplier + building.specialCPS;
+  }, []);
+  /* const newBuildings: Building[] = buildings.map((building, index) => {
     if (index === 0) {
       aMPC = 1;
     }
@@ -31,16 +54,19 @@ export const calculateTotalCPS = (buildings: Building[]) => {
           const nonCursorBuildingCount = buildingCount - building.amount;
           building.specialCPS +=
             upgrade.special * nonCursorBuildingCount * building.amount;
+
+          specialCPS +=
+            upgrade.special * nonCursorBuildingCount * building.amount;
           aMPC += upgrade.special * nonCursorBuildingCount;
         }
       }
     });
 
-    CPS +=
+    multiplier +=
       building.baseEffect * building.amount * multiplier + building.specialCPS;
 
     return building;
-  });
+  }); */
 
-  return { CPS, aMPC, newBuildings };
+  return { CPS, aMPC };
 };

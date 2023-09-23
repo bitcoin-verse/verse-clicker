@@ -145,7 +145,7 @@ const Cookie: FC = () => {
       <ClickButton
         ref={wrapperRef}
         onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-          if ((clickCount && clickCount >= 10) || !e.isTrusted) {
+          if ((clickCount && clickCount >= 100) || !e.isTrusted) {
             alert("Something seems fishy... LMB");
             return;
           }

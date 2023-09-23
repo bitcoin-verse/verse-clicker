@@ -1,6 +1,10 @@
 import Building from "../../classes/Building";
 import Upgrade from "../../classes/Upgrade";
-import { getBuildingsCost } from "../../helpers/buildingHelpers";
+import {
+  getBuildingCount,
+  getBuildingsCost,
+} from "../../helpers/buildingHelpers";
+import { spendPlayerCookies } from "../../helpers/playerHelpers";
 import { State } from "../store";
 
 export type BuyBuildingAction = {
@@ -56,14 +60,7 @@ export const buyBuilding = (
       ...state.settings,
       recalculateCPS: true,
     },
-    player: {
-      ...state.player,
-      cookies: state.player.cookies - bulkCost,
-      cookieStats: {
-        ...state.player.cookieStats,
-        Spent: state.player.cookieStats.Spent + bulkCost,
-      },
-    },
+    player: spendPlayerCookies(state.player, bulkCost),
     buildings: updatedBuildings,
   };
 };
@@ -79,12 +76,20 @@ export const buyUpgrade = (
 ): State => {
   if (state.player.cookies < payload.upgrade.cost) return state;
 
-  const newBuildings: Building[] = state.buildings.map((building) => {
+  const buildingCount = getBuildingCount(state.buildings);
+  const newBuildings: Building[] = state.buildings.map((building, index) => {
     if (building.name === payload.buildingName) {
       return {
         ...building,
         upgrades: building.upgrades.map((upgrade) => {
           if (upgrade.name === payload.upgrade.name) {
+            if (index === 0 && upgrade.special) {
+              const nonCursorBuildingCount = buildingCount - building.amount;
+              building.specialCPS +=
+                upgrade.special * nonCursorBuildingCount * building.amount;
+
+              console.log("updating special cps", building);
+            }
             return { ...upgrade, owned: true };
           }
 
@@ -103,14 +108,7 @@ export const buyUpgrade = (
       ...state.settings,
       recalculateCPS: true,
     },
-    player: {
-      ...state.player,
-      cookies: state.player.cookies - payload.upgrade.cost,
-      cookieStats: {
-        ...state.player.cookieStats,
-        Spent: state.player.cookieStats.Spent - payload.upgrade.cost,
-      },
-    },
+    player: spendPlayerCookies(state.player, payload.upgrade.cost),
   };
 };
 

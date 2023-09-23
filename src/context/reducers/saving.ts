@@ -91,7 +91,7 @@ export const loadSave = (
     ...state,
     save: payload.base64,
     verseHolder: payload.verseHolder,
-    lastSave: payload.lastSave,
+    lastSaveLoaded: payload.lastSave,
     settings: { ...state.settings, recalculateCPS: true },
     pending: false,
     loading: false,

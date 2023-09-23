@@ -1,6 +1,6 @@
 import { Reducer } from "react";
 import { State, initialState } from "./store";
-import { clickCookie, earnCookie, spendCookie } from "./reducers/player";
+import { clickCookie, earnCookie } from "./reducers/player";
 import {
   LoadingAction,
   gameSaved,
@@ -17,11 +17,7 @@ import {
   BuyUpgradeAction,
   SetBuildingAction,
 } from "./reducers/building";
-import {
-  ClickCookieAction,
-  EarnCookieAction,
-  SpendCookieAction,
-} from "./reducers/player";
+import { ClickCookieAction, EarnCookieAction } from "./reducers/player";
 import { RecalculateCPSAction } from "./reducers/recalculateCPS";
 import { LeaderboardSavedAction } from "./reducers/leaderboard";
 
@@ -29,7 +25,6 @@ export type Action =
   | GameSavedAction
   | LoadSaveAction
   | ClickCookieAction
-  | SpendCookieAction
   | EarnCookieAction
   | RecalculateCPSAction
   | { type: "RESET_GAME" }
@@ -49,8 +44,6 @@ export const reducer: Reducer<State, Action> = (state, action) => {
     // Cookie reducers
     case "CLICK_COOKIE":
       return clickCookie(state);
-    case "SPEND_COOKIE":
-      return spendCookie(state, action.payload);
     case "EARN_COOKIE":
       return earnCookie(state, action.payload);
 

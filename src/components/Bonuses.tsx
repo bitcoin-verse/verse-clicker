@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Modal, { useModal } from "./Modal";
-import { useDispatch, useTrackedState } from "../context/store";
+import { useTrackedState } from "../context/store";
 import { useAccount } from "wagmi";
 import styled from "styled-components";
 import { formatNumber } from "../helpers/formatNumber";
@@ -17,7 +17,7 @@ const getTimeDiff = (diffMs: number) => {
   const diffDays = Math.floor(diffMs / 86400000); // days
   const diffHrs = Math.floor((diffMs % 86400000) / 3600000); // hours
   const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
-  const diffSecs = Math.floor(((diffMs % 86400000) % 3600000) / 60000); // minutes
+  const diffSecs = Math.floor(diffMs / 1000) - diffMins / 60; // seconds
 
   return diffDays + "d " + diffHrs + "h " + diffMins + "m " + diffSecs + "s";
 };
@@ -31,21 +31,23 @@ const BonusText = styled.div`
 `;
 
 const Bonuses = () => {
-  const { loading, lastSave, newCookies, verseHolder } = useTrackedState();
-  const { status, address } = useAccount();
-  const dispatch = useDispatch();
+  const { loading, lastSaveLoaded, newCookies, verseHolder } =
+    useTrackedState();
+  const { status } = useAccount();
   const { modalRef, showModal } = useModal();
-
-  const [lastSaveDate, setLastSaveDate] = useState<string>();
+  const [cachedSave, setCachedSave] = useState<string>();
 
   useEffect(() => {
-    if (!lastSave || !address) return;
-    const now = Date.now() / 1000;
-    const diffInMs = (now - lastSave) * 1000;
-    setLastSaveDate(getTimeDiff(diffInMs));
+    if (!lastSaveLoaded) return;
+    const now = new Date();
+    const then = new Date(lastSaveLoaded * 1000);
+    const diff = Math.abs(now.getTime() - then.getTime());
+    console.log(now, then, diff);
+    // const diffInMs = (now - lastSaveLoaded) * 1000;
 
-    dispatch({ type: "SAVE_GAME", payload: { address } });
-  }, [lastSave]);
+    // console.log(lastSaveLoaded);
+    setCachedSave(getTimeDiff(diff));
+  }, [lastSaveLoaded]);
 
   useEffect(() => {
     if (status === "connected" && !loading) {
@@ -58,7 +60,7 @@ const Bonuses = () => {
       <ModalContent>
         <h1>Welcome Back!</h1>
         <BonusText>
-          <div>It&rsquo;s been {lastSaveDate} since last save</div>
+          <div>It&rsquo;s been {cachedSave} since last save</div>
           <div>
             You have accumulated {formatNumber(newCookies)} cookies since then
           </div>
