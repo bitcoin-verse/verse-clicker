@@ -9,7 +9,8 @@ import background from "../assets/background.png";
 import { useTrackedState } from "../context/store";
 import { Web3Button } from "@web3modal/react";
 import { useAccount } from "wagmi";
-import Bonuses from "../components/Bonuses";
+import WelcomeModal from "../components/WelcomeModal";
+import Bonuses from "../components/Bonuses/Bonuses";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -60,7 +61,7 @@ const Main: FC = () => {
   return (
     <>
       <GlobalStyle />
-      <Bonuses />
+      <WelcomeModal />
       {(status !== "connected" || loading) && (
         <OverlayConnect>
           <div>
@@ -74,6 +75,7 @@ const Main: FC = () => {
           </div>
         </OverlayConnect>
       )}
+      <Bonuses />
       <ContentsWrapper>
         <Header />
         <GameBoard />

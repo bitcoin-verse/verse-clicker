@@ -4,6 +4,7 @@ import { useTrackedState } from "../context/store";
 import { useAccount } from "wagmi";
 import styled from "styled-components";
 import { formatNumber } from "../helpers/formatNumber";
+import ModalTitle from "./ModalTitle";
 
 const ModalContent = styled.div``;
 
@@ -25,15 +26,7 @@ const BonusText = styled.div`
   text-align: center;
 `;
 
-const Title = styled.h1`
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
-`;
-
-const Bonuses = () => {
+const WelcomeModal = () => {
   const { loading, lastSaveLoaded, newCookies, verseHolder } =
     useTrackedState();
   const { status } = useAccount();
@@ -62,7 +55,7 @@ const Bonuses = () => {
   return (
     <Modal modalRef={modalRef}>
       <ModalContent>
-        <Title>Welcome Back!</Title>
+        <ModalTitle>Welcome Back!</ModalTitle>
         <BonusText>
           <div>It&rsquo;s been {cachedSave} since last seen</div>
           <div>
@@ -98,4 +91,4 @@ const Bonuses = () => {
   );
 };
 
-export default Bonuses;
+export default WelcomeModal;
