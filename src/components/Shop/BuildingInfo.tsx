@@ -4,7 +4,6 @@ import { formatNumber } from "../../helpers/formatNumber";
 import styled from "styled-components";
 import { useProduction } from "../../hooks/useProduction";
 import { Title } from "../Title";
-import { H4 } from "../H4";
 
 const InfoWrapper = styled.div`
   padding: 0 0 1rem 0;

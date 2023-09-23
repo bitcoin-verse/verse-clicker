@@ -10,8 +10,13 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 0 1rem;
-  height: 100%;
+
+  box-sizing: border-box;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.125rem solid #086bc6;
+
+  background: #0f518f;
 `;
 
 const Upgrades: FC = () => {

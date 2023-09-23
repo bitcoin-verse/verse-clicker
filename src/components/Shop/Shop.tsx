@@ -13,14 +13,19 @@ const ShopContainer = styled.div`
   gap: 1rem;
 `;
 
+const ContentWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
 const Shop: FC = () => {
   return (
     <ShopContainer>
       <H4>Buildings and Upgrades</H4>
-      <div style={{ display: "flex" }}>
+      <ContentWrapper>
         <ShopList />
         <Upgrades />
-      </div>
+      </ContentWrapper>
     </ShopContainer>
   );
 };

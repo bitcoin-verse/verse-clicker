@@ -12,7 +12,6 @@ const TabsWrapper = styled.div`
 const Button = styled.button<{ isSelected: boolean }>`
   outline: none;
   border: none;
-  background: none;
 
   padding: 0.5rem 1rem;
   border-radius: 2.25rem;
@@ -29,6 +28,7 @@ const Button = styled.button<{ isSelected: boolean }>`
           color: white;
         `
       : css`
+          background: transparent;
           color: #899bb5;
         `};
 `;
