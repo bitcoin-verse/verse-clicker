@@ -7,8 +7,9 @@ import Farm from "./Farm";
 
 const BonusesWrapper = styled.div`
   position: fixed;
+
   top: 30%;
-  z-index: 1;
+  z-index: 999;
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
