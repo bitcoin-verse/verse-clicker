@@ -104,6 +104,7 @@ const ShopList: FC = () => {
   return (
     <Wrapper>
       {buildings.map((building, i) => {
+        if (building.locked && buildings?.[i - 3]?.locked) return null;
         return (
           <Button
             key={i}

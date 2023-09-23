@@ -16,7 +16,16 @@ const Save: FC = () => {
   }, [wiped]);
 
   return (
-    <div style={{ display: "flex", gap: 16, padding: "16px 0" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: 16,
+        padding: "16px 0",
+        maxWidth: "20rem",
+        margin: "0 auto",
+        alignItems: "flex-end",
+      }}
+    >
       <Button
         onClick={() => {
           console.log("saving");

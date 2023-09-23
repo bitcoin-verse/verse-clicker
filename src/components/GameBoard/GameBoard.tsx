@@ -6,6 +6,7 @@ import Cookie from "./Cookie";
 import styled from "styled-components";
 import Leaderboard from "../Leaderboard";
 import Tabs from "../Tabs";
+import Advertisement from "../Advertisement";
 
 const StyledGameBoard = styled.section`
   position: relative;
@@ -66,6 +67,7 @@ const GameBoard: FC = () => {
         <TabContent>
           {selectedTab === 0 ? <Shop /> : <Leaderboard />}
         </TabContent>
+        <Advertisement />
       </ShopSection>
     </StyledGameBoard>
   );

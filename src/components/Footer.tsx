@@ -4,25 +4,28 @@ import Save from "./Save";
 
 const StyledFooter = styled.footer`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  min-height: 20rem;
+
   padding: 1rem;
+  flex-direction: column;
 `;
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
 `;
 
 const Footer: FC = () => {
   return (
     <>
-      <Wrapper>
-        <Save />
-      </Wrapper>
       <StyledFooter>
-        <div>Copyright 2023</div>
-        <div>Made by: Micah, Paul, Ricky</div>
+        <Save />
+        <Wrapper>
+          <div>Copyright 2023</div>
+          <div>Made by: Micah, Paul, Ricky</div>
+        </Wrapper>
       </StyledFooter>
     </>
   );
