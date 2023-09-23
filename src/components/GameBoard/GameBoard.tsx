@@ -54,6 +54,7 @@ const TabContent = styled.div`
 
 const MainSection = styled.div`
   margin-top: 1rem;
+  overflow: hidden;
 `;
 
 const GameBoard: FC = () => {

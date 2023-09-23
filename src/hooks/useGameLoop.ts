@@ -46,6 +46,7 @@ const useGameLoop = () => {
   useEffect(() => {
     if (newRecalc && address && !recalculateCPS) {
       dispatch({ type: "SAVE_GAME", payload: { address } });
+      dispatch({ type: "GET_LEADERBOARD" });
       setNewRecalc(false);
     }
   }, [recalculateCPS, newRecalc]);
