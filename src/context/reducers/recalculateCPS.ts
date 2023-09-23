@@ -27,7 +27,7 @@ export const recalculateCPS = (state: State): State => {
     newCookies: cookieDiff,
     player: {
       ...state.player,
-      aMPC,
+      aMPC:state.verseHolder ? aMPC * 10 : aMPC,
       aMPF,
       cookies: state.player.cookies + cookieDiff,
       cookieStats: {

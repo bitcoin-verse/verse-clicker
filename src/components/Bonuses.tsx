@@ -67,7 +67,7 @@ const Bonuses = () => {
           </div>
           {verseHolder ? (
             <div>
-              You hold VERSE, your clicks are <b>Twice as effective</b> as non
+              You hold VERSE, your clicks are <b>10 TIMES as effective</b> as non
               Verse holders
             </div>
           ) : (
