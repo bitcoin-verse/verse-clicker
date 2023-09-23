@@ -7,6 +7,11 @@ const TabsWrapper = styled.div`
   border-radius: 2.25rem;
   gap: 0.5rem;
   width: fit-content;
+  align-self: center;
+
+  @media (min-width: 768px) {
+    align-self: flex-end;
+  }
 `;
 
 const Button = styled.button<{ isSelected: boolean }>`
