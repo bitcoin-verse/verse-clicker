@@ -4,13 +4,12 @@ import { useDispatch, useTrackedState } from "../../context/store";
 import Building from "../../classes/Building";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getBuildingsCost } from "../../helpers/buildingHelpers";
-import cookie from "../../assets/verse-cookie.png";
 
 const BuyWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
-  padding: 0.5rem 0;
   flex-wrap: wrap;
+  margin-bottom: 1rem;
 `;
 
 const Button = styled.button`
@@ -24,6 +23,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
 
   border: none;
   border-radius: 1rem;
@@ -37,12 +37,6 @@ const Button = styled.button`
   &:disabled {
     opacity: 0.5;
   }
-`;
-
-const VerseCookie = styled.img`
-  height: 1rem;
-  width: 1rem;
-  margin: 0 0 0 1rem;
 `;
 
 interface Props {
@@ -74,7 +68,6 @@ const Register: FC<Props> = ({ building }) => {
         }}
       >
         <div>1x</div>
-        <VerseCookie src={cookie} />
         <div>{formatNumber(getBuildingsCost(1, building.cost))}</div>
       </Button>
       <Button
@@ -86,7 +79,6 @@ const Register: FC<Props> = ({ building }) => {
         }}
       >
         <div>5x</div>
-        <VerseCookie src={cookie} />
         <div>{formatNumber(getBuildingsCost(5, building.cost))}</div>
       </Button>
       <Button
@@ -98,7 +90,6 @@ const Register: FC<Props> = ({ building }) => {
         }}
       >
         <div>10x</div>
-        <VerseCookie src={cookie} />
         <div>{formatNumber(getBuildingsCost(10, building.cost))}</div>
       </Button>
     </BuyWrapper>

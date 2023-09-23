@@ -3,21 +3,13 @@ import Building from "../../classes/Building";
 import { formatNumber } from "../../helpers/formatNumber";
 import styled from "styled-components";
 import { useProduction } from "../../hooks/useProduction";
+import InfoTitle from "../InfoTitle";
 
 const InfoWrapper = styled.div`
   padding: 0 0 1rem 0;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  border-bottom: 1.5px solid #dedede;
-  margin-bottom: 1rem;
-`;
-
-const InfoTitle = styled.div`
-  font-weight: 0.875rem;
-  line-height: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
 `;
 
 const Stat = styled.div`

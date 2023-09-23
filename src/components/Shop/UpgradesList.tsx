@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useDispatch, useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import Building from "../../classes/Building";
+import InfoTitle from "../InfoTitle";
 
 const Button = styled.button`
   background: indianred;
@@ -12,29 +13,27 @@ const Button = styled.button`
   outline: none;
   padding: 1rem;
   border-radius: 1rem;
-  border: 1px solid grey;
   cursor: pointer;
   align-items: center;
 
   flex: 1;
 
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 5fr 2fr;
   grid-gap: 0.25rem;
   grid-template-areas: "title price" "desc price";
-  color: black;
+  background: #163756;
 
   &:disabled {
     cursor: default;
-    background: lightgrey;
-    color: darkgrey;
+    opacity: 0.5;
   }
 `;
 
 const Title = styled.div`
   grid-area: title;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.75rem;
   text-align: left;
   color: inherit;
 `;
@@ -44,10 +43,11 @@ const Description = styled.div`
   font-size: 0.75rem;
   text-align: left;
   color: inherit;
+  color: #899bb5;
 `;
 const Price = styled.div`
   grid-area: price;
-  font-size: 1.25rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-align: right;
   color: inherit;
@@ -60,13 +60,10 @@ const UpgrdesWrapper = styled.div`
 `;
 
 const NextUpgrade = styled.div`
-  color: black;
-
-  background: pink;
-  padding: 1rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 0 1.25rem;
   text-align: center;
-  border-radius: 1rem;
 `;
 
 interface Props {
@@ -92,7 +89,7 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
 
   return (
     <UpgrdesWrapper>
-      <h3>UPGRADES</h3>
+      <InfoTitle>Upgrades</InfoTitle>
       {upgrades.map((upgrade, i) => {
         if (upgrade.owned) return null;
         if (building.amount >= upgrade.limit) {
@@ -118,8 +115,8 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
         ) {
           return (
             <NextUpgrade key={upgrade.name}>
-              Next upgrade available in {upgrade.limit - building.amount} more{" "}
-              {building.name}(s)
+              You need {upgrade.limit - building.amount} more {building.name}(s) to
+              unlock the next upgrade
             </NextUpgrade>
           );
         }
