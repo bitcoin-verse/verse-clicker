@@ -2,15 +2,16 @@ import React, { FC, PropsWithChildren, RefObject, useRef } from "react";
 import styled from "styled-components";
 
 export const Dialog = styled.dialog`
-  padding: 3rem;
+  padding: 2rem;
   border: none;
   border-radius: 1rem;
 
   background: white;
-  box-shadow: 0px 4px 120px 0px #0000000;
-  max-width: 30rem;
+  box-shadow: 0px 4px 120px 0px #000000;
+  width: 30rem;
+  max-width: calc(100% - 4rem);
+
   box-sizing: border-box;
-  width: 100%;
   margin: auto;
 
   &::backdrop {

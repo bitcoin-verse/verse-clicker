@@ -20,11 +20,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Helvetica', sans-serif;
     color: white;
   }
-  html, 
-  body { 
-   overflow: hidden; 
-   height: 100dvh;
-  }
 `;
 
 const ContentsWrapper = styled.div`
@@ -32,7 +27,6 @@ const ContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  overflow: auto;
   height: 100vh;
   width: 100%;
   padding: 16px;
