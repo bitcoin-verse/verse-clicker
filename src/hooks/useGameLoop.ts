@@ -40,7 +40,8 @@ const useGameLoop = () => {
     });
   }, [player.aMPF, frameRate]);
 
-  useInterval(gameLoop, document.hasFocus() ? 1000 / frameRate : 1000);
+  const hasFocus = document.hasFocus();
+  useInterval(gameLoop, hasFocus ? 1000 / frameRate : 1000);
 
   useEffect(() => {
     if (newRecalc && address && !recalculateCPS) {
