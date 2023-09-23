@@ -13,6 +13,8 @@ export const Dialog = styled.dialog`
 
   box-sizing: border-box;
   margin: auto;
+  background: #0f518f;
+  border: 2px solid #086bc6;
 
   &::backdrop {
     background: rgba(0, 0, 0, 0.7);
@@ -27,8 +29,8 @@ export const CloseButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  color: black;
   font-size: 1rem;
+  font-weight: 700;
 `;
 
 interface Props {

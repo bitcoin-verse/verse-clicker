@@ -8,8 +8,12 @@ import InfoTitle from "../InfoTitle";
 const InfoWrapper = styled.div`
   padding: 0 0 1rem 0;
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  
+  @media (min-width: 768px) {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
 `;
 
 const Stat = styled.div`
@@ -31,7 +35,8 @@ const BuildingInfo: FC<Props> = ({ building }) => {
 
   return (
     <InfoWrapper>
-      <InfoTitle>Buy</InfoTitle>
+      <InfoTitle style={{ flex: 1 }}>Buy</InfoTitle>
+
       <Stat>
         Production: <span>{formatNumber(production)} CPS each</span>
       </Stat>

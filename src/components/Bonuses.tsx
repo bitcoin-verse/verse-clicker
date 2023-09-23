@@ -5,13 +5,7 @@ import { useAccount } from "wagmi";
 import styled from "styled-components";
 import { formatNumber } from "../helpers/formatNumber";
 
-const ModalContent = styled.div`
-  color: black;
-
-  & * {
-    color: black;
-  }
-`;
+const ModalContent = styled.div``;
 
 const getTimeDiff = (diffMs: number) => {
   const diffDays = Math.floor(diffMs / 86400000); // days
@@ -28,6 +22,15 @@ const BonusText = styled.div`
   gap: 1rem;
   font-weight: 600;
   padding-top: 1fr;
+  text-align: center;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
 `;
 
 const Bonuses = () => {
@@ -59,16 +62,17 @@ const Bonuses = () => {
   return (
     <Modal modalRef={modalRef}>
       <ModalContent>
-        <h1>Welcome Back!</h1>
+        <Title>Welcome Back!</Title>
         <BonusText>
-          <div>It&rsquo;s been {cachedSave} since last save</div>
+          <div>It&rsquo;s been {cachedSave} since last seen</div>
           <div>
-            You have accumulated {formatNumber(newCookies)} cookies since then
+            You have accumulated {formatNumber(newCookies)} cookies while you
+            were away
           </div>
           {verseHolder ? (
             <div>
-              You hold VERSE, your clicks are <b>10 TIMES as effective</b> as non
-              Verse holders
+              You hold VERSE, your clicks are <b>10 TIMES as effective</b> as
+              non Verse holders
             </div>
           ) : (
             <div>
