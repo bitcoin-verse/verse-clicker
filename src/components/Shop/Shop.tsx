@@ -5,17 +5,25 @@ import styled from "styled-components";
 import { H4 } from "../H4";
 
 const ShopContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  grid-template-columns: 30% 70%;
-  align-items: start;
-  gap: 1rem;
+  & > h4 {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    & > h4 {
+      display: block;
+    }
+  }
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 1rem;
+
+  @media (min-width: 768px) {
+    margin-top: 1rem;
+    flex-direction: row;
+  }
 `;
 
 const Shop: FC = () => {

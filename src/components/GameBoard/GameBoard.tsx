@@ -36,11 +36,14 @@ const ShopSection = styled.div`
 
 const TabContent = styled.div`
   margin-top: 1rem;
-  padding: 1rem;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 1rem;
-  background: #163756;
+
+  @media (min-width: 768px) {
+    padding: 1rem;
+    background: #163756;
+  }
 `;
 
 const GameBoard: FC = () => {

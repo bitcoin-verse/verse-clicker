@@ -5,9 +5,20 @@ import placeholder from "../../assets/placeholder.png";
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  overflow: visible;
+  gap: 1rem;
+  max-width: calc(100vw - 2rem);
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    gap: 0.5rem;
+    flex-direction: column;
+    background: #163756;
+    padding-bottom: unset;
+    max-width: unset;
+    overflow: visible;
+  }
 `;
 
 const Button = styled.button<{ isSelected: boolean }>`
@@ -37,12 +48,20 @@ const Button = styled.button<{ isSelected: boolean }>`
             content: "";
             position: absolute;
             background: #0085ff;
-            right: -0.5rem;
-            top: calc(50% -0.5rem);
             width: 1.25rem;
             height: 1.25rem;
             transform: rotateZ(45deg);
             z-index: -1;
+
+            left: calc(50% - 0.5rem);
+            bottom: -0.5rem;
+
+            @media (min-width: 768px) {
+              right: -0.5rem;
+              left: unset;
+              bottom: unset;
+              top: calc(50% -0.5rem);
+            }
           }
         `
       : css`
