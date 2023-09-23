@@ -21,7 +21,7 @@ const Button = styled.button<{ isSelected: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.5rem;
 
   padding: 0.25rem 0.5rem 0.25rem 0.25rem;
 

@@ -4,29 +4,45 @@ import { useDispatch, useTrackedState } from "../../context/store";
 import Building from "../../classes/Building";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getBuildingsCost } from "../../helpers/buildingHelpers";
+import cookie from "../../assets/verse-cookie.png";
 
 const BuyWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  flex-wrap: wrap;
 `;
 
 const Button = styled.button`
-  padding: 0.5rem;
+  padding: 1rem;
   background: gold;
   font-weight: 600;
-  border: 1px solid grey;
   outline: none;
-  flex: 1;
+
   text-align: center;
-  border-radius: 0.75rem;
   cursor: pointer;
-  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 1rem;
+  background: #163756;
+  color: white;
+
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1rem;
 
   &:disabled {
-    cursor: default;
-    background: lightgrey;
+    opacity: 0.5;
   }
+`;
+
+const VerseCookie = styled.img`
+  height: 1rem;
+  width: 1rem;
+  margin: 0 0 0 1rem;
 `;
 
 interface Props {
@@ -48,40 +64,44 @@ const Register: FC<Props> = ({ building }) => {
   );
 
   return (
-    <>
-      <BuyWrapper>
-        <Button
-          disabled={player.cookies < getBuildingsCost(1, building.cost)}
-          onClick={() => {
-            if (player.cookies < getBuildingsCost(1, building.cost)) return;
+    <BuyWrapper>
+      <Button
+        disabled={player.cookies < getBuildingsCost(1, building.cost)}
+        onClick={() => {
+          if (player.cookies < getBuildingsCost(1, building.cost)) return;
 
-            buyBuilding(1);
-          }}
-        >
-          1x: {formatNumber(getBuildingsCost(1, building.cost))}
-        </Button>
-        <Button
-          disabled={player.cookies < getBuildingsCost(5, building.cost)}
-          onClick={() => {
-            if (player.cookies < getBuildingsCost(5, building.cost)) return;
+          buyBuilding(1);
+        }}
+      >
+        <div>1x</div>
+        <VerseCookie src={cookie} />
+        <div>{formatNumber(getBuildingsCost(1, building.cost))}</div>
+      </Button>
+      <Button
+        disabled={player.cookies < getBuildingsCost(5, building.cost)}
+        onClick={() => {
+          if (player.cookies < getBuildingsCost(5, building.cost)) return;
 
-            buyBuilding(5);
-          }}
-        >
-          5x: {formatNumber(getBuildingsCost(5, building.cost))}
-        </Button>
-        <Button
-          disabled={player.cookies < getBuildingsCost(10, building.cost)}
-          onClick={() => {
-            if (player.cookies < getBuildingsCost(10, building.cost)) return;
+          buyBuilding(5);
+        }}
+      >
+        <div>5x</div>
+        <VerseCookie src={cookie} />
+        <div>{formatNumber(getBuildingsCost(5, building.cost))}</div>
+      </Button>
+      <Button
+        disabled={player.cookies < getBuildingsCost(10, building.cost)}
+        onClick={() => {
+          if (player.cookies < getBuildingsCost(10, building.cost)) return;
 
-            buyBuilding(10);
-          }}
-        >
-          10x: {formatNumber(getBuildingsCost(10, building.cost))}
-        </Button>
-      </BuyWrapper>
-    </>
+          buyBuilding(10);
+        }}
+      >
+        <div>10x</div>
+        <VerseCookie src={cookie} />
+        <div>{formatNumber(getBuildingsCost(10, building.cost))}</div>
+      </Button>
+    </BuyWrapper>
   );
 };
 
