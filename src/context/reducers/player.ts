@@ -23,6 +23,9 @@ export const earnCookie = (
 
   return {
     ...state,
-    player: earnPlayerCookies(state.player, payload),
+    player: earnPlayerCookies(
+      state.player,
+      document.hasFocus() ? payload : payload * state.settings.frameRate,
+    ),
   };
 };

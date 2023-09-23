@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useTrackedState } from "../context/store";
 import useInterval from "./useInterval";
 import { useAccount } from "wagmi";
+import { formatNumber } from "../helpers/formatNumber";
 
 const useGameLoop = () => {
   const {
@@ -13,6 +14,10 @@ const useGameLoop = () => {
   const [newRecalc, setNewRecalc] = useState(false);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    document.title = `Verse Clicker | ${formatNumber(player.cookies)} Cookies`;
+  }, [player.cookies]);
 
   useEffect(() => {
     if (!save) {
@@ -35,7 +40,7 @@ const useGameLoop = () => {
     });
   }, [player.aMPF, frameRate]);
 
-  useInterval(gameLoop, 1000 / frameRate);
+  useInterval(gameLoop, document.hasFocus() ? 1000 / frameRate : 1000);
 
   useEffect(() => {
     if (newRecalc && address && !recalculateCPS) {
