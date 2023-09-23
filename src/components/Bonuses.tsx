@@ -17,7 +17,7 @@ const getTimeDiff = (diffMs: number) => {
   const diffDays = Math.floor(diffMs / 86400000); // days
   const diffHrs = Math.floor((diffMs % 86400000) / 3600000); // hours
   const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
-  const diffSecs = Math.floor(diffMs / 1000) - diffMins / 60; // seconds
+  const diffSecs = Math.floor(diffMs / 1000 - diffMins / 60); // seconds
 
   return diffDays + "d " + diffHrs + "h " + diffMins + "m " + diffSecs + "s";
 };
@@ -42,10 +42,6 @@ const Bonuses = () => {
     const now = new Date();
     const then = new Date(lastSaveLoaded * 1000);
     const diff = Math.abs(now.getTime() - then.getTime());
-    console.log(now, then, diff);
-    // const diffInMs = (now - lastSaveLoaded) * 1000;
-
-    // console.log(lastSaveLoaded);
     setCachedSave(getTimeDiff(diff));
   }, [lastSaveLoaded]);
 

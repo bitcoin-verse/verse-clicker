@@ -11,13 +11,14 @@ export const recalculateCPS = (state: State): State => {
   let cookieDiff = 0;
 
   if (state.lastSaveLoaded) {
-    const now = Date.now() / 1000;
-    const diffInSec = now - Number(state.lastSaveLoaded);
-    cookieDiff = diffInSec * CPS;
+    const now = new Date();
+    const then = new Date(state.lastSaveLoaded * 1000);
+    const diff = Math.abs(now.getTime() - then.getTime()) / 1000;
+    cookieDiff = (diff * CPS) / state.settings.frameRate;
     newCookies = state.player.cookies + cookieDiff;
-    newEarned = state.player.cookieStats.Earned + diffInSec * CPS;
+    newEarned = state.player.cookieStats.Earned + newCookies;
   }
-  console.log(newCookies, newEarned);
+
   const aMPF = CPS / state.settings.frameRate;
 
   return {
@@ -32,10 +33,10 @@ export const recalculateCPS = (state: State): State => {
       ...state.player,
       aMPC,
       aMPF,
-      // cookies: newCookies,
+      cookies: newCookies,
       cookieStats: {
         ...state.player.cookieStats,
-        // Earned: newEarned,
+        Earned: newEarned,
       },
     },
   };
