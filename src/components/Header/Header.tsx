@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
   align-items: center;
   max-width: 80rem;
   margin: auto;
-  padding: 1.25rem;
+  padding: 1.25rem 1.25rem 0;
 
   @media (min-width: 768px) {
     grid-template-rows: 1fr;

@@ -2,11 +2,10 @@ import React, { FC } from "react";
 import Header from "../components/Header/Header";
 import styled, { createGlobalStyle } from "styled-components";
 import Footer from "../components/Footer";
-import GameBoard from "../components/GameBoard";
+import GameBoard from "../components/GameBoard/GameBoard";
 import useGameLoop from "../hooks/useGameLoop";
 
 import background from "../assets/background.png";
-import Leaderboard from "../components/Leaderboard";
 import { useTrackedState } from "../context/store";
 import { Web3Button } from "@web3modal/react";
 import { useAccount } from "wagmi";
@@ -28,10 +27,12 @@ const GlobalStyle = createGlobalStyle`
 
 const ContentsWrapper = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
-  height: 100dvh;
   background-image: url(${background});
   background-attachment: fixed;
+  min-height: 100dvh;
 `;
 
 const OverlayConnect = styled.div`
@@ -58,26 +59,25 @@ const Main: FC = () => {
   return (
     <>
       <GlobalStyle />
-      <ContentsWrapper>
-        {(status !== "connected" || loading) && (
-          <OverlayConnect>
-            <div>
-              {status === "connected" ? (
-                <h1>Loading...</h1>
-              ) : (
-                <h1 style={{ margin: "2rem" }}>Connect Wallet to start</h1>
-              )}
+      <Bonuses />
+      {(status !== "connected" || loading) && (
+        <OverlayConnect>
+          <div>
+            {status === "connected" ? (
+              <h1>Loading...</h1>
+            ) : (
+              <h1 style={{ margin: "2rem" }}>Connect Wallet to start</h1>
+            )}
 
-              {status !== "connected" && <Web3Button />}
-            </div>
-          </OverlayConnect>
-        )}
+            {status !== "connected" && <Web3Button />}
+          </div>
+        </OverlayConnect>
+      )}
+      <ContentsWrapper>
         <Header />
         <GameBoard />
-        {status === "connected" && <Leaderboard />}
         <Footer />
       </ContentsWrapper>
-      <Bonuses />
     </>
   );
 };

@@ -4,8 +4,10 @@ import { useDispatch, useTrackedState } from "../../context/store";
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  width: 100%;
   gap: 0.5rem;
+  overflow-x: auto;
 `;
 
 const Button = styled.button<{ selected: boolean }>`
@@ -18,6 +20,7 @@ const Button = styled.button<{ selected: boolean }>`
   text-align: left;
   font-weight: 600;
   display: grid;
+  min-width: 10rem;
   overflow-wrap: anywhere;
 
   border-top-left-radius: 0.5rem;
