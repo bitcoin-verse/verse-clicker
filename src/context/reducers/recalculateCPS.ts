@@ -10,16 +10,16 @@ export const recalculateCPS = (state: State): State => {
   let newEarned = 0;
   let cookieDiff = 0;
 
+  const aMPF = CPS / state.settings.frameRate;
+
   if (state.lastSaveLoaded) {
     const now = new Date();
     const then = new Date(state.lastSaveLoaded * 1000);
     const diff = Math.abs(now.getTime() - then.getTime()) / 1000;
-    cookieDiff = (diff * CPS) / state.settings.frameRate;
+    cookieDiff = diff * CPS;
     newCookies = state.player.cookies + cookieDiff;
     newEarned = state.player.cookieStats.Earned + newCookies;
   }
-
-  const aMPF = CPS / state.settings.frameRate;
 
   return {
     ...state,
