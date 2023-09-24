@@ -8,12 +8,13 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 import styled from "styled-components";
+import { formatEther } from "viem";
+import { readContract } from "wagmi/actions";
 
 import testVerseABI from "../../contracts/testVerseABI";
 import BurnButtons from "./BurnButtons";
 import { useDispatch, useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
-import { formatEther } from "viem";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -86,12 +87,13 @@ const Burn: FC = () => {
   const { data: txData, isSuccess: txWaitSuccess } =
     useWaitForTransaction(data);
 
-  const { data: readData } = useContractRead({
+  const { data: readData, error } = useContractRead({
     address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
 
     abi: testVerseABI,
     functionName: "balanceOf",
     args: address ? [address] : undefined,
+    account: address,
   });
 
   const [newCookies, setNewCookies] = useState(0);
@@ -104,9 +106,29 @@ const Burn: FC = () => {
   }>();
 
   useEffect(() => {
+    console.log(readData, error);
     if (!readData) return;
     setBalanceData({ value: readData, formatted: formatEther(readData) });
-  }, [readData]);
+  }, [readData, error]);
+
+  useEffect(() => {
+    if (!address) return;
+    const getBal = async () => {
+      const res = await readContract({
+        address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
+        abi: testVerseABI,
+        functionName: "balanceOf",
+        args: [address],
+      });
+
+      console.log("response", res);
+      try {
+      } catch (error) {
+        console.log("errror", error);
+      }
+    };
+    getBal();
+  }, [address]);
 
   useEffect(() => {
     if (!txData) return;
