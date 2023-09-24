@@ -66,7 +66,6 @@ const buttonsList = [
 ];
 
 const Burn: FC = () => {
-  const { address } = useAccount();
   const {
     player: { aMPF },
     settings: { frameRate },
@@ -74,16 +73,18 @@ const Burn: FC = () => {
 
   const dispatch = useDispatch();
 
+  const { address } = useAccount();
+  const { data: balanceData } = useBalance({
+    address,
+    token: TVERSE_CONTRACT,
+    chainId: goerli.id,
+    watch: true,
+  });
+
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({
     address: TVERSE_CONTRACT,
     abi: testVerseABI,
     functionName: "burn",
-    chainId: goerli.id,
-  });
-
-  const { data: balanceData } = useBalance({
-    address,
-    token: TVERSE_CONTRACT,
     chainId: goerli.id,
   });
 
