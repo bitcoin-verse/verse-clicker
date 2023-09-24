@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/verse-clicker/static/js/main.1aad1cd8.js",
+    "main.js": "/verse-clicker/static/js/main.bf192dc7.js",
     "static/js/44.4ed125cc.chunk.js": "/verse-clicker/static/js/44.4ed125cc.chunk.js",
     "static/js/406.e63f253e.chunk.js": "/verse-clicker/static/js/406.e63f253e.chunk.js",
     "static/js/871.2ccbf989.chunk.js": "/verse-clicker/static/js/871.2ccbf989.chunk.js",
     "static/js/27.8c1f39b9.chunk.js": "/verse-clicker/static/js/27.8c1f39b9.chunk.js",
     "static/js/199.4ac29778.chunk.js": "/verse-clicker/static/js/199.4ac29778.chunk.js",
     "static/js/326.d69774f1.chunk.js": "/verse-clicker/static/js/326.d69774f1.chunk.js",
-    "static/js/178.af47ac7c.chunk.js": "/verse-clicker/static/js/178.af47ac7c.chunk.js",
+    "static/js/178.22a9bfc2.chunk.js": "/verse-clicker/static/js/178.22a9bfc2.chunk.js",
     "static/media/background.png": "/verse-clicker/static/media/background.5cb3eff01cef9d55df9e.png",
     "static/media/verse-cookie.png": "/verse-clicker/static/media/verse-cookie.ad81f6af71a0c31fa9ef.png",
     "static/media/cookie-bite.png": "/verse-clicker/static/media/cookie-bite.837e3ef99b99bfe9c49c.png",
@@ -17,6 +17,6 @@
     "index.html": "/verse-clicker/index.html"
   },
   "entrypoints": [
-    "static/js/main.1aad1cd8.js"
+    "static/js/main.bf192dc7.js"
   ]
 }
