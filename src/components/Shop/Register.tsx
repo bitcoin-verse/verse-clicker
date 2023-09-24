@@ -14,7 +14,6 @@ const BuyWrapper = styled.div`
 
 const Button = styled.button`
   padding: 1rem;
-  background: gold;
   font-weight: 600;
   outline: none;
 
@@ -35,6 +34,7 @@ const Button = styled.button`
   line-height: 1rem;
 
   &:disabled {
+    cursor: default;
     opacity: 0.5;
   }
 `;
