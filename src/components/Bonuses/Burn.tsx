@@ -1,6 +1,11 @@
 import React, { FC, useEffect, useState } from "react";
 import { ModalTitle, ModalContent } from "../ModalStyles";
-import { useAccount, useContractWrite, useWaitForTransaction } from "wagmi";
+import {
+  useAccount,
+  useBalance,
+  useContractWrite,
+  useWaitForTransaction,
+} from "wagmi";
 import { fetchBalance } from "wagmi/actions";
 import styled from "styled-components";
 
@@ -84,9 +89,19 @@ const Burn: FC = () => {
   const { data: txData, isSuccess: txWaitSuccess } =
     useWaitForTransaction(data);
 
+  const { data: balanceData, error: balanceError } = useBalance({
+    address,
+    token: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
+    chainId: goerli.id,
+  });
+
   const [newCookies, setNewCookies] = useState(0);
   const [hours, setHours] = useState(buttonsList[0].hours);
   const [showLoading, setShowLoading] = useState(false);
+
+  useEffect(() => {
+    console.log("balancedata", balanceData, balanceError);
+  }, [balanceData, balanceError]);
 
   useEffect(() => {
     if (!address) return;
