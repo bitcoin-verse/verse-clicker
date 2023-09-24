@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import ModalTitle from "../ModalTitle";
+import { ModalContent, ModalTitle } from "../ModalStyles";
 
 const Farm: FC = () => {
   return (
-    <div style={{ textAlign: "center" }}>
+    <ModalContent>
       <ModalTitle>Double CPS!</ModalTitle>
       <div>Have verse staked or locked in a farm for a 2xCPS multiplier</div>
       <div>
@@ -17,7 +17,7 @@ const Farm: FC = () => {
         </a>{" "}
         NOW!
       </div>
-    </div>
+    </ModalContent>
   );
 };
 

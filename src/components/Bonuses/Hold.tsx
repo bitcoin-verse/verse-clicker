@@ -1,20 +1,20 @@
 import React, { FC } from "react";
 import { useTrackedState } from "../../context/store";
-import ModalTitle from "../ModalTitle";
+import { ModalContent, ModalTitle } from "../ModalStyles";
 
 const Hold: FC = () => {
   const { verseHolder } = useTrackedState();
 
   if (verseHolder)
     return (
-      <>
+      <ModalContent>
         <ModalTitle>You hold verse.</ModalTitle>
         <div>10x CPC multiplier applied to all your clicks</div>
-      </>
+      </ModalContent>
     );
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <ModalContent>
       <ModalTitle>Get 10x CPC multiplier</ModalTitle>
       <div>
         Get 10 times the amount of cookies per click just by holding VERSE.{" "}
@@ -31,7 +31,7 @@ const Hold: FC = () => {
         </a>{" "}
         NOW!
       </div>
-    </div>
+    </ModalContent>
   );
 };
 

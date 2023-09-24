@@ -4,9 +4,7 @@ import { useTrackedState } from "../context/store";
 import { useAccount } from "wagmi";
 import styled from "styled-components";
 import { formatNumber } from "../helpers/formatNumber";
-import ModalTitle from "./ModalTitle";
-
-const ModalContent = styled.div``;
+import { ModalContent, ModalTitle } from "./ModalStyles";
 
 const getTimeDiff = (diffMs: number) => {
   const diffDays = Math.floor(diffMs / 86400000); // days
@@ -27,7 +25,7 @@ const BonusText = styled.div`
 `;
 
 const WelcomeModal = () => {
-  const { loading, lastSaveLoaded, newCookies, verseHolder, error } =
+  const { loading, lastSaveLoaded, newCookies, verseHolder, error, pending } =
     useTrackedState();
   const { status } = useAccount();
   const { modalRef, showModal } = useModal();
@@ -43,7 +41,7 @@ const WelcomeModal = () => {
   }, [lastSaveLoaded]);
 
   useEffect(() => {
-    if (status === "connected" && !loading && !error) {
+    if (status === "connected" && !loading && (!error || !pending)) {
       setWasLoaded((wasLoaded) => {
         if (wasLoaded) return true;
         showModal();

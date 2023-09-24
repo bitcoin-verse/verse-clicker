@@ -4,6 +4,7 @@ import Modal, { useModal } from "../Modal";
 import Burn from "./Burn";
 import Hold from "./Hold";
 import Farm from "./Farm";
+import { useTrackedState } from "../../context/store";
 
 const BonusesWrapper = styled.div`
   position: fixed;
@@ -27,8 +28,8 @@ const BonusesWrapper = styled.div`
   }
 `;
 
-const BonusButton = styled.button`
-  background: #163756;
+const BonusButton = styled.button<{ hasBonus?: boolean }>`
+  background: ${({ hasBonus }) => (hasBonus ? "#086bc6" : "#163756")};
   animation: glow 2s infinite alternate;
   padding: 0.5rem;
   color: white;
@@ -42,6 +43,7 @@ const BonusButton = styled.button`
 const Bonuses: FC = () => {
   const { modalRef, showModal } = useModal();
   const [content, setContent] = useState("");
+  const { verseHolder } = useTrackedState();
 
   const getModalContent = () => {
     switch (content) {
@@ -64,6 +66,7 @@ const Bonuses: FC = () => {
             setContent("hold");
             showModal();
           }}
+          hasBonus={verseHolder}
         >
           Hold
         </BonusButton>

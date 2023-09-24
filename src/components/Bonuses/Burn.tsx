@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import ModalTitle from "../ModalTitle";
+import { ModalTitle, ModalContent } from "../ModalStyles";
 
 const Burn: FC = () => {
   return (
-    <div style={{ textAlign: "center" }}>
+    <ModalContent>
       <ModalTitle>Burn to earn</ModalTitle>
       <div>
         Get 24hrs worth of cookies at your current CPS rate, just by burning a
@@ -12,7 +12,7 @@ const Burn: FC = () => {
       <button style={{ color: "black" }} disabled>
         BURN NOW (coming soon)
       </button>
-    </div>
+    </ModalContent>
   );
 };
 
