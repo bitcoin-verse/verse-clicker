@@ -12,7 +12,6 @@ export const calculateTotalCPS = (buildings: Building[]) => {
 
     let multiplier = 1;
 
-    console.log("building unlocked");
     building.upgrades.forEach((upgrade) => {
       if (!upgrade.owned) return;
       if (index === 0) {

@@ -27,7 +27,7 @@ const useGameLoop = () => {
     }
 
     if (recalculateCPS) {
-      console.log("recalculate cps");
+      console.log("Recalculating CPS");
       dispatch({ type: "RECALCULATE_CPS" });
       setNewRecalc(true);
     }
