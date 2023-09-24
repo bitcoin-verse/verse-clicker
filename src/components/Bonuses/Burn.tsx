@@ -78,7 +78,7 @@ const Burn: FC = () => {
     address,
     token: TVERSE_CONTRACT,
     chainId: goerli.id,
-    watch: true,
+    enabled: address !== undefined,
   });
 
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({

@@ -29,7 +29,7 @@ const Button = styled.button<{ noVerse: boolean }>`
     noVerse
       ? css`
           &:after {
-            content: "CAN AFFORD";
+            content: "CAN'T AFFORD";
           }
         `
       : ""}
@@ -79,7 +79,7 @@ const BurnButtons: FC<Props> = ({
             }}
           >
             <Title>{button.title}</Title>
-            <Price>{button.value.toLocaleString()} VERSE</Price>
+            <Price>{button.value.toLocaleString()} VTEST</Price>
           </Button>
         );
       })}
