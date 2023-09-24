@@ -21,12 +21,12 @@ const useGameLoop = () => {
 
   useEffect(() => {
     if (!save) {
-      console.log("NO SAVE FOUND, NO LOOP FOR YOU!!");
+      console.log("NO SAVE FOUND");
       dispatch({ type: "SET_LOADING", payload: false });
       return;
     }
 
-    if (recalculateCPS) {
+    if (recalculateCPS && save) {
       console.log("Recalculating CPS");
       dispatch({ type: "RECALCULATE_CPS" });
       setNewRecalc(true);
@@ -53,6 +53,7 @@ const useGameLoop = () => {
 
   const saveGame = useCallback(() => {
     if (!address) return;
+    console.log("Auto saving");
     dispatch({ type: "SAVE_GAME", payload: { address } });
   }, []);
 

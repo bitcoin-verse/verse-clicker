@@ -30,5 +30,6 @@ export const saveProgress = async (address: string, progressBase64: string) => {
     progressBase64,
   });
 
+  console.log("Game Saved");
   return data;
 };
