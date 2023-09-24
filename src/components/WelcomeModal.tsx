@@ -25,8 +25,15 @@ const BonusText = styled.div`
 `;
 
 const WelcomeModal = () => {
-  const { loading, lastSaveLoaded, newCookies, verseHolder, error, pending } =
-    useTrackedState();
+  const {
+    loading,
+    lastSaveLoaded,
+    newCookies,
+    verseHolder,
+    error,
+    pending,
+    player: { cookies },
+  } = useTrackedState();
   const { status } = useAccount();
   const { modalRef, showModal } = useModal();
   const [cachedSave, setCachedSave] = useState<string>();
@@ -41,7 +48,12 @@ const WelcomeModal = () => {
   }, [lastSaveLoaded]);
 
   useEffect(() => {
-    if (status === "connected" && !loading && (!error || !pending)) {
+    if (
+      status === "connected" &&
+      !loading &&
+      (!error || !pending) &&
+      cookies > 0
+    ) {
       setWasLoaded((wasLoaded) => {
         if (wasLoaded) return true;
         showModal();

@@ -79,6 +79,8 @@ const Cookie: FC = () => {
   } = useTrackedState();
   const [clickCount, setClickCount] = useState<number>();
 
+  const [macroDetected, setMacroDetected] = useState(false);
+
   const animateCookieClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       if (!wrapperRef.current) return;
@@ -148,9 +150,15 @@ const Cookie: FC = () => {
       return;
     }
     if (clickCount && clickCount >= clicksLimit) {
-      alert(
-        `How can you click more than ${clicksLimit} per second. You must be superman!`,
-      );
+      if (macroDetected) {
+        alert("You were warned! wiping your game...");
+        dispatch({ type: "RESET_GAME" });
+      } else {
+        alert(
+          `CHEAT DETECTED!! No one can click that fast. Do it again and your save will be wiped`,
+        );
+        setMacroDetected(true);
+      }
       return;
     }
 
