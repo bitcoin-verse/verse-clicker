@@ -12,7 +12,6 @@ import testVerseABI from "../../contracts/testVerseABI";
 import { goerli } from "viem/chains";
 import BurnButtons from "./BurnButtons";
 import { useDispatch, useTrackedState } from "../../context/store";
-import { TVERSE_CONTRACT } from "../../context/constants";
 import { formatNumber } from "../../helpers/formatNumber";
 
 const ButtonContainer = styled.div`
@@ -76,13 +75,13 @@ const Burn: FC = () => {
   const { address, isConnected } = useAccount();
   const { data: balanceData } = useBalance({
     address,
-    token: TVERSE_CONTRACT,
+    token: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
     chainId: goerli.id,
     enabled: isConnected,
   });
 
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({
-    address: TVERSE_CONTRACT,
+    address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
     abi: testVerseABI,
     functionName: "burn",
     chainId: goerli.id,
