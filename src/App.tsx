@@ -9,15 +9,17 @@ import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { goerli, mainnet, polygon } from "wagmi/chains";
 import { Provider } from "./context/store";
-// import { infuraProvider } from "wagmi/providers/infura";
+import { infuraProvider } from "wagmi/providers/infura";
 
-const chains = [mainnet, polygon, goerli];
 const projectId = "8000cda0f00ad8e06049c5e030ddaa4c";
 
-const { publicClient, webSocketPublicClient } = configureChains(chains, [
-  // infuraProvider({ apiKey: "1f47d876b0094053881ae761371be771" }),
-  w3mProvider({ projectId }),
-]);
+const { chains, publicClient, webSocketPublicClient } = configureChains(
+  [goerli, mainnet, polygon],
+  [
+    infuraProvider({ apiKey: "1f47d876b0094053881ae761371be771" }),
+    w3mProvider({ projectId }),
+  ],
+);
 
 const wagmiConfig = createConfig({
   autoConnect: true,
