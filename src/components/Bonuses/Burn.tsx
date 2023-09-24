@@ -99,7 +99,7 @@ const Burn: FC = () => {
         });
         setVerseBalance({ formatted: res.formatted, value: res.value });
       } catch (error) {
-        console.log("Error fetching balance");
+        console.log("Error fetching balance", error);
       }
     };
     getAccountBalance();
