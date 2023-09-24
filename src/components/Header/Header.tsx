@@ -19,6 +19,7 @@ const StyledHeader = styled.header`
 
   @media (min-width: 768px) {
     grid-template-rows: 1fr;
+    padding: 1.25rem 0;
     grid-template-columns: 1fr auto 1fr;
     grid-template-areas: "logo stats connect";
   }
