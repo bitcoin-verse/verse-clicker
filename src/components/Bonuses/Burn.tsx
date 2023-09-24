@@ -1,11 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { ModalTitle, ModalContent } from "../ModalStyles";
-import {
-  useAccount,
-  useBalance,
-  useContractWrite,
-  useWaitForTransaction,
-} from "wagmi";
+import { useAccount, useContractWrite, useWaitForTransaction } from "wagmi";
+import { fetchBalance } from "wagmi/actions";
 import styled from "styled-components";
 
 import testVerseABI from "../../contracts/testVerseABI";
@@ -71,14 +67,12 @@ const Burn: FC = () => {
   } = useTrackedState();
 
   const dispatch = useDispatch();
+  const [verseBalance, setVerseBalance] = useState<{
+    formatted: string;
+    value: bigint;
+  }>();
 
-  const { address, isConnected } = useAccount();
-  const { data: balanceData } = useBalance({
-    address,
-    token: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
-    chainId: goerli.id,
-    enabled: isConnected,
-  });
+  const { address } = useAccount();
 
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({
     address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
@@ -93,6 +87,23 @@ const Burn: FC = () => {
   const [newCookies, setNewCookies] = useState(0);
   const [hours, setHours] = useState(buttonsList[0].hours);
   const [showLoading, setShowLoading] = useState(false);
+
+  useEffect(() => {
+    if (!address) return;
+    const getAccountBalance = async () => {
+      try {
+        const res = await fetchBalance({
+          address,
+          chainId: goerli.id,
+          token: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
+        });
+        setVerseBalance({ formatted: res.formatted, value: res.value });
+      } catch (error) {
+        console.log("Error fetching balance");
+      }
+    };
+    getAccountBalance();
+  }, [address]);
 
   useEffect(() => {
     if (!txData) return;
@@ -141,8 +152,8 @@ const Burn: FC = () => {
       </div>
       <div>
         Your Verse Balance:{" "}
-        {balanceData?.formatted
-          ? Number(balanceData.formatted).toLocaleString()
+        {verseBalance?.formatted
+          ? Number(verseBalance.formatted).toLocaleString()
           : 0}{" "}
         VERSE
       </div>
@@ -185,7 +196,7 @@ const Burn: FC = () => {
         <BurnButtons
           isLoading={isLoading}
           handleBurn={handleBurn}
-          verseBalance={balanceData?.value || BigInt(0)}
+          verseBalance={verseBalance?.value || BigInt(0)}
           buttons={buttonsList}
         />
       </ButtonContainer>
