@@ -91,7 +91,7 @@ const Burn: FC = () => {
 
     abi: testVerseABI,
     functionName: "balanceOf",
-    args: [address || `0x00000`],
+    args: address ? [address] : undefined,
   });
 
   const [newCookies, setNewCookies] = useState(0);
