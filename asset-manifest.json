@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/verse-clicker/static/js/main.2468ac4b.js",
+    "main.js": "/verse-clicker/static/js/main.be20aad9.js",
     "static/js/44.475c1117.chunk.js": "/verse-clicker/static/js/44.475c1117.chunk.js",
     "static/js/406.2190c26e.chunk.js": "/verse-clicker/static/js/406.2190c26e.chunk.js",
     "static/js/871.8a26f466.chunk.js": "/verse-clicker/static/js/871.8a26f466.chunk.js",
@@ -17,6 +17,6 @@
     "index.html": "/verse-clicker/index.html"
   },
   "entrypoints": [
-    "static/js/main.2468ac4b.js"
+    "static/js/main.be20aad9.js"
   ]
 }
