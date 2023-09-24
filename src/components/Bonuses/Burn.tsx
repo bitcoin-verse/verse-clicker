@@ -9,7 +9,6 @@ import {
 } from "wagmi";
 import styled from "styled-components";
 import { formatEther } from "viem";
-import { readContract } from "wagmi/actions";
 
 import testVerseABI from "../../contracts/testVerseABI";
 import BurnButtons from "./BurnButtons";
@@ -110,25 +109,6 @@ const Burn: FC = () => {
     if (!readData) return;
     setBalanceData({ value: readData, formatted: formatEther(readData) });
   }, [readData, error]);
-
-  useEffect(() => {
-    if (!address) return;
-    const getBal = async () => {
-      const res = await readContract({
-        address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
-        abi: testVerseABI,
-        functionName: "balanceOf",
-        args: [address],
-      });
-
-      console.log("response", res);
-      try {
-      } catch (error) {
-        console.log("errror", error);
-      }
-    };
-    getBal();
-  }, [address]);
 
   useEffect(() => {
     if (!txData) return;
