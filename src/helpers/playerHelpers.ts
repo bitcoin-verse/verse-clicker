@@ -6,7 +6,7 @@ export const spendPlayerCookies = (player: Player, cost: number): Player => {
     cookies: player.cookies - cost,
     cookieStats: {
       ...player.cookieStats,
-      Spent: player.cookies + cost,
+      Spent: player.cookieStats.Spent + cost,
     },
   };
 };
