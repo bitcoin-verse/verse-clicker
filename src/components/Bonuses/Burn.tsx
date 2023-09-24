@@ -73,7 +73,6 @@ const Burn: FC = () => {
 
   const dispatch = useDispatch();
   const { address } = useAccount();
-
   const chainId = useChainId();
 
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({
