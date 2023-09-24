@@ -33,10 +33,30 @@ const TransactionStatus = styled.div`
   background: #0f518f;
   z-index: 1;
 
+  gap: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+const RetryButton = styled.button`
+  padding: 1rem;
+  font-weight: 600;
+  outline: none;
+
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  border: none;
+  border-radius: 1rem;
+  background: #163756;
+  color: white;
 `;
 
 const buttonsList = [
@@ -114,7 +134,7 @@ const Burn: FC = () => {
 
   return (
     <ModalContent>
-      <ModalTitle>Burn to earn</ModalTitle>
+      <ModalTitle>Burn to earn (BETA)</ModalTitle>
       <div>
         Get upto 24hrs worth of cookies at your current CPS rate, just by
         burning a little verse
@@ -132,8 +152,8 @@ const Burn: FC = () => {
           <TransactionStatus>
             {isLoading && <div>Transaction Pending. Check Wallet</div>}
             {isSuccess && !txWaitSuccess && (
-              <div>
-                Transaction accepted waiting for confirmation:{" "}
+              <>
+                <div>Transaction accepted waiting for confirmation</div>
                 <a
                   href={`https://goerli.etherscan.io/tx/${data?.hash}`}
                   target="_blank"
@@ -141,8 +161,9 @@ const Burn: FC = () => {
                 >
                   View on Etherscan
                 </a>
-              </div>
+              </>
             )}
+
             {txWaitSuccess && (
               <>
                 <div>
@@ -150,13 +171,13 @@ const Burn: FC = () => {
                   added
                 </div>
 
-                <button
+                <RetryButton
                   onClick={() => {
                     setShowLoading(false);
                   }}
                 >
                   Burn again!
-                </button>
+                </RetryButton>
               </>
             )}
           </TransactionStatus>
