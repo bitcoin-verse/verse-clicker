@@ -27,7 +27,7 @@ const BonusText = styled.div`
 `;
 
 const WelcomeModal = () => {
-  const { loading, lastSaveLoaded, newCookies, verseHolder } =
+  const { loading, lastSaveLoaded, newCookies, verseHolder, error } =
     useTrackedState();
   const { status } = useAccount();
   const { modalRef, showModal } = useModal();
@@ -43,7 +43,7 @@ const WelcomeModal = () => {
   }, [lastSaveLoaded]);
 
   useEffect(() => {
-    if (status === "connected" && !loading) {
+    if (status === "connected" && !loading && !error) {
       setWasLoaded((wasLoaded) => {
         if (wasLoaded) return true;
         showModal();
