@@ -38,7 +38,7 @@ export const getSave = ({
         },
       });
     } catch (error) {
-      dispatch({ type: "SET_LOADING", payload: false });
+      // dispatch({ type: "SET_LOADING", payload: false });
       dispatch({ type: "FAILED", error: error as unknown as Error });
     }
   };
