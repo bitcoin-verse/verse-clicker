@@ -33,7 +33,7 @@ const App: FC = () => {
       <Web3Modal
         projectId={projectId}
         ethereumClient={ethereumClient}
-        defaultChain={mainnet}
+        defaultChain={goerli}
         themeMode="dark"
         themeVariables={{
           "--w3m-button-border-radius": "2rem",
