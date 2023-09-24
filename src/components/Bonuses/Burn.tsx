@@ -132,7 +132,7 @@ const Burn: FC = () => {
     try {
       console.log(amount, parseEther(amount.toString()));
       await writeAsync({
-        args: [BigInt(parseEther(amount.toString()))],
+        args: [parseEther(amount.toString())],
       });
     } catch (error) {
       console.log("write error", error);
