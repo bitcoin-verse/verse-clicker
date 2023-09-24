@@ -107,7 +107,7 @@ const Burn: FC = () => {
     setNewCookies(cookieDiff);
     dispatch({
       type: "EARN_COOKIE",
-      payload: cookieDiff,
+      payload: cookieDiff / frameRate,
     });
   }, [txData]);
 
