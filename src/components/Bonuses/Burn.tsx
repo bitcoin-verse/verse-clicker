@@ -73,12 +73,12 @@ const Burn: FC = () => {
 
   const dispatch = useDispatch();
 
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
   const { data: balanceData } = useBalance({
     address,
     token: TVERSE_CONTRACT,
     chainId: goerli.id,
-    enabled: address !== undefined,
+    enabled: isConnected,
   });
 
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({

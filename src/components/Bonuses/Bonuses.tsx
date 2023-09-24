@@ -28,8 +28,8 @@ const BonusesWrapper = styled.div`
   }
 `;
 
-const BonusButton = styled.button<{ hasBonus?: boolean }>`
-  background: ${({ hasBonus }) => (hasBonus ? "#086bc6" : "#163756")};
+const BonusButton = styled.button<{ $hasBonus?: boolean }>`
+  background: ${({ $hasBonus }) => ($hasBonus ? "#086bc6" : "#163756")};
   animation: glow 2s infinite alternate;
   padding: 0.5rem;
   color: white;
@@ -66,7 +66,7 @@ const Bonuses: FC = () => {
             setContent("hold");
             showModal();
           }}
-          hasBonus={verseHolder}
+          $hasBonus={verseHolder}
         >
           Hold
         </BonusButton>

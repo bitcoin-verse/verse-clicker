@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Button = styled.button<{ isSelected: boolean }>`
+const Button = styled.button<{ $isSelected: boolean }>`
   position: relative;
 
   border: none;
@@ -40,8 +40,8 @@ const Button = styled.button<{ isSelected: boolean }>`
   z-index: 0;
   border-radius: 0.25rem;
 
-  ${({ isSelected }) =>
-    isSelected
+  ${({ $isSelected }) =>
+    $isSelected
       ? css`
           background: #0085ff;
 
@@ -107,7 +107,7 @@ const ShopList: FC = () => {
         return (
           <Button
             key={i}
-            isSelected={building.name === currentBuilding}
+            $isSelected={building.name === currentBuilding}
             disabled={building.locked}
             onClick={() =>
               dispatch({ type: "SET_BUILDING", payload: building.name })

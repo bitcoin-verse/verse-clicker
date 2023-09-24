@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled, { css } from "styled-components";
 import { parseEther } from "viem";
 
-const Button = styled.button<{ noVerse: boolean }>`
+const Button = styled.button<{ $noVerse: boolean }>`
   padding: 1rem;
   font-weight: 600;
   outline: none;
@@ -25,8 +25,8 @@ const Button = styled.button<{ noVerse: boolean }>`
     opacity: 0.5;
   }
 
-  ${({ noVerse }) =>
-    noVerse
+  ${({ $noVerse }) =>
+    $noVerse
       ? css`
           &:after {
             content: "CAN'T AFFORD";
@@ -73,7 +73,7 @@ const BurnButtons: FC<Props> = ({
           <Button
             key={button.title}
             disabled={isLoading || verseBalance < weiValue}
-            noVerse={verseBalance < weiValue}
+            $noVerse={verseBalance < weiValue}
             onClick={() => {
               handleBurn(weiValue, button.hours);
             }}

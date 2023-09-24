@@ -14,7 +14,7 @@ const TabsWrapper = styled.div`
   }
 `;
 
-const Button = styled.button<{ isSelected: boolean }>`
+const Button = styled.button<{ $isSelected: boolean }>`
   outline: none;
   border: none;
 
@@ -26,8 +26,8 @@ const Button = styled.button<{ isSelected: boolean }>`
   text-align: center;
   cursor: pointer;
 
-  ${({ isSelected }) =>
-    isSelected
+  ${({ $isSelected }) =>
+    $isSelected
       ? css`
           background: #0085ff;
           color: white;
@@ -47,14 +47,14 @@ const Tabs: FC<Props> = ({ selectedTab, setSelectedTab }) => {
   return (
     <TabsWrapper>
       <Button
-        isSelected={selectedTab === 0}
+        $isSelected={selectedTab === 0}
         type="button"
         onClick={() => setSelectedTab(0)}
       >
         Buildings
       </Button>
       <Button
-        isSelected={selectedTab === 1}
+        $isSelected={selectedTab === 1}
         type="button"
         onClick={() => setSelectedTab(1)}
       >
