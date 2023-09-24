@@ -50,6 +50,8 @@ const Table = styled.table`
     display: grid;
     gap: 0.5rem;
     grid-template-columns: 0.5fr 2.5fr 1.5fr 1.5fr;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

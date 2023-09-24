@@ -3,14 +3,13 @@ import { ModalTitle, ModalContent } from "../ModalStyles";
 import {
   useAccount,
   useBalance,
+  useChainId,
   useContractWrite,
   useWaitForTransaction,
 } from "wagmi";
-import { fetchBalance } from "wagmi/actions";
 import styled from "styled-components";
 
 import testVerseABI from "../../contracts/testVerseABI";
-import { goerli } from "viem/chains";
 import BurnButtons from "./BurnButtons";
 import { useDispatch, useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
@@ -72,27 +71,34 @@ const Burn: FC = () => {
   } = useTrackedState();
 
   const dispatch = useDispatch();
-  const [verseBalance, setVerseBalance] = useState<{
+  /*   const [verseBalance, setVerseBalance] = useState<{
     formatted: string;
     value: bigint;
-  }>();
+  }>(); */
 
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
+
+  const chainId = useChainId();
 
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({
     address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
     abi: testVerseABI,
     functionName: "burn",
-    chainId: goerli.id,
+    chainId,
   });
 
   const { data: txData, isSuccess: txWaitSuccess } =
     useWaitForTransaction(data);
 
-  const { data: balanceData, error: balanceError } = useBalance({
+  const {
+    data: balanceData,
+    error: balanceError,
+    internal,
+  } = useBalance({
     address,
     token: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
-    chainId: goerli.id,
+    chainId,
+    enabled: isConnected,
   });
 
   const [newCookies, setNewCookies] = useState(0);
@@ -100,10 +106,10 @@ const Burn: FC = () => {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    console.log("balancedata", balanceData, balanceError);
+    console.log("balancedata", balanceData, balanceError, internal);
   }, [balanceData, balanceError]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (!address) return;
     const getAccountBalance = async () => {
       try {
@@ -118,7 +124,7 @@ const Burn: FC = () => {
       }
     };
     getAccountBalance();
-  }, [address]);
+  }, [address]); */
 
   useEffect(() => {
     if (!txData) return;
@@ -167,8 +173,8 @@ const Burn: FC = () => {
       </div>
       <div>
         Your Verse Balance:{" "}
-        {verseBalance?.formatted
-          ? Number(verseBalance.formatted).toLocaleString()
+        {balanceData?.formatted
+          ? Number(balanceData.formatted).toLocaleString()
           : 0}{" "}
         VERSE
       </div>
@@ -211,7 +217,7 @@ const Burn: FC = () => {
         <BurnButtons
           isLoading={isLoading}
           handleBurn={handleBurn}
-          verseBalance={verseBalance?.value || BigInt(0)}
+          verseBalance={balanceData?.value || BigInt(0)}
           buttons={buttonsList}
         />
       </ButtonContainer>
