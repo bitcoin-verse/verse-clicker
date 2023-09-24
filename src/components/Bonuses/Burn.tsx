@@ -8,7 +8,7 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 import styled from "styled-components";
-import { formatEther } from "viem";
+import { formatEther, parseEther } from "viem";
 
 import testVerseABI from "../../contracts/testVerseABI";
 import BurnButtons from "./BurnButtons";
@@ -127,17 +127,16 @@ const Burn: FC = () => {
     });
   }, [txData]);
 
-  const handleBurn = async (amount: bigint, h: number) => {
+  const handleBurn = async (amount: number, h: number) => {
     setHours(h);
     try {
+      console.log(amount, parseEther(amount.toString()));
       await writeAsync({
-        args: [amount],
+        args: [parseEther(amount.toString())],
       });
     } catch (error) {
       console.log("write error", error);
     }
-
-    // setTransaction(resp);
   };
 
   useEffect(() => {
