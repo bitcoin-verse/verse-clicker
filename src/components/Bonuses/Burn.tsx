@@ -117,7 +117,7 @@ const Burn: FC = () => {
     const now = new Date();
     const extraTime = new Date(now.getTime() + ((hours * 60 * 60) ^ 1000));
     const diff = Math.abs(now.getTime() - extraTime.getTime()) / 1000;
-    const cookieDiff = diff * aMPF * frameRate;
+    const cookieDiff = diff * aMPF * 1000 * frameRate;
 
     console.log(cookieDiff);
     setNewCookies(cookieDiff);
