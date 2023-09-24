@@ -3,6 +3,7 @@ import { useDispatch, useTrackedState } from "../context/store";
 import useInterval from "./useInterval";
 import { useAccount } from "wagmi";
 import { formatNumber } from "../helpers/formatNumber";
+import useHasFocus from "./useHasFocus";
 
 const useGameLoop = () => {
   const {
@@ -12,7 +13,7 @@ const useGameLoop = () => {
   } = useTrackedState();
   const { address } = useAccount();
   const [newRecalc, setNewRecalc] = useState(false);
-
+  const hasFocus = useHasFocus();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,9 +39,8 @@ const useGameLoop = () => {
       type: "EARN_COOKIE",
       payload: player.aMPF,
     });
-  }, [player.aMPF, frameRate]);
+  }, [player.aMPF]);
 
-  const hasFocus = document.hasFocus();
   useInterval(gameLoop, hasFocus ? 1000 / frameRate : 1000);
 
   useEffect(() => {
