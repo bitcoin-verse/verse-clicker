@@ -2,8 +2,8 @@ import React, { FC, useEffect, useState } from "react";
 import { ModalTitle, ModalContent } from "../ModalStyles";
 import {
   useAccount,
-  useBalance,
   useChainId,
+  useContractRead,
   useContractWrite,
   useWaitForTransaction,
 } from "wagmi";
@@ -13,6 +13,7 @@ import testVerseABI from "../../contracts/testVerseABI";
 import BurnButtons from "./BurnButtons";
 import { useDispatch, useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
+import { formatEther } from "viem";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -71,12 +72,7 @@ const Burn: FC = () => {
   } = useTrackedState();
 
   const dispatch = useDispatch();
-  /*   const [verseBalance, setVerseBalance] = useState<{
-    formatted: string;
-    value: bigint;
-  }>(); */
-
-  const { address, isConnected } = useAccount();
+  const { address } = useAccount();
 
   const chainId = useChainId();
 
@@ -90,41 +86,27 @@ const Burn: FC = () => {
   const { data: txData, isSuccess: txWaitSuccess } =
     useWaitForTransaction(data);
 
-  const {
-    data: balanceData,
-    error: balanceError,
-    internal,
-  } = useBalance({
-    address,
-    token: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
-    chainId,
-    enabled: isConnected,
+  const { data: readData } = useContractRead({
+    address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
+
+    abi: testVerseABI,
+    functionName: "balanceOf",
+    args: [address || `0x00000`],
   });
 
   const [newCookies, setNewCookies] = useState(0);
   const [hours, setHours] = useState(buttonsList[0].hours);
   const [showLoading, setShowLoading] = useState(false);
 
-  useEffect(() => {
-    console.log("balancedata", balanceData, balanceError, internal);
-  }, [balanceData, balanceError]);
+  const [balanceData, setBalanceData] = useState<{
+    formatted: string;
+    value: bigint;
+  }>();
 
-  /*   useEffect(() => {
-    if (!address) return;
-    const getAccountBalance = async () => {
-      try {
-        const res = await fetchBalance({
-          address,
-          chainId: goerli.id,
-          token: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
-        });
-        setVerseBalance({ formatted: res.formatted, value: res.value });
-      } catch (error) {
-        console.log("Error fetching balance", error);
-      }
-    };
-    getAccountBalance();
-  }, [address]); */
+  useEffect(() => {
+    if (!readData) return;
+    setBalanceData({ value: readData, formatted: formatEther(readData) });
+  }, [readData]);
 
   useEffect(() => {
     if (!txData) return;
