@@ -9,8 +9,7 @@ const Wrapper = styled.div`
   max-width: calc(100vw);
   overflow-x: auto;
   overflow-y: visible;
-  padding-bottom: 1rem;
-  padding-left: 1rem;
+  padding: 1rem;
 
   @media (min-width: 768px) {
     gap: 0.5rem;
