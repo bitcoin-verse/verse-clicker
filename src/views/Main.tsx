@@ -11,6 +11,7 @@ import { Web3Button } from "@web3modal/react";
 import { useAccount } from "wagmi";
 import WelcomeModal from "../components/WelcomeModal";
 import Bonuses from "../components/Bonuses/Bonuses";
+import useAccountChange from "../hooks/useAccountChange";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -54,6 +55,7 @@ const OverlayConnect = styled.div`
 
 const Main: FC = () => {
   useGameLoop();
+  useAccountChange();
 
   const { loading } = useTrackedState();
   const { status } = useAccount();

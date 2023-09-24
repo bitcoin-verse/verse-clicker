@@ -32,16 +32,14 @@ const Logo = styled.img`
 
 const Header: FC = () => {
   const dispatch = useDispatch();
-  const { isConnected } = useAccount();
-
-  useAccount({
+  const { isConnected } = useAccount({
     onConnect: ({ address }) => {
       // console.log("Connected", { address, connector, isReconnected });
       if (!address) return;
       dispatch({ type: "GET_SAVE", payload: address });
     },
     onDisconnect: () => {
-      // console.log("Disconnected");
+      console.log("Disconnected");
       dispatch({ type: "RESET_GAME" });
     },
   });
