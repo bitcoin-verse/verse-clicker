@@ -166,7 +166,7 @@ const buildings = [
       ),
     ],
     true,
-    "wojak.jpeg",
+    "wojak.png",
   ),
   new Building(
     "Trollfarm",
@@ -281,7 +281,7 @@ const buildings = [
       ),
     ],
     true,
-    "asic.jpg",
+    "asic.png",
   ),
   new Building(
     "Okanemon",
@@ -356,7 +356,7 @@ const buildings = [
       ),
     ],
     true,
-    "okanemon.gif",
+    "okanemon.png",
   ),
   new Building(
     "Coaster",
@@ -431,7 +431,7 @@ const buildings = [
       ),
     ],
     true,
-    "coaster.jpg",
+    "coaster.png",
   ),
   new Building(
     "Printer",
@@ -506,7 +506,7 @@ const buildings = [
       ),
     ],
     true,
-    "printer.jpg",
+    "printer.png",
   ),
   new Building(
     "Pepe",
@@ -581,7 +581,7 @@ const buildings = [
       ),
     ],
     true,
-    "pepe.jpg",
+    "pepe.png",
   ),
   new Building(
     "Hype man",
@@ -656,7 +656,7 @@ const buildings = [
       ),
     ],
     true,
-    "carlos.jpg",
+    "carlos.png",
   ),
   new Building(
     "Rocket",
@@ -731,7 +731,7 @@ const buildings = [
       ),
     ],
     true,
-    "rocket.jpg",
+    "rocket.png",
   ),
   new Building(
     "Lazer eyes",
@@ -806,7 +806,7 @@ const buildings = [
       ),
     ],
     true,
-    "lazereyes.jpeg",
+    "lazereyes.png",
   ),
   new Building(
     "Chad",
@@ -881,7 +881,7 @@ const buildings = [
       ),
     ],
     true,
-    "chad.jpg",
+    "chad.png",
   ),
   new Building(
     "Elon Tweet",
@@ -956,7 +956,7 @@ const buildings = [
       ),
     ],
     true,
-    "tweet.jpg",
+    "tweet.png",
   ),
   new Building(
     "Stadium",
@@ -1031,7 +1031,7 @@ const buildings = [
       ),
     ],
     true,
-    "stadium.webp",
+    "stadium.png",
   ),
   new Building(
     "Bogdanoff",
@@ -1106,7 +1106,7 @@ const buildings = [
       ),
     ],
     true,
-    "bogdanoff.jpeg",
+    "bogdanoff.png",
   ),
   new Building(
     "AI Bot",
@@ -1181,7 +1181,7 @@ const buildings = [
       ),
     ],
     true,
-    "aibot.jpeg",
+    "aibot.png",
   ),
   new Building(
     "Bitcoin Jesus",
@@ -1256,7 +1256,7 @@ const buildings = [
       ),
     ],
     true,
-    "jesus.jpeg",
+    "jesus.png",
   ),
 ];
 

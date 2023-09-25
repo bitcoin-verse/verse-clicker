@@ -95,7 +95,9 @@ const Image = styled.img`
   height: 2rem;
   width: 2rem;
   object-fit: cover;
+  object-position: center;
   border-radius: 0.25rem;
+  background: white;
 `;
 
 const ShopList: FC = () => {
@@ -105,21 +107,21 @@ const ShopList: FC = () => {
   return (
     <Wrapper>
       {buildings.map((building, i) => {
-        if (building.locked && buildings?.[i - 3]?.locked) return null;
+        // if (building.locked && buildings?.[i - 3]?.locked) return null;
         return (
           <Button
             key={i}
             $isSelected={building.name === currentBuilding}
-            disabled={building.locked}
+            // disabled={building.locked}
             onClick={() =>
               dispatch({ type: "SET_BUILDING", payload: building.name })
             }
           >
             <Image
               src={
-                building.locked
+                /* building.locked
                   ? placeholder
-                  : `${process.env.PUBLIC_URL}/buildings/${building.image}`
+                  : */ `${process.env.PUBLIC_URL}/buildings/${building.image}`
               }
               alt={building.name}
             />
