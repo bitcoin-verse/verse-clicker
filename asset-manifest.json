@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/verse-clicker/static/js/main.8b85a0dd.js",
+    "main.js": "/verse-clicker/static/js/main.c06968a5.js",
     "static/js/44.475c1117.chunk.js": "/verse-clicker/static/js/44.475c1117.chunk.js",
     "static/js/406.2190c26e.chunk.js": "/verse-clicker/static/js/406.2190c26e.chunk.js",
     "static/js/871.8a26f466.chunk.js": "/verse-clicker/static/js/871.8a26f466.chunk.js",
@@ -9,8 +9,13 @@
     "static/js/326.9a7acfa3.chunk.js": "/verse-clicker/static/js/326.9a7acfa3.chunk.js",
     "static/js/178.050ce624.chunk.js": "/verse-clicker/static/js/178.050ce624.chunk.js",
     "static/media/background.png": "/verse-clicker/static/media/background.5cb3eff01cef9d55df9e.png",
+    "static/media/ad-burn-engine.png": "/verse-clicker/static/media/ad-burn-engine.2c4d1c1ffa8700acb957.png",
+    "static/media/ad-nft.png": "/verse-clicker/static/media/ad-nft.b0d8165912ac84c9b6fc.png",
+    "static/media/ad-golden-pepe.png": "/verse-clicker/static/media/ad-golden-pepe.02f3b9249ab18d7d9107.png",
+    "static/media/ad-mcdonalds.png": "/verse-clicker/static/media/ad-mcdonalds.fe7eb5eee25ecfff8481.png",
     "static/media/verse-cookie.png": "/verse-clicker/static/media/verse-cookie.ad81f6af71a0c31fa9ef.png",
     "static/media/cookie-bite.png": "/verse-clicker/static/media/cookie-bite.837e3ef99b99bfe9c49c.png",
+    "static/media/ad-club-house.png": "/verse-clicker/static/media/ad-club-house.fcde7120e7e7eaf25125.png",
     "static/media/ad-btc.png": "/verse-clicker/static/media/ad-btc.0d8087528c1cd9feffe7.png",
     "static/media/ad-globalists.jpg": "/verse-clicker/static/media/ad-globalists.3c50017f54719683c812.jpg",
     "static/media/ad-corbin.jpg": "/verse-clicker/static/media/ad-corbin.0ec948812fbd95c28a4a.jpg",
@@ -18,6 +23,6 @@
     "index.html": "/verse-clicker/index.html"
   },
   "entrypoints": [
-    "static/js/main.8b85a0dd.js"
+    "static/js/main.c06968a5.js"
   ]
 }
