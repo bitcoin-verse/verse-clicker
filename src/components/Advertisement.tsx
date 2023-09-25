@@ -3,9 +3,39 @@ import React, { FC, useEffect, useState } from "react";
 import adBtc from "../assets/ad-btc.png";
 import adCorbin from "../assets/ad-corbin.jpg";
 import adGlobalists from "../assets/ad-globalists.jpg";
+import adClubHouse from "../assets/ad-club-house.png";
+import adBurnEngine from "../assets/ad-burn-engine.png";
+import adGoldenPepe from "../assets/ad-golden-pepe.png";
+import adMcdonalds from "../assets/ad-mcdonalds.png";
+import adNft from "../assets/ad-nft.png";
+
 import styled from "styled-components";
 
-const adlist = [adBtc, adCorbin, adGlobalists];
+const adlist = [
+  { img: adBtc, link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S" },
+  { img: adCorbin, link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S" },
+  {
+    img: adGlobalists,
+    link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S",
+  },
+  {
+    img: adClubHouse,
+    link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S",
+  },
+  {
+    img: adBurnEngine,
+    link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S",
+  },
+  {
+    img: adGoldenPepe,
+    link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S",
+  },
+  {
+    img: adMcdonalds,
+    link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S",
+  },
+  { img: adNft, link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S" },
+];
 
 const AdWrapper = styled.div`
   width: 100%;
@@ -40,12 +70,8 @@ const Advertisement: FC = () => {
   return (
     <AdWrapper>
       Advertisement
-      <a
-        href="https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <AdImage src={adlist[rand]} />
+      <a href={adlist[rand].link} target="_blank" rel="noreferrer">
+        <AdImage src={adlist[rand].img} />
       </a>
     </AdWrapper>
   );
