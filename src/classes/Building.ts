@@ -11,6 +11,7 @@ class Building {
   effect: number;
   upgrades: Upgrade[];
   locked: boolean;
+  image: string;
 
   constructor(
     name: string,
@@ -18,7 +19,9 @@ class Building {
     effect: number,
     upgrades: Upgrade[],
     locked = true,
+    image: string,
   ) {
+    this.image = image;
     this.name = name;
     this.amount = 0;
     this.originalCost = cost;
