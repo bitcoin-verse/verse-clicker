@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import adBtc from "../assets/ad-btc.png";
 import adCorbin from "../assets/ad-corbin.jpg";
@@ -27,7 +27,15 @@ const AdImage = styled.img`
 `;
 
 const Advertisement: FC = () => {
-  const [rand] = useState(Math.floor(Math.random() * adlist.length));
+  const [rand, setRand] = useState(Math.floor(Math.random() * adlist.length));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRand(Math.floor(Math.random() * adlist.length));
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <AdWrapper>
