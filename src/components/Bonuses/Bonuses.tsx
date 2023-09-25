@@ -10,7 +10,7 @@ const BonusesWrapper = styled.div`
   position: fixed;
 
   top: 30%;
-  z-index: 999;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
