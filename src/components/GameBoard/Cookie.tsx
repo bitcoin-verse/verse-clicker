@@ -69,6 +69,12 @@ const CpcClick = styled.div`
   }
 `;
 
+export const ButtonWrapper = styled.div`
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+`;
+
 const Cookie: FC = () => {
   const dispatch = useDispatch();
   const { status, address } = useAccount();
@@ -171,13 +177,17 @@ const Cookie: FC = () => {
 
   return (
     <CookieWrapper>
-      <ClickButton
-        type="button"
-        ref={wrapperRef}
-        onClick={handleClick}
-        onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => e.preventDefault()}
-        disabled={status !== "connected"}
-      />
+      <ButtonWrapper>
+        <ClickButton
+          type="button"
+          ref={wrapperRef}
+          onClick={handleClick}
+          onKeyDown={(e: React.KeyboardEvent<HTMLElement>) =>
+            e.preventDefault()
+          }
+          disabled={status !== "connected"}
+        />
+      </ButtonWrapper>
     </CookieWrapper>
   );
 };
