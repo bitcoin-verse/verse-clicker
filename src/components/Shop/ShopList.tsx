@@ -94,6 +94,10 @@ const Amount = styled.div`
 const Image = styled.img`
   height: 2rem;
   width: 2rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.25rem;
+  background: white;
 `;
 
 const ShopList: FC = () => {
@@ -113,7 +117,14 @@ const ShopList: FC = () => {
               dispatch({ type: "SET_BUILDING", payload: building.name })
             }
           >
-            <Image src={placeholder} alt={building.name} />
+            <Image
+              src={
+                building.locked
+                  ? placeholder
+                  : `${process.env.PUBLIC_URL}/buildings/${building.image}`
+              }
+              alt={building.name}
+            />
             <Name>{building.name}</Name>
             <Amount>{building.amount}</Amount>
           </Button>
