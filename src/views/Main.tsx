@@ -49,8 +49,8 @@ const OverlayConnect = styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: rgba(3, 12, 20, 0.5);
-  z-index: 1;
+  background-color: rgba(3, 12, 20, 0.7);
+  z-index: 2;
 `;
 
 const Main: FC = () => {
