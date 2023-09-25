@@ -71,6 +71,8 @@ const CpcClick = styled.div`
 
 export const ButtonWrapper = styled.div`
   overflow: hidden;
+  width: 100%;
+  text-align: center;
 `;
 
 const Cookie: FC = () => {
