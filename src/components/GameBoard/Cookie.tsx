@@ -1,13 +1,14 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { useAccount } from "wagmi";
+import { createRoot } from "react-dom/client";
+
+import { useDispatch, useTrackedState } from "../../context/store";
+import { formatNumber } from "../../helpers/formatNumber";
 
 import cookieBite from "../../assets/cookie-bite.png";
 import verseCookie from "../../assets/verse-cookie.png";
-
-import { useDispatch, useTrackedState } from "../../context/store";
-import { useAccount } from "wagmi";
-import { createRoot } from "react-dom/client";
-import { formatNumber } from "../../helpers/formatNumber";
+import nomSound from "../../assets/nom.wav";
 
 const CookieWrapper = styled.div`
   display: flex;
@@ -165,6 +166,7 @@ const Cookie: FC = () => {
     handleCheatPrevention();
     dispatch({ type: "CLICK_COOKIE" });
     animateCookieClick(e);
+    new Audio(nomSound).play();
   };
 
   return (
