@@ -8,6 +8,7 @@ import truncateEthAddress from "../../helpers/truncateEthAddress";
 const ConnectWrapper = styled.div`
   justify-self: flex-end;
   grid-area: connect;
+  z-index: 1;
 `;
 
 const Button = styled.button`
