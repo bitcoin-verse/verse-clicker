@@ -13,28 +13,28 @@ import styled from "styled-components";
 
 const adlist = [
   { img: adBtc, link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S" },
-  { img: adCorbin, link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S" },
+  { img: adCorbin, link: "https://www.linkedin.com/in/corbinfraser/" },
   {
     img: adGlobalists,
-    link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S",
+    link: "https://youtu.be/8mMIocEGGM0?si=LhqsR_LcWocskpBt",
   },
   {
     img: adClubHouse,
-    link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S",
+    link: "https://dex.dev.cloud.bitcoin.com/lounge/",
   },
   {
     img: adBurnEngine,
-    link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S",
+    link: "https://bitcoin-portal.github.io/burn-srs-buy/src/index.html",
   },
   {
     img: adGoldenPepe,
-    link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S",
+    link: "https://youtu.be/vJMP7RBsoms?si=AI9rgrggncEDfAZ9",
   },
   {
     img: adMcdonalds,
-    link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S",
+    link: "https://careers.mcdonalds.com/",
   },
-  { img: adNft, link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S" },
+  { img: adNft, link: "https://main--chipper-hotteok-85cbb2.netlify.app/" },
 ];
 
 const AdWrapper = styled.div`
