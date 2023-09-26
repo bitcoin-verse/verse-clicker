@@ -33,7 +33,7 @@ const adlist = [
   },
   {
     img: adMcdonalds,
-    link: "https://careers.mcdonalds.com/",
+    link: "https://www.bitcoin.com/jobs/",
   },
   { img: adNft, link: "https://main--chipper-hotteok-85cbb2.netlify.app/" },
   {
