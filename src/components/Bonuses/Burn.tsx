@@ -92,6 +92,7 @@ const Burn: FC = () => {
     functionName: "balanceOf",
     args: address ? [address] : undefined,
     account: address,
+    watch: true,
   });
 
   const [newCookies, setNewCookies] = useState(0);
@@ -110,7 +111,7 @@ const Burn: FC = () => {
   }, [readData, error]);
 
   useEffect(() => {
-    if (!txData) return;
+    if (!txData || !address) return;
     console.log("txdata", txData);
 
     const now = new Date();
@@ -118,13 +119,13 @@ const Burn: FC = () => {
     const diff = Math.abs(now.getTime() - extraTime.getTime()) / 1000;
     const cookieDiff = diff * aMPF * 1000 * frameRate;
 
-    console.log(cookieDiff);
     setNewCookies(cookieDiff);
     dispatch({
       type: "EARN_COOKIE",
       payload: cookieDiff,
     });
-  }, [txData]);
+    dispatch({ type: "RECALCULATE_CPS" });
+  }, [txData, address]);
 
   const handleBurn = async (amount: number, h: number) => {
     setHours(h);
