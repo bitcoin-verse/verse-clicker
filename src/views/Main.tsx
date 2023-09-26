@@ -35,6 +35,10 @@ const ContentsWrapper = styled.div`
   background-image: url(${background});
   background-attachment: fixed;
   min-height: 100dvh;
+
+  @media (min-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 const OverlayConnect = styled.div`
