@@ -16,7 +16,7 @@ export const getLeaderboard = ({
   return async () => {
     try {
       dispatch({ type: "STARTED" });
-      const data = await fetchLeaderboard(10, ["earned"]);
+      const data = await fetchLeaderboard(25, ["earned"]);
 
       dispatch({ type: "LEADERBOARD_SAVED", payload: data });
     } catch (error) {
