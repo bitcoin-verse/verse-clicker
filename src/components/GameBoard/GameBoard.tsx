@@ -56,6 +56,7 @@ const TabContent = styled.div`
 const MainSection = styled.div`
   margin-top: 1rem;
   align-self: start;
+
   @media (min-width: 768px) {
     margin-top: 6rem;
   }
@@ -70,6 +71,7 @@ const GameBoard: FC = () => {
         <Bonuses />
         <Display />
         <Cookie />
+        <Advertisement />
       </MainSection>
       <ShopSection>
         <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />

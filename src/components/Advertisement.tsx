@@ -43,21 +43,18 @@ const adlist = [
 ];
 
 const AdWrapper = styled.div`
-  width: 100%;
-  margin-top: 1rem;
   color: #899bb5;
   font-size: 0.75rem;
   font-weight: 400;
-  padding: 0 1rem;
-
-  @media (min-width: 768px) {
-    padding: 0;
-  }
+  padding: 1rem;
+  max-width: 32rem;
+  margin: auto;
 `;
 
 const AdImage = styled.img`
   width: 100%;
   height: auto;
+  max-width: 100%;
   margin-top: 0.5rem;
 `;
 
@@ -74,9 +71,9 @@ const Advertisement: FC = () => {
 
   return (
     <AdWrapper>
-      Advertisement
+      <div>Advertisement</div>
       <a href={adlist[rand].link} target="_blank" rel="noreferrer">
-        <AdImage src={adlist[rand].img} />
+        <AdImage src={adlist[rand].img} width="100%" />
       </a>
     </AdWrapper>
   );
