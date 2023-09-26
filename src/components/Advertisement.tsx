@@ -8,6 +8,7 @@ import adBurnEngine from "../assets/ad-burn-engine.png";
 import adGoldenPepe from "../assets/ad-golden-pepe.png";
 import adMcdonalds from "../assets/ad-mcdonalds.png";
 import adNft from "../assets/ad-nft.png";
+import adUsername from "../assets/ad-username.png";
 
 import styled from "styled-components";
 
@@ -35,6 +36,10 @@ const adlist = [
     link: "https://careers.mcdonalds.com/",
   },
   { img: adNft, link: "https://main--chipper-hotteok-85cbb2.netlify.app/" },
+  {
+    img: adUsername,
+    link: "https://verse-usernames.vercel.app/",
+  },
 ];
 
 const AdWrapper = styled.div`
