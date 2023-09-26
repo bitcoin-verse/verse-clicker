@@ -10,7 +10,6 @@ import { useTrackedState } from "../context/store";
 import { Web3Button } from "@web3modal/react";
 import { useAccount } from "wagmi";
 import WelcomeModal from "../components/WelcomeModal";
-import Bonuses from "../components/Bonuses/Bonuses";
 import useAccountChange from "../hooks/useAccountChange";
 
 const GlobalStyle = createGlobalStyle`
@@ -77,7 +76,7 @@ const Main: FC = () => {
           </div>
         </OverlayConnect>
       )}
-      <Bonuses />
+
       <ContentsWrapper>
         <Header />
         <GameBoard />
