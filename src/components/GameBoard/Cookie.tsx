@@ -27,15 +27,19 @@ const ClickButton = styled.button`
   cursor: pointer;
   background-image: url(${verseCookie});
   background-size: 100%;
+  background-position: center;
   background-repeat: no-repeat;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 
   &:hover {
-    transform: scale(1.01);
+    background-size: 99%;
   }
 
   &:active {
-    transform: scale(1);
+    background-size: 101%;
+  }
+
+  &:after {
+    content: "";
   }
 `;
 

@@ -14,6 +14,10 @@ const DisplayWrapper = styled.div`
   top: 1rem;
   z-index: 1;
   text-shadow: 2px 2px 4px black;
+
+  @media (min-width: 768px) {
+    position: relative;
+  }
 `;
 
 const CookieCount = styled.div`
