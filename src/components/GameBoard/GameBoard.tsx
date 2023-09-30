@@ -4,7 +4,6 @@ import Shop from "../Shop/Shop";
 import Display from "./Display";
 import Cookie from "./Cookie";
 import styled from "styled-components";
-import Leaderboard from "../Leaderboard";
 import Tabs from "../Tabs";
 import Advertisement from "../Advertisement";
 import Bonuses from "../Bonuses/Bonuses";
@@ -76,7 +75,8 @@ const GameBoard: FC = () => {
       <ShopSection>
         <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         <TabContent>
-          {selectedTab === 0 ? <Shop /> : <Leaderboard />}
+          <Shop />
+          {/* {selectedTab === 0 ? <Shop /> : <Leaderboard />} */}
         </TabContent>
         <Advertisement />
       </ShopSection>

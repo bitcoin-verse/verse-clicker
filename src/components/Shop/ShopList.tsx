@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled, { css } from "styled-components";
-import { useDispatch, useTrackedState } from "../../context/store";
+import { useDispatch, useTrackedState } from "../../contextNew/store";
 import placeholder from "../../assets/placeholder.png";
 
 const Wrapper = styled.div`

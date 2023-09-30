@@ -1,9 +1,10 @@
 import React, { FC, useCallback } from "react";
 import styled from "styled-components";
-import { useDispatch, useTrackedState } from "../../context/store";
+import { useDispatch, useTrackedState } from "../../contextNew/store";
 import Building from "../../classes/Building";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getBuildingsCost } from "../../helpers/buildingHelpers";
+import { useSocketCtx } from "../../context/SocketContext";
 
 const BuyWrapper = styled.div`
   display: flex;
@@ -41,28 +42,29 @@ const Button = styled.button`
 
 interface Props {
   building: Building;
+  index: number;
 }
 
-const Register: FC<Props> = ({ building }) => {
-  const dispatch = useDispatch();
-  const { player } = useTrackedState();
+const Register: FC<Props> = ({ building, index }) => {
+  const { socket } = useSocketCtx();
+  const { playerData } = useTrackedState();
 
   const buyBuilding = useCallback(
-    (qty: number) => {
-      dispatch({
-        type: "BUY_BUILDING",
-        payload: { name: building.name, qty },
-      });
+    (amount: number) => {
+      socket.emit("buy_building", { index, amount });
     },
-    [building],
+    [building, index],
   );
 
   return (
     <BuyWrapper>
       <Button
-        disabled={player.cookies < getBuildingsCost(1, building.cost)}
+        disabled={
+          (playerData?.cookies || 0) < getBuildingsCost(1, building.cost)
+        }
         onClick={() => {
-          if (player.cookies < getBuildingsCost(1, building.cost)) return;
+          if ((playerData?.cookies || 0) < getBuildingsCost(1, building.cost))
+            return;
 
           buyBuilding(1);
         }}
@@ -71,9 +73,12 @@ const Register: FC<Props> = ({ building }) => {
         <div>{formatNumber(getBuildingsCost(1, building.cost))}</div>
       </Button>
       <Button
-        disabled={player.cookies < getBuildingsCost(5, building.cost)}
+        disabled={
+          (playerData?.cookies || 0) < getBuildingsCost(5, building.cost)
+        }
         onClick={() => {
-          if (player.cookies < getBuildingsCost(5, building.cost)) return;
+          if ((playerData?.cookies || 0) < getBuildingsCost(5, building.cost))
+            return;
 
           buyBuilding(5);
         }}
@@ -82,9 +87,12 @@ const Register: FC<Props> = ({ building }) => {
         <div>{formatNumber(getBuildingsCost(5, building.cost))}</div>
       </Button>
       <Button
-        disabled={player.cookies < getBuildingsCost(10, building.cost)}
+        disabled={
+          (playerData?.cookies || 0) < getBuildingsCost(10, building.cost)
+        }
         onClick={() => {
-          if (player.cookies < getBuildingsCost(10, building.cost)) return;
+          if ((playerData?.cookies || 0) < getBuildingsCost(10, building.cost))
+            return;
 
           buyBuilding(10);
         }}

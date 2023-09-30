@@ -4,7 +4,7 @@ import Modal, { useModal } from "../Modal";
 import Burn from "./Burn";
 import Hold from "./Hold";
 import Farm from "./Farm";
-import { useTrackedState } from "../../context/store";
+import { useTrackedState } from "../../contextNew/store";
 
 const BonusesWrapper = styled.div`
   position: fixed;

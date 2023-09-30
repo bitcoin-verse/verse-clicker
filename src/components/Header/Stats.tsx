@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { useTrackedState } from "../../context/store";
+import { useTrackedState } from "../../contextNew/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import { Title } from "../Title";
 
@@ -14,20 +14,21 @@ const Wrapper = styled.div`
 `;
 
 const Stats: FC = () => {
-  const { player } = useTrackedState();
+  const { playerData } = useTrackedState();
+
   return (
     <Wrapper>
       <div>
         <Title>Earned: </Title>
-        {formatNumber(player.cookieStats.Earned)}
+        {formatNumber(playerData?.stats.Earned)}
       </div>
       <div>
         <Title>Clicked: </Title>
-        {formatNumber(player.cookieStats.Clicked)}
+        {formatNumber(playerData?.stats.Clicked)}
       </div>
       <div>
         <Title>Spent: </Title>
-        {formatNumber(player.cookieStats.Spent)}
+        {formatNumber(playerData?.stats.Spent)}
       </div>
     </Wrapper>
   );

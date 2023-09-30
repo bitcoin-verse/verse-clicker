@@ -1,6 +1,6 @@
 import React, { FC, useMemo } from "react";
 import styled from "styled-components";
-import { useTrackedState } from "../../context/store";
+import { useTrackedState } from "../../contextNew/store";
 
 import BuildingInfo from "./BuildingInfo";
 import Register from "./Register";
@@ -26,8 +26,11 @@ const Wrapper = styled.div`
 
 const Upgrades: FC = () => {
   const { buildings, currentBuilding } = useTrackedState();
-  const building = useMemo(
-    () => buildings.find((b) => b.name === currentBuilding),
+  const { building, index } = useMemo(
+    () => ({
+      building: buildings.find((b) => b.name === currentBuilding),
+      index: buildings.findIndex((b) => b.name === currentBuilding),
+    }),
     [buildings, currentBuilding],
   );
 
@@ -36,8 +39,12 @@ const Upgrades: FC = () => {
   return (
     <Wrapper>
       <BuildingInfo building={building} />
-      <Register building={building} />
-      <UpgradesList upgrades={building.upgrades} building={building} />
+      <Register building={building} index={index} />
+      <UpgradesList
+        upgrades={building.upgrades}
+        building={building}
+        bIndex={index}
+      />
     </Wrapper>
   );
 };

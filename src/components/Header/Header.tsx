@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { useAccount } from "wagmi";
-import { useDispatch } from "../../context/store";
 import verseClicker from "../../assets/verse-clicker.png";
 import Stats from "./Stats";
 import ConnectButton from "./ConnectButton";
@@ -31,18 +30,7 @@ const Logo = styled.img`
 `;
 
 const Header: FC = () => {
-  const dispatch = useDispatch();
-  const { isConnected } = useAccount({
-    onConnect: ({ address }) => {
-      // console.log("Connected", { address, connector, isReconnected });
-      if (!address) return;
-      dispatch({ type: "GET_SAVE", payload: address });
-    },
-    onDisconnect: () => {
-      console.log("Disconnected");
-      dispatch({ type: "RESET_GAME" });
-    },
-  });
+  const { isConnected } = useAccount();
 
   return (
     <StyledHeader>

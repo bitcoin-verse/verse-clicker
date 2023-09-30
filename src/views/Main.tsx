@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import styled, { createGlobalStyle, css } from "styled-components";
 import Footer from "../components/Footer";
@@ -8,11 +8,17 @@ import useGameLoop from "../hooks/useGameLoop";
 import background from "../assets/background.png";
 import { useTrackedState } from "../context/store";
 import { Web3Button } from "@web3modal/react";
-import { useAccount } from "wagmi";
+import { useAccount, useNetwork } from "wagmi";
 import WelcomeModal from "../components/WelcomeModal";
 import useAccountChange from "../hooks/useAccountChange";
 
 import verseCookie from "../../src/assets/verse-cookie.png";
+import { useSocketCtx } from "../context/SocketContext";
+import { useDispatch } from "../contextNew/store";
+import { Player } from "../contextNew/reducers/player";
+import Loading from "../components/Loading";
+import { Leadeerboard } from "../contextNew/reducers/leaderboard";
+import { BuildingData } from "../contextNew/reducers/building";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -43,22 +49,7 @@ const ContentsWrapper = styled.div`
   }
 `;
 
-const OverlayConnect = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: grid;
-  grid-template-rows: 70% 30%;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(3, 12, 20, 0.7);
-  z-index: 2;
-`;
-
-function createAnimation() {
+/* function createAnimation() {
   let styles = "";
   for (let i = 0; i < 50; i += 1) {
     styles += `
@@ -80,8 +71,8 @@ function createAnimation() {
     ${styles}
   `;
 }
-
-const FloatingImage = styled.img`
+ */
+/* const FloatingImage = styled.img`
   position: absolute;
   width: 30px;
   height: 30px;
@@ -89,44 +80,87 @@ const FloatingImage = styled.img`
   ${createAnimation()}
   z-index: 0;
   opacity: 0.5;
-`;
+`; */
 
 const Main: FC = () => {
-  useGameLoop();
-  useAccountChange();
+  const { chain } = useNetwork();
 
-  const { loading, player } = useTrackedState();
-  const { status, isConnected } = useAccount();
+  const { socket, isConnected: isSocketConnected } = useSocketCtx();
+  const [loading, setLoading] = useState(true);
 
-  const makeFloatingCookies = () => {
+  const dispatch = useDispatch();
+
+  const { isConnected, address, status } = useAccount({
+    onConnect: ({ address: addr }) => {
+      if (!addr) return;
+      console.log("Web3 Connected");
+    },
+    onDisconnect: () => {
+      setLoading(true);
+      dispatch({ type: "SET_PLAYER_DATA" });
+      dispatch({ type: "SET_LEADERBOARD" });
+      console.log("Web3 Disconnected");
+    },
+  });
+
+  useEffect(() => {
+    if (status !== "connected" || !chain) return;
+    setLoading(true);
+    dispatch({ type: "SET_PLAYER_DATA" });
+    dispatch({ type: "SET_LEADERBOARD" });
+    socket.disconnect();
+    socket.connect();
+    socket.emit("join", { address, chain: chain.name });
+  }, [status, chain, address]);
+
+  useEffect(() => {
+    const onInfo = (payload: Player) => {
+      setLoading(false);
+      dispatch({ type: "SET_PLAYER_DATA", payload });
+    };
+
+    const onLeaderboard = (payload: Leadeerboard) => {
+      dispatch({ type: "SET_LEADERBOARD", payload });
+    };
+
+    const onBuildingsData = (payload: BuildingData[]) => {
+      dispatch({ type: "UPDATE_BUILDINGS", payload });
+    };
+
+    socket.on("info", onInfo);
+    socket.on("leaderboard", onLeaderboard);
+    socket.on("buildings_data", onBuildingsData);
+
+    return () => {
+      socket.off("info", onInfo);
+      socket.off("leaderboard", onLeaderboard);
+      socket.off("buildings_data", onBuildingsData);
+    };
+  }, []);
+
+  // useGameLoop();
+  // useAccountChange();
+
+  // const { loading, player } = useTrackedState();
+  // const { status, isConnected } = useAccount();
+
+  /* const makeFloatingCookies = () => {
     const images = [];
     for (let i = 0; i <= 50; i++) {
       images.push(<FloatingImage src={verseCookie} />);
     }
     return images;
-  };
-  const hasCookies = player.cookies > 1;
+  }; */
+  // const hasCookies = player.cookies > 1;
 
   return (
     <>
       <GlobalStyle />
-      <WelcomeModal />
-      {(status !== "connected" || loading) && (
-        <OverlayConnect>
-          <div>
-            {status === "connected" ? (
-              <h1>Loading...</h1>
-            ) : (
-              <h1 style={{ margin: "2rem" }}>Connect Wallet to start</h1>
-            )}
-
-            {status !== "connected" && <Web3Button />}
-          </div>
-        </OverlayConnect>
-      )}
+      {/* <WelcomeModal /> */}
+      {(status !== "connected" || loading || !isSocketConnected) && <Loading />}
 
       <ContentsWrapper>
-        {isConnected && hasCookies && makeFloatingCookies()}
+        {/* {isConnected && hasCookies && makeFloatingCookies()} */}
         <Header />
         <GameBoard />
         <Footer />

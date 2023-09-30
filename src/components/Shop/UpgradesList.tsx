@@ -1,10 +1,11 @@
 import React, { FC, useCallback } from "react";
-import Upgrade from "../../classes/Upgrade";
 import styled from "styled-components";
-import { useDispatch, useTrackedState } from "../../context/store";
+import Upgrade from "../../classes/Upgrade";
+import { useDispatch, useTrackedState } from "../../contextNew/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import Building from "../../classes/Building";
 import InfoTitle from "../InfoTitle";
+import { useSocketCtx } from "../../context/SocketContext";
 
 const Button = styled.button`
   background: indianred;
@@ -68,23 +69,21 @@ const NextUpgrade = styled.div`
 
 interface Props {
   building: Building;
+  bIndex: number;
   upgrades: Upgrade[];
 }
 
-const UpgradesList: FC<Props> = ({ upgrades, building }) => {
-  const dispatch = useDispatch();
-  const { player } = useTrackedState();
+const UpgradesList: FC<Props> = ({ upgrades, building, bIndex }) => {
+  const { socket } = useSocketCtx();
+  const { playerData } = useTrackedState();
   const buyUpgrade = useCallback(
-    (upgrade: Upgrade) => {
-      dispatch({
-        type: "BUY_UPGRADE",
-        payload: {
-          buildingName: building.name,
-          upgrade,
-        },
+    (upgrade: Upgrade, uIndex: number) => {
+      socket.emit("buy_upgrade", {
+        building: bIndex,
+        upgrade: uIndex,
       });
     },
-    [building.name],
+    [building.name, bIndex],
   );
 
   return (
@@ -97,10 +96,10 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
             <Button
               key={i}
               onClick={() => {
-                if (player.cookies < upgrade.cost) return;
-                buyUpgrade(upgrade);
+                if ((playerData?.cookies || 0) < upgrade.cost) return;
+                buyUpgrade(upgrade, i);
               }}
-              disabled={player.cookies < upgrade.cost}
+              disabled={(playerData?.cookies || 0) < upgrade.cost}
             >
               <Title>{upgrade.name}</Title>
               <Description>{upgrade.desc}</Description>
@@ -115,8 +114,8 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
         ) {
           return (
             <NextUpgrade key={upgrade.name}>
-              You need {upgrade.limit - building.amount} more {building.name}(s) to
-              unlock the next upgrade
+              You need {upgrade.limit - building.amount} more {building.name}(s)
+              to unlock the next upgrade
             </NextUpgrade>
           );
         }
