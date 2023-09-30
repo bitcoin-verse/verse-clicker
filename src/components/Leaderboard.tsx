@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import { useDispatch, useTrackedState } from "../context/store";
+import { useTrackedState } from "../contextNew/store";
 import styled from "styled-components";
 import { useAccount } from "wagmi";
 import truncateEthAddress from "../helpers/truncateEthAddress";
@@ -56,12 +56,12 @@ const Table = styled.table`
 `;
 
 const Leaderboard = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { address } = useAccount();
   const { leaderboard } = useTrackedState();
-  useEffect(() => {
+  /*  useEffect(() => {
     dispatch({ type: "GET_LEADERBOARD" });
-  }, []);
+  }, []); */
 
   return (
     <LeaderboardWrapper>
@@ -76,15 +76,15 @@ const Leaderboard = () => {
           </tr>
         </thead>
         <tbody>
-          {leaderboard.map((item, index) => {
+          {leaderboard?.map((item, index) => {
             return (
               <tr key={item.address}>
                 <td>
                   {index + 1} {item.address === address ? " 🌟" : ""}
                 </td>
                 <td>{truncateEthAddress(item.address)}</td>
-                <td>{formatNumber(Number(item.earned))}</td>
-                <td>{formatNumber(Number(item.clicked))}</td>
+                <td>{formatNumber(Number(item.stats.Earned))}</td>
+                <td>{formatNumber(Number(item.stats.Clicked))}</td>
               </tr>
             );
           })}

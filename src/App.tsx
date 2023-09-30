@@ -1,13 +1,10 @@
 import React, { FC } from "react";
-// import Main from "./views/Main";
 import { EthereumClient, w3mConnectors } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { goerli, mainnet, polygon } from "wagmi/chains";
-import { Provider } from "./context/store";
 import { ContextProvider } from "./contextNew/store";
 import { infuraProvider } from "wagmi/providers/infura";
-// import V2 from "./views/V2";
 import SocketCtxProvider from "./context/SocketContext";
 import Main from "./views/Main";
 

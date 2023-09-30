@@ -1,16 +1,11 @@
 import React, { FC, useEffect, useState } from "react";
 import Header from "../components/Header/Header";
-import styled, { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Footer from "../components/Footer";
 import GameBoard from "../components/GameBoard/GameBoard";
-import useGameLoop from "../hooks/useGameLoop";
 
 import background from "../assets/background.png";
-import { useTrackedState } from "../context/store";
-import { Web3Button } from "@web3modal/react";
 import { useAccount, useNetwork } from "wagmi";
-import WelcomeModal from "../components/WelcomeModal";
-import useAccountChange from "../hooks/useAccountChange";
 
 import verseCookie from "../../src/assets/verse-cookie.png";
 import { useSocketCtx } from "../context/SocketContext";
@@ -90,15 +85,14 @@ const Main: FC = () => {
 
   const dispatch = useDispatch();
 
-  const { isConnected, address, status } = useAccount({
+  const { address, status } = useAccount({
     onConnect: ({ address: addr }) => {
       if (!addr) return;
       console.log("Web3 Connected");
     },
     onDisconnect: () => {
       setLoading(true);
-      dispatch({ type: "SET_PLAYER_DATA" });
-      dispatch({ type: "SET_LEADERBOARD" });
+      dispatch({ type: "RESET_GAME" });
       console.log("Web3 Disconnected");
     },
   });
@@ -106,8 +100,7 @@ const Main: FC = () => {
   useEffect(() => {
     if (status !== "connected" || !chain) return;
     setLoading(true);
-    dispatch({ type: "SET_PLAYER_DATA" });
-    dispatch({ type: "SET_LEADERBOARD" });
+    dispatch({ type: "RESET_GAME" });
     socket.disconnect();
     socket.connect();
     socket.emit("join", { address, chain: chain.name });

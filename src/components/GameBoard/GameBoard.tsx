@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Tabs from "../Tabs";
 import Advertisement from "../Advertisement";
 import Bonuses from "../Bonuses/Bonuses";
+import Leaderboard from "../Leaderboard";
 
 const StyledGameBoard = styled.section`
   position: relative;
@@ -75,8 +76,8 @@ const GameBoard: FC = () => {
       <ShopSection>
         <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         <TabContent>
-          <Shop />
-          {/* {selectedTab === 0 ? <Shop /> : <Leaderboard />} */}
+          {/* <Shop /> */}
+          {selectedTab === 0 ? <Shop /> : <Leaderboard />}
         </TabContent>
         <Advertisement />
       </ShopSection>

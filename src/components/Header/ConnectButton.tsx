@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import wcLogo from "../../assets/wc-logo.png";
 import styled from "styled-components";
 import { useWeb3Modal } from "@web3modal/react";
+
 import { useAccount } from "wagmi";
 import truncateEthAddress from "../../helpers/truncateEthAddress";
 
