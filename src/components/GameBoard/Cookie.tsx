@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useAccount } from "wagmi";
 import { createRoot } from "react-dom/client";
 
-import { useDispatch, useTrackedState } from "../../contextNew/store";
+import { useDispatch, useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 
 import cookieBite from "../../assets/cookie-bite.png";
@@ -86,7 +86,7 @@ const Cookie: FC = () => {
   const { status, address } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
 
-  const { playerData } = useTrackedState();
+  const { player } = useTrackedState();
   const [clickCount, setClickCount] = useState<number>();
 
   const [macroDetected, setMacroDetected] = useState(false);
@@ -109,7 +109,7 @@ const Cookie: FC = () => {
           }}
         >
           <CookieClick src={cookieBite} alt="Cookie" />+
-          {formatNumber(playerData?.cpc)}
+          {formatNumber(player.cpc)}
         </CpcClick>,
       );
 
@@ -125,7 +125,7 @@ const Cookie: FC = () => {
         clearTimeout(timer);
       };
     },
-    [playerData?.cpc],
+    [player.cpc],
   );
 
   const handleCheatPrevention = useCallback(() => {
@@ -159,7 +159,7 @@ const Cookie: FC = () => {
       alert("Bad click... Get outa the console you script kiddy");
       return;
     }
-    /* if (clickCount && clickCount >= clicksLimit) {
+    if (clickCount && clickCount >= 30) {
       if (macroDetected) {
         alert("You were warned! wiping your game...");
         dispatch({ type: "RESET_GAME" });
@@ -170,7 +170,7 @@ const Cookie: FC = () => {
         setMacroDetected(true);
       }
       return;
-    } */
+    }
 
     handleCheatPrevention();
     socket.emit("click");

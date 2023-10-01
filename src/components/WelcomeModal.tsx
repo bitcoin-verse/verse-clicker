@@ -25,42 +25,29 @@ const BonusText = styled.div`
 `;
 
 const WelcomeModal = () => {
-  const {
-    loading,
-    lastSaveLoaded,
-    newCookies,
-    verseHolder,
-    error,
-    pending,
-    player: { cookies },
-  } = useTrackedState();
+  const { verseHolder, player } = useTrackedState();
   const { status } = useAccount();
   const { modalRef, showModal } = useModal();
   const [cachedSave, setCachedSave] = useState<string>();
   const [, setWasLoaded] = useState(false);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (!lastSaveLoaded) return;
     const now = new Date();
     const then = new Date(lastSaveLoaded * 1000);
     const diff = Math.abs(now.getTime() - then.getTime());
     setCachedSave(getTimeDiff(diff));
-  }, [lastSaveLoaded]);
+  }, [lastSaveLoaded]); */
 
-  useEffect(() => {
-    if (
-      status === "connected" &&
-      !loading &&
-      (!error || !pending) &&
-      cookies > 0
-    ) {
+  /*   useEffect(() => {
+    if (status === "connected" && !loading && (player.cookies) > 0) {
       setWasLoaded((wasLoaded) => {
         if (wasLoaded) return true;
         showModal();
         return true;
       });
     }
-  }, [status, loading]);
+  }, [status, loading]); */
 
   return (
     <Modal modalRef={modalRef}>
@@ -69,8 +56,8 @@ const WelcomeModal = () => {
         <BonusText>
           <div>It&rsquo;s been {cachedSave} since last seen</div>
           <div>
-            You have accumulated {formatNumber(newCookies)} cookies while you
-            were away
+            You have accumulated {/* {formatNumber(newCookies)} */} cookies
+            while you were away
           </div>
           {verseHolder ? (
             <div>

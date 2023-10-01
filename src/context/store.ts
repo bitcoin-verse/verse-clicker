@@ -5,13 +5,13 @@ import reducer, { Action } from "./reducer";
 import asyncActionHandlers, { AsyncAction } from "./asyncActionHandlers";
 import { Player } from "./reducers/player";
 
-import buildings from "../context/buildings";
+import buildings from "./buildings";
 import { Leadeerboard } from "./reducers/leaderboard";
 import Building from "../classes/Building";
 
 export type State = {
   isConnected: boolean;
-  playerData?: Player;
+  player: Player;
   leaderboard?: Leadeerboard;
   verseHolder: boolean;
 
@@ -24,6 +24,16 @@ export const initialState: State = {
   verseHolder: false,
   currentBuilding: buildings[0].name,
   buildings,
+  player: {
+    cookies: 0,
+    cpc: 0,
+    cps: 0,
+    stats: {
+      Earned: 0,
+      Clicked: 0,
+      Spent: 0,
+    },
+  },
 };
 
 const useValue = () => {

@@ -12,7 +12,7 @@ import { formatEther, parseEther } from "viem";
 
 import testVerseABI from "../../contracts/testVerseABI";
 import BurnButtons from "./BurnButtons";
-import { useDispatch, useTrackedState } from "../../context/store";
+import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 
 const ButtonContainer = styled.div`
@@ -66,12 +66,8 @@ const buttonsList = [
 ];
 
 const Burn: FC = () => {
-  const {
-    player: { aMPF },
-    settings: { frameRate },
-  } = useTrackedState();
+  const { player } = useTrackedState();
 
-  const dispatch = useDispatch();
   const { address } = useAccount();
   const chainId = useChainId();
 
@@ -117,14 +113,14 @@ const Burn: FC = () => {
     const now = new Date();
     const extraTime = new Date(now.getTime() + ((hours * 60 * 60) ^ 1000));
     const diff = Math.abs(now.getTime() - extraTime.getTime()) / 1000;
-    const cookieDiff = diff * aMPF * 1000 * frameRate;
+    const cookieDiff = diff * player.cps * 1000 * 30;
 
     setNewCookies(cookieDiff);
-    dispatch({
+    /* dispatch({
       type: "EARN_COOKIE",
       payload: cookieDiff,
-    });
-    dispatch({ type: "RECALCULATE_CPS" });
+    }); */
+    // dispatch({ type: "RECALCULATE_CPS" });
   }, [txData, address]);
 
   const handleBurn = async (amount: number, h: number) => {

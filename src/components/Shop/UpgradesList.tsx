@@ -1,7 +1,7 @@
 import React, { FC, useCallback } from "react";
 import styled from "styled-components";
 import Upgrade from "../../classes/Upgrade";
-import { useDispatch, useTrackedState } from "../../contextNew/store";
+import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import Building from "../../classes/Building";
 import InfoTitle from "../InfoTitle";
@@ -21,7 +21,6 @@ const Button = styled.button`
 
   display: grid;
   grid-template-columns: 5fr 2fr;
-  grid-gap: 0.25rem;
   grid-template-areas: "title price" "desc price";
   background: #163756;
 
@@ -57,7 +56,7 @@ const Price = styled.div`
 const UpgrdesWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
 
 const NextUpgrade = styled.div`
@@ -75,9 +74,10 @@ interface Props {
 
 const UpgradesList: FC<Props> = ({ upgrades, building, bIndex }) => {
   const { socket } = useSocketCtx();
-  const { playerData } = useTrackedState();
+  const { player } = useTrackedState();
+
   const buyUpgrade = useCallback(
-    (upgrade: Upgrade, uIndex: number) => {
+    (uIndex: number) => {
       socket.emit("buy_upgrade", {
         building: bIndex,
         upgrade: uIndex,
@@ -96,10 +96,10 @@ const UpgradesList: FC<Props> = ({ upgrades, building, bIndex }) => {
             <Button
               key={i}
               onClick={() => {
-                if ((playerData?.cookies || 0) < upgrade.cost) return;
-                buyUpgrade(upgrade, i);
+                if (player.cookies < upgrade.cost) return;
+                buyUpgrade(i);
               }}
-              disabled={(playerData?.cookies || 0) < upgrade.cost}
+              disabled={player.cookies < upgrade.cost}
             >
               <Title>{upgrade.name}</Title>
               <Description>{upgrade.desc}</Description>

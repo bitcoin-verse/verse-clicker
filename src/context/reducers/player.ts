@@ -1,28 +1,21 @@
-import {
-  clickedPlayerCookies,
-  earnPlayerCookies,
-} from "../../helpers/playerHelpers";
 import { State } from "../store";
 
-export type ClickCookieAction = { type: "CLICK_COOKIE" };
-
-export const clickCookie = (state: State) => {
-  return {
-    ...state,
-    player: clickedPlayerCookies(state.player),
+export type Player = {
+  cookies: number;
+  cps: number;
+  cpc: number;
+  stats: {
+    Earned: number;
+    Clicked: number;
+    Spent: number;
   };
 };
 
-export type EarnCookieAction = { type: "EARN_COOKIE"; payload: number };
+export type SetPlayerAction = { type: "SET_PLAYER_DATA"; payload: Player };
 
-export const earnCookie = (
+export const setPlayer = (
   state: State,
-  payload: EarnCookieAction["payload"],
+  payload: SetPlayerAction["payload"],
 ): State => {
-  if (state.player.aMPF === 0) return state;
-
-  return {
-    ...state,
-    player: earnPlayerCookies(state.player, payload),
-  };
+  return { ...state, player: payload };
 };

@@ -7,13 +7,13 @@ import GameBoard from "../components/GameBoard/GameBoard";
 import background from "../assets/background.png";
 import { useAccount, useNetwork } from "wagmi";
 
-import verseCookie from "../../src/assets/verse-cookie.png";
+// import verseCookie from "../../src/assets/verse-cookie.png";
 import { useSocketCtx } from "../context/SocketContext";
-import { useDispatch } from "../contextNew/store";
-import { Player } from "../contextNew/reducers/player";
+import { useDispatch } from "../context/store";
+import { Player } from "../context/reducers/player";
 import Loading from "../components/Loading";
-import { Leadeerboard } from "../contextNew/reducers/leaderboard";
-import { BuildingData } from "../contextNew/reducers/building";
+import { Leadeerboard } from "../context/reducers/leaderboard";
+import { BuildingData } from "../context/reducers/building";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -103,7 +103,7 @@ const Main: FC = () => {
     dispatch({ type: "RESET_GAME" });
     socket.disconnect();
     socket.connect();
-    socket.emit("join", { address, chain: chain.name });
+    // socket.emit("join", { address, chain: chain.name });
   }, [status, chain, address]);
 
   useEffect(() => {

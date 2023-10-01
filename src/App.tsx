@@ -3,7 +3,7 @@ import { EthereumClient, w3mConnectors } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { goerli, mainnet, polygon } from "wagmi/chains";
-import { ContextProvider } from "./contextNew/store";
+import { ContextProvider } from "./context/store";
 import { infuraProvider } from "wagmi/providers/infura";
 import SocketCtxProvider from "./context/SocketContext";
 import Main from "./views/Main";

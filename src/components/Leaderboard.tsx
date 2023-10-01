@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useTrackedState } from "../contextNew/store";
+import { useTrackedState } from "../context/store";
 import styled from "styled-components";
 import { useAccount } from "wagmi";
 import truncateEthAddress from "../helpers/truncateEthAddress";

@@ -1,6 +1,6 @@
 import React, { FC, useMemo } from "react";
 import styled from "styled-components";
-import { useTrackedState } from "../../contextNew/store";
+import { useTrackedState } from "../../context/store";
 
 import BuildingInfo from "./BuildingInfo";
 import Register from "./Register";

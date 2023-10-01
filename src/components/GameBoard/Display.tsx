@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { useTrackedState } from "../../contextNew/store";
+import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import { Title } from "../Title";
 
@@ -34,16 +34,16 @@ const StatCount = styled.div`
 `;
 
 const Display: FC = () => {
-  const { playerData } = useTrackedState();
+  const { player } = useTrackedState();
 
   return (
     <DisplayWrapper>
-      <CookieCount>Cookies: {formatNumber(playerData?.cookies)}</CookieCount>
+      <CookieCount>Cookies: {formatNumber(player.cookies)}</CookieCount>
       <StatCount>
-        <Title>CPS:</Title> {formatNumber(playerData?.cps)}
+        <Title>CPS:</Title> {formatNumber(player.cps)}
       </StatCount>
       <StatCount>
-        <Title>CPC:</Title> {formatNumber(playerData?.cpc)}
+        <Title>CPC:</Title> {formatNumber(player.cpc)}
       </StatCount>
     </DisplayWrapper>
   );

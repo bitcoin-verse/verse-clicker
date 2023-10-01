@@ -8,6 +8,7 @@ import React, {
   useState,
 } from "react";
 import { Socket, io } from "socket.io-client";
+import { useAccount, useNetwork } from "wagmi";
 
 export interface SocketCtxState {
   socket: Socket;
@@ -21,6 +22,9 @@ export const SocketCtxContext = createContext<SocketCtxState>(
 export const useSocketCtx = () => useContext(SocketCtxContext);
 
 const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
+  const { chain } = useNetwork();
+  const { address } = useAccount();
+
   const socketRef = useRef(
     io("http://localhost:3001", {
       autoConnect: false,
@@ -32,6 +36,9 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
   useEffect(() => {
     const onConnect = () => {
       setIsConnected(true);
+      if (!chain || !address) return;
+
+      socketRef.current.emit("join", { address, chain: chain.name });
     };
 
     const onDisconnect = () => {

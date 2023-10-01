@@ -1,24 +1,21 @@
 import { Reducer } from "react";
-import { State } from "./store";
 import { AsyncActionHandlers } from "use-reducer-async";
-import { AsyncActionSaveGame, saveGame } from "./actions/saveGame";
-import { AsyncActionGetSaveGame, getSave } from "./actions/getSaveGame";
-import {
-  AsyncActionGetLeaderboard,
-  getLeaderboard,
-} from "./actions/getLeaderboard";
+
+import { State } from "./store";
 import { Action } from "./reducer";
 
-export type AsyncAction =
-  | AsyncActionSaveGame
-  | AsyncActionGetSaveGame
-  | AsyncActionGetLeaderboard;
+export type AsyncAction = {
+  type: "SAVE_GAME";
+  payload: { address: string };
+};
 
-export const asyncActionHandlers: AsyncActionHandlers<
+const asyncActionHandlers: AsyncActionHandlers<
   Reducer<State, Action>,
   AsyncAction
 > = {
-  SAVE_GAME: saveGame,
-  GET_SAVE: getSave,
-  GET_LEADERBOARD: getLeaderboard,
+  SAVE_GAME: () => async () => {
+    console.log("save");
+  },
 };
+
+export default asyncActionHandlers;

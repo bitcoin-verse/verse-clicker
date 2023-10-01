@@ -1,17 +1,22 @@
-import { LeaderboardResponse } from "../../api/leaderboard";
 import { State } from "../store";
 
-export type LeaderboardSavedAction = {
-  type: "LEADERBOARD_SAVED";
-  payload: LeaderboardResponse;
+export type Leadeerboard = {
+  address: string;
+  stats: {
+    Earned: number;
+    Clicked: number;
+    Spent: number;
+  };
+}[];
+
+export type SetLeaderboardAction = {
+  type: "SET_LEADERBOARD";
+  payload?: Leadeerboard;
 };
 
-export const leaderboardSaved = (
+export const setLeaderboard = (
   state: State,
-  payload: LeaderboardSavedAction["payload"],
+  payload: SetLeaderboardAction["payload"],
 ): State => {
-  return {
-    ...state,
-    leaderboard: payload,
-  };
+  return { ...state, leaderboard: payload };
 };

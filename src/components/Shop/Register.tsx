@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from "react";
 import styled from "styled-components";
-import { useDispatch, useTrackedState } from "../../contextNew/store";
+import { useTrackedState } from "../../context/store";
 import Building from "../../classes/Building";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getBuildingsCost } from "../../helpers/buildingHelpers";
@@ -47,7 +47,7 @@ interface Props {
 
 const Register: FC<Props> = ({ building, index }) => {
   const { socket } = useSocketCtx();
-  const { playerData } = useTrackedState();
+  const { player } = useTrackedState();
 
   const buyBuilding = useCallback(
     (amount: number) => {
@@ -59,12 +59,9 @@ const Register: FC<Props> = ({ building, index }) => {
   return (
     <BuyWrapper>
       <Button
-        disabled={
-          (playerData?.cookies || 0) < getBuildingsCost(1, building.cost)
-        }
+        disabled={player.cookies < getBuildingsCost(1, building.cost)}
         onClick={() => {
-          if ((playerData?.cookies || 0) < getBuildingsCost(1, building.cost))
-            return;
+          if (player.cookies < getBuildingsCost(1, building.cost)) return;
 
           buyBuilding(1);
         }}
@@ -73,12 +70,9 @@ const Register: FC<Props> = ({ building, index }) => {
         <div>{formatNumber(getBuildingsCost(1, building.cost))}</div>
       </Button>
       <Button
-        disabled={
-          (playerData?.cookies || 0) < getBuildingsCost(5, building.cost)
-        }
+        disabled={player.cookies < getBuildingsCost(5, building.cost)}
         onClick={() => {
-          if ((playerData?.cookies || 0) < getBuildingsCost(5, building.cost))
-            return;
+          if (player.cookies < getBuildingsCost(5, building.cost)) return;
 
           buyBuilding(5);
         }}
@@ -87,12 +81,9 @@ const Register: FC<Props> = ({ building, index }) => {
         <div>{formatNumber(getBuildingsCost(5, building.cost))}</div>
       </Button>
       <Button
-        disabled={
-          (playerData?.cookies || 0) < getBuildingsCost(10, building.cost)
-        }
+        disabled={player.cookies < getBuildingsCost(10, building.cost)}
         onClick={() => {
-          if ((playerData?.cookies || 0) < getBuildingsCost(10, building.cost))
-            return;
+          if (player.cookies < getBuildingsCost(10, building.cost)) return;
 
           buyBuilding(10);
         }}
