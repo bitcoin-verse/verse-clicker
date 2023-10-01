@@ -40,23 +40,23 @@ const BonusButton = styled.button<{ $hasBonus?: boolean }>`
   font-weight: 700;
 `;
 
-const Bonuses: FC = () => {
-  const { modalRef, showModal } = useModal();
-  const [content, setContent] = useState("");
-  const { verseHolder } = useTrackedState();
+const getModalContent = (content?: string) => {
+  switch (content) {
+    case "burn":
+      return <Burn />;
+    case "hold":
+      return <Hold />;
+    case "farm":
+      return <Farm />;
+    default:
+      return null;
+  }
+};
 
-  const getModalContent = () => {
-    switch (content) {
-      case "burn":
-        return <Burn />;
-      case "hold":
-        return <Hold />;
-      case "farm":
-        return <Farm />;
-      default:
-        return null;
-    }
-  };
+const Bonuses: FC = () => {
+  const [content, setContent] = useState<string>();
+  const { modalRef, showModal } = useModal();
+  const { player } = useTrackedState();
 
   return (
     <>
@@ -66,7 +66,7 @@ const Bonuses: FC = () => {
             setContent("hold");
             showModal();
           }}
-          $hasBonus={verseHolder}
+          $hasBonus={player.verseHolder}
         >
           Hold
         </BonusButton>
@@ -88,7 +88,9 @@ const Bonuses: FC = () => {
           Farm
         </BonusButton>
       </BonusesWrapper>
-      <Modal modalRef={modalRef}>{getModalContent()}</Modal>
+      <Modal modalRef={modalRef} onClose={() => setContent(undefined)}>
+        {getModalContent(content)}
+      </Modal>
     </>
   );
 };

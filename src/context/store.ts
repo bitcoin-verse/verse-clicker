@@ -33,6 +33,7 @@ export const initialState: State = {
       Clicked: 0,
       Spent: 0,
     },
+    verseHolder: false,
   },
 };
 

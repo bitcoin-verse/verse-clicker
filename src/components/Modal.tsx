@@ -35,11 +35,13 @@ export const CloseButton = styled.button`
 
 interface Props {
   modalRef: RefObject<HTMLDialogElement>;
+  onClose?: () => void;
 }
 
 const Modal: FC<PropsWithChildren<Props>> = ({
   modalRef,
   children,
+  onClose,
   ...rest
 }) => {
   return (
@@ -48,6 +50,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
         onClick={() => {
           if (!modalRef || !modalRef.current) return;
           modalRef.current.close();
+          if (onClose) onClose();
         }}
       >
         ✕

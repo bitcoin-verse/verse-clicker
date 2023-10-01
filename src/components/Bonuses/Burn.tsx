@@ -12,8 +12,8 @@ import { formatEther, parseEther } from "viem";
 
 import testVerseABI from "../../contracts/testVerseABI";
 import BurnButtons from "./BurnButtons";
-import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
+import { useSocketCtx } from "../../context/SocketContext";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -66,10 +66,10 @@ const buttonsList = [
 ];
 
 const Burn: FC = () => {
-  const { player } = useTrackedState();
-
+  const { socket } = useSocketCtx();
   const { address } = useAccount();
   const chainId = useChainId();
+  const [newCookies, setNewCookies] = useState<number>();
 
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({
     address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
@@ -78,8 +78,7 @@ const Burn: FC = () => {
     chainId,
   });
 
-  const { data: txData, isSuccess: txWaitSuccess } =
-    useWaitForTransaction(data);
+  const { isSuccess: txWaitSuccess } = useWaitForTransaction(data);
 
   const { data: readData, error } = useContractRead({
     address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
@@ -91,8 +90,6 @@ const Burn: FC = () => {
     watch: true,
   });
 
-  const [newCookies, setNewCookies] = useState(0);
-  const [hours, setHours] = useState(buttonsList[0].hours);
   const [showLoading, setShowLoading] = useState(false);
 
   const [balanceData, setBalanceData] = useState<{
@@ -107,41 +104,33 @@ const Burn: FC = () => {
   }, [readData, error]);
 
   useEffect(() => {
-    if (!txData || !address) return;
-    console.log("txdata", txData);
-
-    const now = new Date();
-    const extraTime = new Date(now.getTime() + ((hours * 60 * 60) ^ 1000));
-    const diff = Math.abs(now.getTime() - extraTime.getTime()) / 1000;
-    const cookieDiff = diff * player.cps * 1000 * 30;
-
-    setNewCookies(cookieDiff);
-    /* dispatch({
-      type: "EARN_COOKIE",
-      payload: cookieDiff,
-    }); */
-    // dispatch({ type: "RECALCULATE_CPS" });
-  }, [txData, address]);
-
-  const handleBurn = async (amount: number, h: number) => {
-    setHours(h);
-    try {
-      console.log(amount, parseEther(amount.toString()));
-      await writeAsync({
-        args: [parseEther(amount.toString())],
-      });
-    } catch (error) {
-      console.log("write error", error);
-    }
-  };
-
-  useEffect(() => {
     if (isLoading || isSuccess || txWaitSuccess) {
       setShowLoading(true);
     } else {
       setShowLoading(false);
     }
   }, [isLoading, isSuccess, txWaitSuccess]);
+
+  useEffect(() => {
+    const onBonus = (data: number) => {
+      setNewCookies(data);
+    };
+    socket.on("bonus", onBonus);
+
+    return () => {
+      socket.off("bonus", onBonus);
+    };
+  }, []);
+
+  const handleBurn = async (amount: number) => {
+    try {
+      await writeAsync({
+        args: [parseEther(amount.toString())],
+      });
+    } catch (error) {
+      console.log("Write error", error);
+    }
+  };
 
   return (
     <ModalContent>

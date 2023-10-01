@@ -11,7 +11,7 @@ import Main from "./views/Main";
 const projectId = "8000cda0f00ad8e06049c5e030ddaa4c";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [goerli, mainnet, polygon],
+  [mainnet, polygon, goerli],
   [infuraProvider({ apiKey: "1f47d876b0094053881ae761371be771" })],
 );
 
@@ -38,7 +38,7 @@ const App: FC = () => {
       <Web3Modal
         projectId={projectId}
         ethereumClient={ethereumClient}
-        defaultChain={goerli}
+        defaultChain={mainnet}
         themeMode="dark"
         themeVariables={{
           "--w3m-button-border-radius": "2rem",

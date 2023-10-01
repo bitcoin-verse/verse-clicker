@@ -9,6 +9,7 @@ export type Player = {
     Clicked: number;
     Spent: number;
   };
+  verseHolder: boolean;
 };
 
 export type SetPlayerAction = { type: "SET_PLAYER_DATA"; payload: Player };

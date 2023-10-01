@@ -108,6 +108,7 @@ const Main: FC = () => {
   useEffect(() => {
     const onInfo = (payload: Player) => {
       setLoading(false);
+      console.log(payload);
       dispatch({ type: "SET_PLAYER_DATA", payload });
     };
 
@@ -129,21 +130,6 @@ const Main: FC = () => {
       socket.off("buildings_data", onBuildingsData);
     };
   }, []);
-
-  // useGameLoop();
-  // useAccountChange();
-
-  // const { loading, player } = useTrackedState();
-  // const { status, isConnected } = useAccount();
-
-  /* const makeFloatingCookies = () => {
-    const images = [];
-    for (let i = 0; i <= 50; i++) {
-      images.push(<FloatingImage src={verseCookie} />);
-    }
-    return images;
-  }; */
-  // const hasCookies = player.cookies > 1;
 
   return (
     <>

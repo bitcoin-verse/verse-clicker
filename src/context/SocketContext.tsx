@@ -26,9 +26,14 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
   const { address } = useAccount();
 
   const socketRef = useRef(
-    io("https://verse-clicker-server.fly.dev/", {
-      autoConnect: false,
-    }),
+    io(
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3001"
+        : "https://verse-clicker-server.fly.dev/",
+      {
+        autoConnect: false,
+      },
+    ),
   );
 
   const [isConnected, setIsConnected] = useState(false);
@@ -37,16 +42,17 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
     const onConnect = () => {
       setIsConnected(true);
       if (!chain || !address) return;
-
+      console.log("socket connected", address, chain.name);
       socketRef.current.emit("join", { address, chain: chain.name });
     };
 
     const onDisconnect = () => {
       setIsConnected(false);
+      console.log("socket disconnected");
     };
 
     const onError = (e: unknown) => {
-      console.log(e);
+      console.log("socket error", e);
     };
 
     // socketRef.current.connect();
@@ -60,7 +66,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
 
       socketRef.current.disconnect();
     };
-  }, [address]);
+  }, [address, chain]);
 
   return (
     <SocketCtxContext.Provider

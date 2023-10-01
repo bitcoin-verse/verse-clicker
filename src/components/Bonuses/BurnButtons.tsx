@@ -56,7 +56,7 @@ interface Props {
   }[];
 
   isLoading: boolean;
-  handleBurn: (amount: number, hours: number) => Promise<void>;
+  handleBurn: (amount: number) => Promise<void>;
   verseBalance: bigint;
 }
 const BurnButtons: FC<Props> = ({
@@ -75,7 +75,7 @@ const BurnButtons: FC<Props> = ({
             disabled={isLoading || verseBalance < weiValue}
             $noVerse={verseBalance < weiValue}
             onClick={() => {
-              handleBurn(button.value, button.hours);
+              handleBurn(button.value);
             }}
           >
             <Title>{button.title}</Title>

@@ -3,9 +3,9 @@ import { useTrackedState } from "../../context/store";
 import { ModalContent, ModalTitle } from "../ModalStyles";
 
 const Hold: FC = () => {
-  const { verseHolder } = useTrackedState();
+  const { player } = useTrackedState();
 
-  if (verseHolder)
+  if (player.verseHolder)
     return (
       <ModalContent>
         <ModalTitle>You hold verse.</ModalTitle>
