@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Modal, { useModal } from "./Modal";
 import { useTrackedState } from "../context/store";
-import { useAccount } from "wagmi";
 import styled from "styled-components";
 import { formatNumber } from "../helpers/formatNumber";
 import { ModalContent, ModalTitle } from "./ModalStyles";
 import { useSocketCtx } from "../context/SocketContext";
-
-const getTimeDiff = (diffMs: number) => {
-  const diffDays = Math.floor(diffMs / 86400000); // days
-  const diffHrs = Math.floor((diffMs % 86400000) / 3600000); // hours
-  const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
-  const diffSecs = Math.floor(diffMs / 1000 - diffMins / 60); // seconds
-
-  return diffDays + "d " + diffHrs + "h " + diffMins + "m " + diffSecs + "s";
-};
 
 const BonusText = styled.div`
   display: flex;
