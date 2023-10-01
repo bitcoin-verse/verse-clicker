@@ -26,7 +26,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
   const { address } = useAccount();
 
   const socketRef = useRef(
-    io("http://localhost:3001", {
+    io("https://verse-clicker-server.fly.dev/", {
       autoConnect: false,
     }),
   );
@@ -45,17 +45,22 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
       setIsConnected(false);
     };
 
+    const onError = (e: unknown) => {
+      console.log(e);
+    };
+
     // socketRef.current.connect();
     socketRef.current.on("connect", onConnect);
     socketRef.current.on("disconnect", onDisconnect);
-
+    socketRef.current.on("connect_error", onError);
     return () => {
       socketRef.current.off("connect", onConnect);
       socketRef.current.off("disconnect", onDisconnect);
+      socketRef.current.off("connect_error", onError);
 
       socketRef.current.disconnect();
     };
-  }, []);
+  }, [address]);
 
   return (
     <SocketCtxContext.Provider

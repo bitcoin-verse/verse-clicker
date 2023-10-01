@@ -103,7 +103,6 @@ const Main: FC = () => {
     dispatch({ type: "RESET_GAME" });
     socket.disconnect();
     socket.connect();
-    // socket.emit("join", { address, chain: chain.name });
   }, [status, chain, address]);
 
   useEffect(() => {
