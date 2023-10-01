@@ -29,7 +29,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
     io(
       process.env.NODE_ENV === "development"
         ? "http://localhost:3001"
-        : "https://verse-clicker-server.fly.dev/",
+        : "https://verse-clicker-server.fly.dev",
       {
         autoConnect: false,
       },
@@ -42,7 +42,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
     const onConnect = () => {
       setIsConnected(true);
       if (!chain || !address) return;
-      console.log("socket connected", address, chain.name);
+      console.log("socket connected");
       socketRef.current.emit("join", { address, chain: chain.name });
     };
 

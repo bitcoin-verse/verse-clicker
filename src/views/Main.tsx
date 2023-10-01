@@ -108,7 +108,6 @@ const Main: FC = () => {
   useEffect(() => {
     const onInfo = (payload: Player) => {
       setLoading(false);
-      console.log(payload);
       dispatch({ type: "SET_PLAYER_DATA", payload });
     };
 
