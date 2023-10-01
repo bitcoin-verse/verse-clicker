@@ -22,7 +22,8 @@ const ShortNumbers = [
   "Vig",
 ];
 
-export const formatNumber = (num: number) => {
+export const formatNumber = (num?: number) => {
+  if (!num) return num ?? "";
   let formatted = "";
   if (num >= 1000) {
     for (let i = 0; i < ShortNumbers.length; i++) {

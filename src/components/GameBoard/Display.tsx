@@ -34,19 +34,16 @@ const StatCount = styled.div`
 `;
 
 const Display: FC = () => {
-  const {
-    player,
-    settings: { frameRate },
-  } = useTrackedState();
+  const { player } = useTrackedState();
 
   return (
     <DisplayWrapper>
       <CookieCount>Cookies: {formatNumber(player.cookies)}</CookieCount>
       <StatCount>
-        <Title>CPS:</Title> {formatNumber(player.aMPF * frameRate)}
+        <Title>CPS:</Title> {formatNumber(player.cps)}
       </StatCount>
       <StatCount>
-        <Title>CPC:</Title> {formatNumber(player.aMPC)}
+        <Title>CPC:</Title> {formatNumber(player.cpc)}
       </StatCount>
     </DisplayWrapper>
   );

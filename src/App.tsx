@@ -1,16 +1,17 @@
 import React, { FC } from "react";
-import Main from "./views/Main";
 import { EthereumClient, w3mConnectors } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { goerli, mainnet } from "wagmi/chains";
-import { Provider } from "./context/store";
+import { goerli, mainnet, polygon } from "wagmi/chains";
+import { ContextProvider } from "./context/store";
 import { infuraProvider } from "wagmi/providers/infura";
+import SocketCtxProvider from "./context/SocketContext";
+import Main from "./views/Main";
 
 const projectId = "8000cda0f00ad8e06049c5e030ddaa4c";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [goerli, mainnet],
+  [goerli, mainnet, polygon],
   [infuraProvider({ apiKey: "1f47d876b0094053881ae761371be771" })],
 );
 
@@ -27,9 +28,11 @@ const App: FC = () => {
   return (
     <>
       <WagmiConfig config={wagmiConfig}>
-        <Provider>
-          <Main />
-        </Provider>
+        <SocketCtxProvider>
+          <ContextProvider>
+            <Main />
+          </ContextProvider>
+        </SocketCtxProvider>
       </WagmiConfig>
 
       <Web3Modal

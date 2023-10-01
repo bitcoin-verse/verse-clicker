@@ -1,10 +1,11 @@
 import React, { FC, useCallback } from "react";
-import Upgrade from "../../classes/Upgrade";
 import styled from "styled-components";
-import { useDispatch, useTrackedState } from "../../context/store";
+import Upgrade from "../../classes/Upgrade";
+import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import Building from "../../classes/Building";
 import InfoTitle from "../InfoTitle";
+import { useSocketCtx } from "../../context/SocketContext";
 
 const Button = styled.button`
   background: indianred;
@@ -20,7 +21,6 @@ const Button = styled.button`
 
   display: grid;
   grid-template-columns: 5fr 2fr;
-  grid-gap: 0.25rem;
   grid-template-areas: "title price" "desc price";
   background: #163756;
 
@@ -56,7 +56,7 @@ const Price = styled.div`
 const UpgrdesWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
 
 const NextUpgrade = styled.div`
@@ -68,23 +68,22 @@ const NextUpgrade = styled.div`
 
 interface Props {
   building: Building;
+  bIndex: number;
   upgrades: Upgrade[];
 }
 
-const UpgradesList: FC<Props> = ({ upgrades, building }) => {
-  const dispatch = useDispatch();
+const UpgradesList: FC<Props> = ({ upgrades, building, bIndex }) => {
+  const { socket } = useSocketCtx();
   const { player } = useTrackedState();
+
   const buyUpgrade = useCallback(
-    (upgrade: Upgrade) => {
-      dispatch({
-        type: "BUY_UPGRADE",
-        payload: {
-          buildingName: building.name,
-          upgrade,
-        },
+    (uIndex: number) => {
+      socket.emit("buy_upgrade", {
+        building: bIndex,
+        upgrade: uIndex,
       });
     },
-    [building.name],
+    [building.name, bIndex],
   );
 
   return (
@@ -98,7 +97,7 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
               key={i}
               onClick={() => {
                 if (player.cookies < upgrade.cost) return;
-                buyUpgrade(upgrade);
+                buyUpgrade(i);
               }}
               disabled={player.cookies < upgrade.cost}
             >
@@ -115,8 +114,8 @@ const UpgradesList: FC<Props> = ({ upgrades, building }) => {
         ) {
           return (
             <NextUpgrade key={upgrade.name}>
-              You need {upgrade.limit - building.amount} more {building.name}(s) to
-              unlock the next upgrade
+              You need {upgrade.limit - building.amount} more {building.name}(s)
+              to unlock the next upgrade
             </NextUpgrade>
           );
         }

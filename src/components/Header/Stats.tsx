@@ -15,19 +15,20 @@ const Wrapper = styled.div`
 
 const Stats: FC = () => {
   const { player } = useTrackedState();
+
   return (
     <Wrapper>
       <div>
         <Title>Earned: </Title>
-        {formatNumber(player.cookieStats.Earned)}
+        {formatNumber(player.stats.Earned)}
       </div>
       <div>
         <Title>Clicked: </Title>
-        {formatNumber(player.cookieStats.Clicked)}
+        {formatNumber(player.stats.Clicked)}
       </div>
       <div>
         <Title>Spent: </Title>
-        {formatNumber(player.cookieStats.Spent)}
+        {formatNumber(player.stats.Spent)}
       </div>
     </Wrapper>
   );

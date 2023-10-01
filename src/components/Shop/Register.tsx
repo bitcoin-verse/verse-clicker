@@ -1,9 +1,10 @@
 import React, { FC, useCallback } from "react";
 import styled from "styled-components";
-import { useDispatch, useTrackedState } from "../../context/store";
+import { useTrackedState } from "../../context/store";
 import Building from "../../classes/Building";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getBuildingsCost } from "../../helpers/buildingHelpers";
+import { useSocketCtx } from "../../context/SocketContext";
 
 const BuyWrapper = styled.div`
   display: flex;
@@ -41,20 +42,18 @@ const Button = styled.button`
 
 interface Props {
   building: Building;
+  index: number;
 }
 
-const Register: FC<Props> = ({ building }) => {
-  const dispatch = useDispatch();
+const Register: FC<Props> = ({ building, index }) => {
+  const { socket } = useSocketCtx();
   const { player } = useTrackedState();
 
   const buyBuilding = useCallback(
-    (qty: number) => {
-      dispatch({
-        type: "BUY_BUILDING",
-        payload: { name: building.name, qty },
-      });
+    (amount: number) => {
+      socket.emit("buy_building", { index, amount });
     },
-    [building],
+    [building, index],
   );
 
   return (
