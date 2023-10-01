@@ -6,6 +6,10 @@ import verseClicker from "../../assets/verse-clicker.png";
 import Stats from "./Stats";
 import ConnectButton from "./ConnectButton";
 
+import polygonLogo from "../../assets/polygon.png";
+import ethLogo from "../../assets/ethereum.png";
+import goerliLogo from "../../assets/goerli.png";
+
 const StyledHeader = styled.header`
   display: grid;
   width: 100%;
@@ -27,8 +31,17 @@ const StyledHeader = styled.header`
 
 const Logo = styled.img`
   height: 2rem;
+
+  width: auto;
   grid-area: logo;
+  flex: 0;
 `;
+
+const LOGOS: Record<string, string> = {
+  Ethereum: ethLogo,
+  Polygon: polygonLogo,
+  Goerli: goerliLogo,
+};
 
 const Header: FC = () => {
   const { isConnected } = useAccount();
@@ -36,9 +49,25 @@ const Header: FC = () => {
 
   return (
     <StyledHeader>
-      <div>
-        <Logo src={verseClicker} alt="Logo" />
-        <div>{chain?.name} Edition</div>
+      <div
+        style={{
+          gridArea: "logo",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.5rem",
+        }}
+      >
+        <div>
+          <Logo src={verseClicker} alt="Logo" />
+        </div>
+        {chain?.name && (
+          <div style={{ display: "flex", gap: "0.5rem", marginLeft: "1rem" }}>
+            <div>
+              <img src={LOGOS[chain.name]} height={16} width={16} />
+            </div>
+            <div>{chain.name} Edition</div>
+          </div>
+        )}
       </div>
 
       <Stats />
