@@ -14,6 +14,7 @@ import { Player } from "../context/reducers/player";
 import Loading from "../components/Loading";
 import { Leadeerboard } from "../context/reducers/leaderboard";
 import { BuildingData } from "../context/reducers/building";
+import WelcomeModal from "../components/WelcomeModal";
 
 const GlobalStyle = createGlobalStyle`
   html, body, * {
@@ -133,7 +134,7 @@ const Main: FC = () => {
   return (
     <>
       <GlobalStyle />
-      {/* <WelcomeModal /> */}
+      <WelcomeModal />
       {(status !== "connected" || loading || !isSocketConnected) && <Loading />}
 
       <ContentsWrapper>

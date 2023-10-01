@@ -5,6 +5,7 @@ import { useAccount } from "wagmi";
 import styled from "styled-components";
 import { formatNumber } from "../helpers/formatNumber";
 import { ModalContent, ModalTitle } from "./ModalStyles";
+import { useSocketCtx } from "../context/SocketContext";
 
 const getTimeDiff = (diffMs: number) => {
   const diffDays = Math.floor(diffMs / 86400000); // days
@@ -24,39 +25,35 @@ const BonusText = styled.div`
   text-align: center;
 `;
 
+type ReturnData = { seconds: number; cookies: number };
+
 const WelcomeModal = () => {
-  const { verseHolder, player } = useTrackedState();
-  const { status } = useAccount();
+  const { verseHolder } = useTrackedState();
+  const { socket } = useSocketCtx();
   const { modalRef, showModal } = useModal();
-  const [cachedSave, setCachedSave] = useState<string>();
-  const [, setWasLoaded] = useState(false);
 
-  /*   useEffect(() => {
-    if (!lastSaveLoaded) return;
-    const now = new Date();
-    const then = new Date(lastSaveLoaded * 1000);
-    const diff = Math.abs(now.getTime() - then.getTime());
-    setCachedSave(getTimeDiff(diff));
-  }, [lastSaveLoaded]); */
+  const [returnData, setReturnData] = useState<ReturnData>();
 
-  /*   useEffect(() => {
-    if (status === "connected" && !loading && (player.cookies) > 0) {
-      setWasLoaded((wasLoaded) => {
-        if (wasLoaded) return true;
-        showModal();
-        return true;
-      });
-    }
-  }, [status, loading]); */
+  useEffect(() => {
+    const onWelcomeBack = (data: ReturnData) => {
+      setReturnData(data);
+      showModal();
+    };
+    socket.on("welcome_back", onWelcomeBack);
+
+    return () => {
+      socket.off("welcome_back", onWelcomeBack);
+    };
+  }, []);
 
   return (
-    <Modal modalRef={modalRef}>
+    <Modal modalRef={modalRef} onClose={() => setReturnData(undefined)}>
       <ModalContent>
         <ModalTitle>Welcome Back!</ModalTitle>
         <BonusText>
-          <div>It&rsquo;s been {cachedSave} since last seen</div>
+          <div>It&rsquo;s been {returnData?.seconds}s since last seen</div>
           <div>
-            You have accumulated {/* {formatNumber(newCookies)} */} cookies
+            You have accumulated {formatNumber(returnData?.cookies)} cookies
             while you were away
           </div>
           {verseHolder ? (

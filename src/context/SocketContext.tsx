@@ -46,9 +46,9 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
       socketRef.current.emit("join", { address, chain: chain.name });
     };
 
-    const onDisconnect = () => {
+    const onDisconnect = (e: unknown) => {
       setIsConnected(false);
-      console.log("socket disconnected");
+      console.log("socket disconnected", e);
     };
 
     const onError = (e: unknown) => {
