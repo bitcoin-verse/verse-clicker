@@ -9,7 +9,7 @@ const InfoWrapper = styled.div`
   padding: 0 0 1rem 0;
   display: flex;
   gap: 0.5rem;
-  
+
   @media (min-width: 768px) {
     flex-direction: column;
     gap: 0.25rem;
