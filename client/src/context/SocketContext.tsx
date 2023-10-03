@@ -29,7 +29,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
     io(
       process.env.NODE_ENV === "development"
         ? "http://localhost:3001"
-        : "https://verse-clicker-server.fly.dev",
+        : window.location.host,
       {
         autoConnect: false,
       },
