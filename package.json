@@ -1,76 +1,38 @@
 {
   "name": "verse-clicker",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "main": "index.js",
   "private": true,
-  "homepage": "https://porlybe.github.io/verse-clicker",
-  "repository": {
-    "url": "https://github.com/PorlyBe/verse-clicker"
-  },
-  "dependencies": {
-    "@web3modal/ethereum": "^2.7.1",
-    "@web3modal/react": "^2.7.1",
-    "axios": "^1.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "react-tracked": "^1.7.11",
-    "socket.io-client": "^4.7.2",
-    "styled-components": "^6.0.8",
-    "typescript": "^5.2.2",
-    "use-reducer-async": "^2.1.1",
-    "viem": "^1.12.1",
-    "wagmi": "^1.4.2",
-    "web-vitals": "^2.1.0"
-  },
+  "repository": "git@github.com:PorlyBe/verse-clicker.git",
+  "author": "Paul Bergamo <porlybe@gmail.com>",
+  "license": "MIT",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
-    "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
-    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not ie <= 99",
-      "not android <= 4.4.4",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "start": "concurrently yarn:start:*",
+    "start:client": "yarn workspace client start",
+    "start:server": "yarn workspace server develop",
+    "build": "yarn build:server && yarn build:client",
+    "build:client": "yarn workspace client build",
+    "build:server": "yarn workspace server build",
+    "start-server": "node dist/index.js"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.2.22",
-    "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
+    "concurrently": "^8.2.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard-with-typescript": "^39.0.0",
-    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.33.2",
-    "gh-pages": "^6.0.0",
-    "prettier": "3.0.3"
+    "prettier": "3.0.3",
+    "typescript": "^5.2.2"
   }
 }
