@@ -1,0 +1,12 @@
+{
+  "extends": ["../.eslintrc", "plugin:react/recommended"],
+  "plugins": ["react"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "warn"
+  }
+}
