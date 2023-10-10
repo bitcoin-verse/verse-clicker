@@ -5,12 +5,10 @@ import Footer from "../components/Footer";
 import GameBoard from "../components/GameBoard/GameBoard";
 import Particles from "../components/Particles";
 
-import background from "../assets/background.png";
 import { useAccount, useNetwork } from "wagmi";
 
-// import verseCookie from "../../src/assets/verse-cookie.png";
 import { useSocketCtx } from "../context/SocketContext";
-import { useDispatch } from "../context/store";
+import { useDispatch, useTrackedState } from "../context/store";
 import { Player } from "../context/reducers/player";
 import Loading from "../components/Loading";
 import { Leadeerboard } from "../context/reducers/leaderboard";
@@ -52,48 +50,18 @@ const ContentsWrapper = styled.div`
   }
 `;
 
-/* function createAnimation() {
-  let styles = "";
-  for (let i = 0; i < 50; i += 1) {
-    styles += `
-	  &:nth-child(${i}) {
-      left: ${Math.floor(Math.random() * 98)}%;
-      bottom: ${Math.floor(Math.random() * 100)}%;
-      animation: float ${Math.floor(Math.random() * 20)}s infinite linear;
-    }
-
-	  @keyframes float {
-      to {
-         bottom: 150vh;
-         transform: rotate(${Math.random() * 360}deg);
-        }
-    }
-	`;
-  }
-  return css`
-    ${styles}
-  `;
-}
- */
-/* const FloatingImage = styled.img`
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  bottom: 0px;
-  ${createAnimation()}
-  z-index: 0;
-  opacity: 0.5;
-`; */
-
 const Main: FC = () => {
   const { chain } = useNetwork();
 
   const { socket, isConnected: isSocketConnected } = useSocketCtx();
   const [loading, setLoading] = useState(true);
+  const { player } = useTrackedState();
+
+  const hasCookies = player.cookies > 1;
 
   const dispatch = useDispatch();
 
-  const { address, status } = useAccount({
+  const { address, isConnected, status } = useAccount({
     onConnect: ({ address: addr }) => {
       if (!addr) return;
       console.log("Web3 Connected");
