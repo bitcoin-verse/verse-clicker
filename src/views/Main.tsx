@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import styled, { createGlobalStyle } from "styled-components";
 import Footer from "../components/Footer";
 import GameBoard from "../components/GameBoard/GameBoard";
+import Particles from "../components/Particles";
 
 import background from "../assets/background.png";
 import { useAccount, useNetwork } from "wagmi";
@@ -36,8 +37,14 @@ const ContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-image: url(${background});
-  background-attachment: fixed;
+  background: linear-gradient(
+      180deg,
+      #020a10 0%,
+      #10518d 78.65%,
+      #2975bd 93.75%,
+      #4c97dd 99.48%
+    ),
+    linear-gradient(0deg, #030c14, #030c14);
   min-height: 100dvh;
 
   @media (min-width: 768px) {
@@ -138,7 +145,7 @@ const Main: FC = () => {
       {(status !== "connected" || loading || !isSocketConnected) && <Loading />}
 
       <ContentsWrapper>
-        {/* {isConnected && hasCookies && makeFloatingCookies()} */}
+        {isConnected && hasCookies && <Particles />}
         <Header />
         <GameBoard />
         <Footer />
