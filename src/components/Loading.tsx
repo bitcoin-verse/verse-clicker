@@ -1,4 +1,3 @@
-import { Web3Button } from "@web3modal/react";
 import React, { FC } from "react";
 import styled from "styled-components";
 import { useAccount } from "wagmi";
@@ -16,6 +15,12 @@ const OverlayConnect = styled.div`
   align-items: center;
   background-color: rgba(3, 12, 20, 0.7);
   z-index: 2;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Loading: FC = () => {
@@ -30,7 +35,11 @@ const Loading: FC = () => {
           <h1 style={{ margin: "2rem" }}>Connect Wallet to start</h1>
         )}
 
-        {status !== "connected" && <Web3Button />}
+        {status !== "connected" && (
+          <div>
+            <w3m-connect-button />
+          </div>
+        )}
       </div>
     </OverlayConnect>
   );
