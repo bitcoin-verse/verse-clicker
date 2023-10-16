@@ -1,0 +1,1565 @@
+[
+  {
+    "name": "Eth Dev",
+    "cost": 15,
+    "amount": 0,
+    "originalCost": 15,
+    "multiplier": 1,
+    "baseEffect": 0.1,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Refactor Codebase",
+        "cost": 100,
+        "desc": "Devs and clicking are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Premature Optimization",
+        "cost": 500,
+        "desc": "Devs and clicking are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Write Tests",
+        "cost": 10000,
+        "desc": "Devs and clicking are twice as efficient",
+        "limit": 10,
+        "owned": false
+      },
+      {
+        "name": "Stack Overflow",
+        "cost": 100000,
+        "desc": "Mouse and Devs gain +0.1 cookies for every non-cursor building owned",
+        "limit": 25,
+        "owned": false,
+        "special": 0.1
+      },
+      {
+        "name": "Replace Tabs with Spaces",
+        "cost": 10000000,
+        "desc": "Mouse and Devs gain +0.5 cookies for every non-cursor building owned",
+        "limit": 50,
+        "owned": false,
+        "special": 0.5
+      },
+      {
+        "name": "Replace Spaces with Tabs",
+        "cost": 100000000,
+        "desc": "Mouse and Devs gain +5 cookies for every non-cursor building owned",
+        "limit": 100,
+        "owned": false,
+        "special": 5
+      },
+      {
+        "name": "Friday Afternoon Deploys",
+        "cost": 1000000000,
+        "desc": "Mouse and Devs gain +50 for every non-cursor building owned",
+        "limit": 150,
+        "owned": false,
+        "special": 50
+      },
+      {
+        "name": "Test in Production",
+        "cost": 10000000000,
+        "desc": "Mouse and Devs gain +500 cookies for each non-cursor building owned",
+        "limit": 200,
+        "owned": false,
+        "special": 500
+      },
+      {
+        "name": "Migrate Database",
+        "cost": 10000000000000,
+        "desc": "Mouse and Devs gain +5.000K for every non-cursor building owned",
+        "limit": 250,
+        "owned": false,
+        "special": 5000
+      },
+      {
+        "name": "Free Coffe",
+        "cost": 10000000000000000,
+        "desc": "Mouse and Devs gain +50.000K for every non-cursor building owned",
+        "limit": 300,
+        "owned": false,
+        "special": 50000
+      },
+      {
+        "name": "While True",
+        "cost": 10000000000000000000,
+        "desc": "Mouse and Devs gain +500.000K for every non-cursor building owned",
+        "limit": 350,
+        "owned": false,
+        "special": 500000
+      },
+      {
+        "name": "Print Hello World",
+        "cost": 1e22,
+        "desc": "Mouse and Devs gain +5.000M for each non-cursor building owned",
+        "limit": 400,
+        "owned": false,
+        "special": 5000000
+      }
+    ],
+    "locked": false,
+    "image": "dev.png"
+  },
+  {
+    "name": "Wojak",
+    "cost": 100,
+    "amount": 0,
+    "originalCost": 100,
+    "multiplier": 1,
+    "baseEffect": 1,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Join r/cryptocurrency",
+        "cost": 1000,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "More efficient Spatchelas",
+        "cost": 5000,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Buy High, Sell Low",
+        "cost": 50000,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "McDonalds Manager training",
+        "cost": 5000000,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Promoted to Junior Supivisor",
+        "cost": 500000000,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Turn on Crypto Price Notifications",
+        "cost": 50000000000,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Free Chicken Tendies",
+        "cost": 50000000000000,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Follow Elon Musk on X",
+        "cost": 50000000000000000,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Hodl More Doge",
+        "cost": 50000000000000000000,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Diamond Hands",
+        "cost": 5e22,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "I Know That Feel Bro",
+        "cost": 5e26,
+        "desc": "Wojaks are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "wojak.png"
+  },
+  {
+    "name": "Trollfarm",
+    "cost": 1100,
+    "amount": 0,
+    "originalCost": 1100,
+    "multiplier": 1,
+    "baseEffect": 8,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Sock Puppets",
+        "cost": 11000,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Indian Callcenter",
+        "cost": 55000,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Post Memes",
+        "cost": 550000,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Lurk on Reddit",
+        "cost": 55000000,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Retweet CZ",
+        "cost": 5500000000,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "YouTube Influencer",
+        "cost": 550000000000,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Automated Shitposting",
+        "cost": 550000000000000,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "4Chan Street Cred",
+        "cost": 550000000000000000,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Facebook Bans",
+        "cost": 550000000000000000000,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Rick Roll Advertisements",
+        "cost": 5.5e23,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Phishing Advertisements",
+        "cost": 5.5e27,
+        "desc": "Trollfarms are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "troll.png"
+  },
+  {
+    "name": "ASIC",
+    "cost": 12000,
+    "amount": 0,
+    "originalCost": 12000,
+    "multiplier": 1,
+    "baseEffect": 47,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Cheap Electricity",
+        "cost": 120000,
+        "desc": "ASICs are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Hydroelectric Dam",
+        "cost": 600000,
+        "desc": "ASICs are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Water Cooling",
+        "cost": 6000000,
+        "desc": "ASICs are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Ultra Cheap Electricity",
+        "cost": 600000000,
+        "desc": "ASICs are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Nuclear Power Plant",
+        "cost": 60000000000,
+        "desc": "ASICs are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Liquid Nitrogen Cooling",
+        "cost": 6000000000000,
+        "desc": "ASICs are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Double Hashing Speed",
+        "cost": 6000000000000000,
+        "desc": "ASICs are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Fission Reactor",
+        "cost": 6000000000000000000,
+        "desc": "ASICs are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Arctic Warehouse",
+        "cost": 6e21,
+        "desc": "ASICs are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Moonbase Warehouse",
+        "cost": 6e24,
+        "desc": "ASICs are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Dyson Sphere",
+        "cost": 6e28,
+        "desc": "ASICs are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "asic.png"
+  },
+  {
+    "name": "Okanemon",
+    "cost": 130000,
+    "amount": 0,
+    "originalCost": 130000,
+    "multiplier": 1,
+    "baseEffect": 260,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Extra Cuteness",
+        "cost": 1300000,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Shinier Fur",
+        "cost": 6500000,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Money Magnetism",
+        "cost": 65000000,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Extra Hungry",
+        "cost": 6500000000,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Fluffyness Improvements",
+        "cost": 650000000000,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Cheeky Smiles",
+        "cost": 65000000000000,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Toy Productline",
+        "cost": 65000000000000000,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Television Series",
+        "cost": 65000000000000000000,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Feature Length Movie",
+        "cost": 6.5e22,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Knight-hood",
+        "cost": 6.5e25,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Guiness World Record",
+        "cost": 6.5e29,
+        "desc": "Okanemon are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "okanemon.png"
+  },
+  {
+    "name": "Coaster",
+    "cost": 1400000,
+    "amount": 0,
+    "originalCost": 1400000,
+    "multiplier": 1,
+    "baseEffect": 1400,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Banked Turns",
+        "cost": 14000000,
+        "desc": "Coasters are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Lift Hills",
+        "cost": 70000000,
+        "desc": "Coasters are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Hammerhead Turn",
+        "cost": 700000000,
+        "desc": "Coasters are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Double Dip",
+        "cost": 70000000000,
+        "desc": "Coasters are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Inverted Loop",
+        "cost": 7000000000000,
+        "desc": "Coasters are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Banana Roll",
+        "cost": 700000000000000,
+        "desc": "Coasters are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Corkscrew",
+        "cost": 700000000000000000,
+        "desc": "Coasters are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Demonic Knot",
+        "cost": 700000000000000000000,
+        "desc": "Coasters are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "In-line Twist",
+        "cost": 700000000000000000000,
+        "desc": "Coasters are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Pretzel loop",
+        "cost": 7e23,
+        "desc": "Coasters are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Zero-G Roll",
+        "cost": 7e27,
+        "desc": "Coasters are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "coaster.png"
+  },
+  {
+    "name": "Printer",
+    "cost": 20000000,
+    "amount": 0,
+    "originalCost": 20000000,
+    "multiplier": 1,
+    "baseEffect": 7800,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Go Brrr",
+        "cost": 200000000,
+        "desc": "Printers are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Go Brrrrrr",
+        "cost": 1000000000,
+        "desc": "Printers are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Go Brrrrrrrrr",
+        "cost": 10000000000,
+        "desc": "Printers are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Go Brrrrrrrrrrrr",
+        "cost": 1000000000000,
+        "desc": "Printers are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Go Brrr BRRRR",
+        "cost": 100000000000000,
+        "desc": "Printers are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Go Brrr BRRRR Brrrr",
+        "cost": 10000000000000000,
+        "desc": "Printers are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Go Brrr BRRR Brrr BRRR",
+        "cost": 10000000000000000000,
+        "desc": "Printers are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Go Brrr BRRR Brrr BRRR Brrr",
+        "cost": 1e22,
+        "desc": "Printers are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Go Brrr BRRR Brrr BRRR Brrr BRRR",
+        "cost": 1e25,
+        "desc": "Printers are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Hyper Inflation",
+        "cost": 1e28,
+        "desc": "Printers are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Super Duper Hyper Inflation",
+        "cost": 1e32,
+        "desc": "Printers are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "printer.png"
+  },
+  {
+    "name": "Pepe",
+    "cost": 330000000,
+    "amount": 0,
+    "originalCost": 330000000,
+    "multiplier": 1,
+    "baseEffect": 44000,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Nakamoto Pepe",
+        "cost": 3300000000,
+        "desc": "Pepes are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Modern Pepe",
+        "cost": 16500000000,
+        "desc": "Pepes are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "My Little PEPE",
+        "cost": 165000000000,
+        "desc": "Pepes are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "JesusPepe",
+        "cost": 16500000000000,
+        "desc": "Pepes are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "OnlyOnePepe",
+        "cost": 1650000000000000,
+        "desc": "Pepes are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Lord Kek, Ruler of All Pepes",
+        "cost": 165000000000000000,
+        "desc": "Pepes are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Japanese Watercolor Pepe",
+        "cost": 165000000000000000000,
+        "desc": "Pepes are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Rabbit trick",
+        "cost": 1.65e23,
+        "desc": "Pepes are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Homer Pepe",
+        "cost": 1.65e26,
+        "desc": "Pepes are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Rare Pepes",
+        "cost": 1.65e29,
+        "desc": "Pepes are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Ultra Rare Pepe",
+        "cost": 1.65e33,
+        "desc": "Pepes are twices as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "pepe.png"
+  },
+  {
+    "name": "Hype man",
+    "cost": 5100000000,
+    "amount": 0,
+    "originalCost": 5100000000,
+    "multiplier": 1,
+    "baseEffect": 260000,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Hey hey HEYYYYY",
+        "cost": 51000000000,
+        "desc": "Hype men are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "WASAWASAWASAuuuppp",
+        "cost": 255000000000,
+        "desc": "Hype men are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "The world is not anymore the way it used to be",
+        "cost": 2550000000000,
+        "desc": "Hype men are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "MMM.. MMM.. NO NO NO",
+        "cost": 255000000000000,
+        "desc": "Hype men are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "I SEE YOU!!",
+        "cost": 25500000000000000,
+        "desc": "Hype men are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "We are coming in waves",
+        "cost": 2550000000000000000,
+        "desc": "Hype men are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Going all over the world",
+        "cost": 2.55e21,
+        "desc": "Hype men are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "One hundred and forty thousand dollars",
+        "cost": 2.55e24,
+        "desc": "Hype men are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Whoawhoawhoa Wassup",
+        "cost": 2.55e27,
+        "desc": "Hype men are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "WHAT?!",
+        "cost": 2.55e30,
+        "desc": "Hype men are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Bitconneeeeeeect",
+        "cost": 2.55e34,
+        "desc": "Hype men are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "carlos.png"
+  },
+  {
+    "name": "Rocket",
+    "cost": 75000000000,
+    "amount": 0,
+    "originalCost": 75000000000,
+    "multiplier": 1,
+    "baseEffect": 1500000,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Stronger Structural System",
+        "cost": 750000000000,
+        "desc": "Rockets are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Larger Payload",
+        "cost": 3750000000000,
+        "desc": "Rockets are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Improved Guidance",
+        "cost": 37500000000000,
+        "desc": "Rockets are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Dogecoin Logo",
+        "cost": 3750000000000000,
+        "desc": "Rockets are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Liquid Rocket Engines",
+        "cost": 375000000000000000,
+        "desc": "Rockets are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Improved Thrusters",
+        "cost": 37500000000000000000,
+        "desc": "Rockets are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Reusable Boosters",
+        "cost": 3.75e22,
+        "desc": "Rockets are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "International Space Station",
+        "cost": 3.75e25,
+        "desc": "Rockets are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Commercial Passengers",
+        "cost": 3.75e28,
+        "desc": "Rockets are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Moon Base",
+        "cost": 3.75e31,
+        "desc": "Rockets are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Mars Base",
+        "cost": 3.75e35,
+        "desc": "Rockets are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "rocket.png"
+  },
+  {
+    "name": "Laser Eyes",
+    "cost": 1000000000000,
+    "amount": 0,
+    "originalCost": 1000000000000,
+    "multiplier": 1,
+    "baseEffect": 10000000,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Ulgraviolet",
+        "cost": 10000000000000,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Pulsed Output",
+        "cost": 50000000000000,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Q-Switched",
+        "cost": 500000000000000,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Carbon Dioxide Lasers",
+        "cost": 50000000000000000,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Diode Lasers",
+        "cost": 5000000000000000000,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Quantum Dot Laser",
+        "cost": 500000000000000000000,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Ion Lasers",
+        "cost": 5e23,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Hydrogen flouride Laser",
+        "cost": 5e26,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Argon Laser",
+        "cost": 5e29,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Tactical Airborne Laser Weapon",
+        "cost": 5e32,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Herculese Petawatt Laser",
+        "cost": 5e36,
+        "desc": "Laser Eyes are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "lazereyes.png"
+  },
+  {
+    "name": "Chad",
+    "cost": 14000000000000,
+    "amount": 0,
+    "originalCost": 14000000000000,
+    "multiplier": 1,
+    "baseEffect": 65000000,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Look at everyone in the eyes",
+        "cost": 140000000000000,
+        "desc": "Chads are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Do not register emotions or feelings",
+        "cost": 700000000000000,
+        "desc": "Chads are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Slap & Batter Incoming Traffic",
+        "cost": 7000000000000000,
+        "desc": "Chads are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Poised like a Greek Statue",
+        "cost": 700000000000000000,
+        "desc": "Chads are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Tiny beetle-like Stride",
+        "cost": 70000000000000000000,
+        "desc": "Chads are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Flailing arms in Confident, Unpredictable ways",
+        "cost": 7e21,
+        "desc": "Chads are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Head at Perfect Verticle Angle at all times",
+        "cost": 7e24,
+        "desc": "Chads are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Hair Firmly Fastened",
+        "cost": 7e27,
+        "desc": "Chads are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Never Heard a Song in His Life",
+        "cost": 7e30,
+        "desc": "Chads are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Measure Structural Foundations with Spinal Cord",
+        "cost": 7e33,
+        "desc": "Chads are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Does not wear a coat, is immune to cold",
+        "cost": 7e37,
+        "desc": "Chads are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "chad.png"
+  },
+  {
+    "name": "Elon Tweet",
+    "cost": 170000000000000,
+    "amount": 0,
+    "originalCost": 170000000000000,
+    "multiplier": 1,
+    "baseEffect": 430000000,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Doge Tweets",
+        "cost": 1700000000000000,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Tweets",
+        "cost": 8500000000000000,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Anime Tweets",
+        "cost": 85000000000000000,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Single Word Replies",
+        "cost": 8500000000000000000,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Sell Flamethrowers",
+        "cost": 850000000000000000000,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Crash the Market",
+        "cost": 8.5e22,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Create Flat Mars Society",
+        "cost": 8.5e25,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Beef with Bill Gates",
+        "cost": 8.5e28,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Sell Short Shorts",
+        "cost": 8.5e31,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Buy Twitter",
+        "cost": 8.5e34,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Rename Twitter to X",
+        "cost": 8.5e38,
+        "desc": "Elon Tweets are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "tweet.png"
+  },
+  {
+    "name": "Stadium",
+    "cost": 2100000000000000,
+    "amount": 0,
+    "originalCost": 2100000000000000,
+    "multiplier": 1,
+    "baseEffect": 2900000000,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "FTX Meme",
+        "cost": 21000000000000000,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "FTX Meme",
+        "cost": 105000000000000000,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "FTX Meme",
+        "cost": 1050000000000000000,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "FTX Meme",
+        "cost": 105000000000000000000,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "FTX Meme",
+        "cost": 1.05e22,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "FTX Meme",
+        "cost": 1.05e24,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "FTX Meme",
+        "cost": 1.05e27,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "FTX Meme",
+        "cost": 1.05e30,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "FTX Meme",
+        "cost": 1.05e33,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "FTX Meme",
+        "cost": 1.05e36,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "FTX Meme",
+        "cost": 1.05e40,
+        "desc": "Stadiums are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "stadium.png"
+  },
+  {
+    "name": "Bogdanoff",
+    "cost": 26000000000000000,
+    "amount": 0,
+    "originalCost": 26000000000000000,
+    "multiplier": 1,
+    "baseEffect": 21000000000,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Bogdanoff",
+        "cost": 260000000000000000,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Bogdanoff",
+        "cost": 130000000000000000,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Bogdanoff",
+        "cost": 13000000000000000000,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Bogdanoff",
+        "cost": 130000000000000000000,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Bogdanoff",
+        "cost": 1.3e22,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Bogdanoff",
+        "cost": 1.3e25,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Bogdanoff",
+        "cost": 1.3e28,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Bogdanoff",
+        "cost": 1.3e31,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Bogdanoff",
+        "cost": 1.3e34,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Bogdanoff",
+        "cost": 1.3e37,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Bogdanoff",
+        "cost": 1.3e41,
+        "desc": "Bogdanoffs are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "bogdanoff.png"
+  },
+  {
+    "name": "AI Bot",
+    "cost": 310000000000000000,
+    "amount": 0,
+    "originalCost": 310000000000000000,
+    "multiplier": 1,
+    "baseEffect": 150000000000,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "AI Bot",
+        "cost": 3100000000000000000,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "AI Bot",
+        "cost": 15500000000000000000,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "AI Bot",
+        "cost": 155000000000000000000,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "AI Bot",
+        "cost": 1.55e22,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "AI Bot",
+        "cost": 1.55e24,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "AI Bot",
+        "cost": 1.55e26,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "AI Bot",
+        "cost": 1.55e29,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "AI Bot",
+        "cost": 1.55e32,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "AI Bot",
+        "cost": 1.55e35,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "AI Bot",
+        "cost": 1.55e38,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "AI Bot",
+        "cost": 1.55e42,
+        "desc": "AI Bots are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "aibot.png"
+  },
+  {
+    "name": "Bitcoin Jesus",
+    "cost": 71000000000000000000,
+    "amount": 0,
+    "originalCost": 71000000000000000000,
+    "multiplier": 1,
+    "baseEffect": 1100000000000,
+    "specialCPS": 0,
+    "effect": 0,
+    "upgrades": [
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 710000000000000000000,
+        "desc": "Bitcoin Jesus are twice as efficient",
+        "limit": 1,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 3.55e21,
+        "desc": "Bitcoin Jesus are twices as efficient",
+        "limit": 5,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 3.55e22,
+        "desc": "Bitcoin Jesus are twice as efficient",
+        "limit": 25,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 3.55e24,
+        "desc": "Bitcoin Jesus are twice as efficient",
+        "limit": 50,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 3.55e26,
+        "desc": "Bitcoin Jesus are twice as efficient",
+        "limit": 100,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 3.55e28,
+        "desc": "Bitcoin Jesus are twice as efficient",
+        "limit": 150,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 3.55e31,
+        "desc": "Bitcoin Jesus are twice as efficient",
+        "limit": 200,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 3.55e34,
+        "desc": "Bitcoin Jesus are twice as efficient",
+        "limit": 250,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 3.55e37,
+        "desc": "Bitcoin Jesus are twice as efficient",
+        "limit": 300,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 3.55e40,
+        "desc": "Bitcoin Jesus are twice as efficient",
+        "limit": 350,
+        "owned": false
+      },
+      {
+        "name": "Bitcoin Jesus",
+        "cost": 3.55e44,
+        "desc": "Bitcoin Jesus are twice as efficient",
+        "limit": 400,
+        "owned": false
+      }
+    ],
+    "locked": true,
+    "image": "jesus.png"
+  }
+]
