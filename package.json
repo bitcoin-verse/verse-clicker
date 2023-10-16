@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@web3modal/ethereum": "^2.7.1",
-    "@web3modal/react": "^2.7.1",
+    "@web3modal/wagmi": "^3.1.0",
     "axios": "^1.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -20,8 +20,8 @@
     "tsparticles": "^2.12.0",
     "typescript": "^5.2.2",
     "use-reducer-async": "^2.1.1",
-    "viem": "^1.12.1",
-    "wagmi": "^1.4.2",
+    "viem": "^1.16.5",
+    "wagmi": "^1.4.3",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
