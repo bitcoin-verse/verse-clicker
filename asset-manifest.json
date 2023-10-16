@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.js": "/verse-clicker/static/js/main.dc726b56.js",
-    "static/js/406.2190c26e.chunk.js": "/verse-clicker/static/js/406.2190c26e.chunk.js",
-    "static/js/44.475c1117.chunk.js": "/verse-clicker/static/js/44.475c1117.chunk.js",
-    "static/js/556.924616e6.chunk.js": "/verse-clicker/static/js/556.924616e6.chunk.js",
-    "static/js/871.8a26f466.chunk.js": "/verse-clicker/static/js/871.8a26f466.chunk.js",
-    "static/js/27.f390ecbe.chunk.js": "/verse-clicker/static/js/27.f390ecbe.chunk.js",
-    "static/js/199.1680cbd8.chunk.js": "/verse-clicker/static/js/199.1680cbd8.chunk.js",
-    "static/js/326.9a7acfa3.chunk.js": "/verse-clicker/static/js/326.9a7acfa3.chunk.js",
-    "static/js/178.050ce624.chunk.js": "/verse-clicker/static/js/178.050ce624.chunk.js",
+    "main.js": "/verse-clicker/static/js/main.fc445f38.js",
+    "static/js/905.591aec9f.chunk.js": "/verse-clicker/static/js/905.591aec9f.chunk.js",
+    "static/js/406.a4f176d5.chunk.js": "/verse-clicker/static/js/406.a4f176d5.chunk.js",
+    "static/js/556.b84107d7.chunk.js": "/verse-clicker/static/js/556.b84107d7.chunk.js",
+    "static/js/871.cc8cc315.chunk.js": "/verse-clicker/static/js/871.cc8cc315.chunk.js",
+    "static/js/439.8ba1f5db.chunk.js": "/verse-clicker/static/js/439.8ba1f5db.chunk.js",
+    "static/js/27.62e3f743.chunk.js": "/verse-clicker/static/js/27.62e3f743.chunk.js",
+    "static/js/199.7f2dcf5d.chunk.js": "/verse-clicker/static/js/199.7f2dcf5d.chunk.js",
+    "static/js/950.aae4ac83.chunk.js": "/verse-clicker/static/js/950.aae4ac83.chunk.js",
+    "static/js/836.4aaf6379.chunk.js": "/verse-clicker/static/js/836.4aaf6379.chunk.js",
     "static/media/ad-username.png": "/verse-clicker/static/media/ad-username.5d3d5065851f2fcd7be7.png",
     "static/media/ad-burn-engine.png": "/verse-clicker/static/media/ad-burn-engine.2c4d1c1ffa8700acb957.png",
     "static/media/ad-nft.png": "/verse-clicker/static/media/ad-nft.b0d8165912ac84c9b6fc.png",
@@ -24,6 +25,6 @@
     "index.html": "/verse-clicker/index.html"
   },
   "entrypoints": [
-    "static/js/main.dc726b56.js"
+    "static/js/main.fc445f38.js"
   ]
 }
