@@ -8,8 +8,10 @@ import {
   updateBuildings,
 } from "./reducers/building";
 import { SetLeaderboardAction, setLeaderboard } from "./reducers/leaderboard";
+import { SetNetworkAction, setNetwork } from "./reducers/network";
 
 export type Action =
+  | SetNetworkAction
   | SetPlayerAction
   | SetBuildingAction
   | SetLeaderboardAction
@@ -20,6 +22,8 @@ const reducer: Reducer<State, Action> = (state, action) => {
   switch (action.type) {
     case "RESET_GAME":
       return initialState;
+    case "SET_NETWORK":
+      return setNetwork(state, action.payload);
     case "SET_PLAYER_DATA":
       return setPlayer(state, action.payload);
     case "SET_BUILDING":

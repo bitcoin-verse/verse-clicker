@@ -5,9 +5,10 @@ import reducer, { Action } from "./reducer";
 import asyncActionHandlers, { AsyncAction } from "./asyncActionHandlers";
 import { Player } from "./reducers/player";
 
-import buildings from "./buildings";
+import buildings from "../buildings";
 import { Leadeerboard } from "./reducers/leaderboard";
 import Building from "../classes/Building";
+import { NetworkName } from "./reducers/network";
 
 export type State = {
   isConnected: boolean;
@@ -17,13 +18,14 @@ export type State = {
 
   buildings: Building[];
   currentBuilding?: string;
+  network: NetworkName;
 };
 
 export const initialState: State = {
   isConnected: false,
   verseHolder: false,
-  currentBuilding: buildings[0].name,
-  buildings,
+  currentBuilding: buildings.Ethereum[0].name,
+  buildings: buildings.Ethereum,
   player: {
     cookies: 0,
     cpc: 0,
@@ -35,6 +37,7 @@ export const initialState: State = {
     },
     verseHolder: false,
   },
+  network: "Ethereum",
 };
 
 const useValue = () => {
