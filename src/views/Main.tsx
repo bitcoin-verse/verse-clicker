@@ -76,7 +76,20 @@ const Main: FC = () => {
   useEffect(() => {
     if (status !== "connected" || !chain) return;
     setLoading(true);
+
     dispatch({ type: "RESET_GAME" });
+
+    if (
+      !(
+        chain.name === "Ethereum" ||
+        chain.name === "Polygon" ||
+        chain.name === "Goerli"
+      )
+    ) {
+      socket.disconnect();
+      return;
+    }
+    dispatch({ type: "SET_NETWORK", payload: chain.name });
     socket.disconnect();
     socket.connect();
   }, [status, chain, address]);

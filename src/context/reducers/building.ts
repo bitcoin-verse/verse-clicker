@@ -1,3 +1,4 @@
+import buildings from "../../buildings";
 import { State } from "../store";
 
 export type SetBuildingAction = { type: "SET_BUILDING"; payload: string };
@@ -29,7 +30,7 @@ export const updateBuildings = (
   state: State,
   payload: UpdateBuildingsAction["payload"],
 ): State => {
-  const buildings = state.buildings.map((b, i) => {
+  const bldngs = buildings[state.network].map((b, i) => {
     return {
       ...b,
       amount: payload[i].amount,
@@ -42,6 +43,7 @@ export const updateBuildings = (
       })),
     };
   });
+  console.log(bldngs);
 
-  return { ...state, buildings };
+  return { ...state, buildings: bldngs };
 };
