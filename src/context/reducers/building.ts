@@ -43,7 +43,6 @@ export const updateBuildings = (
       })),
     };
   });
-  console.log(bldngs);
 
   return { ...state, buildings: bldngs };
 };
