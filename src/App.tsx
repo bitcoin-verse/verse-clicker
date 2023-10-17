@@ -40,7 +40,7 @@ const wagmiConfig = createConfig({
         projectId,
         showQrModal: false,
         metadata,
-        relayUrl: "wss://walletconnect-v2.ops.bitcoin.com",
+        // relayUrl: "wss://walletconnect-v2.ops.bitcoin.com",
       },
     }),
     new InjectedConnector({
@@ -55,7 +55,16 @@ const wagmiConfig = createConfig({
   publicClient,
   webSocketPublicClient,
 });
-createWeb3Modal({ wagmiConfig, projectId, chains });
+createWeb3Modal({
+  wagmiConfig,
+  projectId,
+  chains,
+
+  featuredWalletIds: [
+    "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
+    "c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96",
+  ],
+});
 
 const App: FC = () => {
   return (
