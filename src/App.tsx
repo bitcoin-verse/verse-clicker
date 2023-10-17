@@ -13,7 +13,7 @@ import { ContextProvider } from "./context/store";
 import SocketCtxProvider from "./context/SocketContext";
 import Main from "./views/Main";
 
-const projectId = "8000cda0f00ad8e06049c5e030ddaa4c";
+const projectId = "1184cb8e8109ec7c4a9425c56b494e5e";
 
 const metadata = {
   name: "VERSE Clicker",
@@ -36,7 +36,12 @@ const wagmiConfig = createConfig({
   connectors: [
     new WalletConnectConnector({
       chains,
-      options: { projectId, showQrModal: false, metadata },
+      options: {
+        projectId,
+        showQrModal: false,
+        metadata,
+        relayUrl: "wss://walletconnect-v2.ops.bitcoin.com",
+      },
     }),
     new InjectedConnector({
       chains,
