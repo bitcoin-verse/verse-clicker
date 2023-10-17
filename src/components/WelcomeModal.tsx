@@ -3,7 +3,6 @@ import Modal, { useModal } from "./Modal";
 import { useTrackedState } from "../context/store";
 import styled from "styled-components";
 import { formatNumber } from "../helpers/formatNumber";
-import { ModalContent, ModalTitle } from "./ModalStyles";
 import { useSocketCtx } from "../context/SocketContext";
 
 const BonusText = styled.div`
@@ -37,40 +36,40 @@ const WelcomeModal = () => {
   }, []);
 
   return (
-    <Modal modalRef={modalRef} onClose={() => setReturnData(undefined)}>
-      <ModalContent>
-        <ModalTitle>Welcome Back!</ModalTitle>
-        <BonusText>
-          <div>It&rsquo;s been {returnData?.seconds}s since last seen</div>
+    <Modal
+      modalRef={modalRef}
+      onClose={() => setReturnData(undefined)}
+      title="Welcome Back!"
+    >
+      <BonusText>
+        <div>It&rsquo;s been {returnData?.seconds}s since last seen</div>
+        <div>
+          You have accumulated {formatNumber(returnData?.cookies)} cookies while
+          you were away
+        </div>
+        {verseHolder ? (
           <div>
-            You have accumulated {formatNumber(returnData?.cookies)} cookies
-            while you were away
+            You hold VERSE, your clicks are <b>10 TIMES as effective</b> as non
+            Verse holders
           </div>
-          {verseHolder ? (
-            <div>
-              You hold VERSE, your clicks are <b>10 TIMES as effective</b> as
-              non Verse holders
-            </div>
-          ) : (
-            <div>
-              You don&rsquo;t hold VERSE. Hodl VERSE to receive a 2x click
-              bonus.{" "}
-              <a
-                href="https://buy.bitcoin.com/verse"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Buy verse
-              </a>{" "}
-              or{" "}
-              <a href="https://verse.bitcoin.com" rel="noreferrer">
-                Swap to verse
-              </a>{" "}
-              NOW!
-            </div>
-          )}
-        </BonusText>
-      </ModalContent>
+        ) : (
+          <div>
+            You don&rsquo;t hold VERSE. Hodl VERSE to receive a 2x click bonus.{" "}
+            <a
+              href="https://buy.bitcoin.com/verse"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Buy verse
+            </a>{" "}
+            or{" "}
+            <a href="https://verse.bitcoin.com" rel="noreferrer">
+              Swap to verse
+            </a>{" "}
+            NOW!
+          </div>
+        )}
+      </BonusText>
     </Modal>
   );
 };
