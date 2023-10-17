@@ -20,11 +20,14 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Helvetica', sans-serif;
-    color: white;
+    font-family: 'Barlow','Helvetica', sans-serif;
     letter-spacing: 0em;
   }
-  
+
+  html, body, div {
+    color: white;
+  }
+
   button {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   }

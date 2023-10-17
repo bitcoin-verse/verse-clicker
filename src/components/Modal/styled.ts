@@ -1,9 +1,32 @@
 import styled from "styled-components";
 
-export const TitleText = styled.h2`
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 600;
+export const Dialog = styled.dialog`
+  border: none;
+  border-radius: 1rem;
+
+  color: white;
+
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+
+  background: #030c14;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(0.2rem);
+  }
+
+  overscroll-behavior: none;
+
+  @media (min-width: 768px) {
+    max-width: 24rem;
+    box-shadow: 0px 2px 60px 0px #2fa9ee33;
+    margin: auto;
+    height: fit-content;
+  }
 `;
 
 export const ModalTitle = styled.div`
@@ -18,27 +41,13 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 2rem;
+  padding: 1.5rem 2rem 2rem;
 `;
 
-export const Dialog = styled.dialog`
-  border: none;
-  border-radius: 1rem;
-
-  color: white;
-  width: 30rem;
-  max-width: 24rem;
-
-  box-sizing: border-box;
-  margin: auto;
-
-  background: #030c14;
-  box-shadow: 0px 2px 60px 0px #2fa9ee33;
-
-  &::backdrop {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(0.2rem);
-  }
+export const TitleText = styled.h2`
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
 `;
 
 export const CloseButton = styled.button`
@@ -49,4 +58,8 @@ export const CloseButton = styled.button`
   cursor: pointer;
   font-size: 1.5rem;
   font-weight: 600;
+
+  & > svg {
+    color: #0085ff;
+  }
 `;
