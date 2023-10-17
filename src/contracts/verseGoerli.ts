@@ -1,4 +1,4 @@
-const testVerseABI = [
+const verseGoerli = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
     anonymous: false,
@@ -166,4 +166,4 @@ const testVerseABI = [
   },
 ] as const;
 
-export default testVerseABI;
+export default verseGoerli;
