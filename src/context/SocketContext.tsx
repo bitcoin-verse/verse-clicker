@@ -26,14 +26,9 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
   const { address } = useAccount();
 
   const socketRef = useRef(
-    io(
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3001"
-        : "https://verse-clicker-server.fly.dev",
-      {
-        autoConnect: false,
-      },
-    ),
+    io(process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001", {
+      autoConnect: false,
+    }),
   );
 
   const [isConnected, setIsConnected] = useState(false);
