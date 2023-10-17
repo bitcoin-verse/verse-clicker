@@ -1,6 +1,7 @@
 [
   {
-    "name": "Eth Dev",
+    "name": "Cursor",
+    "desc": "Your cursor, your Verse points.",
     "cost": 15,
     "amount": 0,
     "originalCost": 15,
@@ -10,94 +11,94 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Refactor Codebase",
+        "name": "Ergonomic Mouse",
         "cost": 100,
-        "desc": "Devs and clicking are twice as efficient",
+        "desc": "Designed for long hours of uninterrupted usage, this mouse ensures maximum efficiency and reduces user fatigue. Cursors are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Premature Optimization",
+        "name": "Additional Mouse Button",
         "cost": 500,
-        "desc": "Devs and clicking are twice as efficient",
+        "desc": "More buttons allow for multiple functionalities, increasing productivity with every click. Cursors are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Write Tests",
+        "name": "Additional Mouse",
         "cost": 10000,
-        "desc": "Devs and clicking are twice as efficient",
+        "desc": "The power of two mice magnifies interaction and efficiency, doubling your point generation potential. Cursors are twice as efficient.",
         "limit": 10,
         "owned": false
       },
       {
-        "name": "Stack Overflow",
+        "name": "Graphite Mouse Button Lubricant",
         "cost": 100000,
-        "desc": "Mouse and Devs gain +0.1 cookies for every non-cursor building owned",
+        "desc": "Ensures smoother clicks and reduces wear and tear, resulting in an added point bonus from non-cursor assets. Mouse and cursors gain +0.1 points for every non-cursor asset owned.",
         "limit": 25,
         "owned": false,
         "special": 0.1
       },
       {
-        "name": "Replace Tabs with Spaces",
+        "name": "Turbo Click Software",
         "cost": 10000000,
-        "desc": "Mouse and Devs gain +0.5 cookies for every non-cursor building owned",
+        "desc": "Empowers each click with an algorithmic boost, amplifying Verse point generation based on your assets. Mouse and cursors gain +0.5 points for every non-cursor asset owned.",
         "limit": 50,
         "owned": false,
         "special": 0.5
       },
       {
-        "name": "Replace Spaces with Tabs",
+        "name": "Mechanical Fingers",
         "cost": 100000000,
-        "desc": "Mouse and Devs gain +5 cookies for every non-cursor building owned",
+        "desc": "Automated precision fingers that click tirelessly, increasing point accumulation from every non-cursor asset. Mouse and cursors gain +5 points for every non-cursor asset owned.",
         "limit": 100,
         "owned": false,
         "special": 5
       },
       {
-        "name": "Friday Afternoon Deploys",
+        "name": "AI Predictive Clicking",
         "cost": 1000000000,
-        "desc": "Mouse and Devs gain +50 for every non-cursor building owned",
+        "desc": "Leveraging advanced AI to anticipate and auto-click optimal points, greatly magnifying the benefit from each non-cursor asset. Mouse and cursors gain +50 points for every non-cursor asset owned.",
         "limit": 150,
         "owned": false,
         "special": 50
       },
       {
-        "name": "Test in Production",
+        "name": "Fusion Powered Mech-Suit",
         "cost": 10000000000,
-        "desc": "Mouse and Devs gain +500 cookies for each non-cursor building owned",
+        "desc": "An exoskeleton designed for extreme efficiency, supercharging the cursor's capabilities, and drawing additional points from non-cursor asset. Mouse and cursors gain +500 points for each non-cursor asset owned.",
         "limit": 200,
         "owned": false,
         "special": 500
       },
       {
-        "name": "Migrate Database",
+        "name": "Nano-Precision Laser Tracking",
         "cost": 10000000000000,
-        "desc": "Mouse and Devs gain +5.000K for every non-cursor building owned",
+        "desc": "Ensures the cursor operates at a molecular accuracy level, boosting point counts with an exponential factor. Mouse and cursors gain +5.000K points for every non-cursor asset owned.",
         "limit": 250,
         "owned": false,
         "special": 5000
       },
       {
-        "name": "Free Coffe",
+        "name": "Interdimensional Click Portal",
         "cost": 10000000000000000,
-        "desc": "Mouse and Devs gain +50.000K for every non-cursor building owned",
+        "desc": "Opens gateways to alternate realities where every click counts manifold, significantly multiplying Verse points yields. Mouse and cursors gain +50.000K for every non-cursor asset owned.",
         "limit": 300,
         "owned": false,
         "special": 50000
       },
       {
-        "name": "While True",
+        "name": "Quantum Entanglement Clicker",
         "cost": 10000000000000000000,
-        "desc": "Mouse and Devs gain +500.000K for every non-cursor building owned",
+        "desc": "Harnesses quantum mechanics to simultaneously click across multiple realities, reaping a colossal point count for each non-cursor asset. Mouse and cursors gain +500.000K for every non-cursor asset owned.",
         "limit": 350,
         "owned": false,
         "special": 500000
       },
       {
-        "name": "Print Hello World",
+        "name": "Dark Energy Momentum Booster",
         "cost": 1e22,
-        "desc": "Mouse and Devs gain +5.000M for each non-cursor building owned",
+        "desc": "Taps into the universe's mysterious dark energy, exponentially magnifying the impact of every movement and click, resulting in massive Verse point gains. Mouse and cursors gain +5.000M for each non-cursor asset owned.",
         "limit": 400,
         "owned": false,
         "special": 5000000
@@ -107,7 +108,8 @@
     "image": "dev.png"
   },
   {
-    "name": "Wojak",
+    "name": "Monkey",
+    "desc": "Randomly typing to develop Verse Clicker code.",
     "cost": 100,
     "amount": 0,
     "originalCost": 100,
@@ -117,79 +119,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Join r/cryptocurrency",
+        "name": "Banana Dispenser",
         "cost": 1000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "A constant supply of their favorite treat keeps the monkeys motivated and typing faster, doubling their efficiency.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "More efficient Spatchelas",
+        "name": "Oversized Keyboard",
         "cost": 5000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Custom-designed for monkey hands, it allows for quicker and more random keystrokes, resulting in surprising code outcomes. Monkeys are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Buy High, Sell Low",
+        "name": "Inspiring Jungle Ambience",
         "cost": 50000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Familiar jungle sounds help monkeys feel at home, making them more relaxed and productive. Monkeys are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "McDonalds Manager training",
+        "name": "Swing Breaks",
         "cost": 5000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Scheduled swing sessions ensure that monkeys are rejuvenated and ready to type away with renewed energy. Monkeys are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Promoted to Junior Supivisor",
+        "name": "Monkey See, Monkey Do Training",
         "cost": 500000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Peer learning sessions where one monkey's successful code tactic becomes a lesson for all, driving collective efficiency. Monkeys are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Turn on Crypto Price Notifications",
+        "name": "Ergonomic Tree Branch Desk",
         "cost": 50000000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Naturalistic workstations make monkeys feel comfortable, leading to longer and more efficient typing sessions. Monkeys are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Free Chicken Tendies",
+        "name": "Motivating Monkey Chants",
         "cost": 50000000000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Ritualistic chants that inspire a sense of community and purpose among the monkeys, boosting their collective code output. Monkeys are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Follow Elon Musk on X",
+        "name": "Removal of Predators",
         "cost": 50000000000000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "A secure environment free of threats helps monkeys focus solely on their coding tasks without distractions. Monkeys are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Hodl More Doge",
+        "name": "Electrical Shock Reinforcement",
         "cost": 50000000000000000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "A controversial method, where occasional mild shocks keep the monkeys alert and on their toes. Monkeys are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Diamond Hands",
+        "name": "Grunt Interpreter",
         "cost": 5e22,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "A sophisticated device that translates monkey grunts into actionable feedback, improving code quality and efficiency. Monkeys are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "I Know That Feel Bro",
+        "name": "AI Assisted Monkey Typing",
         "cost": 5e26,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Cutting-edge AI algorithms predict and guide monkey keystrokes, merging randomness with structured coding practices for optimal results. Monkeys are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -198,7 +200,8 @@
     "image": "wojak.png"
   },
   {
-    "name": "Trollfarm",
+    "name": "Intern",
+    "desc": "Getting their feet wet and learning the ropes.",
     "cost": 1100,
     "amount": 0,
     "originalCost": 1100,
@@ -208,79 +211,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Sock Puppets",
+        "name": "Mentor's Guidance",
         "cost": 11000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "With experienced developers guiding their every move, interns swiftly navigate challenges and amplify their productivity. Interns are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Indian Callcenter",
+        "name": "First Real Project",
         "cost": 55000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Immersed in an actual project, interns gain practical experience, boosting their confidence and competence in tackling real-world issues. Interns are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Post Memes",
+        "name": "Daily Stand-Up Ritual",
         "cost": 550000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Regular check-ins help interns prioritize tasks, stay aligned with the team's goals, and receive timely feedback. Interns are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Lurk on Reddit",
+        "name": "Version Control Intro",
         "cost": 55000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "By understanding the essentials of Git and other version control systems, interns can collaborate seamlessly and avoid code conflicts. Interns are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Retweet CZ",
+        "name": "Debugging 101 Workshop",
         "cost": 5500000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Equipped with basic debugging techniques, interns can swiftly identify and rectify errors, enhancing their coding efficacy. Interns are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "YouTube Influencer",
+        "name": "Peer Programming Sessions",
         "cost": 550000000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Collaborating closely with peers, interns learn faster, share knowledge, and generate better code. Interns are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Automated Shitposting",
+        "name": "First Code Review",
         "cost": 550000000000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Receiving their inaugural code feedback, interns get a glimpse into areas of improvement, refining their coding habits. Interns are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "4Chan Street Cred",
+        "name": "Tech Talk Attendance",
         "cost": 550000000000000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Exposure to the latest trends and best practices in technology through internal seminars keeps interns updated and inspired. Interns are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Facebook Bans",
+        "name": "Company Swag Kit",
         "cost": 550000000000000000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Flaunting branded goodies not only boosts interns' morale but also instills a sense of belonging and pride in the company's mission. Interns are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Rick Roll Advertisements",
+        "name": "Documentation Mastery",
         "cost": 5.5e23,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Understanding the art of effective documentation, interns ensure that their code is comprehensible and maintainable by all. Interns are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Phishing Advertisements",
+        "name": "API Interaction Seminar",
         "cost": 5.5e27,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "By mastering the nuances of API integrations, interns can effectively communicate with external systems, expanding their development toolkit. Interns are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -289,7 +292,8 @@
     "image": "troll.png"
   },
   {
-    "name": "ASIC",
+    "name": "Junior Dev",
+    "desc": "Fresh out of school, eager to prove themselves.",
     "cost": 12000,
     "amount": 0,
     "originalCost": 12000,
@@ -299,79 +303,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Cheap Electricity",
+        "name": "Caffeine Tablets",
         "cost": 120000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Harnessing the power of caffeine, Junior Devs maintain their focus and energy, tackling coding challenges with zest. Junior Devs are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Hydroelectric Dam",
+        "name": "Noise Cancelling Headphones",
         "cost": 600000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Drowning out distractions, these headphones enable Junior Devs to dive deep into code, ensuring undisturbed concentration. Junior Devs are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Water Cooling",
+        "name": "Dual Monitor Setup",
         "cost": 6000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "With an extended display, Junior Devs can multi-task and view code more efficiently, enhancing their coding speed and accuracy. Junior Devs are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Ultra Cheap Electricity",
+        "name": "Ergonomic Keyboard",
         "cost": 600000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Ensuring comfort during long coding sessions, this keyboard reduces strain and elevates coding speed. Junior Devs are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Nuclear Power Plant",
+        "name": "Lightweight Integrated Developer Environment",
         "cost": 60000000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "A streamlined coding environment ensures that Junior Devs have all the necessary tools at their fingertips. Junior Devs are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Liquid Nitrogen Cooling",
+        "name": "Hackathon Experience",
         "cost": 6000000000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Armed with the adrenaline and lessons of coding marathons, Junior Devs tackle challenges with enthusiasm and innovation. Junior Devs are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Double Hashing Speed",
+        "name": "GitHub Pro Account",
         "cost": 6000000000000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Access to advanced tools and collaborations, this account boosts the Junior Devs' version control skills and team coordination. Junior Devs are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Fission Reactor",
+        "name": "Online Coding Bootcamp",
         "cost": 6000000000000000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Through intensive learning sessions, Junior Devs broaden their skill set and adapt to the latest coding practices. Junior Devs are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Arctic Warehouse",
+        "name": "Rubber Duck Debugging Kit",
         "cost": 6e21,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Explaining code to their rubber duck, Junior Devs clarify their logic and spot errors more effectively. Junior Devs are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Moonbase Warehouse",
+        "name": "Agile Methodology Workshop",
         "cost": 6e24,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Immersed in agile principles, Junior Devs learn to iterate rapidly and respond to feedback, making their development process smoother. Junior Devs are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Dyson Sphere",
+        "name": "Cloud Integration Tools",
         "cost": 6e28,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Familiar with the latest cloud technologies, Junior Devs can deploy and scale applications with ease. Junior Devs are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -380,7 +384,8 @@
     "image": "asic.png"
   },
   {
-    "name": "Okanemon",
+    "name": "Senior Dev",
+    "desc": "Leading projects and mentoring juniors.",
     "cost": 130000,
     "amount": 0,
     "originalCost": 130000,
@@ -390,79 +395,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Extra Cuteness",
+        "name": "Architect Blueprint",
         "cost": 1300000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Designing the foundational structure of applications, Senior Devs ensure that the codebase remains robust and scalable. Senior Devs are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Shinier Fur",
+        "name": "Wisdom Cache",
         "cost": 6500000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Drawing from years of experience, Senior Devs have a reservoir of solutions for common challenges, ensuring swift problem resolution. Senior Devs are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Money Magnetism",
+        "name": "Deep Dive Debugger",
         "cost": 65000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "With an eye for detail, Senior Devs delve deep into the code, identifying and rectifying the most elusive bugs. Senior Devs are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Extra Hungry",
+        "name": "Mentor's Mantle",
         "cost": 6500000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Embodying the role of guide and teacher, Senior Devs uplift the next generation of developers, ensuring the team's overall growth. Senior Devs are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Fluffyness Improvements",
+        "name": "Pattern Recognition Engine",
         "cost": 650000000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Recognizing patterns and anomalies in code, Senior Devs swiftly optimize solutions and prevent potential issues. Senior Devs are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Cheeky Smiles",
+        "name": "Legacy Translator",
         "cost": 65000000000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Navigating and modernizing older codebases, Senior Devs ensure that legacy systems remain compatible and efficient. Senior Devs are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Toy Productline",
+        "name": "Continuous Integration Guru",
         "cost": 65000000000000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Mastering the art of CI, Senior Devs ensure that code integrations are smooth, and the software remains in a deployable state. Senior Devs are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Television Series",
+        "name": "Algorithm Almanac",
         "cost": 65000000000000000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Possessing an extensive knowledge of algorithms, Senior Devs optimize operations, ensuring the best performance of applications. Senior Devs are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Feature Length Movie",
+        "name": "Scalability Scepter",
         "cost": 6.5e22,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "With a vision for the future, Senior Devs design systems that grow seamlessly with increasing demand. Senior Devs are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Knight-hood",
+        "name": "Refactoring Razor",
         "cost": 6.5e25,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Sharpening code quality, Senior Devs slice through redundancies, ensuring that the codebase remains clean and maintainable. Senior Devs are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Guiness World Record",
+        "name": "Holistic Hologram",
         "cost": 6.5e29,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Viewing projects from a 360° perspective, Senior Devs ensure that all aspects, from user experience to backend logic, harmonize perfectly. Senior Devs are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -471,7 +476,8 @@
     "image": "okanemon.png"
   },
   {
-    "name": "Coaster",
+    "name": "Shadowy Supercoder",
+    "desc": "Operating in the digital shadows, their identity is a mystery, but their code speaks volumes",
     "cost": 1400000,
     "amount": 0,
     "originalCost": 1400000,
@@ -481,79 +487,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Banked Turns",
+        "name": "Stealth Mode Activated",
         "cost": 14000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Unseen, unheard, but always impactful. Shadowy Supercoders are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Lift Hills",
+        "name": "Zero-Day Exploit",
         "cost": 70000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "They're always ten steps ahead, using undisclosed vulnerabilities to their advantage. Shadowy Supercoders are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Hammerhead Turn",
+        "name": "Encrypted Aura",
         "cost": 700000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Protected against all forms of interference. Shadowy Supercoders are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Double Dip",
+        "name": "Ninja Refactoring",
         "cost": 70000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Revamping entire systems without breaking a sweat or the build. Shadowy Supercoders are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Inverted Loop",
+        "name": "Digital Shadow Clones",
         "cost": 7000000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Duplicating their effort seamlessly across multiple tasks. Shadowy Supercoders are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Banana Roll",
+        "name": "Mainframe Whisperer",
         "cost": 700000000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Communicating directly with core systems for optimal results. Shadowy Supercoders are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Corkscrew",
+        "name": "Quantum Encryption Cloak",
         "cost": 700000000000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Protecting their work with next-gen security, making Shadowy Supercoders twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Demonic Knot",
+        "name": "Darknet Ally",
         "cost": 700000000000000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Tapping into a vast network of underground coders and resources. Shadowy Supercoders are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "In-line Twist",
+        "name": "Timeless Code Techniques",
         "cost": 700000000000000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Implementing age-old tricks that never fail to deliver. Shadowy Supercoders are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Pretzel loop",
+        "name": "Omniscient Debugger",
         "cost": 7e23,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Seeing all the flaws in the matrix and rectifying them instantaneously. Shadowy Supercoders are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Zero-G Roll",
+        "name": "Transcendental Compilation",
         "cost": 7e27,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Their code not only works, but it elevates the very fabric of digital reality. Shadowy Supercoders are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -562,7 +568,8 @@
     "image": "coaster.png"
   },
   {
-    "name": "Printer",
+    "name": "Ethereum Foundation",
+    "desc": "Major player in the crypto world, innovating and setting standards.",
     "cost": 20000000,
     "amount": 0,
     "originalCost": 20000000,
@@ -572,79 +579,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Go Brrr",
+        "name": "Solidity Mastery",
         "cost": 200000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "Delving deep into the core programming language, Ethereum Foundation members are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Go Brrrrrr",
+        "name": "Gas Optimizer",
         "cost": 1000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "Reducing the fuel of the network, they streamline transactions. Ethereum Foundation members are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Go Brrrrrrrrr",
+        "name": "Proof of Stake Pioneer",
         "cost": 10000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "As leaders in the transition, Ethereum Foundation members are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Go Brrrrrrrrrrrr",
+        "name": "Decentralized App (DApp) Incubator",
         "cost": 1000000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "Fostering the growth of new platforms on their network, Ethereum Foundation members are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Go Brrr BRRRR",
+        "name": "Ethereum 2.0 Visionary",
         "cost": 100000000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "Seeing the future of the blockchain, Ethereum Foundation members are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Go Brrr BRRRR Brrrr",
+        "name": "Smart Contract Architect",
         "cost": 10000000000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "Designing the very fabric of decentralized agreements, Ethereum Foundation members are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Go Brrr BRRR Brrr BRRR",
+        "name": "Layer-2 Scaling Solutions",
         "cost": 10000000000000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "Boosting the speed and efficiency of the network, Ethereum Foundation members are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Go Brrr BRRR Brrr BRRR Brrr",
+        "name": "Interoperability Innovator",
         "cost": 1e22,
-        "desc": "Printers are twice as efficient",
+        "desc": "Bridging connections with other chains, Ethereum Foundation members are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Go Brrr BRRR Brrr BRRR Brrr BRRR",
+        "name": "DAO Diplomat",
         "cost": 1e25,
-        "desc": "Printers are twice as efficient",
+        "desc": "Collaborating with decentralized organizations, Ethereum Foundation members are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Hyper Inflation",
+        "name": "Crypto-Economic Strategist",
         "cost": 1e28,
-        "desc": "Printers are twice as efficient",
+        "desc": "Merging the worlds of finance and technology, Ethereum Foundation members are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Super Duper Hyper Inflation",
+        "name": "Chainlink Collaborator",
         "cost": 1e32,
-        "desc": "Printers are twice as efficient",
+        "desc": "Integrating real-world data into smart contracts, Ethereum Foundation members are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -653,7 +660,8 @@
     "image": "printer.png"
   },
   {
-    "name": "Pepe",
+    "name": "IPO",
+    "desc": "Massive resources and influence in the tech industry.",
     "cost": 330000000,
     "amount": 0,
     "originalCost": 330000000,
@@ -663,79 +671,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Nakamoto Pepe",
+        "name": "Venture Capitalist Connection",
         "cost": 3300000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Access to vast resources and networks makes the IPO twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Modern Pepe",
+        "name": "Stock Option Incentives",
         "cost": 16500000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Boosting morale and attracting top talent, making the IPO twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "My Little PEPE",
+        "name": "Wall Street Wizards",
         "cost": 165000000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Financial experts optimize investments, doubling the efficiency of the IPO.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "JesusPepe",
+        "name": "M&A Magnetism",
         "cost": 16500000000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "The power to acquire promising startups, making the IPO twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "OnlyOnePepe",
+        "name": "Blue Chip Buffers",
         "cost": 1650000000000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Solidified standing in the market, making the IPO resistant to market fluctuations and twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Lord Kek, Ruler of All Pepes",
+        "name": "Earnings Report Elites",
         "cost": 165000000000000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Expertise in showcasing growth and potential in quarterly reports, making the IPO twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Japanese Watercolor Pepe",
+        "name": "Product Launch Platforms",
         "cost": 165000000000000000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Access to grand stages for new releases, doubling the reach and efficiency of the IPO.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Rabbit trick",
+        "name": "Regulatory Wranglers",
         "cost": 1.65e23,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Skilled teams navigate complex financial regulations, ensuring smooth operations and doubling the efficiency of the IPO.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Homer Pepe",
+        "name": "Investor Relations Royalty",
         "cost": 1.65e26,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Building and maintaining robust investor relationships, making the IPO twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Rare Pepes",
+        "name": "Tech Titan Alliances",
         "cost": 1.65e29,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Forming strategic partnerships with leading tech firms, doubling the efficiency and outreach of the IPO.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Ultra Rare Pepe",
+        "name": "Expansionist Ethos",
         "cost": 1.65e33,
-        "desc": "Pepes are twices as efficient",
+        "desc": "A drive to constantly grow, diversify, and conquer new markets, making the IPO twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -744,7 +752,8 @@
     "image": "pepe.png"
   },
   {
-    "name": "Hype man",
+    "name": "Open Source Community",
+    "desc": "Collective power of developers from all over the world contributing freely.",
     "cost": 5100000000,
     "amount": 0,
     "originalCost": 5100000000,
@@ -754,79 +763,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Hey hey HEYYYYY",
+        "name": "Shared Knowledge Base",
         "cost": 51000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Access to a vast repository of knowledge and expertise makes the Open Source Community twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "WASAWASAWASAuuuppp",
+        "name": "Bug Reporting Rewards",
         "cost": 255000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Feedback from numerous users accelerates software refinement, making the community twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "The world is not anymore the way it used to be",
+        "name": "Comprehensive Documentation",
         "cost": 2550000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "In-depth guides and tutorials from user contributions increase the community's efficiency by 2x.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "MMM.. MMM.. NO NO NO",
+        "name": "Project Evolution",
         "cost": 255000000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Ability to modify and adapt projects based on unique needs makes the community twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "I SEE YOU!!",
+        "name": "Diverse Tool Integration",
         "cost": 25500000000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "The capacity to connect a wide range of tools and platforms makes the community twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "We are coming in waves",
+        "name": "Peer Review Processes",
         "cost": 2550000000000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Rigorous code reviews ensure the highest quality, doubling the community's efficiency.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Going all over the world",
+        "name": "Global Network Reach",
         "cost": 2.55e21,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Connections spanning across continents amplify the impact and efficiency of the community by 2x.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "One hundred and forty thousand dollars",
+        "name": "License Flexibility",
         "cost": 2.55e24,
-        "desc": "Hype men are twice as efficient",
+        "desc": "The freedom to choose how software is used and distributed makes the community twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Whoawhoawhoa Wassup",
+        "name": "Continuous Improvement",
         "cost": 2.55e27,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Regular updates and enhancements from contributors worldwide double the community's efficiency.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "WHAT?!",
+        "name": "User Feedback Loops",
         "cost": 2.55e30,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Direct input from end-users refines the software, making the community twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Bitconneeeeeeect",
+        "name": "Distributed Development",
         "cost": 2.55e34,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Parallel work streams from contributors globally accelerate project timelines, making the community twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -835,7 +844,8 @@
     "image": "carlos.png"
   },
   {
-    "name": "Rocket",
+    "name": "Global Hive Mind",
+    "desc": "The interconnected consciousness of all developers worldwide.",
     "cost": 75000000000,
     "amount": 0,
     "originalCost": 75000000000,
@@ -845,79 +855,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Stronger Structural System",
+        "name": "Conduit of Collective Insight",
         "cost": 750000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A channel that taps into the shared wisdom of every coder, magnifying the Global Hive Mind's efficiency. Global Hive Mind is twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Larger Payload",
+        "name": "Neural Nexus Network",
         "cost": 3750000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A vast web of interconnected minds, enabling instantaneous sharing of innovative solutions. Global Hive Mind is twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Improved Guidance",
+        "name": "Pulse of Unity",
         "cost": 37500000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A rhythmic heartbeat that synchronizes thoughts, streamlining project development and problem-solving. Global Hive Mind is twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Dogecoin Logo",
+        "name": "Dimensional Thought Bridge",
         "cost": 3750000000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A structure that spans across realities, enabling the hive mind to borrow ideas from alternate worlds. Global Hive Mind is twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Liquid Rocket Engines",
+        "name": "Cognitive Resonance Crystal",
         "cost": 375000000000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A gem that amplifies the resonance of harmonized thoughts, boosting collaboration. Global Hive Mind is twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Improved Thrusters",
+        "name": "Empathy Ether",
         "cost": 37500000000000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A mist that fosters understanding, ensuring smooth communication between vastly different perspectives. Global Hive Mind is twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Reusable Boosters",
+        "name": "Synchronicity Sphere",
         "cost": 3.75e22,
-        "desc": "Rockets are twice as efficient",
+        "desc": "An orb that aligns the rhythm of every developer's thought, optimizing workflow and innovation. Global Hive Mind is twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "International Space Station",
+        "name": "Quantum Thought Quill",
         "cost": 3.75e25,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A tool that inscribes ideas from the collective consciousness, ensuring the best strategies are always at hand. Global Hive Mind is twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Commercial Passengers",
+        "name": "Wisdom Weave",
         "cost": 3.75e28,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A tapestry that records the hive mind's shared knowledge, providing a history of insights and breakthroughs. Global Hive Mind is twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Moon Base",
+        "name": "Harmonized Horizon Helm",
         "cost": 3.75e31,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A helmet that offers a vision of the combined futures the hive mind can achieve. Global Hive Mind is twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Mars Base",
+        "name": "Echo Chamber of Enlightenment",
         "cost": 3.75e35,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A sacred space where the best ideas are echoed, refined, and amplified for the greater good. Global Hive Mind is twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -926,7 +936,8 @@
     "image": "rocket.png"
   },
   {
-    "name": "Laser Eyes",
+    "name": "Nanobot Swarm Coders",
+    "desc": "Tiny self-replicating bots that write and optimize code at a molecular level.",
     "cost": 1000000000000,
     "amount": 0,
     "originalCost": 1000000000000,
@@ -936,79 +947,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Ulgraviolet",
+        "name": "Nano-Structured Interface",
         "cost": 10000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "An advanced system that allows the nanobots to seamlessly integrate and operate within digital environments. Nanobot Smart Coders are twice as effective.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Pulsed Output",
+        "name": "Parallel Processing Units",
         "cost": 50000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Enables multiple nanobots to work simultaneously on various tasks without interference. Nanobot Smart Coders are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Q-Switched",
+        "name": "Harmonic Resonance System",
         "cost": 500000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Ensures the optimal balance and efficiency of nanobots when executing tasks. Nanobot Smart Coders are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Carbon Dioxide Lasers",
+        "name": "Microscale Compiler",
         "cost": 50000000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Provides the capability to craft and refine code at incredibly small scales for optimal performance. Nanobot Smart Coders are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Diode Lasers",
+        "name": "Photon Conversion Drive",
         "cost": 5000000000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Powers the nanobots by converting light into energy, ensuring they never run out of power. Nanobot Smart Coders are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Quantum Dot Laser",
+        "name": "Instant Communication Channels",
         "cost": 500000000000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Allows nanobots to exchange information rapidly across vast distances. Nanobot Smart Coders are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Ion Lasers",
+        "name": "Crystal Storage Modules",
         "cost": 5e23,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Uses densely packed structures to store and retrieve vast amounts of data efficiently. Nanobot Smart Coders are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Hydrogen flouride Laser",
+        "name": "Orbital Distribution System",
         "cost": 5e26,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Distributes tasks among nanobots ensuring efficient coverage and resource allocation. Nanobot Smart Coders are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Argon Laser",
+        "name": "Magnetic Navigation",
         "cost": 5e29,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Directs nanobots to the precise location of tasks for efficient processing. Nanobot Smart Coders are twice as effective.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Tactical Airborne Laser Weapon",
+        "name": "Stability Protectors",
         "cost": 5e32,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Shields that prevent external interference, ensuring that nanobots function smoothly. Nanobot Smart Coders are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Herculese Petawatt Laser",
+        "name": "Unified Operation Rhythm",
         "cost": 5e36,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "A guiding pulse that ensures all nanobots work in harmony. Nanobot Smart Coders are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -1017,7 +1028,8 @@
     "image": "lazereyes.png"
   },
   {
-    "name": "Chad",
+    "name": "Digital Alchemists",
+    "desc": "Standing at the crossroads of technology and mysticism, these pioneers harness ancient wisdom and modern code to transmute the virtual realm, seeking the Philosopher's Code.",
     "cost": 14000000000000,
     "amount": 0,
     "originalCost": 14000000000000,
@@ -1027,79 +1039,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Look at everyone in the eyes",
+        "name": "Elemental Encryption",
         "cost": 140000000000000,
-        "desc": "Chads are twice as efficient",
+        "desc": "Harnessing earth, wind, fire, and water to secure data, Digital Alchemists are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Do not register emotions or feelings",
+        "name": "Philosopher's Protocol",
         "cost": 700000000000000,
-        "desc": "Chads are twice as efficient",
+        "desc": "Converting base code into golden algorithms, Digital Alchemists are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Slap & Batter Incoming Traffic",
+        "name": "Mystic Modules",
         "cost": 7000000000000000,
-        "desc": "Chads are twice as efficient",
+        "desc": "Tapping into the energies of the cosmos, Digital Alchemists elevate their coding prowess and are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Poised like a Greek Statue",
+        "name": "Aether API",
         "cost": 700000000000000000,
-        "desc": "Chads are twice as efficient",
+        "desc": "Channeling the fifth element for seamless integration between worlds, Digital Alchemists are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Tiny beetle-like Stride",
+        "name": "Runestone Runtime",
         "cost": 70000000000000000000,
-        "desc": "Chads are twice as efficient",
+        "desc": "Ancient symbols bolster modern runtime, making Digital Alchemists twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Flailing arms in Confident, Unpredictable ways",
+        "name": "Gnostic Grids",
         "cost": 7e21,
-        "desc": "Chads are twice as efficient",
+        "desc": "Unlocking hidden knowledge in interconnected networks, Digital Alchemists are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Head at Perfect Verticle Angle at all times",
+        "name": "Elixir Enhancers",
         "cost": 7e24,
-        "desc": "Chads are twice as efficient",
+        "desc": "Brewing digital elixirs that boost system vitality, Digital Alchemists are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Hair Firmly Fastened",
+        "name": "Sorcery SDK",
         "cost": 7e27,
-        "desc": "Chads are twice as efficient",
+        "desc": "A magical toolkit that amplifies development capabilities, making Digital Alchemists twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Never Heard a Song in His Life",
+        "name": "Mystical Machine Learning",
         "cost": 7e30,
-        "desc": "Chads are twice as efficient",
+        "desc": "Teaching machines the wisdom of the ancients, Digital Alchemists are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Measure Structural Foundations with Spinal Cord",
+        "name": "Charm Chain",
         "cost": 7e33,
-        "desc": "Chads are twice as efficient",
+        "desc": "A blockchain imbued with enchantments, fortifying security and efficiency, making Digital Alchemists twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Does not wear a coat, is immune to cold",
+        "name": "Transmutation Tunnels",
         "cost": 7e37,
-        "desc": "Chads are twice as efficient",
+        "desc": "Creating pathways that refine and purify data as it passes through, Digital Alchemists are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -1108,7 +1120,8 @@
     "image": "chad.png"
   },
   {
-    "name": "Elon Tweet",
+    "name": "Dyson Sphere",
+    "desc": "A solar-system sized structure that captures 100% of the sun's energy to develop code that powers Verse Points production.",
     "cost": 170000000000000,
     "amount": 0,
     "originalCost": 170000000000000,
@@ -1118,79 +1131,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Doge Tweets",
+        "name": "Solar Matrix Grid",
         "cost": 1700000000000000,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Advanced panels that increase the efficiency of energy capture. The Dyson Sphere becomes twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Bitcoin Tweets",
+        "name": "Photon Funneling System",
         "cost": 8500000000000000,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Channels light particles directly to storage units, maximizing energy absorption. Dyson Sphere is twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Anime Tweets",
+        "name": "Stellar Stabilization Rings",
         "cost": 85000000000000000,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Ensures the Dyson Sphere remains perfectly aligned with the sun, optimizing energy capture. Dyson Sphere is twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Single Word Replies",
+        "name": "Quantum Storage Capacitors",
         "cost": 8500000000000000000,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Stores vast amounts of energy without any loss over time. Dyson Sphere is twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Sell Flamethrowers",
+        "name": "Gravitational Balance Nodes",
         "cost": 850000000000000000000,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Maintains the sphere's position in space, ensuring constant energy inflow. Dyson Sphere is twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Crash the Market",
+        "name": "Thermal Transmutation Chambers",
         "cost": 8.5e22,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Converts excess heat into usable energy, ensuring no energy is wasted. Dyson Sphere is twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Create Flat Mars Society",
+        "name": "Radiant Energy Relays",
         "cost": 8.5e25,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Transfers stored energy to wherever it's needed most efficiently. Dyson Sphere is twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Beef with Bill Gates",
+        "name": "Helio-Harmonic Resonators",
         "cost": 8.5e28,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Taps into the natural frequencies of the sun to boost energy output. Dyson Sphere is twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Sell Short Shorts",
+        "name": "Stellar Spectrum Splitters",
         "cost": 8.5e31,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Separates sunlight into its constituent wavelengths, extracting even more energy. Dyson Sphere is twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Buy Twitter",
+        "name": "Ultra-Dense Matter Cores",
         "cost": 8.5e34,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Acts as massive batteries, storing vast amounts of energy for prolonged use. Dyson Sphere is twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Rename Twitter to X",
+        "name": "Cosmic Energy Bridge",
         "cost": 8.5e38,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Establishes connections between the Dyson Sphere and distant cosmic energy sources, drawing additional power from stars, quasars, and pulsars. Dyson Sphere is twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -1199,7 +1212,8 @@
     "image": "tweet.png"
   },
   {
-    "name": "Stadium",
+    "name": "Galactic Brain Interface",
+    "desc": "Directly connecting to a galaxy-sized neural network, fusing cosmic knowledge with coding prowess.",
     "cost": 2100000000000000,
     "amount": 0,
     "originalCost": 2100000000000000,
@@ -1209,79 +1223,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "FTX Meme",
+        "name": "Star System Synchronization",
         "cost": 21000000000000000,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Uniting various star systems to harmonize thought processes, making the Galactic Brain Interface twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Neural Nebula Enhancement",
         "cost": 105000000000000000,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Using dense stellar clouds to expand the range and depth of accessible knowledge, doubling the efficiency of the Galactic Brain Interface.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Gravity-Driven Data Storage",
         "cost": 1050000000000000000,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Utilizing the force of black holes for rapid information processing and retention, making the Galactic Brain Interface twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Quasar Quick Search",
         "cost": 105000000000000000000,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Accessing the radiant emissions of quasars for rapid information retrieval, doubling the efficiency of the Galactic Brain Interface.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Galactic Memory Access",
         "cost": 1.05e22,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Drawing from the shared memories of countless civilizations within our galaxy to enrich the knowledge base of the Galactic Brain Interface and double its efficiency.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Pulsar Power Boost",
         "cost": 1.05e24,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Using the steady emissions of neutron stars to enhance computational capacities, making the Galactic Brain Interface twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Energy from Supernovae",
         "cost": 1.05e27,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Capturing the explosive power of supernovae to generate advanced algorithms and double the coding power of the Galactic Brain Interface. ",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Central Wisdom Hub",
         "cost": 1.05e30,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Collecting and refining the galaxy's vast knowledge to ensure optimal decision-making processes. Galactic Brain Interface is twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Celestial Code Enhancement",
         "cost": 1.05e33,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Using patterns from the cosmos to improve coding capabilities and boost the power of the Galactic Brain Interface and double its efficiency.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Knowledge from Distant Galaxies",
         "cost": 1.05e36,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Receiving insights from neighboring galaxies to improve the knowledge base of the Galactic Brain Interface and double its efficiency.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Exoplanet Encryption Expertise",
         "cost": 1.05e40,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Integrating security methods and coding nuances from distant, advanced civilizations, further refining the capabilities of the Galactic Brain Interface and doubling its efficiency.",
         "limit": 400,
         "owned": false
       }
@@ -1290,7 +1304,8 @@
     "image": "stadium.png"
   },
   {
-    "name": "Bogdanoff",
+    "name": "BogdDark Matter Processoranoff",
+    "desc": "Tapping into the other 50% of the universe's matter to churn out code that can generate Verse Points at unfathomable rates.",
     "cost": 26000000000000000,
     "amount": 0,
     "originalCost": 26000000000000000,
@@ -1300,79 +1315,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Bogdanoff",
+        "name": "Mysterious Matter Mastery",
         "cost": 260000000000000000,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Understanding the intricacies of dark matter, the processor becomes twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Subatomic Code Synthesis",
         "cost": 130000000000000000,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Using dark matter's subatomic particles to streamline code synthesis, making the processor twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Cosmic Compression Algorithm",
         "cost": 13000000000000000000,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Drawing on the dense nature of dark matter to enhance storage and code execution, the processor becomes twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Void Vortex Visualization",
         "cost": 130000000000000000000,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Tapping into the swirling dark matter vortexes to visualize and solve complex coding problems. Processor is twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Nebulous Network Expansion",
         "cost": 1.3e22,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Expanding the processor's reach into the nebulous stretches of the universe, doubling its efficiency.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Unseen Ultracode Generator",
         "cost": 1.3e25,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Utilizing dark matter's invisible attributes to generate ultra-efficient code on the fly. Processor is twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Interstellar Isolation Integration",
         "cost": 1.3e28,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Using the isolated pockets of dark matter to enhance the processor's focus, making it twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Quantum Quark Quicken",
         "cost": 1.3e31,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Speeding up processing by interfacing directly with dark matter's quantum quarks. Processor is twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Cosmic Code Collider",
         "cost": 1.3e34,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Merging traditional code with patterns found in dark matter, enhancing the output. Processor is twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Density Driven Debugger",
         "cost": 1.3e37,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Using dark matter's dense properties to quickly find and fix coding errors. Processor is twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Blackout Binary Builder",
         "cost": 1.3e41,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Harnessing the power of dark matter to construct a new, more efficient binary system for coding. Processor is twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -1381,7 +1396,8 @@
     "image": "bogdanoff.png"
   },
   {
-    "name": "AI Bot",
+    "name": "Cosmic Verse Compiler",
+    "desc": "Assimilating all coding knowledge from the universe to instantaneously produce a near infinite number of Verse Points.",
     "cost": 310000000000000000,
     "amount": 0,
     "originalCost": 310000000000000000,
@@ -1391,79 +1407,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "AI Bot",
+        "name": "Galactic Grid Gateway",
         "cost": 3100000000000000000,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Creating a portal to access universal coding wisdom, the compiler becomes twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Nebula Neural Networks",
         "cost": 15500000000000000000,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Integrating neural structures formed from cosmic gases, enhancing the compiler's cognitive abilities and making it twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Starlight Syntax Solver",
         "cost": 155000000000000000000,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Using the patterns of starlight to optimize and solve coding challenges, the compiler becomes twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Void Variable Vector",
         "cost": 1.55e22,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Accessing the vast emptiness of space to store and process infinite amounts of data, the compiler is twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Orbiting Object-Oriented Optimizer",
         "cost": 1.55e24,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Incorporating the motion of celestial bodies to streamline object-oriented programming, making the compiler twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Celestial Code Catalyst",
         "cost": 1.55e26,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Drawing from the raw energy of celestial events to boost coding speed, the compiler becomes twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Pulsar Pattern Parser",
         "cost": 1.55e29,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Using the rhythms of pulsars to identify and implement optimal coding patterns, the compiler is twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Quasar Quantum Quotient",
         "cost": 1.55e32,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Tapping into the radiant emissions of quasars for advanced quantum calculations, the compiler becomes twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Big Bang Binary Boost",
         "cost": 1.55e35,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Harnessing the primal forces from the universe's inception for a superior binary system, making the compiler twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Supernova Syntax Synthesizer",
         "cost": 1.55e38,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Drawing from the explosive power of supernovas to craft complex syntax structures, the compiler is twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Universal Unity Updater",
         "cost": 1.55e42,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Integrating knowledge from every corner of the universe to ensure the compiler ",
         "limit": 400,
         "owned": false
       }
@@ -1472,7 +1488,8 @@
     "image": "aibot.png"
   },
   {
-    "name": "Bitcoin Jesus",
+    "name": "Multiverse Simulation Engine",
+    "desc": "Leveraging alternate realities to achieve a singularity of Verse Points production.",
     "cost": 71000000000000000000,
     "amount": 0,
     "originalCost": 71000000000000000000,
@@ -1482,79 +1499,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Bitcoin Jesus",
+        "name": "Alternate Algorithm Acquisition",
         "cost": 710000000000000000000,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Tapping into coding algorithms from parallel realities, the engine becomes twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Reality Ripple Refactor",
         "cost": 3.55e21,
-        "desc": "Bitcoin Jesus are twices as efficient",
+        "desc": "Adjusting code based on patterns seen across the multiverse, making the engine twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Dimensional Data Dynamics",
         "cost": 3.55e22,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Using multidimensional data structures from other realities for superior coding efficiency. The engine is twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Parallel Processing Protocols",
         "cost": 3.55e24,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Running simultaneous tasks across various universes to boost speed, doubling the engine's efficiency.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Quantum Query Quickener",
         "cost": 3.55e26,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Using quantum mechanics from multiple realities to speed up data queries, making the engine twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Temporal Technique Transfer",
         "cost": 3.55e28,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Borrowing advanced coding techniques from future realities, the engine becomes twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Spectral Software Synthesis",
         "cost": 3.55e31,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Integrating software from spectral dimensions, enhancing the engine's capabilities and making it twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Universal Unification Upgrader",
         "cost": 3.55e34,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Merging the best coding practices from all realities, the engine becomes twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Meta-Multiverse Methodologies",
         "cost": 3.55e37,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Incorporating higher-order universe strategies into coding, doubling the engine's efficiency.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Continuum Code Compiler",
         "cost": 3.55e40,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Compiling and executing code that functions seamlessly across multiple realities, making the engine twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Infinite Iteration Implementer",
         "cost": 3.55e44,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Harnessing the power of infinite iterations from all universes to optimize code, the engine is twice as efficient.",
         "limit": 400,
         "owned": false
       }
