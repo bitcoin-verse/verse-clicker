@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-import { ModalTitle, ModalContent } from "../ModalStyles";
 import {
   useAccount,
   useChainId,
@@ -133,8 +132,7 @@ const Burn: FC = () => {
   };
 
   return (
-    <ModalContent>
-      <ModalTitle>Burn to earn (BETA)</ModalTitle>
+    <>
       <div>
         Get upto 24hrs worth of cookies at your current CPS rate, just by
         burning a little verse
@@ -189,7 +187,7 @@ const Burn: FC = () => {
           buttons={buttonsList}
         />
       </ButtonContainer>
-    </ModalContent>
+    </>
   );
 };
 

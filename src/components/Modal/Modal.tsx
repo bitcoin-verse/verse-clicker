@@ -9,7 +9,7 @@ import {
 
 interface Props {
   modalRef: RefObject<HTMLDialogElement>;
-  title: string;
+  title?: string;
   onClose?: () => void;
 }
 
@@ -23,7 +23,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   return (
     <Dialog ref={modalRef} {...rest}>
       <ModalTitle>
-        <TitleText>{title}</TitleText>
+        {title && <TitleText>{title}</TitleText>}
         <CloseButton
           onClick={() => {
             if (!modalRef || !modalRef.current) return;
