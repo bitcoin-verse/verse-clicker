@@ -6,6 +6,7 @@ import {
   ModalTitle,
   TitleText,
 } from "./styled";
+import Cross from "../Icons/Cross";
 
 interface Props {
   modalRef: RefObject<HTMLDialogElement>;
@@ -31,7 +32,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
             if (onClose) onClose();
           }}
         >
-          ✕
+          <Cross size="1rem" />
         </CloseButton>
       </ModalTitle>
       <ModalContent>{children}</ModalContent>
@@ -44,13 +45,11 @@ export const useModal = () => {
 
   const showModal = () => {
     if (!modalRef || !modalRef.current) return;
-
     modalRef.current.showModal();
   };
 
   const close = () => {
     if (!modalRef || !modalRef.current) return;
-
     modalRef.current.close();
   };
 
