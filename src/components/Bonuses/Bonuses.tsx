@@ -40,14 +40,23 @@ const BonusButton = styled.button<{ $hasBonus?: boolean }>`
   font-weight: 700;
 `;
 
-const getModalContent = (content?: string) => {
+const getModalContent = (content?: string, verseHolder?: boolean) => {
   switch (content) {
     case "burn":
-      return <Burn />;
+      return {
+        title: "Burn to earn (BETA)",
+        component: <Burn />,
+      };
     case "hold":
-      return <Hold />;
+      return {
+        title: verseHolder ? "You hold verse." : "Get 10x CPC multiplier",
+        component: <Hold />,
+      };
     case "farm":
-      return <Farm />;
+      return {
+        title: "Double CPS!",
+        component: <Farm />,
+      };
     default:
       return null;
   }
@@ -57,6 +66,8 @@ const Bonuses: FC = () => {
   const [content, setContent] = useState<string>();
   const { modalRef, showModal } = useModal();
   const { player } = useTrackedState();
+
+  const modalContent = getModalContent(content, player.verseHolder);
 
   return (
     <>
@@ -88,8 +99,12 @@ const Bonuses: FC = () => {
           Farm
         </BonusButton>
       </BonusesWrapper>
-      <Modal modalRef={modalRef} onClose={() => setContent(undefined)}>
-        {getModalContent(content)}
+      <Modal
+        modalRef={modalRef}
+        onClose={() => setContent(undefined)}
+        title={modalContent?.title}
+      >
+        {modalContent?.component}
       </Modal>
     </>
   );
