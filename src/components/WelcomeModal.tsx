@@ -4,12 +4,13 @@ import { useTrackedState } from "../context/store";
 import styled from "styled-components";
 import { formatNumber } from "../helpers/formatNumber";
 import { useSocketCtx } from "../context/SocketContext";
+import { Button } from "./Button";
 
 const BonusText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  font-weight: 600;
+  font-weight: 500;
   padding-top: 1fr;
   text-align: center;
 `;
@@ -17,7 +18,7 @@ const BonusText = styled.div`
 type ReturnData = { seconds: number; cookies: number };
 
 const WelcomeModal = () => {
-  const { verseHolder } = useTrackedState();
+  const { player } = useTrackedState();
   const { socket } = useSocketCtx();
   const { modalRef, showModal } = useModal();
 
@@ -36,41 +37,59 @@ const WelcomeModal = () => {
   }, []);
 
   return (
-    <Modal
-      modalRef={modalRef}
-      onClose={() => setReturnData(undefined)}
-      title="Welcome Back!"
-    >
-      <BonusText>
-        <div>It&rsquo;s been {returnData?.seconds}s since last seen</div>
-        <div>
-          You have accumulated {formatNumber(returnData?.cookies)} cookies while
-          you were away
-        </div>
-        {verseHolder ? (
+    <>
+      <Modal
+        modalRef={modalRef}
+        onClose={() => setReturnData(undefined)}
+        title="Welcome Back!"
+      >
+        <BonusText>
+          <div>It&rsquo;s been {returnData?.seconds}s since last seen</div>
           <div>
-            You hold VERSE, your clicks are <b>10 TIMES as effective</b> as non
-            Verse holders
+            You have accumulated {formatNumber(returnData?.cookies)} cookies
+            while you were away
           </div>
-        ) : (
-          <div>
-            You don&rsquo;t hold VERSE. Hodl VERSE to receive a 2x click bonus.{" "}
-            <a
-              href="https://buy.bitcoin.com/verse"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Buy verse
-            </a>{" "}
-            or{" "}
-            <a href="https://verse.bitcoin.com" rel="noreferrer">
-              Swap to verse
-            </a>{" "}
-            NOW!
-          </div>
-        )}
-      </BonusText>
-    </Modal>
+          {player.verseHolder ? (
+            <div>
+              You hold VERSE, your clicks are <b>10x as effective</b> as non
+              Verse holders
+            </div>
+          ) : (
+            <>
+              <div>
+                You don&rsquo;t hold VERSE. Hodl VERSE to receive a 10x click
+                bonus.
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                }}
+              >
+                <Button
+                  as="a"
+                  href="https://buy.bitcoin.com/verse"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Buy verse
+                </Button>
+
+                <Button
+                  as="a"
+                  design="secondary"
+                  href="https://verse.bitcoin.com"
+                  rel="noreferrer"
+                >
+                  Swap to verse
+                </Button>
+              </div>
+            </>
+          )}
+        </BonusText>
+      </Modal>
+    </>
   );
 };
 
