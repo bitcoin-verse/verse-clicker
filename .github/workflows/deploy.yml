@@ -1,4 +1,4 @@
-name: Deploy master to CF (dev.clicker.verser.bitcoin.com)
+name: Deploy master to CF (dev.clicker.verse.bitcoin.com)
 on:
   push:
     branches:
