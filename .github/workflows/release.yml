@@ -1,0 +1,59 @@
+name: Deploy News JS to CF
+
+on:
+  release:
+    types: [published, released]
+    tags:
+      - 'v*'
+jobs:
+  deploy-prod:
+    if: '!github.event.release.prerelease'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Sets node config
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          cache: 'yarn'
+
+      # Sets gatsby caching
+      - name: Gatsby caching
+        uses: jongwooo/gatsby-cache@v1.4.2
+        with:
+          key: ${{ runner.os }}-gatsby-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-build-
+            ${{ runner.os }}-gatsby-build-master
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      # Install dependencies
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # Build package
+      - name: Build
+        run: yarn build
+        env:
+          CI: false
+
+      # Publish to CF pages
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: clicker-verse-bitcoin-com
+          directory: build
+          branch: trunk
+          workingDirectory: /
+          wranglerVersion: '3'
