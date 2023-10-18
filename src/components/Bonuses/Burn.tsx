@@ -1,18 +1,13 @@
 import React, { FC, useEffect, useState } from "react";
-import {
-  useAccount,
-  useChainId,
-  useContractRead,
-  useContractWrite,
-  useWaitForTransaction,
-} from "wagmi";
+import { useChainId, useContractWrite, useWaitForTransaction } from "wagmi";
 import styled from "styled-components";
 import { formatEther, parseEther } from "viem";
 
-import testVerseABI from "../../contracts/testVerseABI";
+import testVerseABI from "../../contracts/verseGoerli";
 import BurnButtons from "./BurnButtons";
 import { formatNumber } from "../../helpers/formatNumber";
 import { useSocketCtx } from "../../context/SocketContext";
+import useVerseBalance from "../../hooks/useVerseBalance";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -66,7 +61,7 @@ const buttonsList = [
 
 const Burn: FC = () => {
   const { socket } = useSocketCtx();
-  const { address } = useAccount();
+  const { data: readData, error } = useVerseBalance();
   const chainId = useChainId();
   const [newCookies, setNewCookies] = useState<number>();
 
@@ -78,16 +73,6 @@ const Burn: FC = () => {
   });
 
   const { isSuccess: txWaitSuccess } = useWaitForTransaction(data);
-
-  const { data: readData, error } = useContractRead({
-    address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
-
-    abi: testVerseABI,
-    functionName: "balanceOf",
-    args: address ? [address] : undefined,
-    account: address,
-    watch: true,
-  });
 
   const [showLoading, setShowLoading] = useState(false);
 
