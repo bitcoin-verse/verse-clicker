@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - master
+env:
+  REACT_APP_WEBSOCKET_SERVER: ${{ secrets.REACT_APP_WEBSOCKET_SERVER }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
