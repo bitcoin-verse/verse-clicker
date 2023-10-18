@@ -2,9 +2,9 @@
   "name": "clicker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://porlybe.github.io/verse-clicker",
+  "homepage": "https://clicker.verse.bitcoin.com",
   "repository": {
-    "url": "https://github.com/PorlyBe/verse-clicker"
+    "url": "https://github.com/bitcoin-verse/verse-clicker"
   },
   "scripts": {
     "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
