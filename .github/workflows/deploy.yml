@@ -24,17 +24,6 @@ jobs:
           node-version: '18.x'
           cache: 'yarn'
 
-      # Sets gatsby caching
-      - name: Gatsby caching
-        uses: jongwooo/gatsby-cache@v1.4.2
-        with:
-          key: ${{ runner.os }}-gatsby-build-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-gatsby-build-
-            ${{ runner.os }}-gatsby-build-master
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
       # Install dependencies
       - name: Install dependencies
         run: yarn install --frozen-lockfile
