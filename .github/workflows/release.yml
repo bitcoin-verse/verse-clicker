@@ -1,4 +1,4 @@
-name: Deploy News JS to CF
+name: Deploy Clicker to CF
 
 on:
   release:
