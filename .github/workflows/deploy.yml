@@ -1,5 +1,7 @@
 name: Deploy master to CF (dev.clicker.verse.bitcoin.com)
 on:
+  repository_dispatch:
+    types: [ manual-deployment ]
   push:
     branches:
       - master
