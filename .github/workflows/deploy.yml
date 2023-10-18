@@ -1,4 +1,4 @@
-name: Deployment
+name: Deploy master to CF (dev.clicker.verser.bitcoin.com)
 on:
   push:
     branches:
@@ -7,22 +7,50 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Sets node config
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-          cache: yarn
-      - name: Install Packages
-        run: yarn install
-      - name: Build page
-        run: yarn build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        # If you're changing the branch from main,
-        # also change the `main` in `refs/heads/main`
-        # below accordingly.
-        if: github.ref == 'refs/heads/master'
+          node-version: '18.x'
+          cache: 'yarn'
+
+      # Sets gatsby caching
+      - name: Gatsby caching
+        uses: jongwooo/gatsby-cache@v1.4.2
         with:
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          publish_dir: ./build
+          key: ${{ runner.os }}-gatsby-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-build-
+            ${{ runner.os }}-gatsby-build-master
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      # Install dependencies
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # Build package
+      - name: Build
+        run: yarn build
+        env:
+          CI: false
+
+      # Publish to CF pages
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: clicker-verse-bitcoin-com
+          directory: build
+          branch: master
+          workingDirectory: /
+          wranglerVersion: '3'
