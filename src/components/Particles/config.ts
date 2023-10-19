@@ -1,5 +1,5 @@
 import type { IOptions, RecursivePartial } from "tsparticles-engine";
-import cookie from "../../assets/verse-cookie.png";
+import verseMoon from "../../assets/verse-moon.png";
 
 const config: RecursivePartial<IOptions> = {
   style: {
@@ -27,7 +27,7 @@ const config: RecursivePartial<IOptions> = {
       },
 
       image: {
-        src: cookie,
+        src: verseMoon,
       },
     },
 
