@@ -7,7 +7,7 @@ import { useDispatch, useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 
 import cookieBite from "../../assets/cookie-bite.png";
-import verseCookie from "../../assets/verse-cookie.png";
+import verseMoon from "../../assets/verse-moon.png";
 import nomSound from "../../assets/nom.wav";
 import { useSocketCtx } from "../../context/SocketContext";
 
@@ -19,14 +19,15 @@ const CookieWrapper = styled.div`
 
 const ClickButton = styled.button`
   position: relative;
-  max-width: 440px;
+  max-width: 260px;
+  margin: 60px;
   aspect-ratio: 1/1;
   width: 100%;
   background: none;
   border: none;
   outline: none;
   cursor: pointer;
-  background-image: url(${verseCookie});
+  background-image: url(${verseMoon});
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
