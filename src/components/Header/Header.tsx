@@ -1,14 +1,11 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { useAccount, useNetwork } from "wagmi";
+import { useAccount } from "wagmi";
 
-import verseClicker from "../../assets/verse-clicker.png";
-import Stats from "./Stats";
+import verseLogo from "../../assets/verse-logo.png";
 import ConnectButton from "./ConnectButton";
 
-import polygonLogo from "../../assets/polygon.png";
-import ethLogo from "../../assets/ethereum.png";
-import goerliLogo from "../../assets/goerli.png";
+import ChevronLeft from "../Icons/ChevronLeft";
 
 const StyledHeader = styled.header`
   display: grid;
@@ -29,6 +26,11 @@ const StyledHeader = styled.header`
   }
 `;
 
+const LogoWrapper = styled.a`
+  display: flex;
+  align-items: center;
+`;
+
 const Logo = styled.img`
   height: 2rem;
 
@@ -37,41 +39,20 @@ const Logo = styled.img`
   flex: 0;
 `;
 
-const LOGOS: Record<string, string> = {
-  Ethereum: ethLogo,
-  Polygon: polygonLogo,
-  Goerli: goerliLogo,
-};
-
 const Header: FC = () => {
   const { isConnected } = useAccount();
-  const { chain } = useNetwork();
 
   return (
     <StyledHeader>
-      <div
-        style={{
-          gridArea: "logo",
-          display: "flex",
-          flexDirection: "column",
-          gap: "0.5rem",
-        }}
+      <LogoWrapper
+        href="https://verse.bitcoin.com"
+        target="_blank"
+        rel="noreferrer"
       >
-        <div>
-          <Logo src={verseClicker} alt="Logo" />
-        </div>
-        {chain?.name && (
-          <div style={{ display: "flex", gap: "0.5rem", marginLeft: "1rem" }}>
-            <div>
-              <img src={LOGOS[chain.name]} height={16} width={16} />
-            </div>
-            <div>{chain.name} Edition</div>
-          </div>
-        )}
-      </div>
-
-      <Stats />
-
+        <ChevronLeft />
+        <Logo src={verseLogo} alt="Logo" />
+      </LogoWrapper>
+      <h3>Verse Clicker</h3>
       {isConnected ? <ConnectButton /> : <div />}
     </StyledHeader>
   );
