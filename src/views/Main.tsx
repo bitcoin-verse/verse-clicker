@@ -126,7 +126,7 @@ const Main: FC = () => {
     <>
       <GlobalStyle />
       <WelcomeModal />
-      {/* {(status !== "connected" || loading || !isSocketConnected) && <Loading />} */}
+      {(status !== "connected" || loading || !isSocketConnected) && <Loading />}
 
       <ContentsWrapper>
         {isConnected && hasCookies && <Particles />}
