@@ -52,6 +52,7 @@ const Header: FC = () => {
         <ChevronLeft />
         <Logo src={verseLogo} alt="Logo" />
       </LogoWrapper>
+      <h3>Verse Clicker</h3>
       {isConnected ? <ConnectButton /> : <div />}
     </StyledHeader>
   );
