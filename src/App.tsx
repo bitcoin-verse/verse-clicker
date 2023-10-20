@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useTransition } from "react";
+import React, { FC, useEffect } from "react";
 
 import Main from "./views/Main";
 import { useAccount, useNetwork } from "wagmi";
