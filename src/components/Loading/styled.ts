@@ -45,5 +45,6 @@ export const MoonImage = styled.img`
   max-height: 22rem;
   width: 100%;
   bottom: 0;
-  margin: auto auto 0;
+  box-sizing: border-box;
+  margin: 2rem auto 0;
 `;

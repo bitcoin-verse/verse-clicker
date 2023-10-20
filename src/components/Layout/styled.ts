@@ -32,5 +32,7 @@ export const ContentsWrapper = styled.div<{ $showMoon?: boolean }>`
       #4c97dd 99.48%
     ),
     linear-gradient(0deg, #030c14, #030c14);
+
+  min-height: 100%;
   min-height: 100dvh;
 `;
