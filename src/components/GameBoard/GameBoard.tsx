@@ -6,7 +6,7 @@ import Cookie from "./Cookie";
 import styled from "styled-components";
 import Tabs from "../Tabs";
 import Advertisement from "../Advertisement";
-import Bonuses from "../Bonuses/Bonuses";
+import Bonuses from "../Boosts/Boosts";
 import Leaderboard from "../Leaderboard";
 import Stats from "./Stats/Stats";
 
