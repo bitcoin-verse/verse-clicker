@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import Shop from "../Shop/Shop";
 
-import Display from "./Display";
+import PointsDisplay from "./PointsDisplay";
 import Cookie from "./Cookie";
 import styled from "styled-components";
 import Tabs from "../Tabs";
@@ -71,7 +71,7 @@ const GameBoard: FC = () => {
       <MainSection>
         <Bonuses />
         <Stats />
-        <Display />
+        <PointsDisplay />
         <Cookie />
         <Advertisement />
       </MainSection>
