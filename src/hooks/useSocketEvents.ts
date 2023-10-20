@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Player } from "../context/reducers/player";
-import { Leadeerboard } from "../context/reducers/leaderboard";
+import { Leaderboard } from "../context/reducers/leaderboard";
 import { BuildingData } from "../context/reducers/building";
 import { useSocketCtx } from "../context/SocketContext";
 import { useDispatch } from "../context/store";
@@ -17,7 +17,7 @@ const useSocketEvents = () => {
       dispatch({ type: "SET_PLAYER_DATA", payload });
     };
 
-    const onLeaderboard = (payload: Leadeerboard) => {
+    const onLeaderboard = (payload: Leaderboard) => {
       dispatch({ type: "SET_LEADERBOARD", payload });
     };
 

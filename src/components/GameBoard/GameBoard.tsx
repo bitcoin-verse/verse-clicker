@@ -8,6 +8,7 @@ import Tabs from "../Tabs";
 import Advertisement from "../Advertisement";
 import Bonuses from "../Bonuses/Bonuses";
 import Leaderboard from "../Leaderboard";
+import Stats from "./Stats/Stats";
 
 const StyledGameBoard = styled.section`
   position: relative;
@@ -69,6 +70,7 @@ const GameBoard: FC = () => {
     <StyledGameBoard>
       <MainSection>
         <Bonuses />
+        <Stats />
         <Display />
         <Cookie />
         <Advertisement />

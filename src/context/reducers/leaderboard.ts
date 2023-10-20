@@ -1,6 +1,6 @@
 import { State } from "../store";
 
-export type Leadeerboard = {
+export type Leaderboard = {
   address: string;
   stats: {
     Earned: number;
@@ -11,7 +11,7 @@ export type Leadeerboard = {
 
 export type SetLeaderboardAction = {
   type: "SET_LEADERBOARD";
-  payload?: Leadeerboard;
+  payload?: Leaderboard;
 };
 
 export const setLeaderboard = (
