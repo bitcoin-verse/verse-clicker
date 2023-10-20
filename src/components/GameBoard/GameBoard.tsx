@@ -4,7 +4,7 @@ import PointsDisplay from "./PointsDisplay/PointsDisplay";
 import Cookie from "./Cookie";
 import Tabs, { TabButton } from "./Tabs";
 import Advertisement from "../Advertisement";
-import Bonuses from "../Bonuses/Bonuses";
+import Bonuses from "../Boosts/Boosts";
 import Stats from "./Stats/Stats";
 
 import ShopList from "../Shop/ShopList";
