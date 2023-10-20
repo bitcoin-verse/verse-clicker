@@ -6,14 +6,14 @@ import asyncActionHandlers, { AsyncAction } from "./asyncActionHandlers";
 import { Player } from "./reducers/player";
 
 import buildings from "../buildings";
-import { Leadeerboard } from "./reducers/leaderboard";
+import { Leaderboard } from "./reducers/leaderboard";
 import Building from "../classes/Building";
 import { NetworkName } from "./reducers/network";
 
 export type State = {
   isConnected: boolean;
   player: Player;
-  leaderboard?: Leadeerboard;
+  leaderboard?: Leaderboard;
   verseHolder: boolean;
 
   buildings: Building[];
