@@ -16,7 +16,7 @@ export const Content = styled.div`
   font-size: 0.75rem;
 
   background: #252d40;
-  width: 15.459rem;
+  width: 18.459rem;
   height: 3.188rem;
   padding: 0.5rem 1rem;
   border-radius: 6.25rem;
