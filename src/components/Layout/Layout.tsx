@@ -1,9 +1,13 @@
 import React, { FC, PropsWithChildren } from "react";
 import { ContentsWrapper, GlobalStyle } from "./styled";
 
-const Layout: FC<PropsWithChildren> = ({ children }) => {
+interface Props {
+  showMoon?: boolean;
+}
+
+const Layout: FC<PropsWithChildren<Props>> = ({ children, showMoon }) => {
   return (
-    <ContentsWrapper>
+    <ContentsWrapper $showMoon={showMoon}>
       <GlobalStyle />
       {children}
     </ContentsWrapper>

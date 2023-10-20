@@ -1,28 +1,13 @@
 import styled from "styled-components";
-import veresMoon from "../../assets/verse-moon.png";
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
 
   padding: 0 1rem;
-
-  &::before {
-    content: "";
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    background-image: url(${veresMoon});
-    background-repeat: no-repeat;
-    background-position: center calc(100% + 22rem);
-    background: red;
-  }
 `;
 
 export const ContentsWrapper = styled.div`
@@ -34,8 +19,6 @@ export const ContentsWrapper = styled.div`
   max-width: 38rem;
   width: 100%;
   padding: 1.25rem;
-
-  margin: auto;
 `;
 
 export const ConnectionWrapper = styled.div`
@@ -55,12 +38,12 @@ export const ConnectionWrapper = styled.div`
 
   width: 100%;
   max-width: 30rem;
-  margin: auto;
 `;
 
 export const MoonImage = styled.img`
   max-width: 22rem;
   max-height: 22rem;
   width: 100%;
-  margin-bottom: -50%;
+  bottom: 0;
+  margin: auto auto 0;
 `;

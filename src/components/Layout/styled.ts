@@ -18,11 +18,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const ContentsWrapper = styled.div`
+export const ContentsWrapper = styled.div<{ $showMoon?: boolean }>`
   position: relative;
-  display: flex;
+  display: grid;
   flex-direction: column;
+  grid-template-rows: 5.25rem auto auto 5.25rem;
   box-sizing: border-box;
+
   background: linear-gradient(
       180deg,
       #020a10 0%,
@@ -32,8 +34,4 @@ export const ContentsWrapper = styled.div`
     ),
     linear-gradient(0deg, #030c14, #030c14);
   min-height: 100dvh;
-
-  @media (min-width: 768px) {
-    padding: 0 1rem;
-  }
 `;

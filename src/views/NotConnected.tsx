@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 
 const NotConnected = () => {
   return (
-    <Layout>
+    <Layout showMoon>
       <Header />
       <Loading />
       <Footer />
