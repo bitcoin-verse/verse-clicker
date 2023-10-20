@@ -20,9 +20,8 @@ export const GlobalStyle = createGlobalStyle`
 
 export const ContentsWrapper = styled.div<{ $showMoon?: boolean }>`
   position: relative;
-  display: grid;
+  display: flex;
   flex-direction: column;
-  grid-template-rows: 5.25rem auto auto 5.25rem;
   box-sizing: border-box;
 
   background: linear-gradient(

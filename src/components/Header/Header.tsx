@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
   grid-template-areas: "logo connect" "stats stats";
   align-items: center;
   max-width: 80rem;
-  margin: auto;
+  margin: 0 auto;
   padding: 1.25rem 1.25rem 0;
 
   @media (min-width: 768px) {
