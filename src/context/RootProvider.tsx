@@ -67,7 +67,7 @@ createWeb3Modal({
 
   themeVariables: {
     "--w3m-color-mix": "#000000",
-    "--w3m-accent": "#0085FF",
+    "--w3m-accent": "linear-gradient(180deg, #0EBEF0 0%, #0085FF 100%)",
     "--w3m-color-mix-strength": 40,
     "--w3m-font-family": "Barlow",
   },

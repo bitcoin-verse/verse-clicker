@@ -33,7 +33,6 @@ const LogoWrapper = styled.a`
 
 const Logo = styled.img`
   height: 2rem;
-
   width: auto;
   grid-area: logo;
   flex: 0;

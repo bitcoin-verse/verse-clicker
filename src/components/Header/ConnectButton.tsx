@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 
 import { useAccount } from "wagmi";
+import { Button as PrimaryButton } from "../Button";
+
 import truncateEthAddress from "../../helpers/truncateEthAddress";
 
 const ConnectWrapper = styled.div`
@@ -59,7 +61,22 @@ const AddressHolder = styled.div`
 
 const ConnectButton: FC = () => {
   const { open } = useWeb3Modal();
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
+
+  if (!isConnected)
+    return (
+      <ConnectWrapper>
+        <PrimaryButton
+          size="small"
+          onClick={() => {
+            open();
+          }}
+        >
+          Connect Wallet
+        </PrimaryButton>
+      </ConnectWrapper>
+    );
+
   return (
     <ConnectWrapper>
       <Button

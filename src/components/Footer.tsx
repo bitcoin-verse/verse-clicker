@@ -18,14 +18,11 @@ const Wrapper = styled.div`
 
 const Footer: FC = () => {
   return (
-    <>
-      <StyledFooter>
-        <Wrapper>
-          <div>Copyright 2023</div>
-          <div>Made by: Micah, Paul, Ricky</div>
-        </Wrapper>
-      </StyledFooter>
-    </>
+    <StyledFooter>
+      <Wrapper>
+        <div>Copyright 2023</div>
+      </Wrapper>
+    </StyledFooter>
   );
 };
 
