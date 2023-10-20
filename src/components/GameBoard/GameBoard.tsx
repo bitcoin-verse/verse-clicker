@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import Shop from "../Shop/Shop";
 
-import PointsDisplay from "./PointsDisplay";
+import PointsDisplay from "./PointsDisplay/PointsDisplay";
 import Cookie from "./Cookie";
 import styled from "styled-components";
 import Tabs from "../Tabs";
