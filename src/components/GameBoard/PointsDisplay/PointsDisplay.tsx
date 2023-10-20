@@ -18,7 +18,9 @@ const PointsDisplay: FC = () => {
         <Points>{formatNumber(player.cookies)}</Points>
       </PointsWrapper>
       <StatCount>
-        <Title>Per Second</Title> {formatNumber(player.cps)}
+        {formatNumber(player.cps)}
+        <Star size="24" />
+        <Title>per second</Title>
       </StatCount>
     </Wrapper>
   );

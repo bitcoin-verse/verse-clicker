@@ -28,6 +28,9 @@ export const Points = styled.h1`
 `;
 
 export const StatCount = styled.div`
+  display: flex;
+  align-items: center;
+
   font-weight: 600;
   font-size: 1rem;
 `;
