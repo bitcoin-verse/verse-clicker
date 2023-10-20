@@ -11,6 +11,7 @@ export const Button = styled.button<{
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  cursor: pointer;
 
   text-wrap: nowrap;
   border-radius: 100px;
@@ -33,6 +34,7 @@ export const Button = styled.button<{
           &:disabled {
             background: #1a2231;
             color: ${colors.shade50};
+            cursor: default;
           }
         `;
       case "tertiary":
@@ -52,6 +54,7 @@ export const Button = styled.button<{
           &:disabled {
             background: #1a2231;
             color: ${colors.shade50};
+            cursor: default;
           }
         `;
 
@@ -71,6 +74,7 @@ export const Button = styled.button<{
           &:disabled {
             background: #1a2231;
             color: ${colors.shade50};
+            cursor: default;
           }
         `;
     }
