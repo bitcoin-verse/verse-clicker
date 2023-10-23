@@ -15,21 +15,20 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const PointsWrapper = styled.div`
+export const Points = styled.div`
   display: flex;
   align-items: center;
-  font-family: monospace;
-`;
+  justify-content: center;
 
-export const Points = styled.h1`
   font-family: monospace;
   font-size: 2.5rem;
   font-weight: 700;
-  line-height: 3rem;
 
   text-shadow: 0px 0.25rem 1.25rem #ffb800;
+
   & > svg {
     filter: drop-shadow(0px 0.25rem 1.25rem #c87a1e);
+    margin-right: 1rem;
   }
 `;
 
