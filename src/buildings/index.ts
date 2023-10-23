@@ -7,6 +7,7 @@ import polyBuildings from "./polygon.json";
 
 type BuildingJson = {
   name: string;
+  desc?: string;
   cost: number;
   amount: number;
   originalCost: number;
@@ -31,6 +32,7 @@ const generateBuildingsFromJson = (json: BuildingJson[]) => {
     (b) =>
       new Building(
         b.name,
+        b.desc || b.name,
         b.cost,
         b.baseEffect,
         b.upgrades.map(
