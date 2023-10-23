@@ -7,8 +7,8 @@ import styled from "styled-components";
 import Tabs from "../Tabs";
 import Advertisement from "../Advertisement";
 import Bonuses from "../Bonuses/Bonuses";
-import Leaderboard from "../Leaderboard";
 import Stats from "./Stats/Stats";
+import Upgrades from "../Upgrades";
 
 const StyledGameBoard = styled.section`
   position: relative;
@@ -40,7 +40,7 @@ const ShopSection = styled.div`
 `;
 
 const TabContent = styled.div`
-  margin: auto;
+  /*   margin: auto;
   width: 100%;
   margin-top: 1rem;
   flex-direction: column;
@@ -51,7 +51,8 @@ const TabContent = styled.div`
     padding: 1rem;
     width: 100%;
     background: #163756;
-  }
+  } */
+  gap: 1rem;
 `;
 
 const MainSection = styled.div`
@@ -77,10 +78,7 @@ const GameBoard: FC = () => {
       </MainSection>
       <ShopSection>
         <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-        <TabContent>
-          {/* <Shop /> */}
-          {selectedTab === 0 ? <Shop /> : <Leaderboard />}
-        </TabContent>
+        <TabContent>{selectedTab === 0 ? <Shop /> : <Upgrades />}</TabContent>
         <Advertisement />
       </ShopSection>
     </StyledGameBoard>
