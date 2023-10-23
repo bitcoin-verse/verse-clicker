@@ -10,8 +10,9 @@ export const Dialog = styled.dialog`
   height: 100%;
   max-width: 100%;
   max-height: 100%;
+  min-height: 22rem;
   box-sizing: border-box;
-
+  outline: none;
   background: #030c14;
 
   &::backdrop {
