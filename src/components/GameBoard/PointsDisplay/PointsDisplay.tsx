@@ -4,9 +4,9 @@ import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
 
 import Star from "../../Icons/Star";
-import { Title } from "../../Title";
 
 import { Wrapper, PointsWrapper, Points, StatCount } from "./styled";
+import { Label } from "../../Label";
 
 const PointsDisplay: FC = () => {
   const { player } = useTrackedState();
@@ -20,7 +20,7 @@ const PointsDisplay: FC = () => {
       <StatCount>
         {formatNumber(player.cps)}
         <Star size={18} />
-        <Title>per second</Title>
+        <Label>per second</Label>
       </StatCount>
     </Wrapper>
   );
