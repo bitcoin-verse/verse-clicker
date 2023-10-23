@@ -58,7 +58,7 @@ const Tabs: FC<Props> = ({ selectedTab, setSelectedTab }) => {
         type="button"
         onClick={() => setSelectedTab(1)}
       >
-        Leaderboards
+        Upgrades
       </Button>
     </TabsWrapper>
   );
