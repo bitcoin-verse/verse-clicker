@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 import { H1 } from "../H1";
 import { H4 } from "../H4";
 import { Link } from "../Link";
