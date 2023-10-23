@@ -76,9 +76,9 @@ createWeb3Modal({
 const RootProvider: FC<PropsWithChildren> = ({ children }) => {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <SocketCtxProvider>
-        <ContextProvider>{children}</ContextProvider>
-      </SocketCtxProvider>
+      <ContextProvider>
+        <SocketCtxProvider>{children}</SocketCtxProvider>
+      </ContextProvider>
     </WagmiConfig>
   );
 };
