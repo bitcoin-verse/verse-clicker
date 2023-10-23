@@ -25,6 +25,10 @@ export const Points = styled.h1`
   font-weight: 700;
   line-height: 3rem;
   text-shadow: 0px 0.25rem 1.25rem #ffb800;
+
+  & > svg {
+    filter: drop-shadow(0px 0.25rem 1.25rem #c87a1e);
+  }
 `;
 
 export const StatCount = styled.div`

@@ -2,6 +2,9 @@ import React, { FC } from "react";
 import styled, { css } from "styled-components";
 import { useDispatch, useTrackedState } from "../../context/store";
 import placeholder from "../../assets/placeholder.png";
+import { formatNumber } from "../../helpers/formatNumber";
+import { useProduction } from "../../hooks/useProduction";
+import Star from "../Icons/Star";
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,7 +19,7 @@ const Wrapper = styled.div`
 
     gap: 0.5rem;
     flex-direction: column;
-    background: #163756;
+
     padding-bottom: unset;
     padding-left: unset;
     max-width: unset;
@@ -24,62 +27,42 @@ const Wrapper = styled.div`
   }
 `;
 
-const Button = styled.button<{ $isSelected: boolean }>`
-  position: relative;
-
+const Button = styled.button<{ $unaffordable?: boolean }>`
   border: none;
   outline: none;
   cursor: pointer;
   overflow: visible;
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, #425472 0%, #313e57 100%);
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-
-  padding: 0.25rem 0.5rem 0.25rem 0.25rem;
-
-  z-index: 0;
-  border-radius: 0.25rem;
-
-  ${({ $isSelected }) =>
-    $isSelected
-      ? css`
-          background: #0085ff;
-
-          &:after {
-            content: "";
-            position: absolute;
-            background: #0085ff;
-            width: 1.25rem;
-            height: 1.25rem;
-            transform: rotateZ(45deg);
-            z-index: -1;
-
-            left: calc(50% - 0.5rem);
-            bottom: -0.5rem;
-
-            @media (min-width: 768px) {
-              right: -0.5rem;
-              left: unset;
-              bottom: unset;
-              top: calc(50% -0.5rem);
-            }
-          }
-        `
-      : css`
-          background: rgba(255, 255, 255, 0.2);
-        `}
+  display: grid;
+  column-gap: 0.5rem;
+  grid-template-columns: 4rem auto 4rem;
+  grid-template-areas: "img name cost" "img desc ." "img info .";
 
   &:disabled {
     cursor: default;
-    background: lightgrey;
-    color: black;
-    filter: blur(2px);
+    filter: blur(0.5rem);
   }
+
+  ${({ $unaffordable }) =>
+    $unaffordable &&
+    css`
+      color: red;
+    `}
 `;
 
 const Name = styled.div`
+  grid-area: name;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  color: white;
+  flex: 1;
+`;
+
+const Desc = styled.div`
+  grid-area: desc;
   font-size: 1rem;
   font-weight: 600;
   text-align: left;
@@ -88,36 +71,54 @@ const Name = styled.div`
 `;
 
 const Amount = styled.div`
-  font-size: 0.75rem;
+  grid-area: cost;
+  font-size: 0.875rem;
   font-weight: 600;
   opacity: 0.5;
+  color: #d7b98b;
+  text-align: right;
+  padding: 0.5rem 0.75rem 0.5rem 0;
 `;
 
 const Image = styled.img`
-  height: 2rem;
-  width: 2rem;
+  grid-area: img;
+  height: 4rem;
+  width: 4rem;
   object-fit: cover;
   object-position: center;
-  border-radius: 0.25rem;
+  border-radius: 0.75rem;
   background: white;
 `;
 
+const Info = styled.div`
+  grid-area: info;
+`;
+
+const Stat = styled.div`
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #899bb5;
+
+  & > span {
+    color: #ffffff;
+  }
+`;
+
 const ShopList: FC = () => {
-  const { buildings, currentBuilding } = useTrackedState();
-  const dispatch = useDispatch();
+  const { buildings, player } = useTrackedState();
 
   return (
     <Wrapper>
       {buildings.map((building, i) => {
+        const [production] = useProduction(building);
+
         if (building.locked && buildings?.[i - 3]?.locked) return null;
+
         return (
           <Button
             key={i}
-            $isSelected={building.name === currentBuilding}
             disabled={building.locked}
-            onClick={() =>
-              dispatch({ type: "SET_BUILDING", payload: building.name })
-            }
+            $unaffordable={player.cookies < building.cost}
           >
             <Image
               src={
@@ -128,7 +129,21 @@ const ShopList: FC = () => {
               alt={building.name}
             />
             <Name>{building.name}</Name>
-            <Amount>{building.amount}</Amount>
+            <Desc>{building.desc}</Desc>
+            <Info>
+              <Stat>
+                <span>{formatNumber(production)}/sec each building,</span>
+              </Stat>
+              <Stat>
+                <span>
+                  {formatNumber(production * building.amount)}/sec total
+                </span>
+              </Stat>
+            </Info>
+            <Amount>
+              <Star size={16} />
+              {building.amount}
+            </Amount>
           </Button>
         );
       })}
