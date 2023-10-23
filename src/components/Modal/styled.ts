@@ -39,6 +39,7 @@ export const ModalTitle = styled.div`
 export const ModalContent = styled.div`
   text-align: center;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 1rem;
   padding: 1.5rem 2rem 2rem;

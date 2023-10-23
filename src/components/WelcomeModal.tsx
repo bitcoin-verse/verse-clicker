@@ -1,26 +1,58 @@
 import React, { useEffect, useState } from "react";
-import Modal, { useModal } from "./Modal";
-import { useTrackedState } from "../context/store";
 import styled from "styled-components";
-import { formatNumber } from "../helpers/formatNumber";
-import { useSocketCtx } from "../context/SocketContext";
-import { Button } from "./Button";
 
-const BonusText = styled.div`
+import { useTrackedState } from "../context/store";
+import { formatNumber } from "../helpers/formatNumber";
+import { formatSeconds } from "../helpers/formatSeconds";
+import { useSocketCtx } from "../context/SocketContext";
+
+import Modal, { useModal } from "./Modal";
+import { Button } from "./Button";
+import { Title } from "./Title";
+import Clock from "./Icons/Clock";
+import Star from "./Icons/Star";
+import { colors } from "./colors";
+
+import verseMoon from "../assets/verse-moon.png";
+
+const Moon = styled.img`
+  height: 10rem;
+  width: 10rem;
+`;
+
+const DataWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const Stats = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  font-weight: 500;
-  padding-top: 1fr;
-  text-align: center;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const Value = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+`;
+
+const H3 = styled.h3`
+  font-weight: 600;
+  font-size: 1.5rem;
+`;
+
+const StyledButton = styled(Button)`
+  width: 100%;
+  margin-top: 1rem;
 `;
 
 type ReturnData = { seconds: number; cookies: number };
 
 const WelcomeModal = () => {
-  const { player } = useTrackedState();
   const { socket } = useSocketCtx();
-  const { modalRef, showModal } = useModal();
+  const { modalRef, showModal, close } = useModal();
 
   const [returnData, setReturnData] = useState<ReturnData>();
 
@@ -41,53 +73,27 @@ const WelcomeModal = () => {
       <Modal
         modalRef={modalRef}
         onClose={() => setReturnData(undefined)}
-        title="Welcome Back!"
+        title="Verse Clicker"
       >
-        <BonusText>
-          <div>It&rsquo;s been {returnData?.seconds}s since last seen</div>
-          <div>
-            You have accumulated {formatNumber(returnData?.cookies)} cookies
-            while you were away
-          </div>
-          {player.verseHolder ? (
-            <div>
-              You hold VERSE, your clicks are <b>10x as effective</b> as non
-              Verse holders
-            </div>
-          ) : (
-            <>
-              <div>
-                You don&rsquo;t hold VERSE. Hodl VERSE to receive a 10x click
-                bonus.
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1rem",
-                }}
-              >
-                <Button
-                  as="a"
-                  href="https://buy.bitcoin.com/verse"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Buy verse
-                </Button>
-
-                <Button
-                  as="a"
-                  design="secondary"
-                  href="https://verse.bitcoin.com"
-                  rel="noreferrer"
-                >
-                  Swap to verse
-                </Button>
-              </div>
-            </>
-          )}
-        </BonusText>
+        <Moon src={verseMoon} />
+        <h1>Welcome Back!</h1>
+        <DataWrapper>
+          <Stats>
+            <Title>While you were away for</Title>
+            <Value>
+              <Clock />
+              {returnData && <H3>{formatSeconds(returnData.seconds)}</H3>}
+            </Value>
+          </Stats>
+          <Stats>
+            <Title>You earned </Title>
+            <Value>
+              <Star size={28} color={colors.shade80} />
+              <H3>{formatNumber(returnData?.cookies)} </H3>
+            </Value>
+          </Stats>
+        </DataWrapper>
+        <StyledButton onClick={close}>Play</StyledButton>
       </Modal>
     </>
   );

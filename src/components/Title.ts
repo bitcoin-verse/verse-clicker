@@ -1,5 +1,6 @@
 import styled from "styled-components";
+import { colors } from "./colors";
 
 export const Title = styled.span`
-  color: #899bb5;
+  color: ${colors.shade80};
 `;
