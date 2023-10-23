@@ -10,7 +10,7 @@ const Star: FC<Props> = ({ size = 32 }) => {
     <svg
       width={size}
       height={size}
-      viewBox="16 12 38 42"
+      viewBox="0 0 64 64"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

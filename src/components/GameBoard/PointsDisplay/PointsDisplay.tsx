@@ -15,7 +15,7 @@ const PointsDisplay: FC = () => {
     <Wrapper>
       <PointsWrapper>
         <Points>
-          <Star /> {formatNumber(player.cookies)}
+          <Star size={32} /> {formatNumber(player.cookies)}
         </Points>
       </PointsWrapper>
       <StatCount>
