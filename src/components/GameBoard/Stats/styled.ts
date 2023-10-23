@@ -35,4 +35,5 @@ export const Divider = styled.div`
 
 export const Subtitle = styled.div`
   font-size: 0.875rem;
+  font-family: monospace;
 `;
