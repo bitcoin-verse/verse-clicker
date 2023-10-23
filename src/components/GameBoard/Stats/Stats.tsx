@@ -5,9 +5,9 @@ import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
 
 import Trophy from "../../Icons/Trophy";
-import { Title } from "../../Title";
 
 import { Content, Divider, Subtitle, TrophyWrapper, Wrapper } from "./styled";
+import { Label } from "../../Label";
 
 const Stats: FC = () => {
   const { player, leaderboard } = useTrackedState();
@@ -23,21 +23,21 @@ const Stats: FC = () => {
         <div>
           <TrophyWrapper>
             <Trophy />
-            <Title>You</Title>
+            <Label $secondary>You</Label>
           </TrophyWrapper>
           <Subtitle>{userRank}</Subtitle>
         </div>
         <Divider />
         <div>
-          <Title>Earned</Title>
+          <Label $secondary>Earned</Label>
           <Subtitle>{formatNumber(player.stats.Earned)}</Subtitle>
         </div>
         <div>
-          <Title>Clicked</Title>
+          <Label $secondary>Clicked</Label>
           <Subtitle>{formatNumber(player.stats.Clicked)}</Subtitle>
         </div>
         <div>
-          <Title>Spent</Title>
+          <Label $secondary>Spent</Label>
           <Subtitle>{formatNumber(player.stats.Spent)}</Subtitle>
         </div>
       </Content>

@@ -34,6 +34,7 @@ export const ConnectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: 1rem;
 
   width: 100%;
@@ -47,4 +48,18 @@ export const MoonImage = styled.img`
   bottom: 0;
   box-sizing: border-box;
   margin: 2rem auto 0;
+`;
+
+export const ConnectWalletImage = styled.img`
+  width: 8.75rem;
+  height: 7.125rem;
+`;
+
+export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 22rem;
 `;

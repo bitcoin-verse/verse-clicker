@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import { Socket, io } from "socket.io-client";
 import { useAccount, useNetwork } from "wagmi";
+import { useDispatch } from "./store";
 
 export interface SocketCtxState {
   socket: Socket;
@@ -22,6 +23,7 @@ export const SocketCtxContext = createContext<SocketCtxState>(
 export const useSocketCtx = () => useContext(SocketCtxContext);
 
 const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
+  const dispatch = useDispatch();
   const { chain } = useNetwork();
   const { address } = useAccount();
 
@@ -48,6 +50,10 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const onError = (e: unknown) => {
       console.log("socket error", e);
+      dispatch({
+        type: "SET_ERROR",
+        payload: "Error Connecting to server, try again later",
+      });
     };
 
     // socketRef.current.connect();

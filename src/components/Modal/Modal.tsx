@@ -23,18 +23,20 @@ const Modal: FC<PropsWithChildren<Props>> = ({
 }) => {
   return (
     <Dialog ref={modalRef} {...rest}>
-      <ModalTitle>
-        {title && <TitleText>{title}</TitleText>}
-        <CloseButton
-          onClick={() => {
-            if (!modalRef || !modalRef.current) return;
-            modalRef.current.close();
-            if (onClose) onClose();
-          }}
-        >
-          <Cross size="1rem" />
-        </CloseButton>
-      </ModalTitle>
+      {title && (
+        <ModalTitle>
+          <TitleText>{title}</TitleText>
+          <CloseButton
+            onClick={() => {
+              if (!modalRef || !modalRef.current) return;
+              modalRef.current.close();
+              if (onClose) onClose();
+            }}
+          >
+            <Cross size="1rem" />
+          </CloseButton>
+        </ModalTitle>
+      )}
       <ModalContent>{children}</ModalContent>
     </Dialog>
   );

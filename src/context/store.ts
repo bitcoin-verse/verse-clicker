@@ -19,6 +19,7 @@ export type State = {
   buildings: Building[];
   currentBuilding?: string;
   network: NetworkName;
+  error?: string;
 };
 
 export const initialState: State = {
