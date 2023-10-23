@@ -14,12 +14,13 @@ const PointsDisplay: FC = () => {
   return (
     <Wrapper>
       <PointsWrapper>
-        <Star />
-        <Points>{formatNumber(player.cookies)}</Points>
+        <Points>
+          <Star /> {formatNumber(player.cookies)}
+        </Points>
       </PointsWrapper>
       <StatCount>
         {formatNumber(player.cps)}
-        <Star size={18} />
+        <Star size={16} />
         <Label>per second</Label>
       </StatCount>
     </Wrapper>
