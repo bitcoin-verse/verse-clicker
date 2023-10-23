@@ -19,7 +19,7 @@ const PointsDisplay: FC = () => {
       </PointsWrapper>
       <StatCount>
         {formatNumber(player.cps)}
-        <Star size="24" />
+        <Star size={18} />
         <Title>per second</Title>
       </StatCount>
     </Wrapper>
