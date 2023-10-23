@@ -4,8 +4,10 @@ import { H1 } from "../H1";
 import { H4 } from "../H4";
 import { Link } from "../Link";
 import {
+  ConnectWalletImage,
   ConnectionWrapper,
   ContentsWrapper,
+  ModalContent,
   MoonImage,
   Wrapper,
 } from "./styled";
@@ -15,6 +17,7 @@ import { useWeb3Modal } from "@web3modal/wagmi/react";
 import connectWallet from "../../assets/connect-wallet.png";
 import halfMoon from "../../assets/half-moon.png";
 import Modal, { useModal } from "../Modal";
+import Spinner from "../Icons/Spinner";
 
 const Loading: FC = () => {
   const { status } = useAccount();
@@ -39,18 +42,9 @@ const Loading: FC = () => {
           <Link href="https://boo">Learn More</Link>
         </ContentsWrapper>
         <ConnectionWrapper>
-          <img
-            src={connectWallet}
-            alt="Connect Wallet"
-            height="114px"
-            width="140px"
-          />
+          <ConnectWalletImage src={connectWallet} alt="Connect Wallet" />
 
           <Title>Please connect your wallet to access Verse Clicker</Title>
-          {/* {status === "connected" && <h1>Loading...</h1>} */}
-
-          <Modal modalRef={modalRef}>Loading...</Modal>
-
           <div>
             <Button
               size="small"
@@ -64,6 +58,18 @@ const Loading: FC = () => {
         </ConnectionWrapper>
       </Wrapper>
       <MoonImage src={halfMoon} alt="Verse Moon" />
+
+      <Modal
+        modalRef={modalRef}
+        onClose={() => {
+          console.log("umm close");
+        }}
+      >
+        <ModalContent>
+          <Spinner />
+          <Title>Loading...</Title>
+        </ModalContent>
+      </Modal>
     </>
   );
 };
