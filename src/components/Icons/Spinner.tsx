@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 
 import spinner from "../../assets/spinner.png";
 
-const portalSpin = keyframes`
+const spin = keyframes`
   0% {
     transform: rotate(359deg);
   }
@@ -12,7 +12,7 @@ const portalSpin = keyframes`
 const SpinnerWrapper = styled.div`
   height: 4rem;
   width: 4rem;
-  animation: ${portalSpin} 3s infinite linear;
+  animation: ${spin} 3s infinite linear;
   animation-direction: reverse;
 `;
 
