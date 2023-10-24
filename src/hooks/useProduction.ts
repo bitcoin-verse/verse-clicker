@@ -17,5 +17,5 @@ export const useProduction = (building: Building) => {
     setProduction(multiplier * building.baseEffect);
   }, [building]);
 
-  return [production];
+  return { production };
 };

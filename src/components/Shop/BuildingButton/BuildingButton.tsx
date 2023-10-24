@@ -23,7 +23,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
   const { player, purchaseAmount } = useTrackedState();
   const { socket } = useSocketCtx();
 
-  const [production] = useProduction(building);
+  const { production } = useProduction(building);
 
   const buyBuilding = useCallback(
     (amount: number | "max") => {
