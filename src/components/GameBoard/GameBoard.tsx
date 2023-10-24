@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import Shop from "../Shop/Shop";
 
 import PointsDisplay from "./PointsDisplay/PointsDisplay";
 import Cookie from "./Cookie";
@@ -8,7 +7,9 @@ import Tabs from "../Tabs";
 import Advertisement from "../Advertisement";
 import Bonuses from "../Bonuses/Bonuses";
 import Stats from "./Stats/Stats";
-import Upgrades from "../Upgrades";
+
+import ShopList from "../Shop/ShopList";
+import UpgradesList from "../Shop/UpgradesList";
 
 const StyledGameBoard = styled.section`
   position: relative;
@@ -40,18 +41,7 @@ const ShopSection = styled.div`
 `;
 
 const TabContent = styled.div`
-  /*   margin: auto;
-  width: 100%;
-  margin-top: 1rem;
-  flex-direction: column;
-  align-items: flex-start;
-  border-radius: 1rem;
-
-  @media (min-width: 768px) {
-    padding: 1rem;
-    width: 100%;
-    background: #163756;
-  } */
+  padding: 1rem 0;
   gap: 1rem;
 `;
 
@@ -78,7 +68,9 @@ const GameBoard: FC = () => {
       </MainSection>
       <ShopSection>
         <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-        <TabContent>{selectedTab === 0 ? <Shop /> : <Upgrades />}</TabContent>
+        <TabContent>
+          {selectedTab === 0 ? <ShopList /> : <UpgradesList />}
+        </TabContent>
         <Advertisement />
       </ShopSection>
     </StyledGameBoard>

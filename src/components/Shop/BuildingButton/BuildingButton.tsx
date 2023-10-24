@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
 import { formatNumber } from "../../../helpers/formatNumber";
 import { Amount, Button, Content, Cost, Image } from "./styled";
 import { useTrackedState } from "../../../context/store";
@@ -8,19 +8,32 @@ import Star from "../../Icons/Star";
 import Building from "../../../classes/Building";
 import { useProduction } from "../../../hooks/useProduction";
 import placeholder from "../../../assets/placeholder.png";
+import { useSocketCtx } from "../../../context/SocketContext";
 
 interface Props {
   building: Building;
+  index: number;
 }
 
-export const BuildingButton: FC<Props> = ({ building }) => {
+export const BuildingButton: FC<Props> = ({ building, index }) => {
   const { player } = useTrackedState();
+  const { socket } = useSocketCtx();
   const [production] = useProduction(building);
+
+  const buyBuilding = useCallback(
+    (amount: number) => {
+      socket.emit("buy_building", { index, amount });
+    },
+    [building, index],
+  );
 
   return (
     <Button
       disabled={building.locked}
       $unaffordable={player.cookies < building.cost}
+      onClick={() => {
+        buyBuilding(1);
+      }}
     >
       <Amount>{building.amount}</Amount>
       <Image
@@ -42,7 +55,9 @@ export const BuildingButton: FC<Props> = ({ building }) => {
         </Text>
       </Content>
       <Cost>
-        <Star size={12} />
+        <div>
+          <Star size={12} />
+        </div>
         {formatNumber(building.cost)}
       </Cost>
     </Button>

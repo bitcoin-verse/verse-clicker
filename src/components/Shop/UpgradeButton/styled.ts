@@ -11,8 +11,8 @@ export const Button = styled.button<{ $unaffordable?: boolean }>`
 
   display: grid;
   column-gap: 0.5rem;
-  grid-template-columns: 4rem auto auto;
-  grid-template-areas: "img content cost" "img content .";
+  grid-template-columns: 4rem auto;
+  /* grid-template-areas: "img content cost" "img content ."; */
 
   &:disabled {
     cursor: default;
@@ -24,12 +24,6 @@ export const Button = styled.button<{ $unaffordable?: boolean }>`
     css`
       color: red;
     `}
-`;
-
-export const Content = styled.div`
-  grid-area: content;
-  padding: 0.5rem 0;
-  text-align: left;
 `;
 
 export const Cost = styled.div`
@@ -45,33 +39,4 @@ export const Cost = styled.div`
   & > div {
     color: #d7b98b;
   }
-`;
-
-export const Image = styled.img`
-  height: 4rem;
-  width: 4rem;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 0.75rem;
-  background: white;
-`;
-
-export const Amount = styled.div`
-  position: absolute;
-
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-  height: 1.375rem;
-  width: 1.375rem;
-  left: 3.3125rem;
-  top: -0.6875rem;
-  border-radius: 50%;
-  border: 3px solid #030c14;
-  background: white;
-  color: #163756;
-
-  font-size: 0.75rem;
-  font-weight: 600;
 `;

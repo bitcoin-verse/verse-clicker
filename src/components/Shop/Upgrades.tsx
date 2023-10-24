@@ -2,7 +2,6 @@ import React, { FC, useMemo } from "react";
 import styled from "styled-components";
 import { useTrackedState } from "../../context/store";
 
-import BuildingInfo from "./BuildingInfo";
 import Register from "./Register";
 import UpgradesList from "./UpgradesList";
 
@@ -38,13 +37,9 @@ const Upgrades: FC = () => {
 
   return (
     <Wrapper>
-      <BuildingInfo building={building} />
+      {/* <BuildingInfo building={building} /> */}
       <Register building={building} index={index} />
-      <UpgradesList
-        upgrades={building.upgrades}
-        building={building}
-        bIndex={index}
-      />
+      <UpgradesList />
     </Wrapper>
   );
 };

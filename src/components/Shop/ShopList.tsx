@@ -33,7 +33,9 @@ const ShopList: FC = () => {
       {buildings.map((building, i) => {
         if (building.locked && buildings?.[i - 3]?.locked) return null;
 
-        return <BuildingButton key={building.name} building={building} />;
+        return (
+          <BuildingButton key={building.name} building={building} index={i} />
+        );
       })}
     </Wrapper>
   );
