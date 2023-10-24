@@ -22,6 +22,7 @@ export type State = {
   returnData?: ReturnData;
   network: NetworkName;
   error?: string;
+  purchaseAmount: number | "max";
 };
 
 export const initialState: State = {
@@ -41,6 +42,7 @@ export const initialState: State = {
     verseHolder: false,
   },
   network: "Ethereum",
+  purchaseAmount: 1,
 };
 
 const useValue = () => {

@@ -1,7 +1,6 @@
 import React, { FC, useMemo } from "react";
 import styled from "styled-components";
 import { useTrackedState } from "../../context/store";
-import { useSocketCtx } from "../../context/SocketContext";
 import UpgradeButton, { ModifiedUpgrade } from "./UpgradeButton";
 
 const Wrapper = styled.div`
@@ -35,18 +34,7 @@ const NextUpgrade = styled.div`
 interface Props {}
 
 const UpgradesList: FC<Props> = () => {
-  const { socket } = useSocketCtx();
-  const { player, buildings } = useTrackedState();
-
-  /*   const buyUpgrade = useCallback(
-    (uIndex: number) => {
-      socket.emit("buy_upgrade", {
-        building: bIndex,
-        upgrade: uIndex,
-      });
-    },
-    [building.name, bIndex],
-  ); */
+  const { buildings } = useTrackedState();
 
   const upgrades = useMemo(() => {
     return buildings.reduce((prev: ModifiedUpgrade[], building, bIndex) => {
@@ -63,7 +51,7 @@ const UpgradesList: FC<Props> = () => {
 
       return [...prev, ...buildingUpgrades];
     }, []);
-  }, []);
+  }, [buildings]);
 
   return (
     <Wrapper>

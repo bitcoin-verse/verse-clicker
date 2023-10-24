@@ -11,9 +11,10 @@ export const Button = styled.button<{ $unaffordable?: boolean }>`
 
   display: grid;
   column-gap: 0.5rem;
-  grid-template-columns: 4rem auto;
-  /* grid-template-areas: "img content cost" "img content ."; */
+  grid-template-columns: auto 8rem;
+  padding: 0.5rem;
 
+  text-align: left;
   &:disabled {
     cursor: default;
     filter: blur(0.5rem);
@@ -31,7 +32,7 @@ export const Cost = styled.div`
   font-weight: 600;
   color: #d7b98b;
   text-align: right;
-  padding: 0.5rem 0.75rem 0.5rem 0;
+
   display: flex;
   gap: 0.25rem;
   justify-content: flex-end;

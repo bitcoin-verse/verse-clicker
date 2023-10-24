@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, ReactElement } from "react";
 import styled, { css } from "styled-components";
 
 const TabsWrapper = styled.div`
@@ -14,7 +14,7 @@ const TabsWrapper = styled.div`
   }
 `;
 
-const Button = styled.button<{ $isSelected: boolean }>`
+export const TabButton = styled.button<{ $isSelected: boolean }>`
   outline: none;
   border: none;
 
@@ -39,28 +39,10 @@ const Button = styled.button<{ $isSelected: boolean }>`
 `;
 
 interface Props {
-  selectedTab: number;
-  setSelectedTab: (tab: number) => void;
+  tabs: ReactElement[];
 }
 
-const Tabs: FC<Props> = ({ selectedTab, setSelectedTab }) => {
-  return (
-    <TabsWrapper>
-      <Button
-        $isSelected={selectedTab === 0}
-        type="button"
-        onClick={() => setSelectedTab(0)}
-      >
-        Buildings
-      </Button>
-      <Button
-        $isSelected={selectedTab === 1}
-        type="button"
-        onClick={() => setSelectedTab(1)}
-      >
-        Upgrades
-      </Button>
-    </TabsWrapper>
-  );
+const Tabs: FC<Props> = ({ tabs }) => {
+  return <TabsWrapper>{tabs.map((t) => t)}</TabsWrapper>;
 };
 export default Tabs;

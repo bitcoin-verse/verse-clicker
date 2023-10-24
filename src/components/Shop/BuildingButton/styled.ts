@@ -11,43 +11,46 @@ export const Button = styled.button<{ $unaffordable?: boolean }>`
 
   display: grid;
   column-gap: 0.5rem;
+
   grid-template-columns: 4rem auto auto;
-  grid-template-areas: "img content cost" "img content .";
+  grid-template-areas: "img name cost" "img desc desc" "img info .";
+  text-align: left;
 
   &:disabled {
     cursor: default;
-    filter: blur(0.5rem);
+    filter: blur(0.25rem);
   }
 
   ${({ $unaffordable }) =>
     $unaffordable &&
     css`
-      color: red;
+      background: #342716;
     `}
 `;
 
-export const Content = styled.div`
-  grid-area: content;
-  padding: 0.5rem 0;
-  text-align: left;
-`;
-
 export const Cost = styled.div`
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+
+  grid-area: cost;
   font-size: 0.875rem;
   font-weight: 600;
   color: #d7b98b;
   text-align: right;
-  padding: 0.5rem 0.75rem 0.5rem 0;
   display: flex;
   gap: 0.25rem;
   justify-content: flex-end;
   align-items: center;
-  & > div {
+  & > div > svg {
     color: #d7b98b;
+  }
+  & > span {
+    color: #899bb5;
   }
 `;
 
 export const Image = styled.img`
+  grid-area: img;
   height: 4rem;
   width: 4rem;
   object-fit: cover;
