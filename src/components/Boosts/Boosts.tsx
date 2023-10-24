@@ -1,44 +1,15 @@
 import React, { FC, useState } from "react";
-import styled from "styled-components";
+
+import { useTrackedState } from "../../context/store";
+
+import Lock from "../Icons/Lock";
 import Modal, { useModal } from "../Modal";
+
 import Burn from "./Burn";
 import Hold from "./Hold";
 import Farm from "./Farm";
-import { useTrackedState } from "../../context/store";
 
-const BonusesWrapper = styled.div`
-  position: fixed;
-
-  top: 30%;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem;
-  gap: 1rem;
-  /* height: 100%; */
-  justify-content: center;
-
-  @keyframes glow {
-    from {
-      box-shadow: 0 0 3px -3px #086bc6;
-    }
-    to {
-      box-shadow: 0 0 3px 3px #086bc6;
-    }
-  }
-`;
-
-const BonusButton = styled.button<{ $hasBonus?: boolean }>`
-  background: ${({ $hasBonus }) => ($hasBonus ? "#086bc6" : "#163756")};
-  animation: glow 2s infinite alternate;
-  padding: 0.5rem;
-  color: white;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 2rem;
-  font-weight: 700;
-`;
+import { BoostTiles, BoostButton, Label, Boost } from "./styled";
 
 const getModalContent = (content?: string, verseHolder?: boolean) => {
   switch (content) {
@@ -62,7 +33,7 @@ const getModalContent = (content?: string, verseHolder?: boolean) => {
   }
 };
 
-const Bonuses: FC = () => {
+const Boosts: FC = () => {
   const [content, setContent] = useState<string>();
   const { modalRef, showModal } = useModal();
   const { player } = useTrackedState();
@@ -71,34 +42,38 @@ const Bonuses: FC = () => {
 
   return (
     <>
-      <BonusesWrapper>
-        <BonusButton
+      Boost your point
+      <BoostTiles>
+        <BoostButton
           onClick={() => {
             setContent("hold");
             showModal();
           }}
           $hasBonus={player.verseHolder}
         >
-          Hold
-        </BonusButton>
-        <BonusButton
+          <Label $unlocked={player.verseHolder}>Hold</Label>
+          <Boost $unlocked={player.verseHolder}>10x boost</Boost>
+        </BoostButton>
+        <BoostButton
           onClick={() => {
             setContent("burn");
             showModal();
           }}
         >
-          Burn
-        </BonusButton>
-
-        <BonusButton
+          <Lock />
+          <Label $unlocked={false}>Burn</Label>
+          <Boost $unlocked={false}>10x boost</Boost>
+        </BoostButton>
+        <BoostButton
           onClick={() => {
             setContent("farm");
             showModal();
           }}
         >
-          Farm
-        </BonusButton>
-      </BonusesWrapper>
+          <Label $unlocked={false}>Farm</Label>
+          <Boost $unlocked={false}>10x boost</Boost>
+        </BoostButton>
+      </BoostTiles>
       <Modal
         modalRef={modalRef}
         onClose={() => setContent(undefined)}
@@ -110,4 +85,4 @@ const Bonuses: FC = () => {
   );
 };
 
-export default Bonuses;
+export default Boosts;
