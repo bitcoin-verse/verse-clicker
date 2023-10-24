@@ -10,6 +10,7 @@ import {
 import { SetLeaderboardAction, setLeaderboard } from "./reducers/leaderboard";
 import { SetNetworkAction, setNetwork } from "./reducers/network";
 import { SteErrorAction, setError } from "./reducers/error";
+import { SetReturnDataAction, setReturnData } from "./reducers/returnData";
 
 export type Action =
   | SetNetworkAction
@@ -17,6 +18,7 @@ export type Action =
   | SetBuildingAction
   | SetLeaderboardAction
   | UpdateBuildingsAction
+  | SetReturnDataAction
   | SteErrorAction
   | { type: "RESET_GAME" };
 
@@ -36,6 +38,8 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return updateBuildings(state, action.payload);
     case "SET_ERROR":
       return setError(state, action.payload);
+    case "SET_RETURN_DATA":
+      return setReturnData(state, action.payload);
     default:
       return state;
   }

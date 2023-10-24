@@ -9,6 +9,7 @@ import buildings from "../buildings";
 import { Leaderboard } from "./reducers/leaderboard";
 import Building from "../classes/Building";
 import { NetworkName } from "./reducers/network";
+import { ReturnData } from "./reducers/returnData";
 
 export type State = {
   isConnected: boolean;
@@ -18,6 +19,7 @@ export type State = {
 
   buildings: Building[];
   currentBuilding?: string;
+  returnData?: ReturnData;
   network: NetworkName;
   error?: string;
 };

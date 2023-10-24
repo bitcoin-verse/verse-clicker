@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
-import { useTrackedState } from "../context/store";
+import { useDispatch, useTrackedState } from "../context/store";
 import { formatNumber } from "../helpers/formatNumber";
 import { formatSeconds } from "../helpers/formatSeconds";
-import { useSocketCtx } from "../context/SocketContext";
 
 import Modal, { useModal } from "./Modal";
 import { Button } from "./Button";
@@ -48,31 +47,21 @@ const StyledButton = styled(Button)`
   margin-top: 1rem;
 `;
 
-type ReturnData = { seconds: number; cookies: number };
-
 const WelcomeModal = () => {
-  const { socket } = useSocketCtx();
+  const dispatch = useDispatch();
+  const { returnData } = useTrackedState();
   const { modalRef, showModal, close } = useModal();
 
-  const [returnData, setReturnData] = useState<ReturnData>();
-
   useEffect(() => {
-    const onWelcomeBack = (data: ReturnData) => {
-      setReturnData(data);
-      showModal();
-    };
-    socket.on("welcome_back", onWelcomeBack);
-
-    return () => {
-      socket.off("welcome_back", onWelcomeBack);
-    };
-  }, []);
+    if (!returnData) return;
+    showModal();
+  }, [returnData]);
 
   return (
     <>
       <Modal
         modalRef={modalRef}
-        onClose={() => setReturnData(undefined)}
+        onClose={() => dispatch({ type: "SET_RETURN_DATA" })}
         title="Verse Clicker"
       >
         <Moon src={verseMoon} />
