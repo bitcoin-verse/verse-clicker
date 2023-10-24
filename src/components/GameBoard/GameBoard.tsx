@@ -2,7 +2,6 @@ import React, { FC, useState } from "react";
 
 import PointsDisplay from "./PointsDisplay/PointsDisplay";
 import Cookie from "./Cookie";
-import Tabs, { TabButton } from "./Tabs";
 import Advertisement from "../Advertisement";
 import Boosts from "../Boosts/Boosts";
 import Stats from "./Stats/Stats";
@@ -18,6 +17,7 @@ import {
   TabsWrapper,
 } from "./styled";
 import UpgradeAll from "./UpgradeAll";
+import BuildingUpgradeTabs from "./BuildingUpgradeTabs";
 
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -32,25 +32,9 @@ const GameBoard: FC = () => {
       </MainSection>
       <ShopSection>
         <TabsWrapper>
-          <Tabs
-            tabs={[
-              <TabButton
-                key="buildings"
-                $isSelected={selectedTab === 0}
-                type="button"
-                onClick={() => setSelectedTab(0)}
-              >
-                Buildings
-              </TabButton>,
-              <TabButton
-                key="upgrades"
-                $isSelected={selectedTab === 1}
-                type="button"
-                onClick={() => setSelectedTab(1)}
-              >
-                Upgrades
-              </TabButton>,
-            ]}
+          <BuildingUpgradeTabs
+            setSelectedTab={setSelectedTab}
+            selectedTab={selectedTab}
           />
           {selectedTab === 0 ? <PurchaseAmount /> : <UpgradeAll />}
         </TabsWrapper>
