@@ -1,10 +1,12 @@
 import React, { FC } from "react";
 import styled, { css } from "styled-components";
-import { useDispatch, useTrackedState } from "../../context/store";
+import { useTrackedState } from "../../context/store";
 import placeholder from "../../assets/placeholder.png";
 import { formatNumber } from "../../helpers/formatNumber";
 import { useProduction } from "../../hooks/useProduction";
 import Star from "../Icons/Star";
+import { Text } from "../Text";
+import { Title } from "../Title";
 
 const Wrapper = styled.div`
   display: flex;
@@ -38,7 +40,7 @@ const Button = styled.button<{ $unaffordable?: boolean }>`
   display: grid;
   column-gap: 0.5rem;
   grid-template-columns: 4rem auto 4rem;
-  grid-template-areas: "img name cost" "img desc ." "img info .";
+  grid-template-areas: "img content cost" "img content .";
 
   &:disabled {
     cursor: default;
@@ -52,22 +54,10 @@ const Button = styled.button<{ $unaffordable?: boolean }>`
     `}
 `;
 
-const Name = styled.div`
-  grid-area: name;
-  font-size: 1rem;
-  font-weight: 600;
+const Content = styled.div`
+  grid-area: content;
+  padding: 0.5rem 0;
   text-align: left;
-  color: white;
-  flex: 1;
-`;
-
-const Desc = styled.div`
-  grid-area: desc;
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: left;
-  color: white;
-  flex: 1;
 `;
 
 const Amount = styled.div`
@@ -78,6 +68,10 @@ const Amount = styled.div`
   color: #d7b98b;
   text-align: right;
   padding: 0.5rem 0.75rem 0.5rem 0;
+  display: flex;
+  gap: 0.25rem;
+  justify-content: flex-end;
+  align-items: center;
 `;
 
 const Image = styled.img`
@@ -88,20 +82,6 @@ const Image = styled.img`
   object-position: center;
   border-radius: 0.75rem;
   background: white;
-`;
-
-const Info = styled.div`
-  grid-area: info;
-`;
-
-const Stat = styled.div`
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: #899bb5;
-
-  & > span {
-    color: #ffffff;
-  }
 `;
 
 const ShopList: FC = () => {
@@ -128,21 +108,19 @@ const ShopList: FC = () => {
               }
               alt={building.name}
             />
-            <Name>{building.name}</Name>
-            <Desc>{building.desc}</Desc>
-            <Info>
-              <Stat>
-                <span>{formatNumber(production)}/sec each building,</span>
-              </Stat>
-              <Stat>
-                <span>
-                  {formatNumber(production * building.amount)}/sec total
-                </span>
-              </Stat>
-            </Info>
+            <Content>
+              <Title>{building.name}</Title>
+              <Text>{building.desc}</Text>
+              <Text>
+                {formatNumber(production)}/sec
+                <span style={{ color: "#899bb5" }}> each building, </span>
+                {formatNumber(production * building.amount)}/sec
+                <span style={{ color: "#899bb5" }}> overall</span>
+              </Text>
+            </Content>
             <Amount>
-              <Star size={16} />
-              {building.amount}
+              <Star size={12} />
+              {formatNumber(building.cost)}
             </Amount>
           </Button>
         );
