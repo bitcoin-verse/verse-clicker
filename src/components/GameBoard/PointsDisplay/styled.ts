@@ -27,8 +27,8 @@ export const Points = styled.div`
   text-shadow: 0px 0.25rem 1.25rem #ffb800;
 
   & > svg {
-    filter: drop-shadow(0px 0.25rem 1.25rem #c87a1e);
-    margin-right: 1rem;
+    filter: drop-shadow(0px 0.25rem 1.25rem #ffb800);
+    margin-right: 0.5rem;
   }
 `;
 
