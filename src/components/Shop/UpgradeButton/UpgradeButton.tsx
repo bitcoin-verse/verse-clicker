@@ -36,13 +36,13 @@ const UpgradeButton: FC<Props> = ({ upgrade }) => {
         buyUpgrade(upgrade.bIndex, upgrade.uIndex);
       }}
       disabled={player.cookies < upgrade.cost}
+      $unaffordable={player.cookies < upgrade.cost}
     >
-      <div>
-        <Title>
-          {upgrade.name} ({upgrade.bName})
-        </Title>
-        <Text>{upgrade.desc}</Text>
-      </div>
+      <Title style={{ gridArea: "name" }}>
+        {upgrade.name} ({upgrade.bName})
+      </Title>
+      <Text style={{ gridArea: "desc" }}>{upgrade.desc}</Text>
+
       <Cost>
         <div>
           <Star size={12} />

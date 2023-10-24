@@ -72,7 +72,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
       </Text>
 
       <Cost>
-        <span>{amount}</span>
+        <span>x{amount || 1}</span>
         <div>
           <Star size={12} />
         </div>

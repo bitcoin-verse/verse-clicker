@@ -49,7 +49,7 @@ const UpgradesList: FC<Props> = () => {
         [] as ModifiedUpgrade[],
       );
 
-      return [...prev, ...buildingUpgrades];
+      return [...prev, ...buildingUpgrades].sort((a, b) => a.cost - b.cost);
     }, []);
   }, [buildings]);
 
