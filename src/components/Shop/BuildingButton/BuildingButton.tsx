@@ -46,8 +46,9 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
 
   return (
     <Button
-      disabled={building.locked}
+      disabled={player.cookies < cost}
       $unaffordable={player.cookies < cost}
+      $locked={building.locked}
       onClick={() => {
         buyBuilding(amount);
       }}
@@ -62,9 +63,11 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
         alt={building.name}
       />
 
-      <Title style={{ gridArea: "name" }}>{building.name}</Title>
+      <Title style={{ gridArea: "name", marginTop: "0.5rem" }}>
+        {building.name}
+      </Title>
       <Text style={{ gridArea: "desc" }}>{building.desc}</Text>
-      <Text style={{ gridArea: "info" }}>
+      <Text style={{ gridArea: "info", marginBottom: "0.5rem" }}>
         {formatNumber(production)}/sec
         <span style={{ color: "#899bb5" }}> each building, </span>
         {formatNumber(production * building.amount)}/sec

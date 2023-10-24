@@ -1,6 +1,9 @@
 import styled, { css } from "styled-components";
 
-export const Button = styled.button<{ $unaffordable?: boolean }>`
+export const Button = styled.button<{
+  $unaffordable?: boolean;
+  $locked?: boolean;
+}>`
   position: relative;
   border: none;
   outline: none;
@@ -18,13 +21,18 @@ export const Button = styled.button<{ $unaffordable?: boolean }>`
 
   &:disabled {
     cursor: default;
-    filter: blur(0.25rem);
   }
 
   ${({ $unaffordable }) =>
     $unaffordable &&
     css`
       background: #342716;
+    `}
+
+  ${({ $locked }) =>
+    $locked &&
+    css`
+      filter: blur(0.5rem);
     `}
 `;
 
