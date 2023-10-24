@@ -16,12 +16,12 @@ export const getBuildingCount = (buildings: Building[]): number => {
 
 export const getMaxBuilding = (cookies: number, baseCost: number) => {
   let amount = 1;
-  let cost = getBuildingsCost(1, baseCost);
+  let cost = getBuildingsCost(amount, baseCost);
 
   while (cost < cookies) {
     amount += 1;
     cost = getBuildingsCost(amount, baseCost);
   }
 
-  return { amount, cost };
+  return { amount: amount - 1, cost: getBuildingsCost(amount - 1, baseCost) };
 };
