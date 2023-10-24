@@ -7,10 +7,12 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Barlow','Helvetica', sans-serif;
     letter-spacing: 0em;
+
   }
 
   html, body, div {
     color: white;
+
   }
 
   button {
@@ -32,7 +34,7 @@ export const ContentsWrapper = styled.div<{ $showMoon?: boolean }>`
       #4c97dd 99.48%
     ),
     linear-gradient(0deg, #030c14, #030c14);
-
+  background: #030c14;
   min-height: 100%;
   min-height: 100dvh;
 `;

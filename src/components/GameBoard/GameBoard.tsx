@@ -8,7 +8,6 @@ import Stats from "./Stats/Stats";
 
 import ShopList from "../Shop/ShopList";
 import UpgradesList from "../Shop/UpgradesList";
-import PurchaseAmount from "./PurchaseAmount";
 import {
   MainSection,
   ShopSection,
@@ -18,6 +17,7 @@ import {
 } from "./styled";
 import UpgradeAll from "./UpgradeAll";
 import BuildingUpgradeTabs from "./BuildingUpgradeTabs";
+import PurchaseAmount from "./PurchaseAmount";
 
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);

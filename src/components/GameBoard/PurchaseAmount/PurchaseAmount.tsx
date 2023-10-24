@@ -1,6 +1,7 @@
 import React from "react";
 import Tabs, { TabButton } from "../Tabs";
 import { useDispatch, useTrackedState } from "../../../context/store";
+import { Wrapper } from "./styled";
 
 const PurchaseAmount = () => {
   const { purchaseAmount } = useTrackedState();
@@ -11,7 +12,7 @@ const PurchaseAmount = () => {
   };
 
   return (
-    <>
+    <Wrapper>
       <Tabs
         tabs={[
           <TabButton
@@ -48,7 +49,7 @@ const PurchaseAmount = () => {
           </TabButton>,
         ]}
       />
-    </>
+    </Wrapper>
   );
 };
 
