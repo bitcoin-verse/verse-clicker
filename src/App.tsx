@@ -51,11 +51,11 @@ const App: FC = () => {
 
   return (
     <>
-      {(status !== "connected" || loading || !isSocketConnected) && (
+      {status !== "connected" || loading || !isSocketConnected ? (
         <NotConnected />
+      ) : (
+        <Main />
       )}
-
-      {status === "connected" && <Main />}
     </>
   );
 };

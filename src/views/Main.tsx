@@ -5,7 +5,6 @@ import GameBoard from "../components/GameBoard/GameBoard";
 import Particles from "../components/Particles";
 
 import { useTrackedState } from "../context/store";
-import useSocketEvents from "../hooks/useSocketEvents";
 
 import WelcomeModal from "../components/WelcomeModal";
 
@@ -13,7 +12,6 @@ import Layout from "../components/Layout";
 
 const Main: FC = () => {
   const { player } = useTrackedState();
-  const { loading } = useSocketEvents();
 
   const hasCookies = player.cookies > 1;
 
@@ -22,7 +20,7 @@ const Main: FC = () => {
       <WelcomeModal />
       {hasCookies && <Particles />}
       <Header />
-      {!loading && <GameBoard />}
+      <GameBoard />
       <Footer />
     </Layout>
   );
