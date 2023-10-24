@@ -4,12 +4,13 @@ import { useTrackedState } from "../../context/store";
 
 import Lock from "../Icons/Lock";
 import Modal, { useModal } from "../Modal";
+import { H4 } from "../H4";
 
 import Burn from "./Burn";
 import Hold from "./Hold";
 import Farm from "./Farm";
 
-import { BoostTiles, BoostButton, Label, Boost } from "./styled";
+import { BoostTiles, BoostButton, Label, Boost, Wrapper } from "./styled";
 
 const getModalContent = (content?: string, verseHolder?: boolean) => {
   switch (content) {
@@ -41,8 +42,8 @@ const Boosts: FC = () => {
   const modalContent = getModalContent(content, player.verseHolder);
 
   return (
-    <>
-      Boost your point
+    <Wrapper>
+      <H4>Boost your points</H4>
       <BoostTiles>
         <BoostButton
           onClick={() => {
@@ -60,8 +61,10 @@ const Boosts: FC = () => {
             showModal();
           }}
         >
-          <Lock />
-          <Label $unlocked={false}>Burn</Label>
+          <Label $unlocked={false}>
+            <Lock />
+            Burn
+          </Label>
           <Boost $unlocked={false}>10x boost</Boost>
         </BoostButton>
         <BoostButton
@@ -81,7 +84,7 @@ const Boosts: FC = () => {
       >
         {modalContent?.component}
       </Modal>
-    </>
+    </Wrapper>
   );
 };
 

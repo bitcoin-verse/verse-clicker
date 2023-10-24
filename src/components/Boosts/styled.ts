@@ -1,11 +1,18 @@
 import styled from "styled-components";
 import { colors } from "../colors";
 
-export const BoostTiles = styled.div`
+export const Wrapper = styled.div`
   display: flex;
-  padding: 0.5rem;
+  flex-direction: column;
+  margin: 1rem 1rem 2rem;
+  max-width: 22.188rem;
+`;
+
+export const BoostTiles = styled.div`
+  display: grid;
+  margin-top: 1rem;
   gap: 1rem;
-  justify-content: center;
+  grid-template-columns: 1fr 1fr;
 `;
 
 export const BoostButton = styled.button<{ $hasBonus?: boolean }>`
