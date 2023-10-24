@@ -36,25 +36,37 @@ export const Button = styled.button<{
     `}
 `;
 
-export const Cost = styled.div`
+export const Cost = styled.div<{ $unaffordable?: boolean }>`
   padding-right: 0.5rem;
   padding-top: 0.5rem;
 
   grid-area: cost;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #d7b98b;
   text-align: right;
   display: flex;
   gap: 0.25rem;
   justify-content: flex-end;
   align-items: center;
-  & > div > svg {
-    color: #d7b98b;
-  }
-  & > span {
-    color: #899bb5;
-  }
+
+  ${({ $unaffordable }) =>
+    $unaffordable
+      ? css`
+          color: #c87a1e;
+          & > div {
+            color: #c87a1e;
+          }
+        `
+      : css`
+          color: #d7b98b;
+
+          & > div > svg {
+            color: #d7b98b;
+          }
+          & > span {
+            color: #899bb5;
+          }
+        `}
 `;
 
 export const Image = styled.img`

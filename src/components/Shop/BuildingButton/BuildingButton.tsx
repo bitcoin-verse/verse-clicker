@@ -74,7 +74,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
         <span style={{ color: "#899bb5" }}> overall</span>
       </Text>
 
-      <Cost>
+      <Cost $unaffordable={player.cookies < cost}>
         <span>x{amount || 1}</span>
         <div>
           <Star size={12} />
