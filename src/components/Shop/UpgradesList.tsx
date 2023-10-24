@@ -1,7 +1,7 @@
-import React, { FC, useMemo } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
-import { useTrackedState } from "../../context/store";
-import UpgradeButton, { ModifiedUpgrade } from "./UpgradeButton";
+import UpgradeButton from "./UpgradeButton";
+import useUpgradesList from "../../hooks/useUpgradesList";
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   overflow-x: auto;
   overflow-y: visible;
   padding: 1rem;
+  width: 100%;
 
   @media (min-width: 768px) {
     padding: 0;
@@ -34,24 +35,7 @@ const NextUpgrade = styled.div`
 interface Props {}
 
 const UpgradesList: FC<Props> = () => {
-  const { buildings } = useTrackedState();
-
-  const upgrades = useMemo(() => {
-    return buildings.reduce((prev: ModifiedUpgrade[], building, bIndex) => {
-      const buildingUpgrades = building.upgrades.reduce(
-        (p, upgrade, uIndex) => {
-          if (upgrade.owned) return p;
-          if (building.amount >= upgrade.limit) {
-            return [...p, { ...upgrade, bIndex, uIndex, bName: building.name }];
-          }
-          return p;
-        },
-        [] as ModifiedUpgrade[],
-      );
-
-      return [...prev, ...buildingUpgrades].sort((a, b) => a.cost - b.cost);
-    }, []);
-  }, [buildings]);
+  const upgrades = useUpgradesList();
 
   return (
     <Wrapper>
