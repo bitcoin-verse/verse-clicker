@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from "react";
+import React, { FC, useCallback, useMemo } from "react";
 import { formatNumber } from "../../../helpers/formatNumber";
 import { Amount, Button, Cost, Image } from "./styled";
 import { useTrackedState } from "../../../context/store";
@@ -9,8 +9,10 @@ import Building from "../../../classes/Building";
 import { useProduction } from "../../../hooks/useProduction";
 import placeholder from "../../../assets/placeholder.png";
 import { useSocketCtx } from "../../../context/SocketContext";
-import { getBuildingsCost } from "../../../helpers/buildingHelpers";
-import { Label } from "../../Label";
+import {
+  getBuildingsCost,
+  getMaxBuilding,
+} from "../../../helpers/buildingHelpers";
 
 interface Props {
   building: Building;
@@ -31,10 +33,16 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
     [building, index],
   );
 
-  const cost =
-    purchaseAmount === "max"
-      ? building.cost
-      : getBuildingsCost(purchaseAmount, building.cost);
+  const { amount, cost } = useMemo(() => {
+    if (purchaseAmount !== "max") {
+      return {
+        amount: purchaseAmount,
+        cost: getBuildingsCost(purchaseAmount, building.cost),
+      };
+    }
+
+    return getMaxBuilding(player.cookies, building.cost);
+  }, [player.cookies, building.cost]);
 
   return (
     <Button
@@ -64,9 +72,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
       </Text>
 
       <Cost>
-        <span>
-          {purchaseAmount === "max" ? purchaseAmount : `${purchaseAmount}x`}
-        </span>
+        <span>{amount}</span>
         <div>
           <Star size={12} />
         </div>
