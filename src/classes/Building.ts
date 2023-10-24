@@ -2,6 +2,7 @@ import Upgrade from "./Upgrade";
 
 class Building {
   name: string;
+  desc: string;
   cost: number;
   amount: number;
   originalCost: number;
@@ -15,6 +16,7 @@ class Building {
 
   constructor(
     name: string,
+    desc: string,
     cost: number,
     effect: number,
     upgrades: Upgrade[],
@@ -23,6 +25,7 @@ class Building {
   ) {
     this.image = image;
     this.name = name;
+    this.desc = desc;
     this.amount = 0;
     this.originalCost = cost;
     this.cost = cost;

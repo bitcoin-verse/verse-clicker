@@ -1,67 +1,22 @@
 import React, { FC, useState } from "react";
-import Shop from "../Shop/Shop";
 
 import PointsDisplay from "./PointsDisplay/PointsDisplay";
 import Cookie from "./Cookie";
-import styled from "styled-components";
-import Tabs from "../Tabs";
+import Tabs, { TabButton } from "./Tabs";
 import Advertisement from "../Advertisement";
 import Bonuses from "../Bonuses/Bonuses";
-import Leaderboard from "../Leaderboard";
 import Stats from "./Stats/Stats";
 
-const StyledGameBoard = styled.section`
-  position: relative;
-  flex: 1;
-  display: grid;
-
-  align-items: center;
-
-  width: 100%;
-  max-width: 80rem;
-  margin: auto;
-  box-sizing: border-box;
-
-  @media (min-width: 768px) {
-    grid-template-columns: 60% 40%;
-  }
-`;
-
-const ShopSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  align-self: flex-start;
-  justify-content: flex-start;
-
-  @media (min-width: 768px) {
-    margin-top: 2rem;
-  }
-`;
-
-const TabContent = styled.div`
-  margin: auto;
-  width: 100%;
-  margin-top: 1rem;
-  flex-direction: column;
-  align-items: flex-start;
-  border-radius: 1rem;
-
-  @media (min-width: 768px) {
-    padding: 1rem;
-    width: 100%;
-    background: #163756;
-  }
-`;
-
-const MainSection = styled.div`
-  margin-top: 1rem;
-  align-self: start;
-
-  @media (min-width: 768px) {
-    margin-top: 6rem;
-  }
-`;
+import ShopList from "../Shop/ShopList";
+import UpgradesList from "../Shop/UpgradesList";
+import PurchaseAmount from "./PurchaseAmount";
+import {
+  MainSection,
+  ShopSection,
+  StyledGameBoard,
+  TabContent,
+  TabsWrapper,
+} from "./styled";
 
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -76,10 +31,32 @@ const GameBoard: FC = () => {
         <Advertisement />
       </MainSection>
       <ShopSection>
-        <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+        <TabsWrapper>
+          <Tabs
+            tabs={[
+              <TabButton
+                key="buildings"
+                $isSelected={selectedTab === 0}
+                type="button"
+                onClick={() => setSelectedTab(0)}
+              >
+                Buildings
+              </TabButton>,
+              <TabButton
+                key="upgrades"
+                $isSelected={selectedTab === 1}
+                type="button"
+                onClick={() => setSelectedTab(1)}
+              >
+                Upgrades
+              </TabButton>,
+            ]}
+          />
+          {selectedTab === 0 && <PurchaseAmount />}
+        </TabsWrapper>
+
         <TabContent>
-          {/* <Shop /> */}
-          {selectedTab === 0 ? <Shop /> : <Leaderboard />}
+          {selectedTab === 0 ? <ShopList /> : <UpgradesList />}
         </TabContent>
         <Advertisement />
       </ShopSection>

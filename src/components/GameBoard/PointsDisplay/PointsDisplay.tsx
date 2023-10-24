@@ -5,7 +5,7 @@ import { formatNumber } from "../../../helpers/formatNumber";
 
 import Star from "../../Icons/Star";
 
-import { Wrapper, PointsWrapper, Points, StatCount } from "./styled";
+import { Wrapper, Points, StatCount } from "./styled";
 import { Label } from "../../Label";
 
 const PointsDisplay: FC = () => {
@@ -13,13 +13,13 @@ const PointsDisplay: FC = () => {
 
   return (
     <Wrapper>
-      <PointsWrapper>
-        <Star />
-        <Points>{formatNumber(player.cookies)}</Points>
-      </PointsWrapper>
+      <Points>
+        <Star size={32} />
+        {formatNumber(player.cookies)}
+      </Points>
       <StatCount>
         {formatNumber(player.cps)}
-        <Star size={18} />
+        <Star size={16} />
         <Label>per second</Label>
       </StatCount>
     </Wrapper>

@@ -9,8 +9,12 @@ import {
 } from "./reducers/building";
 import { SetLeaderboardAction, setLeaderboard } from "./reducers/leaderboard";
 import { SetNetworkAction, setNetwork } from "./reducers/network";
-import { SteErrorAction, setError } from "./reducers/error";
+import { SetErrorAction, setError } from "./reducers/error";
 import { SetReturnDataAction, setReturnData } from "./reducers/returnData";
+import {
+  SetPurchaseAmountAction,
+  setPurchaseAmount,
+} from "./reducers/purchaseAmount";
 
 export type Action =
   | SetNetworkAction
@@ -19,7 +23,9 @@ export type Action =
   | SetLeaderboardAction
   | UpdateBuildingsAction
   | SetReturnDataAction
-  | SteErrorAction
+  | SetErrorAction
+  | SetErrorAction
+  | SetPurchaseAmountAction
   | { type: "RESET_GAME" };
 
 const reducer: Reducer<State, Action> = (state, action) => {
@@ -40,6 +46,8 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return setError(state, action.payload);
     case "SET_RETURN_DATA":
       return setReturnData(state, action.payload);
+    case "SET_PURCHASE_AMOUNT":
+      return setPurchaseAmount(state, action.payload);
     default:
       return state;
   }
