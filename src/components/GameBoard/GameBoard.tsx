@@ -2,7 +2,6 @@ import React, { FC, useState } from "react";
 
 import PointsDisplay from "./PointsDisplay/PointsDisplay";
 import Cookie from "./Cookie";
-import styled from "styled-components";
 import Tabs, { TabButton } from "./Tabs";
 import Advertisement from "../Advertisement";
 import Bonuses from "../Bonuses/Bonuses";
@@ -11,49 +10,13 @@ import Stats from "./Stats/Stats";
 import ShopList from "../Shop/ShopList";
 import UpgradesList from "../Shop/UpgradesList";
 import PurchaseAmount from "./PurchaseAmount";
-
-const StyledGameBoard = styled.section`
-  position: relative;
-  flex: 1;
-  display: grid;
-
-  align-items: center;
-
-  width: 100%;
-  max-width: 80rem;
-  margin: auto;
-  box-sizing: border-box;
-
-  @media (min-width: 768px) {
-    grid-template-columns: 60% 40%;
-  }
-`;
-
-const ShopSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  align-self: flex-start;
-  justify-content: flex-start;
-
-  @media (min-width: 768px) {
-    margin-top: 2rem;
-  }
-`;
-
-const TabContent = styled.div`
-  padding: 1rem 0;
-  gap: 1rem;
-`;
-
-const MainSection = styled.div`
-  margin-top: 1rem;
-  align-self: start;
-
-  @media (min-width: 768px) {
-    margin-top: 6rem;
-  }
-`;
+import {
+  MainSection,
+  ShopSection,
+  StyledGameBoard,
+  TabContent,
+  TabsWrapper,
+} from "./styled";
 
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -68,13 +31,7 @@ const GameBoard: FC = () => {
         <Advertisement />
       </MainSection>
       <ShopSection>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-          }}
-        >
+        <TabsWrapper>
           <Tabs
             tabs={[
               <TabButton
@@ -95,9 +52,8 @@ const GameBoard: FC = () => {
               </TabButton>,
             ]}
           />
-
           {selectedTab === 0 && <PurchaseAmount />}
-        </div>
+        </TabsWrapper>
 
         <TabContent>
           {selectedTab === 0 ? <ShopList /> : <UpgradesList />}
