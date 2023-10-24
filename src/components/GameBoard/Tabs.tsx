@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 const TabsWrapper = styled.div`
   width: 100%;
   display: grid;
+  grid-auto-flow: column;
   gap: 0.75rem;
 
   padding: 0 0.75rem;
@@ -30,7 +31,7 @@ export const TabButton = styled.button<{ $isSelected: boolean }>`
   font-size: 1.125rem;
   font-weight: 600;
   text-align: center;
-  padding: 1rem 1.5rem;
+  padding: 1rem 0.5rem;
   display: flex;
   gap: 1rem;
   justify-content: center;
