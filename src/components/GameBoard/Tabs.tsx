@@ -9,6 +9,7 @@ const TabsWrapper = styled.div`
 
   padding: 0 0.75rem;
   grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
 
   @media (min-width: 768px) {
     background: linear-gradient(180deg, #425472 0%, #313e57 100%);
@@ -31,11 +32,15 @@ export const TabButton = styled.button<{ $isSelected: boolean }>`
   font-size: 1.125rem;
   font-weight: 600;
   text-align: center;
+
   padding: 1rem 0.5rem;
   display: flex;
   gap: 1rem;
+  width: 100%;
+  max-width: 15rem;
   justify-content: center;
   align-items: center;
+  justify-self: center;
 
   & > svg {
     color: #586f91;
@@ -48,6 +53,10 @@ export const TabButton = styled.button<{ $isSelected: boolean }>`
     font-size: 0.875rem;
 
     cursor: pointer;
+
+    & > svg {
+      display: none;
+    }
 
     ${({ $isSelected }) =>
       $isSelected

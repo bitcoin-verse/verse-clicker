@@ -20,6 +20,7 @@ const Wrapper = styled.div`
 
     padding-bottom: unset;
     padding-left: unset;
+    padding-right: 1rem;
     max-width: unset;
     overflow: visible;
   }
