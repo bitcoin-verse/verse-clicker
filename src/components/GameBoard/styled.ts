@@ -50,5 +50,8 @@ export const TabsWrapper = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   width: 100%;
-  padding-right: 1rem;
+
+  @media (min-width: 768px) {
+    padding-right: 1rem;
+  }
 `;

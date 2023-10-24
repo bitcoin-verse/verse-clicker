@@ -47,7 +47,7 @@ export const TabButton = styled.button<{ $isSelected: boolean }>`
   }
 
   @media (min-width: 768px) {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     border-radius: 2.25rem;
 
     font-size: 0.875rem;

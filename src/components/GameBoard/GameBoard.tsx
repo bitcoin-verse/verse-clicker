@@ -22,6 +22,8 @@ import PurchaseAmount from "./PurchaseAmount";
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
 
+  const [toggleOpen, setToggleOpen] = useState(false);
+
   return (
     <StyledGameBoard>
       <MainSection>
@@ -33,14 +35,21 @@ const GameBoard: FC = () => {
       <ShopSection>
         <TabsWrapper>
           <BuildingUpgradeTabs
-            setSelectedTab={setSelectedTab}
+            setSelectedTab={(tabId) => {
+              setSelectedTab(tabId);
+              setToggleOpen(true);
+            }}
             selectedTab={selectedTab}
           />
           {selectedTab === 0 ? <PurchaseAmount /> : <UpgradeAll />}
         </TabsWrapper>
 
         <TabContent>
-          {selectedTab === 0 ? <ShopList /> : <UpgradesList />}
+          {selectedTab === 0 ? (
+            <ShopList toggleOpen={toggleOpen} setToggleOpen={setToggleOpen} />
+          ) : (
+            <UpgradesList />
+          )}
         </TabContent>
         <Advertisement />
       </ShopSection>
