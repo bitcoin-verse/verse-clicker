@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import UpgradeButton from "./UpgradeButton";
-import useUpgradesList from "../../hooks/useUpgradesList";
+import useUpgradesList from "../../../hooks/useUpgradesList";
+import { useTrackedState } from "../../../context/store";
+import UpgradeButton, { ModifiedUpgrade } from "./UpgradeButton";
 
 const Wrapper = styled.div`
   display: flex;

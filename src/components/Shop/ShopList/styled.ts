@@ -11,12 +11,12 @@ export const Wrapper = styled.div<{ $isOpen: boolean }>`
   width: 100%;
   height: 100%;
 
+  z-index: 88;
   transition: bottom 0.25s ease-in-out;
 
   ${({ $isOpen }) =>
     $isOpen
       ? css`
-          z-index: 88;
           bottom: 0;
         `
       : css`
