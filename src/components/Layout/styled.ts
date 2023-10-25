@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     letter-spacing: 0em;
 
   }
-
+  
   html, body, div {
     color: white;
 
