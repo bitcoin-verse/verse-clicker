@@ -8,6 +8,13 @@ import BurnButtons from "./BurnButtons";
 import { formatNumber } from "../../helpers/formatNumber";
 import { useSocketCtx } from "../../context/SocketContext";
 import useVerseBalance from "../../hooks/useVerseBalance";
+import { Divider, Icon, ModalWrapper, Price, StyledButton } from "./styled";
+import { H3 } from "../H3";
+import { Container } from "../Container";
+import { Label } from "../Label";
+
+import verseIcon from "../../assets/verse-icon.png";
+import { Button } from "../Button";
 import Tabs, { TabButton } from "../Tabs";
 
 const ButtonContainer = styled.div`
@@ -120,19 +127,12 @@ const Burn: FC = () => {
   };
 
   return (
-    <>
-      <div>
-        Get upto 24hrs worth of cookies at your current CPS rate, just by
-        burning a little verse
-      </div>
-      <div>
-        Your Verse Balance:{" "}
-        {balanceData?.formatted
-          ? Number(balanceData.formatted).toLocaleString()
-          : 0}{" "}
-        VERSE
-      </div>
-
+    <ModalWrapper>
+      <H3>Burn VERSE to boost your point production</H3>
+      <Container>
+        <Label $secondary $size="0.75">
+          Boost duration
+        </Label>
         <Tabs
           center
           tabs={buttonsList.map((button, i) => (
@@ -149,8 +149,20 @@ const Burn: FC = () => {
         <Label $secondary $size="0.75">
           Quantity required
         </Label>
-        <Icon src={verseIcon} />
-        {buttonsList.find((_, i) => i === selectedTab)?.value} VERSE
+        <Price>
+          <Icon src={verseIcon} />
+          {buttonsList.find((_, i) => i === selectedTab)?.value} VERSE
+        </Price>
+        <Divider />
+        <Label $secondary $size="0.75">
+          Available:{" "}
+          {balanceData?.formatted
+            ? Number(balanceData.formatted).toLocaleString()
+            : 0}{" "}
+          VERSE
+        </Label>
+      </Container>
+      <StyledButton>Burn VERSE</StyledButton>
       <ButtonContainer>
         {showLoading && (
           <TransactionStatus>
@@ -193,7 +205,7 @@ const Burn: FC = () => {
           buttons={buttonsList}
         />
       </ButtonContainer>
-    </>
+    </ModalWrapper>
   );
 };
 

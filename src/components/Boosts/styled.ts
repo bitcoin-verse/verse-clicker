@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../Button";
 import { colors } from "../colors";
 
 export const Wrapper = styled.div<{ $mobileVersion?: boolean }>`
@@ -115,4 +116,26 @@ export const ModalWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+`;
+
+export const Divider = styled.div`
+  border: 0.063rem solid ${colors.shade30};
+  width: 100%;
+`;
+
+export const Icon = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+export const StyledButton = styled(Button)`
+  width: 100%;
+`;
+
+export const Price = styled.div`
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
 `;

@@ -21,7 +21,8 @@ export const Container = styled.div`
   border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  font-size: 0.75rem;
 
   &::before {
     position: absolute;
