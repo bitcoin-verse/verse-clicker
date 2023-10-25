@@ -1,8 +1,15 @@
-import React, { FC, useEffect, useMemo, useState } from "react";
-import { useTrackedState } from "../../../context/store";
-import UpgradeButton, { ModifiedUpgrade } from "./UpgradeButton";
-import { NextUpgrade, Wrapper } from "./styled";
+import React, { FC, useEffect, useState } from "react";
+import UpgradeButton from "./UpgradeButton";
+import {
+  NextUpgrade,
+  UpgradeAllWrapper,
+  UpgradesWrapper,
+  Wrapper,
+} from "./styled";
 import useUpgradesList from "../../../hooks/useUpgradesList";
+import MobileTitle from "../MobileTitle";
+import UpgradeAll from "../../GameBoard/UpgradeAll";
+import CookiesDisplay from "../CookiesDisplay";
 
 interface Props {
   toggleOpen: boolean;
@@ -11,7 +18,6 @@ interface Props {
 
 const UpgradesList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
   const upgrades = useUpgradesList();
-  const { buildings } = useTrackedState();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -23,11 +29,19 @@ const UpgradesList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
   }, [toggleOpen]);
 
   return (
-    <Wrapper>
-      {upgrades.map((upgrade) => {
-        return <UpgradeButton key={upgrade.name} upgrade={upgrade} />;
-      })}
-      <NextUpgrade>Unlock upgrades by purchasing more buildings</NextUpgrade>
+    <Wrapper $isOpen={isOpen}>
+      <MobileTitle title="Upgrades" setIsOpen={setIsOpen} />
+
+      <UpgradeAllWrapper>
+        <UpgradeAll mobileVersion />
+      </UpgradeAllWrapper>
+      <UpgradesWrapper>
+        {upgrades.map((upgrade) => {
+          return <UpgradeButton key={upgrade.name} upgrade={upgrade} />;
+        })}
+        <NextUpgrade>Unlock upgrades by purchasing more buildings</NextUpgrade>
+      </UpgradesWrapper>
+      <CookiesDisplay />
     </Wrapper>
   );
 };

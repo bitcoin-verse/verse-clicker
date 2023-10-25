@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { ModifiedUpgrade } from "../components/Shop/UpgradeButton";
 import { useTrackedState } from "../context/store";
+import { ModifiedUpgrade } from "../components/Shop/UpgradesList/UpgradeButton";
 
 const useUpgradesList = () => {
   const { buildings } = useTrackedState();

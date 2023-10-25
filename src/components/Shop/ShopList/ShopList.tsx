@@ -2,21 +2,11 @@ import React, { FC, useEffect, useState } from "react";
 import { useTrackedState } from "../../../context/store";
 
 import BuildingButton from "./BuildingButton";
-import {
-  BuildingsWrapper,
-  CloseButton,
-  CookiesDisplay,
-  ModalTitle,
-  PurchaseButtons,
-  Wrapper,
-} from "./styled";
+import { BuildingsWrapper, PurchaseButtons, Wrapper } from "./styled";
 
-import Cross from "../../Icons/Cross";
-
-import { H2 } from "../../H2";
 import PurchaseAmount from "../../GameBoard/PurchaseAmount";
-import Star from "../../Icons/Star";
-import { formatNumber } from "../../../helpers/formatNumber";
+import MobileTitle from "../MobileTitle";
+import CookiesDisplay from "../CookiesDisplay";
 
 interface Props {
   toggleOpen: boolean;
@@ -37,12 +27,7 @@ const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
 
   return (
     <Wrapper $isOpen={isOpen}>
-      <ModalTitle>
-        <H2>Buildings</H2>
-        <CloseButton onClick={() => setIsOpen(false)}>
-          <Cross />
-        </CloseButton>
-      </ModalTitle>
+      <MobileTitle title="Buildings" setIsOpen={setIsOpen} />
 
       <PurchaseButtons>
         <PurchaseAmount mobileVersion />
@@ -56,9 +41,7 @@ const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
           );
         })}
       </BuildingsWrapper>
-      <CookiesDisplay>
-        <Star size="1.5rem" /> {formatNumber(player.cookies)}
-      </CookiesDisplay>
+      <CookiesDisplay />
     </Wrapper>
   );
 };

@@ -1,11 +1,24 @@
-import React, { useCallback, useMemo } from "react";
+import React, { FC, useCallback, useMemo } from "react";
 import { Button } from "../../Button";
 import { useSocketCtx } from "../../../context/SocketContext";
 import useUpgradesList from "../../../hooks/useUpgradesList";
 import { useTrackedState } from "../../../context/store";
-import { ModifiedUpgrade } from "../../Shop/UpgradeButton";
+import { ModifiedUpgrade } from "../../Shop/UpgradesList/UpgradeButton";
+import styled from "styled-components";
 
-const UpgradeAll = () => {
+export const Wrapper = styled.div<{ $show: boolean }>`
+  display: ${({ $show }) => ($show ? "flex" : "none")};
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+`;
+
+interface Props {
+  mobileVersion?: boolean;
+}
+
+const UpgradeAll: FC<Props> = ({ mobileVersion = false }) => {
   const { socket } = useSocketCtx();
   const { player } = useTrackedState();
   const upgradesList = useUpgradesList();
@@ -39,13 +52,15 @@ const UpgradeAll = () => {
   };
 
   return (
-    <Button
-      size="small"
-      onClick={buyAllUpgrades}
-      disabled={availableUpgrades.length === 0}
-    >
-      Buy all
-    </Button>
+    <Wrapper $show={mobileVersion}>
+      <Button
+        size="small"
+        onClick={buyAllUpgrades}
+        disabled={availableUpgrades.length === 0}
+      >
+        Buy all
+      </Button>
+    </Wrapper>
   );
 };
 
