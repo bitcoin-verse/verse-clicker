@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Barlow','Helvetica', sans-serif;
     letter-spacing: 0em;
   }
-
+  
   html, body, div {
     color: white;
   }
