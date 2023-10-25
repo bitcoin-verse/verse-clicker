@@ -34,14 +34,17 @@ const Leaderboard = () => {
             <div>{index + 1}</div>
             <div>
               {truncateEthAddress(item.address)}{" "}
-              {item.address === address && <YouBadge>You</YouBadge>}
+              {item.address === address && <YouBadge>🌟</YouBadge>}
             </div>
             <div>
               {formatNumber(Number(item.stats.Clicked))}{" "}
               <MoonImage src={cookieImg} alt="cookie" />
             </div>
             <div>
-              {formatNumber(Number(item.stats.Earned))} <Star size="0.875rem" />
+              {formatNumber(Number(item.stats.Earned))}
+              <div>
+                <Star size="0.875rem" />
+              </div>
             </div>
           </Body>
         );
