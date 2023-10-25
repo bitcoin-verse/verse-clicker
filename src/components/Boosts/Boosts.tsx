@@ -60,7 +60,11 @@ const getModalContent = (content?: string) => {
   }
 };
 
-const Boosts: FC = () => {
+interface Props {
+  mobileVersion?: boolean;
+}
+
+const Boosts: FC<Props> = ({ mobileVersion }) => {
   const [content, setContent] = useState<string>();
   const { modalRef, showModal } = useModal();
   const { player } = useTrackedState();
@@ -68,7 +72,7 @@ const Boosts: FC = () => {
   const modalContent = getModalContent(content);
 
   return (
-    <Wrapper>
+    <Wrapper $mobileVersion={mobileVersion}>
       <Content>
         <H4>Boost your points</H4>
         <BoostTiles>

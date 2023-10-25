@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useMemo } from "react";
 
 import { useAccount } from "wagmi";
 import { useTrackedState } from "../../../context/store";
@@ -13,9 +13,15 @@ const Stats: FC = () => {
   const { player, leaderboard } = useTrackedState();
   const { address } = useAccount();
 
-  const userRank = leaderboard?.findIndex((item) => item.address === address)
-    ? leaderboard.findIndex((item) => item.address === address) + 1
-    : "🌟";
+  const userRank = useMemo(() => {
+    const leaderboardIndex = leaderboard?.findIndex(
+      (item) => item.address === address,
+    );
+    if (leaderboardIndex === undefined) {
+      return ">25";
+    }
+    return leaderboardIndex + 1;
+  }, []);
 
   return (
     <Wrapper>
