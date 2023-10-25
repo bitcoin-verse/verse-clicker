@@ -1,9 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import Tabs, { TabButton } from "../Tabs";
 import { useDispatch, useTrackedState } from "../../../context/store";
 import { Wrapper } from "./styled";
 
-const PurchaseAmount = () => {
+interface Props {
+  show?: boolean;
+}
+
+const PurchaseAmount: FC<Props> = ({ show = false }) => {
   const { purchaseAmount } = useTrackedState();
   const dispatch = useDispatch();
 
@@ -12,7 +16,7 @@ const PurchaseAmount = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper $show={show}>
       <Tabs
         tabs={[
           <TabButton
