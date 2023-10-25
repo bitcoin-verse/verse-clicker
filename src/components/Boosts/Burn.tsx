@@ -55,9 +55,9 @@ const RetryButton = styled.button`
 `;
 
 const buttonsList = [
-  { title: "1H", value: 15000, hours: 1 },
-  { title: "12H", value: 150000, hours: 12 },
-  { title: "24H", value: 280000, hours: 24 },
+  { title: "1 hour", value: 15000, hours: 1 },
+  { title: "12 hour", value: 150000, hours: 12 },
+  { title: "1 day", value: 280000, hours: 24 },
 ];
 
 const Burn: FC = () => {
@@ -135,33 +135,22 @@ const Burn: FC = () => {
 
         <Tabs
           center
-          tabs={[
+          tabs={buttonsList.map((button, i) => (
             <TabButton
-              key="buildings"
-              $isSelected={selectedTab === 0}
+              key="burns"
+              $isSelected={selectedTab === i}
               type="button"
-              onClick={() => setSelectedTab(0)}
+              onClick={() => setSelectedTab(i)}
             >
-              1 hour
-            </TabButton>,
-            <TabButton
-              key="upgrades"
-              $isSelected={selectedTab === 1}
-              type="button"
-              onClick={() => setSelectedTab(1)}
-            >
-              12 hour
-            </TabButton>,
-            <TabButton
-              key="upgrades"
-              $isSelected={selectedTab === 2}
-              type="button"
-              onClick={() => setSelectedTab(2)}
-            >
-              1 day
-            </TabButton>,
-          ]}
+              {button.title}
+            </TabButton>
+          ))}
         />
+        <Label $secondary $size="0.75">
+          Quantity required
+        </Label>
+        <Icon src={verseIcon} />
+        {buttonsList.find((_, i) => i === selectedTab)?.value} VERSE
       <ButtonContainer>
         {showLoading && (
           <TransactionStatus>
