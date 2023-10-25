@@ -11,6 +11,25 @@ import Hold from "./Hold";
 import Farm from "./Farm";
 
 import { BoostTiles, BoostButton, Label, Boost, Wrapper } from "./styled";
+import Check from "../Icons/Check";
+
+const boostList = (unlocked: boolean) => [
+  {
+    id: "hold",
+    unlocked: unlocked,
+    label: "Hold",
+  },
+  {
+    id: "burn",
+    unlocked: unlocked,
+    label: "Burn",
+  },
+  {
+    id: "farm",
+    unlocked: unlocked,
+    label: "Farm",
+  },
+];
 
 const getModalContent = (content?: string, verseHolder?: boolean) => {
   switch (content) {
@@ -45,37 +64,23 @@ const Boosts: FC = () => {
     <Wrapper>
       <H4>Boost your points</H4>
       <BoostTiles>
-        <BoostButton
-          onClick={() => {
-            setContent("hold");
-            showModal();
-          }}
-          $hasBonus={player.verseHolder}
-        >
-          <Label $unlocked={player.verseHolder}>Hold</Label>
-          <Boost $unlocked={player.verseHolder}>10x boost</Boost>
-        </BoostButton>
-        <BoostButton
-          onClick={() => {
-            setContent("burn");
-            showModal();
-          }}
-        >
-          <Label $unlocked={false}>
-            <Lock />
-            Burn
-          </Label>
-          <Boost $unlocked={false}>10x boost</Boost>
-        </BoostButton>
-        <BoostButton
-          onClick={() => {
-            setContent("farm");
-            showModal();
-          }}
-        >
-          <Label $unlocked={false}>Farm</Label>
-          <Boost $unlocked={false}>10x boost</Boost>
-        </BoostButton>
+        {boostList(player.verseHolder).map((boost) => (
+          <BoostButton
+            key={boost.id}
+            onClick={() => {
+              setContent(boost.id);
+              showModal();
+            }}
+          >
+            <Label $unlocked={boost.unlocked}>
+              {boost.unlocked ? <Check /> : <Lock />}
+              {boost.label}
+            </Label>
+            <Boost $unlocked={boost.unlocked}>
+              {!boost.unlocked && "Unlock"} 10x boost
+            </Boost>
+          </BoostButton>
+        ))}
       </BoostTiles>
       <Modal
         modalRef={modalRef}

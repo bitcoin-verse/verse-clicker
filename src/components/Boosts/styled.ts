@@ -33,6 +33,7 @@ export const BoostButton = styled.button<{ $hasBonus?: boolean }>`
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
   text-align: left;
+  cursor: pointer;
 
   &::before {
     position: absolute;
@@ -73,6 +74,10 @@ export const Label = styled.div<{ $unlocked: boolean }>`
   color: ${({ $unlocked }) => ($unlocked ? colors.green100 : colors.shade80)};
   font-size: 1rem;
   font-weight: 600;
+
+  gap: 0.5rem;
+  display: flex;
+  align-items: center;
 `;
 
 export const Boost = styled.div<{ $unlocked: boolean }>`
