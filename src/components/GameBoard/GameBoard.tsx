@@ -17,6 +17,7 @@ import {
   TabContent,
   TabsWrapper,
 } from "./styled";
+import UpgradeAll from "./UpgradeAll";
 
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -52,7 +53,7 @@ const GameBoard: FC = () => {
               </TabButton>,
             ]}
           />
-          {selectedTab === 0 && <PurchaseAmount />}
+          {selectedTab === 0 ? <PurchaseAmount /> : <UpgradeAll />}
         </TabsWrapper>
 
         <TabContent>
