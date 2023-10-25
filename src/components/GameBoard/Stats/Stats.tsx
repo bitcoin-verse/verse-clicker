@@ -29,21 +29,21 @@ const Stats: FC = () => {
         <div>
           <TrophyWrapper>
             <Trophy />
-            <Label $secondary>You</Label>
+            <Label $color="secondary">You</Label>
           </TrophyWrapper>
           <Subtitle>{userRank}</Subtitle>
         </div>
         <Divider />
         <div>
-          <Label $secondary>Earned</Label>
+          <Label $color="secondary">Earned</Label>
           <Subtitle>{formatNumber(player.stats.Earned)}</Subtitle>
         </div>
         <div>
-          <Label $secondary>Clicked</Label>
+          <Label $color="secondary">Clicked</Label>
           <Subtitle>{formatNumber(player.stats.Clicked)}</Subtitle>
         </div>
         <div>
-          <Label $secondary>Spent</Label>
+          <Label $color="secondary">Spent</Label>
           <Subtitle>{formatNumber(player.stats.Spent)}</Subtitle>
         </div>
       </Content>
