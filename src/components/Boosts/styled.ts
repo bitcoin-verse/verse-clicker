@@ -5,7 +5,12 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 1rem 1rem 2rem;
-  max-width: 22.188rem;
+  align-items: center;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const BoostTiles = styled.div`
@@ -32,7 +37,7 @@ export const BoostButton = styled.button<{ $hasBonus?: boolean }>`
   box-sizing: border-box;
   z-index: 0;
   position: relative;
-  min-width: 7.625rem;
+  min-width: 10.875rem;
   min-height: 3.188rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
