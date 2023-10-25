@@ -14,19 +14,24 @@ export const LeaderboardWrapper = styled.div`
 
 export const YouBadge = styled.div`
   display: inline-flex;
-
   justify-content: center;
   align-items: center;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1.875rem;
+  padding: 0.25rem 0.5rem;
+  flex: 0;
+  max-height: 1.5rem;
+  max-width: 1.5rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
   color: #c5cedb;
-
   background: linear-gradient(180deg, #425472 0%, #313e57 100%);
 `;
 
 export const MoonImage = styled.img`
   height: 0.875rem;
   width: 0.875rem;
+
+  filter: drop-shadow(0px 2px 10px #1167b6);
 `;
 
 export const Header = styled.div`
@@ -51,7 +56,7 @@ export const Header = styled.div`
 export const Body = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: 0.5rem auto minmax(2rem, 5rem) minmax(2rem, 5rem);
+  grid-template-columns: 0.5rem auto minmax(2rem, 5rem) minmax(3rem, 5rem);
 
   font-size: 0.875rem;
   font-weight: 600;
@@ -62,12 +67,17 @@ export const Body = styled.div`
 
   align-items: center;
 
+  & > div {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    align-items: center;
+    position: relative;
+  }
+
   & > :nth-child(1),
   & > :nth-child(2) {
     text-align: left;
+    justify-content: flex-start;
   }
-`;
-
-export const Item = styled.span`
-  margin-right: 0.5rem;
 `;
