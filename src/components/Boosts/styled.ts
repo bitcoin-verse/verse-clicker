@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { colors } from "../colors";
 
-export const Wrapper = styled.div`
-  display: flex;
+export const Wrapper = styled.div<{ $mobileVersion?: boolean }>`
+  display: ${({ $mobileVersion }) => ($mobileVersion ? "flex" : "none")};
   flex-direction: column;
   margin: 1rem 1rem 2rem;
 
   @media (min-width: 768px) {
     align-items: center;
+    display: ${({ $mobileVersion }) => ($mobileVersion ? "none" : "flex")};
   }
 `;
 
