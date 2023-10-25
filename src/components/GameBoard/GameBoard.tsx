@@ -56,7 +56,6 @@ const GameBoard: FC = () => {
         </TabContent>
       </ShopSection>
       <Boosts mobileVersion />
-      <Advertisement />
     </StyledGameBoard>
   );
 };
