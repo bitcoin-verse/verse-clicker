@@ -28,6 +28,10 @@ export const BoostButton = styled.button<{ $hasBonus?: boolean }>`
     #273953 0%,
     rgba(0, 0, 0, 0) 100%
   );
+
+  box-sizing: border-box;
+  z-index: 0;
+  position: relative;
   min-width: 7.625rem;
   min-height: 3.188rem;
   padding: 0.5rem 0.75rem;
