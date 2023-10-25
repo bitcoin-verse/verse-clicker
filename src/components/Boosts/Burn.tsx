@@ -8,6 +8,7 @@ import BurnButtons from "./BurnButtons";
 import { formatNumber } from "../../helpers/formatNumber";
 import { useSocketCtx } from "../../context/SocketContext";
 import useVerseBalance from "../../hooks/useVerseBalance";
+import Tabs, { TabButton } from "../Tabs";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -81,6 +82,8 @@ const Burn: FC = () => {
     value: bigint;
   }>();
 
+  const [selectedTab, setSelectedTab] = useState(0);
+
   useEffect(() => {
     console.log(readData, error);
     if (!readData) return;
@@ -130,6 +133,35 @@ const Burn: FC = () => {
         VERSE
       </div>
 
+        <Tabs
+          center
+          tabs={[
+            <TabButton
+              key="buildings"
+              $isSelected={selectedTab === 0}
+              type="button"
+              onClick={() => setSelectedTab(0)}
+            >
+              1 hour
+            </TabButton>,
+            <TabButton
+              key="upgrades"
+              $isSelected={selectedTab === 1}
+              type="button"
+              onClick={() => setSelectedTab(1)}
+            >
+              12 hour
+            </TabButton>,
+            <TabButton
+              key="upgrades"
+              $isSelected={selectedTab === 2}
+              type="button"
+              onClick={() => setSelectedTab(2)}
+            >
+              1 day
+            </TabButton>,
+          ]}
+        />
       <ButtonContainer>
         {showLoading && (
           <TransactionStatus>
