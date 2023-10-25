@@ -9,7 +9,7 @@ const config: RecursivePartial<IOptions> = {
 
   particles: {
     number: {
-      value: 40,
+      value: 10,
       density: {
         enable: true,
         value_area: 400,
@@ -53,12 +53,12 @@ const config: RecursivePartial<IOptions> = {
     },
 
     opacity: {
-      value: 1,
+      value: 0.6,
       random: true,
       anim: {
         enable: true,
         speed: 0.8,
-        opacity_min: 0.6,
+        opacity_min: 0.1,
         sync: false,
       },
     },
@@ -69,4 +69,17 @@ const config: RecursivePartial<IOptions> = {
   },
   detectRetina: true,
 };
-export default config;
+
+export const createConfig = ({
+  particlesNumber,
+}: {
+  particlesNumber: number;
+}): RecursivePartial<IOptions> => {
+  return {
+    ...config,
+    particles: {
+      ...config.particles,
+      number: { ...config.particles?.number, value: particlesNumber },
+    },
+  };
+};
