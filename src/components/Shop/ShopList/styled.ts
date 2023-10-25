@@ -93,10 +93,10 @@ export const BuildingsWrapper = styled.div`
   height: 100%;
   border-bottom: 1px solid #1a2231;
 
-
   @media (min-width: 768px) {
     padding: 0;
     overflow: visible;
+    border-bottom: none;
   }
 `;
 
