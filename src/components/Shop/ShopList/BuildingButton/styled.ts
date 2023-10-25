@@ -92,6 +92,7 @@ export const Amount = styled.div`
   bottom: 0;
   width: max-content;
   justify-self: flex-end;
+  align-self: flex-end;
   font-size: 0.75rem;
   font-weight: 600;
 
