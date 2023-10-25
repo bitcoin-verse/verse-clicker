@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
 import { useChainId, useContractWrite, useWaitForTransaction } from "wagmi";
-import styled from "styled-components";
 import { formatEther, parseEther } from "viem";
 
 import testVerseABI from "../../contracts/verseGoerli";
@@ -14,31 +13,7 @@ import { Label } from "../Label";
 
 import verseIcon from "../../assets/verse-icon.png";
 import Tabs, { TabButton } from "../Tabs";
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-  position: relative;
-`;
-
-const TransactionStatus = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0f518f;
-  z-index: 1;
-
-  gap: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
+import { LinkButton } from "../LinkButton";
 
 const burnList = [
   { title: "1 hour", value: 15000, hours: 1 },
@@ -109,66 +84,66 @@ const Burn: FC = () => {
 
   return (
     <ModalWrapper>
-      <H3>Burn VERSE to boost your point production</H3>
-      <Container>
-        <Label $secondary>Boost duration</Label>
-        <Tabs
-          center
-          tabs={burnList.map((button, i) => (
-            <TabButton
-              key="burns"
-              $isSelected={selectedTab === i}
-              type="button"
-              onClick={() => setSelectedTab(i)}
-            >
-              {button.title}
-            </TabButton>
-          ))}
-        />
-        <Label $secondary>Quantity required</Label>
-        <Price>
-          <Icon src={verseIcon} />
-          {selectedBurn?.value} VERSE
-        </Price>
-        <Divider />
-        <Label $secondary>
-          Available:{" "}
-          {balanceData?.formatted
-            ? Number(balanceData.formatted).toLocaleString()
-            : 0}{" "}
-          VERSE
-        </Label>
-      </Container>
-      <StyledButton onClick={() => handleBurn(selectedBurn?.value)}>
-        Burn VERSE
-      </StyledButton>
-      <ButtonContainer>
-        {showLoading && (
-          <TransactionStatus>
-            {isLoading && <div>Transaction Pending. Check Wallet</div>}
-            {isSuccess && !txWaitSuccess && (
-              <>
-                <div>Transaction accepted waiting for confirmation</div>
-                <a
-                  href={`https://goerli.etherscan.io/tx/${data?.hash}`}
-                  target="_blank"
-                  rel="noreferrer"
+      {showLoading ? (
+        <Container>
+          {isLoading && <Label>Pending transaction, check your wallet.</Label>}
+          {isSuccess && !txWaitSuccess && (
+            <>
+              <Label>Transaction accepted, waiting for confirmation.</Label>
+              <LinkButton
+                href={`https://goerli.etherscan.io/tx/${data?.hash}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View on Etherscan
+              </LinkButton>
+            </>
+          )}
+          {txWaitSuccess && (
+            <>
+              <Label>
+                Transaction confirmed! {formatNumber(newCookies)} points added
+              </Label>
+            </>
+          )}
+        </Container>
+      ) : (
+        <>
+          <H3>Burn VERSE to boost your point production</H3>
+          <Container>
+            <Label $secondary>Boost duration</Label>
+            <Tabs
+              center
+              tabs={burnList.map((button, i) => (
+                <TabButton
+                  key="burns"
+                  $isSelected={selectedTab === i}
+                  type="button"
+                  onClick={() => setSelectedTab(i)}
                 >
-                  View on Etherscan
-                </a>
-              </>
-            )}
-
-            {txWaitSuccess && (
-              <>
-                <div>
-                  Transaction confirmed! {formatNumber(newCookies)} points added
-                </div>
-              </>
-            )}
-          </TransactionStatus>
-        )}
-      </ButtonContainer>
+                  {button.title}
+                </TabButton>
+              ))}
+            />
+            <Label $secondary>Quantity required</Label>
+            <Price>
+              <Icon src={verseIcon} />
+              {selectedBurn?.value} VERSE
+            </Price>
+            <Divider />
+            <Label $secondary>
+              Available:{" "}
+              {balanceData?.formatted
+                ? Number(balanceData.formatted).toLocaleString()
+                : 0}{" "}
+              VERSE
+            </Label>
+          </Container>
+          <StyledButton onClick={() => handleBurn(selectedBurn?.value)}>
+            Burn VERSE
+          </StyledButton>
+        </>
+      )}
     </ModalWrapper>
   );
 };
