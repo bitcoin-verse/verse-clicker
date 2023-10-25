@@ -7,6 +7,7 @@ export const StyledHeader = styled.header`
   width: 100%;
   row-gap: 1rem;
   align-items: center;
+  z-index: 1;
   max-width: 80rem;
   margin: 0 auto;
   padding: 1rem 1rem 0;
