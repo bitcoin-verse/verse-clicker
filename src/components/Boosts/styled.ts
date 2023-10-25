@@ -5,7 +5,10 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 1rem 1rem 2rem;
-  align-items: center;
+
+  @media (min-width: 768px) {
+    align-items: center;
+  }
 `;
 
 export const Content = styled.div`
@@ -14,10 +17,19 @@ export const Content = styled.div`
 `;
 
 export const BoostTiles = styled.div`
-  display: grid;
-  margin-top: 1rem;
+  display: flex;
   gap: 1rem;
-  grid-template-columns: 1fr 1fr;
+  max-width: calc(100vw);
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 1rem 0;
+
+  @media (min-width: 768px) {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    overflow: visible;
+  }
 `;
 
 export const BoostButton = styled.button<{ $hasBonus?: boolean }>`
@@ -37,12 +49,16 @@ export const BoostButton = styled.button<{ $hasBonus?: boolean }>`
   box-sizing: border-box;
   z-index: 0;
   position: relative;
-  min-width: 10.875rem;
+  min-width: fit-content;
   min-height: 3.188rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
   text-align: left;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    min-width: 10.875rem;
+  }
 
   &::before {
     position: absolute;
