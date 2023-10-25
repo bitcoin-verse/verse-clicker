@@ -9,6 +9,7 @@ import {
   Header,
   LeaderboardWrapper,
   MoonImage,
+  StarWrapper,
   YouBadge,
 } from "./styled";
 
@@ -42,9 +43,9 @@ const Leaderboard = () => {
             </div>
             <div>
               {formatNumber(Number(item.stats.Earned))}
-              <div>
+              <StarWrapper>
                 <Star size="0.875rem" />
-              </div>
+              </StarWrapper>
             </div>
           </Body>
         );

@@ -53,6 +53,12 @@ export const Header = styled.div`
   }
 `;
 
+export const StarWrapper = styled.div`
+  & > svg {
+    filter: drop-shadow(0px 2px 10px #ffb800);
+  }
+`;
+
 export const Body = styled.div`
   display: grid;
   width: 100%;
