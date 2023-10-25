@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Tabs, { TabButton } from "../Tabs";
+import Tabs, { TabButton } from "../../Tabs";
 import Buildings from "../../Icons/Buildings";
 import Upgrades from "../../Icons/Upgrades";
 
