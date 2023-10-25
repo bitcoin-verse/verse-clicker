@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import wcLogo from "../../assets/wc-logo.png";
 import styled from "styled-components";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 
@@ -7,6 +6,8 @@ import { useAccount } from "wagmi";
 import { Button as PrimaryButton } from "../Button";
 
 import truncateEthAddress from "../../helpers/truncateEthAddress";
+import wcLogo from "../../assets/wc-logo.png";
+import mmLogo from "../../assets/mm-logo.png";
 
 const ConnectWrapper = styled.div`
   justify-self: flex-end;
@@ -21,7 +22,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const ButtonContent = styled.div`
+const ButtonContent = styled.div<{ $logo: string }>`
   background: linear-gradient(180deg, #425472 0%, #313e57 100%);
 
   border-radius: 2.25rem;
@@ -34,14 +35,18 @@ const ButtonContent = styled.div`
 
   &::after {
     content: "";
-    background-color: #3b99fc;
-    background-image: url(${wcLogo});
+
+    background-image: url(${({ $logo }) => $logo});
     background-position: center;
-    background-size: 80%;
+    background-size: 100%;
     background-repeat: no-repeat;
     aspect-ratio: 1/1;
     height: 100%;
     border-radius: 50%;
+  }
+
+  @media (min-width: 768px) {
+    background: linear-gradient(180deg, #0ebef0 0%, #0085ff 100%);
   }
 `;
 
@@ -59,9 +64,20 @@ const AddressHolder = styled.div`
   }
 `;
 
+const getConnectorLogo = (id?: string) => {
+  switch (id) {
+    case "injected":
+      return mmLogo;
+
+    case "walletConnect":
+    default:
+      return wcLogo;
+  }
+};
+
 const ConnectButton: FC = () => {
   const { open } = useWeb3Modal();
-  const { address, isConnected } = useAccount();
+  const { address, isConnected, connector } = useAccount();
 
   if (!isConnected)
     return (
@@ -85,7 +101,7 @@ const ConnectButton: FC = () => {
           open();
         }}
       >
-        <ButtonContent>
+        <ButtonContent $logo={getConnectorLogo(connector?.id)}>
           <AddressHolder>{truncateEthAddress(address || "")}</AddressHolder>
         </ButtonContent>
       </Button>
