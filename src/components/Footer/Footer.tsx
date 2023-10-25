@@ -28,7 +28,9 @@ const Footer: FC = () => {
     <Wrapper>
       <Content>
         <LogoLinkWrapper>
-          <Logo src={bcomLogo} alt="Bitcoin.com" />
+          <a href="https://www.bitcoin.com" target="_blank" rel="noreferrer">
+            <Logo src={bcomLogo} alt="Bitcoin.com" />
+          </a>
           <LinksWrapper>
             {links.map((link) => (
               <Link
