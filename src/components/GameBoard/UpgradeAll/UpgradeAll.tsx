@@ -58,7 +58,7 @@ const UpgradeAll: FC<Props> = ({ mobileVersion = false }) => {
         onClick={buyAllUpgrades}
         disabled={availableUpgrades.length === 0}
       >
-        Buy all
+        Buy all available
       </Button>
     </Wrapper>
   );

@@ -24,21 +24,25 @@ export const Wrapper = styled.div<{ $isOpen: boolean }>`
         `}
 
   @media (min-width: 768px) {
+    height: unset;
+
+    position: relative;
+    background: transparent;
+
     display: flex;
     gap: 1rem;
     max-width: calc(100vw);
     overflow-x: auto;
     overflow-y: visible;
     padding: 1rem;
-
     padding: 0;
-    padding-right: 1rem;
 
     gap: 0.5rem;
     flex-direction: column;
 
     padding-bottom: unset;
     padding-left: unset;
+    padding-right: 1rem;
     max-width: unset;
     overflow: visible;
   }
