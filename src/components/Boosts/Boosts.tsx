@@ -28,7 +28,7 @@ const boostList = (unlocked: boolean) => [
   },
   {
     id: "burn",
-    unlocked: unlocked,
+    unlocked: true,
     label: "Burn",
   },
   {
@@ -81,10 +81,8 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
               key={boost.id}
               $unlocked={boost.unlocked}
               onClick={() => {
-                if (!boost.unlocked) {
-                  setContent(boost.id);
-                  showModal();
-                }
+                setContent(boost.id);
+                showModal();
               }}
             >
               <Label $unlocked={boost.unlocked}>
