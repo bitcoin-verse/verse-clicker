@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  z-index: 50;
 
   @media (min-width: 768px) {
     left: 0;
