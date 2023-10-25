@@ -130,9 +130,7 @@ const Burn: FC = () => {
     <ModalWrapper>
       <H3>Burn VERSE to boost your point production</H3>
       <Container>
-        <Label $secondary $size="0.75">
-          Boost duration
-        </Label>
+        <Label $secondary>Boost duration</Label>
         <Tabs
           center
           tabs={buttonsList.map((button, i) => (
@@ -146,15 +144,13 @@ const Burn: FC = () => {
             </TabButton>
           ))}
         />
-        <Label $secondary $size="0.75">
-          Quantity required
-        </Label>
+        <Label $secondary>Quantity required</Label>
         <Price>
           <Icon src={verseIcon} />
           {buttonsList.find((_, i) => i === selectedTab)?.value} VERSE
         </Price>
         <Divider />
-        <Label $secondary $size="0.75">
+        <Label $secondary>
           Available:{" "}
           {balanceData?.formatted
             ? Number(balanceData.formatted).toLocaleString()
