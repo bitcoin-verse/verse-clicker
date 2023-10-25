@@ -4,7 +4,7 @@ interface Props {
   size?: number | string;
 }
 
-const Info: FC<Props> = ({ size = 12 }) => {
+const Map: FC<Props> = ({ size = 12 }) => {
   return (
     <svg
       width={size}
@@ -21,4 +21,4 @@ const Info: FC<Props> = ({ size = 12 }) => {
   );
 };
 
-export default Info;
+export default Map;
