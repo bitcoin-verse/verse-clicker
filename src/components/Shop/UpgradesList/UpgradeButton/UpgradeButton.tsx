@@ -1,12 +1,12 @@
 import React, { FC, useCallback } from "react";
-import { Title } from "../../Title";
-import { Text } from "../../Text";
+import { Title } from "../../../Title";
+import { Text } from "../../../Text";
 import { Button, Cost } from "./styled";
-import { useTrackedState } from "../../../context/store";
-import Upgrade from "../../../classes/Upgrade";
-import { formatNumber } from "../../../helpers/formatNumber";
-import Star from "../../Icons/Star";
-import { useSocketCtx } from "../../../context/SocketContext";
+import { useTrackedState } from "../../../../context/store";
+import Upgrade from "../../../../classes/Upgrade";
+import { formatNumber } from "../../../../helpers/formatNumber";
+import Star from "../../../Icons/Star";
+import { useSocketCtx } from "../../../../context/SocketContext";
 
 export type ModifiedUpgrade = Upgrade & {
   bIndex: number;

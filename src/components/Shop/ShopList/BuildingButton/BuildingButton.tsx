@@ -1,18 +1,19 @@
 import React, { FC, useCallback, useMemo } from "react";
-import { formatNumber } from "../../../helpers/formatNumber";
+import { formatNumber } from "../../../../helpers/formatNumber";
 import { Amount, Button, Cost, Image } from "./styled";
-import { useTrackedState } from "../../../context/store";
-import { Title } from "../../Title";
-import { Text } from "../../Text";
-import Star from "../../Icons/Star";
-import Building from "../../../classes/Building";
-import { useProduction } from "../../../hooks/useProduction";
-import placeholder from "../../../assets/placeholder.png";
-import { useSocketCtx } from "../../../context/SocketContext";
+import { useTrackedState } from "../../../../context/store";
+import { Title } from "../../../Title";
+import { Text } from "../../../Text";
+import Star from "../../../Icons/Star";
+import Building from "../../../../classes/Building";
+import { useProduction } from "../../../../hooks/useProduction";
+import { useSocketCtx } from "../../../../context/SocketContext";
 import {
   getBuildingsCost,
   getMaxBuilding,
-} from "../../../helpers/buildingHelpers";
+} from "../../../../helpers/buildingHelpers";
+
+import placeholder from "../../../../assets/placeholder.png";
 
 interface Props {
   building: Building;

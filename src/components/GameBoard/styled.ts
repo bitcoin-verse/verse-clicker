@@ -47,5 +47,11 @@ export const MainSection = styled.div`
 export const TabsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
   width: 100%;
+
+  @media (min-width: 768px) {
+    padding-right: 1rem;
+  }
 `;

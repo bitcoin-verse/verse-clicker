@@ -2,14 +2,12 @@ import React, { FC, useState } from "react";
 
 import PointsDisplay from "./PointsDisplay/PointsDisplay";
 import Cookie from "./Cookie";
-import Tabs, { TabButton } from "./Tabs";
 import Advertisement from "../Advertisement";
 import Boosts from "../Boosts/Boosts";
 import Stats from "./Stats/Stats";
 
 import ShopList from "../Shop/ShopList";
 import UpgradesList from "../Shop/UpgradesList";
-import PurchaseAmount from "./PurchaseAmount";
 import {
   MainSection,
   ShopSection,
@@ -18,9 +16,13 @@ import {
   TabsWrapper,
 } from "./styled";
 import UpgradeAll from "./UpgradeAll";
+import BuildingUpgradeTabs from "./BuildingUpgradeTabs";
+import PurchaseAmount from "./PurchaseAmount";
 
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
+
+  const [toggleOpen, setToggleOpen] = useState(false);
 
   return (
     <StyledGameBoard>
@@ -32,31 +34,25 @@ const GameBoard: FC = () => {
       </MainSection>
       <ShopSection>
         <TabsWrapper>
-          <Tabs
-            tabs={[
-              <TabButton
-                key="buildings"
-                $isSelected={selectedTab === 0}
-                type="button"
-                onClick={() => setSelectedTab(0)}
-              >
-                Buildings
-              </TabButton>,
-              <TabButton
-                key="upgrades"
-                $isSelected={selectedTab === 1}
-                type="button"
-                onClick={() => setSelectedTab(1)}
-              >
-                Upgrades
-              </TabButton>,
-            ]}
+          <BuildingUpgradeTabs
+            setSelectedTab={(tabId) => {
+              setSelectedTab(tabId);
+              setToggleOpen(true);
+            }}
+            selectedTab={selectedTab}
           />
           {selectedTab === 0 ? <PurchaseAmount /> : <UpgradeAll />}
         </TabsWrapper>
 
         <TabContent>
-          {selectedTab === 0 ? <ShopList /> : <UpgradesList />}
+          {selectedTab === 0 ? (
+            <ShopList toggleOpen={toggleOpen} setToggleOpen={setToggleOpen} />
+          ) : (
+            <UpgradesList
+              toggleOpen={toggleOpen}
+              setToggleOpen={setToggleOpen}
+            />
+          )}
         </TabContent>
         <Advertisement />
       </ShopSection>
