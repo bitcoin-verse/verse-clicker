@@ -54,7 +54,8 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
         buyBuilding(amount);
       }}
     >
-      <Amount>{building.amount}</Amount>
+      <Amount>Owned: {building.amount}</Amount>
+
       <Image
         src={
           building.locked

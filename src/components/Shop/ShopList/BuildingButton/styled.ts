@@ -16,7 +16,7 @@ export const Button = styled.button<{
   column-gap: 0.5rem;
 
   grid-template-columns: 4rem auto auto;
-  grid-template-areas: "img name cost" "img desc desc" "img info .";
+  grid-template-areas: "img name cost" "img desc desc" "img info amount";
   text-align: left;
 
   &:disabled {
@@ -80,21 +80,23 @@ export const Image = styled.img`
 `;
 
 export const Amount = styled.div`
-  position: absolute;
-
   display: flex;
+  grid-area: amount;
 
   justify-content: center;
   align-items: center;
-  height: 1.375rem;
-  width: 1.375rem;
-  left: 3.3125rem;
-  top: -0.6875rem;
-  border-radius: 50%;
-  border: 3px solid #030c14;
-  background: white;
-  color: #163756;
 
+  padding: 0.25rem 0.5rem;
+
+  right: 0;
+  bottom: 0;
+  width: max-content;
+  justify-self: flex-end;
   font-size: 0.75rem;
   font-weight: 600;
+
+  color: #c5cedb;
+  background: #1a2231;
+  border-top-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.75rem;
 `;
