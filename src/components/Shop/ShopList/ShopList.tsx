@@ -45,7 +45,7 @@ const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
       </ModalTitle>
 
       <PurchaseButtons>
-        <PurchaseAmount show />
+        <PurchaseAmount mobileVersion />
       </PurchaseButtons>
       <BuildingsWrapper>
         {buildings.map((building, i) => {

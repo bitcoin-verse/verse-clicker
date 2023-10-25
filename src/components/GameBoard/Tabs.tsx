@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from "react";
 import styled, { css } from "styled-components";
 
-const TabsWrapper = styled.div`
+const TabsWrapper = styled.div<{ $mobileVersion?: boolean }>`
   width: 100%;
   display: grid;
   grid-auto-flow: column;
@@ -11,7 +11,7 @@ const TabsWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
 
-  @media (min-width: 768px) {
+  @media (min-width: ${({ $mobileVersion }) => ($mobileVersion ? 0 : 768)}px) {
     background: linear-gradient(180deg, #425472 0%, #313e57 100%);
     padding: 0.25rem;
     border-radius: 2.25rem;
@@ -21,7 +21,10 @@ const TabsWrapper = styled.div`
   }
 `;
 
-export const TabButton = styled.button<{ $isSelected: boolean }>`
+export const TabButton = styled.button<{
+  $isSelected: boolean;
+  $mobileVersion?: boolean;
+}>`
   outline: none;
   border: none;
 
@@ -46,7 +49,7 @@ export const TabButton = styled.button<{ $isSelected: boolean }>`
     color: #586f91;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: ${({ $mobileVersion }) => ($mobileVersion ? 0 : 768)}px) {
     padding: 0.5rem;
     border-radius: 2.25rem;
 
@@ -73,10 +76,15 @@ export const TabButton = styled.button<{ $isSelected: boolean }>`
 
 interface Props {
   tabs: ReactElement[];
+  mobileVersion?: boolean;
 }
 
-const Tabs: FC<Props> = ({ tabs }) => {
-  return <TabsWrapper>{tabs.map((t) => t)}</TabsWrapper>;
+const Tabs: FC<Props> = ({ tabs, mobileVersion }) => {
+  return (
+    <TabsWrapper $mobileVersion={mobileVersion}>
+      {tabs.map((t) => t)}
+    </TabsWrapper>
+  );
 };
 
 export default Tabs;

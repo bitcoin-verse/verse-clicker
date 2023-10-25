@@ -11,7 +11,7 @@ export const Wrapper = styled.div<{ $isOpen: boolean }>`
   width: 100%;
   height: 100%;
 
-  transition: bottom 0.5s ease-in-out;
+  transition: bottom 0.25s ease-in-out;
 
   ${({ $isOpen }) =>
     $isOpen
@@ -77,7 +77,7 @@ export const CloseButton = styled.button`
 export const PurchaseButtons = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding: 0.75rem 0;
+  padding: 0.75rem;
 
   @media (min-width: 768px) {
     display: none;
@@ -91,6 +91,8 @@ export const BuildingsWrapper = styled.div`
   padding: 0.75rem;
   overflow: scroll;
   height: 100%;
+  border-bottom: 1px solid #1a2231;
+
 
   @media (min-width: 768px) {
     padding: 0;

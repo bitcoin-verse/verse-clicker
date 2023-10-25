@@ -4,10 +4,10 @@ import { useDispatch, useTrackedState } from "../../../context/store";
 import { Wrapper } from "./styled";
 
 interface Props {
-  show?: boolean;
+  mobileVersion?: boolean;
 }
 
-const PurchaseAmount: FC<Props> = ({ show = false }) => {
+const PurchaseAmount: FC<Props> = ({ mobileVersion = false }) => {
   const { purchaseAmount } = useTrackedState();
   const dispatch = useDispatch();
 
@@ -16,12 +16,14 @@ const PurchaseAmount: FC<Props> = ({ show = false }) => {
   };
 
   return (
-    <Wrapper $show={show}>
+    <Wrapper $show={mobileVersion}>
       <Tabs
+        mobileVersion={mobileVersion}
         tabs={[
           <TabButton
             key="1x"
             $isSelected={purchaseAmount === 1}
+            $mobileVersion={mobileVersion}
             type="button"
             onClick={() => setPurchaseAmount(1)}
           >
@@ -30,6 +32,7 @@ const PurchaseAmount: FC<Props> = ({ show = false }) => {
           <TabButton
             key="10x"
             $isSelected={purchaseAmount === 10}
+            $mobileVersion={mobileVersion}
             type="button"
             onClick={() => setPurchaseAmount(10)}
           >
@@ -38,6 +41,7 @@ const PurchaseAmount: FC<Props> = ({ show = false }) => {
           <TabButton
             key="100x"
             $isSelected={purchaseAmount === 100}
+            $mobileVersion={mobileVersion}
             type="button"
             onClick={() => setPurchaseAmount(100)}
           >
@@ -46,6 +50,7 @@ const PurchaseAmount: FC<Props> = ({ show = false }) => {
           <TabButton
             key="max"
             $isSelected={purchaseAmount === "max"}
+            $mobileVersion={mobileVersion}
             type="button"
             onClick={() => setPurchaseAmount("max")}
           >
