@@ -61,6 +61,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
             ? placeholder
             : `${process.env.PUBLIC_URL}/buildings/${building.image}`
         }
+        style={{ height: "100%" }}
         alt={building.name}
       />
 
