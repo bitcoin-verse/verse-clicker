@@ -2,26 +2,22 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   position: fixed;
-  right: 0;
-  top: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  z-index: 50;
-
-  @media (min-width: 768px) {
-    left: 0;
-  }
-`;
-
-export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 0.75rem;
   gap: 0.5rem;
+  z-index: 50;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  right: 0;
 
   @media (min-width: 768px) {
+    left: 0;
+    right: unset;
     padding: 1.5rem;
   }
 `;
