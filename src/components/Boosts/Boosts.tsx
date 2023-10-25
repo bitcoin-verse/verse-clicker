@@ -42,7 +42,7 @@ const getModalContent = (content?: string) => {
   switch (content) {
     case "burn":
       return {
-        title: "Burn to earn (BETA)",
+        title: "Burn",
         component: <Burn />,
       };
     case "hold":
