@@ -108,3 +108,10 @@ export const Label = styled.div<{ $unlocked: boolean }>`
 export const Boost = styled.div<{ $unlocked: boolean }>`
   color: ${({ $unlocked }) => ($unlocked ? colors.white : colors.shade80)};
 `;
+
+export const ModalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+`;
