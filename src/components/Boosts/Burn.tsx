@@ -46,6 +46,9 @@ const Burn: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const selectedBurn =
     burnList.find((_, i) => i === selectedTab) ?? burnList[0];
+  const insufficientVerse = balanceData
+    ? selectedBurn.value > balanceData.value
+    : true;
 
   useEffect(() => {
     console.log(readData, error);
@@ -111,7 +114,7 @@ const Burn: FC = () => {
         <>
           <H3>Burn VERSE to boost your point production</H3>
           <Container>
-            <Label $secondary>Boost duration</Label>
+            <Label $color="secondary">Boost duration</Label>
             <Tabs
               center
               tabs={burnList.map((button, i) => (
@@ -125,13 +128,15 @@ const Burn: FC = () => {
                 </TabButton>
               ))}
             />
-            <Label $secondary>Quantity required</Label>
+            <Label $color="secondary">Quantity required</Label>
             <Price>
               <Icon src={verseIcon} />
-              {selectedBurn?.value} VERSE
+              <Label $color={insufficientVerse ? "warning" : undefined}>
+                {selectedBurn?.value} VERSE
+              </Label>
             </Price>
             <Divider />
-            <Label $secondary>
+            <Label $color="secondary">
               Available:{" "}
               {balanceData?.formatted
                 ? Number(balanceData.formatted).toLocaleString()
@@ -139,7 +144,10 @@ const Burn: FC = () => {
               VERSE
             </Label>
           </Container>
-          <StyledButton onClick={() => handleBurn(selectedBurn?.value)}>
+          <StyledButton
+            onClick={() => handleBurn(selectedBurn?.value)}
+            disabled={insufficientVerse}
+          >
             Burn VERSE
           </StyledButton>
         </>
