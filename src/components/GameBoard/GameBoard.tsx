@@ -48,7 +48,10 @@ const GameBoard: FC = () => {
           {selectedTab === 0 ? (
             <ShopList toggleOpen={toggleOpen} setToggleOpen={setToggleOpen} />
           ) : (
-            <UpgradesList />
+            <UpgradesList
+              toggleOpen={toggleOpen}
+              setToggleOpen={setToggleOpen}
+            />
           )}
         </TabContent>
         <Advertisement />

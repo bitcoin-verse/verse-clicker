@@ -1,43 +1,26 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-import useUpgradesList from "../../../hooks/useUpgradesList";
+import React, { FC, useEffect, useMemo, useState } from "react";
 import { useTrackedState } from "../../../context/store";
 import UpgradeButton, { ModifiedUpgrade } from "./UpgradeButton";
+import { NextUpgrade, Wrapper } from "./styled";
+import useUpgradesList from "../../../hooks/useUpgradesList";
 
-const Wrapper = styled.div`
-  display: flex;
-  gap: 1rem;
-  max-width: calc(100vw);
-  overflow-x: auto;
-  overflow-y: visible;
-  padding: 1rem;
-  width: 100%;
+interface Props {
+  toggleOpen: boolean;
+  setToggleOpen: (open: boolean) => void;
+}
 
-  @media (min-width: 768px) {
-    padding: 0;
-    padding-right: 1rem;
-
-    gap: 0.5rem;
-    flex-direction: column;
-
-    padding-bottom: unset;
-    padding-left: unset;
-    max-width: unset;
-    overflow: visible;
-  }
-`;
-
-const NextUpgrade = styled.div`
-  font-size: 0.75rem;
-  font-weight: 400;
-  padding: 0 1.25rem;
-  text-align: center;
-`;
-
-interface Props {}
-
-const UpgradesList: FC<Props> = () => {
+const UpgradesList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
   const upgrades = useUpgradesList();
+  const { buildings } = useTrackedState();
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (toggleOpen) {
+      setIsOpen(true);
+      setToggleOpen(false);
+    }
+  }, [toggleOpen]);
 
   return (
     <Wrapper>
