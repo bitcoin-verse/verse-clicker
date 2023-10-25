@@ -1,5 +1,5 @@
 import React from "react";
-import { Content, Wrapper } from "./styled";
+import { Content, SidebarButton, Wrapper } from "./styled";
 import Trophy from "../Icons/Trophy";
 import Info from "../Icons/Info";
 import Gear from "../Icons/Gear";
@@ -9,18 +9,18 @@ const Sidebar = () => {
   return (
     <Wrapper>
       <Content>
-        <div>
-          <Trophy />
-        </div>
-        <div>
-          <Info />
-        </div>
-        <div>
-          <Map />
-        </div>
-        <div>
-          <Gear />
-        </div>
+        <SidebarButton>
+          <Trophy size="1rem" />
+        </SidebarButton>
+        <SidebarButton>
+          <Info size="1rem" />
+        </SidebarButton>
+        <SidebarButton>
+          <Map size="1rem" />
+        </SidebarButton>
+        <SidebarButton>
+          <Gear size="1rem" />
+        </SidebarButton>
       </Content>
     </Wrapper>
   );
