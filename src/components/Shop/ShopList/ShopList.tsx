@@ -5,6 +5,7 @@ import BuildingButton from "./BuildingButton";
 import {
   BuildingsWrapper,
   CloseButton,
+  CookiesDisplay,
   ModalTitle,
   PurchaseButtons,
   Wrapper,
@@ -14,6 +15,8 @@ import Cross from "../../Icons/Cross";
 
 import { H2 } from "../../H2";
 import PurchaseAmount from "../../GameBoard/PurchaseAmount";
+import Star from "../../Icons/Star";
+import { formatNumber } from "../../../helpers/formatNumber";
 
 interface Props {
   toggleOpen: boolean;
@@ -21,7 +24,7 @@ interface Props {
 }
 
 const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
-  const { buildings } = useTrackedState();
+  const { buildings, player } = useTrackedState();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -53,7 +56,9 @@ const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
           );
         })}
       </BuildingsWrapper>
-      <div>COOKIEES</div>
+      <CookiesDisplay>
+        <Star size="1.5rem" /> {formatNumber(player.cookies)}
+      </CookiesDisplay>
     </Wrapper>
   );
 };

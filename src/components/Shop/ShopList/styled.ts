@@ -5,20 +5,22 @@ export const Wrapper = styled.div<{ $isOpen: boolean }>`
   background: black;
   display: flex;
   flex-direction: column;
-  top: 0;
+  background: black;
+
   left: 0;
   width: 100%;
   height: 100%;
 
+  transition: bottom 0.5s ease-in-out;
+
   ${({ $isOpen }) =>
     $isOpen
       ? css`
-          background: black;
           z-index: 88;
+          bottom: 0;
         `
       : css`
-          transform: scaleY(0);
-          height: 0;
+          bottom: -100%;
         `}
 
   @media (min-width: 768px) {
@@ -85,8 +87,31 @@ export const PurchaseButtons = styled.div`
 export const BuildingsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
   padding: 0.75rem;
   overflow: scroll;
   height: 100%;
+
+  @media (min-width: 768px) {
+    padding: 0;
+    overflow: visible;
+  }
+`;
+
+export const CookiesDisplay = styled.div`
+  background: #0f518f;
+  border-radius: 6.25rem;
+  font-family: monospace;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  display: flex;
+  margin: 1.5rem auto;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
