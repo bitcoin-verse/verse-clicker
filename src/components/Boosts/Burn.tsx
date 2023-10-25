@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { formatEther, parseEther } from "viem";
 
 import testVerseABI from "../../contracts/verseGoerli";
-import BurnButtons from "./BurnButtons";
 import { formatNumber } from "../../helpers/formatNumber";
 import { useSocketCtx } from "../../context/SocketContext";
 import useVerseBalance from "../../hooks/useVerseBalance";
@@ -14,7 +13,6 @@ import { Container } from "../Container";
 import { Label } from "../Label";
 
 import verseIcon from "../../assets/verse-icon.png";
-import { Button } from "../Button";
 import Tabs, { TabButton } from "../Tabs";
 
 const ButtonContainer = styled.div`
@@ -42,26 +40,7 @@ const TransactionStatus = styled.div`
   align-items: center;
 `;
 
-const RetryButton = styled.button`
-  padding: 1rem;
-  font-weight: 600;
-  outline: none;
-
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-
-  border: none;
-  border-radius: 1rem;
-  background: #163756;
-  color: white;
-`;
-
-const buttonsList = [
+const burnList = [
   { title: "1 hour", value: 15000, hours: 1 },
   { title: "12 hour", value: 150000, hours: 12 },
   { title: "1 day", value: 280000, hours: 24 },
@@ -90,6 +69,8 @@ const Burn: FC = () => {
   }>();
 
   const [selectedTab, setSelectedTab] = useState(0);
+  const selectedBurn =
+    burnList.find((_, i) => i === selectedTab) ?? burnList[0];
 
   useEffect(() => {
     console.log(readData, error);
@@ -133,7 +114,7 @@ const Burn: FC = () => {
         <Label $secondary>Boost duration</Label>
         <Tabs
           center
-          tabs={buttonsList.map((button, i) => (
+          tabs={burnList.map((button, i) => (
             <TabButton
               key="burns"
               $isSelected={selectedTab === i}
@@ -147,7 +128,7 @@ const Burn: FC = () => {
         <Label $secondary>Quantity required</Label>
         <Price>
           <Icon src={verseIcon} />
-          {buttonsList.find((_, i) => i === selectedTab)?.value} VERSE
+          {selectedBurn?.value} VERSE
         </Price>
         <Divider />
         <Label $secondary>
@@ -158,7 +139,9 @@ const Burn: FC = () => {
           VERSE
         </Label>
       </Container>
-      <StyledButton>Burn VERSE</StyledButton>
+      <StyledButton onClick={() => handleBurn(selectedBurn?.value)}>
+        Burn VERSE
+      </StyledButton>
       <ButtonContainer>
         {showLoading && (
           <TransactionStatus>
@@ -179,27 +162,12 @@ const Burn: FC = () => {
             {txWaitSuccess && (
               <>
                 <div>
-                  Transaction confirmed! {formatNumber(newCookies)} cookies
-                  added
+                  Transaction confirmed! {formatNumber(newCookies)} points added
                 </div>
-
-                <RetryButton
-                  onClick={() => {
-                    setShowLoading(false);
-                  }}
-                >
-                  Burn again!
-                </RetryButton>
               </>
             )}
           </TransactionStatus>
         )}
-        <BurnButtons
-          isLoading={isLoading}
-          handleBurn={handleBurn}
-          verseBalance={balanceData?.value || BigInt(0)}
-          buttons={buttonsList}
-        />
       </ButtonContainer>
     </ModalWrapper>
   );
