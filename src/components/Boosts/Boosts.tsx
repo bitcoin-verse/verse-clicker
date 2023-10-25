@@ -38,7 +38,7 @@ const boostList = (unlocked: boolean) => [
   },
 ];
 
-const getModalContent = (content?: string, verseHolder?: boolean) => {
+const getModalContent = (content?: string) => {
   switch (content) {
     case "burn":
       return {
@@ -47,7 +47,7 @@ const getModalContent = (content?: string, verseHolder?: boolean) => {
       };
     case "hold":
       return {
-        title: verseHolder ? "You hold verse." : "Get 10x CPC multiplier",
+        title: "Hold",
         component: <Hold />,
       };
     case "farm":
@@ -65,7 +65,7 @@ const Boosts: FC = () => {
   const { modalRef, showModal } = useModal();
   const { player } = useTrackedState();
 
-  const modalContent = getModalContent(content, player.verseHolder);
+  const modalContent = getModalContent(content);
 
   return (
     <Wrapper>
@@ -75,9 +75,12 @@ const Boosts: FC = () => {
           {boostList(player.verseHolder).map((boost) => (
             <BoostButton
               key={boost.id}
+              $unlocked={boost.unlocked}
               onClick={() => {
-                setContent(boost.id);
-                showModal();
+                if (!boost.unlocked) {
+                  setContent(boost.id);
+                  showModal();
+                }
               }}
             >
               <Label $unlocked={boost.unlocked}>

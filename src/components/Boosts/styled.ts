@@ -32,7 +32,7 @@ export const BoostTiles = styled.div`
   }
 `;
 
-export const BoostButton = styled.button<{ $hasBonus?: boolean }>`
+export const BoostButton = styled.button<{ $unlocked?: boolean }>`
   background: linear-gradient(0deg, #0f1823, #0f1823),
     radial-gradient(
       117.51% 1182.96% at 50% 50%,
@@ -54,7 +54,7 @@ export const BoostButton = styled.button<{ $hasBonus?: boolean }>`
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
   text-align: left;
-  cursor: pointer;
+  cursor: ${({ $unlocked }) => ($unlocked ? "default" : "pointer")};
 
   @media (min-width: 768px) {
     min-width: 10.875rem;

@@ -1,24 +1,34 @@
 import React, { FC } from "react";
-import { useTrackedState } from "../../context/store";
+
+import { Chip } from "../Chip";
+import { H3 } from "../H3";
+import { LinkButton } from "../LinkButton";
+import { Label } from "../Label";
+
+import { ModalWrapper } from "./styled";
 
 const Hold: FC = () => {
-  const { player } = useTrackedState();
-
-  if (player.verseHolder)
-    return <div>10x CPC multiplier applied to all your clicks</div>;
-
   return (
-    <div>
-      Get 10 times the amount of cookies per click just by holding VERSE.{" "}
-      <a href="https://buy.bitcoin.com/verse" target="_blank" rel="noreferrer">
-        Buy verse
-      </a>{" "}
-      or{" "}
-      <a href="https://verse.bitcoin.com" target="_blank" rel="noreferrer">
-        Swap to verse
-      </a>{" "}
-      NOW!
-    </div>
+    <ModalWrapper>
+      <Chip>10x boost</Chip>
+      <H3>You&#39;re currently not holding any VERSE</H3>
+      <Label $secondary>Buy or Swap VERSE to boost your point production</Label>
+      <LinkButton
+        href="https://buy.bitcoin.com/verse"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Buy VERSE
+      </LinkButton>
+      <LinkButton
+        $design="secondary"
+        href="https://verse.bitcoin.com"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Swap VERSE
+      </LinkButton>
+    </ModalWrapper>
   );
 };
 
