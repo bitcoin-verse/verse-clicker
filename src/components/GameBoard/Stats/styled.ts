@@ -34,6 +34,7 @@ export const Divider = styled.div`
 `;
 
 export const Subtitle = styled.div`
+  margin-top: 0.25rem;
   font-size: 0.875rem;
   font-family: monospace;
 `;
