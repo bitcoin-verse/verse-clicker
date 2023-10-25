@@ -3,8 +3,8 @@ import { SidebarButton, Wrapper } from "./styled";
 import Trophy from "../Icons/Trophy";
 import Info from "../Icons/Info";
 import Gear from "../Icons/Gear";
-import Map from "../Icons/Map";
-import Leaderboard from "../Leaderboard";
+// import Map from "../Icons/Map";
+import Leaderboard from "./Leaderboard";
 import Settings from "./Settings";
 import Modal, { useModal } from "../Modal";
 

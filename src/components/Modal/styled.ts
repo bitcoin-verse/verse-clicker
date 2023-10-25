@@ -43,7 +43,7 @@ export const ModalContent = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.5rem 2rem 2rem;
+  padding: 1.5rem;
 `;
 
 export const TitleText = styled.h2`
