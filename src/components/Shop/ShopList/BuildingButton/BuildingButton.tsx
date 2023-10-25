@@ -54,13 +54,15 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
         buyBuilding(amount);
       }}
     >
-      <Amount>{building.amount}</Amount>
+      <Amount>Owned: {building.amount}</Amount>
+
       <Image
         src={
           building.locked
             ? placeholder
             : `${process.env.PUBLIC_URL}/buildings/${building.image}`
         }
+        style={{ height: "100%" }}
         alt={building.name}
       />
 

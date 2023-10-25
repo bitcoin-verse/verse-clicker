@@ -34,7 +34,7 @@ export const Wrapper = styled.div<{ $isOpen: boolean }>`
     max-width: calc(100vw);
     overflow-x: auto;
     overflow-y: visible;
-    padding: 1rem;
+
     padding: 0;
 
     gap: 0.5rem;
@@ -66,10 +66,38 @@ export const BuildingsWrapper = styled.div`
   overflow: scroll;
   height: 100%;
   border-bottom: 1px solid #1a2231;
+  position: relative;
 
   @media (min-width: 768px) {
     padding: 0;
-    overflow: visible;
+    padding-right: 0.25rem;
+    max-height: 44rem;
+    overflow-y: scroll;
+    overflow-x: visible;
     border-bottom: none;
+    padding-bottom: 2.5rem;
+
+    &::-webkit-scrollbar {
+      width: 0.25rem;
+      background-color: #000;
+      border-radius: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #313e57;
+      border-radius: 0.5rem;
+    }
+  }
+`;
+
+export const BottomShadow = styled.div`
+  @media (min-width: 768px) {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    height: 5rem;
+    left: 0;
+    width: calc(100% - 1rem);
+    background: linear-gradient(180deg, rgba(3, 12, 20, 0) 0%, #030c14 63.54%);
   }
 `;
