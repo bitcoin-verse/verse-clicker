@@ -68,7 +68,7 @@ const WelcomeModal = () => {
         <h1>Welcome Back!</h1>
         <DataWrapper>
           <Stats>
-            <Title>While you were away for</Title>
+            <Title>You were away for</Title>
             <Value>
               <Clock />
               {returnData && <H3>{formatSeconds(returnData.seconds)}</H3>}
