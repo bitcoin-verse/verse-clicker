@@ -2,6 +2,7 @@ import React, { FC, useCallback, useRef, useState } from "react";
 import styled from "styled-components";
 import { useAccount } from "wagmi";
 import { createRoot } from "react-dom/client";
+import useSound from "use-sound";
 
 import { useDispatch, useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
@@ -82,12 +83,13 @@ export const ButtonWrapper = styled.div`
 `;
 
 const Cookie: FC = () => {
+  const [play] = useSound(laserSfx);
   const { socket } = useSocketCtx();
   const dispatch = useDispatch();
   const { status } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
 
-  const { player } = useTrackedState();
+  const { player, settings } = useTrackedState();
   const [clickCount, setClickCount] = useState<number>();
 
   const [macroDetected, setMacroDetected] = useState(false);
@@ -162,7 +164,10 @@ const Cookie: FC = () => {
     handleCheatPrevention();
     socket.emit("click");
     animateCookieClick(e);
-    new Audio(laserSfx).play();
+
+    if (settings.sound) {
+      play();
+    }
   };
 
   return (
