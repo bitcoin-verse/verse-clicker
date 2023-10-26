@@ -62,8 +62,8 @@ const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
         </BuildingsWrapper>
         <BottomShadow />
         <CookiesDisplay />
+        <Advertisement />
       </Wrapper>
-      <Advertisement />
     </>
   );
 };
