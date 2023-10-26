@@ -2,19 +2,19 @@ import React, { FC, useEffect, useState } from "react";
 import { useChainId, useContractWrite, useWaitForTransaction } from "wagmi";
 import { formatEther, parseEther } from "viem";
 
-import testVerseABI from "../../contracts/verseGoerli";
-import { formatNumber } from "../../helpers/formatNumber";
-import { useSocketCtx } from "../../context/SocketContext";
-import useVerseBalance from "../../hooks/useVerseBalance";
-import { Divider, Icon, ModalWrapper, Price, StyledButton } from "./styled";
-import { H3 } from "../H3";
-import { Container } from "../Container";
-import { Label } from "../Label";
+import testVerseABI from "../../../contracts/verseGoerli";
+import { formatNumber } from "../../../helpers/formatNumber";
+import { useSocketCtx } from "../../../context/SocketContext";
+import useVerseBalance from "../../../hooks/useVerseBalance";
+import { Divider, Icon, ModalWrapper, Price, StyledButton } from "../styled";
+import { H3 } from "../../H3";
+import { Container } from "../../Container";
+import { Label } from "../../Label";
 
 import verseIcon from "../../assets/verse-icon.png";
-import Tabs, { TabButton } from "../Tabs";
-import { LinkButton } from "../LinkButton";
-import { GOERLI_BURN_ADDRESS } from "../../constants";
+import Tabs, { TabButton } from "../../Tabs";
+import { LinkButton } from "../../LinkButton";
+import { GOERLI_BURN_ADDRESS } from "../../../constants";
 
 const burnList = [
   { title: "1 hour", value: 15000, hours: 1 },

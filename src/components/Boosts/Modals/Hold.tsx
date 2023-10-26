@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 
-import { Chip } from "../Chip";
-import { H3 } from "../H3";
-import { LinkButton } from "../LinkButton";
-import { Label } from "../Label";
+import { Chip } from "../../Chip";
+import { H3 } from "../../H3";
+import { LinkButton } from "../../LinkButton";
+import { Label } from "../../Label";
 
-import { ModalWrapper } from "./styled";
-import { useTrackedState } from "../../context/store";
+import { ModalWrapper } from "../styled";
+import { useTrackedState } from "../../../context/store";
 
 const Hold: FC = () => {
   const { player } = useTrackedState();
