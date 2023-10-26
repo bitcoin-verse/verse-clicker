@@ -17,6 +17,7 @@ import {
 import UpgradeAll from "./UpgradeAll";
 import BuildingUpgradeTabs from "./BuildingUpgradeTabs";
 import PurchaseAmount from "./PurchaseAmount";
+import Advertisement from "../Advertisement";
 
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
