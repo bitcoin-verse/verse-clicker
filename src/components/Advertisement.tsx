@@ -56,6 +56,7 @@ const AdImage = styled.img`
   height: auto;
   max-width: 100%;
   margin-top: 0.5rem;
+  border-radius: 0.5rem;
 `;
 
 const Advertisement: FC = () => {
