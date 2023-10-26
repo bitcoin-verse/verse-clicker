@@ -15,6 +15,7 @@ import {
   SetPurchaseAmountAction,
   setPurchaseAmount,
 } from "./reducers/purchaseAmount";
+import { SetSettingsAction, setSettings } from "./reducers/settings";
 
 export type Action =
   | SetNetworkAction
@@ -25,6 +26,7 @@ export type Action =
   | SetReturnDataAction
   | SetErrorAction
   | SetErrorAction
+  | SetSettingsAction
   | SetPurchaseAmountAction
   | { type: "RESET_GAME" };
 
@@ -48,6 +50,8 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return setReturnData(state, action.payload);
     case "SET_PURCHASE_AMOUNT":
       return setPurchaseAmount(state, action.payload);
+    case "SET_SETTINGS":
+      return setSettings(state, action.payload);
     default:
       return state;
   }

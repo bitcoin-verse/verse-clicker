@@ -1,8 +1,6 @@
-import { Reducer } from "react";
+import { Dispatch, Reducer, useCallback, useEffect, useReducer } from "react";
 import { createContainer } from "react-tracked";
-import { useReducerAsync } from "use-reducer-async";
 import reducer, { Action } from "./reducer";
-import asyncActionHandlers, { AsyncAction } from "./asyncActionHandlers";
 import { Player } from "./reducers/player";
 
 import buildings from "../buildings";
@@ -10,6 +8,8 @@ import { Leaderboard } from "./reducers/leaderboard";
 import Building from "../classes/Building";
 import { NetworkName } from "./reducers/network";
 import { ReturnData } from "./reducers/returnData";
+
+const storageKey = "verse-clicker";
 
 export type State = {
   isConnected: boolean;
@@ -23,6 +23,9 @@ export type State = {
   network: NetworkName;
   error?: string;
   purchaseAmount: number | "max";
+  settings: {
+    sound: boolean;
+  };
 };
 
 export const initialState: State = {
@@ -43,14 +46,47 @@ export const initialState: State = {
   },
   network: "Ethereum",
   purchaseAmount: 1,
+  settings: { sound: true },
 };
 
-const useValue = () => {
-  return useReducerAsync<Reducer<State, Action>, AsyncAction>(
+const init = (): State => {
+  try {
+    const stored = window.localStorage.getItem(storageKey);
+    if (!stored) throw new Error("localstorage not found");
+
+    const persistedState = JSON.parse(stored);
+    // validate preloadedState if necessary
+
+    return { ...initialState, ...persistedState };
+  } catch (e) {
+    // ignore
+  }
+
+  return initialState;
+};
+
+const useValue = (): readonly [State, Dispatch<Action>] => {
+  const [state, dispatch] = useReducer<Reducer<State, Action>, State>(
     reducer,
     initialState,
-    asyncActionHandlers,
+    init,
   );
+
+  useEffect(() => {
+    const persistedState = { settings: state.settings };
+    window.localStorage.setItem(storageKey, JSON.stringify(persistedState));
+  }, [state]);
+
+  /* useEffect(() => {
+    console.log("state", state);
+  }, [state]); */
+
+  const dispatchWithLogging = useCallback((action: Action) => {
+    // console.log("action", action);
+    dispatch(action);
+  }, []);
+
+  return [state, dispatchWithLogging];
 };
 
 export const {
