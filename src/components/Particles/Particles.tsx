@@ -26,7 +26,7 @@ const Particles: FC = () => {
           position: "absolute",
           zIndex: -1,
         }}
-        options={createConfig({ particlesNumber: buildingsCount * 10 })}
+        options={createConfig({ particlesNumber: buildingsCount * 5 })}
         init={particlesInit}
       />
     </Suspense>

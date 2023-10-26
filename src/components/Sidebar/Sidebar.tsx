@@ -57,7 +57,12 @@ const Sidebar = () => {
         {/* <SidebarButton>
         <Map size="1rem" />
       </SidebarButton> */}
-        <SidebarButton>
+        <SidebarButton
+          onClick={() => {
+            setContent("settings");
+            showModal();
+          }}
+        >
           <Gear size="1rem" />
         </SidebarButton>
       </Wrapper>

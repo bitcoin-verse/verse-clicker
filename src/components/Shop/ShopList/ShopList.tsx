@@ -21,7 +21,6 @@ interface Props {
 
 const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
   const { buildings } = useTrackedState();
-
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {

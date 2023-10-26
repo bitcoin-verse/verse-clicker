@@ -1,14 +1,15 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+import React, { FC, useCallback, useRef, useState } from "react";
 import styled from "styled-components";
 import { useAccount } from "wagmi";
 import { createRoot } from "react-dom/client";
+import useSound from "use-sound";
 
 import { useDispatch, useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 
 import cookieBite from "../../assets/cookie-bite.png";
 import verseMoon from "../../assets/verse-moon.png";
-import nomSound from "../../assets/nom.wav";
+import laserSfx from "../../assets/laser.wav";
 import { useSocketCtx } from "../../context/SocketContext";
 
 const CookieWrapper = styled.div`
@@ -82,12 +83,13 @@ export const ButtonWrapper = styled.div`
 `;
 
 const Cookie: FC = () => {
+  const [play] = useSound(laserSfx);
   const { socket } = useSocketCtx();
   const dispatch = useDispatch();
-  const { status, address } = useAccount();
+  const { status } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
 
-  const { player } = useTrackedState();
+  const { player, settings } = useTrackedState();
   const [clickCount, setClickCount] = useState<number>();
 
   const [macroDetected, setMacroDetected] = useState(false);
@@ -141,20 +143,6 @@ const Cookie: FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (clickCount !== 0 || !address) {
-      return;
-    }
-
-    const saveTimout = setTimeout(() => {
-      dispatch({ type: "SAVE_GAME", payload: { address } });
-    }, 3000);
-
-    return () => {
-      clearTimeout(saveTimout);
-    };
-  }, [clickCount, address]);
-
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if (!e.isTrusted) {
       alert("Bad click... Get outa the console you script kiddy");
@@ -176,7 +164,10 @@ const Cookie: FC = () => {
     handleCheatPrevention();
     socket.emit("click");
     animateCookieClick(e);
-    new Audio(nomSound).play();
+
+    if (settings.sound) {
+      play();
+    }
   };
 
   return (
