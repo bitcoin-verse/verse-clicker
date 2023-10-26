@@ -2,7 +2,6 @@ import React, { FC, useState } from "react";
 
 import PointsDisplay from "./PointsDisplay/PointsDisplay";
 import Cookie from "./Cookie";
-import Advertisement from "../Advertisement";
 import Boosts from "../Boosts/Boosts";
 import Stats from "./Stats/Stats";
 

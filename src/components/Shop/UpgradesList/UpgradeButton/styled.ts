@@ -14,8 +14,15 @@ export const Button = styled.button<{ $unaffordable?: boolean }>`
   grid-template-columns: auto 8rem;
   grid-template-areas: "name cost" "desc desc";
   padding: 0.5rem;
-
   text-align: left;
+
+  &:hover,
+  &:focus {
+    background: linear-gradient(180deg, #586f91 0%, #425472 100%);
+  }
+  &:active {
+    background: linear-gradient(180deg, #334059 0%, #425371 100%);
+  }
   &:disabled {
     cursor: default;
   }
@@ -24,6 +31,12 @@ export const Button = styled.button<{ $unaffordable?: boolean }>`
     $unaffordable &&
     css`
       background: #342716;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: #342716;
+      }
     `}
 `;
 
