@@ -19,6 +19,13 @@ export const Button = styled.button<{
   grid-template-areas: "img name cost" "img desc desc" "img info amount";
   text-align: left;
 
+  &:hover,
+  &:focus {
+    background: linear-gradient(180deg, #586f91 0%, #425472 100%);
+  }
+  &:active {
+    background: linear-gradient(180deg, #334059 0%, #425371 100%);
+  }
   &:disabled {
     cursor: default;
   }
@@ -27,6 +34,12 @@ export const Button = styled.button<{
     $unaffordable &&
     css`
       background: #342716;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: #342716;
+      }
     `}
 
   ${({ $locked }) =>
