@@ -11,10 +11,11 @@ import { H3 } from "../../H3";
 import { Container } from "../../Container";
 import { Label } from "../../Label";
 
-import verseIcon from "../../assets/verse-icon.png";
+import verseIcon from "../../../assets/verse-icon.png";
 import Tabs, { TabButton } from "../../Tabs";
 import { LinkButton } from "../../LinkButton";
 import { GOERLI_BURN_ADDRESS } from "../../../constants";
+import WarningChip from "../../WarningChip";
 
 const burnList = [
   { title: "1 hour", value: 15000, hours: 1 },
@@ -147,6 +148,11 @@ const Burn: FC = () => {
               VERSE
             </Label>
           </Container>
+          {insufficientVerse && (
+            <WarningChip link="https://buy.bitcoin.com/verse">
+              You don&#39;t have enough VERSE. Buy now!
+            </WarningChip>
+          )}
           <StyledButton
             onClick={() => handleBurn(selectedBurn?.value)}
             disabled={insufficientVerse}
