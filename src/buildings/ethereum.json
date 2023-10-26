@@ -105,7 +105,7 @@
       }
     ],
     "locked": false,
-    "image": "dev.png"
+    "image": "eth/cursor.png"
   },
   {
     "name": "Monkey",
@@ -197,7 +197,7 @@
       }
     ],
     "locked": true,
-    "image": "wojak.png"
+    "image": "eth/monkey.png"
   },
   {
     "name": "Intern",
@@ -289,7 +289,7 @@
       }
     ],
     "locked": true,
-    "image": "troll.png"
+    "image": "eth/intern.png"
   },
   {
     "name": "Junior Dev",
@@ -381,7 +381,7 @@
       }
     ],
     "locked": true,
-    "image": "asic.png"
+    "image": "eth/junior-dev.png"
   },
   {
     "name": "Senior Dev",
@@ -473,7 +473,7 @@
       }
     ],
     "locked": true,
-    "image": "okanemon.png"
+    "image": "eth/senior-dev.png"
   },
   {
     "name": "Shadowy Supercoder",
@@ -565,7 +565,7 @@
       }
     ],
     "locked": true,
-    "image": "coaster.png"
+    "image": "eth/shadowy-supercoder.png"
   },
   {
     "name": "Ethereum Foundation",
@@ -657,7 +657,7 @@
       }
     ],
     "locked": true,
-    "image": "printer.png"
+    "image": "eth/ethereum-foundation.png"
   },
   {
     "name": "IPO",
@@ -749,7 +749,7 @@
       }
     ],
     "locked": true,
-    "image": "pepe.png"
+    "image": "eth/ipo.png"
   },
   {
     "name": "Open Source Community",
@@ -841,7 +841,7 @@
       }
     ],
     "locked": true,
-    "image": "carlos.png"
+    "image": "eth/open-source-community.png"
   },
   {
     "name": "Global Hive Mind",
@@ -933,7 +933,7 @@
       }
     ],
     "locked": true,
-    "image": "rocket.png"
+    "image": "eth/global-hive-mind.png"
   },
   {
     "name": "Nanobot Swarm Coders",
@@ -1025,7 +1025,7 @@
       }
     ],
     "locked": true,
-    "image": "lazereyes.png"
+    "image": "eth/nanobot-swam-coders.png"
   },
   {
     "name": "Digital Alchemists",
@@ -1117,7 +1117,7 @@
       }
     ],
     "locked": true,
-    "image": "chad.png"
+    "image": "eth/digital-alchemists.png"
   },
   {
     "name": "Dyson Sphere",
@@ -1209,7 +1209,7 @@
       }
     ],
     "locked": true,
-    "image": "tweet.png"
+    "image": "eth/dyson-sphere.png"
   },
   {
     "name": "Galactic Brain Interface",
@@ -1301,10 +1301,10 @@
       }
     ],
     "locked": true,
-    "image": "stadium.png"
+    "image": "eth/galactic-brain-interface.png"
   },
   {
-    "name": "BogdDark Matter Processoranoff",
+    "name": "Dark Matter Processor",
     "desc": "Tapping into the other 50% of the universe's matter to churn out code that can generate Verse Points at unfathomable rates.",
     "cost": 26000000000000000,
     "amount": 0,
@@ -1393,7 +1393,7 @@
       }
     ],
     "locked": true,
-    "image": "bogdanoff.png"
+    "image": "eth/dark-matter-processor.png"
   },
   {
     "name": "Cosmic Verse Compiler",
@@ -1485,7 +1485,7 @@
       }
     ],
     "locked": true,
-    "image": "aibot.png"
+    "image": "eth/cosmic-verse-compiler.png"
   },
   {
     "name": "Multiverse Simulation Engine",
@@ -1577,6 +1577,6 @@
       }
     ],
     "locked": true,
-    "image": "jesus.png"
+    "image": "eth/multiverse-simulation-engine.png"
   }
 ]
