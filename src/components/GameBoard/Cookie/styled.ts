@@ -57,7 +57,6 @@ export const CpcClick = styled.div`
   align-items: center;
   transform: translate(-50%, -50%);
   width: 3rem;
-  /* z-index: 1; */
   animation: click 1s ease-in-out;
 
   text-shadow: 0px 4px 20px 0px #c87a1e;
