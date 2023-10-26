@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useRef, useState } from "react";
+import React, { FC, useCallback, useRef, useState } from "react";
 import { useAccount } from "wagmi";
 import { createRoot } from "react-dom/client";
 import useSound from "use-sound";
