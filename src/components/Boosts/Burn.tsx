@@ -118,9 +118,11 @@ const Burn: FC = () => {
             <Label $color="secondary">Boost duration</Label>
             <Tabs
               center
+              mobileVersion
               tabs={burnList.map((button, i) => (
                 <TabButton
-                  key="burns"
+                  key={i}
+                  $mobileVersion
                   $isSelected={selectedTab === i}
                   type="button"
                   onClick={() => setSelectedTab(i)}

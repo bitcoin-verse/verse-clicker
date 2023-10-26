@@ -79,7 +79,6 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
           {boostList(player.verseHolder).map((boost) => (
             <BoostButton
               key={boost.id}
-              $unlocked={boost.unlocked}
               onClick={() => {
                 setContent(boost.id);
                 showModal();
