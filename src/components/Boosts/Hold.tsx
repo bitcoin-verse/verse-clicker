@@ -17,12 +17,12 @@ const Hold: FC = () => {
       {player.verseHolder ? (
         <>
           <H3>You&#39;re currently holding VERSE</H3>
-          <Label $secondary>10x boost applied to your clicks</Label>
+          <Label $color="secondary">10x boost applied to your clicks</Label>
         </>
       ) : (
         <>
           <H3>You&#39;re currently not holding any VERSE</H3>
-          <Label $secondary>
+          <Label $color="secondary">
             Buy or Swap VERSE to boost your point production
           </Label>
           <LinkButton

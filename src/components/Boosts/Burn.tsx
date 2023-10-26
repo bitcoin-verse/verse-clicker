@@ -1,62 +1,25 @@
 import React, { FC, useEffect, useState } from "react";
 import { useChainId, useContractWrite, useWaitForTransaction } from "wagmi";
-import styled from "styled-components";
 import { formatEther, parseEther } from "viem";
 
 import testVerseABI from "../../contracts/verseGoerli";
-import BurnButtons from "./BurnButtons";
 import { formatNumber } from "../../helpers/formatNumber";
 import { useSocketCtx } from "../../context/SocketContext";
 import useVerseBalance from "../../hooks/useVerseBalance";
+import { Divider, Icon, ModalWrapper, Price, StyledButton } from "./styled";
+import { H3 } from "../H3";
+import { Container } from "../Container";
+import { Label } from "../Label";
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-  position: relative;
-`;
+import verseIcon from "../../assets/verse-icon.png";
+import Tabs, { TabButton } from "../Tabs";
+import { LinkButton } from "../LinkButton";
+import { GOERLI_BURN_ADDRESS } from "../../constants";
 
-const TransactionStatus = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0f518f;
-  z-index: 1;
-
-  gap: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const RetryButton = styled.button`
-  padding: 1rem;
-  font-weight: 600;
-  outline: none;
-
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-
-  border: none;
-  border-radius: 1rem;
-  background: #163756;
-  color: white;
-`;
-
-const buttonsList = [
-  { title: "1H", value: 15000, hours: 1 },
-  { title: "12H", value: 150000, hours: 12 },
-  { title: "24H", value: 280000, hours: 24 },
+const burnList = [
+  { title: "1 hour", value: 15000, hours: 1 },
+  { title: "12 hour", value: 150000, hours: 12 },
+  { title: "1 day", value: 280000, hours: 24 },
 ];
 
 const Burn: FC = () => {
@@ -66,7 +29,7 @@ const Burn: FC = () => {
   const [newCookies, setNewCookies] = useState<number>();
 
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({
-    address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
+    address: GOERLI_BURN_ADDRESS,
     abi: testVerseABI,
     functionName: "burn",
     chainId,
@@ -80,6 +43,13 @@ const Burn: FC = () => {
     formatted: string;
     value: bigint;
   }>();
+
+  const [selectedTab, setSelectedTab] = useState(0);
+  const selectedBurn =
+    burnList.find((_, i) => i === selectedTab) ?? burnList[0];
+  const insufficientVerse = balanceData
+    ? selectedBurn.value > balanceData.value
+    : true;
 
   useEffect(() => {
     console.log(readData, error);
@@ -117,62 +87,75 @@ const Burn: FC = () => {
   };
 
   return (
-    <>
-      <div>
-        Get upto 24hrs worth of cookies at your current CPS rate, just by
-        burning a little verse
-      </div>
-      <div>
-        Your Verse Balance:{" "}
-        {balanceData?.formatted
-          ? Number(balanceData.formatted).toLocaleString()
-          : 0}{" "}
-        VERSE
-      </div>
-
-      <ButtonContainer>
-        {showLoading && (
-          <TransactionStatus>
-            {isLoading && <div>Transaction Pending. Check Wallet</div>}
-            {isSuccess && !txWaitSuccess && (
-              <>
-                <div>Transaction accepted waiting for confirmation</div>
-                <a
-                  href={`https://goerli.etherscan.io/tx/${data?.hash}`}
-                  target="_blank"
-                  rel="noreferrer"
+    <ModalWrapper>
+      {showLoading ? (
+        <Container>
+          {isLoading && <Label>Pending transaction, check your wallet.</Label>}
+          {isSuccess && !txWaitSuccess && (
+            <>
+              <Label>Transaction accepted, waiting for confirmation.</Label>
+              <LinkButton
+                href={`https://goerli.etherscan.io/tx/${data?.hash}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View on Etherscan
+              </LinkButton>
+            </>
+          )}
+          {txWaitSuccess && (
+            <>
+              <Label>
+                Transaction confirmed! {formatNumber(newCookies)} points added
+              </Label>
+            </>
+          )}
+        </Container>
+      ) : (
+        <>
+          <H3>Burn VERSE to boost your point production</H3>
+          <Container>
+            <Label $color="secondary">Boost duration</Label>
+            <Tabs
+              center
+              mobileVersion
+              tabs={burnList.map((button, i) => (
+                <TabButton
+                  key={i}
+                  $mobileVersion
+                  $isSelected={selectedTab === i}
+                  type="button"
+                  onClick={() => setSelectedTab(i)}
                 >
-                  View on Etherscan
-                </a>
-              </>
-            )}
-
-            {txWaitSuccess && (
-              <>
-                <div>
-                  Transaction confirmed! {formatNumber(newCookies)} cookies
-                  added
-                </div>
-
-                <RetryButton
-                  onClick={() => {
-                    setShowLoading(false);
-                  }}
-                >
-                  Burn again!
-                </RetryButton>
-              </>
-            )}
-          </TransactionStatus>
-        )}
-        <BurnButtons
-          isLoading={isLoading}
-          handleBurn={handleBurn}
-          verseBalance={balanceData?.value || BigInt(0)}
-          buttons={buttonsList}
-        />
-      </ButtonContainer>
-    </>
+                  {button.title}
+                </TabButton>
+              ))}
+            />
+            <Label $color="secondary">Quantity required</Label>
+            <Price>
+              <Icon src={verseIcon} />
+              <Label $color={insufficientVerse ? "warning" : undefined}>
+                {selectedBurn?.value} VERSE
+              </Label>
+            </Price>
+            <Divider />
+            <Label $color="secondary">
+              Available:{" "}
+              {balanceData?.formatted
+                ? Number(balanceData.formatted).toLocaleString()
+                : 0}{" "}
+              VERSE
+            </Label>
+          </Container>
+          <StyledButton
+            onClick={() => handleBurn(selectedBurn?.value)}
+            disabled={insufficientVerse}
+          >
+            Burn VERSE
+          </StyledButton>
+        </>
+      )}
+    </ModalWrapper>
   );
 };
 

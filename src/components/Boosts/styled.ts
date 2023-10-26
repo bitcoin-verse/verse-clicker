@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../Button";
 import { colors } from "../colors";
 
 export const Wrapper = styled.div<{ $mobileVersion?: boolean }>`
@@ -33,7 +34,7 @@ export const BoostTiles = styled.div`
   }
 `;
 
-export const BoostButton = styled.button<{ $unlocked?: boolean }>`
+export const BoostButton = styled.button`
   background: linear-gradient(0deg, #0f1823, #0f1823),
     radial-gradient(
       117.51% 1182.96% at 50% 50%,
@@ -55,7 +56,7 @@ export const BoostButton = styled.button<{ $unlocked?: boolean }>`
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
   text-align: left;
-  cursor: ${({ $unlocked }) => ($unlocked ? "default" : "pointer")};
+  cursor: pointer;
 
   @media (min-width: 768px) {
     min-width: 10.875rem;
@@ -115,4 +116,26 @@ export const ModalWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+`;
+
+export const Divider = styled.div`
+  border: 0.063rem solid ${colors.shade30};
+  width: 100%;
+`;
+
+export const Icon = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+export const StyledButton = styled(Button)`
+  width: 100%;
+`;
+
+export const Price = styled.div`
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
 `;

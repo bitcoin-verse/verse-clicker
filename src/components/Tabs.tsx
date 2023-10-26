@@ -1,7 +1,10 @@
 import React, { FC, ReactElement } from "react";
 import styled, { css } from "styled-components";
 
-const TabsWrapper = styled.div<{ $mobileVersion?: boolean }>`
+const TabsWrapper = styled.div<{
+  $mobileVersion?: boolean;
+  $center?: boolean;
+}>`
   width: 100%;
   display: grid;
   grid-auto-flow: column;
@@ -17,7 +20,7 @@ const TabsWrapper = styled.div<{ $mobileVersion?: boolean }>`
     border-radius: 2.25rem;
     gap: 0.5rem;
     width: fit-content;
-    align-self: flex-end;
+    align-self: ${({ $center }) => ($center ? "center" : "flex-end")};
   }
 `;
 
@@ -77,11 +80,12 @@ export const TabButton = styled.button<{
 interface Props {
   tabs: ReactElement[];
   mobileVersion?: boolean;
+  center?: boolean;
 }
 
-const Tabs: FC<Props> = ({ tabs, mobileVersion }) => {
+const Tabs: FC<Props> = ({ tabs, mobileVersion, center }) => {
   return (
-    <TabsWrapper $mobileVersion={mobileVersion}>
+    <TabsWrapper $mobileVersion={mobileVersion} $center={center}>
       {tabs.map((t) => t)}
     </TabsWrapper>
   );

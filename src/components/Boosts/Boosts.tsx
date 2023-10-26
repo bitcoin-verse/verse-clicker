@@ -42,7 +42,7 @@ const getModalContent = (content?: string) => {
   switch (content) {
     case "burn":
       return {
-        title: "Burn to earn (BETA)",
+        title: "Burn",
         component: <Burn />,
       };
     case "hold":
@@ -79,7 +79,6 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
           {boostList(player.verseHolder).map((boost) => (
             <BoostButton
               key={boost.id}
-              $unlocked={boost.unlocked}
               onClick={() => {
                 setContent(boost.id);
                 showModal();

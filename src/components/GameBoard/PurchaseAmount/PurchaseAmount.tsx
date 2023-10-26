@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Tabs, { TabButton } from "../Tabs";
+import Tabs, { TabButton } from "../../Tabs";
 import { useDispatch, useTrackedState } from "../../../context/store";
 import { Wrapper } from "./styled";
 

@@ -75,7 +75,7 @@ const Loading: FC = () => {
           <Title>Loading...</Title>
           {error && (
             <>
-              <Label style={{ color: "#C87A1E" }}>{error}</Label>
+              <Label $color="warning">{error}</Label>
               <Button
                 size="small"
                 design="secondary"
