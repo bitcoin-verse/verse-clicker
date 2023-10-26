@@ -35,6 +35,8 @@ const Cookie: FC = () => {
       cpcRoot.render(
         <CpcClick
           style={{
+            fontWeight: 500,
+            fontSize: "0.875rem",
             left: x,
             top: y,
           }}
