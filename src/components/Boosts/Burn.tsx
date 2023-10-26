@@ -14,6 +14,7 @@ import { Label } from "../Label";
 import verseIcon from "../../assets/verse-icon.png";
 import Tabs, { TabButton } from "../Tabs";
 import { LinkButton } from "../LinkButton";
+import { GOERLI_BURN_ADDRESS } from "../../constants";
 
 const burnList = [
   { title: "1 hour", value: 15000, hours: 1 },
@@ -28,7 +29,7 @@ const Burn: FC = () => {
   const [newCookies, setNewCookies] = useState<number>();
 
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({
-    address: "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84",
+    address: GOERLI_BURN_ADDRESS,
     abi: testVerseABI,
     functionName: "burn",
     chainId,
