@@ -1,4 +1,10 @@
-import React, { FC, PropsWithChildren, RefObject, useRef } from "react";
+import React, {
+  FC,
+  PropsWithChildren,
+  RefObject,
+  useEffect,
+  useRef,
+} from "react";
 import {
   CloseButton,
   Dialog,
@@ -29,6 +35,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
           <CloseButton
             onClick={() => {
               if (!modalRef || !modalRef.current) return;
+              document.body.style.overflow = "unset";
               modalRef.current.close();
               if (onClose) onClose();
             }}
@@ -45,13 +52,27 @@ const Modal: FC<PropsWithChildren<Props>> = ({
 export const useModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
+  useEffect(() => {
+    if (modalRef.current?.show) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [modalRef.current?.show]);
+
   const showModal = () => {
     if (!modalRef || !modalRef.current) return;
+    document.body.style.overflow = "hidden";
     modalRef.current.showModal();
   };
 
   const close = () => {
     if (!modalRef || !modalRef.current) return;
+    document.body.style.overflow = "unset";
     modalRef.current.close();
   };
 

@@ -76,6 +76,9 @@ export const BuildingsWrapper = styled.div`
     overflow-x: visible;
     border-bottom: none;
     padding-bottom: 2.5rem;
+    padding-left: 1rem;
+    margin-left: -1rem;
+
 
     &::-webkit-scrollbar {
       width: 0.25rem;
@@ -96,8 +99,8 @@ export const BottomShadow = styled.div`
     content: "";
     bottom: 0;
     height: 5rem;
-    left: 0;
-    width: calc(100% - 1rem);
+    left: -1rem;
+    width: calc(100% - 0.25rem);
     background: linear-gradient(180deg, rgba(3, 12, 20, 0) 0%, #030c14 63.54%);
   }
 `;
