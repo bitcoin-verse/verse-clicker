@@ -25,6 +25,9 @@ export const Wrapper = styled.div`
 export const SidebarButton = styled.button`
   background: linear-gradient(180deg, #425472 0%, #313e57 100%);
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   outline: none;
   border: none;
