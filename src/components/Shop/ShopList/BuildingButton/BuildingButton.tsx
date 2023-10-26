@@ -1,4 +1,5 @@
 import React, { FC, useCallback, useMemo } from "react";
+import useSound from "use-sound";
 
 import { formatNumber } from "../../../../helpers/formatNumber";
 import { Amount, Button, Cost, Image } from "./styled";
@@ -16,6 +17,7 @@ import {
 
 import placeholder from "../../../../assets/placeholder.png";
 import Marquee from "../../../Marquee";
+import buySfx from "../../../../assets/cha-ching.wav";
 
 interface Props {
   building: Building;
@@ -23,15 +25,17 @@ interface Props {
 }
 
 export const BuildingButton: FC<Props> = ({ building, index }) => {
-  const { player, purchaseAmount } = useTrackedState();
+  const { player, purchaseAmount, settings } = useTrackedState();
   const { socket } = useSocketCtx();
-
   const { production } = useProduction(building);
+  const [play] = useSound(buySfx);
 
   const buyBuilding = useCallback(
-    (amount: number | "max") => {
-      if (amount === "max") return;
+    (amount: number) => {
       socket.emit("buy_building", { index, amount });
+      if (settings.sound) {
+        play();
+      }
     },
     [building, index],
   );
