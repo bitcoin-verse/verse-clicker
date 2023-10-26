@@ -6,9 +6,9 @@ import Lock from "../Icons/Lock";
 import Modal, { useModal } from "../Modal";
 import { H4 } from "../H4";
 
-import Burn from "./Burn";
-import Hold from "./Hold";
-import Farm from "./Farm";
+import Burn from "./Modals/Burn";
+import Hold from "./Modals/Hold";
+import Farm from "./Modals/Farm";
 
 import {
   BoostTiles,
