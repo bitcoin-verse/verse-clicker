@@ -42,13 +42,19 @@ const adlist = [
   },
 ];
 
-const AdWrapper = styled.div`
+const AdWrapper = styled.div<{ $mobileVersion?: boolean }>`
   color: #899bb5;
   font-size: 0.75rem;
   font-weight: 400;
   padding: 1rem;
   max-width: 32rem;
   margin: auto;
+  display: ${({ $mobileVersion }) => ($mobileVersion ? "block" : "none")};
+
+  @media (min-width: 768px) {
+    padding: 1rem 0;
+    display: ${({ $mobileVersion }) => ($mobileVersion ? "none" : "block")};
+  }
 `;
 
 const AdImage = styled.img`
@@ -56,9 +62,14 @@ const AdImage = styled.img`
   height: auto;
   max-width: 100%;
   margin-top: 0.5rem;
+  border-radius: 0.5rem;
 `;
 
-const Advertisement: FC = () => {
+interface Props {
+  mobileVersion?: boolean;
+}
+
+const Advertisement: FC<Props> = ({ mobileVersion }) => {
   const [rand, setRand] = useState(Math.floor(Math.random() * adlist.length));
 
   useEffect(() => {
@@ -70,7 +81,7 @@ const Advertisement: FC = () => {
   }, []);
 
   return (
-    <AdWrapper>
+    <AdWrapper $mobileVersion={mobileVersion}>
       <div>Advertisement</div>
       <a href={adlist[rand].link} target="_blank" rel="noreferrer">
         <AdImage src={adlist[rand].img} width="100%" />
