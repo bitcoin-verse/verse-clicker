@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { Wrapper } from "./styled";
 import { useAccount, useChainId } from "wagmi";
 import { useDispatch, useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
@@ -13,7 +12,7 @@ const Settings: FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <Wrapper>
+    <div>
       <div>Network: {chainId}</div>
       <div>Address: {truncateEthAddress(address || "")}</div>
       <div>{formatNumber(player.cookies)}</div>
@@ -32,7 +31,7 @@ const Settings: FC = () => {
 
         <button>Wipe Save (todo)</button>
       </div>
-    </Wrapper>
+    </div>
   );
 };
 
