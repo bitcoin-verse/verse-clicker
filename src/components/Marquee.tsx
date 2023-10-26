@@ -2,10 +2,13 @@ import React, { FC, PropsWithChildren, useRef } from "react";
 import styled, { css, keyframes } from "styled-components";
 import { useIsOverflow } from "../hooks/useIsOverflow";
 
-const marqueeAnimation = keyframes`
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-100%, 0); }
-  `;
+const slideOff = keyframes`
+    0%  { transform: translate(0, 0); }
+    40% { transform: translate(-150%, 0); }
+    40.001% { transform: translate(110%, 0); }
+  
+    80%,100% { transform: translate(0, 0); }
+`;
 
 const MarqueeWrapper = styled.div<{ $shouldAnimate?: boolean }>`
   overflow: hidden;
@@ -13,12 +16,11 @@ const MarqueeWrapper = styled.div<{ $shouldAnimate?: boolean }>`
 
   & > div {
     will-change: transform;
-
+    padding-right: 100%;
     ${({ $shouldAnimate }) =>
       $shouldAnimate &&
       css`
-        animation: ${marqueeAnimation} 10s linear infinite;
-        animation-delay: 5s;
+        animation: 20s linear 5s infinite ${slideOff};
 
         &:hover {
           animation-play-state: paused;
