@@ -1,86 +1,14 @@
-import React, { FC, useCallback, useRef, useState } from "react";
-import styled from "styled-components";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { useAccount } from "wagmi";
 import { createRoot } from "react-dom/client";
 import useSound from "use-sound";
 
-import { useDispatch, useTrackedState } from "../../context/store";
-import { formatNumber } from "../../helpers/formatNumber";
+import { useDispatch, useTrackedState } from "../../../context/store";
+import { formatNumber } from "../../../helpers/formatNumber";
 
-import cookieBite from "../../assets/cookie-bite.png";
-import verseMoon from "../../assets/verse-moon.png";
-import laserSfx from "../../assets/laser.wav";
-import { useSocketCtx } from "../../context/SocketContext";
-
-const CookieWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ClickButton = styled.button`
-  position: relative;
-  max-width: 16.25rem;
-  margin: 3.75rem 0;
-  aspect-ratio: 1/1;
-  width: 100%;
-  background: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background-image: url(${verseMoon});
-  background-size: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  &:hover {
-    background-size: 99%;
-  }
-
-  &:active {
-    background-size: 101%;
-  }
-
-  &:after {
-    content: "";
-  }
-`;
-
-const CookieClick = styled.img`
-  user-select: none;
-  width: 3rem;
-  pointer-events: none;
-`;
-
-const CpcClick = styled.div`
-  pointer-events: none;
-  position: absolute;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  transform: translate(-50%, -50%);
-  width: 3rem;
-  /* z-index: 1; */
-  animation: click 1s ease-in-out;
-  text-shadow:
-    -0.5px -0.5px 0 #0779e0,
-    0.5px -0.5px 0 #0779e0,
-    -0.5px 0.5px 0 #0779e0,
-    0.5px 0.5px 0 #0779e0;
-
-  @keyframes click {
-    100% {
-      opacity: 0;
-      transform: translate(-50%, -250%);
-    }
-  }
-`;
-
-export const ButtonWrapper = styled.div`
-  overflow: hidden;
-  width: 100%;
-  text-align: center;
-`;
+import laserSfx from "../../../assets/laser.wav";
+import { useSocketCtx } from "../../../context/SocketContext";
+import { ButtonWrapper, ClickButton, CookieWrapper, CpcClick } from "./styled";
 
 const Cookie: FC = () => {
   const [play] = useSound(laserSfx);
@@ -111,8 +39,7 @@ const Cookie: FC = () => {
             top: y,
           }}
         >
-          <CookieClick src={cookieBite} alt="Cookie" />+
-          {formatNumber(player.cpc)}
+          +{formatNumber(player.cpc)}
         </CpcClick>,
       );
 
