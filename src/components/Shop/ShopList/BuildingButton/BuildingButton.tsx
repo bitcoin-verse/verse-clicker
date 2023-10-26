@@ -1,4 +1,5 @@
 import React, { FC, useCallback, useMemo } from "react";
+
 import { formatNumber } from "../../../../helpers/formatNumber";
 import { Amount, Button, Cost, Image } from "./styled";
 import { useTrackedState } from "../../../../context/store";
@@ -14,6 +15,7 @@ import {
 } from "../../../../helpers/buildingHelpers";
 
 import placeholder from "../../../../assets/placeholder.png";
+import Marquee from "../../../Marquee";
 
 interface Props {
   building: Building;
@@ -66,10 +68,14 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
         alt={building.name}
       />
 
-      <Title style={{ gridArea: "name", marginTop: "0.5rem" }}>
-        {building.name}
-      </Title>
-      <Text style={{ gridArea: "desc" }}>{building.desc}</Text>
+      <Marquee>
+        <Title style={{ gridArea: "name", marginTop: "0.5rem" }}>
+          {building.name}
+        </Title>
+      </Marquee>
+      <Marquee>
+        <Text style={{ gridArea: "desc" }}>{building.desc}</Text>
+      </Marquee>
       <Text style={{ gridArea: "info", marginBottom: "0.5rem" }}>
         {formatNumber(production)}/sec
         <span style={{ color: "#899bb5" }}> each building, </span>
