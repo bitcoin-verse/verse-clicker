@@ -29,7 +29,6 @@ const UpgradesList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
   }, [toggleOpen]);
 
   useEffect(() => {
-    console.log(screen.width);
     if (isOpen && screen.width < 768) {
       document.body.style.overflow = "hidden";
     } else {
