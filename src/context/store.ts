@@ -43,6 +43,8 @@ export const initialState: State = {
       Spent: 0,
     },
     verseHolder: false,
+    isFarming: false,
+    isStaking: false,
   },
   network: "Ethereum",
   purchaseAmount: 1,
