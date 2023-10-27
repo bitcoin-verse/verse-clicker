@@ -52,7 +52,7 @@ const getModalContent = (content?: string) => {
       };
     case "farm":
       return {
-        title: "Double CPS!",
+        title: "Farms/Staking",
         component: <Farm />,
       };
     default:
