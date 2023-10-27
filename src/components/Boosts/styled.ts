@@ -21,17 +21,7 @@ export const Content = styled.div`
 export const BoostTiles = styled.div`
   display: flex;
   gap: 1rem;
-  max-width: calc(100vw);
-  overflow-x: auto;
-  overflow-y: visible;
   padding: 1rem 0;
-
-  @media (min-width: 768px) {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: 1fr 1fr;
-    overflow: visible;
-  }
 `;
 
 export const BoostButton = styled.button`
