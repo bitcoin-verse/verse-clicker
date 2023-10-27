@@ -18,6 +18,13 @@ const Hold: FC = () => {
         <>
           <H3>You&#39;re currently holding VERSE</H3>
           <Label $color="secondary">10x boost applied to your clicks</Label>
+          <LinkButton
+            href="https://buy.bitcoin.com/verse"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Buy more VERSE
+          </LinkButton>
         </>
       ) : (
         <>

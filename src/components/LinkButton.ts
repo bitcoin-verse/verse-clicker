@@ -8,6 +8,7 @@ export const LinkButton = styled.a<{
   padding: 0.75rem 1.5rem;
   width: 100%;
   text-decoration: none;
+  font-weight: 600;
 
   ${({ $design }) => {
     switch ($design) {
