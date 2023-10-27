@@ -20,10 +20,10 @@ import {
 } from "./styled";
 import Check from "../Icons/Check";
 
-const boostList = (unlocked: boolean) => [
+const boostList = (verseHolder: boolean, isFarmsOrStaking: boolean) => [
   {
     id: "hold",
-    unlocked: unlocked,
+    unlocked: verseHolder,
     label: "Hold",
   },
   {
@@ -33,7 +33,7 @@ const boostList = (unlocked: boolean) => [
   },
   {
     id: "farm",
-    unlocked: unlocked,
+    unlocked: isFarmsOrStaking,
     label: "Farm",
   },
 ];
@@ -70,13 +70,14 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
   const { player } = useTrackedState();
 
   const modalContent = getModalContent(content);
+  const isFarmsOrStaking = player.isFarming || player.isStaking;
 
   return (
     <Wrapper $mobileVersion={mobileVersion}>
       <Content>
         <H4>Boost your points</H4>
         <BoostTiles>
-          {boostList(player.verseHolder).map((boost) => (
+          {boostList(player.verseHolder, isFarmsOrStaking).map((boost) => (
             <BoostButton
               key={boost.id}
               onClick={() => {
