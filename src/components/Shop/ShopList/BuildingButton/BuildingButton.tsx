@@ -51,6 +51,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
     return getMaxBuilding(player.cookies, building.cost);
   }, [player.cookies, building.cost]);
 
+  const farmStakingMultiplayer = player.isFarming || player.isStaking ? 2 : 1;
   return (
     <Button
       disabled={player.cookies < cost}
@@ -81,9 +82,9 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
         <Text style={{ gridArea: "desc" }}>{building.desc}</Text>
       </Marquee>
       <Text style={{ gridArea: "info", marginBottom: "0.5rem" }}>
-        {formatNumber(production)}/sec
+        {formatNumber(production * farmStakingMultiplayer)}/s
         <span style={{ color: "#899bb5" }}> each, </span>
-        {formatNumber(production * building.amount)}/sec
+        {formatNumber(production * building.amount * farmStakingMultiplayer)}/s
         <span style={{ color: "#899bb5" }}> total</span>
       </Text>
 
