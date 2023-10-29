@@ -5,7 +5,7 @@ import { colors } from "../colors";
 export const Wrapper = styled.div<{ $mobileVersion?: boolean }>`
   display: ${({ $mobileVersion }) => ($mobileVersion ? "flex" : "none")};
   flex-direction: column;
-  margin: 1rem 1rem 2rem;
+  margin: 1rem;
 
   @media (min-width: 768px) {
     align-items: center;
@@ -22,6 +22,8 @@ export const BoostTiles = styled.div`
   display: flex;
   gap: 1rem;
   padding: 1rem 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
 export const BoostButton = styled.button`
@@ -43,13 +45,15 @@ export const BoostButton = styled.button`
   position: relative;
   min-width: fit-content;
   min-height: 3.188rem;
+  flex: 1;
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
   text-align: left;
   cursor: pointer;
 
   @media (min-width: 768px) {
-    min-width: 10.875rem;
+    min-width: 8rem;
+    width: 100%;
   }
 
   &::before {
