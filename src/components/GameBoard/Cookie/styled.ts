@@ -10,7 +10,7 @@ export const CookieWrapper = styled.div`
 export const ClickButton = styled.button`
   position: relative;
   max-width: 16.25rem;
-  margin: 3.75rem 0;
+  margin: 2rem 0;
   aspect-ratio: 1/1;
   width: 100%;
   background: none;
@@ -40,6 +40,10 @@ export const ClickButton = styled.button`
     height: 100%;
     border-radius: 50%;
     pointer-events: all;
+  }
+
+  @media (min-width: 768px) {
+    margin: 3.75rem 0;
   }
 `;
 
