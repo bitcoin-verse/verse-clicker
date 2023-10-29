@@ -21,7 +21,7 @@ const Stats: FC = () => {
       return ">25";
     }
     return leaderboardIndex + 1;
-  }, []);
+  }, [leaderboard]);
 
   return (
     <Wrapper>
