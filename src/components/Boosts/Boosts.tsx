@@ -32,13 +32,13 @@ const boostList = (verseHolder: boolean, isFarmsOrStaking: boolean) => [
     id: "burn",
     unlocked: true,
     label: "Burn",
-    desciption: "Time skip",
+    desciption: "Skip time",
   },
   {
     id: "farm",
     unlocked: isFarmsOrStaking,
     label: "Farm",
-    desciption: "2x Production",
+    desciption: "2x production",
   },
 ];
 
