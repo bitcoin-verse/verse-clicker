@@ -36,12 +36,16 @@ const MarqueeWrapper = styled.div<{ $shouldAnimate?: boolean }>`
   }
 `;
 
-const Marquee: FC<PropsWithChildren> = ({ children }) => {
+interface Props {
+  shouldAnimate: boolean;
+}
+
+const Marquee: FC<PropsWithChildren<Props>> = ({ children, shouldAnimate }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isOverflow = useIsOverflow(ref);
 
   return (
-    <MarqueeWrapper ref={ref} $shouldAnimate={isOverflow}>
+    <MarqueeWrapper ref={ref} $shouldAnimate={isOverflow && shouldAnimate}>
       {children}
     </MarqueeWrapper>
   );

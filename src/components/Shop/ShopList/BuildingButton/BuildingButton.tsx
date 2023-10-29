@@ -55,7 +55,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
   return (
     <Button
       disabled={player.cookies < cost}
-      $unaffordable={player.cookies < cost}
+      $unaffordable={player.cookies < cost || building.locked}
       $locked={building.locked}
       onClick={() => {
         buyBuilding(amount);
@@ -73,12 +73,12 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
         alt={building.name}
       />
 
-      <Marquee>
+      <Marquee shouldAnimate={!building.locked}>
         <Title style={{ gridArea: "name", marginTop: "0.5rem" }}>
           {building.name}
         </Title>
       </Marquee>
-      <Marquee>
+      <Marquee shouldAnimate={!building.locked}>
         <Text style={{ gridArea: "desc" }}>{building.desc}</Text>
       </Marquee>
       <Text style={{ gridArea: "info", marginBottom: "0.5rem" }}>
