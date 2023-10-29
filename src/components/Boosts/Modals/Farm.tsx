@@ -17,7 +17,7 @@ const Farm: FC = () => {
       {player.isFarming || player.isStaking ? (
         <>
           <H3>You&#39;re currently farming and/or staking VERSE</H3>
-          <Label $color="secondary">10x boost applied to your clicks</Label>
+          <Label $color="secondary">2x boost applied to point production</Label>
         </>
       ) : (
         <>

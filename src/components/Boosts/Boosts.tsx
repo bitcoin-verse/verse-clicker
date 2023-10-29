@@ -25,16 +25,19 @@ const boostList = (verseHolder: boolean, isFarmsOrStaking: boolean) => [
     id: "hold",
     unlocked: verseHolder,
     label: "Hold",
+    boost: "10x clicks",
   },
   {
     id: "burn",
     unlocked: true,
     label: "Burn",
+    boost: "Time skip",
   },
   {
     id: "farm",
     unlocked: isFarmsOrStaking,
     label: "Farm",
+    boost: "2x Production",
   },
 ];
 
@@ -89,7 +92,7 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
                 {boost.unlocked ? <Check /> : <Lock />}
                 {boost.label}
               </Label>
-              <Boost $unlocked={boost.unlocked}>10x boost</Boost>
+              <Boost $unlocked={boost.unlocked}>{boost.boost}</Boost>
             </BoostButton>
           ))}
         </BoostTiles>
