@@ -66,7 +66,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
         src={
           building.locked
             ? placeholder
-            : `${process.env.PUBLIC_URL}/buildings/${building.image}`
+            : require(`../../../../assets/buildings/${building.image}`)
         }
         style={{ height: "100%" }}
         alt={building.name}
@@ -82,9 +82,9 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
       </Marquee>
       <Text style={{ gridArea: "info", marginBottom: "0.5rem" }}>
         {formatNumber(production)}/sec
-        <span style={{ color: "#899bb5" }}> each building, </span>
+        <span style={{ color: "#899bb5" }}> each, </span>
         {formatNumber(production * building.amount)}/sec
-        <span style={{ color: "#899bb5" }}> overall</span>
+        <span style={{ color: "#899bb5" }}> total</span>
       </Text>
 
       <Cost $unaffordable={player.cookies < cost}>
