@@ -109,4 +109,8 @@ export const SettingsButton = styled.button`
   align-items: center;
   gap: 0.5rem;
   color: #0085ff;
+
+  &:disabled {
+    color: grey;
+  }
 `;

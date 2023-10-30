@@ -79,7 +79,7 @@ const Settings: FC = () => {
           )}
         </SettingsButton>
 
-        <SettingsButton>
+        <SettingsButton disabled>
           <Restore size="2rem" />
           Reset score
         </SettingsButton>
