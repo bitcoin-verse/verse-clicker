@@ -1,5 +1,6 @@
 import React, { FC, PropsWithChildren } from "react";
 import { ContentsWrapper, GlobalStyle } from "./styled";
+import { AudioProvider } from "../../context/AudioProvider";
 
 interface Props {
   showMoon?: boolean;
@@ -7,10 +8,12 @@ interface Props {
 
 const Layout: FC<PropsWithChildren<Props>> = ({ children, showMoon }) => {
   return (
-    <ContentsWrapper $showMoon={showMoon}>
-      <GlobalStyle />
-      {children}
-    </ContentsWrapper>
+    <AudioProvider>
+      <ContentsWrapper $showMoon={showMoon}>
+        <GlobalStyle />
+        {children}
+      </ContentsWrapper>
+    </AudioProvider>
   );
 };
 
