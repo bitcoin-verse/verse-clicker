@@ -1,22 +1,45 @@
 import React, { FC } from "react";
-import { useAccount, useChainId } from "wagmi";
+import { useAccount, useNetwork } from "wagmi";
 import { useDispatch, useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
 import truncateEthAddress from "../../../helpers/truncateEthAddress";
+import { Avatar, Connected, Header, HeaderTop, NetworkImage } from "./styled";
+
+import ethSrc from "../../../assets/ethereum.png";
+import gethSrc from "../../../assets/goerli.png";
+import polySrc from "../../../assets/polygon.png";
+
+const networkImages: Record<string, string> = {
+  1: ethSrc,
+  5: gethSrc,
+  137: polySrc,
+};
 
 const Settings: FC = () => {
   const { address } = useAccount();
-  const chainId = useChainId();
+  const { chain } = useNetwork();
 
   const { player, settings } = useTrackedState();
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <div>Network: {chainId}</div>
-      <div>Address: {truncateEthAddress(address || "")}</div>
-      <div>{formatNumber(player.cookies)}</div>
+    <>
+      <Header>
+        <HeaderTop>
+          <Avatar />
+          <Connected>Connected</Connected>
+        </HeaderTop>
 
+        <HeaderTop>
+          <div>{truncateEthAddress(address || "")}</div>
+
+          {chain && (
+            <NetworkImage src={networkImages[chain?.id]} alt={chain?.name} />
+          )}
+        </HeaderTop>
+      </Header>
+
+      <div>{formatNumber(player.cookies)}</div>
       <div>
         <button
           onClick={() => {
@@ -31,7 +54,7 @@ const Settings: FC = () => {
 
         <button>Wipe Save (todo)</button>
       </div>
-    </div>
+    </>
   );
 };
 
