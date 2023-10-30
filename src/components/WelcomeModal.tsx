@@ -47,9 +47,15 @@ const StyledButton = styled(Button)`
   margin-top: 1rem;
 `;
 
+const Description = styled.div`
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: ${colors.shade80};
+`;
+
 const WelcomeModal = () => {
   const dispatch = useDispatch();
-  const { returnData } = useTrackedState();
+  const { returnData, player } = useTrackedState();
   const { modalRef, showModal, close } = useModal();
 
   useEffect(() => {
@@ -65,23 +71,35 @@ const WelcomeModal = () => {
         title="Verse Clicker"
       >
         <Moon src={verseMoon} />
-        <h1>Welcome Back!</h1>
-        <DataWrapper>
-          <Stats>
-            <Title>You were away for</Title>
-            <Value>
-              <Clock />
-              {returnData && <H3>{formatSeconds(returnData.seconds)}</H3>}
-            </Value>
-          </Stats>
-          <Stats>
-            <Title>You earned </Title>
-            <Value>
-              <Star size={28} color={colors.shade80} />
-              <H3>{formatNumber(returnData?.cookies)} </H3>
-            </Value>
-          </Stats>
-        </DataWrapper>
+        {player.cookies ? (
+          <>
+            <h1>Welcome Back!</h1>
+            <DataWrapper>
+              <Stats>
+                <Title>You were away for</Title>
+                <Value>
+                  <Clock />
+                  {returnData && <H3>{formatSeconds(returnData.seconds)}</H3>}
+                </Value>
+              </Stats>
+              <Stats>
+                <Title>You earned </Title>
+                <Value>
+                  <Star size={28} color={colors.shade80} />
+                  <H3>{formatNumber(returnData?.cookies)} </H3>
+                </Value>
+              </Stats>
+            </DataWrapper>
+          </>
+        ) : (
+          <>
+            <h1>Welcome to Verse Clicker</h1>
+            <Description>
+              Click for verse, climb the leaderboard! Join the Verse community
+              and experience a world of endless clicking fun.
+            </Description>
+          </>
+        )}
         <StyledButton onClick={close}>Play</StyledButton>
       </Modal>
     </>
