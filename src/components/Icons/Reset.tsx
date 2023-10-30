@@ -4,7 +4,7 @@ interface Props {
   size?: number | string;
 }
 
-const Restore: FC<Props> = ({ size }) => {
+const Reset: FC<Props> = ({ size }) => {
   return (
     <svg
       width={size}
@@ -24,4 +24,4 @@ const Restore: FC<Props> = ({ size }) => {
   );
 };
 
-export default Restore;
+export default Reset;

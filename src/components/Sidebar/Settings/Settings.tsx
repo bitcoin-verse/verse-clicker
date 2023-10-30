@@ -20,7 +20,7 @@ import { Points } from "../../GameBoard/PointsDisplay/styled";
 import Star from "../../Icons/Star";
 import SoundOff from "../../Icons/SoundOff";
 import SoundOn from "../../Icons/SoundOn";
-import Restore from "../../Icons/Restore";
+import Reset from "../../Icons/Reset";
 
 const networkImages: Record<string, string> = {
   1: ethSrc,
@@ -80,7 +80,7 @@ const Settings: FC = () => {
         </SettingsButton>
 
         <SettingsButton disabled>
-          <Restore size="2rem" />
+          <Reset size="2rem" />
           Reset score
         </SettingsButton>
       </ButtonsWrapper>
