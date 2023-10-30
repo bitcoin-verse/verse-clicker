@@ -25,6 +25,9 @@ export const HeaderRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  font-weight: 600;
+  font-size: 1.125rem;
 `;
 
 export const Avatar = styled.div`
