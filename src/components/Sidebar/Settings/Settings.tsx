@@ -3,11 +3,24 @@ import { useAccount, useNetwork } from "wagmi";
 import { useDispatch, useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
 import truncateEthAddress from "../../../helpers/truncateEthAddress";
-import { Avatar, Connected, Header, HeaderTop, NetworkImage } from "./styled";
+import {
+  Avatar,
+  Connected,
+  Header,
+  HeaderRow,
+  NetworkImage,
+  ButtonsWrapper,
+  SettingsButton,
+} from "./styled";
 
 import ethSrc from "../../../assets/ethereum.png";
 import gethSrc from "../../../assets/goerli.png";
 import polySrc from "../../../assets/polygon.png";
+import { Points } from "../../GameBoard/PointsDisplay/styled";
+import Star from "../../Icons/Star";
+import SoundOff from "../../Icons/SoundOff";
+import Sound from "../../Icons/Sound";
+import Restore from "../../Icons/Restore";
 
 const networkImages: Record<string, string> = {
   1: ethSrc,
@@ -25,23 +38,27 @@ const Settings: FC = () => {
   return (
     <>
       <Header>
-        <HeaderTop>
+        <HeaderRow>
           <Avatar />
           <Connected>Connected</Connected>
-        </HeaderTop>
+        </HeaderRow>
 
-        <HeaderTop>
+        <HeaderRow>
           <div>{truncateEthAddress(address || "")}</div>
 
           {chain && (
             <NetworkImage src={networkImages[chain?.id]} alt={chain?.name} />
           )}
-        </HeaderTop>
+        </HeaderRow>
       </Header>
 
-      <div>{formatNumber(player.cookies)}</div>
-      <div>
-        <button
+      <Points>
+        <Star size={32} />
+        {formatNumber(player.cookies)}
+      </Points>
+
+      <ButtonsWrapper>
+        <SettingsButton
           onClick={() => {
             dispatch({
               type: "SET_SETTINGS",
@@ -49,11 +66,24 @@ const Settings: FC = () => {
             });
           }}
         >
-          {settings.sound ? "Mute" : "Unmute"}
-        </button>
+          {settings.sound ? (
+            <>
+              <SoundOff size="2rem" />
+              Mute
+            </>
+          ) : (
+            <>
+              <Sound size="2rem" />
+              Unmute
+            </>
+          )}
+        </SettingsButton>
 
-        <button>Wipe Save (todo)</button>
-      </div>
+        <SettingsButton>
+          <Restore size="2rem" />
+          Reset score
+        </SettingsButton>
+      </ButtonsWrapper>
     </>
   );
 };

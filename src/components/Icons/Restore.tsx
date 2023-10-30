@@ -4,7 +4,7 @@ interface Props {
   size?: number | string;
 }
 
-const Sound: FC<Props> = ({ size }) => {
+const Restore: FC<Props> = ({ size }) => {
   return (
     <svg
       width={size}
@@ -24,4 +24,4 @@ const Sound: FC<Props> = ({ size }) => {
   );
 };
 
-export default Sound;
+export default Restore;

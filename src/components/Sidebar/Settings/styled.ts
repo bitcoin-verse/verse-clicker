@@ -21,9 +21,10 @@ export const Header = styled.div`
   }
 `;
 
-export const HeaderTop = styled.div`
+export const HeaderRow = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const Avatar = styled.div`
@@ -45,6 +46,7 @@ export const NetworkImage = styled.img`
 
 export const Connected = styled.div`
   color: #969e9e;
+  align-self: flex-start;
   height: fit-content;
   font-size: 1rem;
   font-weight: 600;
@@ -71,4 +73,37 @@ export const Connected = styled.div`
 
     box-shadow: 0px 1px 7px 0px #00c48bcc;
   }
+`;
+
+export const ButtonsWrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  width: 100%;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 0.02175rem;
+
+    left: -1.5rem;
+    right: -1.5rem;
+    top: 0;
+    background: #252d40;
+  }
+`;
+
+export const SettingsButton = styled.button`
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0085ff;
 `;
