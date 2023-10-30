@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from "react";
 import { useChainId, useContractWrite, useWaitForTransaction } from "wagmi";
 import { formatEther, parseEther } from "viem";
 
-import testVerseABI from "../../../contracts/verseGoerli";
 import { formatNumber } from "../../../helpers/formatNumber";
 import { useSocketCtx } from "../../../context/SocketContext";
 import useVerseBalance from "../../../hooks/useVerseBalance";
@@ -14,8 +13,12 @@ import { Label } from "../../Label";
 import verseIcon from "../../../assets/verse-icon.png";
 import Tabs, { TabButton } from "../../Tabs";
 import { LinkButton } from "../../LinkButton";
-import { GOERLI_BURN_ADDRESS } from "../../../constants";
+
 import WarningChip from "../../WarningChip";
+import {
+  BURN_ENGINE_ADDRESSES,
+  VERSE_TOKEN_CONTRACTS,
+} from "../../../contracts";
 
 const burnList = [
   { title: "1 hour", value: 15000, hours: 1 },
@@ -30,9 +33,9 @@ const Burn: FC = () => {
   const [newCookies, setNewCookies] = useState<number>();
 
   const { data, isLoading, isSuccess, writeAsync } = useContractWrite({
-    address: GOERLI_BURN_ADDRESS,
-    abi: testVerseABI,
-    functionName: "burn",
+    address: VERSE_TOKEN_CONTRACTS[chainId].address,
+    abi: VERSE_TOKEN_CONTRACTS[chainId].abi,
+    functionName: "transfer",
     chainId,
   });
 
@@ -80,7 +83,7 @@ const Burn: FC = () => {
   const handleBurn = async (amount: number) => {
     try {
       await writeAsync({
-        args: [parseEther(amount.toString())],
+        args: [BURN_ENGINE_ADDRESSES[chainId], parseEther(amount.toString())],
       });
     } catch (error) {
       console.log("Write error", error);
