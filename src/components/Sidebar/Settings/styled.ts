@@ -101,6 +101,9 @@ export const SettingsButton = styled.button`
   outline: none;
   border: none;
 
+  font-weight: 600;
+  font-size: 0.875rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -19,7 +19,7 @@ import polySrc from "../../../assets/polygon.png";
 import { Points } from "../../GameBoard/PointsDisplay/styled";
 import Star from "../../Icons/Star";
 import SoundOff from "../../Icons/SoundOff";
-import Sound from "../../Icons/Sound";
+import SoundOn from "../../Icons/SoundOn";
 import Restore from "../../Icons/Restore";
 
 const networkImages: Record<string, string> = {
@@ -68,12 +68,12 @@ const Settings: FC = () => {
         >
           {settings.sound ? (
             <>
-              <SoundOff size="2rem" />
+              <SoundOn size="2rem" />
               Mute
             </>
           ) : (
             <>
-              <Sound size="2rem" />
+              <SoundOff size="2rem" />
               Unmute
             </>
           )}
