@@ -4,6 +4,7 @@ import { colors } from "../../colors";
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
+  padding: 0 1rem;
 `;
 
 export const Content = styled.div`
@@ -11,15 +12,21 @@ export const Content = styled.div`
   justify-content: space-evenly;
   text-align: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
   font-weight: 600;
   font-size: 0.75rem;
 
   background: #252d40;
-  width: 18.459rem;
-  height: 3.188rem;
+  width: 100%;
   padding: 0.5rem 1rem;
   border-radius: 6.25rem;
+
+  max-width: 24rem;
+
+  @media (min-width: 768px) {
+    max-width: 19rem;
+  }
 `;
 
 export const TrophyWrapper = styled.div`

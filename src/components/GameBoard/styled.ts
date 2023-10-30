@@ -30,9 +30,12 @@ export const ShopSection = styled.div`
 `;
 
 export const TabContent = styled.div`
-  padding: 1rem 0;
   gap: 1rem;
   width: 100%;
+
+  @media (min-width: 768px) {
+    padding: 1rem 0;
+  }
 `;
 
 export const MainSection = styled.div`

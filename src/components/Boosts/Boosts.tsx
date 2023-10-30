@@ -19,22 +19,26 @@ import {
   Content,
 } from "./styled";
 import Check from "../Icons/Check";
+import Clock from "../Icons/Clock";
 
 const boostList = (verseHolder: boolean, isFarmsOrStaking: boolean) => [
   {
     id: "hold",
     unlocked: verseHolder,
     label: "Hold",
+    desciption: "10x clicks",
   },
   {
     id: "burn",
     unlocked: true,
     label: "Burn",
+    desciption: "Skip time",
   },
   {
     id: "farm",
     unlocked: isFarmsOrStaking,
     label: "Farm",
+    desciption: "2x production",
   },
 ];
 
@@ -86,10 +90,14 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
               }}
             >
               <Label $unlocked={boost.unlocked}>
-                {boost.unlocked ? <Check /> : <Lock />}
+                {boost.id === "burn" ? (
+                  <Clock size={16} />
+                ) : (
+                  <>{boost.unlocked ? <Check /> : <Lock />}</>
+                )}
                 {boost.label}
               </Label>
-              <Boost $unlocked={boost.unlocked}>10x boost</Boost>
+              <Boost $unlocked={boost.unlocked}>{boost.desciption}</Boost>
             </BoostButton>
           ))}
         </BoostTiles>
