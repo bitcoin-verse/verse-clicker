@@ -1,17 +1,16 @@
 import React, { FC, useCallback, useRef, useState } from "react";
 import { useAccount } from "wagmi";
 import { createRoot } from "react-dom/client";
-import useSound from "use-sound";
 
 import { useDispatch, useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
 
-import laserSfx from "../../../assets/laser.wav";
 import { useSocketCtx } from "../../../context/SocketContext";
 import { ButtonWrapper, ClickButton, CookieWrapper, CpcClick } from "./styled";
+import { useAudio } from "../../../context/AudioProvider";
 
 const Cookie: FC = () => {
-  const [play] = useSound(laserSfx);
+  const { playLaser } = useAudio();
   const { socket } = useSocketCtx();
   const dispatch = useDispatch();
   const { status } = useAccount();
@@ -94,8 +93,8 @@ const Cookie: FC = () => {
     socket.emit("click");
     animateCookieClick(e);
 
-    if (settings.sound) {
-      play();
+    if (settings.sound && playLaser) {
+      playLaser();
     }
   };
 
