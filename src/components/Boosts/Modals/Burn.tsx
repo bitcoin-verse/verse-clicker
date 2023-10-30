@@ -20,6 +20,8 @@ import {
   VERSE_TOKEN_CONTRACTS,
 } from "../../../contracts";
 
+import Spinner from "../../Icons/Spinner";
+
 const burnList = [
   { title: "1 hour", value: 15000, hours: 1 },
   { title: "12 hour", value: 150000, hours: 12 },
@@ -56,7 +58,6 @@ const Burn: FC = () => {
     : true;
 
   useEffect(() => {
-    console.log(readData, error);
     if (!readData) return;
     setBalanceData({ value: readData, formatted: formatEther(readData) });
   }, [readData, error]);
@@ -93,11 +94,17 @@ const Burn: FC = () => {
   return (
     <ModalWrapper>
       {showLoading ? (
-        <Container>
-          {isLoading && <Label>Pending transaction, check your wallet.</Label>}
+        <>
+          {isLoading && (
+            <>
+              <Label>Pending transaction, check your wallet.</Label>
+              <Spinner />
+            </>
+          )}
           {isSuccess && !txWaitSuccess && (
             <>
               <Label>Transaction accepted, waiting for confirmation.</Label>
+              <Spinner />
               <LinkButton
                 href={`https://goerli.etherscan.io/tx/${data?.hash}`}
                 target="_blank"
@@ -107,14 +114,30 @@ const Burn: FC = () => {
               </LinkButton>
             </>
           )}
-          {txWaitSuccess && (
+          {txWaitSuccess && !newCookies && (
             <>
-              <Label>
-                Transaction confirmed! {formatNumber(newCookies)} points added
-              </Label>
+              <Label>Transaction confirmed, calculating bonus</Label>
+              <Spinner />
+              <LinkButton
+                href={`https://goerli.etherscan.io/tx/${data?.hash}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                View on Etherscan
+              </LinkButton>
             </>
           )}
-        </Container>
+          {txWaitSuccess && newCookies && (
+            <>
+              <H3>Bonus Awarded!</H3>
+              <Label>
+                {burnList[selectedTab].value.toLocaleString()} VERSE burned
+              </Label>
+              <Label>{burnList[selectedTab].title} skipped</Label>
+              <Label>{formatNumber(newCookies)} points added</Label>
+            </>
+          )}
+        </>
       ) : (
         <>
           <H3>Burn VERSE to boost your point production</H3>
@@ -139,7 +162,7 @@ const Burn: FC = () => {
             <Price>
               <Icon src={verseIcon} />
               <Label $color={insufficientVerse ? "warning" : undefined}>
-                {selectedBurn?.value} VERSE
+                {selectedBurn?.value.toLocaleString()} VERSE
               </Label>
             </Price>
             <Divider />
