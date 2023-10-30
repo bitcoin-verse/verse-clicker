@@ -52,7 +52,7 @@ const Settings: FC = () => {
         </HeaderRow>
       </Header>
 
-      <Points>
+      <Points style={{ alignSelf: "flex-start" }}>
         <Star size={32} />
         {formatNumber(player.cookies)}
       </Points>
