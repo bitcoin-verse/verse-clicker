@@ -1,24 +1,64 @@
 import React, { FC } from "react";
-import { useAccount, useChainId } from "wagmi";
+import { useAccount, useNetwork } from "wagmi";
 import { useDispatch, useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
 import truncateEthAddress from "../../../helpers/truncateEthAddress";
+import {
+  Avatar,
+  Connected,
+  Header,
+  HeaderRow,
+  NetworkImage,
+  ButtonsWrapper,
+  SettingsButton,
+} from "./styled";
+
+import ethSrc from "../../../assets/ethereum.png";
+import gethSrc from "../../../assets/goerli.png";
+import polySrc from "../../../assets/polygon.png";
+import { Points } from "../../GameBoard/PointsDisplay/styled";
+import Star from "../../Icons/Star";
+import SoundOff from "../../Icons/SoundOff";
+import SoundOn from "../../Icons/SoundOn";
+import Reset from "../../Icons/Reset";
+
+const networkImages: Record<string, string> = {
+  1: ethSrc,
+  5: gethSrc,
+  137: polySrc,
+};
 
 const Settings: FC = () => {
   const { address } = useAccount();
-  const chainId = useChainId();
+  const { chain } = useNetwork();
 
   const { player, settings } = useTrackedState();
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <div>Network: {chainId}</div>
-      <div>Address: {truncateEthAddress(address || "")}</div>
-      <div>{formatNumber(player.cookies)}</div>
+    <>
+      <Header>
+        <HeaderRow>
+          <Avatar />
+          <Connected>Connected</Connected>
+        </HeaderRow>
 
-      <div>
-        <button
+        <HeaderRow>
+          <div>{truncateEthAddress(address || "")}</div>
+
+          {chain && (
+            <NetworkImage src={networkImages[chain?.id]} alt={chain?.name} />
+          )}
+        </HeaderRow>
+      </Header>
+
+      <Points style={{ alignSelf: "flex-start" }}>
+        <Star size={32} />
+        {formatNumber(player.cookies)}
+      </Points>
+
+      <ButtonsWrapper>
+        <SettingsButton
           onClick={() => {
             dispatch({
               type: "SET_SETTINGS",
@@ -26,12 +66,25 @@ const Settings: FC = () => {
             });
           }}
         >
-          {settings.sound ? "Mute" : "Unmute"}
-        </button>
+          {settings.sound ? (
+            <>
+              <SoundOn size="2rem" />
+              Mute
+            </>
+          ) : (
+            <>
+              <SoundOff size="2rem" />
+              Unmute
+            </>
+          )}
+        </SettingsButton>
 
-        <button>Wipe Save (todo)</button>
-      </div>
-    </div>
+        <SettingsButton disabled>
+          <Reset size="2rem" />
+          Reset score
+        </SettingsButton>
+      </ButtonsWrapper>
+    </>
   );
 };
 
