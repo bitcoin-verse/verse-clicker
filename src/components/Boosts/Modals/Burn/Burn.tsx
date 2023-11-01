@@ -58,8 +58,8 @@ const Burn: FC = () => {
   const selectedBurn =
     BURN_LIST.find((_, i) => i === selectedTab) ?? BURN_LIST[0];
 
-  const insufficientVerse = balanceData
-    ? selectedBurn.value > balanceData.value
+  const insufficientVerse = balanceData?.value
+    ? selectedBurn.value > Number(formatEther(balanceData.value))
     : true;
 
   useEffect(() => {
