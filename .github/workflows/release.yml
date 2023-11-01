@@ -2,7 +2,7 @@ name: Deploy Prod to CF
 
 on:
   release:
-    types: [published, released]
+    types: [published]
     tags:
       - 'v*'
 env:
