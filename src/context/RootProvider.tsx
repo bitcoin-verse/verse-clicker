@@ -5,11 +5,12 @@ import { goerli, mainnet, polygon } from "wagmi/chains";
 import { createWeb3Modal } from "@web3modal/wagmi/react";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
-import { infuraProvider } from "wagmi/providers/infura";
+import { publicProvider } from "wagmi/providers/public";
 
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { ContextProvider } from "./store";
 import SocketCtxProvider from "./SocketContext";
+import { walletConnectProvider } from "@web3modal/wagmi";
 
 const projectId = "1184cb8e8109ec7c4a9425c56b494e5e";
 
@@ -22,11 +23,7 @@ const metadata = {
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet, polygon, goerli],
-  [
-    infuraProvider({
-      apiKey: "1f47d876b0094053881ae761371be771",
-    }),
-  ],
+  [walletConnectProvider({ projectId }), publicProvider()],
 );
 
 const wagmiConfig = createConfig({
