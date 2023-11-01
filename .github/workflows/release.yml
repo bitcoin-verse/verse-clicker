@@ -5,6 +5,8 @@ on:
     types: [published, released]
     tags:
       - 'v*'
+env:
+  REACT_APP_WEBSOCKET_SERVER: ${{ secrets.REACT_APP_WEBSOCKET_SERVER_PROD }}
 jobs:
   deploy-prod:
     if: '!github.event.release.prerelease'
