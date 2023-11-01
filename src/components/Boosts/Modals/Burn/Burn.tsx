@@ -2,22 +2,23 @@ import React, { FC, useEffect, useState } from "react";
 import { useChainId, useContractWrite, useWaitForTransaction } from "wagmi";
 import { formatEther, parseEther } from "viem";
 
-import testVerseABI from "../../../contracts/verseGoerli";
-import { formatNumber } from "../../../helpers/formatNumber";
-import { useSocketCtx } from "../../../context/SocketContext";
-import useVerseBalance from "../../../hooks/useVerseBalance";
-import { Divider, Icon, ModalWrapper, Price, StyledButton } from "../styled";
-import { H3 } from "../../H3";
-import { Container } from "../../Container";
-import { Label } from "../../Label";
+import { useSocketCtx } from "../../../../context/SocketContext";
+import useVerseBalance from "../../../../hooks/useVerseBalance";
+import { Divider, Icon, ModalWrapper, Price, StyledButton } from "../../styled";
+import { H3 } from "../../../H3";
+import { Container } from "../../../Container";
+import { Label } from "../../../Label";
 
-import verseIcon from "../../../assets/verse-icon.png";
-import Tabs, { TabButton } from "../../Tabs";
-import { LinkButton } from "../../LinkButton";
-import { GOERLI_BURN_ADDRESS } from "../../../constants";
-import WarningChip from "../../WarningChip";
+import verseIcon from "../../../../assets/verse-icon.png";
+import Tabs, { TabButton } from "../../../Tabs";
 
-const burnList = [
+import WarningChip from "../../../WarningChip";
+
+import getVerseTokenDetails from "../../../../contracts/getVerseTokenDetails";
+import getBurnEngineDetails from "../../../../contracts/getBurnEngineDetails";
+import LoadingStates from "./LoadingStates";
+
+export const BURN_LIST = [
   { title: "1 hour", value: 15000, hours: 1 },
   { title: "12 hour", value: 150000, hours: 12 },
   { title: "1 day", value: 280000, hours: 24 },
@@ -25,46 +26,53 @@ const burnList = [
 
 const Burn: FC = () => {
   const { socket } = useSocketCtx();
-  const { data: readData, error } = useVerseBalance();
   const chainId = useChainId();
+  const { data: readData, error } = useVerseBalance();
   const [newCookies, setNewCookies] = useState<number>();
 
-  const { data, isLoading, isSuccess, writeAsync } = useContractWrite({
-    address: GOERLI_BURN_ADDRESS,
-    abi: testVerseABI,
-    functionName: "burn",
-    chainId,
-  });
-
-  const { isSuccess: txWaitSuccess } = useWaitForTransaction(data);
-
-  const [showLoading, setShowLoading] = useState(false);
+  const verseTokenDetails = getVerseTokenDetails(chainId);
+  const burnEngineDetails = getBurnEngineDetails(chainId);
 
   const [balanceData, setBalanceData] = useState<{
     formatted: string;
     value: bigint;
   }>();
 
+  const {
+    data: txData,
+    isLoading: isPendingWallet,
+    isSuccess: isTxSent,
+    writeAsync,
+  } = useContractWrite({
+    address: verseTokenDetails?.address,
+    abi: verseTokenDetails?.abi,
+    functionName: "transfer",
+    chainId,
+  });
+
+  const { isSuccess: isTxConfirmed } = useWaitForTransaction(txData);
+
+  const [showLoading, setShowLoading] = useState(false);
+
   const [selectedTab, setSelectedTab] = useState(0);
-  const selectedBurn =
-    burnList.find((_, i) => i === selectedTab) ?? burnList[0];
-  const insufficientVerse = balanceData
-    ? selectedBurn.value > balanceData.value
+  const selectedBurn = BURN_LIST[selectedTab];
+
+  const insufficientVerse = balanceData?.value
+    ? selectedBurn.value > Number(formatEther(balanceData.value))
     : true;
 
   useEffect(() => {
-    console.log(readData, error);
     if (!readData) return;
     setBalanceData({ value: readData, formatted: formatEther(readData) });
   }, [readData, error]);
 
   useEffect(() => {
-    if (isLoading || isSuccess || txWaitSuccess) {
+    if (isPendingWallet || isTxSent || isTxConfirmed) {
       setShowLoading(true);
     } else {
       setShowLoading(false);
     }
-  }, [isLoading, isSuccess, txWaitSuccess]);
+  }, [isPendingWallet, isTxSent, isTxConfirmed]);
 
   useEffect(() => {
     const onBonus = (data: number) => {
@@ -79,8 +87,9 @@ const Burn: FC = () => {
 
   const handleBurn = async (amount: number) => {
     try {
+      if (!burnEngineDetails) return;
       await writeAsync({
-        args: [parseEther(amount.toString())],
+        args: [burnEngineDetails.address, parseEther(amount.toString())],
       });
     } catch (error) {
       console.log("Write error", error);
@@ -90,28 +99,14 @@ const Burn: FC = () => {
   return (
     <ModalWrapper>
       {showLoading ? (
-        <Container>
-          {isLoading && <Label>Pending transaction, check your wallet.</Label>}
-          {isSuccess && !txWaitSuccess && (
-            <>
-              <Label>Transaction accepted, waiting for confirmation.</Label>
-              <LinkButton
-                href={`https://goerli.etherscan.io/tx/${data?.hash}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                View on Etherscan
-              </LinkButton>
-            </>
-          )}
-          {txWaitSuccess && (
-            <>
-              <Label>
-                Transaction confirmed! {formatNumber(newCookies)} points added
-              </Label>
-            </>
-          )}
-        </Container>
+        <LoadingStates
+          isPendingWallet={isPendingWallet}
+          isTxSent={isTxSent}
+          isTxConfirmed={isTxConfirmed}
+          newCookies={newCookies}
+          selectedTab={selectedTab}
+          txHash={txData?.hash}
+        />
       ) : (
         <>
           <H3>Burn VERSE to boost your point production</H3>
@@ -120,7 +115,7 @@ const Burn: FC = () => {
             <Tabs
               center
               mobileVersion
-              tabs={burnList.map((button, i) => (
+              tabs={BURN_LIST.map((button, i) => (
                 <TabButton
                   key={i}
                   $mobileVersion
@@ -136,7 +131,7 @@ const Burn: FC = () => {
             <Price>
               <Icon src={verseIcon} />
               <Label $color={insufficientVerse ? "warning" : undefined}>
-                {selectedBurn?.value} VERSE
+                {selectedBurn?.value.toLocaleString()} VERSE
               </Label>
             </Price>
             <Divider />
@@ -144,7 +139,7 @@ const Burn: FC = () => {
               Available:{" "}
               {balanceData?.formatted
                 ? Number(balanceData.formatted).toLocaleString()
-                : 0}{" "}
+                : "0.00"}{" "}
               VERSE
             </Label>
           </Container>
@@ -153,6 +148,7 @@ const Burn: FC = () => {
               You don&#39;t have enough VERSE. Buy now!
             </WarningChip>
           )}
+
           <StyledButton
             onClick={() => handleBurn(selectedBurn?.value)}
             disabled={insufficientVerse}

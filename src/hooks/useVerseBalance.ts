@@ -1,16 +1,17 @@
 import { useAccount, useChainId, useContractRead } from "wagmi";
-import getTokenDetails from "../helpers/getTokenDetails";
+import getVerseTokenDetails from "../contracts/getVerseTokenDetails";
 
 const useVerseBalance = () => {
   const { address } = useAccount();
   const chainId = useChainId();
 
-  const tokenDetails = getTokenDetails(chainId);
+  const tokenDetails = getVerseTokenDetails(chainId);
 
   const { data, error } = useContractRead({
     address: tokenDetails?.address,
     abi: tokenDetails?.abi,
     functionName: "balanceOf",
+    chainId,
     args: address ? [address] : undefined,
     account: address,
     watch: true,
