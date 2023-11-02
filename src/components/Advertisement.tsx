@@ -37,7 +37,7 @@ const AdWrapper = styled.div<{ $mobileVersion?: boolean }>`
   display: ${({ $mobileVersion }) => ($mobileVersion ? "block" : "none")};
 
   @media (min-width: 768px) {
-    padding: 1rem 0;
+    padding: 1rem 1rem 1rem 0;
     display: ${({ $mobileVersion }) => ($mobileVersion ? "none" : "block")};
   }
 `;
