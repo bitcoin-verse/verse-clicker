@@ -1,5 +1,5 @@
 import { Reducer } from "react";
-import { State, initialState } from "./store";
+import { State } from "./store";
 import { SetPlayerAction, setPlayer } from "./reducers/player";
 import {
   SetBuildingAction,
@@ -16,6 +16,7 @@ import {
   setPurchaseAmount,
 } from "./reducers/purchaseAmount";
 import { SetSettingsAction, setSettings } from "./reducers/settings";
+import { resetGame } from "./reducers/reset";
 
 export type Action =
   | SetNetworkAction
@@ -33,7 +34,7 @@ export type Action =
 const reducer: Reducer<State, Action> = (state, action) => {
   switch (action.type) {
     case "RESET_GAME":
-      return initialState;
+      return resetGame(state);
     case "SET_NETWORK":
       return setNetwork(state, action.payload);
     case "SET_PLAYER_DATA":
