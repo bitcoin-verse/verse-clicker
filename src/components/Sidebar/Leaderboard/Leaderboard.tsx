@@ -8,13 +8,12 @@ import {
   Body,
   Header,
   LeaderboardWrapper,
-  MoonImage,
   StarWrapper,
   YouBadge,
 } from "./styled";
 
-import cookieImg from "../../../assets/verse-moon-small.png";
 import Star from "../../Icons/Star";
+import Cursor from "../../Icons/Cursor";
 
 const Leaderboard = () => {
   const { address } = useAccount();
@@ -41,7 +40,7 @@ const Leaderboard = () => {
                 </div>
                 <div>
                   {formatNumber(Number(item.stats.Clicked))}{" "}
-                  <MoonImage src={cookieImg} alt="cookie" />
+                  <Cursor size="0.875rem" />
                 </div>
                 <div>
                   {formatNumber(Number(item.stats.Earned))}
@@ -65,7 +64,7 @@ const Leaderboard = () => {
             </div>
             <div>
               {formatNumber(Number(item.stats.Clicked))}{" "}
-              <MoonImage src={cookieImg} alt="cookie" />
+              <Cursor size="0.875rem" />
             </div>
             <div>
               {formatNumber(Number(item.stats.Earned))}

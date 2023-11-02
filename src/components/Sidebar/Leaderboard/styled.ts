@@ -27,13 +27,6 @@ export const YouBadge = styled.div`
   background: linear-gradient(180deg, #425472 0%, #313e57 100%);
 `;
 
-export const MoonImage = styled.img`
-  height: 0.875rem;
-  width: 0.875rem;
-
-  filter: drop-shadow(0px 2px 10px #1167b6);
-`;
-
 export const Header = styled.div`
   display: grid;
   grid-template-columns: 1rem auto 6rem 6rem;
