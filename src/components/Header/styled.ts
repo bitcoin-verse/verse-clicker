@@ -17,6 +17,7 @@ export const StyledHeader = styled.header`
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr auto 1fr;
+    max-width: unset;
   }
 `;
 

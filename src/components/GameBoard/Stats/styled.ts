@@ -25,7 +25,7 @@ export const Content = styled.div`
   max-width: 24rem;
 
   @media (min-width: 768px) {
-    max-width: 19rem;
+    max-width: 21rem;
   }
 `;
 
