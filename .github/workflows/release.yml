@@ -7,6 +7,8 @@ on:
       - 'v*'
 env:
   REACT_APP_WEBSOCKET_SERVER: ${{ secrets.REACT_APP_WEBSOCKET_SERVER_PROD }}
+  REACT_APP_PUBLIC_URL: ${{ secrets.PUBLIC_URL_PROD }}
+  REACT_APP_VERSE_BASE_URL: ${{ secrets.VERSE_URL_PROD }}
 jobs:
   deploy-prod:
     if: '!github.event.release.prerelease'

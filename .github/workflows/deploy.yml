@@ -8,6 +8,7 @@ on:
 env:
   REACT_APP_WEBSOCKET_SERVER: ${{ secrets.REACT_APP_WEBSOCKET_SERVER }}
   REACT_APP_PUBLIC_URL: ${{ secrets.PUBLIC_URL_DEV }}
+  REACT_APP_VERSE_BASE_URL: ${{ secrets.VERSE_URL_DEV }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
