@@ -9,7 +9,7 @@ import Settings from "./Settings";
 import WelcomeContent from "../WelcomeModal/Content";
 import Modal, { useModal } from "../Modal";
 
-const getModalContent = (content?: string) => {
+const getModalContent = (close: () => void, content?: string) => {
   switch (content) {
     case "leaderboard":
       return {
@@ -19,7 +19,7 @@ const getModalContent = (content?: string) => {
     case "welcome":
       return {
         title: "Welcome",
-        component: <WelcomeContent />,
+        component: <WelcomeContent close={close} />,
       };
 
     /*   case "tour":
@@ -36,10 +36,10 @@ const getModalContent = (content?: string) => {
 };
 
 const Sidebar = () => {
-  const { modalRef, showModal } = useModal();
+  const { modalRef, showModal, close } = useModal();
   const [content, setContent] = useState<string>();
 
-  const modalContent = getModalContent(content);
+  const modalContent = getModalContent(close, content);
 
   return (
     <>

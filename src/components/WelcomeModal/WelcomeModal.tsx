@@ -7,7 +7,7 @@ import Content from './Content';
 const WelcomeModal = () => {
   const dispatch = useDispatch();
   const { returnData, player } = useTrackedState();
-  const { modalRef, showModal } = useModal();
+  const { modalRef, showModal, close } = useModal();
 
   useEffect(() => {
     if (!returnData) return;
@@ -22,7 +22,7 @@ const WelcomeModal = () => {
         title="Verse Clicker"
         overlayClose
       >
-        <Content returningUser={!!player.cookies} />
+        <Content returningUser={!!player.cookies} close={close}/>
       </Modal>
     </>
   );
