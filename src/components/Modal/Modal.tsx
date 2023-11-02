@@ -18,6 +18,7 @@ interface Props {
   modalRef: RefObject<HTMLDialogElement>;
   title?: string;
   onClose?: () => void;
+  overlayClose?: boolean;
 }
 
 const Modal: FC<PropsWithChildren<Props>> = ({
@@ -25,20 +26,37 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   children,
   title,
   onClose,
+  overlayClose,
   ...rest
 }) => {
+  const close = () => {
+    if (!modalRef || !modalRef.current) return;
+    document.body.style.overflow = "unset";
+    modalRef.current.close();
+    if (onClose) onClose();
+  };
+
+  const clickOverlayToClose = (event: React.MouseEvent<HTMLElement>) => {
+    if (
+      event.target instanceof HTMLElement &&
+      event.target.nodeName === "DIALOG" &&
+      overlayClose
+    ) {
+      close();
+    }
+  };
+
   return (
-    <Dialog ref={modalRef} {...rest}>
+    <Dialog
+      ref={modalRef}
+      onClick={clickOverlayToClose}
+      {...rest}
+    >
       {title && (
         <ModalTitle>
           <TitleText>{title}</TitleText>
           <CloseButton
-            onClick={() => {
-              if (!modalRef || !modalRef.current) return;
-              document.body.style.overflow = "unset";
-              modalRef.current.close();
-              if (onClose) onClose();
-            }}
+            onClick={close}
           >
             <Cross size="1rem" />
           </CloseButton>
