@@ -23,7 +23,7 @@ const WelcomeModal = () => {
         modalRef={modalRef}
         onClose={() => dispatch({ type: "SET_RETURN_DATA" })}
         title="Verse Clicker"
-        overlayToClose
+        overlayClose
       >
         <Moon src={verseMoon} />
         {player.cookies ? <ReturningUser /> : <NewUser />}

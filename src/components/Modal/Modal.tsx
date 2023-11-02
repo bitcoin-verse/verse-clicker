@@ -18,7 +18,7 @@ interface Props {
   modalRef: RefObject<HTMLDialogElement>;
   title?: string;
   onClose?: () => void;
-  overlayToClose?: boolean;
+  overlayClose?: boolean;
 }
 
 const Modal: FC<PropsWithChildren<Props>> = ({
@@ -26,7 +26,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   children,
   title,
   onClose,
-  overlayToClose,
+  overlayClose,
   ...rest
 }) => {
   const close = () => {
@@ -36,10 +36,11 @@ const Modal: FC<PropsWithChildren<Props>> = ({
     if (onClose) onClose();
   };
 
-  const clickOverlayToClose = (event: React.UIEvent) => {
+  const clickOverlayToClose = (event: React.MouseEvent<HTMLElement>) => {
     if (
       event.target instanceof HTMLElement &&
-      event.target.nodeName === "DIALOG"
+      event.target.nodeName === "DIALOG" &&
+      overlayClose
     ) {
       close();
     }
@@ -48,7 +49,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   return (
     <Dialog
       ref={modalRef}
-      onClick={overlayToClose ? clickOverlayToClose : undefined}
+      onClick={clickOverlayToClose}
       {...rest}
     >
       {title && (
