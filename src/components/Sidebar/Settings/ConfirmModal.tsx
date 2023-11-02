@@ -13,7 +13,7 @@ interface Props {
 const ConfirmModal: FC<Props> = ({ modalRef, close, resetScore }) => {
   return (
     <Modal modalRef={modalRef} title="Confirm Reset" onClose={close}>
-      <H3>
+      <H3 $align="left">
         You are about to reset your score. This will clear any progress you have
         made.
       </H3>
