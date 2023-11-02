@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 
-import { useAccount } from "wagmi";
+import { useAccount, useEnsName } from "wagmi";
 import { Button as PrimaryButton } from "../Button";
 
 import truncateEthAddress from "../../helpers/truncateEthAddress";
@@ -82,6 +82,7 @@ const ConnectButton: FC = () => {
   const { isWallet } = useTrackedState();
   const { open } = useWeb3Modal();
   const { address, isConnected, connector } = useAccount();
+  const { data } = useEnsName({ address });
 
   if (!isConnected)
     return (
@@ -108,7 +109,9 @@ const ConnectButton: FC = () => {
         <ButtonContent
           $logo={getConnectorLogo(isWallet ? "bcom" : connector?.id)}
         >
-          <AddressHolder>{truncateEthAddress(address || "")}</AddressHolder>
+          <AddressHolder>
+            {data ? data : truncateEthAddress(address || "")}
+          </AddressHolder>
         </ButtonContent>
       </Button>
     </ConnectWrapper>
