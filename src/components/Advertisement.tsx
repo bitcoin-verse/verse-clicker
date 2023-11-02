@@ -1,43 +1,26 @@
 import React, { FC, useEffect, useState } from "react";
 
-import adBtc from "../assets/ad-btc.png";
-import adCorbin from "../assets/ad-corbin.jpg";
-import adGlobalists from "../assets/ad-globalists.jpg";
-import adClubHouse from "../assets/ad-club-house.png";
-import adBurnEngine from "../assets/ad-burn-engine.png";
-import adGoldenPepe from "../assets/ad-golden-pepe.png";
-import adMcdonalds from "../assets/ad-mcdonalds.png";
-import adNft from "../assets/ad-nft.png";
-import adUsername from "../assets/ad-username.png";
+import adLounge from "../assets/ad-lounge.png";
+import adPools from "../assets/ad-pools.png";
+import adSwap from "../assets/ad-swap.png";
+import adStaking from "../assets/ad-staking.png";
+import adFarms from "../assets/ad-farms.png";
 
 import styled from "styled-components";
 
 const adlist = [
-  { img: adBtc, link: "https://youtu.be/dQw4w9WgXcQ?si=oXRVClQuVONile0S" },
-  { img: adCorbin, link: "https://www.linkedin.com/in/corbinfraser/" },
+  { img: adLounge, link: "https://www.linkedin.com/in/corbinfraser/" },
   {
-    img: adGlobalists,
+    img: adPools,
     link: "https://youtu.be/8mMIocEGGM0?si=LhqsR_LcWocskpBt",
   },
   {
-    img: adClubHouse,
-    link: "https://dex.dev.cloud.bitcoin.com/lounge/",
-  },
-  {
-    img: adBurnEngine,
-    link: "https://bitcoin-portal.github.io/burn-srs-buy/src/index.html",
-  },
-  {
-    img: adGoldenPepe,
-    link: "https://youtu.be/vJMP7RBsoms?si=AI9rgrggncEDfAZ9",
-  },
-  {
-    img: adMcdonalds,
+    img: adSwap,
     link: "https://www.bitcoin.com/jobs/",
   },
-  { img: adNft, link: "https://main--chipper-hotteok-85cbb2.netlify.app/" },
+  { img: adStaking, link: "https://main--chipper-hotteok-85cbb2.netlify.app/" },
   {
-    img: adUsername,
+    img: adFarms,
     link: "https://verse-usernames.vercel.app/",
   },
 ];
