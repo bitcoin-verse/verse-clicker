@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Button } from "../../Button";
 
 export const Header = styled.div`
   display: flex;
