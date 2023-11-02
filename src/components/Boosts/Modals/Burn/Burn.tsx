@@ -4,10 +4,19 @@ import { formatEther, parseEther } from "viem";
 
 import { useSocketCtx } from "../../../../context/SocketContext";
 import useVerseBalance from "../../../../hooks/useVerseBalance";
-import { Divider, Icon, ModalWrapper, Price, StyledButton } from "../../styled";
+import { getExplorerLink } from "../../../../helpers/getExplorerLink";
+import {
+  Divider,
+  Icon,
+  ModalWrapper,
+  Price,
+  StyledButton,
+  Footnote,
+} from "../../styled";
 import { H3 } from "../../../H3";
 import { Container } from "../../../Container";
 import { Label } from "../../../Label";
+import { Link } from "../../../Link";
 
 import verseIcon from "../../../../assets/verse-icon.png";
 import Tabs, { TabButton } from "../../../Tabs";
@@ -155,6 +164,19 @@ const Burn: FC = () => {
           >
             Burn VERSE
           </StyledButton>
+          <Footnote>
+            <Label $color="secondary">
+              This transaction will send the specified VERSE to{" "}
+              <Link
+                href={getExplorerLink(chainId)}
+                target="_blank"
+                rel="noreferrer"
+              >
+                this contract
+              </Link>
+              , making the sent VERSE permanently inaccessible.
+            </Label>
+          </Footnote>
         </>
       )}
     </ModalWrapper>

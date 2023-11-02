@@ -41,8 +41,8 @@ const Loading: FC = () => {
         <ContentsWrapper>
           <H1>VERSE CLICKER</H1>
           <H4 $secondary>
-            Click for verse, climb the leaderboard! Join the Verse community and
-            experience a world of endless clicking fun.
+            Click for Verse points, climb the leaderboard! Join the Verse
+            community and experience a world of endless clicking fun.
           </H4>
           <Link href="https://boo">Learn More</Link>
         </ContentsWrapper>
