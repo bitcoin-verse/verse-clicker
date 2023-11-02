@@ -8,13 +8,12 @@ import {
   Body,
   Header,
   LeaderboardWrapper,
-  MoonImage,
   StarWrapper,
   YouBadge,
 } from "./styled";
 
-import cookieImg from "../../../assets/verse-moon-small.png";
 import Star from "../../Icons/Star";
+import Cursor from "../../Icons/Cursor";
 
 const Leaderboard = () => {
   const { address } = useAccount();
@@ -30,6 +29,32 @@ const Leaderboard = () => {
       </Header>
 
       {leaderboard?.map((item, index) => {
+        if (index >= 10) {
+          if (item.address === address) {
+            return (
+              <Body key={item.address}>
+                <div>...</div>
+                <div>
+                  {truncateEthAddress(item.address)}{" "}
+                  {item.address === address && <YouBadge>🌟</YouBadge>}
+                </div>
+                <div>
+                  {formatNumber(Number(item.stats.Clicked))}{" "}
+                  <Cursor size="0.875rem" />
+                </div>
+                <div>
+                  {formatNumber(Number(item.stats.Earned))}
+                  <StarWrapper>
+                    <Star size="0.875rem" />
+                  </StarWrapper>
+                </div>
+              </Body>
+            );
+          }
+
+          return null;
+        }
+
         return (
           <Body key={item.address}>
             <div>{index + 1}</div>
@@ -39,7 +64,7 @@ const Leaderboard = () => {
             </div>
             <div>
               {formatNumber(Number(item.stats.Clicked))}{" "}
-              <MoonImage src={cookieImg} alt="cookie" />
+              <Cursor size="0.875rem" />
             </div>
             <div>
               {formatNumber(Number(item.stats.Earned))}
