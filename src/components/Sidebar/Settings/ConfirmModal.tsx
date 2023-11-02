@@ -1,8 +1,9 @@
 import React, { FC, RefObject } from "react";
+
+import { Button } from "../../Button";
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
 import Modal from "../../Modal";
-import { ConfirmButton } from "./styled";
 
 interface Props {
   modalRef: RefObject<HTMLDialogElement>;
@@ -19,10 +20,12 @@ const ConfirmModal: FC<Props> = ({ modalRef, close, resetScore }) => {
       <Label $color="secondary">
         Please note that this action cannot be undone
       </Label>
-      <ConfirmButton onClick={resetScore}>Confirm reset</ConfirmButton>
-      <ConfirmButton design="secondary" onClick={close}>
+      <Button $fullWidth onClick={resetScore}>
+        Confirm reset
+      </Button>
+      <Button $fullWidth design="secondary" onClick={close}>
         Dismiss
-      </ConfirmButton>
+      </Button>
     </Modal>
   );
 };
