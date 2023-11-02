@@ -1,8 +1,8 @@
 import React, { FC, useCallback, useRef, useState } from "react";
-import { useAccount } from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 import { createRoot } from "react-dom/client";
 
-import { useDispatch, useTrackedState } from "../../../context/store";
+import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
 
 import { useSocketCtx } from "../../../context/SocketContext";
@@ -12,14 +12,15 @@ import { useAudio } from "../../../context/AudioProvider";
 const Cookie: FC = () => {
   const { playLaser } = useAudio();
   const { socket } = useSocketCtx();
-  const dispatch = useDispatch();
+
+  const { disconnect } = useDisconnect();
   const { status } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
 
   const { player, settings } = useTrackedState();
-  const [clickCount, setClickCount] = useState<number>();
+  const [clickCount, setClickCount] = useState<number>(0);
 
-  const [macroDetected, setMacroDetected] = useState(false);
+  const [countTimer, setCountTimer] = useState<NodeJS.Timeout>();
 
   const animateCookieClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -59,37 +60,40 @@ const Cookie: FC = () => {
     [player.cpc],
   );
 
-  const handleCheatPrevention = useCallback(() => {
-    setClickCount((c) => (c || 0) + 1);
+  const autoClickDetection = () => {
+    setClickCount((c) => c + 1);
 
-    const timeout = setTimeout(() => {
-      setClickCount(0);
-    }, 1000);
+    clearTimeout(countTimer);
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
+    setCountTimer(
+      setTimeout(() => {
+        setClickCount(0);
+      }, 1000),
+    );
+
+    if (clickCount && clickCount >= 30) {
+      alert("Macro detected, disconnecting...");
+      return true;
+    }
+
+    return false;
+  };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    if (!e.isTrusted) {
+    const { isTrusted } = e;
+
+    if (!isTrusted) {
       alert("Bad click... Get outa the console you script kiddy");
       return;
     }
-    if (clickCount && clickCount >= 30) {
-      if (macroDetected) {
-        alert("You were warned! wiping your game...");
-        dispatch({ type: "RESET_GAME" });
-      } else {
-        alert(
-          `CHEAT DETECTED!! No one can click that fast. Do it again and your save will be wiped`,
-        );
-        setMacroDetected(true);
-      }
+
+    const isAutoClick = autoClickDetection();
+
+    if (isAutoClick || !isTrusted) {
+      disconnect();
       return;
     }
 
-    handleCheatPrevention();
     socket.emit("click");
     animateCookieClick(e);
 
