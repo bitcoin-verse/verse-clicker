@@ -29,16 +29,16 @@ const boostList = (verseHolder: boolean, isFarmsOrStaking: boolean) => [
     desciption: "10x clicks",
   },
   {
-    id: "burn",
-    unlocked: true,
-    label: "Burn",
-    desciption: "Skip time",
-  },
-  {
     id: "farm",
     unlocked: isFarmsOrStaking,
     label: "Farm",
     desciption: "2x production",
+  },
+  {
+    id: "burn",
+    unlocked: true,
+    label: "Burn",
+    desciption: "Skip time",
   },
 ];
 
@@ -89,7 +89,7 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
                 showModal();
               }}
             >
-              <Label $unlocked={boost.unlocked}>
+              <Label $unlocked={boost.unlocked} $cta={boost.id === "burn"}>
                 {boost.id === "burn" ? (
                   <Clock size={16} />
                 ) : (

@@ -13,7 +13,7 @@ const Farm: FC = () => {
 
   return (
     <ModalWrapper>
-      <Chip>10x boost</Chip>
+      <Chip>2x boost</Chip>
       {player.isFarming || player.isStaking ? (
         <>
           <H3>You&#39;re currently farming and/or staking VERSE</H3>
