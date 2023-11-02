@@ -6,8 +6,8 @@ const NewUser = () => {
     <>
       <h1>Welcome to Verse Clicker</h1>
       <Description>
-        Click for verse, climb the leaderboard! Join the Verse community and
-        experience a world of endless clicking fun.
+        Click for Verse points, climb the leaderboard! Join the Verse community
+        and experience a world of endless clicking fun.
       </Description>
     </>
   );
