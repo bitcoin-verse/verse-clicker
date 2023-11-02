@@ -79,4 +79,9 @@ export const Body = styled.div`
     text-align: left;
     justify-content: flex-start;
   }
+
+  & > :nth-child(3),
+  & > :nth-child(4) {
+    font-family: monospace;
+  }
 `;
