@@ -8,7 +8,7 @@ import adFarms from "../assets/ad-farms.png";
 
 import styled from "styled-components";
 
-const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+const baseUrl = "https://www.verse.bitcoin.com/";
 
 const adlist = [
   { img: adLounge, link: `${baseUrl}lounge` },
