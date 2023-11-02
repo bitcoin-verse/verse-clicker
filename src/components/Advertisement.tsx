@@ -8,20 +8,22 @@ import adFarms from "../assets/ad-farms.png";
 
 import styled from "styled-components";
 
+const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+
 const adlist = [
-  { img: adLounge, link: "https://www.linkedin.com/in/corbinfraser/" },
+  { img: adLounge, link: `${baseUrl}lounge` },
   {
     img: adPools,
-    link: "https://youtu.be/8mMIocEGGM0?si=LhqsR_LcWocskpBt",
+    link: `${baseUrl}pools/eth`,
   },
   {
     img: adSwap,
-    link: "https://www.bitcoin.com/jobs/",
+    link: baseUrl,
   },
-  { img: adStaking, link: "https://main--chipper-hotteok-85cbb2.netlify.app/" },
+  { img: adStaking, link: `${baseUrl}staking/eth/verse/` },
   {
     img: adFarms,
-    link: "https://verse-usernames.vercel.app/",
+    link: `${baseUrl}farms/eth/`,
   },
 ];
 
