@@ -91,7 +91,7 @@ export const BoostButton = styled.button`
   }
 `;
 
-export const Label = styled.div<{ $unlocked: boolean, $cta?: boolean }>`
+export const Label = styled.div<{ $unlocked: boolean; $cta?: boolean }>`
   color: ${({ $unlocked, $cta }) => {
     if ($cta) return colors.primaryBlue100;
     return $unlocked ? colors.green100 : colors.shade80;
@@ -135,4 +135,11 @@ export const Price = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
+`;
+
+export const Footnote = styled.div`
+  & > span,
+  a {
+    font-size: 0.75rem;
+  }
 `;
