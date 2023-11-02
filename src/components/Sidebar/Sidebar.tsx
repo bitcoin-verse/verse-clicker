@@ -70,6 +70,7 @@ const Sidebar = () => {
         modalRef={modalRef}
         onClose={() => setContent(undefined)}
         title={modalContent?.title}
+        overlayToClose
       >
         {modalContent?.component}
       </Modal>
