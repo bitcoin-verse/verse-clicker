@@ -23,6 +23,10 @@ export const Value = styled.div`
   display: flex;
   gap: 0.5rem;
   align-items: center;
+
+  & > svg {
+    color: ${colors.shade80};
+  }
 `;
 
 export const H3 = styled.h3`
