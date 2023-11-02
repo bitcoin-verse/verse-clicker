@@ -44,6 +44,7 @@ const Settings: FC = () => {
     if (!chain || !address) return;
     socket.emit("wipe_save", { address, chain: chain.name });
     close();
+    dispatch({ type: "RESET_GAME" });
   }, []);
 
   return (
