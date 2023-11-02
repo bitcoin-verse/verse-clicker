@@ -2,7 +2,7 @@ import React, { FC, PropsWithChildren } from "react";
 
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { goerli, mainnet, polygon } from "wagmi/chains";
-import { createWeb3Modal } from "@web3modal/wagmi/react";
+import { createWeb3Modal, EIP6963Connector } from "@web3modal/wagmi/react";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { publicProvider } from "wagmi/providers/public";
@@ -11,6 +11,9 @@ import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { ContextProvider } from "./store";
 import SocketCtxProvider from "./SocketContext";
 import { walletConnectProvider } from "@web3modal/wagmi";
+
+const search = new URLSearchParams(window.location.search);
+const isWallet = search.get("origin") === "wallet";
 
 const projectId = "1184cb8e8109ec7c4a9425c56b494e5e";
 
@@ -22,7 +25,7 @@ const metadata = {
 };
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, polygon, goerli],
+  isWallet ? [mainnet] : [mainnet, polygon, goerli],
   [walletConnectProvider({ projectId }), publicProvider()],
 );
 
@@ -35,17 +38,21 @@ const wagmiConfig = createConfig({
         projectId,
         showQrModal: false,
         metadata,
-        // relayUrl: "wss://walletconnect-v2.ops.bitcoin.com",
       },
     }),
-    new InjectedConnector({
-      chains,
-      options: { shimDisconnect: true },
-    }),
-    new CoinbaseWalletConnector({
-      chains,
-      options: { appName: metadata.name },
-    }),
+    ...(isWallet
+      ? []
+      : [
+          new EIP6963Connector({ chains }),
+          new InjectedConnector({
+            chains,
+            options: { shimDisconnect: true },
+          }),
+          new CoinbaseWalletConnector({
+            chains,
+            options: { appName: metadata.name },
+          }),
+        ]),
   ],
   publicClient,
   webSocketPublicClient,
@@ -56,10 +63,10 @@ createWeb3Modal({
   projectId,
   chains,
 
+  defaultChain: mainnet,
   themeMode: "dark",
   featuredWalletIds: [
     "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
-    "c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96",
   ],
 
   themeVariables: {
