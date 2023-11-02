@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useTrackedState } from "../../context/store";
 
 import Modal, { useModal } from "../Modal";
-import Content from './Content';
+import Content from "./Content";
 
 const WelcomeModal = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const WelcomeModal = () => {
   const { modalRef, showModal, close } = useModal();
 
   useEffect(() => {
-    if (!returnData) return;
+    if (!returnData || returnData.seconds < 60) return;
     showModal();
   }, [returnData]);
 
@@ -22,7 +22,7 @@ const WelcomeModal = () => {
         title="Verse Clicker"
         overlayClose
       >
-        <Content returningUser={!!player.cookies} close={close}/>
+        <Content returningUser={!!player.cookies} close={close} />
       </Modal>
     </>
   );
