@@ -16,12 +16,12 @@ const NewUser = () => {
         1. Click the Verse moon to earn points
         <br />
         <br />
-        2. Boost your clicking power by holding, farming, staking, and/or
-        burning VERSE
-        <br />
-        <br />
-        3. Buy Buildings and Upgrades with your points to passively generate
+        2. Buy Buildings and Upgrades with your points to passively generate
         more points
+        <br />
+        <br />
+        3. Boost your clicking power by holding, farming, staking, and/or
+        burning VERSE        
         <br />
         <br />
         4. Keep clicking and buying to see the number go up!
