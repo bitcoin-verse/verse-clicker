@@ -117,3 +117,11 @@ export const SettingsButton = styled.button`
     color: grey;
   }
 `;
+
+export const Content = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  text-align: left;
+`;

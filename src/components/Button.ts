@@ -4,6 +4,7 @@ import { colors } from "./colors";
 export const Button = styled.button<{
   size?: "default" | "small" | "tiny";
   design?: "primary" | "secondary" | "tertiary";
+  $fullWidth?: boolean;
 }>`
   border: none;
   outline: none;
@@ -16,6 +17,8 @@ export const Button = styled.button<{
   text-wrap: nowrap;
   border-radius: 100px;
   font-weight: 600;
+
+  width: ${({ $fullWidth }) => ($fullWidth ? "100%" : "unset")};
 
   ${({ design }) => {
     switch (design) {

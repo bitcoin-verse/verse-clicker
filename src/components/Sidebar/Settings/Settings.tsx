@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
 import { useAccount, useNetwork } from "wagmi";
 import { useDispatch, useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
@@ -21,6 +21,9 @@ import Star from "../../Icons/Star";
 import SoundOff from "../../Icons/SoundOff";
 import SoundOn from "../../Icons/SoundOn";
 import Reset from "../../Icons/Reset";
+import { useSocketCtx } from "../../../context/SocketContext";
+import { useModal } from "../../Modal";
+import ConfirmModal from "./ConfirmModal";
 
 const networkImages: Record<string, string> = {
   1: ethSrc,
@@ -34,6 +37,14 @@ const Settings: FC = () => {
 
   const { player, settings } = useTrackedState();
   const dispatch = useDispatch();
+  const { socket } = useSocketCtx();
+  const { modalRef, showModal, close } = useModal();
+
+  const resetScore = useCallback(() => {
+    if (!chain || !address) return;
+    socket.emit("wipe_save", { address, chain: chain.name });
+    close();
+  }, []);
 
   return (
     <>
@@ -79,11 +90,12 @@ const Settings: FC = () => {
           )}
         </SettingsButton>
 
-        <SettingsButton disabled>
+        <SettingsButton onClick={showModal}>
           <Reset size="2rem" />
           Reset score
         </SettingsButton>
       </ButtonsWrapper>
+      <ConfirmModal modalRef={modalRef} close={close} resetScore={resetScore} />
     </>
   );
 };
