@@ -30,6 +30,32 @@ const Leaderboard = () => {
       </Header>
 
       {leaderboard?.map((item, index) => {
+        if (index >= 10) {
+          if (item.address === address) {
+            return (
+              <Body key={item.address}>
+                <div>...</div>
+                <div>
+                  {truncateEthAddress(item.address)}{" "}
+                  {item.address === address && <YouBadge>🌟</YouBadge>}
+                </div>
+                <div>
+                  {formatNumber(Number(item.stats.Clicked))}{" "}
+                  <MoonImage src={cookieImg} alt="cookie" />
+                </div>
+                <div>
+                  {formatNumber(Number(item.stats.Earned))}
+                  <StarWrapper>
+                    <Star size="0.875rem" />
+                  </StarWrapper>
+                </div>
+              </Body>
+            );
+          }
+
+          return null;
+        }
+
         return (
           <Body key={item.address}>
             <div>{index + 1}</div>

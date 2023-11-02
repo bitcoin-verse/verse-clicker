@@ -17,8 +17,9 @@ const Stats: FC = () => {
     const leaderboardIndex = leaderboard?.findIndex(
       (item) => item.address === address,
     );
-    if (leaderboardIndex === undefined) {
-      return ">25";
+
+    if (leaderboardIndex === undefined || leaderboardIndex >= 10) {
+      return ">10";
     }
     return leaderboardIndex + 1;
   }, [leaderboard]);
