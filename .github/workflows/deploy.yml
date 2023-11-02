@@ -7,6 +7,7 @@ on:
       - master
 env:
   REACT_APP_WEBSOCKET_SERVER: ${{ secrets.REACT_APP_WEBSOCKET_SERVER }}
+  REACT_APP_PUBLIC_URL: ${{ secrets.PUBLIC_URL_DEV }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
