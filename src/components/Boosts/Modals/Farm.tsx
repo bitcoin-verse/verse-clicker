@@ -18,6 +18,21 @@ const Farm: FC = () => {
         <>
           <H3>You&#39;re currently farming and/or staking VERSE</H3>
           <Label $color="secondary">2x boost applied to point production</Label>
+          <LinkButton
+            href="https://verse.bitcoin.com/farms/eth/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Farm more VERSE
+          </LinkButton>
+          <LinkButton
+            $design="secondary"
+            href="https://verse.bitcoin.com/staking/eth/verse/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Stake more VERSE
+          </LinkButton>
         </>
       ) : (
         <>
