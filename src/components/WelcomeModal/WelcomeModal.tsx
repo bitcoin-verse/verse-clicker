@@ -2,10 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useTrackedState } from "../../context/store";
 
 import Modal, { useModal } from "../Modal";
-import ReturningUser from "./ReturningUser";
-import NewUser from "./NewUser";
-import { Moon, StyledButton } from "./styled";
-import verseMoon from "../../assets/verse-moon.png";
+import Content from './Content';
 
 const WelcomeModal = () => {
   const dispatch = useDispatch();
@@ -25,9 +22,7 @@ const WelcomeModal = () => {
         title="Verse Clicker"
         overlayClose
       >
-        <Moon src={verseMoon} />
-        {player.cookies ? <ReturningUser /> : <NewUser />}
-        <StyledButton onClick={close}>Play</StyledButton>
+        <Content returningUser={!!player.cookies} close={close}/>
       </Modal>
     </>
   );
