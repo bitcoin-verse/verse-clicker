@@ -6,6 +6,7 @@ import Gear from "../Icons/Gear";
 // import Map from "../Icons/Map";
 import Leaderboard from "./Leaderboard";
 import Settings from "./Settings";
+import WelcomeContent from "../WelcomeModal/Content";
 import Modal, { useModal } from "../Modal";
 
 const getModalContent = (content?: string) => {
@@ -15,10 +16,10 @@ const getModalContent = (content?: string) => {
         title: "Leaderboard",
         component: <Leaderboard />,
       };
-    case "support":
+    case "welcome":
       return {
-        title: "Support",
-        component: <div>gotobupps</div>,
+        title: "Welcome",
+        component: <WelcomeContent />,
       };
 
     /*   case "tour":
@@ -51,7 +52,12 @@ const Sidebar = () => {
         >
           <Trophy size="1rem" />
         </SidebarButton>
-        <SidebarButton>
+        <SidebarButton
+          onClick={() => {
+            setContent("welcome");
+            showModal();
+          }}
+        >
           <Info size="1rem" />
         </SidebarButton>
         {/* <SidebarButton>
