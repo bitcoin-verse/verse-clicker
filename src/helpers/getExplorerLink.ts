@@ -2,7 +2,6 @@ import getBurnEngineDetails from "../contracts/getBurnEngineDetails";
 
 export const getExplorerLink = (chainId: number) => {
     const { address } = getBurnEngineDetails(chainId) || { address: ''};
-    console.log({address, chainId})
   
     switch (chainId) {
       case 1:
