@@ -9,22 +9,21 @@ const NewUser = () => {
         Click for Verse points, climb the leaderboard! Join the Verse community
         and experience a world of endless clicking fun.
       </Description>
+      <Description style={{ textAlign: 'left', width: '100%' }}>
+        <span>The goal:</span>
+        <br />
+        Generate infinite Verse Points.
+      </Description>
       <Description style={{ textAlign: 'left' }}>
-        Here is how to play:
+        <span>How to play:</span>
+        <br />
+        1. Earn Verse Points by clicking on the Verse Clicker logo.
         <br />
         <br />
-        1. Click the Verse moon to earn points
+        2. Use Verse Points to buy Tools and Upgrades that automatically generate more Verse Points.
         <br />
         <br />
-        2. Buy Tools and Upgrades with your points to passively generate
-        more points
-        <br />
-        <br />
-        3. Boost your clicking power by holding, farming, staking, and/or
-        burning VERSE        
-        <br />
-        <br />
-        4. Keep clicking and buying to see the number go up!
+        3. Optionally use VERSE tokens to boost your Verse Points generation.  
       </Description>
     </>
   );
