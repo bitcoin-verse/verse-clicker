@@ -16,7 +16,7 @@ const NewUser = () => {
         1. Click the Verse moon to earn points
         <br />
         <br />
-        2. Buy Buildings and Upgrades with your points to passively generate
+        2. Buy Tools and Upgrades with your points to passively generate
         more points
         <br />
         <br />
