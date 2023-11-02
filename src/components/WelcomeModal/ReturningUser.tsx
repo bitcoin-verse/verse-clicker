@@ -18,14 +18,14 @@ const ReturningUser = () => {
       <h1>Welcome Back!</h1>
       <DataWrapper>
         <Stats>
-          <Title>You were away for</Title>
+          <Title $secondary>You were away for</Title>
           <Value>
             <Clock />
             {returnData && <H3>{formatSeconds(returnData.seconds)}</H3>}
           </Value>
         </Stats>
         <Stats>
-          <Title>You earned </Title>
+          <Title $secondary>You earned </Title>
           <Value>
             <Star size={28} />
             <H3>{formatNumber(returnData?.cookies)} </H3>
