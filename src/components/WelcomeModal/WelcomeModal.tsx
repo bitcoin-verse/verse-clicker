@@ -10,7 +10,7 @@ const WelcomeModal = () => {
   const { modalRef, showModal, close } = useModal();
 
   useEffect(() => {
-    if (!returnData || returnData.seconds < 60) return;
+    if (!returnData || returnData.seconds < 5) return;
     showModal();
   }, [returnData]);
 
