@@ -64,6 +64,9 @@ export const useModal = () => {
     };
   }, [modalRef.current?.show]);
 
+  useEffect(() => {
+    document.body.style.overflow = "unset";
+  }, []);
   const showModal = () => {
     if (!modalRef || !modalRef.current) return;
     document.body.style.overflow = "hidden";
