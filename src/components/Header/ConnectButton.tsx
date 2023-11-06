@@ -88,7 +88,7 @@ const ConnectButton: FC = () => {
     return (
       <ConnectWrapper>
         <PrimaryButton
-          size="small"
+          $size="small"
           onClick={() => {
             open();
           }}

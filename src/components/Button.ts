@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 import { colors } from "./colors";
 
 export const Button = styled.button<{
-  size?: "default" | "small" | "tiny";
-  design?: "primary" | "secondary" | "tertiary";
+  $size?: "default" | "small" | "tiny";
+  $design?: "primary" | "secondary" | "tertiary";
   $fullWidth?: boolean;
 }>`
   border: none;
@@ -14,13 +14,13 @@ export const Button = styled.button<{
   text-decoration: none;
   cursor: pointer;
 
-  text-wrap: nowrap;
+  white-space: nowrap;
   border-radius: 100px;
   font-weight: 600;
 
   width: ${({ $fullWidth }) => ($fullWidth ? "100%" : "unset")};
 
-  ${({ design }) => {
+  ${({ $design: design }) => {
     switch (design) {
       case "secondary":
         return css`
@@ -83,7 +83,7 @@ export const Button = styled.button<{
     }
   }}
 
-  ${({ size }) => {
+  ${({ $size: size }) => {
     switch (size) {
       case "small":
         return css`
