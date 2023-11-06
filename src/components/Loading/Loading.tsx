@@ -52,7 +52,7 @@ const Loading: FC = () => {
           <Title>Please connect your wallet to access Verse Clicker</Title>
           <div>
             <Button
-              size="small"
+              $size="small"
               onClick={() => {
                 open();
               }}
@@ -77,8 +77,8 @@ const Loading: FC = () => {
             <>
               <Label $color="warning">{error}</Label>
               <Button
-                size="small"
-                design="secondary"
+                $size="small"
+                $design="secondary"
                 onClick={() => {
                   disconnect();
                   close();

@@ -54,7 +54,7 @@ const UpgradeAll: FC<Props> = ({ mobileVersion = false }) => {
   return (
     <Wrapper $show={mobileVersion}>
       <Button
-        size="small"
+        $size="small"
         onClick={buyAllUpgrades}
         disabled={availableUpgrades.length === 0}
       >

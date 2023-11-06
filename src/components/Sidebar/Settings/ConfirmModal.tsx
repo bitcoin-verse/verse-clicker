@@ -26,7 +26,7 @@ const ConfirmModal: FC<Props> = ({ modalRef, close, resetScore }) => {
       <Button $fullWidth onClick={resetScore}>
         Confirm reset
       </Button>
-      <Button $fullWidth design="secondary" onClick={close}>
+      <Button $fullWidth $design="secondary" onClick={close}>
         Dismiss
       </Button>
     </Modal>
