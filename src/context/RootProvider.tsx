@@ -25,7 +25,9 @@ const metadata = {
 };
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  isWallet ? [mainnet] : [mainnet, polygon, goerli],
+  process.env.NODE_ENV === "production"
+    ? [mainnet]
+    : [goerli, mainnet, polygon],
   [walletConnectProvider({ projectId }), publicProvider()],
 );
 
@@ -63,7 +65,7 @@ createWeb3Modal({
   projectId,
   chains,
 
-  defaultChain: mainnet,
+  defaultChain: process.env.NODE_ENV === "production" ? mainnet : goerli,
   themeMode: "dark",
   featuredWalletIds: [
     "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
