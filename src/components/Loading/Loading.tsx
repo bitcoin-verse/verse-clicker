@@ -2,7 +2,7 @@ import React, { FC, useEffect } from "react";
 import { useAccount, useDisconnect } from "wagmi";
 import { H1 } from "../H1";
 import { H4 } from "../H4";
-import { Link } from "../Link";
+// import { Link } from "../Link";
 import {
   ConnectWalletImage,
   ConnectionWrapper,
@@ -44,7 +44,7 @@ const Loading: FC = () => {
             Click for Verse points, climb the leaderboard! Join the Verse
             community and experience a world of endless clicking fun.
           </H4>
-          <Link href="https://boo">Learn More</Link>
+          {/* <Link href="https://boo">Learn More</Link> */}
         </ContentsWrapper>
         <ConnectionWrapper>
           <ConnectWalletImage src={connectWallet} alt="Connect Wallet" />
