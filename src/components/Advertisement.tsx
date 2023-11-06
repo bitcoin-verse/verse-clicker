@@ -7,14 +7,15 @@ import adStaking from "../assets/ad-staking.png";
 import adFarms from "../assets/ad-farms.png";
 
 import styled from "styled-components";
+import { useTrackedState } from "../context/store";
 
 const baseUrl = process.env.REACT_APP_VERSE_BASE_URL;
 
 const adlist = [
-  { img: adLounge, link: `${baseUrl}lounge` },
+  { img: adLounge, link: `${baseUrl}lounge/` },
   {
     img: adPools,
-    link: `${baseUrl}pools/eth`,
+    link: `${baseUrl}pools/eth/`,
   },
   {
     img: adSwap,
@@ -55,6 +56,7 @@ interface Props {
 }
 
 const Advertisement: FC<Props> = ({ mobileVersion }) => {
+  const { isWallet } = useTrackedState();
   const [rand, setRand] = useState(Math.floor(Math.random() * adlist.length));
 
   useEffect(() => {
@@ -68,7 +70,10 @@ const Advertisement: FC<Props> = ({ mobileVersion }) => {
   return (
     <AdWrapper $mobileVersion={mobileVersion}>
       <div>Advertisement</div>
-      <a href={adlist[rand].link} target="_blank" rel="noreferrer">
+      <a
+        href={`${adlist[rand].link}${isWallet ? "?origin=wallet" : ""}`}
+        {...(isWallet ? {} : { target: "_blank", rel: "noreferrer" })}
+      >
         <AdImage src={adlist[rand].img} width="100%" />
       </a>
     </AdWrapper>
