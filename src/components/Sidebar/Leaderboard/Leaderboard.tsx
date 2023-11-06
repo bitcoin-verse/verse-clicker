@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { memo } from "react-tracked";
 
 import { useTrackedState } from "../../../context/store";
@@ -10,10 +10,6 @@ import Row from "./Row";
 const Leaderboard = memo(() => {
   const { address } = useAccount();
   const { leaderboardAddresses, leaderboardStats } = useTrackedState();
-
-  useEffect(() => {
-    console.log(leaderboardAddresses);
-  }, [leaderboardAddresses]);
 
   return (
     <LeaderboardWrapper>
