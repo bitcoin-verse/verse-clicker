@@ -22,19 +22,21 @@ interface Props {
 }
 
 const UpgradeButton: FC<Props> = ({ upgrade }) => {
-  const { player, settings } = useTrackedState();
+  const { player } = useTrackedState();
   const { socket } = useSocketCtx();
   const { playBuy } = useAudio();
-  const buyUpgrade = useCallback((bIndex: number, uIndex: number) => {
-    socket.emit("buy_upgrade", {
-      building: bIndex,
-      upgrade: uIndex,
-    });
 
-    if (settings.sound && playBuy) {
-      playBuy();
-    }
-  }, []);
+  const buyUpgrade = useCallback(
+    (bIndex: number, uIndex: number) => {
+      socket.emit("buy_upgrade", {
+        building: bIndex,
+        upgrade: uIndex,
+      });
+
+      if (playBuy) playBuy();
+    },
+    [playBuy],
+  );
 
   return (
     <Button
