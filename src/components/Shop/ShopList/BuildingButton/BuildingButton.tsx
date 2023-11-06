@@ -83,7 +83,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
         {formatNumber(production * farmStakingMultiplier)}/s
         <span style={{ color: "#899bb5" }}> each, </span>
         {formatNumber(production * building.amount * farmStakingMultiplier)}/s
-        <span style={{ color: "#899bb5" }}> total</span>
+        <span style={{ color: "#899bb5" }}> all</span>
       </Text>
 
       <Cost $unaffordable={player.cookies < cost}>
