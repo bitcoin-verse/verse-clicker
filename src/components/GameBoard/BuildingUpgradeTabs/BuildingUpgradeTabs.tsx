@@ -20,7 +20,7 @@ const BuildingUpgradeTabs: FC<Props> = ({ setSelectedTab, selectedTab }) => {
             onClick={() => setSelectedTab(0)}
           >
             <Buildings />
-            Buildings
+            Tools
           </TabButton>,
           <TabButton
             key="upgrades"
