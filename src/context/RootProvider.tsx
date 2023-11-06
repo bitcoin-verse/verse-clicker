@@ -6,11 +6,11 @@ import { createWeb3Modal, EIP6963Connector } from "@web3modal/wagmi/react";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { publicProvider } from "wagmi/providers/public";
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { ContextProvider } from "./store";
 import SocketCtxProvider from "./SocketContext";
-import { walletConnectProvider } from "@web3modal/wagmi";
 
 const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
@@ -28,7 +28,31 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   process.env.NODE_ENV === "production"
     ? [mainnet]
     : [goerli, mainnet, polygon],
-  [walletConnectProvider({ projectId }), publicProvider()],
+  [
+    jsonRpcProvider({
+      rpc: (chain) => {
+        switch (chain.id) {
+          case 1:
+            return {
+              http: "https://wispy-solitary-darkness.quiknode.pro",
+            };
+          case 5:
+            return {
+              http: "https://rpc.ankr.com/eth_goerli",
+            };
+          case 137:
+            return {
+              http: "https://polygon-rpc.com",
+            };
+          default:
+            return {
+              http: "https://wispy-solitary-darkness.quiknode.pro",
+            };
+        }
+      },
+    }),
+    publicProvider(),
+  ],
 );
 
 const wagmiConfig = createConfig({
