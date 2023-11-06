@@ -160,9 +160,10 @@ const Burn: FC = () => {
 
           <StyledButton
             onClick={() => handleBurn(selectedBurn?.value)}
-            disabled={insufficientVerse}
+            // disabled={insufficientVerse}
+            disabled
           >
-            Burn VERSE
+            Burn VERSE (coming soon)
           </StyledButton>
           <Footnote>
             <Label $color="secondary">
