@@ -5,6 +5,7 @@ import useUpgradesList from "../../../hooks/useUpgradesList";
 import { useTrackedState } from "../../../context/store";
 import { ModifiedUpgrade } from "../../Shop/UpgradesList/UpgradeButton";
 import styled from "styled-components";
+import { useAudio } from "../../../context/AudioProvider";
 
 export const Wrapper = styled.div<{ $show: boolean }>`
   display: ${({ $show }) => ($show ? "flex" : "none")};
@@ -21,6 +22,7 @@ interface Props {
 const UpgradeAll: FC<Props> = ({ mobileVersion = false }) => {
   const { socket } = useSocketCtx();
   const { player } = useTrackedState();
+  const { playBuy } = useAudio();
   const upgradesList = useUpgradesList();
 
   const buyUpgrade = useCallback((bIndex: number, uIndex: number) => {
@@ -49,6 +51,8 @@ const UpgradeAll: FC<Props> = ({ mobileVersion = false }) => {
     availableUpgrades.forEach((upgrade) => {
       buyUpgrade(upgrade.bIndex, upgrade.uIndex);
     });
+
+    if (playBuy) playBuy();
   };
 
   return (
