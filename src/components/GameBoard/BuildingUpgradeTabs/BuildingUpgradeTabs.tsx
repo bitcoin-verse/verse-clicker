@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Tabs, { TabButton } from "../../Tabs";
-import Buildings from "../../Icons/Buildings";
 import Upgrades from "../../Icons/Upgrades";
+import Mouse from "../../Icons/Mouse";
 
 interface Props {
   setSelectedTab: (tab: number) => void;
@@ -19,7 +19,7 @@ const BuildingUpgradeTabs: FC<Props> = ({ setSelectedTab, selectedTab }) => {
             type="button"
             onClick={() => setSelectedTab(0)}
           >
-            <Buildings />
+            <Mouse size={32} />
             Tools
           </TabButton>,
           <TabButton
