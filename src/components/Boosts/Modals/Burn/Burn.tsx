@@ -101,6 +101,12 @@ const Burn: FC = () => {
   }, [isPendingWallet, isTxSent, isTxConfirmed]);
 
   useEffect(() => {
+    if (txData) {
+      socket.emit("burn");
+    }
+  }, [txData]);
+
+  useEffect(() => {
     const onBonus = (data: number) => {
       setNewCookies(data);
     };
