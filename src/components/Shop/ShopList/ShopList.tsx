@@ -41,7 +41,7 @@ const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
   return (
     <>
       <Wrapper $isOpen={isOpen}>
-        <MobileTitle title="Buildings" setIsOpen={setIsOpen} />
+        <MobileTitle title="Tools" setIsOpen={setIsOpen} />
 
         <PurchaseButtons>
           <PurchaseAmount mobileVersion />

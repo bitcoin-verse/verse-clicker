@@ -15,7 +15,7 @@ export const Button = styled.button<{
   display: grid;
   column-gap: 0.5rem;
 
-  grid-template-columns: 4rem auto auto;
+  grid-template-columns: 4rem auto 4rem;
   grid-template-areas: "img name cost" "img desc desc" "img info amount";
   text-align: left;
 
