@@ -24,7 +24,7 @@ interface Props {
 }
 
 export const BuildingButton: FC<Props> = ({ building, index }) => {
-  const { player, purchaseAmount, settings } = useTrackedState();
+  const { player, purchaseAmount } = useTrackedState();
   const { socket } = useSocketCtx();
   const { production } = useProduction(building);
   const { playBuy } = useAudio();
@@ -32,11 +32,9 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
   const buyBuilding = useCallback(
     (amount: number) => {
       socket.emit("buy_building", { index, amount });
-      if (settings.sound && playBuy) {
-        playBuy();
-      }
+      if (playBuy) playBuy();
     },
-    [building, index],
+    [building, index, playBuy],
   );
 
   const { amount, cost } = useMemo(() => {
