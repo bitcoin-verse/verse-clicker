@@ -61,7 +61,6 @@ export const Cost = styled.div<{ $unaffordable?: boolean }>`
   gap: 0.25rem;
   justify-content: flex-end;
   align-items: center;
-  position: relative;
 
   ${({ $unaffordable }) =>
     $unaffordable
@@ -79,7 +78,6 @@ export const Cost = styled.div<{ $unaffordable?: boolean }>`
           }
           & > span {
             color: #899bb5;
-            position: float;
           }
         `}
 `;
