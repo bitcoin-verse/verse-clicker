@@ -3,18 +3,8 @@ import { memo } from "react-tracked";
 
 import { useTrackedState } from "../../../context/store";
 import { useAccount } from "wagmi";
-import truncateEthAddress from "../../../helpers/truncateEthAddress";
-import { formatNumber } from "../../../helpers/formatNumber";
-import {
-  Body,
-  Header,
-  LeaderboardWrapper,
-  StarWrapper,
-  YouBadge,
-} from "./styled";
+import { Header, LeaderboardWrapper } from "./styled";
 
-import Star from "../../Icons/Star";
-import Cursor from "../../Icons/Cursor";
 import Row from "./Row";
 
 const Leaderboard = memo(() => {
