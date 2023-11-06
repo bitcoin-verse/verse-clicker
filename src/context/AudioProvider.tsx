@@ -4,6 +4,7 @@ import { PlayFunction } from "use-sound/dist/types";
 
 import laserSfx from "../assets/laser.wav";
 import buySfx from "../assets/cha-ching.wav";
+import { useTrackedState } from "./store";
 
 const AudioContext = createContext<{
   playLaser?: PlayFunction;
@@ -11,8 +12,9 @@ const AudioContext = createContext<{
 }>({});
 
 export const AudioProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [playLaser] = useSound(laserSfx);
-  const [playBuy] = useSound(buySfx);
+  const { settings } = useTrackedState();
+  const [playLaser] = useSound(laserSfx, { soundEnabled: settings.sound });
+  const [playBuy] = useSound(buySfx, { soundEnabled: settings.sound });
 
   return (
     <AudioContext.Provider value={{ playLaser, playBuy }}>
