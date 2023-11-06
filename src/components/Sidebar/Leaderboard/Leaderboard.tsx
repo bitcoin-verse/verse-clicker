@@ -1,23 +1,15 @@
 import React from "react";
+import { memo } from "react-tracked";
 
 import { useTrackedState } from "../../../context/store";
 import { useAccount } from "wagmi";
-import truncateEthAddress from "../../../helpers/truncateEthAddress";
-import { formatNumber } from "../../../helpers/formatNumber";
-import {
-  Body,
-  Header,
-  LeaderboardWrapper,
-  StarWrapper,
-  YouBadge,
-} from "./styled";
+import { Header, LeaderboardWrapper } from "./styled";
 
-import Star from "../../Icons/Star";
-import Cursor from "../../Icons/Cursor";
+import Row from "./Row";
 
-const Leaderboard = () => {
+const Leaderboard = memo(() => {
   const { address } = useAccount();
-  const { leaderboard } = useTrackedState();
+  const { leaderboardAddresses, leaderboardStats } = useTrackedState();
 
   return (
     <LeaderboardWrapper>
@@ -28,27 +20,19 @@ const Leaderboard = () => {
         <div>Earned</div>
       </Header>
 
-      {leaderboard?.map((item, index) => {
+      {leaderboardAddresses?.map((addr, index) => {
+        const item = leaderboardStats[index];
+
         if (index >= 10) {
-          if (item.address === address) {
+          if (addr === address) {
             return (
-              <Body key={item.address}>
-                <div>...</div>
-                <div>
-                  {truncateEthAddress(item.address)}{" "}
-                  {item.address === address && <YouBadge>🌟</YouBadge>}
-                </div>
-                <div>
-                  {formatNumber(Number(item.stats.Clicked))}{" "}
-                  <Cursor size="0.875rem" />
-                </div>
-                <div>
-                  {formatNumber(Number(item.stats.Earned))}
-                  <StarWrapper>
-                    <Star size="0.875rem" />
-                  </StarWrapper>
-                </div>
-              </Body>
+              <Row
+                key={addr}
+                address={addr}
+                index="..."
+                isUser={addr === address}
+                stats={item}
+              />
             );
           }
 
@@ -56,27 +40,17 @@ const Leaderboard = () => {
         }
 
         return (
-          <Body key={item.address}>
-            <div>{index + 1}</div>
-            <div>
-              {truncateEthAddress(item.address)}{" "}
-              {item.address === address && <YouBadge>🌟</YouBadge>}
-            </div>
-            <div>
-              {formatNumber(Number(item.stats.Clicked))}{" "}
-              <Cursor size="0.875rem" />
-            </div>
-            <div>
-              {formatNumber(Number(item.stats.Earned))}
-              <StarWrapper>
-                <Star size="0.875rem" />
-              </StarWrapper>
-            </div>
-          </Body>
+          <Row
+            key={addr}
+            address={addr}
+            index={index + 1}
+            isUser={addr === address}
+            stats={item}
+          />
         );
       })}
     </LeaderboardWrapper>
   );
-};
+});
 
 export default Leaderboard;
