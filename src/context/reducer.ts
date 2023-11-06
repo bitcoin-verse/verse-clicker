@@ -7,7 +7,12 @@ import {
   setBuilding,
   updateBuildings,
 } from "./reducers/building";
-import { SetLeaderboardAction, setLeaderboard } from "./reducers/leaderboard";
+import {
+  SetLeaderboardAddressesAction,
+  SetLeaderboardStatsAction,
+  setLeaderboardAddresses,
+  setLeaderboardStats,
+} from "./reducers/leaderboard";
 import { SetNetworkAction, setNetwork } from "./reducers/network";
 import { SetErrorAction, setError } from "./reducers/error";
 import { SetReturnDataAction, setReturnData } from "./reducers/returnData";
@@ -22,7 +27,8 @@ export type Action =
   | SetNetworkAction
   | SetPlayerAction
   | SetBuildingAction
-  | SetLeaderboardAction
+  | SetLeaderboardStatsAction
+  | SetLeaderboardAddressesAction
   | UpdateBuildingsAction
   | SetReturnDataAction
   | SetErrorAction
@@ -41,8 +47,10 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return setPlayer(state, action.payload);
     case "SET_BUILDING":
       return setBuilding(state, action.payload);
-    case "SET_LEADERBOARD":
-      return setLeaderboard(state, action.payload);
+    case "SET_LEADERBOARD_STATS":
+      return setLeaderboardStats(state, action.payload);
+    case "SET_LEADERBOARD_ADDRESSES":
+      return setLeaderboardAddresses(state, action.payload);
     case "UPDATE_BUILDINGS":
       return updateBuildings(state, action.payload);
     case "SET_ERROR":

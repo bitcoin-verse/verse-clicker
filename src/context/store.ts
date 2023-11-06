@@ -4,7 +4,7 @@ import reducer, { Action } from "./reducer";
 import { Player } from "./reducers/player";
 
 import buildings from "../buildings";
-import { Leaderboard } from "./reducers/leaderboard";
+import { LeaderboardStats } from "./reducers/leaderboard";
 import Building from "../classes/Building";
 import { NetworkName } from "./reducers/network";
 import { ReturnData } from "./reducers/returnData";
@@ -14,7 +14,6 @@ const storageKey = "verse-clicker";
 export type State = {
   isConnected: boolean;
   player: Player;
-  leaderboard?: Leaderboard;
   verseHolder: boolean;
 
   buildings: Building[];
@@ -27,6 +26,9 @@ export type State = {
     sound: boolean;
   };
   isWallet: boolean;
+
+  leaderboardAddresses: string[];
+  leaderboardStats: LeaderboardStats;
 };
 
 const search = new URLSearchParams(window.location.search);
@@ -54,6 +56,8 @@ export const initialState: State = {
   purchaseAmount: 1,
   settings: { sound: true },
   isWallet,
+  leaderboardAddresses: [],
+  leaderboardStats: [],
 };
 
 const init = (): State => {
