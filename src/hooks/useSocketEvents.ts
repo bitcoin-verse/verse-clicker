@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Player } from "../context/reducers/player";
-import { Leaderboard } from "../context/reducers/leaderboard";
+import { LeaderboardEvent } from "../context/reducers/leaderboard";
 import { BuildingData } from "../context/reducers/building";
 import { useSocketCtx } from "../context/SocketContext";
 import { useDispatch } from "../context/store";
@@ -18,8 +18,11 @@ const useSocketEvents = () => {
       dispatch({ type: "SET_PLAYER_DATA", payload });
     };
 
-    const onLeaderboard = (payload: Leaderboard) => {
-      dispatch({ type: "SET_LEADERBOARD", payload });
+    const onLeaderboard = (payload: LeaderboardEvent) => {
+      const addresses = payload.map((i) => i.address);
+      const stats = payload.map((i) => i.stats);
+      dispatch({ type: "SET_LEADERBOARD_STATS", payload: stats });
+      dispatch({ type: "SET_LEADERBOARD_ADDRESSES", payload: addresses });
     };
 
     const onBuildingsData = (payload: BuildingData[]) => {

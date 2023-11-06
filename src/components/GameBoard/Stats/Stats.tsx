@@ -10,19 +10,19 @@ import { Content, Divider, Subtitle, TrophyWrapper, Wrapper } from "./styled";
 import { Label } from "../../Label";
 
 const Stats: FC = () => {
-  const { player, leaderboard } = useTrackedState();
+  const { player, leaderboardAddresses } = useTrackedState();
   const { address } = useAccount();
 
   const userRank = useMemo(() => {
-    const leaderboardIndex = leaderboard?.findIndex(
-      (item) => item.address === address,
+    const leaderboardIndex = leaderboardAddresses?.findIndex(
+      (item) => item === address,
     );
 
     if (leaderboardIndex === undefined || leaderboardIndex >= 10) {
       return ">10";
     }
     return leaderboardIndex + 1;
-  }, [leaderboard]);
+  }, [leaderboardAddresses]);
 
   return (
     <Wrapper>
