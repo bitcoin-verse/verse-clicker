@@ -67,7 +67,7 @@ type Event =
     }
   | {
       name: "Verse Clicker CTA tapped";
-      cta: "buy" | "swap" | "stake" | "farm" | "banner";
+      cta: string;
       to: string;
     }
   | {

@@ -4,7 +4,7 @@ import { formatEther, parseEther } from "viem";
 
 import { useSocketCtx } from "../../../../context/SocketContext";
 import useVerseBalance from "../../../../hooks/useVerseBalance";
-import { getExplorerLink } from "../../../../helpers/getExplorerLink";
+import { getBurnEngineExplorerLink } from "../../../../helpers/getBurnEngineExplorerLink";
 import {
   Divider,
   Icon,
@@ -169,7 +169,7 @@ const Burn: FC = () => {
             <Label $color="secondary">
               This transaction will send the specified VERSE to{" "}
               <Link
-                href={getExplorerLink(chainId)}
+                href={getBurnEngineExplorerLink(chainId)}
                 target="_blank"
                 rel="noreferrer"
               >

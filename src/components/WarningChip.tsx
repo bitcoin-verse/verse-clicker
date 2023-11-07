@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { colors } from "./colors";
 import ChevronLeft from "./Icons/ChevronLeft";
 import Info from "./Icons/Info";
+import { logAmplitudeEvent } from "../helpers/analytics";
 
 const Wrapper = styled.a`
   background-color: ${colors.yellow25};
@@ -30,7 +31,18 @@ interface Props {
 
 const WarningChip: FC<PropsWithChildren<Props>> = ({ children, link }) => {
   return (
-    <Wrapper href={link} target="_blank" rel="noreferrer">
+    <Wrapper
+      href={link}
+      target="_blank"
+      rel="noreferrer"
+      onClick={() => {
+        logAmplitudeEvent({
+          name: "Verse Clicker CTA tapped",
+          cta: "buy",
+          to: link,
+        });
+      }}
+    >
       <Info />
       {children}
       <ChevronLeft flip />
