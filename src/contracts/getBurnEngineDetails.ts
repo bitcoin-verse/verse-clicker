@@ -4,7 +4,7 @@ import {
   VERSE_BURN_ENGINE_POLYGON_ADDRESS,
 } from "./constants";
 
-const getBurnEngineDetails = (chainId: number) => {
+const getBurnEngineDetails = (chainId?: number) => {
   switch (chainId) {
     case 1:
       return {
