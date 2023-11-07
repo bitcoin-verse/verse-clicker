@@ -79,13 +79,17 @@ type Event =
     };
 
 export const logAmplitudeEvent = (event: Event) => {
-  const { name, ...options } = event;
-  const eventOptions = {
-    entrypoint: "clicker",
-    "current page": window.location,
-    "screen size": getDeviceSize(),
-    ...options,
-  };
+  try {
+    const { name, ...options } = event;
+    const eventOptions = {
+      entrypoint: "clicker",
+      "current page": window.location,
+      "screen size": getDeviceSize(),
+      ...options,
+    };
 
-  amplitude.logEvent(name, eventOptions);
+    amplitude.logEvent(name, eventOptions);
+  } catch (error) {
+    console.log("Error logging event", error);
+  }
 };
