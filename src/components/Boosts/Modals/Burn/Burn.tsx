@@ -26,6 +26,7 @@ import WarningChip from "../../../WarningChip";
 import getVerseTokenDetails from "../../../../contracts/getVerseTokenDetails";
 import getBurnEngineDetails from "../../../../contracts/getBurnEngineDetails";
 import LoadingStates from "./LoadingStates";
+import { useTrackedState } from "../../../../context/store";
 
 export const BURN_LIST = [
   { title: "1 hour", value: 15000, hours: 1 },
@@ -36,6 +37,7 @@ export const BURN_LIST = [
 const Burn: FC = () => {
   const { socket } = useSocketCtx();
   const chainId = useChainId();
+  const { isWallet } = useTrackedState();
   const { data: readData, error } = useVerseBalance();
   const [newCookies, setNewCookies] = useState<number>();
 
@@ -153,7 +155,13 @@ const Burn: FC = () => {
             </Label>
           </Container>
           {insufficientVerse && (
-            <WarningChip link="https://buy.bitcoin.com/verse">
+            <WarningChip
+              link={
+                isWallet
+                  ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
+                  : `https://buy.bitcoin.com/verse/`
+              }
+            >
               You don&#39;t have enough VERSE. Buy now!
             </WarningChip>
           )}

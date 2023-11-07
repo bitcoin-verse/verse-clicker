@@ -29,9 +29,11 @@ const Hold: FC = () => {
         </>
       )}
       <LinkButton
-        href={`https://buy.bitcoin.com/verse/${
-          isWallet ? "?origin=wallet" : ""
-        }`}
+        href={
+          isWallet
+            ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
+            : `https://buy.bitcoin.com/verse/`
+        }
         {...(isWallet
           ? {}
           : {
@@ -42,7 +44,9 @@ const Hold: FC = () => {
           logAmplitudeEvent({
             name: "Verse Clicker CTA tapped",
             cta: "farm",
-            to: "https://buy.bitcoin.com/verse",
+            to: isWallet
+              ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
+              : `https://buy.bitcoin.com/verse/`,
           });
         }}
       >
