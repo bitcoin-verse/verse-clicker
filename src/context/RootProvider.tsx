@@ -24,7 +24,7 @@ const metadata = {
   icons: ["https://verse.bitcoin.com/images/favicon.png"],
 };
 
-const isDev = process.env.REACT_APP_DEV_ENV === "true";
+const isDev = process.env.REACT_APP_DEV_ENV === "development";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   isDev ? [goerli, mainnet, polygon] : [mainnet],
