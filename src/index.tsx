@@ -4,6 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import RootProvider from "./context/RootProvider";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import { initAmplitude } from "./helpers/analytics";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -25,3 +26,5 @@ reportWebVitals();
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.unregister();
+
+initAmplitude();

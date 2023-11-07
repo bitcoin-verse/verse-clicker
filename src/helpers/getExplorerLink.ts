@@ -1,17 +1,13 @@
-import getBurnEngineDetails from "../contracts/getBurnEngineDetails";
+export const getTxExplorerLink = (chainId: number, hash?: string) => {
+  switch (chainId) {
+    case 1:
+      return `https://etherscan.io/tx/${hash}`;
+    case 5:
+      return `https://goerli.etherscan.io/tx/${hash}`;
+    case 137:
+      return `'https://polygonscan.com/tx/${hash}`;
 
-export const getExplorerLink = (chainId: number) => {
-    const { address } = getBurnEngineDetails(chainId) || { address: ''};
-  
-    switch (chainId) {
-      case 1:
-        return `https://etherscan.io/address/${address}`;
-      case 5:
-        return `https://goerli.etherscan.io/address/${address}`;
-      case 137:
-        return `'https://polygonscan.com/address/${address}`;
-  
-      default:
-        return '';
-    }
-  };
+    default:
+      return "";
+  }
+};

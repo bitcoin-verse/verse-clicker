@@ -5,6 +5,8 @@ import { LinkButton } from "../../../LinkButton";
 import { H3 } from "../../../H3";
 import { formatNumber } from "../../../../helpers/formatNumber";
 import { BURN_LIST } from "./Burn";
+import { getTxExplorerLink } from "../../../../helpers/getExplorerLink";
+import { useChainId } from "wagmi";
 
 interface Props {
   isPendingWallet: boolean;
@@ -23,6 +25,7 @@ const LoadingStates: FC<Props> = ({
   txHash: hash,
   newCookies,
 }) => {
+  const chainId = useChainId();
   return (
     <>
       {isPendingWallet && (
@@ -36,7 +39,7 @@ const LoadingStates: FC<Props> = ({
           <Label>Transaction accepted, waiting for confirmation.</Label>
           <Spinner />
           <LinkButton
-            href={`https://goerli.etherscan.io/tx/${hash}`}
+            href={getTxExplorerLink(chainId, hash)}
             target="_blank"
             rel="noreferrer"
           >
@@ -49,7 +52,7 @@ const LoadingStates: FC<Props> = ({
           <Label>Transaction confirmed, calculating bonus</Label>
           <Spinner />
           <LinkButton
-            href={`https://goerli.etherscan.io/tx/${hash}`}
+            href={getTxExplorerLink(chainId, hash)}
             target="_blank"
             rel="noreferrer"
           >

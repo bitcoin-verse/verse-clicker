@@ -4,14 +4,15 @@ on:
   release:
     types: [published]
     tags:
-      - 'v*'
+      - "v*"
 env:
   REACT_APP_WEBSOCKET_SERVER: ${{ secrets.REACT_APP_WEBSOCKET_SERVER_PROD }}
   REACT_APP_PUBLIC_URL: ${{ secrets.PUBLIC_URL_PROD }}
   REACT_APP_VERSE_BASE_URL: ${{ secrets.VERSE_URL_PROD }}
+  REACT_APP_AMPLITUDE_API_KEY: ${{ secrets.AMPLITUDE_KEY_PROD }}
 jobs:
   deploy-prod:
-    if: '!github.event.release.prerelease'
+    if: "!github.event.release.prerelease"
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
@@ -26,8 +27,8 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
-          cache: 'yarn'
+          node-version: "18.x"
+          cache: "yarn"
 
       # Install dependencies
       - name: Install dependencies
@@ -49,5 +50,4 @@ jobs:
           directory: build
           branch: trunk
           workingDirectory: /
-          wranglerVersion: '3'
-
+          wranglerVersion: "3"

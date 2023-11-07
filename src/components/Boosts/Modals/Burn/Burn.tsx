@@ -1,10 +1,15 @@
 import React, { FC, useEffect, useState } from "react";
-import { useChainId, useContractWrite, useWaitForTransaction } from "wagmi";
+import {
+  useAccount,
+  useContractWrite,
+  useNetwork,
+  useWaitForTransaction,
+} from "wagmi";
 import { formatEther, parseEther } from "viem";
 
 import { useSocketCtx } from "../../../../context/SocketContext";
 import useVerseBalance from "../../../../hooks/useVerseBalance";
-import { getExplorerLink } from "../../../../helpers/getExplorerLink";
+import { getBurnEngineExplorerLink } from "../../../../helpers/getBurnEngineExplorerLink";
 import {
   Divider,
   Icon,
@@ -26,6 +31,8 @@ import WarningChip from "../../../WarningChip";
 import getVerseTokenDetails from "../../../../contracts/getVerseTokenDetails";
 import getBurnEngineDetails from "../../../../contracts/getBurnEngineDetails";
 import LoadingStates from "./LoadingStates";
+import { useTrackedState } from "../../../../context/store";
+import { logAmplitudeEvent } from "../../../../helpers/analytics";
 
 export const BURN_LIST = [
   { title: "1 hour", value: 15000, hours: 1 },
@@ -35,12 +42,14 @@ export const BURN_LIST = [
 
 const Burn: FC = () => {
   const { socket } = useSocketCtx();
-  const chainId = useChainId();
+  const { address } = useAccount();
+  const { isWallet } = useTrackedState();
+  const { chain } = useNetwork();
   const { data: readData, error } = useVerseBalance();
   const [newCookies, setNewCookies] = useState<number>();
 
-  const verseTokenDetails = getVerseTokenDetails(chainId);
-  const burnEngineDetails = getBurnEngineDetails(chainId);
+  const verseTokenDetails = getVerseTokenDetails(chain?.id);
+  const burnEngineDetails = getBurnEngineDetails(chain?.id);
 
   const [balanceData, setBalanceData] = useState<{
     formatted: string;
@@ -56,7 +65,7 @@ const Burn: FC = () => {
     address: verseTokenDetails?.address,
     abi: verseTokenDetails?.abi,
     functionName: "transfer",
-    chainId,
+    chainId: chain?.id,
   });
 
   const { isSuccess: isTxConfirmed } = useWaitForTransaction(txData);
@@ -78,6 +87,14 @@ const Burn: FC = () => {
   useEffect(() => {
     if (isPendingWallet || isTxSent || isTxConfirmed) {
       setShowLoading(true);
+
+      logAmplitudeEvent({
+        name: "Verse Clicker Burn",
+        "blockchain address": address || "",
+        blockchain: chain?.nativeCurrency.symbol,
+        result: selectedBurn.value,
+        txId: txData?.hash || "",
+      });
     } else {
       setShowLoading(false);
     }
@@ -153,7 +170,13 @@ const Burn: FC = () => {
             </Label>
           </Container>
           {insufficientVerse && (
-            <WarningChip link="https://buy.bitcoin.com/verse">
+            <WarningChip
+              link={
+                isWallet
+                  ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
+                  : `https://buy.bitcoin.com/verse/`
+              }
+            >
               You don&#39;t have enough VERSE. Buy now!
             </WarningChip>
           )}
@@ -169,7 +192,7 @@ const Burn: FC = () => {
             <Label $color="secondary">
               This transaction will send the specified VERSE to{" "}
               <Link
-                href={getExplorerLink(chainId)}
+                href={getBurnEngineExplorerLink(chain?.id || 1)}
                 target="_blank"
                 rel="noreferrer"
               >

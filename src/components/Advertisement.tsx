@@ -8,23 +8,27 @@ import adFarms from "../assets/ad-farms.png";
 
 import styled from "styled-components";
 import { useTrackedState } from "../context/store";
+import { logAmplitudeEvent } from "../helpers/analytics";
 
 const baseUrl = process.env.REACT_APP_VERSE_BASE_URL;
 
 const adlist = [
-  { img: adLounge, link: `${baseUrl}lounge/` },
+  { img: adLounge, link: `${baseUrl}lounge/`, cta: "lounge" },
   {
     img: adPools,
     link: `${baseUrl}pools/eth/`,
+    cta: "farm",
   },
   {
     img: adSwap,
     link: baseUrl,
+    cta: "swap",
   },
-  { img: adStaking, link: `${baseUrl}staking/eth/verse/` },
+  { img: adStaking, link: `${baseUrl}staking/eth/verse/`, cta: "stake" },
   {
     img: adFarms,
     link: `${baseUrl}farms/eth/`,
+    cta: "farm",
   },
 ];
 
@@ -67,12 +71,21 @@ const Advertisement: FC<Props> = ({ mobileVersion }) => {
     return () => clearInterval(interval);
   }, []);
 
+  const href = `${adlist[rand].link}${isWallet ? "?origin=wallet" : ""}`;
+
   return (
     <AdWrapper $mobileVersion={mobileVersion}>
       <div>Advertisement</div>
       <a
-        href={`${adlist[rand].link}${isWallet ? "?origin=wallet" : ""}`}
+        href={href}
         {...(isWallet ? {} : { target: "_blank", rel: "noreferrer" })}
+        onClick={() => {
+          logAmplitudeEvent({
+            name: "Verse Clicker CTA tapped",
+            cta: adlist[rand].cta,
+            to: href,
+          });
+        }}
       >
         <AdImage src={adlist[rand].img} width="100%" />
       </a>

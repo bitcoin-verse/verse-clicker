@@ -7,7 +7,7 @@ import verseEthereum from "./verseEthereum";
 import verseGoerli from "./verseGoerli";
 import versePolygon from "./versePolygon";
 
-const getVerseTokenDetails = (chainId: number) => {
+const getVerseTokenDetails = (chainId?: number) => {
   switch (chainId) {
     case 1:
       return {

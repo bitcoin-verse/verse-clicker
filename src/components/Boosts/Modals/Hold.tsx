@@ -7,9 +7,10 @@ import { Label } from "../../Label";
 
 import { ModalWrapper } from "../styled";
 import { useTrackedState } from "../../../context/store";
+import { logAmplitudeEvent } from "../../../helpers/analytics";
 
 const Hold: FC = () => {
-  const { player } = useTrackedState();
+  const { player, isWallet } = useTrackedState();
 
   return (
     <ModalWrapper>
@@ -18,13 +19,6 @@ const Hold: FC = () => {
         <>
           <H3>You&#39;re currently holding VERSE</H3>
           <Label $color="secondary">10x boost applied to your clicks</Label>
-          <LinkButton
-            href="https://buy.bitcoin.com/verse"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Buy more VERSE
-          </LinkButton>
         </>
       ) : (
         <>
@@ -32,23 +26,46 @@ const Hold: FC = () => {
           <Label $color="secondary">
             Buy or Swap VERSE to boost your point production
           </Label>
-          <LinkButton
-            href="https://buy.bitcoin.com/verse"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Buy VERSE
-          </LinkButton>
-          <LinkButton
-            $design="secondary"
-            href="https://verse.bitcoin.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Swap VERSE
-          </LinkButton>
         </>
       )}
+      <LinkButton
+        href={
+          isWallet
+            ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
+            : `https://buy.bitcoin.com/verse/`
+        }
+        {...(isWallet
+          ? {}
+          : {
+              target: "_blank",
+              rel: "noreferrer",
+            })}
+        onClick={() => {
+          logAmplitudeEvent({
+            name: "Verse Clicker CTA tapped",
+            cta: "farm",
+            to: isWallet
+              ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
+              : `https://buy.bitcoin.com/verse/`,
+          });
+        }}
+      >
+        Buy {player.verseHolder ? "more " : ""}VERSE
+      </LinkButton>
+      <LinkButton
+        $design="secondary"
+        href={`https://verse.bitcoin.com/swap/?coin=verse${
+          isWallet ? "&origin=wallet" : ""
+        }`}
+        {...(isWallet
+          ? {}
+          : {
+              target: "_blank",
+              rel: "noreferrer",
+            })}
+      >
+        Swap {player.verseHolder ? "more " : ""}VERSE
+      </LinkButton>
     </ModalWrapper>
   );
 };

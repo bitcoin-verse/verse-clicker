@@ -6,8 +6,10 @@ import NotConnected from "./views/NotConnected";
 import { useDispatch } from "./context/store";
 import { useSocketCtx } from "./context/SocketContext";
 import useSocketEvents from "./hooks/useSocketEvents";
-
+import useAmplitudeEvents from "./hooks/useAmplitudeEvents";
 const App: FC = () => {
+  useAmplitudeEvents();
+
   const dispatch = useDispatch();
 
   const { socket, isConnected: isSocketConnected } = useSocketCtx();
