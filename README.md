@@ -16,3 +16,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ### `yarn build`
 
 Builds the app for production to the `build` folder.
+
+### .env files
+
+Create `.env.local` for environment variables to work. Use below as example
+
+```
+REACT_APP_PUBLIC_URL=https://localhost:3000/
+REACT_APP_VERSE_BASE_URL=https://dex.dev.cloud.bitcoin.com/
+REACT_APP_DEV_ENV=development
+```

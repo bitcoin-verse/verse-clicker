@@ -10,10 +10,8 @@
     "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
     "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
-    "audit:fix": "npx yarn-audit-fix"
+    "audit:fix": "npx yarn-audit-fix",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -75,7 +73,6 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.33.2",
-    "gh-pages": "^6.0.0",
     "prettier": "3.0.3",
     "react-scripts": "5.0.1",
     "typescript": "^5.2.2",

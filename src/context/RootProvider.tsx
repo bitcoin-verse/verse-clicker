@@ -24,10 +24,10 @@ const metadata = {
   icons: ["https://verse.bitcoin.com/images/favicon.png"],
 };
 
+const isDev = process.env.REACT_APP_DEV_ENV === "development";
+
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  process.env.NODE_ENV === "production"
-    ? [mainnet]
-    : [goerli, mainnet, polygon],
+  isDev ? [goerli, mainnet, polygon] : [mainnet],
   [
     jsonRpcProvider({
       rpc: (chain) => {
@@ -89,7 +89,7 @@ createWeb3Modal({
   projectId,
   chains,
 
-  defaultChain: process.env.NODE_ENV === "production" ? mainnet : goerli,
+  defaultChain: isDev ? goerli : mainnet,
   themeMode: "dark",
   featuredWalletIds: [
     "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
