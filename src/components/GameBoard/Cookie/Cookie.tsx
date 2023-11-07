@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useRef, useState } from "react";
+import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import { useAccount, useDisconnect } from "wagmi";
 import { createRoot } from "react-dom/client";
 
@@ -17,10 +17,10 @@ const Cookie: FC = () => {
   const { status } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
 
-  const { player, settings } = useTrackedState();
+  const { player } = useTrackedState();
   const [clickCount, setClickCount] = useState<number>(0);
 
-  const [countTimer, setCountTimer] = useState<NodeJS.Timeout>();
+  const countTimer = useRef<NodeJS.Timeout>();
 
   const animateCookieClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -60,24 +60,15 @@ const Cookie: FC = () => {
     [player.cpc],
   );
 
-  const autoClickDetection = () => {
-    setClickCount((c) => c + 1);
+  useEffect(() => {
+    countTimer.current = setInterval(() => {
+      setClickCount(0);
+    }, 1000);
 
-    clearTimeout(countTimer);
-
-    setCountTimer(
-      setTimeout(() => {
-        setClickCount(0);
-      }, 1000),
-    );
-
-    if (clickCount && clickCount >= 30) {
-      alert("Macro detected, disconnecting...");
-      return true;
-    }
-
-    return false;
-  };
+    return () => {
+      clearInterval(countTimer.current);
+    };
+  }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const { isTrusted } = e;
@@ -87,9 +78,12 @@ const Cookie: FC = () => {
       return;
     }
 
-    const isAutoClick = autoClickDetection();
+    const isAutoClick = clickCount >= 30 ? true : false;
+
+    setClickCount((c) => c + 1);
 
     if (isAutoClick || !isTrusted) {
+      alert("Macro detected, disconnecting...");
       disconnect();
       return;
     }
@@ -97,9 +91,7 @@ const Cookie: FC = () => {
     socket.emit("click");
     animateCookieClick(e);
 
-    if (settings.sound && playLaser) {
-      playLaser();
-    }
+    if (playLaser) playLaser();
   };
 
   return (
