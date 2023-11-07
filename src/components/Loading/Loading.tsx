@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import { useAccount, useDisconnect } from "wagmi";
+import { useAccount, useDisconnect, useNetwork, useSwitchNetwork } from "wagmi";
 import { H1 } from "../H1";
 import { H4 } from "../H4";
 // import { Link } from "../Link";
@@ -25,6 +25,8 @@ const Loading: FC = () => {
   const { status } = useAccount();
   const { disconnect } = useDisconnect();
   const { open } = useWeb3Modal();
+  const { chains, switchNetwork } = useSwitchNetwork();
+  const { chain } = useNetwork();
 
   const { modalRef, showModal, close } = useModal();
   const { error } = useTrackedState();
@@ -64,15 +66,27 @@ const Loading: FC = () => {
       </Wrapper>
       <MoonImage src={halfMoon} alt="Verse Moon" />
 
-      <Modal
-        modalRef={modalRef}
-        onClose={() => {
-          console.log("umm close");
-        }}
-      >
+      <Modal modalRef={modalRef}>
         <ModalContent>
           <Spinner />
           <Title>Loading...</Title>
+          {chain?.unsupported && (
+            <>
+              <Label $color="warning">Unsupported network</Label>
+              {chains.map(({ name, id }) => (
+                <Button
+                  key={id}
+                  $size="small"
+                  $design="secondary"
+                  onClick={() => {
+                    if (switchNetwork) switchNetwork(id);
+                  }}
+                >
+                  Switch to {name}
+                </Button>
+              ))}
+            </>
+          )}
           {error && (
             <>
               <Label $color="warning">{error}</Label>
