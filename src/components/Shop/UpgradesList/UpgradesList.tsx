@@ -47,7 +47,7 @@ const UpgradesList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
         {upgrades.map((upgrade) => {
           return <UpgradeButton key={upgrade.name} upgrade={upgrade} />;
         })}
-        <NextUpgrade>Unlock upgrades by purchasing more buildings</NextUpgrade>
+        <NextUpgrade>Unlock upgrades by purchasing more tools</NextUpgrade>
       </UpgradesWrapper>
       <CookiesDisplay />
     </Wrapper>
