@@ -47,17 +47,11 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   };
 
   return (
-    <Dialog
-      ref={modalRef}
-      onClick={clickOverlayToClose}
-      {...rest}
-    >
+    <Dialog ref={modalRef} onClick={clickOverlayToClose} {...rest}>
       {title && (
         <ModalTitle>
           <TitleText>{title}</TitleText>
-          <CloseButton
-            onClick={close}
-          >
+          <CloseButton onClick={close}>
             <Cross size="1rem" />
           </CloseButton>
         </ModalTitle>
@@ -70,21 +64,6 @@ const Modal: FC<PropsWithChildren<Props>> = ({
 export const useModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
-    if (modalRef.current?.show) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [modalRef.current?.show]);
-
-  useEffect(() => {
-    document.body.style.overflow = "unset";
-  }, []);
   const showModal = () => {
     if (!modalRef || !modalRef.current) return;
     document.body.style.overflow = "hidden";
