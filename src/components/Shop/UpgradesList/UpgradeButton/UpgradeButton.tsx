@@ -48,7 +48,7 @@ const UpgradeButton: FC<Props> = ({ upgrade }) => {
       $unaffordable={player.cookies < upgrade.cost}
     >
       <Title style={{ gridArea: "name" }}>
-        {upgrade.name} ({upgrade.bName})
+        {upgrade.name} <small>({upgrade.bName})</small>
       </Title>
       <Text style={{ gridArea: "desc" }}>{upgrade.desc}</Text>
 
