@@ -64,8 +64,6 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
     const pc =
       Math.abs((building.amount - (prevUpgrade?.limit || 0)) / diff) * 100;
 
-    console.log(building.name, pc, building.amount, nextUpgrade.limit);
-
     return pc;
   }, [building.upgrades, building.amount]);
 
