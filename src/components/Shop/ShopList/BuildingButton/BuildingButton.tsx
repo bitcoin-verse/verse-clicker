@@ -54,15 +54,14 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
     const nextUpgrade = building.upgrades.find((i) => !i.owned);
     const prevUpgrade = building.upgrades.findLast((i) => i.owned);
 
-    if (!nextUpgrade?.limit) return 0;
+    if (!nextUpgrade?.limit || building.amount === 0) return 0;
 
     // can already purchase next upgrade
     if (building.amount >= nextUpgrade.limit) return 100;
 
     const diff = nextUpgrade.limit - (prevUpgrade?.limit || 0);
 
-    const pc =
-      Math.abs((building.amount - (prevUpgrade?.limit || 0)) / diff) * 100;
+    const pc = ((building.amount - (prevUpgrade?.limit || 0)) / diff) * 100;
 
     return pc;
   }, [building.upgrades, building.amount]);
