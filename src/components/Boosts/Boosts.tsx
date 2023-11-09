@@ -99,11 +99,13 @@ interface Props {
 const Boosts: FC<Props> = ({ mobileVersion }) => {
   const [content, setContent] = useState<string>();
   const { modalRef, showModal } = useModal();
-  const { player } = useTrackedState();
   const { chain } = useNetwork();
+  const { player, network } = useTrackedState();
 
   const modalContent = getModalContent(content);
   const interactiveBoosts = ["burn", "scratcher"];
+
+  if (network === "Christmas") return null;
 
   return (
     <Wrapper $mobileVersion={mobileVersion}>

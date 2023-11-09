@@ -1,4 +1,6 @@
 import React from "react";
+import { useAccount } from "wagmi";
+
 import { CampaignButton } from "../styled";
 
 import tree from "../../../assets/tree.png";
@@ -9,10 +11,13 @@ import { H3 } from "../../H3";
 import { Label } from "../../Label";
 import { Button } from "../../Button";
 import { useDispatch } from "../../../context/store";
+import { useSocketCtx } from "../../../context/SocketContext";
 
 const Christmas = () => {
-  const { modalRef, showModal } = useModal();
+  const { modalRef, showModal, close } = useModal();
+  const { address } = useAccount();
   const dispatch = useDispatch();
+  const { socket } = useSocketCtx();
 
   return (
     <>
@@ -31,7 +36,10 @@ const Christmas = () => {
           <Button
             $size="small"
             onClick={() => {
+              dispatch({ type: "RESET_GAME" });
               dispatch({ type: "SET_NETWORK", payload: "Christmas" });
+              socket.emit("join", { address, chain: "Christmas" });
+              close();
             }}
           >
             Start NOW

@@ -1,6 +1,7 @@
 import React, { FC, lazy, Suspense, useCallback, useMemo } from "react";
 import type { Engine } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
+
 import { createConfig } from "./config";
 import { useTrackedState } from "../../context/store";
 
