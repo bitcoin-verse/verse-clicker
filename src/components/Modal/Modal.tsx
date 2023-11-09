@@ -1,10 +1,4 @@
-import React, {
-  FC,
-  PropsWithChildren,
-  RefObject,
-  useEffect,
-  useRef,
-} from "react";
+import React, { FC, PropsWithChildren, RefObject, useRef } from "react";
 import {
   CloseButton,
   Dialog,
