@@ -18,6 +18,7 @@ import UpgradeAll from "./UpgradeAll";
 import BuildingUpgradeTabs from "./BuildingUpgradeTabs";
 import PurchaseAmount from "./PurchaseAmount";
 import Advertisement from "../Advertisement";
+import Campaigns from "../Compaigns/Campaigns";
 
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -55,6 +56,7 @@ const GameBoard: FC = () => {
           )}
         </TabContent>
       </ShopSection>
+      <Campaigns />
       <Boosts mobileVersion />
       <Advertisement mobileVersion />
     </StyledGameBoard>

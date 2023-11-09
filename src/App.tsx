@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
 
 import Main from "./views/Main";
-import { useAccount, useNetwork } from "wagmi";
+import { useAccount, useConnect, useNetwork } from "wagmi";
 import NotConnected from "./views/NotConnected";
 import { useDispatch } from "./context/store";
 import { useSocketCtx } from "./context/SocketContext";
@@ -16,8 +16,9 @@ const App: FC = () => {
   const { loading, setLoading } = useSocketEvents();
 
   const { chain } = useNetwork();
+  
 
-  const { status, address } = useAccount({
+  const { status, address, connector } = useAccount({
     onConnect: ({ address: addr }) => {
       if (!addr) return;
       console.log("Web3 Connected");
@@ -50,7 +51,7 @@ const App: FC = () => {
     socket.disconnect();
     socket.connect();
   }, [status, chain, address]);
-
+  console.log(connector);
   return (
     <>
       {status !== "connected" || loading || !isSocketConnected ? (

@@ -8,6 +8,7 @@ import Leaderboard from "./Leaderboard";
 import Settings from "./Settings";
 import NotificationContent from "../NotificationModal/Content";
 import Modal, { useModal } from "../Modal";
+import Campaigns from "../Compaigns/Campaigns";
 
 const getModalContent = (close: () => void, content?: string) => {
   switch (content) {
@@ -44,6 +45,7 @@ const Sidebar = () => {
   return (
     <>
       <Wrapper>
+        <Campaigns />
         <SidebarButton
           onClick={() => {
             setContent("leaderboard");
