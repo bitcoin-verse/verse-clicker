@@ -13,6 +13,7 @@ import PurchaseAmount from "../../GameBoard/PurchaseAmount";
 import MobileTitle from "../MobileTitle";
 import CookiesDisplay from "../CookiesDisplay";
 import Advertisement from "../../Advertisement";
+import useScreenWidth from "../../../hooks/useScreenWidth";
 
 interface Props {
   toggleOpen: boolean;
@@ -22,6 +23,7 @@ interface Props {
 const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
   const { buildings } = useTrackedState();
   const [isOpen, setIsOpen] = useState(false);
+  const width = useScreenWidth();
 
   useEffect(() => {
     if (toggleOpen) {
@@ -31,12 +33,13 @@ const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
   }, [toggleOpen]);
 
   useEffect(() => {
-    if (isOpen && screen.width < 768) {
+    if (width >= 768) return;
+    if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [isOpen, screen.width]);
+  }, [isOpen, width]);
 
   return (
     <>

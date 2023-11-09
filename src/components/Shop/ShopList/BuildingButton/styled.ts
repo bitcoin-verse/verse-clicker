@@ -92,9 +92,10 @@ export const Image = styled.img`
   background: white;
 `;
 
-export const Amount = styled.div`
+export const Amount = styled.div<{ $nextPc?: number }>`
   display: flex;
   grid-area: amount;
+  position: relative;
 
   justify-content: center;
   align-items: center;
@@ -108,9 +109,22 @@ export const Amount = styled.div`
   align-self: flex-end;
   font-size: 0.75rem;
   font-weight: 600;
-
+  z-index: 0;
   color: #c5cedb;
   background: #1a2231;
   border-top-left-radius: 0.5rem;
   border-bottom-right-radius: 0.75rem;
+  overflow: hidden;
+
+  &::after {
+    height: 100%;
+    background: #030c14;
+    filter: brightness(50%);
+    content: "";
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: ${({ $nextPc }) => $nextPc}%;
+    z-index: -1;
+  }
 `;
