@@ -81,7 +81,7 @@ const Advertisement: FC<Props> = ({ mobileVersion }) => {
         {...(isWallet ? {} : { target: "_blank", rel: "noreferrer" })}
         onClick={() => {
           logAmplitudeEvent({
-            name: "Verse Clicker CTA tapped",
+            name: "verse clicker cta tapped",
             cta: adlist[rand].cta,
             to: href,
           });
