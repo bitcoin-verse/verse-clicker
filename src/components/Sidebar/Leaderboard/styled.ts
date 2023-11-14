@@ -13,15 +13,21 @@ export const LeaderboardWrapper = styled.div`
 `;
 
 export const YouBadge = styled.div`
-  display: inline-flex;
+  display: flex;
+  position: absolute;
   justify-content: center;
   align-items: center;
+  grid-area: none;
+
+  top: -1.25rem;
+
+  right: 11.5rem;
   padding: 0.25rem 0.5rem;
   flex: 0;
-  max-height: 1.5rem;
-  max-width: 1.5rem;
-  height: 100%;
-  width: 100%;
+  height: 1.5rem;
+  width: 1.5rem;
+  z-index: 999;
+
   border-radius: 50%;
   color: #c5cedb;
   background: linear-gradient(180deg, #425472 0%, #313e57 100%);
@@ -29,7 +35,7 @@ export const YouBadge = styled.div`
 
 export const Header = styled.div`
   display: grid;
-  grid-template-columns: 1rem auto 6rem 6rem;
+  grid-template-columns: 1rem auto 5rem 5rem;
 
   font-size: 0.875rem;
   font-weight: 600;
@@ -53,35 +59,30 @@ export const StarWrapper = styled.div`
 `;
 
 export const Body = styled.div`
+  position: relative;
   display: grid;
   width: 100%;
-  grid-template-columns: 0.5rem auto minmax(2rem, 5rem) minmax(3rem, 5rem);
+  margin-bottom: 1rem;
 
   font-size: 0.875rem;
   font-weight: 600;
-  text-align: right;
-  margin-bottom: 1rem;
 
+  grid-template-columns: 0.5rem auto 5.5rem 5.5rem;
   gap: 0.75rem;
 
-  align-items: center;
-
-  & > div {
+  & > ${YouBadge} {
+    position: absolute;
     display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
+    justify-content: center;
     align-items: center;
-    position: relative;
-  }
-
-  & > :nth-child(1),
-  & > :nth-child(2) {
-    text-align: left;
-    justify-content: flex-start;
   }
 
   & > :nth-child(3),
   & > :nth-child(4) {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: flex-end;
+    align-items: center;
     font-family: monospace;
   }
 `;
