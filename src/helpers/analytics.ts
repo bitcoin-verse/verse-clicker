@@ -66,12 +66,12 @@ type Event =
       success: boolean;
     }
   | {
-      name: "Verse Clicker CTA tapped";
+      name: "verse clicker cta tapped";
       cta: string;
       to: string;
     }
   | {
-      name: "Verse Clicker Burn";
+      name: "verse clicker burn";
       blockchain?: string;
       result: number;
       txId: string;
@@ -85,6 +85,7 @@ export const logAmplitudeEvent = (event: Event) => {
       entrypoint: "clicker",
       "current page": window.location,
       "screen size": getDeviceSize(),
+
       ...options,
     };
 

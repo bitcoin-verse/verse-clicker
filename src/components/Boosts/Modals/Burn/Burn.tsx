@@ -89,7 +89,7 @@ const Burn: FC = () => {
       setShowLoading(true);
 
       logAmplitudeEvent({
-        name: "Verse Clicker Burn",
+        name: "verse clicker burn",
         "blockchain address": address || "",
         blockchain: chain?.nativeCurrency.symbol,
         result: selectedBurn.value,
