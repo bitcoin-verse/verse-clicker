@@ -43,7 +43,7 @@ const WarningChip: FC<PropsWithChildren<Props>> = ({ children, link }) => {
           })}
       onClick={() => {
         logAmplitudeEvent({
-          name: "Verse Clicker CTA tapped",
+          name: "verse clicker cta tapped",
           cta: "buy",
           to: link,
         });

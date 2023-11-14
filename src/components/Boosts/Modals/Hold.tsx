@@ -42,7 +42,7 @@ const Hold: FC = () => {
             })}
         onClick={() => {
           logAmplitudeEvent({
-            name: "Verse Clicker CTA tapped",
+            name: "verse clicker cta tapped",
             cta: "farm",
             to: isWallet
               ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"

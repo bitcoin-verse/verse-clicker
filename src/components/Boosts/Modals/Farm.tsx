@@ -40,7 +40,7 @@ const Farm: FC = () => {
             })}
         onClick={() => {
           logAmplitudeEvent({
-            name: "Verse Clicker CTA tapped",
+            name: "verse clicker cta tapped",
             cta: "farm",
             to: `https://verse.bitcoin.com/farms/eth/${
               isWallet ? "?origin=wallet" : ""
@@ -63,7 +63,7 @@ const Farm: FC = () => {
             })}
         onClick={() => {
           logAmplitudeEvent({
-            name: "Verse Clicker CTA tapped",
+            name: "verse clicker cta tapped",
             cta: "stake",
             to: `https://verse.bitcoin.com/staking/eth/verse/${
               isWallet ? "?origin=wallet" : ""
