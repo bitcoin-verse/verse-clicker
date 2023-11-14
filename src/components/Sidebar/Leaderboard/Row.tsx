@@ -4,6 +4,7 @@ import { formatNumber } from "../../../helpers/formatNumber";
 import Cursor from "../../Icons/Cursor";
 import Star from "../../Icons/Star";
 import useUsername from "../../../hooks/useUsername";
+import Marquee from "../../Marquee";
 
 interface Props {
   address: string;
@@ -22,9 +23,11 @@ const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
   return (
     <Body key={address}>
       <div>{index}</div>
-      <div>
-        {userName} {isUser && <YouBadge>🌟</YouBadge>}
-      </div>
+
+      <Marquee shouldAnimate key={userName}>
+        <div>{userName}</div>
+      </Marquee>
+
       <div>
         {formatNumber(Number(item.Clicked))} <Cursor size="0.875rem" />
       </div>
@@ -34,6 +37,12 @@ const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
           <Star size="0.875rem" />
         </StarWrapper>
       </div>
+
+      {isUser && (
+        <>
+          <YouBadge>🌟</YouBadge>
+        </>
+      )}
     </Body>
   );
 };
