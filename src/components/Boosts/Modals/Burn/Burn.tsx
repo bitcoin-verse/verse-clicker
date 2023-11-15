@@ -35,9 +35,9 @@ import { useTrackedState } from "../../../../context/store";
 import { logAmplitudeEvent } from "../../../../helpers/analytics";
 
 export const BURN_LIST = [
-  { title: "1 hour", value: 15000, hours: 1 },
-  { title: "12 hour", value: 150000, hours: 12 },
-  { title: "1 day", value: 280000, hours: 24 },
+  { title: "1 hour", value: 10000, hours: 1 },
+  { title: "12 hours", value: 200000, hours: 12 },
+  { title: "24 hours", value: 800000, hours: 24 },
 ];
 
 const Burn: FC = () => {
