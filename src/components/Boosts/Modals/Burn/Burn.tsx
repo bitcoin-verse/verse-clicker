@@ -193,7 +193,7 @@ const Burn: FC = () => {
                 {selectedBurn.value.toLocaleString()} VERSE
               </Label>
             </Price>
-            <Label $color="secondary">Points received</Label>
+            <Label $color="secondary">Points you will receive</Label>
 
             <Price>
               <Label $color={insufficientVerse ? "warning" : undefined}>
