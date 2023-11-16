@@ -34,6 +34,7 @@ import LoadingStates from "./LoadingStates";
 import { useTrackedState } from "../../../../context/store";
 import { logAmplitudeEvent } from "../../../../helpers/analytics";
 import Star from "../../../Icons/Star";
+import { formatNumber } from "../../../../helpers/formatNumber";
 
 export const BURN_LIST = [
   { title: "1 hour", value: 10000, hours: 1 },
@@ -195,10 +196,10 @@ const Burn: FC = () => {
             <Label $color="secondary">Points received</Label>
 
             <Price>
-              <Label>
-                {(
-                  player.cps * calculateBurnBonus(selectedBurn.value)
-                ).toLocaleString()}{" "}
+              <Label $color={insufficientVerse ? "warning" : undefined}>
+                {formatNumber(
+                  player.cps * calculateBurnBonus(selectedBurn.value),
+                )}{" "}
               </Label>
               <Star size="1.25rem" />
             </Price>
