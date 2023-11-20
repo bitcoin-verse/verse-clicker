@@ -12,6 +12,27 @@ export const LeaderboardWrapper = styled.div`
   }
 `;
 
+export const LeaderboardContent = styled.div`
+  @media (min-width: 768px) {
+    margin-right: -1.5rem;
+    padding: 0;
+    max-height: 22rem;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 0.25rem;
+      background-color: #000;
+      border-radius: 0.5rem;
+      right: -1.5rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #313e57;
+      border-radius: 0.5rem;
+    }
+  }
+`;
+
 export const YouBadge = styled.div`
   display: flex;
   position: absolute;
@@ -41,6 +62,7 @@ export const Header = styled.div`
   font-weight: 600;
   text-align: right;
   margin-bottom: 1rem;
+  padding-right: 1.5rem;
 
   & > :nth-child(1),
   & > :nth-child(2) {
@@ -63,6 +85,7 @@ export const Body = styled.div`
   display: grid;
   width: 100%;
   margin-bottom: 1rem;
+  padding-right: 1.5rem;
 
   font-size: 0.875rem;
   font-weight: 600;
