@@ -42,7 +42,7 @@ export const YouBadge = styled.div`
 
   top: -1.25rem;
 
-  right: 11.5rem;
+  right: 12.5rem;
   padding: 0.25rem 0.5rem;
   flex: 0;
   height: 1.5rem;
