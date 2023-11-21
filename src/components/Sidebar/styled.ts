@@ -18,7 +18,6 @@ export const Wrapper = styled.div`
   @media (min-width: 768px) {
     left: 0;
     right: unset;
-    padding: 1.5rem;
   }
 `;
 
@@ -33,4 +32,15 @@ export const SidebarButton = styled.button`
   border: none;
   padding: 0.5rem;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    left: 0;
+    right: unset;
+    padding: 1rem;
+    box-shadow: 0px 0px 2rem 0px #2fa9ee33;
+    & > svg {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+  }
 `;

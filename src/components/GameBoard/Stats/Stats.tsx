@@ -18,8 +18,8 @@ const Stats: FC = () => {
       (item) => item === address,
     );
 
-    if (leaderboardIndex === undefined || leaderboardIndex >= 10) {
-      return ">10";
+    if (leaderboardIndex === undefined || leaderboardIndex > 25) {
+      return ">25";
     }
     return leaderboardIndex + 1;
   }, [leaderboardAddresses]);
