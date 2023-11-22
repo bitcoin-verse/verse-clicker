@@ -85,7 +85,6 @@ export const Body = styled.div`
   display: grid;
   width: 100%;
   margin-bottom: 1rem;
-  padding-right: 1.5rem;
 
   font-size: 0.875rem;
   font-weight: 600;
@@ -107,5 +106,9 @@ export const Body = styled.div`
     justify-content: flex-end;
     align-items: center;
     font-family: monospace;
+  }
+
+  @media (min-width: 768px) {
+    padding-right: 1.5rem;
   }
 `;
