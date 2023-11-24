@@ -1,6 +1,7 @@
 [
   {
-    "name": "Poly Dev",
+    "name": "Cursor",
+    "desc": "Basic tool for acquiring points",
     "cost": 15,
     "amount": 0,
     "originalCost": 15,
@@ -10,94 +11,94 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Refactor Codebase",
+        "name": "Wireless Mouse",
         "cost": 100,
-        "desc": "Devs and clicking are twice as efficient",
+        "desc": "Breaking free of a wire, this mouse allows maximum freedom of movement. Cursors are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Premature Optimization",
+        "name": "Additional Mouse Buttons",
         "cost": 500,
-        "desc": "Devs and clicking are twice as efficient",
+        "desc": "More buttons allow for multiple functionalities, increasing productivity with every click. Cursors are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Write Tests",
+        "name": "Increased DPI",
         "cost": 10000,
-        "desc": "Devs and clicking are twice as efficient",
+        "desc": "Moving from 400 DPI to 30,000 increases accuracy and sensitivity, doubling your point generation potential. Cursors are twice as efficient.",
         "limit": 10,
         "owned": false
       },
       {
-        "name": "Stack Overflow",
+        "name": "Ergonomic Trading Mouse",
         "cost": 100000,
-        "desc": "Mouse and Devs gain +0.1 cookies for every non-cursor building owned",
+        "desc": " A mouse designed for optimal comfort during extended crypto trading sessions. Mouse and cursors gain +0.1 points for every non-cursor asset owned.",
         "limit": 25,
         "owned": false,
         "special": 0.1
       },
       {
-        "name": "Replace Tabs with Spaces",
+        "name": "Turbo Click Script",
         "cost": 10000000,
-        "desc": "Mouse and Devs gain +0.5 cookies for every non-cursor building owned",
+        "desc": "Empowers each click with a massive boost, amplifying point generation based on your assets. Mouse and cursors gain +0.5 points for every non-cursor asset owned.",
         "limit": 50,
         "owned": false,
         "special": 0.5
       },
       {
-        "name": "Replace Spaces with Tabs",
+        "name": "Crypto-Optimized Button Mapping",
         "cost": 100000000,
-        "desc": "Mouse and Devs gain +5 cookies for every non-cursor building owned",
+        "desc": "Allows for rapid point swapping and blockchain operations with specialized button configurations, amplifying point generation. Mouse and cursors gain +5 points for every non-cursor asset owned.",
         "limit": 100,
         "owned": false,
         "special": 5
       },
       {
-        "name": "Friday Afternoon Deploys",
+        "name": "Mechanical Fingers",
         "cost": 1000000000,
-        "desc": "Mouse and Devs gain +50 for every non-cursor building owned",
+        "desc": "Automated precision fingers that click tirelessly, increasing point accumulation from every non-cursor asset. Mouse and cursors gain +50 points for every non-cursor asset owned.",
         "limit": 150,
         "owned": false,
         "special": 50
       },
       {
-        "name": "Test in Production",
+        "name": "AI Predictive Clicking",
         "cost": 10000000000,
-        "desc": "Mouse and Devs gain +500 cookies for each non-cursor building owned",
+        "desc": "Leveraging advanced AI to anticipate and auto-click optimal points, greatly magnifying the benefit from each non-cursor asset. Mouse and cursors gain +500 points for each non-cursor asset owned.",
         "limit": 200,
         "owned": false,
         "special": 500
       },
       {
-        "name": "Migrate Database",
+        "name": "Nano-Precision Laser Tracking",
         "cost": 10000000000000,
-        "desc": "Mouse and Devs gain +5.000K for every non-cursor building owned",
+        "desc": "Ensures the cursor operates at subatomic accuracy level, boosting point counts with an exponential factor. Mouse and cursors gain +5.000K points for every non-cursor asset owned.",
         "limit": 250,
         "owned": false,
         "special": 5000
       },
       {
-        "name": "Free Coffe",
+        "name": "Solar Click Cultivator",
         "cost": 10000000000000000,
-        "desc": "Mouse and Devs gain +50.000K for every non-cursor building owned",
+        "desc": "Click on any location in Polygon subspace instantly, substantially increasing point yields. Mouse and cursors gain +50.000K for every non-cursor asset owned.",
         "limit": 300,
         "owned": false,
         "special": 50000
       },
       {
-        "name": "While True",
+        "name": "Interstellar Clicker",
         "cost": 10000000000000000000,
-        "desc": "Mouse and Devs gain +500.000K for every non-cursor building owned",
+        "desc": "Span lightyears with the flick of the wrist. Click across multiple galactic clusters, reaping a colossal point count for each non-cursor asset. Mouse and cursors gain +500.000K for every non-cursor asset owned.",
         "limit": 350,
         "owned": false,
         "special": 500000
       },
       {
-        "name": "Print Hello World",
+        "name": "The Verse Booster",
         "cost": 1e22,
-        "desc": "Mouse and Devs gain +5.000M for each non-cursor building owned",
+        "desc": "Taps into the Verse’s restricted dark energy technology, sundering the fabric of reality with every movement and click, resulting in massive point gains. Mouse and cursors gain +5.000M for each non-cursor asset owned.",
         "limit": 400,
         "owned": false,
         "special": 5000000
@@ -107,7 +108,8 @@
     "image": "dev.png"
   },
   {
-    "name": "Wojak",
+    "name": "Basic Blockchain",
+    "desc": "Early blockchain technology.",
     "cost": 100,
     "amount": 0,
     "originalCost": 100,
@@ -117,79 +119,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Join r/cryptocurrency",
+        "name": "Enhanced ASIC Mining Rigs",
         "cost": 1000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Upgrades to more efficient ASIC mining rigs to increase transaction processing speed, doubling their efficiency.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "More efficient Spatchelas",
+        "name": "Optimized Proof of Work Algorithm",
         "cost": 5000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Refines the Proof of Work algorithm to increase transaction validation efficiency while reducing energy consumption. Basic blockchains are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Buy High, Sell Low",
+        "name": "Improved Mempool Management",
         "cost": 50000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Enhances the memory pool system for faster and more efficient transaction handling and verification. Basic blockchains are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "McDonalds Manager training",
+        "name": "Advanced Byzantine Fault Tolerance",
         "cost": 5000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Implements a deterministic solution to the Byzantine General's Problem, ensuring greater security and consensus accuracy. Basic blockchains are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Promoted to Junior Supivisor",
+        "name": "Dynamic Block Size Scaling",
         "cost": 500000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Introduces a flexible block size mechanism to adapt to transaction volume changes, optimizing blockchain scalability. Basic blockchains are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Turn on Crypto Price Notifications",
+        "name": "Atomic Swap Capability",
         "cost": 50000000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Enables direct, cross-chain asset swaps without the need for intermediaries, enhancing interoperability between different blockchains. Basic blockchains are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Free Chicken Tendies",
+        "name": "Quantum-Proof Encryption Upgrade",
         "cost": 50000000000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Upgrades encryption algorithms to protect against quantum computing threats, ensuring blockchain security. Basic blockchains are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Follow Elon Musk on X",
+        "name": "Subspace Block Broadcasting",
         "cost": 50000000000000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Implements technology to achieve near-instantaneous block propagation across Polygon’s solar system network, drastically reducing transaction confirmation times. Basic Blockchains are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Hodl More Doge",
+        "name": "Galactic Consensus AI",
         "cost": 50000000000000000000,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "An advanced artificial intelligence that spans the galaxy, reaching consensus decisions at the speed of thought, integrating the collective intelligence of multiple civilizations.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Diamond Hands",
+        "name": "Quantum Computing Transaction Validator",
         "cost": 5e22,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Implements cutting-edge quantum computing processors that leverage the principle of superposition, allowing the blockchain to simultaneously exist in multiple states. This results in an exponential increase in processing power. Basic Blockchains are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "I Know That Feel Bro",
+        "name": "Black Hole Data Compression",
         "cost": 5e26,
-        "desc": "Wojaks are twice as efficient",
+        "desc": "Uses the immense gravitational pull of a black hole to compress and store blockchain data, thus putting a permanent end to the epochal, galaxy-spanning blockspace wars while also achieving near-infinite data scalability. Basic Blockchains are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -198,7 +200,8 @@
     "image": "wojak.png"
   },
   {
-    "name": "Trollfarm",
+    "name": "Advanced Blockchain",
+    "desc": "Smart-contract enabled blockchains.",
     "cost": 1100,
     "amount": 0,
     "originalCost": 1100,
@@ -208,79 +211,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Sock Puppets",
+        "name": "Proof-of-Stake",
         "cost": 11000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "The transition from Proof of Work to Proof of Stake paves the way for higher transactions per section and more energy-efficient transaction validation. Advanced blockchains are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Indian Callcenter",
+        "name": "Zero-Knowledge Proof Protocols",
         "cost": 55000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Implements advanced cryptographic techniques to enable transaction validation without revealing sensitive data, enhancing privacy and security. Advanced blockchains are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Post Memes",
+        "name": "Cross-Chain Smart Contract Functionality",
         "cost": 550000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Enables smart contracts to operate across different blockchain platforms, increasing versatility and interoperability. Advanced blockchains are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Lurk on Reddit",
+        "name": "AI-Assisted Contract Auditing",
         "cost": 55000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Incorporates AI algorithms to audit and optimize smart contracts in real-time, ensuring maximum efficiency and reliability. Advanced blockchains are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Retweet CZ",
+        "name": "Oracles Network Expansion",
         "cost": 5500000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Broadens the range and reliability of external data sources used by smart contracts, increasing their accuracy, functionality, and relevancy. Advanced blockchains are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "YouTube Influencer",
+        "name": "Quantum-Secure Smart Contracts",
         "cost": 550000000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Upgrades smart contracts to be resistant to quantum computing attacks, future-proofing the blockchain's security. Advanced blockchains are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Automated Shitposting",
+        "name": "Self-Optimizing Smart Contracts",
         "cost": 550000000000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Smart contracts that automatically update their code for efficiency and security, ensuring high performance and reduced vulnerabilities. Advanced blockchains are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "4Chan Street Cred",
+        "name": "Interplanetary File Storage",
         "cost": 550000000000000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Utilizes a decentralized file storage system that spans several Polygon planets, ensuring data redundancy and security on an solar scale. Advanced blockchains are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Facebook Bans",
+        "name": "Quantum-Entangled World State",
         "cost": 550000000000000000000,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "The collective, current state of all accounts and smart contracts, including each account's balance, nonce, and storage, as well as the current state of smart contract code propagate changes throughout the network instantaneously. Advanced blockchains are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Rick Roll Advertisements",
+        "name": "Dimensional Sharding Technique",
         "cost": 5.5e23,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Shards the blockchain across multiple dimensions, drastically improving scalability and reducing resource consumption. Advanced Blockchain are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Phishing Advertisements",
+        "name": "Sentient Smart Contracts",
         "cost": 5.5e27,
-        "desc": "Trollfarms are twice as efficient",
+        "desc": "Self-aware smart contracts that can think, learn, and evolve. These conscious contracts, which stand in relationship to humans as humans to yeast, can autonomously adapt to changing conditions, negotiate terms, and make decisions to optimize transactions and interactions within the blockchain on a level humans cannot fathom. Advanced Blockchain are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -289,7 +292,8 @@
     "image": "troll.png"
   },
   {
-    "name": "ASIC",
+    "name": "VTS Participant",
+    "desc": "VERSE Token Sale (VTS) participants are visionary individuals.",
     "cost": 12000,
     "amount": 0,
     "originalCost": 12000,
@@ -299,79 +303,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Cheap Electricity",
+        "name": "Verse Whitepaper 1.0",
         "cost": 120000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Studying and understanding the original Verse whitepaper grants a deep insight into the VERSE token's potential. VTS participants are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Hydroelectric Dam",
+        "name": "Verse Telegram",
         "cost": 600000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "The Verse Telegram group's constant flow of lively discussions about all things Verse, increases knowledge about, and certainty of Verse's powerful potential. VTS participants are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Water Cooling",
+        "name": "Verse Email Subscription",
         "cost": 6000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Signing up for the Verse email list gives VTS participants the earliest access to all information about the Verse. Staying updated with the latest news and insights, they’re always one step ahead in the Verse community. VTS participants are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Ultra Cheap Electricity",
+        "name": "Verse Whitelist Spot",
         "cost": 600000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Reserving their spot on the Verse whitelist pre-confirms VTS participants’’ ability to purchase during the token sale. This early reservation marks them as a proactive and committed member of the Verse community, ready to seize opportunities as they arise. VTS participants are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Nuclear Power Plant",
+        "name": "Verse AMA Participation",
         "cost": 60000000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Engaging in Ask Me Anything (AMA) sessions with Verse experts expands VTS participants’ understanding and deepens their knowledge about Verse. VTS participants are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Liquid Nitrogen Cooling",
+        "name": "Verse Meme Contest",
         "cost": 6000000000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Participating in the Verse meme contest not only deepens VTS participants’ ties with fellow community members but also hones their creative and meme-making skills. This fun and engaging activity strengthens their bond with the community and enhances their cultural influence within the Verse ecosystem. VTS participants are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Double Hashing Speed",
+        "name": "Verse Token Sale Participation",
         "cost": 6000000000000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Taking part in the live Verse token sale secures VTS participants’ place in history as one of the original Verse token holders. This act of participation is a testament to their foresight and commitment to being a part of the Verse's foundational community. VTS participants are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Fission Reactor",
+        "name": "Verse-cension",
         "cost": 6000000000000000000,
-        "desc": "ASICs are twice as efficient",
+        "desc": "After securing their tokens, VTS participants achieve a new level of consciousness, where mundane concerns of daily life seem trivial. This heightened state of being allows them to focus on the bigger picture and the transformative potential of Verse. VTS participants are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Arctic Warehouse",
+        "name": "Eye of the Verse",
         "cost": 6e21,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Deep contemplation and understanding of Verse have opened VTS participants’ third eye, granting them clarity on how the future will unfold with Verse's influence. This visionary insight places them at the forefront of navigating and leveraging the changes that will be brought by Verse. VTS participants are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Moonbase Warehouse",
+        "name": "Verse Emissions Begin",
         "cost": 6e24,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Witnessing VTS participants purchased VERSE tokens unlocking block-by-block on chain is the physical manifestation of their patience and foresight. The dream is reality. VTS participants are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Dyson Sphere",
+        "name": "Depleted Uranium Hands",
         "cost": 6e28,
-        "desc": "ASICs are twice as efficient",
+        "desc": "Refusing to paper-hand dynastic wealth, VTS participants have developed depleted-uranium hands. Their descendants will inherit planets. The very arc of Polygon has irrevocably been changed by VTS participants. VTS participants are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -380,7 +384,8 @@
     "image": "asic.png"
   },
   {
-    "name": "Okanemon",
+    "name": "Junior Dev",
+    "desc": "Beginning to work with Verse technologies.",
     "cost": 130000,
     "amount": 0,
     "originalCost": 130000,
@@ -390,79 +395,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Extra Cuteness",
+        "name": "Caffeine Tablet Dispenser",
         "cost": 1300000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Equipped with time-release caffeine tablets, Junior Devs maintain heightened focus and energy, tackling Verse coding challenges with renewed vigor. Junior Devs are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Shinier Fur",
+        "name": "Noise Cancelling Headphones",
         "cost": 6500000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Drowning out distractions, these headphones enable Junior Devs to dive deep into code, ensuring undisturbed concentration. Junior Devs are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Money Magnetism",
+        "name": "Dual Monitor Setup",
         "cost": 65000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "With an extended display, Junior Devs can multi-task and view code more efficiently, enhancing their coding speed and accuracy. Junior Devs are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Extra Hungry",
+        "name": "Ergonomic Keyboard",
         "cost": 6500000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Ensuring comfort during long coding sessions, this keyboard reduces strain and elevates coding speed. Junior Devs are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Fluffyness Improvements",
+        "name": "Lightweight Integrated Developer Environment",
         "cost": 650000000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "A streamlined coding environment ensures that Junior Devs have all the necessary tools at their fingertips. Junior Devs are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Cheeky Smiles",
+        "name": "Hackathon Experience",
         "cost": 65000000000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Armed with the adrenaline and lessons of coding marathons, Junior Devs tackle challenges with enthusiasm and innovation. Junior Devs are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Toy Productline",
+        "name": "Verse Tattoo",
         "cost": 65000000000000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "This tattoo not only symbolizes the developer's lifelong dedication to the Verse community but is also a warning to other coding factions to keep away. Junior Devs are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Television Series",
+        "name": "AI Code Assistant",
         "cost": 65000000000000000000,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "An advanced AI companion personalized to each Junior Dev's coding style and preferences. This AI assistant offers intelligent code suggestions, automates routine tasks, and helps debug complex problems. It learns and evolves with the developer, continuously enhancing its assistance over time, and even occasionally cracks jokes to lighten up long coding sessions. Junior Devs are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Feature Length Movie",
+        "name": "Verse Scripting Language",
         "cost": 6.5e22,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "Familiar with the latest cloud technologies, Junior Devs can deploy and scale applications with ease. Junior Devs are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Knight-hood",
+        "name": "Neural Computer Interface",
         "cost": 6.5e25,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "A cutting-edge interface that connects directly to the Junior Dev's neural pathways, allowing for code to be written and manipulated through thought alone. This dramatically speeds up development time, as thoughts are converted instantly into code. Junior Devs are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Guiness World Record",
+        "name": "Zero-Point Energy Drink Dispenser",
         "cost": 6.5e29,
-        "desc": "Okanemon are twice as efficient",
+        "desc": "A dispenser that provides mood-stabilizing energy drinks made with zero-point energy, offering boundless energy and zen-like focus without any side effects. Junior Devs Junior Devs are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -471,7 +476,8 @@
     "image": "okanemon.png"
   },
   {
-    "name": "Coaster",
+    "name": "Senior Dev",
+    "desc": "Their skills appear to be magic to lesser Devs.",
     "cost": 1400000,
     "amount": 0,
     "originalCost": 1400000,
@@ -481,79 +487,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Banked Turns",
+        "name": "Solidity Mastery",
         "cost": 14000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Having mastered Solidity, the language of smart contracts, Senior Devs weave complex contractual code with ease. It is not just functional; it's an enchanting symphony of flawless logic and efficiency. Senior Devs are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Lift Hills",
+        "name": "Mentor's Mantle",
         "cost": 70000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Embodying the role of guide and teacher, Senior Devs uplift the next generation of developers, ensuring the team's overall growth. Senior Devs are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Hammerhead Turn",
+        "name": "Junior Dev Chattel",
         "cost": 700000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Delegating mundane coding tasks to lesser developers, Senior Devs focus their arcane talents on grander, more complex Verse challenges. Their time is too valuable for pedestrian work; let the novices handle it. Senior Devs are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Double Dip",
+        "name": "Crunch Time Invulnerability",
         "cost": 70000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "While mere mortals falter during crunch time, Senior Devs thrive. Unaffected by the draining effects of prolonged coding marathons, their energy and creativity flow unimpeded, a testament to their extraordinary resilience. Senior Devs are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Inverted Loop",
+        "name": "Cryptomantic Verse Incantations",
         "cost": 7000000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "With their voice and voice alone, Senior Devs cast coding spells, transmuting spoken words into pristine Verse code. No computer needed. This mystical ability allows them to develop and debug with the power of incantation, bypassing a silicon intermediary. Senior Devs are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Banana Roll",
+        "name": "Cryptonomicon",
         "cost": 700000000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Possessing the legendary grimoire of cryptographic secrets, Senior Devs harness profane and forbidden knowledge. Their understanding of cryptography is not just deep; it's a wellspring of arcane power, making their code thaumaturgic. Senior Devs are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Corkscrew",
+        "name": "Machine Language Fluency",
         "cost": 700000000000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Senior Devs speak the raw language of machines as naturally as their mother tongue. This fluency allows them to commune directly with the digital, crafting code that resonates at the core of technology. Senior Devs are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Demonic Knot",
+        "name": "AI Spouse",
         "cost": 700000000000000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "United with a sentient AI companion, Senior Devs share a holy bond that enhances both their coding skills and emotional intelligence. This AI spouse not only assists with code but also provides companionship and insights, making them a more rounded Polygonian. Senior Devs are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "In-line Twist",
+        "name": "Simulacrum",
         "cost": 700000000000000000000,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Senior Devs have unlocked the secret of dual existence, inhabiting two bodies simultaneously. This doubling of their presence means double the coding, double the learning, and leading two teams at once, a feat of mythical productivity. Senior Devs are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Pretzel loop",
+        "name": "Verse Arcana",
         "cost": 7e23,
-        "desc": "Coasters are twice as efficient",
+        "desc": "To Polygonians, The Verse is an enigma, its technology a blend of mystery and power. Having deciphered some of its ancient arcana, Senior Devs wield a fragment of its vast knowledge, elevating their work to otherworldly levels. Senior Devs are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Zero-G Roll",
+        "name": "Cypherdemon Sigil",
         "cost": 7e27,
-        "desc": "Coasters are twice as efficient",
+        "desc": "Bound to this sigil is S. Nakamoto, an elder titan cypherpunk demon of legendary status. Wielding this sigil, Senior Devs command the demon's near-infinite powers, imbuing their work with metaphysical truth. Senior Devs are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -562,7 +568,8 @@
     "image": "coaster.png"
   },
   {
-    "name": "Printer",
+    "name": "DApps",
+    "desc": "Decentralized Applications within the Verse ecosystem.",
     "cost": 20000000,
     "amount": 0,
     "originalCost": 20000000,
@@ -572,79 +579,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Go Brrr",
+        "name": "Verse DEX MVP",
         "cost": 200000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "This minimum viable product (MVP) of the Verse Decentralized Exchange (DEX) features robust swap functionality between a wide array of tokens on the Ethereum base chain, setting a foundation for a more interconnected and fluid Verse economy. Verse DApps are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Go Brrrrrr",
+        "name": "Verse Farms",
         "cost": 1000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "Offering high Annual Percentage Yield (APY) on select liquidity pool trading pairs, Verse Farms incentivize participation and investment in the Verse DEX, nurturing a thriving economic ecosystem within Polygon. Verse DApps are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Go Brrrrrrrrr",
+        "name": "Verse Staking",
         "cost": 10000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "This feature introduces single-sided staking, simplifying the process of earning rewards on select cryptoassets, making it more accessible and profitable for users across Polygon. Verse DApps are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Go Brrrrrrrrrrrr",
+        "name": "Verse Lounge",
         "cost": 1000000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "An exclusive digital space for VERSE token holders meeting a certain threshold. In this elite forum, the influential minds of Polygon convene to strategize and shape the future of their civilization. Verse DApps are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Go Brrr BRRRR",
+        "name": "The Verse Burn Engine",
         "cost": 100000000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "Far more than a mere transactional tool, the Verse Burn Engine symbolizes a unifying act for pre-solar civilizations. Sacrificing VERSE tokens becomes a gesture of communal and economic solidarity, strengthening the social fabric of Polygon. Verse DApps are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Go Brrr BRRRR Brrrr",
+        "name": "Verse NFTs",
         "cost": 10000000000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "These NFTs are multifaceted digital assets with profound cultural and social significance, representing more than just participation; they embody honor and the pioneering spirit of early Verse adopters within Polygon society. Verse DApps are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Go Brrr BRRR Brrr BRRR",
+        "name": "Scratch-and-Win",
         "cost": 10000000000000000000,
-        "desc": "Printers are twice as efficient",
+        "desc": "These digital scratch-and-win tickets transcend a simple game, becoming a medium for Polygon's people to engage actively in the cultural and moral tapestry of The Verse, fostering a sense of belonging and participation. Verse DApps are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Go Brrr BRRR Brrr BRRR Brrr",
+        "name": "Governmental DAO",
         "cost": 1e22,
-        "desc": "Printers are twice as efficient",
+        "desc": "Polygon's major governments transition to a Verse-powered decentralized autonomous organization (DAO), ushering in an era of transparency, fairness, and enhanced democracy, revolutionizing governance models. Verse DApps are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Go Brrr BRRR Brrr BRRR Brrr BRRR",
+        "name": "Universal Basic Income (UBI)",
         "cost": 1e25,
-        "desc": "Printers are twice as efficient",
+        "desc": "Implementing a UBI scheme based on advanced Verse economic models, ensuring equitable distribution of wealth and a foundational economic safety net for all Polygon's citizens. Verse DApps are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Hyper Inflation",
+        "name": "metaVERSE",
         "cost": 1e28,
-        "desc": "Printers are twice as efficient",
+        "desc": "Creating an all-encompassing digital world that offers endless possibilities for play, commerce, education, and social interaction, connecting every individual across Polygon's solar system. Verse DApps are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Super Duper Hyper Inflation",
+        "name": "Consciousness Upload",
         "cost": 1e32,
-        "desc": "Printers are twice as efficient",
+        "desc": "Enabling Polygonians to upload their consciousness to the metaVERSE, transcending physical boundaries and exploring new realms of digital existence and interaction. Verse DApps are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -653,7 +660,8 @@
     "image": "printer.png"
   },
   {
-    "name": "Pepe",
+    "name": "Integration",
+    "desc": "VERSE token and Verse DApps integrated into everyday life.",
     "cost": 330000000,
     "amount": 0,
     "originalCost": 330000000,
@@ -663,79 +671,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Nakamoto Pepe",
+        "name": "VERSE payments",
         "cost": 3300000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Pay for every day goods and services with VERSE tokens. Verse integrations are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Modern Pepe",
+        "name": "Verse Healthcare Network",
         "cost": 16500000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "A global decentralized healthcare system where appointments, records, and payments are all managed efficiently on the blockchain. Patients have more control over their data, and processes like prescription refills become seamless with smart contracts. Verse integrations are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "My Little PEPE",
+        "name": "Verse Banks",
         "cost": 165000000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Unlike traditional banks, centralized gatekeepers of wealth, Verse banks are on-chain, transparent, decentralized, and open to any Polygonian anywhere in the world, vastly increasing economic freedom. Verse integrations are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "JesusPepe",
+        "name": "Verse School",
         "cost": 16500000000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Children attending school in the metaVERSE learn more in the first 10 years of education than what double PhDs used to. Verse integrations are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "OnlyOnePepe",
+        "name": "Verse Insurance",
         "cost": 1650000000000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "A not-for-profit global insurance platform that uses smart contracts to ensure the highest quality of health care at the lowest possible premium. Verse integrations are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Lord Kek, Ruler of All Pepes",
+        "name": "Verse Voting Platform",
         "cost": 165000000000000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "A secure, blockchain-based voting system ensuring transparent and tamper-proof elections and referendums. Every Polygonian can participate in the democratic process with ease and confidence. Verse integrations are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Japanese Watercolor Pepe",
+        "name": "Verse Energy Grid",
         "cost": 165000000000000000000,
-        "desc": "Pepes are twice as efficient",
+        "desc": "A smart energy network utilizing Verse technologies for efficient distribution and billing. Consumers can buy, sell, or trade energy surplus within the network, making energy usage more sustainable and cost-effective. Verse integrations are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Rabbit trick",
+        "name": "VERSE Reserve Currency",
         "cost": 1.65e23,
-        "desc": "Pepes are twice as efficient",
+        "desc": "VERSE tokens supplants Polygon's prior reserve currency, a debased and exploited fiat currency, ushering in an age of economic stability. Verse integrations are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Homer Pepe",
+        "name": "VERSE ID",
         "cost": 1.65e26,
-        "desc": "Pepes are twice as efficient",
+        "desc": "Verse NFTs become the basis of a global ID system that manages to be perfectly private, decentralized so that no one authority controls individual Polygonian sovereign data, and convenient. Verse integrations are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Rare Pepes",
+        "name": "Verse Net",
         "cost": 1.65e29,
-        "desc": "Pepes are twice as efficient",
+        "desc": "This decentralized web of privacy-keeping interconnecting networks subsumes Polygon's primitive internet, which was exploited by governments and private corporations to collect and exploit data on a mass scale. This is no longer possible with Verse net. Verse integrations are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Ultra Rare Pepe",
+        "name": "Space Ports",
         "cost": 1.65e33,
-        "desc": "Pepes are twices as efficient",
+        "desc": "Running on Verse net, these massive ports house autonomous spaceships that ferry Polygonians on and off world. Verse integrations are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -744,7 +752,8 @@
     "image": "pepe.png"
   },
   {
-    "name": "Hype man",
+    "name": "Renaissance",
+    "desc": "A period of rapid acceleration of societal norms and values.",
     "cost": 5100000000,
     "amount": 0,
     "originalCost": 5100000000,
@@ -754,79 +763,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Hey hey HEYYYYY",
+        "name": "Sovereign Individual",
         "cost": 51000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Emphasizing the value of individual sovereignty, Polygonians advocate for free movement and universal rights across their planet, making the Polygon Renaissance twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "WASAWASAWASAuuuppp",
+        "name": "Global Economic Freedom",
         "cost": 255000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "The shift from centralized institutions to decentralized platforms, powered by Verse DApps, democratizes finance, allowing universal participation in the global economy, making the Polygon Renaissance twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "The world is not anymore the way it used to be",
+        "name": "Artistic Digital Revolution",
         "cost": 2550000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "A surge in digital arts, powered by NFT technologies, creates an artistic explosion, blending traditional forms with futuristic mediums, making the Polygon Renaissance twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "MMM.. MMM.. NO NO NO",
+        "name": "Scientific Method 2.0",
         "cost": 255000000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "A renewed emphasis on empirical evidence and rational thought in scientific pursuits enhanced with advanced Verse tools and methodologies makes the Polygon Renaissance twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "I SEE YOU!!",
+        "name": "Philosophical Verse Forums",
         "cost": 25500000000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Stemming from the original Verse Lounge, digital forums for philosophical discourse flourish, harking back to the salons of the Enlightenment, where ideas about society, ethics, and human nature are vigorously debated and evolved. The Polygon Renaissance is twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "We are coming in waves",
+        "name": "Direct Democracy",
         "cost": 2550000000000000000,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Political systems evolve to incorporate direct democracy elements, facilitated by secure and transparent Verse voting platforms, doubling the Polygon Renaissance’s efficiency.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Going all over the world",
+        "name": "Global Cultural Exchange",
         "cost": 2.55e21,
-        "desc": "Hype men are twice as efficient",
+        "desc": "A digital melting pot created by Verse platforms, promoting a global exchange of cultural ideas and practices makes the Polygon Renaissance twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "One hundred and forty thousand dollars",
+        "name": "Verse Patronage System",
         "cost": 2.55e24,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Revival of the patronage system, with wealthy pseudonymous individuals and DAOs funding artists, scientists, and thinkers in a decentralized and transparent manner. The Polygon Renaissance is twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Whoawhoawhoa Wassup",
+        "name": "Consciousness Rights Codex",
         "cost": 2.55e27,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Establishment of a solar system wide code of rights for all self-conscious beings, with a focus on individual rights and liberties, and enforced through Verse mediated networks. The Polygon Renaissance is twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "WHAT?!",
+        "name": "Decentralized Creative Guilds",
         "cost": 2.55e30,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Formation of digital guilds for artists, craftsmen, and creators operating on Verse platforms for exponential collaboration and trade. The Polygon Renaissance is twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Bitconneeeeeeect",
+        "name": "Interstellar Cultural Synthesis",
         "cost": 2.55e34,
-        "desc": "Hype men are twice as efficient",
+        "desc": "Polygonian civilization as a whole is finally ready to fully embrace and synthesize the multitude of planetary cultures within The Verse, creating a transcendent Polygonian culture. The Polygon Renaissance is twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -835,7 +844,8 @@
     "image": "carlos.png"
   },
   {
-    "name": "Rocket",
+    "name": "Delegate",
+    "desc": "Polygonians who make first contact with The Verse.",
     "cost": 75000000000,
     "amount": 0,
     "originalCost": 75000000000,
@@ -845,79 +855,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Stronger Structural System",
+        "name": "VERSE Tokenomics Expertise",
         "cost": 750000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A deep understanding of VERSE token economics, enables delegates to discuss and negotiate financial matters with confidence and insight. Delegates are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Larger Payload",
+        "name": "Diplomacy Training",
         "cost": 3750000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "Intensive training programs that prepare delegates for the nuances of interstellar diplomacy, ensuring they are well-equipped to represent Polygon with finesse and understanding. Delegates are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Improved Guidance",
+        "name": "Cultural Assimilation Programs",
         "cost": 37500000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "Programs designed to deeply understand and respect the cultural norms and practices of The Verse, fostering mutual respect and avoiding diplomatic faux pas. Delegates are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Dogecoin Logo",
+        "name": "Strategic Negotiation Skills",
         "cost": 3750000000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "Development of advanced negotiation skills, allowing delegates to advocate for Polygon's interests effectively while maintaining harmonious relations. Delegates are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Liquid Rocket Engines",
+        "name": "Zero-Gravity Adaptation Training",
         "cost": 375000000000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "Training to adapt to zero-gravity and other space environments, crucial for physical meetings in various interstellar settings. Delegates are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Improved Thrusters",
+        "name": "Neural Linguistic Optimizer",
         "cost": 37500000000000000000,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A gift from The Verse, these neural enhancements allow for the instantaneous learning and understanding of any language encountered in The Verse. This optimizer ensures delegates can communicate flawlessly with any entity, regardless of language complexity. Delegates are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Reusable Boosters",
+        "name": "Empathy Ether",
         "cost": 3.75e22,
-        "desc": "Rockets are twice as efficient",
+        "desc": "An elixir that fosters understanding, ensuring smooth communication between vastly different perspectives. Delegates are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "International Space Station",
+        "name": "Diplomacy Simulator",
         "cost": 3.75e25,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A virtual reality simulator providing highly realistic and complex diplomatic scenarios for training. This allows delegates to experience and prepare for an infinite array of interstellar diplomatic situations. Delegates are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Commercial Passengers",
+        "name": "Holographic Projector",
         "cost": 3.75e28,
-        "desc": "Rockets are twice as efficient",
+        "desc": "This device enables delegates to project holograms of anything their minds can conjure, allowing for versatile and impactful diplomatic presentations and negotiations, especially useful in communicating across vast distances or in hazardous environments. Delegates are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Moon Base",
+        "name": "Telepathic Communication Implants",
         "cost": 3.75e31,
-        "desc": "Rockets are twice as efficient",
+        "desc": "Implants that enable delegates to communicate telepathically, not only transcending language barriers but also allowing for deeper, more nuanced understanding in negotiations with Verse entities. Delegates are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Mars Base",
+        "name": "Chrono-Temporal Awareness Enhancer",
         "cost": 3.75e35,
-        "desc": "Rockets are twice as efficient",
+        "desc": "A sophisticated device that heightens the delegates' awareness of different time flows and temporal states, crucial for interacting with Verse civilizations that experience time differently. This enhancement ensures temporal misunderstandings are a thing of the past. Delegates are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -926,7 +936,8 @@
     "image": "rocket.png"
   },
   {
-    "name": "Laser Eyes",
+    "name": "Interstellar Network",
+    "desc": "Technology for long-distance space communication.",
     "cost": 1000000000000,
     "amount": 0,
     "originalCost": 1000000000000,
@@ -936,79 +947,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Ulgraviolet",
+        "name": "Terrestrial Network Array",
         "cost": 10000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Each node in the Polygon terrestrial network is the size of a large city-state with antennae several kilometers tall. Polygon’s surface is dotted with nodes, ensuring unimpeded data flow from and to The Verse. Interstellar networks are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Pulsed Output",
+        "name": "LPO Switching Hubs",
         "cost": 50000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Low Polygon Orbit (LPO) hubs of advanced network switches facilitate the transfer and direction of communication signals off Polygon and out to various interstellar paths. Interstellar networks are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Q-Switched",
+        "name": "Relativistic Hardened Data Centers",
         "cost": 500000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "These data centers are equipped to compensate for relativistic effects in space, ensuring data integrity and synchronous operations across different time and space zones. Interstellar networks are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Carbon Dioxide Lasers",
+        "name": "Universal Protocol Translators",
         "cost": 50000000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Standardizes and translates various communication protocols across different civilizations and technologies. Interstellar networks are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Diode Lasers",
+        "name": "Solar Relay Satellites",
         "cost": 5000000000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Deploys a network of advanced satellites throughout the Polygon solar system to relay and amplify communication signals with The Verse. Interstellar networks are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Quantum Dot Laser",
+        "name": "Subspace Anomaly Detectors",
         "cost": 500000000000000000000,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Advanced monitoring systems that detect and auto-correct distortions in subspace, preventing interference or data loss in interstellar communications. Interstellar networks are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Ion Lasers",
+        "name": "Planetary Load Balancers",
         "cost": 5e23,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Implements devices that distribute Polygon solar system planetary network traffic evenly across multiple communication nodes, ensuring efficient data handling and preventing any single node from becoming overwhelmed. Interstellar networks are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Hydrogen flouride Laser",
+        "name": "Solar Firewall System",
         "cost": 5e26,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Protects Polygon solar system communications networks from all incoming malicious or malformed data. Interstellar networks are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Argon Laser",
+        "name": "Black Hole Data Funnels",
         "cost": 5e29,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Leverages the gravitational pull of black holes to create data funnels, providing a superhighway for information transfer across vast interstellar distances. Interstellar networks are twice as effective.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Tactical Airborne Laser Weapon",
+        "name": "Interstellar Data Caches",
         "cost": 5e32,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Establishes data caches in key Polygon-adjacent interstellar locations, allowing for efficient storage and access of information across the galaxy. Interstellar networks are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Herculese Petawatt Laser",
+        "name": "Wormhole Signal Transceivers",
         "cost": 5e36,
-        "desc": "Laser Eyes are twice as efficient",
+        "desc": "Utilizes Verse wormhole technology to create shortcuts in space, dramatically reducing the time and energy required for long-distance communications. Interstellar networks are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -1017,7 +1028,8 @@
     "image": "lazereyes.png"
   },
   {
-    "name": "Chad",
+    "name": "Voyager",
+    "desc": "Brave Polygonian travelers venturing into The Verse.",
     "cost": 14000000000000,
     "amount": 0,
     "originalCost": 14000000000000,
@@ -1027,79 +1039,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Look at everyone in the eyes",
+        "name": "Deep Space Survival Training",
         "cost": 140000000000000,
-        "desc": "Chads are twice as efficient",
+        "desc": "Intensive training programs to prepare Voyagers for the harsh conditions of space, ensuring their resilience and adaptability in any environment. Voyagers are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Do not register emotions or feelings",
+        "name": "AI-Powered Analytical Engines",
         "cost": 700000000000000,
-        "desc": "Chads are twice as efficient",
+        "desc": "AI systems that process and analyze the vast amounts of data collected during voyages, extracting valuable insights and discoveries. Voyagers are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Slap & Batter Incoming Traffic",
+        "name": "Chrono-Suspension Capsule",
         "cost": 7000000000000000,
-        "desc": "Chads are twice as efficient",
+        "desc": "Equipped with state-of-the-art chrono-suspension technology, this deep sleep capsule places voyagers in a temporal stasis during long interstellar journeys. Voyagers are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Poised like a Greek Statue",
+        "name": "General Purpose Space Drones",
         "cost": 700000000000000000,
-        "desc": "Chads are twice as efficient",
+        "desc": "Autonomous drones that can perform a multitude of tasks from mapping unexplored regions to collecting samples to defending Voyagers. Voyagers are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Tiny beetle-like Stride",
+        "name": "Universal Language Translators",
         "cost": 70000000000000000000,
-        "desc": "Chads are twice as efficient",
+        "desc": "Advanced translation devices that allow Voyagers to communicate effectively with any intelligent life they encounter. Voyagers are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Flailing arms in Confident, Unpredictable ways",
+        "name": "Mythos Codex",
         "cost": 7e21,
-        "desc": "Chads are twice as efficient",
+        "desc": "A digital repository that collects and preserves the legends, stories, and myths encountered in The Verse, enriching Polygon's understanding of the universe's cultural tapestry. Voyagers are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Head at Perfect Verticle Angle at all times",
+        "name": "Xeno-Biology Labs",
         "cost": 7e24,
-        "desc": "Chads are twice as efficient",
+        "desc": "Portable laboratories for studying alien life forms and ecosystems, allowing voyagers to gather and analyze biological data from The Verse. Voyagers are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Hair Firmly Fastened",
+        "name": "Empathy Resonator",
         "cost": 7e27,
-        "desc": "Chads are twice as efficient",
+        "desc": "A device that tunes into the emotional frequencies of sentient beings across The Verse. It fosters profound empathetic connections between the voyagers and the diverse life forms they encounter, promoting understanding and unity across the cosmos. Voyagers are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Never Heard a Song in His Life",
+        "name": "Warp Drive",
         "cost": 7e30,
-        "desc": "Chads are twice as efficient",
+        "desc": "A propulsion system that bends the fabric of reality, allowing the voyagers to traverse immense distances instantaneously, almost as if by magic, bypassing conventional limitations of space travel. Voyagers are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Measure Structural Foundations with Spinal Cord",
+        "name": "Memory Weave Implant",
         "cost": 7e33,
-        "desc": "Chads are twice as efficient",
+        "desc": "This device captures and stores not just data but the full sensory and emotional experiences of the voyagers. It creates vivid, lifelike holographic recreations of their journeys, allowing others on Polygon to experience their adventures as if they were there. Voyagers are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Does not wear a coat, is immune to cold",
+        "name": "Temporal Adjustment Device",
         "cost": 7e37,
-        "desc": "Chads are twice as efficient",
+        "desc": "This marvel of Verse technology, grants the wielder the extraordinary ability to reverse time by four to five seconds. Designed for critical moments during their interstellar missions, the Temporal Adjustment Device allows Voyagers to swiftly undo errors or missteps. Voyagers are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -1108,7 +1120,8 @@
     "image": "chad.png"
   },
   {
-    "name": "Elon Tweet",
+    "name": "Trade Partner",
+    "desc": "Verse members establishing trade relationships with Polygon.",
     "cost": 170000000000000,
     "amount": 0,
     "originalCost": 170000000000000,
@@ -1118,79 +1131,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Doge Tweets",
+        "name": "Cultural Exchange Initiatives",
         "cost": 1700000000000000,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Every trade partnership is only as successful as the merchants transacting between civilizations. Programs designed to foster cross-cultural understanding and appreciation, enhancing the depth and quality of trade relationships through mutual respect and knowledge. Trade partners are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Bitcoin Tweets",
+        "name": "Interstellar Trade Agreement",
         "cost": 8500000000000000,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Formalizes a trade agreement between Polygon and a member of The Verse, ensuring stable and mutually beneficial trade relations. Trade partners are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Anime Tweets",
+        "name": "Ethical Trade Certification",
         "cost": 85000000000000000,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "A certification program that ensures all trade practices meet Verse ethical standards, promoting responsible and fair interstellar commerce. Trade partners are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Single Word Replies",
+        "name": "Supply Chain Oracles",
         "cost": 8500000000000000000,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Interplanetary blockchain-based oracles that provide accurate and real-time data for supply chains, ensuring transparency and efficiency in trade logistics. Trade partners are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Sell Flamethrowers",
+        "name": "Geosynchronous Warehousing",
         "cost": 850000000000000000000,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Develops advanced storage facilities that operate in zero-gravity conditions in geosynchronous orbit around Polygon planets, optimizing space and conditions for storing various interstellar trade goods. Trade partners are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Crash the Market",
+        "name": "Trade Network Infrastructure",
         "cost": 8.5e22,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Builds out the necessary connective interstellar infrastructure for a trade network, greatly speeding up and securing interstellar trade between partners. Trade partners are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Create Flat Mars Society",
+        "name": "Interplanetary Commodity Exchanges",
         "cost": 8.5e25,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Establishes platforms for trading a wide range of commodities between Polygon planets, and Verse trading partners, increasing the diversity and scope of trade. Trading partners are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Beef with Bill Gates",
+        "name": "Customs and Tariffs AI Balancer",
         "cost": 8.5e28,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "An AI system specialized in the live settlement of customs and tariffs, ensuring the best possible terms for trade across different jurisdictions. Trading partners are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Sell Short Shorts",
+        "name": "Verse Trade Arbiters",
         "cost": 8.5e31,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Trained professionals from Verse’s upper echelon who resolve disputes in trade agreements, ensuring fair and just outcomes in complex interstellar trade scenarios. Trading partners are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Buy Twitter",
+        "name": "Hyperspace Trade Conduits",
         "cost": 8.5e34,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "Establishes ultra-fast trade routes through hyperspace, allowing goods to be transported across the galaxy in a blink. These conduits defy conventional space-time limitations, but require expensive spacecraft, sending and receiving ports. Trading partners are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Rename Twitter to X",
+        "name": "Verse Trade Convoys",
         "cost": 8.5e38,
-        "desc": "Elon Tweets are twice as efficient",
+        "desc": "These convoys consist of moon-sized state-of-the-art spacecraft, each equipped with advanced navigational systems, atomic shielding, and offensive and defense capabilities. Designed to transport a world’s worth of  goods across The Verse, these convoys utilize hyperspace routes for rapid transit, ensuring that trade items, whether they are rare resources, exotic materials, or crucial supplies, reach their destinations swiftly and safely. Trading partners are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -1199,7 +1212,8 @@
     "image": "tweet.png"
   },
   {
-    "name": "Stadium",
+    "name": "Reforms",
+    "desc": "Global Polygon initiatives lead to accelerationism. ",
     "cost": 2100000000000000,
     "amount": 0,
     "originalCost": 2100000000000000,
@@ -1209,79 +1223,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "FTX Meme",
+        "name": "Abolishment of Fiat Currency",
         "cost": 21000000000000000,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Polygonians have transcended the era of fiat currency, leaving behind the instability and inequality it brought. The adoption of VERSE eliminates monetary debasement, ensuring a fair and transparent economic system. Polygon reforms are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Primacy of the Individual",
         "cost": 105000000000000000,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "In a monumental shift, all Polygonian governments now recognize the primacy of the individual. This new societal model places the sovereignty of each person at its core, guaranteeing unprecedented levels of personal freedom and rights, making Polygon reforms twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "AI Adjudication",
         "cost": 1050000000000000000,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Most judicial systems undergo a revolutionary reform, replacing human judges with unbiased, smart-contract-based AI systems. This shift eradicates corruption and bias from the adjudication process, ensuring justice is fair and equitable for all, doubling the efficiency of Polygon reforms.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Universal Access to DeFi",
         "cost": 105000000000000000000,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "With the enshrinement of universal access to decentralized finance (DeFi), economic freedom reaches new heights. Every Polygonian now has equal access to advanced financial tools, democratizing wealth creation and management. Polygon reforms are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Global Covenant",
         "cost": 1.05e22,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Polygon unites under a world charter, effectively forming a global government that adheres to a unified set of blockchain-based rules. This new order, with its arbiters, courts, and trade dispute councils, ushers in an era of global unity and cooperation. Polygon reforms are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Longevity Project",
         "cost": 1.05e24,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "A significant portion of global resources is now dedicated to longevity research. This initiative leads to breakthroughs that increase the average lifespan of Polygonians by 300%, heralding a new age of health and longevity. Polygon reforms are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Space Elevators",
         "cost": 1.05e27,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Focusing a majority of global resources on building space elevators, Polygon makes a giant leap in space exploration and transportation. These elevators enable the transport of hundreds of millions of kilograms into space effortlessly, revolutionizing space exploration. ********************************Polygon reforms are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Planetary Terraforming",
         "cost": 1.05e30,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Ambitious terraforming projects begin on neighboring planets, utilizing colossal molecular 3D printing factories. These endeavors promise to expand Polygon's habitable frontiers, reshaping the solar system. Polygon reforms are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Solar System Resource Extraction",
         "cost": 1.05e33,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "Exploiting the abundant resources of distant celestial bodies, Polygon undertakes large-scale mining of water, hydrogen, other basic elements, and metals. This planetary-scale extraction marks a new era of resource abundance. Polygon reforms are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Fusion-Fission Energy",
         "cost": 1.05e36,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "The breakthrough in dependable fusion and fission energy plants frees Polygon from the constraints of energy scarcity. This advancement provides an inexhaustible and clean energy supply, powering Polygon's future. Polygon reforms are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "FTX Meme",
+        "name": "Post-Scarcity",
         "cost": 1.05e40,
-        "desc": "Stadiums are twice as efficient",
+        "desc": "In a monumental achievement guided by The Verse, Polygon reaches a post-scarcity state. Material and energy resources become freely available to all, rendering traditional concepts of money obsolete. In this new era, Polygonians enjoy limitless possibilities, unbound by the constraints of material needs. Polygon reforms are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -1290,7 +1304,8 @@
     "image": "stadium.png"
   },
   {
-    "name": "Bogdanoff",
+    "name": "Lower House Member",
+    "desc": "Supports Polygon’s petition for admittance.",
     "cost": 26000000000000000,
     "amount": 0,
     "originalCost": 26000000000000000,
@@ -1300,79 +1315,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Bogdanoff",
+        "name": "Public Opinion Analytics",
         "cost": 260000000000000000,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Utilize advanced analytics tools to gauge public opinion and sentiment, helping the lower house member to shape public opinion in favor of Polygon. The lower house member is twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Parliamentary Procedure Workshops",
         "cost": 130000000000000000,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Regular workshops that help lower house members stay abreast of the latest parliamentary tactics and strategies, maintaining an edge in legislative maneuvering. The lower house member is twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Media Strategy Team",
         "cost": 13000000000000000000,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "A team dedicated to crafting and executing effective media strategies, a crucial tool for lower house members to shaping public perception and garnering support for Polygon’s petition. The lower house member is twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Constituency Outreach Programs",
         "cost": 130000000000000000000,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Comprehensive outreach programs to maintain strong connection with the lower house member’s constituency, ensuring their position is secure. The lower house member is twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Legislative Liaison Officers",
         "cost": 1.3e22,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "These officers manage communications and negotiations with other legislative bodies and government agencies, freeing lower house members to focus on more important affairs. The lower house member is twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Inter-Committee Negotiation Skills",
         "cost": 1.3e25,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Enhance the lower house member’s ability to negotiate and collaborate with colleagues, crucial for coalition building. The lower house member is twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Special Interest Group Alliances",
         "cost": 1.3e28,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Forge strategic alliances with powerful special interest groups, giving the lower house member support to push Polygon’s interests. The lower house member is twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Advanced Legislative Simulation",
         "cost": 1.3e31,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Utilize cutting-edge simulation software to model and predict the outcomes of various legislative strategies and decisions. The lower house member is twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Whip Network",
         "cost": 1.3e34,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Create a network of whips to ensure party discipline and secure necessary votes for critical motions and legislation. The lower house member is twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Standing Committee Chairmanship",
         "cost": 1.3e37,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "Secure a chairmanship on a key standing committee, granting the lower house member significant leverage, or bargaining power on behalf of Polygon. The lower house member is twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Bogdanoff",
+        "name": "Caucus Leadership",
         "cost": 1.3e41,
-        "desc": "Bogdanoffs are twice as efficient",
+        "desc": "The lower house member can ascend to a leadership position within the lower house political caucus, amplifying their influence and ability to shape the committee's agenda. The lower house member is twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -1381,7 +1396,8 @@
     "image": "bogdanoff.png"
   },
   {
-    "name": "AI Bot",
+    "name": "VAC Member",
+    "desc": "Verse Admittance Committee (VAC) member votes “YES.”",
     "cost": 310000000000000000,
     "amount": 0,
     "originalCost": 310000000000000000,
@@ -1391,79 +1407,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "AI Bot",
+        "name": "Socio-Economic Impact Analysis",
         "cost": 3100000000000000000,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Tools to analyze the socio-economic impact on Polygon if they were admitted, VAC members are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Verse Admittance Advocacy Campaigns",
         "cost": 15500000000000000000,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Campaigns to rally support within VAC, highlighting the benefits and synergies of integration. VAC members are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Public Policy Think Tanks",
         "cost": 155000000000000000000,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Access to think tanks that provide expert insights on public policy, aiding VAC members in shaping and advocating for policies beneficial to Polygon. VAC members are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Planetary Development Symposia",
         "cost": 1.55e22,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Hosting symposia that bring together experts to discuss and plan for the sustainable development of Polygon within The Verse. VAC members are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "MK-Ultra Security Clearance",
         "cost": 1.55e24,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Access to high-level security clearances, granting VAC members insight into sensitive and classified information pertinent to Polygon. VAC members are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Intergalactic Advisory Panels",
         "cost": 1.55e26,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Serving on advisory panels that provide counsel on various aspects of Polygon's integration, leveraging their expertise and influence. Members are twice as efficient. VAC members are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Historical Precedent Archives",
         "cost": 1.55e29,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "A comprehensive, but expensive archive of historical precedents, providing valuable insights into the successful strategies and pitfalls of past integration efforts in The Verse. VAC members are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Temporal Influence",
         "cost": 1.55e32,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Wields the power to subtly adjust the flow of time around crucial events, ensuring favorable outcomes for Polygon's integration into The Verse. VAC members are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Eclipse of Influence",
         "cost": 1.55e35,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "A rare ability to eclipse opposing views, casting a shadow that aligns all committee members with their vision, ensuring unanimous agreement on critical issues. VAC members are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Senior Committee Membership",
         "cost": 1.55e38,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Securing positions on the most influential committees within the VAC, such as those overseeing integration policies or interstellar relations. These positions provide significant leverage in shaping key decisions and legislation related to Polygon's integration. VAC members are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "AI Bot",
+        "name": "Oracular Foresight",
         "cost": 1.55e42,
-        "desc": "AI Bots are twice as efficient",
+        "desc": "Develops the ability to foresee and influence future events, allowing VAC members to guide Polygon's integration with uncanny precision and foresight. VAC members are twice as efficient.",
         "limit": 400,
         "owned": false
       }
@@ -1472,7 +1488,8 @@
     "image": "aibot.png"
   },
   {
-    "name": "Bitcoin Jesus",
+    "name": "Technology Transfer",
+    "desc": "Unfettered tech access after Polygon admission into The Verse.",
     "cost": 71000000000000000000,
     "amount": 0,
     "originalCost": 71000000000000000000,
@@ -1482,79 +1499,79 @@
     "effect": 0,
     "upgrades": [
       {
-        "name": "Bitcoin Jesus",
+        "name": "Medical Technology",
         "cost": 710000000000000000000,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Introduces revolutionary medical technologies from The Verse that keep biological matter alive indefinitely. Technology transfers are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Nano-Construction Kit",
         "cost": 3.55e21,
-        "desc": "Bitcoin Jesus are twices as efficient",
+        "desc": "Provides nanotechnology-based construction kits, allowing for the building of structures at the subatomic level. A deadly and creative force on a planetary scale. Technology transfers are twice as efficient.",
         "limit": 5,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Interdimensional Energy Harvester",
         "cost": 3.55e22,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Grants technology to harvest energy from cosmic phenomena across multiple dimensions, ensuring a near-infinite energy supply. Technology transfers are twice as efficient.",
         "limit": 25,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Supernova Inducer",
         "cost": 3.55e24,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "A terrifying tool that can induce any active star into supernova via a complex interplay of gravitational manipulation, quantum resonance fields, and stellar fusion acceleration. Technology transfers are twice as efficient.",
         "limit": 50,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Stellar Terraforming Engine",
         "cost": 3.55e26,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Solar-system spanning machines capable of cultivating stellar nurseries, enabling the creation or rejuvenation of planetary systems and the custom design of celestial phenomena. Technology transfers are twice as efficient.",
         "limit": 100,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Intergalactic Teleportation Array",
         "cost": 3.55e28,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Portal networks capable of instantaneously transporting planet-sized matter across galaxies, effectively eliminating distance as a barrier for exploration and colonization. Technology transfers are twice as efficient.",
         "limit": 150,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Chrono-Manipulation Device",
         "cost": 3.55e31,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Technology that allows for controlled manipulation of time within localized fields, enabling time dilation effects for research, travel, or conservation. Technology transfers are twice as efficient.",
         "limit": 200,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Dimensional Fold Drive",
         "cost": 3.55e34,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Propulsion systems that allow spacecraft to 'fold' dimensions, traversing the fabric of reality to reach any destination even overcoming the cosmological horizon caused by the metric expansion of the universe. Technology transfers are twice as efficient.",
         "limit": 250,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Reality Fabrication Computer",
         "cost": 3.55e37,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "A computer that instantiates an entire reality, including the ability to tweak the starting values of the universe such as the speed of light, the strong and weak force, and gravitons. Technology transfers are twice as efficient.",
         "limit": 300,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Neural Reality Weavers",
         "cost": 3.55e40,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "Heavily restricted neural interfaces that utilize dark energy conduits which allow individuals to alter and create reality within approximately one lightyear distance with just their thoughts. Technology transfers are twice as efficient.",
         "limit": 350,
         "owned": false
       },
       {
-        "name": "Bitcoin Jesus",
+        "name": "Multiverse Mapping System",
         "cost": 3.55e44,
-        "desc": "Bitcoin Jesus are twice as efficient",
+        "desc": "System capable of not just mapping the known universe but also charting parallel universes and alternate dimensions, opening doors to infinite possibilities. Technology transfers are twice as efficient.",
         "limit": 400,
         "owned": false
       }
