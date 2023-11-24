@@ -15,7 +15,7 @@ export const LeaderboardWrapper = styled.div`
 export const LeaderboardContent = styled.div`
   @media (min-width: 768px) {
     margin-right: -1.5rem;
-    padding: 0;
+    padding: 4px 0 0 0;
     max-height: 22rem;
     overflow-y: auto;
 
