@@ -32,21 +32,22 @@ const boostList = (
     unlocked: verseHolder,
     show: true,
     label: "Hold",
-    desciption: "10x clicks",
+    description: "10x clicks",
   },
   {
     id: "farm",
     unlocked: isFarmsOrStaking,
     show: !isPolygon,
     label: "Farm",
-    desciption: "2x production",
+    description: "2x production",
   },
   {
     id: "burn",
     unlocked: true,
     show: !isPolygon,
     label: "Burn",
-    desciption: "Skip time",
+    description: "Skip time",
+  },
   },
 ];
 
@@ -109,7 +110,7 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
                     )}
                     {boost.label}
                   </Label>
-                  <Boost $unlocked={boost.unlocked}>{boost.desciption}</Boost>
+                  <Boost $unlocked={boost.unlocked}>{boost.description}</Boost>
                 </BoostButton>
               ),
           )}
