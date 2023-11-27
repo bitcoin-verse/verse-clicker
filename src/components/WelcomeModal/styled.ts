@@ -8,7 +8,10 @@ export const Moon = styled.img`
 `;
 
 export const DataWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: row;
+
   gap: 1rem;
 `;
 
@@ -45,6 +48,6 @@ export const Description = styled.div`
   color: ${colors.shade80};
 
   & > span {
-    color: ${colors.white}
+    color: ${colors.white};
   }
 `;

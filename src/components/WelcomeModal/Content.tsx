@@ -4,18 +4,19 @@ import ReturningUser from "./ReturningUser";
 import NewUser from "./NewUser";
 import { Moon, StyledButton } from "./styled";
 import verseMoon from "../../assets/verse-moon.png";
+import { useTrackedState } from "../../context/store";
 
 interface Props {
   close: () => void;
-  returningUser?: boolean;
 }
 
-const Content: FC<Props> = ({ returningUser, close }) => {
+const Content: FC<Props> = ({ close }) => {
+  const { player } = useTrackedState();
 
   return (
     <>
       <Moon src={verseMoon} />
-      {returningUser ? <ReturningUser /> : <NewUser />}
+      {!!player.cookies ? <ReturningUser /> : <NewUser />}
       <StyledButton onClick={close}>Play</StyledButton>
     </>
   );

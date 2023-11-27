@@ -3,6 +3,7 @@ import { useDispatch, useTrackedState } from "../../context/store";
 
 import Modal, { useModal } from "../Modal";
 import Content from "./Content";
+import { formatNumber } from "../../helpers/formatNumber";
 
 const WelcomeModal = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ const WelcomeModal = () => {
     showModal();
   }, [returnData]);
 
+  console.log(returnData);
+
   return (
     <>
       <Modal
@@ -22,7 +25,7 @@ const WelcomeModal = () => {
         title="Verse Clicker"
         overlayClose
       >
-        <Content returningUser={!!player.cookies} close={close} />
+        <Content close={close} />
       </Modal>
     </>
   );
