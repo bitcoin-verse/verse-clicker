@@ -105,7 +105,7 @@
       }
     ],
     "locked": false,
-    "image": "dev.png"
+    "image": "polygon/cursor.png"
   },
   {
     "name": "Basic Blockchain",
@@ -197,7 +197,7 @@
       }
     ],
     "locked": true,
-    "image": "wojak.png"
+    "image": "polygon/basic-blockchain.png"
   },
   {
     "name": "Advanced Blockchain",
@@ -289,7 +289,7 @@
       }
     ],
     "locked": true,
-    "image": "troll.png"
+    "image": "polygon/advanced-blockchain.png"
   },
   {
     "name": "VTS Participant",
@@ -381,7 +381,7 @@
       }
     ],
     "locked": true,
-    "image": "asic.png"
+    "image": "polygon/vts-participant.png"
   },
   {
     "name": "Junior Dev",
@@ -473,7 +473,7 @@
       }
     ],
     "locked": true,
-    "image": "okanemon.png"
+    "image": "polygon/junior-dev.png"
   },
   {
     "name": "Senior Dev",
@@ -565,7 +565,7 @@
       }
     ],
     "locked": true,
-    "image": "coaster.png"
+    "image": "polygon/senior-dev.png"
   },
   {
     "name": "DApps",
@@ -657,7 +657,7 @@
       }
     ],
     "locked": true,
-    "image": "printer.png"
+    "image": "polygon/dapps.png"
   },
   {
     "name": "Integration",
@@ -749,7 +749,7 @@
       }
     ],
     "locked": true,
-    "image": "pepe.png"
+    "image": "polygon/integration.png"
   },
   {
     "name": "Renaissance",
@@ -841,7 +841,7 @@
       }
     ],
     "locked": true,
-    "image": "carlos.png"
+    "image": "polygon/renaissance.png"
   },
   {
     "name": "Delegate",
@@ -933,7 +933,7 @@
       }
     ],
     "locked": true,
-    "image": "rocket.png"
+    "image": "polygon/delegate.png"
   },
   {
     "name": "Interstellar Network",
@@ -1025,7 +1025,7 @@
       }
     ],
     "locked": true,
-    "image": "lazereyes.png"
+    "image": "polygon/interstellar-network.png"
   },
   {
     "name": "Voyager",
@@ -1117,7 +1117,7 @@
       }
     ],
     "locked": true,
-    "image": "chad.png"
+    "image": "polygon/voyager.png"
   },
   {
     "name": "Trade Partner",
@@ -1209,7 +1209,7 @@
       }
     ],
     "locked": true,
-    "image": "tweet.png"
+    "image": "polygon/trade-partner.png"
   },
   {
     "name": "Reforms",
@@ -1301,7 +1301,7 @@
       }
     ],
     "locked": true,
-    "image": "stadium.png"
+    "image": "polygon/reforms.png"
   },
   {
     "name": "Lower House Member",
@@ -1393,7 +1393,7 @@
       }
     ],
     "locked": true,
-    "image": "bogdanoff.png"
+    "image": "polygon/lower-house-member.png"
   },
   {
     "name": "VAC Member",
@@ -1485,7 +1485,7 @@
       }
     ],
     "locked": true,
-    "image": "aibot.png"
+    "image": "polygon/vac-member.png"
   },
   {
     "name": "Technology Transfer",
@@ -1577,6 +1577,6 @@
       }
     ],
     "locked": true,
-    "image": "jesus.png"
+    "image": "polygon/technology-transfer.png"
   }
 ]
