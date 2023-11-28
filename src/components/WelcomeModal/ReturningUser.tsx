@@ -9,14 +9,10 @@ import Star from "../Icons/Star";
 import { H3 } from "../H3";
 
 import { DataWrapper, Stats, Value } from "./styled";
-import truncateEthAddress from "../../helpers/truncateEthAddress";
-import { getTxExplorerLink } from "../../helpers/getExplorerLink";
-import { useChainId } from "wagmi";
-import Info from "../Icons/Info";
+import BurnBonus from "./BurnBonus";
 
 const ReturningUser = () => {
   const { returnData } = useTrackedState();
-  const chainId = useChainId();
 
   return (
     <>
@@ -39,40 +35,9 @@ const ReturningUser = () => {
         </Stats>
       </DataWrapper>
 
-      <>
-        <Title>Burn Bonuses</Title>
-        <div style={{ width: "100%" }}>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div>Date</div>
-            <div>Points</div>
-            <div>Burned</div>
-            <div>Tx</div>
-          </div>
-          {returnData?.bonusBurnTxs.map((bb) => {
-            return (
-              <div
-                key={bb.txHash}
-                style={{ display: "flex", justifyContent: "space-between" }}
-              >
-                <div>
-                  {new Date(bb.date).toLocaleDateString("en-US", {
-                    dateStyle: "short",
-                  })}
-                </div>
-                <div>{formatNumber(bb.bonusAmount)}</div>
-                <div>{bb.burnAmount}</div>
-                <a
-                  href={getTxExplorerLink(chainId, bb.txHash)}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Info />
-                </a>
-              </div>
-            );
-          })}
-        </div>
-      </>
+      {returnData?.bonusBurnTxs && returnData.bonusBurnTxs.length > 0 && (
+        <BurnBonus />
+      )}
     </>
   );
 };

@@ -8,10 +8,7 @@ export const Moon = styled.img`
 `;
 
 export const DataWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-flow: row;
-
+  display: flex;
   gap: 1rem;
 `;
 
@@ -49,5 +46,51 @@ export const Description = styled.div`
 
   & > span {
     color: ${colors.white};
+  }
+`;
+
+export const BonusHeader = styled.div`
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #899bb5;
+  text-align: right;
+`;
+
+export const BonusRow = styled.div`
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr) 1rem;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 0.5rem;
+  box-sizing: border-box;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: left;
+
+  & > div {
+    text-align: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* & > :nth-child(1), */
+  & > :nth-child(1n) {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  & > a > svg {
+    color: ${colors.white};
+  }
+
+  & > div > img,
+  & > div > svg {
+    margin-left: 0.25rem;
+    height: 0.875rem;
+    width: 0.875rem;
   }
 `;
