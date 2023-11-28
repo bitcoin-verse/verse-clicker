@@ -6,11 +6,11 @@ import Content from "./Content";
 
 const WelcomeModal = () => {
   const dispatch = useDispatch();
-  const { returnData, player } = useTrackedState();
+  const { returnData } = useTrackedState();
   const { modalRef, showModal, close } = useModal();
 
   useEffect(() => {
-    if (!returnData /*  || returnData.seconds < 5 */) return;
+    if (!returnData || returnData.seconds < 5) return;
     showModal();
   }, [returnData]);
 
