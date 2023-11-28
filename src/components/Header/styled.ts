@@ -26,7 +26,7 @@ export const LogoWrapper = styled.a`
   flex: 0;
   align-items: center;
   grid-area: logo;
-  color: ${colors.white};
+  color: ${colors.shade80};
   text-decoration: none;
 `;
 
