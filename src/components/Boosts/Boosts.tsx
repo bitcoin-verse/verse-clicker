@@ -21,6 +21,7 @@ import {
 import Check from "../Icons/Check";
 import Clock from "../Icons/Clock";
 import { useNetwork } from "wagmi";
+import Scratcher from "./Modals/Scratcher";
 import { Player } from "../../context/reducers/player";
 
 const boostList = (player: Player, isPolygon: boolean) => [
@@ -49,8 +50,8 @@ const boostList = (player: Player, isPolygon: boolean) => [
     id: "scratcher",
     unlocked: !!player.bonus,
     show: isPolygon,
-    label: "Scratcher",
-    description: "",
+    label: "Scratch & Win",
+    description: "Up to 1,000,000x boost",
   },
 ];
 
@@ -70,6 +71,11 @@ const getModalContent = (content?: string) => {
       return {
         title: "Farms/Staking",
         component: <Farm />,
+      };
+    case "scratcher":
+      return {
+        title: "Scratch & Win",
+        component: <Scratcher />,
       };
     default:
       return null;
