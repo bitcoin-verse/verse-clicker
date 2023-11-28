@@ -21,22 +21,19 @@ import {
 import Check from "../Icons/Check";
 import Clock from "../Icons/Clock";
 import { useNetwork } from "wagmi";
+import { Player } from "../../context/reducers/player";
 
-const boostList = (
-  verseHolder: boolean,
-  isFarmsOrStaking: boolean,
-  isPolygon: boolean,
-) => [
+const boostList = (player: Player, isPolygon: boolean) => [
   {
     id: "hold",
-    unlocked: verseHolder,
+    unlocked: player.verseHolder,
     show: true,
     label: "Hold",
     description: "10x clicks",
   },
   {
     id: "farm",
-    unlocked: isFarmsOrStaking,
+    unlocked: player.isFarming || player.isStaking,
     show: !isPolygon,
     label: "Farm",
     description: "2x production",
@@ -48,6 +45,12 @@ const boostList = (
     label: "Burn",
     description: "Skip time",
   },
+  {
+    id: "scratcher",
+    unlocked: !!player.bonus,
+    show: isPolygon,
+    label: "Scratcher",
+    description: "",
   },
 ];
 
@@ -84,7 +87,6 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
   const { chain } = useNetwork();
 
   const modalContent = getModalContent(content);
-  const isFarmsOrStaking = player.isFarming || player.isStaking;
   const isPolygon = chain?.id === 137;
 
   return (
@@ -92,7 +94,7 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
       <Content>
         <H4>Boost your points</H4>
         <BoostTiles>
-          {boostList(player.verseHolder, isFarmsOrStaking, isPolygon).map(
+          {boostList(player, isPolygon).map(
             (boost) =>
               boost.show && (
                 <BoostButton
