@@ -6,7 +6,7 @@ type BonusBurnTx = {
   burnAmount: number;
   bonusAmount: number;
 };
-type ScrachClaimTx = {
+type ScratchClaimTx = {
   date: number;
   txHash: string;
   prizeAmount: number;
@@ -17,7 +17,7 @@ export type ReturnData = {
   seconds: number;
   cookies: number;
   bonusBurnTxs: BonusBurnTx[];
-  scratchCLaimTxs: ScrachClaimTx[];
+  scratchClaimTxs: ScratchClaimTx[];
 };
 
 export type SetReturnDataAction = {
