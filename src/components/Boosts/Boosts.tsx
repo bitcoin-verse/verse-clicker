@@ -25,38 +25,44 @@ import Scratcher from "./Modals/Scratcher";
 import { Player } from "../../context/reducers/player";
 
 const boostList = (player: Player, chainId: number) => {
-  const isPolygon = chainId === 137;
-
-  return [
-    {
-      id: "hold",
-      unlocked: player.verseHolder,
-      show: true,
-      label: "Hold",
-      description: "10x clicks",
-    },
-    {
-      id: "farm",
-      unlocked: player.isFarming || player.isStaking,
-      show: !isPolygon,
-      label: "Farm",
-      description: "2x production",
-    },
-    {
-      id: "burn",
-      unlocked: true,
-      show: !isPolygon,
-      label: "Burn",
-      description: "Skip time",
-    },
-    {
-      id: "scratcher",
-      unlocked: true,
-      show: isPolygon,
-      label: "Scratch & Win",
-      description: "Up to 1,000,000x",
-    },
-  ];
+  switch (chainId) {
+    case 137:
+      return [
+        {
+          id: "hold",
+          unlocked: player.verseHolder,
+          label: "Hold",
+          description: "10x clicks",
+        },
+        {
+          id: "scratcher",
+          unlocked: true,
+          label: "Scratch & Win",
+          description: "Up to 1,000,000x",
+        },
+      ];
+    default:
+      return [
+        {
+          id: "hold",
+          unlocked: player.verseHolder,
+          label: "Hold",
+          description: "10x clicks",
+        },
+        {
+          id: "farm",
+          unlocked: player.isFarming || player.isStaking,
+          label: "Farm",
+          description: "2x production",
+        },
+        {
+          id: "burn",
+          unlocked: true,
+          label: "Burn",
+          description: "Skip time",
+        },
+      ];
+  }
 };
 
 const getModalContent = (content?: string) => {
@@ -105,33 +111,28 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
         <H4>Boost your points</H4>
         <BoostTiles>
           {chain &&
-            boostList(player, chain.id).map(
-              (boost) =>
-                boost.show && (
-                  <BoostButton
-                    key={boost.id}
-                    onClick={() => {
-                      setContent(boost.id);
-                      showModal();
-                    }}
-                  >
-                    <Label
-                      $unlocked={boost.unlocked}
-                      $cta={interactiveBoosts.includes(boost.id)}
-                    >
-                      {interactiveBoosts.includes(boost.id) ? (
-                        <Clock size={16} />
-                      ) : (
-                        <>{boost.unlocked ? <Check /> : <Lock />}</>
-                      )}
-                      {boost.label}
-                    </Label>
-                    <Boost $unlocked={boost.unlocked}>
-                      {boost.description}
-                    </Boost>
-                  </BoostButton>
-                ),
-            )}
+            boostList(player, chain.id).map((boost) => (
+              <BoostButton
+                key={boost.id}
+                onClick={() => {
+                  setContent(boost.id);
+                  showModal();
+                }}
+              >
+                <Label
+                  $unlocked={boost.unlocked}
+                  $cta={interactiveBoosts.includes(boost.id)}
+                >
+                  {interactiveBoosts.includes(boost.id) ? (
+                    <Clock size={16} />
+                  ) : (
+                    <>{boost.unlocked ? <Check /> : <Lock />}</>
+                  )}
+                  {boost.label}
+                </Label>
+                <Boost $unlocked={boost.unlocked}>{boost.description}</Boost>
+              </BoostButton>
+            ))}
         </BoostTiles>
       </Content>
       <Modal
