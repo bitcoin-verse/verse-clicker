@@ -121,8 +121,8 @@ export const Divider = styled.div`
 `;
 
 export const Icon = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
 `;
 
 export const StyledButton = styled(Button)`

@@ -7,6 +7,8 @@ import { formatNumber } from "../../../../helpers/formatNumber";
 import { BURN_LIST } from "./Burn";
 import { getTxExplorerLink } from "../../../../helpers/getExplorerLink";
 import { useChainId } from "wagmi";
+import { Link } from "../../../Link";
+import { useTrackedState } from "../../../../context/store";
 
 interface Props {
   isPendingWallet: boolean;
@@ -26,6 +28,8 @@ const LoadingStates: FC<Props> = ({
   newCookies,
 }) => {
   const chainId = useChainId();
+  const { isWallet, player } = useTrackedState();
+
   return (
     <>
       {isPendingWallet && (
@@ -64,10 +68,26 @@ const LoadingStates: FC<Props> = ({
         <>
           <H3>Bonus Awarded!</H3>
           <Label>
-            {BURN_LIST[selectedTab].value.toLocaleString()} VERSE burned
+            {formatNumber(BURN_LIST[selectedTab].value)} VERSE contributed to{" "}
+            <Link
+              href={`https://verse.bitcoin.com/burn/${
+                isWallet ? "?origin=wallet" : ""
+              }`}
+              target={isWallet ? "_self" : "_blank"}
+              rel="noreferrer"
+            >
+              Burn Engine
+            </Link>
           </Label>
           <Label>{BURN_LIST[selectedTab].title} skipped</Label>
-          <Label>{formatNumber(newCookies)} points added</Label>
+          <Label>{formatNumber(newCookies * player.cps)} points added</Label>
+          <LinkButton
+            href={getTxExplorerLink(chainId, hash)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View on Etherscan
+          </LinkButton>
         </>
       )}
     </>

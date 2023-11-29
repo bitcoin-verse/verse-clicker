@@ -9,6 +9,7 @@ import Star from "../Icons/Star";
 import { H3 } from "../H3";
 
 import { DataWrapper, Stats, Value } from "./styled";
+import BurnBonus from "./BurnBonus";
 
 const ReturningUser = () => {
   const { returnData } = useTrackedState();
@@ -24,6 +25,7 @@ const ReturningUser = () => {
             {returnData && <H3>{formatSeconds(returnData.seconds)}</H3>}
           </Value>
         </Stats>
+
         <Stats>
           <Title $secondary>You earned </Title>
           <Value>
@@ -32,6 +34,10 @@ const ReturningUser = () => {
           </Value>
         </Stats>
       </DataWrapper>
+
+      {returnData?.bonusBurnTxs && returnData.bonusBurnTxs.length > 0 && (
+        <BurnBonus />
+      )}
     </>
   );
 };

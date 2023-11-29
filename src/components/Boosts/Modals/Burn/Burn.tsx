@@ -33,12 +33,26 @@ import getBurnEngineDetails from "../../../../contracts/getBurnEngineDetails";
 import LoadingStates from "./LoadingStates";
 import { useTrackedState } from "../../../../context/store";
 import { logAmplitudeEvent } from "../../../../helpers/analytics";
+import Star from "../../../Icons/Star";
+import { formatNumber } from "../../../../helpers/formatNumber";
 
 export const BURN_LIST = [
   { title: "1 hour", value: 10000, hours: 1 },
   { title: "12 hours", value: 200000, hours: 12 },
   { title: "24 hours", value: 800000, hours: 24 },
 ];
+
+const calculateBurnBonus = (burnAmount: number) => {
+  if (burnAmount < 10_000) {
+    return 0;
+  } else if (10_000 <= burnAmount && burnAmount < 200_000) {
+    return 3600; // 1 hour
+  } else if (200_000 <= burnAmount && burnAmount < 800_000) {
+    return 43200; // 12 hours
+  } else {
+    return 86400; // 24 hours
+  }
+};
 
 const Burn: FC = () => {
   const { socket } = useSocketCtx();
@@ -47,7 +61,7 @@ const Burn: FC = () => {
   const { chain } = useNetwork();
   const { data: readData, error } = useVerseBalance();
   const [newCookies, setNewCookies] = useState<number>();
-
+  const { player } = useTrackedState();
   const verseTokenDetails = getVerseTokenDetails(chain?.id);
   const burnEngineDetails = getBurnEngineDetails(chain?.id);
 
@@ -101,6 +115,12 @@ const Burn: FC = () => {
   }, [isPendingWallet, isTxSent, isTxConfirmed]);
 
   useEffect(() => {
+    if (txData) {
+      socket.emit("burn");
+    }
+  }, [txData]);
+
+  useEffect(() => {
     const onBonus = (data: number) => {
       setNewCookies(data);
     };
@@ -135,7 +155,22 @@ const Burn: FC = () => {
         />
       ) : (
         <>
-          <H3>Burn VERSE to boost your point production</H3>
+          <H3>Contribute VERSE to get an instant boost</H3>
+          <Label>
+            View the{" "}
+            <Link
+              href={`https://verse.bitcoin.com/burn/${
+                isWallet ? "?origin=wallet" : ""
+              }`}
+              target={isWallet ? "_self" : "_blank"}
+              rel="noreferrer"
+              style={{ fontSize: "inherit" }}
+            >
+              Burn Engine
+            </Link>{" "}
+            for more information
+          </Label>
+
           <Container>
             <Label $color="secondary">Boost duration</Label>
             <Tabs
@@ -157,8 +192,18 @@ const Burn: FC = () => {
             <Price>
               <Icon src={verseIcon} />
               <Label $color={insufficientVerse ? "warning" : undefined}>
-                {selectedBurn?.value.toLocaleString()} VERSE
+                {selectedBurn.value.toLocaleString()} VERSE
               </Label>
+            </Price>
+            <Label $color="secondary">Points you will receive</Label>
+
+            <Price>
+              <Label $color={insufficientVerse ? "warning" : undefined}>
+                {formatNumber(
+                  player.cps * calculateBurnBonus(selectedBurn.value),
+                )}{" "}
+              </Label>
+              <Star size="0.75rem" />
             </Price>
             <Divider />
             <Label $color="secondary">
@@ -183,10 +228,9 @@ const Burn: FC = () => {
 
           <StyledButton
             onClick={() => handleBurn(selectedBurn?.value)}
-            // disabled={insufficientVerse}
-            disabled
+            disabled={insufficientVerse}
           >
-            Burn VERSE (coming soon)
+            Contribute VERSE
           </StyledButton>
           <Footnote>
             <Label $color="secondary">

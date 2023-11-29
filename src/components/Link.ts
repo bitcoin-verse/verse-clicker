@@ -4,8 +4,7 @@ import { colors } from "./colors";
 export const Link = styled.a`
   color: ${colors.primaryBlue100};
 
-  font-size: 1.25rem;
-  font-weight: 400;
+  font-size: inherit;
 
   text-decoration: none;
 `;
