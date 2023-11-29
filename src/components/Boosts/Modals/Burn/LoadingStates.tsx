@@ -28,7 +28,7 @@ const LoadingStates: FC<Props> = ({
   newCookies,
 }) => {
   const chainId = useChainId();
-  const { isWallet } = useTrackedState();
+  const { isWallet, player } = useTrackedState();
 
   return (
     <>
@@ -80,7 +80,7 @@ const LoadingStates: FC<Props> = ({
             </Link>
           </Label>
           <Label>{BURN_LIST[selectedTab].title} skipped</Label>
-          <Label>{formatNumber(newCookies)} points added</Label>
+          <Label>{formatNumber(newCookies * player.cps)} points added</Label>
           <LinkButton
             href={getTxExplorerLink(chainId, hash)}
             target="_blank"
