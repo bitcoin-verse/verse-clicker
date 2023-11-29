@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 
@@ -66,23 +66,40 @@ const AddressHolder = styled.div`
   }
 `;
 
-const getConnectorLogo = (id?: string) => {
-  switch (id) {
-    case "injected":
-      return mmLogo;
-    case "bcom":
-      return bcomLogo;
-    case "walletConnect":
-    default:
-      return wcLogo;
-  }
-};
-
 const ConnectButton: FC = () => {
   const { isWallet } = useTrackedState();
   const { open } = useWeb3Modal();
   const { address, isConnected, connector } = useAccount();
-  const { data } = useEnsName({ address });
+  const { data } = useEnsName({ address, chainId: 1 });
+
+  const [providerLogo, setProviderLogo] = useState("");
+
+  useEffect(() => {
+    const getLogo = async () => {
+      if (isWallet) {
+        setProviderLogo(bcomLogo);
+        return;
+      }
+      if (!connector) return;
+
+      const provider = await connector?.getProvider();
+
+      if (provider.isWalletConnect) {
+        const { session } = provider;
+
+        if (session?.peer?.metadata?.name?.includes("Bitcoin.com Wallet")) {
+          setProviderLogo(bcomLogo);
+          return;
+        }
+
+        setProviderLogo(session?.peer?.metadata?.icons?.[0] || wcLogo);
+      }
+
+      setProviderLogo(mmLogo);
+    };
+
+    getLogo();
+  }, [connector]);
 
   if (!isConnected)
     return (
@@ -106,9 +123,7 @@ const ConnectButton: FC = () => {
           open();
         }}
       >
-        <ButtonContent
-          $logo={getConnectorLogo(isWallet ? "bcom" : connector?.id)}
-        >
+        <ButtonContent $logo={providerLogo}>
           <AddressHolder>
             {data ? data : truncateEthAddress(address || "")}
           </AddressHolder>
