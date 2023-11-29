@@ -159,8 +159,10 @@ const Burn: FC = () => {
           <Label>
             View the{" "}
             <Link
-              href="https://verse.bitcoin.com"
-              target="_blank"
+              href={`https://verse.bitcoin.com/burn/${
+                isWallet ? "?origin=wallet" : ""
+              }`}
+              target={isWallet ? "_self" : "_blank"}
               rel="noreferrer"
               style={{ fontSize: "inherit" }}
             >
