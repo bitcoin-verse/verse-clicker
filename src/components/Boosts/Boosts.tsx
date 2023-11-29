@@ -20,27 +20,50 @@ import {
 } from "./styled";
 import Check from "../Icons/Check";
 import Clock from "../Icons/Clock";
+import { useNetwork } from "wagmi";
+import Scratcher from "./Modals/Scratcher";
+import { Player } from "../../context/reducers/player";
 
-const boostList = (verseHolder: boolean, isFarmsOrStaking: boolean) => [
-  {
-    id: "hold",
-    unlocked: verseHolder,
-    label: "Hold",
-    desciption: "10x clicks",
-  },
-  {
-    id: "farm",
-    unlocked: isFarmsOrStaking,
-    label: "Farm",
-    desciption: "2x production",
-  },
-  {
-    id: "burn",
-    unlocked: true,
-    label: "Burn",
-    desciption: "Skip time",
-  },
-];
+const boostList = (player: Player, chainId: number) => {
+  switch (chainId) {
+    case 137:
+      return [
+        {
+          id: "hold",
+          unlocked: player.verseHolder,
+          label: "Hold",
+          description: "10x clicks",
+        },
+        {
+          id: "scratcher",
+          unlocked: true,
+          label: "Scratch & Win",
+          description: "Up to 1,000,000x",
+        },
+      ];
+    default:
+      return [
+        {
+          id: "hold",
+          unlocked: player.verseHolder,
+          label: "Hold",
+          description: "10x clicks",
+        },
+        {
+          id: "farm",
+          unlocked: player.isFarming || player.isStaking,
+          label: "Farm",
+          description: "2x production",
+        },
+        {
+          id: "burn",
+          unlocked: true,
+          label: "Burn",
+          description: "Skip time",
+        },
+      ];
+  }
+};
 
 const getModalContent = (content?: string) => {
   switch (content) {
@@ -59,6 +82,11 @@ const getModalContent = (content?: string) => {
         title: "Farms/Staking",
         component: <Farm />,
       };
+    case "scratcher":
+      return {
+        title: "Scratch & Win",
+        component: <Scratcher />,
+      };
     default:
       return null;
   }
@@ -72,34 +100,39 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
   const [content, setContent] = useState<string>();
   const { modalRef, showModal } = useModal();
   const { player } = useTrackedState();
+  const { chain } = useNetwork();
 
   const modalContent = getModalContent(content);
-  const isFarmsOrStaking = player.isFarming || player.isStaking;
+  const interactiveBoosts = ["burn", "scratcher"];
 
   return (
     <Wrapper $mobileVersion={mobileVersion}>
       <Content>
         <H4>Boost your points</H4>
         <BoostTiles>
-          {boostList(player.verseHolder, isFarmsOrStaking).map((boost) => (
-            <BoostButton
-              key={boost.id}
-              onClick={() => {
-                setContent(boost.id);
-                showModal();
-              }}
-            >
-              <Label $unlocked={boost.unlocked} $cta={boost.id === "burn"}>
-                {boost.id === "burn" ? (
-                  <Clock size={16} />
-                ) : (
-                  <>{boost.unlocked ? <Check /> : <Lock />}</>
-                )}
-                {boost.label}
-              </Label>
-              <Boost $unlocked={boost.unlocked}>{boost.desciption}</Boost>
-            </BoostButton>
-          ))}
+          {chain &&
+            boostList(player, chain.id).map((boost) => (
+              <BoostButton
+                key={boost.id}
+                onClick={() => {
+                  setContent(boost.id);
+                  showModal();
+                }}
+              >
+                <Label
+                  $unlocked={boost.unlocked}
+                  $cta={interactiveBoosts.includes(boost.id)}
+                >
+                  {interactiveBoosts.includes(boost.id) ? (
+                    <Clock size={16} />
+                  ) : (
+                    <>{boost.unlocked ? <Check /> : <Lock />}</>
+                  )}
+                  {boost.label}
+                </Label>
+                <Boost $unlocked={boost.unlocked}>{boost.description}</Boost>
+              </BoostButton>
+            ))}
         </BoostTiles>
       </Content>
       <Modal

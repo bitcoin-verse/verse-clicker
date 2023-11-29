@@ -52,7 +52,7 @@ export const BoostButton = styled.button`
   cursor: pointer;
 
   @media (min-width: 768px) {
-    min-width: 8rem;
+    min-width: 9.5rem;
     width: 100%;
   }
 
@@ -141,5 +141,15 @@ export const Footnote = styled.div`
   & > span,
   a {
     font-size: 0.75rem;
+  }
+`;
+
+export const Description = styled.div`
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: ${colors.shade80};
+
+  & > span {
+    color: ${colors.white};
   }
 `;
