@@ -203,7 +203,7 @@ const Burn: FC = () => {
                   player.cps * calculateBurnBonus(selectedBurn.value),
                 )}{" "}
               </Label>
-              <Star size="1.25rem" />
+              <Star size="0.75rem" />
             </Price>
             <Divider />
             <Label $color="secondary">
