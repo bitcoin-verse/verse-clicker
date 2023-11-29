@@ -24,36 +24,40 @@ import { useNetwork } from "wagmi";
 import Scratcher from "./Modals/Scratcher";
 import { Player } from "../../context/reducers/player";
 
-const boostList = (player: Player, isPolygon: boolean) => [
-  {
-    id: "hold",
-    unlocked: player.verseHolder,
-    show: true,
-    label: "Hold",
-    description: "10x clicks",
-  },
-  {
-    id: "farm",
-    unlocked: player.isFarming || player.isStaking,
-    show: !isPolygon,
-    label: "Farm",
-    description: "2x production",
-  },
-  {
-    id: "burn",
-    unlocked: true,
-    show: !isPolygon,
-    label: "Burn",
-    description: "Skip time",
-  },
-  {
-    id: "scratcher",
-    unlocked: true,
-    show: isPolygon,
-    label: "Scratch & Win",
-    description: "Up to 1,000,000x",
-  },
-];
+const boostList = (player: Player, chainId: number) => {
+  const isPolygon = chainId === 137;
+
+  return [
+    {
+      id: "hold",
+      unlocked: player.verseHolder,
+      show: true,
+      label: "Hold",
+      description: "10x clicks",
+    },
+    {
+      id: "farm",
+      unlocked: player.isFarming || player.isStaking,
+      show: !isPolygon,
+      label: "Farm",
+      description: "2x production",
+    },
+    {
+      id: "burn",
+      unlocked: true,
+      show: !isPolygon,
+      label: "Burn",
+      description: "Skip time",
+    },
+    {
+      id: "scratcher",
+      unlocked: true,
+      show: isPolygon,
+      label: "Scratch & Win",
+      description: "Up to 1,000,000x",
+    },
+  ];
+};
 
 const getModalContent = (content?: string) => {
   switch (content) {
@@ -93,7 +97,6 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
   const { chain } = useNetwork();
 
   const modalContent = getModalContent(content);
-  const isPolygon = chain?.id === 137;
   const interactiveBoosts = ["burn", "scratcher"];
 
   return (
@@ -101,31 +104,34 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
       <Content>
         <H4>Boost your points</H4>
         <BoostTiles>
-          {boostList(player, isPolygon).map(
-            (boost) =>
-              boost.show && (
-                <BoostButton
-                  key={boost.id}
-                  onClick={() => {
-                    setContent(boost.id);
-                    showModal();
-                  }}
-                >
-                  <Label
-                    $unlocked={boost.unlocked}
-                    $cta={interactiveBoosts.includes(boost.id)}
+          {chain &&
+            boostList(player, chain.id).map(
+              (boost) =>
+                boost.show && (
+                  <BoostButton
+                    key={boost.id}
+                    onClick={() => {
+                      setContent(boost.id);
+                      showModal();
+                    }}
                   >
-                    {interactiveBoosts.includes(boost.id) ? (
-                      <Clock size={16} />
-                    ) : (
-                      <>{boost.unlocked ? <Check /> : <Lock />}</>
-                    )}
-                    {boost.label}
-                  </Label>
-                  <Boost $unlocked={boost.unlocked}>{boost.description}</Boost>
-                </BoostButton>
-              ),
-          )}
+                    <Label
+                      $unlocked={boost.unlocked}
+                      $cta={interactiveBoosts.includes(boost.id)}
+                    >
+                      {interactiveBoosts.includes(boost.id) ? (
+                        <Clock size={16} />
+                      ) : (
+                        <>{boost.unlocked ? <Check /> : <Lock />}</>
+                      )}
+                      {boost.label}
+                    </Label>
+                    <Boost $unlocked={boost.unlocked}>
+                      {boost.description}
+                    </Boost>
+                  </BoostButton>
+                ),
+            )}
         </BoostTiles>
       </Content>
       <Modal
