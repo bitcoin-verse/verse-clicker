@@ -90,7 +90,7 @@ const ConnectButton: FC = () => {
         <PrimaryButton
           $size="small"
           onClick={() => {
-            open();
+            open({ view: "Networks" });
           }}
         >
           Connect Wallet
