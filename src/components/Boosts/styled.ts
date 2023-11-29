@@ -52,7 +52,7 @@ export const BoostButton = styled.button`
   cursor: pointer;
 
   @media (min-width: 768px) {
-    min-width: 10rem;
+    min-width: 9.5rem;
     width: 100%;
   }
 

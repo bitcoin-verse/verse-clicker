@@ -48,10 +48,10 @@ const boostList = (player: Player, isPolygon: boolean) => [
   },
   {
     id: "scratcher",
-    unlocked: !!player.bonus,
+    unlocked: true,
     show: isPolygon,
     label: "Scratch & Win",
-    description: "Up to 1,000,000x boost",
+    description: "Up to 1,000,000x",
   },
 ];
 
