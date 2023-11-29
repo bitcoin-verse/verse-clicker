@@ -94,6 +94,7 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
 
   const modalContent = getModalContent(content);
   const isPolygon = chain?.id === 137;
+  const interactiveBoosts = ["burn", "scratcher"];
 
   return (
     <Wrapper $mobileVersion={mobileVersion}>
@@ -110,8 +111,11 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
                     showModal();
                   }}
                 >
-                  <Label $unlocked={boost.unlocked} $cta={boost.id === "burn"}>
-                    {boost.id === "burn" ? (
+                  <Label
+                    $unlocked={boost.unlocked}
+                    $cta={interactiveBoosts.includes(boost.id)}
+                  >
+                    {interactiveBoosts.includes(boost.id) ? (
                       <Clock size={16} />
                     ) : (
                       <>{boost.unlocked ? <Check /> : <Lock />}</>
