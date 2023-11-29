@@ -5,8 +5,14 @@ import { LinkButton } from "../../LinkButton";
 import { Description, ModalWrapper } from "../styled";
 import { H3 } from "../../H3";
 import { Text } from "../../Text";
+import { useTrackedState } from "../../../context/store";
 
 const Scratcher: FC = () => {
+  const { isWallet } = useTrackedState();
+  const scratcherLink = `"https://scratcher.verse.bitcoin.com/"${
+    isWallet ? "?origin=wallet" : ""
+  }`;
+
   return (
     <ModalWrapper>
       <H3>Boost your points production with Scratch & Win tickets</H3>
@@ -21,7 +27,10 @@ const Scratcher: FC = () => {
         Your Verse Clicker one-time bonus = your current points production rate
         X your Scratch & Win prize amount
       </Text>
-      <LinkButton href="https://scratcher.verse.bitcoin.com/" target="_blank">
+      <LinkButton
+        href={scratcherLink}
+        {...(isWallet ? {} : { target: "_blank", rel: "noreferrer" })}
+      >
         Scratch & Win
       </LinkButton>
     </ModalWrapper>
