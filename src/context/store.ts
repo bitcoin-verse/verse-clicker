@@ -51,7 +51,6 @@ export const initialState: State = {
     verseHolder: false,
     isFarming: false,
     isStaking: false,
-    bonus: 0,
   },
   network: "Ethereum",
   purchaseAmount: 1,
