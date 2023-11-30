@@ -5,7 +5,6 @@ import { goerli, mainnet, polygon } from "wagmi/chains";
 import { createWeb3Modal, EIP6963Connector } from "@web3modal/wagmi/react";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
-import { publicProvider } from "wagmi/providers/public";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
@@ -34,9 +33,8 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
         switch (chain.id) {
           case 5:
             return {
-              http: "https://wild-summer-crater.ethereum-goerli.quiknode.pro/",
-              webSocket:
-                "wss://wild-summer-crater.ethereum-goerli.quiknode.pro/",
+              http: "https://rpc.ankr.com/eth_goerli",
+              webSocket: `wss://ethereum-goerli.publicnode.com`,
             };
           case 137:
             return {
@@ -52,7 +50,6 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
         }
       },
     }),
-    publicProvider(),
   ],
 );
 
