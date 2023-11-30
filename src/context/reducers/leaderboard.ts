@@ -6,17 +6,21 @@ export type LeaderboardStats = {
   Spent: number;
 }[];
 
-export type LeaderboardEvent = {
-  timestamp: number;
-  players: {
-    address: string;
-    stats: {
-      Earned: number;
-      Clicked: number;
-      Spent: number;
-    };
-  }[];
-};
+type LeaderboardPlayers = {
+  address: string;
+  stats: {
+    Earned: number;
+    Clicked: number;
+    Spent: number;
+  };
+}[];
+
+export type LeaderboardEvent =
+  | {
+      timestamp: number;
+      players: LeaderboardPlayers;
+    }
+  | LeaderboardPlayers;
 
 export type SetLeaderboardUpdated = {
   type: "SET_LEADERBOARD_UPDATED";

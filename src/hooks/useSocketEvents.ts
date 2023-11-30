@@ -19,10 +19,26 @@ const useSocketEvents = () => {
     };
 
     const onLeaderboard = (payload: LeaderboardEvent) => {
-      const addresses = payload.players.map((i) => i.address);
-      const stats = payload.players.map((i) => i.stats);
+      let addresses;
+      let stats;
 
-      dispatch({ type: "SET_LEADERBOARD_UPDATED", payload: payload.timestamp });
+      // TODO: cleanup once backend is updated
+      if ("players" in payload) {
+        // handle new payload structure
+        addresses = payload.players.map((i) => i.address);
+        stats = payload.players.map((i) => i.stats);
+      } else {
+        addresses = payload.map((i) => i.address);
+        stats = payload.map((i) => i.stats);
+      }
+
+      if ("timestamp" in payload) {
+        dispatch({
+          type: "SET_LEADERBOARD_UPDATED",
+          payload: payload.timestamp,
+        });
+      }
+
       dispatch({ type: "SET_LEADERBOARD_STATS", payload: stats });
       dispatch({ type: "SET_LEADERBOARD_ADDRESSES", payload: addresses });
     };
