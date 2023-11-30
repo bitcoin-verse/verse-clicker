@@ -5,6 +5,7 @@ import { polygonConfig } from "./effects/polygon";
 import { ethereumConfig } from "./effects/ethereum";
 import { goerliConfig } from "./effects/goerli";
 
+// handy place to get lots of configs... https://github.com/tsparticles/tsparticles/tree/main/utils/configs/src
 export const createConfig = ({
   network,
   particlesNumber,
