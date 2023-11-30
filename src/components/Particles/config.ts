@@ -3,6 +3,7 @@ import { NetworkName } from "../../context/reducers/network";
 
 import { polygonConfig } from "./effects/polygon";
 import { ethereumConfig } from "./effects/ethereum";
+import { goerliConfig } from "./effects/goerli";
 
 export const createConfig = ({
   network,
@@ -17,6 +18,7 @@ export const createConfig = ({
         ...polygonConfig,
       };
     case "Goerli":
+      return goerliConfig;
     case "Ethereum":
     default:
       return {
