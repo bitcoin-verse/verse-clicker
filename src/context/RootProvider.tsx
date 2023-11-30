@@ -34,12 +34,14 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
         switch (chain.id) {
           case 5:
             return {
-              http: "https://rpc.ankr.com/eth_goerli",
-              webSocket: `wss://ethereum-goerli.publicnode.com`,
+              http: "https://wild-summer-crater.ethereum-goerli.quiknode.pro/",
+              webSocket:
+                "wss://wild-summer-crater.ethereum-goerli.quiknode.pro/",
             };
           case 137:
             return {
-              http: "https://polygon-rpc.com",
+              http: "https://floral-empty-gas.matic.quiknode.pro/",
+              webSocket: "wss://floral-empty-gas.matic.quiknode.pro/",
             };
           case 1:
           default:
