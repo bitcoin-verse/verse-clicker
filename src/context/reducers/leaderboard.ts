@@ -7,13 +7,21 @@ export type LeaderboardStats = {
 }[];
 
 export type LeaderboardEvent = {
-  address: string;
-  stats: {
-    Earned: number;
-    Clicked: number;
-    Spent: number;
-  };
-}[];
+  timestamp: number;
+  players: {
+    address: string;
+    stats: {
+      Earned: number;
+      Clicked: number;
+      Spent: number;
+    };
+  }[];
+};
+
+export type SetLeaderboardUpdated = {
+  type: "SET_LEADERBOARD_UPDATED";
+  payload: number;
+};
 
 export type SetLeaderboardStatsAction = {
   type: "SET_LEADERBOARD_STATS";
@@ -23,6 +31,13 @@ export type SetLeaderboardStatsAction = {
 export type SetLeaderboardAddressesAction = {
   type: "SET_LEADERBOARD_ADDRESSES";
   payload: string[];
+};
+
+export const setLeaderboardUpdated = (
+  state: State,
+  payload: SetLeaderboardUpdated["payload"],
+): State => {
+  return { ...state, leaderboardUpdated: payload };
 };
 
 export const setLeaderboardStats = (

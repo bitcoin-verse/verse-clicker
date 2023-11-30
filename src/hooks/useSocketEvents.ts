@@ -19,8 +19,10 @@ const useSocketEvents = () => {
     };
 
     const onLeaderboard = (payload: LeaderboardEvent) => {
-      const addresses = payload.map((i) => i.address);
-      const stats = payload.map((i) => i.stats);
+      const addresses = payload.players.map((i) => i.address);
+      const stats = payload.players.map((i) => i.stats);
+
+      dispatch({ type: "SET_LEADERBOARD_UPDATED", payload: payload.timestamp });
       dispatch({ type: "SET_LEADERBOARD_STATS", payload: stats });
       dispatch({ type: "SET_LEADERBOARD_ADDRESSES", payload: addresses });
     };

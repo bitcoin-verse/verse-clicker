@@ -29,6 +29,7 @@ export type State = {
 
   leaderboardAddresses: string[];
   leaderboardStats: LeaderboardStats;
+  leaderboardUpdated?: number;
 };
 
 const search = new URLSearchParams(window.location.search);
