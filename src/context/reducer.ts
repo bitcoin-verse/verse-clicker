@@ -10,8 +10,10 @@ import {
 import {
   SetLeaderboardAddressesAction,
   SetLeaderboardStatsAction,
+  SetLeaderboardUpdated,
   setLeaderboardAddresses,
   setLeaderboardStats,
+  setLeaderboardUpdated,
 } from "./reducers/leaderboard";
 import { SetNetworkAction, setNetwork } from "./reducers/network";
 import { SetErrorAction, setError } from "./reducers/error";
@@ -35,6 +37,7 @@ export type Action =
   | SetErrorAction
   | SetSettingsAction
   | SetPurchaseAmountAction
+  | SetLeaderboardUpdated
   | { type: "RESET_GAME" };
 
 const reducer: Reducer<State, Action> = (state, action) => {
@@ -47,6 +50,8 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return setPlayer(state, action.payload);
     case "SET_BUILDING":
       return setBuilding(state, action.payload);
+    case "SET_LEADERBOARD_UPDATED":
+      return setLeaderboardUpdated(state, action.payload);
     case "SET_LEADERBOARD_STATS":
       return setLeaderboardStats(state, action.payload);
     case "SET_LEADERBOARD_ADDRESSES":
