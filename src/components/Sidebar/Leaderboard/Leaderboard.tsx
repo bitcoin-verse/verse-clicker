@@ -31,10 +31,10 @@ const Leaderboard = memo(() => {
     };
 
     calcTime();
-    const timout = setInterval(calcTime, 1000);
+    const interval = setInterval(calcTime, 1000);
 
     return () => {
-      clearInterval(timout);
+      clearInterval(interval);
     };
   }, [leaderboardUpdated]);
 
