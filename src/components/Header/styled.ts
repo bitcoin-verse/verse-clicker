@@ -57,3 +57,62 @@ export const Icon = styled.img`
     display: none;
   }
 `;
+
+export const ConnectWrapper = styled.div`
+  display: flex;
+  justify-self: flex-end;
+  align-items: center;
+
+  gap: 0.5rem;
+  grid-area: connect;
+  z-index: 1;
+`;
+
+export const Button = styled.button`
+  outline: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
+
+export const ButtonContent = styled.div<{ $logo: string }>`
+  background: linear-gradient(180deg, #425472 0%, #313e57 100%);
+
+  border-radius: 2.25rem;
+  height: 2.25rem;
+  padding: 0.25rem;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  &::after {
+    content: "";
+
+    background-image: url(${({ $logo }) => $logo});
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    aspect-ratio: 1/1;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  @media (min-width: 768px) {
+    background: linear-gradient(180deg, #0ebef0 0%, #0085ff 100%);
+  }
+`;
+
+export const AddressHolder = styled.div`
+  display: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1rem;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 1rem;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+`;

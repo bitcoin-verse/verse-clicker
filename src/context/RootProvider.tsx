@@ -5,7 +5,6 @@ import { goerli, mainnet, polygon } from "wagmi/chains";
 import { createWeb3Modal, EIP6963Connector } from "@web3modal/wagmi/react";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
-import { publicProvider } from "wagmi/providers/public";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
@@ -39,7 +38,8 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
             };
           case 137:
             return {
-              http: "https://polygon-rpc.com",
+              http: "https://floral-empty-gas.matic.quiknode.pro/",
+              webSocket: "wss://floral-empty-gas.matic.quiknode.pro/",
             };
           case 1:
           default:
@@ -50,7 +50,6 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
         }
       },
     }),
-    publicProvider(),
   ],
 );
 

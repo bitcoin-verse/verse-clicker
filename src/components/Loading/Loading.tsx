@@ -56,7 +56,7 @@ const Loading: FC = () => {
             <Button
               $size="small"
               onClick={() => {
-                open();
+                open({ view: "Networks" });
               }}
             >
               Connect Wallet
