@@ -77,6 +77,56 @@ export const polygonConfig: RecursivePartial<IOptions> = {
       opacityRate: 0.5,
     },
   },
-
+  emitters: {
+    position: {
+      y: 90,
+      x: -5,
+    },
+    rate: {
+      delay: 15,
+      quantity: 1,
+    },
+    size: {
+      width: 0,
+      height: 0,
+    },
+    particles: {
+      shape: {
+        type: "images",
+        options: {
+          images: {
+            src: "https://particles.js.org/images/cyan_amongus.png",
+            width: 500,
+            height: 634,
+          },
+        },
+      },
+      size: {
+        value: 20,
+      },
+      move: {
+        speed: 10,
+        outModes: {
+          default: "none",
+          right: "destroy",
+        },
+        straight: true,
+      },
+      zIndex: {
+        value: 0,
+      },
+      rotate: {
+        value: {
+          min: 0,
+          max: 360,
+        },
+        animation: {
+          enable: true,
+          speed: 10,
+          sync: true,
+        },
+      },
+    },
+  },
   detectRetina: true,
 } as const;

@@ -15,13 +15,6 @@ export const createConfig = ({
     case "Polygon":
       return {
         ...polygonConfig,
-        particles: {
-          ...polygonConfig.particles,
-          number: {
-            ...polygonConfig.particles?.number,
-            value: particlesNumber,
-          },
-        },
       };
     case "Goerli":
     case "Ethereum":
