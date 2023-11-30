@@ -13,9 +13,6 @@ import {
   SettingsButton,
 } from "./styled";
 
-import ethSrc from "../../../assets/ethereum.png";
-import gethSrc from "../../../assets/goerli.png";
-import polySrc from "../../../assets/polygon.png";
 import { Points } from "../../GameBoard/PointsDisplay/styled";
 import Star from "../../Icons/Star";
 import SoundOff from "../../Icons/SoundOff";
@@ -24,12 +21,7 @@ import Reset from "../../Icons/Reset";
 import { useSocketCtx } from "../../../context/SocketContext";
 import { useModal } from "../../Modal";
 import ConfirmModal from "./ConfirmModal";
-
-const networkImages: Record<string, string> = {
-  1: ethSrc,
-  5: gethSrc,
-  137: polySrc,
-};
+import { getNetworkImage } from "../../../helpers/getNetworkImage";
 
 const Settings: FC = () => {
   const { address } = useAccount();
@@ -59,7 +51,7 @@ const Settings: FC = () => {
           <div>{truncateEthAddress(address || "")}</div>
 
           {chain && (
-            <NetworkImage src={networkImages[chain?.id]} alt={chain?.name} />
+            <NetworkImage src={getNetworkImage(chain.id)} alt={chain?.name} />
           )}
         </HeaderRow>
       </Header>
