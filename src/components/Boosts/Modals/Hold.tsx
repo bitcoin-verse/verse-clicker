@@ -43,7 +43,7 @@ const Hold: FC = () => {
         onClick={() => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
-            cta: "farm",
+            cta: "buy",
             to: isWallet
               ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
               : `https://buy.bitcoin.com/verse/`,
@@ -63,6 +63,13 @@ const Hold: FC = () => {
               target: "_blank",
               rel: "noreferrer",
             })}
+        onClick={() => {
+          logAmplitudeEvent({
+            name: "verse clicker cta tapped",
+            cta: "swap",
+            to: `https://verse.bitcoin.com/swap/?coin=verse`,
+          });
+        }}
       >
         Swap {player.verseHolder ? "more " : ""}VERSE
       </LinkButton>
