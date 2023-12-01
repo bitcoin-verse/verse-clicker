@@ -9,7 +9,7 @@ import { useTrackedState } from "../../../context/store";
 
 const Scratcher: FC = () => {
   const { isWallet } = useTrackedState();
-  const scratcherLink = `"https://scratcher.verse.bitcoin.com/"${
+  const scratcherLink = `https://scratcher.verse.bitcoin.com/${
     isWallet ? "?origin=wallet" : ""
   }`;
 
