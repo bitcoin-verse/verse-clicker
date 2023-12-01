@@ -1,85 +1,36 @@
 import type { IOptions, RecursivePartial } from "tsparticles-engine";
-import verseMoon from "../../assets/verse-moon.png";
+import { NetworkName } from "../../context/reducers/network";
 
-const config: RecursivePartial<IOptions> = {
-  style: {
-    position: "absolute",
-  },
-  fpsLimit: 120,
+import { polygonConfig } from "./effects/polygon";
+import { ethereumConfig } from "./effects/ethereum";
+import { goerliConfig } from "./effects/goerli";
 
-  particles: {
-    number: {
-      value: 10,
-      density: {
-        enable: true,
-        value_area: 400,
-      },
-    },
-    color: {
-      value: "#8ef1ff",
-    },
-
-    shape: {
-      type: "image",
-
-      polygon: {
-        nb_sides: 5,
-      },
-
-      image: {
-        src: verseMoon,
-      },
-    },
-
-    links: {
-      enable: false,
-    },
-    collisions: {
-      enable: true,
-    },
-    move: {
-      enable: true,
-      speed: 0.5,
-      direction: "top",
-      random: false,
-      straight: false,
-      out_mode: "out",
-      bounce: false,
-      attract: {
-        enable: false,
-        rotateX: 600,
-        rotateY: 1200,
-      },
-    },
-
-    opacity: {
-      value: 0.6,
-      random: true,
-      anim: {
-        enable: true,
-        speed: 0.8,
-        opacity_min: 0.1,
-        sync: false,
-      },
-    },
-
-    size: {
-      value: { min: 8, max: 16 },
-    },
-  },
-  detectRetina: true,
-};
-
+// handy place to get lots of configs... https://github.com/tsparticles/tsparticles/tree/main/utils/configs/src
 export const createConfig = ({
+  network,
   particlesNumber,
 }: {
+  network: NetworkName;
   particlesNumber: number;
 }): RecursivePartial<IOptions> => {
-  return {
-    ...config,
-    particles: {
-      ...config.particles,
-      number: { ...config.particles?.number, value: particlesNumber },
-    },
-  };
+  switch (network) {
+    case "Polygon":
+      return {
+        ...polygonConfig,
+      };
+    case "Goerli":
+      return goerliConfig;
+    case "Ethereum":
+    default:
+      return {
+        ...ethereumConfig,
+        particles: {
+          ...ethereumConfig.particles,
+          number: {
+            ...ethereumConfig.particles?.number,
+            value: particlesNumber,
+          },
+        },
+      };
+  }
 };

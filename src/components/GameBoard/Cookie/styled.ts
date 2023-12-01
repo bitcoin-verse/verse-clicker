@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import verseMoon from "../../../assets/verse-moon.png";
 
 export const CookieWrapper = styled.div`
   display: flex;
@@ -8,7 +7,7 @@ export const CookieWrapper = styled.div`
   position: relative;
 `;
 
-export const ClickButton = styled.button`
+export const ClickButton = styled.button<{ $bgImage: string }>`
   position: relative;
   max-width: 16.25rem;
   margin: 2rem 0;
@@ -18,7 +17,7 @@ export const ClickButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  background-image: url(${verseMoon});
+  background-image: url(${({ $bgImage }) => $bgImage});
   background-size: 99%;
   background-position: center;
   background-repeat: no-repeat;

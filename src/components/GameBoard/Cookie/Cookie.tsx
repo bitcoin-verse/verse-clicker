@@ -9,6 +9,7 @@ import { useSocketCtx } from "../../../context/SocketContext";
 import { ButtonWrapper, ClickButton, CookieWrapper, CpcClick } from "./styled";
 import { useAudio } from "../../../context/AudioProvider";
 import Sidebar from "../../Sidebar";
+import { getMoonImage } from "../../../helpers/getMoonImage";
 
 const Cookie: FC = () => {
   const { playLaser } = useAudio();
@@ -18,7 +19,7 @@ const Cookie: FC = () => {
   const { status } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
 
-  const { player } = useTrackedState();
+  const { player, network } = useTrackedState();
   const [clickCount, setClickCount] = useState<number>(0);
 
   const countTimer = useRef<NodeJS.Timeout>();
@@ -100,6 +101,7 @@ const Cookie: FC = () => {
       <ButtonWrapper>
         <ClickButton
           type="button"
+          $bgImage={getMoonImage(network)}
           ref={wrapperRef}
           onClick={handleClick}
           onKeyDown={(e: React.KeyboardEvent<HTMLElement>) =>

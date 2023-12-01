@@ -20,21 +20,16 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const ContentsWrapper = styled.div<{ $showMoon?: boolean }>`
+export const ContentsWrapper = styled.div<{
+  $showMoon?: boolean;
+  $background?: string;
+}>`
   position: relative;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 
-  background: linear-gradient(
-      180deg,
-      #020a10 0%,
-      #10518d 78.65%,
-      #2975bd 93.75%,
-      #4c97dd 99.48%
-    ),
-    linear-gradient(0deg, #030c14, #030c14);
-  background: #030c14;
+  background: ${({ $background }) => $background};
   min-height: 100%;
   min-height: 100vh;
   min-height: 100svh;

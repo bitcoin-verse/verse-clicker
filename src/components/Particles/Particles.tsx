@@ -7,11 +7,14 @@ import { useTrackedState } from "../../context/store";
 const ReactParticles = lazy(() => import("react-particles"));
 
 const Particles: FC = () => {
-  const { buildings } = useTrackedState();
+  const { buildings, network } = useTrackedState();
 
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
-  }, []);
+  const particlesInit = useCallback(
+    async (engine: Engine) => {
+      await loadFull(engine);
+    },
+    [network],
+  );
 
   const buildingsCount = useMemo(() => {
     const count = buildings.reduce((p, c) => (c.locked ? p : p + 1), 0) - 1;
@@ -26,7 +29,7 @@ const Particles: FC = () => {
           position: "absolute",
           zIndex: -1,
         }}
-        options={createConfig({ particlesNumber: buildingsCount * 5 })}
+        options={createConfig({ network, particlesNumber: buildingsCount * 5 })}
         init={particlesInit}
       />
     </Suspense>
