@@ -1,23 +1,21 @@
 import { State } from "../store";
 
-type BonusBurnTx = {
+export type TxData = {
   date: number;
   txHash: string;
-  burnAmount: number;
-  bonusAmount: number;
+  bonusBase: number;
+  bonusTotal: number;
 };
-type ScrachClaimTx = {
-  date: number;
-  txHash: string;
-  prizeAmount: number;
-  bonusAmount: number;
+
+type BonusData = {
+  burn: TxData[];
+  scratcher: TxData[];
 };
 
 export type ReturnData = {
   seconds: number;
   cookies: number;
-  bonusBurnTxs: BonusBurnTx[];
-  scratchCLaimTxs: ScrachClaimTx[];
+  bonus: BonusData;
 };
 
 export type SetReturnDataAction = {

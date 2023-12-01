@@ -9,7 +9,7 @@ import Star from "../Icons/Star";
 import { H3 } from "../H3";
 
 import { DataWrapper, Stats, Value } from "./styled";
-import BurnBonus from "./BurnBonus";
+import BonusList from "./BonusList";
 
 const ReturningUser = () => {
   const { returnData } = useTrackedState();
@@ -35,8 +35,11 @@ const ReturningUser = () => {
         </Stats>
       </DataWrapper>
 
-      {returnData?.bonusBurnTxs && returnData.bonusBurnTxs.length > 0 && (
-        <BurnBonus />
+      {returnData?.bonus.burn && returnData.bonus.burn.length > 0 && (
+        <BonusList isBurn txData={returnData.bonus.burn}  />
+      )}
+      {returnData?.bonus.scratcher && returnData.bonus.scratcher.length > 0 && (
+        <BonusList txData={returnData.bonus.scratcher} />
       )}
     </>
   );
