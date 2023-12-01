@@ -1,7 +1,6 @@
-import React, { Fragment } from "react";
+import React, { FC, Fragment } from "react";
 import { useChainId } from "wagmi";
 
-import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getTxExplorerLink } from "../../helpers/getExplorerLink";
 import External from "../Icons/External";
@@ -10,6 +9,7 @@ import { Title } from "../Title";
 import { colors } from "../colors";
 import verseIcon from "../../assets/verse-icon.png";
 import Star from "../Icons/Star";
+import { TxData } from "../../context/reducers/returnData";
 
 /* const sample = {
   bonusBurnTxs: [
@@ -37,9 +37,14 @@ import Star from "../Icons/Star";
   ],
 }; */
 
-const BurnBonus = () => {
-  const { returnData } = useTrackedState();
+interface Props {
+  isBurn?: boolean;
+  txData: TxData[];
+}
+
+const BonusList: FC<Props> = ({ isBurn, txData }) => {
   const chainId = useChainId();
+
   return (
     <>
       <hr
@@ -50,26 +55,26 @@ const BurnBonus = () => {
       <BonusRow>
         <BonusHeader>Date</BonusHeader>
         <BonusHeader>Points</BonusHeader>
-        <BonusHeader>Contributed</BonusHeader>
+        <BonusHeader>{isBurn ? "Contributed" : "Claimed"}</BonusHeader>
         <BonusHeader>Tx</BonusHeader>
 
-        {returnData?.bonusBurnTxs.map((bb) => {
+        {txData.map((data) => {
           return (
-            <Fragment key={bb.txHash}>
+            <Fragment key={data.txHash}>
               <div>
-                {new Date(bb.date).toLocaleDateString("en-US", {
+                {new Date(data.date).toLocaleDateString("en-US", {
                   dateStyle: "short",
                 })}
               </div>
               <div>
-                {formatNumber(bb.bonusAmount)} <Star size="0.875rem" />
+                {formatNumber(data.bonusBase)} <Star size="0.875rem" />
               </div>
               <div>
-                {formatNumber(bb.burnAmount)}
+                {formatNumber(data.bonusTotal)}
                 <img src={verseIcon} alt="Verse Icon" />
               </div>
               <a
-                href={getTxExplorerLink(chainId, bb.txHash)}
+                href={getTxExplorerLink(chainId, data.txHash)}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -83,4 +88,4 @@ const BurnBonus = () => {
   );
 };
 
-export default BurnBonus;
+export default BonusList;
