@@ -99,15 +99,3 @@ export const BuildingsWrapper = styled.div`
     -webkit-mask-repeat: no-repeat;
   }
 `;
-
-export const BottomShadow = styled.div`
-  @media (min-width: 768px) {
-    position: absolute;
-    content: "";
-    bottom: 0;
-    height: 5rem;
-    left: -1rem;
-    width: calc(100% - 0.25rem);
-    background: linear-gradient(180deg, rgba(3, 12, 20, 0) 0%, #030c14 63.54%);
-  }
-`;
