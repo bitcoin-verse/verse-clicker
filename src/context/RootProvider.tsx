@@ -24,7 +24,7 @@ const metadata: Web3ModalOptions["metadata"] = {
   name: "Verse Clicker",
   description: "Verse Clicker",
   url: "https://clicker.verse.bitcoin.com",
-  icons: ["https://verse.bitcoin.com/images/favicon.png"],
+  icons: [`https://clicker.verse.bitcoin.com/images/verse-moon.png`],
 };
 
 const isDev = process.env.REACT_APP_DEV_ENV === "development";
