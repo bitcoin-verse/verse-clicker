@@ -8,7 +8,6 @@ import { getNetworkImage } from "../../helpers/getNetworkImage";
 const NetworkButton = () => {
   const chainId = useChainId();
   const { open } = useWeb3Modal();
-
   return (
     <Button
       onClick={() => {
