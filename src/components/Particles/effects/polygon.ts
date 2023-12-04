@@ -1,5 +1,7 @@
 import type { IOptions, RecursivePartial } from "tsparticles-engine";
 
+import amongus from "../../../assets/cyan_amongus.png";
+
 export const polygonConfig: RecursivePartial<IOptions> = {
   style: {
     position: "absolute",
@@ -79,11 +81,14 @@ export const polygonConfig: RecursivePartial<IOptions> = {
   },
   emitters: {
     position: {
-      y: 90,
+      y: 88,
       x: -5,
     },
+    life: {
+      wait: true,
+    },
     rate: {
-      delay: 15,
+      delay: 45,
       quantity: 1,
     },
     size: {
@@ -95,7 +100,7 @@ export const polygonConfig: RecursivePartial<IOptions> = {
         type: "images",
         options: {
           images: {
-            src: "https://particles.js.org/images/cyan_amongus.png",
+            src: amongus,
             width: 500,
             height: 634,
           },
