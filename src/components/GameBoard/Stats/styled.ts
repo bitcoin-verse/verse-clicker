@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   padding: 0 1rem;
-  
 `;
 
 export const Content = styled.div`
