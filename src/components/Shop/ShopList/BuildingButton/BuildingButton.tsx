@@ -68,7 +68,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
 
   return (
     <Button
-      disabled={player.cookies < cost}
+      disabled={player.cookies < cost || building.locked}
       $unaffordable={player.cookies < cost || building.locked}
       $locked={building.locked}
       onClick={() => {
