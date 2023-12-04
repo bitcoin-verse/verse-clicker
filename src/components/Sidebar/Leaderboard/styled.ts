@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colors } from "../../colors";
 
 export const LeaderboardWrapper = styled.div`
   margin: auto;
