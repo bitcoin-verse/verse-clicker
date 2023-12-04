@@ -15,8 +15,6 @@ export const StyledHeader = styled.header`
   grid-template-columns: min-content max-content auto;
   grid-template-areas: "logo title connect";
 
-  background: rgb(15, 24, 35);
-
   @media (min-width: 768px) {
     grid-template-columns: 1fr auto 1fr;
     max-width: unset;
