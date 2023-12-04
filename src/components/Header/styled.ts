@@ -10,10 +10,12 @@ export const StyledHeader = styled.header`
   z-index: 1;
   max-width: 80rem;
   margin: 0 auto;
-  padding: 1rem 1rem 0;
+  padding: 1rem 1rem;
   grid-gap: 1rem;
   grid-template-columns: min-content max-content auto;
   grid-template-areas: "logo title connect";
+
+  background: rgb(15, 24, 35);
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr auto 1fr;
