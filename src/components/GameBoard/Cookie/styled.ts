@@ -7,7 +7,7 @@ export const CookieWrapper = styled.div`
   position: relative;
 `;
 
-export const ClickButton = styled.button<{ $bgImage: string }>`
+export const ClickButton = styled.button`
   position: relative;
   max-width: 16.25rem;
   margin: 2rem 0;
@@ -17,7 +17,7 @@ export const ClickButton = styled.button<{ $bgImage: string }>`
   border: none;
   outline: none;
   cursor: pointer;
-  background-image: url(${({ $bgImage }) => $bgImage});
+  background-image: url(${({ theme }) => theme.moon});
   background-size: 99%;
   background-position: center;
   background-repeat: no-repeat;
