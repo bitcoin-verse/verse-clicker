@@ -27,7 +27,7 @@ const metadata: Web3ModalOptions["metadata"] = {
   icons: [
     `${
       process?.env?.REACT_APP_PUBLIC_URL || "https://clicker.verse.bitcoin.com"
-    }/verse-moon.png`,
+    }verse-moon.png`,
   ],
 };
 console.log(metadata);
