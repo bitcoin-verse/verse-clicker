@@ -3,6 +3,8 @@ import { ContentsWrapper, GlobalStyle } from "./styled";
 import { AudioProvider } from "../../context/AudioProvider";
 import { useTrackedState } from "../../context/store";
 import { NetworkName } from "../../context/reducers/network";
+import { ThemeProvider } from "styled-components";
+import { themes } from "../themes";
 
 interface Props {
   showMoon?: boolean;
@@ -23,15 +25,17 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, showMoon }) => {
   const { network } = useTrackedState();
 
   return (
-    <AudioProvider>
-      <ContentsWrapper
-        $showMoon={showMoon}
-        $background={getNetworkBackground(network)}
-      >
-        <GlobalStyle />
-        {children}
-      </ContentsWrapper>
-    </AudioProvider>
+    <ThemeProvider theme={themes[network]}>
+      <AudioProvider>
+        <ContentsWrapper
+          $showMoon={showMoon}
+          $background={getNetworkBackground(network)}
+        >
+          <GlobalStyle />
+          {children}
+        </ContentsWrapper>
+      </AudioProvider>
+    </ThemeProvider>
   );
 };
 
