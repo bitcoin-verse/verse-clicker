@@ -25,7 +25,7 @@ export const ShopSection = styled.div`
   justify-content: flex-start;
 
   @media (min-width: 768px) {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 `;
 
@@ -43,7 +43,7 @@ export const MainSection = styled.div`
   align-self: start;
 
   @media (min-width: 768px) {
-    margin-top: 6rem;
+    margin-top: 5rem;
   }
 `;
 
