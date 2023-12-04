@@ -7,18 +7,17 @@ import {
   Header,
   LeaderboardContent,
   LeaderboardWrapper,
-  Timer,
+  LoadingBar,
 } from "./styled";
 
 import Row from "./Row";
-import { formatSeconds } from "../../../helpers/formatSeconds";
 
 const Leaderboard = memo(() => {
   const { address } = useAccount();
   const { leaderboardAddresses, leaderboardStats, leaderboardUpdated } =
     useTrackedState();
 
-  const [updated, setUpdated] = useState("");
+  const [updated, setUpdated] = useState(0);
 
   useEffect(() => {
     if (!leaderboardUpdated) return;
@@ -27,11 +26,11 @@ const Leaderboard = memo(() => {
       const dateUpdated = new Date(leaderboardUpdated).getTime();
       const dateNow = Date.now();
       const diff = dateNow - dateUpdated;
-      setUpdated(formatSeconds(diff / 1000) || "0s");
+      setUpdated(diff / 1000);
     };
 
     calcTime();
-    const interval = setInterval(calcTime, 1000);
+    const interval = setInterval(calcTime, 50);
 
     return () => {
       clearInterval(interval);
@@ -40,7 +39,7 @@ const Leaderboard = memo(() => {
 
   return (
     <LeaderboardWrapper>
-      {updated && <Timer>Last update: {updated} ago</Timer>}
+      <LoadingBar $percent={(updated / 60) * 100 || 0} />
       <Header>
         <div />
         <div>Address</div>
