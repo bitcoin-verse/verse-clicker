@@ -24,8 +24,8 @@ const Scratcher: FC = () => {
         3. Claim your prize
       </Description>
       <Text>
-        Your Verse Clicker one-time bonus = your current points production rate
-        X your Scratch & Win prize amount
+        You will receive a one-time bonus equal to your current points
+        production rate multiplied by your Scratch & Win prize amount
       </Text>
       <LinkButton
         href={scratcherLink}
