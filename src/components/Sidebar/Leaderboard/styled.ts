@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../colors";
 
 export const LeaderboardWrapper = styled.div`
   margin: auto;
@@ -120,4 +121,17 @@ export const Body = styled.div`
   @media (min-width: 768px) {
     padding-right: 1.5rem;
   }
+`;
+
+export const LoadingBar = styled.div<{ $percent: number }>`
+  background: linear-gradient(
+    to right,
+    ${colors.primaryBlue100} 0%,
+    #0085ff ${({ $percent }) => $percent}%,
+    transparent ${({ $percent }) => $percent}% 100%
+  );
+
+  height: 0.25rem;
+
+  margin: -1.5rem -1.5rem 1.5rem -1.5rem;
 `;
