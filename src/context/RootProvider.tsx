@@ -24,9 +24,13 @@ const metadata: Web3ModalOptions["metadata"] = {
   name: "Verse Clicker",
   description: "Verse Clicker",
   url: "https://clicker.verse.bitcoin.com",
-  icons: [`https://clicker.verse.bitcoin.com/verse-moon.png`],
+  icons: [
+    `${
+      process?.env?.REACT_APP_PUBLIC_URL || "https://clicker.verse.bitcoin.com"
+    }/verse-moon.png`,
+  ],
 };
-
+console.log(metadata);
 const isDev = process.env.REACT_APP_DEV_ENV === "development";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
