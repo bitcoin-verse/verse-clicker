@@ -79,7 +79,6 @@ export const BuildingsWrapper = styled.div`
     padding-left: 1rem;
     margin-left: -1rem;
 
-
     &::-webkit-scrollbar {
       width: 0.25rem;
       background-color: #000;
@@ -90,17 +89,13 @@ export const BuildingsWrapper = styled.div`
       background-color: #313e57;
       border-radius: 0.5rem;
     }
-  }
-`;
 
-export const BottomShadow = styled.div`
-  @media (min-width: 768px) {
-    position: absolute;
-    content: "";
-    bottom: 0;
-    height: 5rem;
-    left: -1rem;
-    width: calc(100% - 0.25rem);
-    background: linear-gradient(180deg, rgba(3, 12, 20, 0) 0%, #030c14 63.54%);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 90%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
   }
 `;

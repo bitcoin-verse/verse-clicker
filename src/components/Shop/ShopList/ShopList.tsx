@@ -2,12 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import { useTrackedState } from "../../../context/store";
 
 import BuildingButton from "./BuildingButton";
-import {
-  BottomShadow,
-  BuildingsWrapper,
-  PurchaseButtons,
-  Wrapper,
-} from "./styled";
+import { BuildingsWrapper, PurchaseButtons, Wrapper } from "./styled";
 
 import PurchaseAmount from "../../GameBoard/PurchaseAmount";
 import MobileTitle from "../MobileTitle";
@@ -62,7 +57,6 @@ const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
             );
           })}
         </BuildingsWrapper>
-        <BottomShadow />
         <CookiesDisplay />
       </Wrapper>
       <Advertisement />
