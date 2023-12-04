@@ -79,7 +79,6 @@ export const BuildingsWrapper = styled.div`
     padding-left: 1rem;
     margin-left: -1rem;
 
-
     &::-webkit-scrollbar {
       width: 0.25rem;
       background-color: #000;
@@ -90,6 +89,14 @@ export const BuildingsWrapper = styled.div`
       background-color: #313e57;
       border-radius: 0.5rem;
     }
+
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 90%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
   }
 `;
 
