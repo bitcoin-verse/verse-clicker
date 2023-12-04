@@ -21,6 +21,7 @@ export const Content = styled.div`
   width: 100%;
   padding: 0.5rem 1rem;
   border-radius: 6.25rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.4);
 
   max-width: 24rem;
 

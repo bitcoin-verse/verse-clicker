@@ -11,7 +11,7 @@ interface Props {
 const getNetworkBackground = (network: NetworkName) => {
   switch (network) {
     case "Polygon":
-      return "linear-gradient(0.26deg, #030C14 0.22%, #8F58E7 101.87%)";
+      return "linear-gradient(0.26deg, #030C14 50%, #8F58E7 100%)";
     case "Goerli":
     case "Ethereum":
     default:
