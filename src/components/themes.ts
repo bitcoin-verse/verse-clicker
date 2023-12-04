@@ -1,27 +1,33 @@
+import "styled-components";
 import verseMoon from "../assets/verse-moon.png";
 import polygonMoon from "../assets/verse-polygon-moon.png";
-import "styled-components";
 import { NetworkName } from "../context/reducers/network";
 
-export const Ethereum = {
-  moon: verseMoon,
-} as const;
+type CustomTheme = {
+  moon: string;
+  background: string;
+};
 
-export const Goerli = {
+export const Ethereum: CustomTheme = {
   moon: verseMoon,
-} as const;
+  background: "linear-gradient(180deg, #020A10 0%, #10518D 100%)",
+};
 
-export const Polygon = {
+export const Goerli: CustomTheme = {
+  moon: verseMoon,
+  background: "#030c14",
+};
+
+export const Polygon: CustomTheme = {
   moon: polygonMoon,
-} as const;
+  background: "linear-gradient(to top, #030C14 50%, #8F58E7 100%)",
+};
 
 export const themes: Record<NetworkName, typeof Ethereum> = {
   Goerli,
   Ethereum,
   Polygon,
 };
-
-type CustomTheme = typeof Ethereum;
 
 declare module "styled-components" {
   export interface DefaultTheme extends CustomTheme {}
