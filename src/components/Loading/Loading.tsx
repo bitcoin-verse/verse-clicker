@@ -15,11 +15,27 @@ import { Title } from "../Title";
 import { Button } from "../Button";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import connectWallet from "../../assets/connect-wallet.png";
-import halfMoon from "../../assets/half-moon.png";
 import Modal, { useModal } from "../Modal";
 import Spinner from "../Icons/Spinner";
 import { useTrackedState } from "../../context/store";
 import { Label } from "../Label";
+import { NetworkName } from "../../context/reducers/network";
+
+import halfMoon from "../../assets/half-moon.png";
+import halfMoonPolygon from "../../assets/half-moon-polygon.png";
+
+const getVerseMoon = (network: NetworkName) => {
+  switch (network) {
+    case "Polygon":
+      return halfMoonPolygon;
+
+    case "Ethereum":
+    case "Goerli":
+
+    default:
+      return halfMoon;
+  }
+};
 
 const Loading: FC = () => {
   const { status } = useAccount();
@@ -29,7 +45,7 @@ const Loading: FC = () => {
   const { chain } = useNetwork();
 
   const { modalRef, showModal, close } = useModal();
-  const { error } = useTrackedState();
+  const { error, network } = useTrackedState();
 
   useEffect(() => {
     if (status === "connected") {
@@ -64,7 +80,7 @@ const Loading: FC = () => {
           </div>
         </ConnectionWrapper>
       </Wrapper>
-      <MoonImage src={halfMoon} alt="Verse Moon" />
+      <MoonImage src={getVerseMoon(network)} alt="Verse Moon" />
 
       <Modal modalRef={modalRef}>
         <ModalContent>
