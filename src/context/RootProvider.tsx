@@ -14,6 +14,7 @@ import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { ContextProvider } from "./store";
 import SocketCtxProvider from "./SocketContext";
+import useSearchParams from "../hooks/useSearchParams";
 
 const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
@@ -109,9 +110,11 @@ createWeb3Modal({
 });
 
 const RootProvider: FC<PropsWithChildren> = ({ children }) => {
+  const { campaign } = useSearchParams();
+
   return (
     <WagmiConfig config={wagmiConfig}>
-      <ContextProvider>
+      <ContextProvider campaign={campaign}>
         <SocketCtxProvider>{children}</SocketCtxProvider>
       </ContextProvider>
     </WagmiConfig>

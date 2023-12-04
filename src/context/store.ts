@@ -63,7 +63,11 @@ export const initialState: State = {
   leaderboardStats: [],
 };
 
-const init = (): State => {
+type InitOptions = {
+  campaign?: NetworkName;
+};
+
+const init = ({ campaign }: InitOptions): State => {
   try {
     const stored = window.localStorage.getItem(storageKey);
     if (!stored) throw new Error("localstorage not found");
@@ -71,7 +75,7 @@ const init = (): State => {
     const persistedState = JSON.parse(stored);
     // validate preloadedState if necessary
 
-    return { ...initialState, ...persistedState };
+    return { ...initialState, ...persistedState, network: campaign };
   } catch (e) {
     // ignore
   }
@@ -79,11 +83,13 @@ const init = (): State => {
   return initialState;
 };
 
-const useValue = (): readonly [State, Dispatch<Action>] => {
+const useValue = ({
+  campaign,
+}: InitOptions): readonly [State, Dispatch<Action>] => {
   const [state, dispatch] = useReducer<Reducer<State, Action>, State>(
     reducer,
     initialState,
-    init,
+    () => init({ campaign }),
   );
 
   useEffect(() => {
@@ -91,7 +97,7 @@ const useValue = (): readonly [State, Dispatch<Action>] => {
     window.localStorage.setItem(storageKey, JSON.stringify(persistedState));
   }, [state]);
 
-  /* useEffect(() => {
+  /*   useEffect(() => {
     console.log("state", state);
   }, [state]); */
 
