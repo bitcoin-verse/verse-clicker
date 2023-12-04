@@ -2,7 +2,11 @@ import React, { FC, PropsWithChildren } from "react";
 
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { goerli, mainnet, polygon } from "wagmi/chains";
-import { createWeb3Modal, EIP6963Connector } from "@web3modal/wagmi/react";
+import {
+  createWeb3Modal,
+  EIP6963Connector,
+  Web3ModalOptions,
+} from "@web3modal/wagmi/react";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
@@ -16,13 +20,17 @@ const isWallet = search.get("origin") === "wallet";
 
 const projectId = "1184cb8e8109ec7c4a9425c56b494e5e";
 
-const metadata = {
-  name: "VERSE Clicker",
-  description: "VERSE Clicker",
+const metadata: Web3ModalOptions["metadata"] = {
+  name: "Verse Clicker",
+  description: "Verse Clicker",
   url: "https://clicker.verse.bitcoin.com",
-  icons: ["https://verse.bitcoin.com/images/favicon.png"],
+  icons: [
+    `${
+      process?.env?.REACT_APP_PUBLIC_URL || "https://clicker.verse.bitcoin.com"
+    }/verse-moon.png`,
+  ],
 };
-
+console.log(metadata);
 const isDev = process.env.REACT_APP_DEV_ENV === "development";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
