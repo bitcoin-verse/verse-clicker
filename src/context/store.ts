@@ -8,6 +8,7 @@ import { LeaderboardStats } from "./reducers/leaderboard";
 import Building from "../classes/Building";
 import { NetworkName } from "./reducers/network";
 import { ReturnData } from "./reducers/returnData";
+import { BonusData } from "./reducers/bonusData";
 
 const storageKey = "verse-clicker";
 
@@ -30,6 +31,7 @@ export type State = {
   leaderboardAddresses: string[];
   leaderboardStats: LeaderboardStats;
   leaderboardUpdated?: number;
+  bonusData?: BonusData;
 };
 
 const search = new URLSearchParams(window.location.search);
