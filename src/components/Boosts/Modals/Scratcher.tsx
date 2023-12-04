@@ -15,11 +15,11 @@ const Scratcher: FC = () => {
 
   return (
     <ModalWrapper>
-      <H3>Boost your points production with Scratch & Win tickets</H3>
+      <H3>Boost your Verse Clicker points production by playing Verse Scratch & Win</H3>
       <Description style={{ textAlign: "left" }}>
         1. Buy a ticket
         <br />
-        2. Scratch the same number 3 times to win VERSE
+        2. Scratch
         <br />
         3. Claim your prize
       </Description>
