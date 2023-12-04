@@ -81,15 +81,6 @@ export const StarWrapper = styled.div`
   }
 `;
 
-export const Timer = styled.div`
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: #899bb5;
-  position: absolute;
-  top: 4rem;
-  left: 2rem;
-`;
-
 export const Body = styled.div`
   position: relative;
   display: grid;
@@ -126,7 +117,7 @@ export const Body = styled.div`
 export const LoadingBar = styled.div<{ $percent: number }>`
   background: linear-gradient(
     to right,
-    ${colors.primaryBlue100} 0%,
+    #0ebef0 0%,
     #0085ff ${({ $percent }) => $percent}%,
     transparent ${({ $percent }) => $percent}% 100%
   );
