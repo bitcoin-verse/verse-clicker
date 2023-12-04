@@ -81,7 +81,7 @@ export const polygonConfig: RecursivePartial<IOptions> = {
   },
   emitters: {
     position: {
-      y: 90,
+      y: 88,
       x: -5,
     },
     life: {
