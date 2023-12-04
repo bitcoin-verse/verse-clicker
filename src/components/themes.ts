@@ -1,7 +1,8 @@
 import "styled-components";
+import { NetworkName } from "../context/reducers/network";
+
 import verseMoon from "../assets/verse-moon.png";
 import polygonMoon from "../assets/verse-polygon-moon.png";
-import { NetworkName } from "../context/reducers/network";
 
 type CustomTheme = {
   moon: string;
