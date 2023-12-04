@@ -37,7 +37,7 @@ const boostList = (player: Player, chainId: number) => {
         {
           id: "scratcher",
           unlocked: true,
-          label: "Scratch & Win",
+          label: "Verse Scratcher",
           description: "Up to 1,000,000x",
         },
       ];
@@ -84,7 +84,7 @@ const getModalContent = (content?: string) => {
       };
     case "scratcher":
       return {
-        title: "Scratch & Win",
+        title: "Verse Scratcher",
         component: <Scratcher />,
       };
     default:

@@ -44,6 +44,7 @@ export const BoostButton = styled.button`
   z-index: 0;
   position: relative;
   min-width: fit-content;
+  white-space: nowrap;
   min-height: 3.188rem;
   flex: 1;
   padding: 0.5rem 0.75rem;

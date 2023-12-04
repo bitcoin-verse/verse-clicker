@@ -31,7 +31,7 @@ const Scratcher: FC = () => {
         href={scratcherLink}
         {...(isWallet ? {} : { target: "_blank", rel: "noreferrer" })}
       >
-        Scratch & Win
+        Verse Scratcher
       </LinkButton>
     </ModalWrapper>
   );
