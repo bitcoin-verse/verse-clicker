@@ -6,19 +6,22 @@ import Content from "./Content";
 
 const WelcomeModal = () => {
   const dispatch = useDispatch();
-  const { returnData } = useTrackedState();
+  const { returnData, bonusData } = useTrackedState();
   const { modalRef, showModal, close } = useModal();
 
   useEffect(() => {
-    if (!returnData || returnData.seconds < 5) return;
-    showModal();
-  }, [returnData]);
+    if ((returnData && returnData.seconds > 5) || bonusData) showModal();
+    return;
+  }, [returnData, bonusData]);
 
   return (
     <>
       <Modal
         modalRef={modalRef}
-        onClose={() => dispatch({ type: "SET_RETURN_DATA" })}
+        onClose={() => {
+          dispatch({ type: "SET_RETURN_DATA" });
+          dispatch({ type: "SET_BONUS_DATA" });
+        }}
         title="Verse Clicker"
         overlayClose
       >
