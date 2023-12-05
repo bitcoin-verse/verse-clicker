@@ -35,6 +35,7 @@ import { useTrackedState } from "../../../../context/store";
 import { logAmplitudeEvent } from "../../../../helpers/analytics";
 import Star from "../../../Icons/Star";
 import { formatNumber } from "../../../../helpers/formatNumber";
+import BurnEngineLink from "../../../Links/BurnEngineLink";
 
 export const BURN_LIST = [
   { title: "1 hour", value: 10000, hours: 1 },
@@ -157,18 +158,7 @@ const Burn: FC = () => {
         <>
           <H3>Contribute VERSE to get an instant boost</H3>
           <Label>
-            View the{" "}
-            <Link
-              href={`https://verse.bitcoin.com/burn/${
-                isWallet ? "?origin=wallet" : ""
-              }`}
-              target={isWallet ? "_self" : "_blank"}
-              rel="noreferrer"
-              style={{ fontSize: "inherit" }}
-            >
-              Burn Engine
-            </Link>{" "}
-            for more information
+            View the <BurnEngineLink /> for more information
           </Label>
 
           <Container>

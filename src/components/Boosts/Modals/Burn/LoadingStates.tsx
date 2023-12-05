@@ -7,8 +7,8 @@ import { formatNumber } from "../../../../helpers/formatNumber";
 import { BURN_LIST } from "./Burn";
 import { getTxExplorerLink } from "../../../../helpers/getExplorerLink";
 import { useChainId } from "wagmi";
-import { Link } from "../../../Link";
 import { useTrackedState } from "../../../../context/store";
+import BurnEngineLink from "../../../Links/BurnEngineLink";
 
 interface Props {
   isPendingWallet: boolean;
@@ -28,7 +28,7 @@ const LoadingStates: FC<Props> = ({
   newCookies,
 }) => {
   const chainId = useChainId();
-  const { isWallet, player } = useTrackedState();
+  const { player } = useTrackedState();
 
   return (
     <>
@@ -69,15 +69,7 @@ const LoadingStates: FC<Props> = ({
           <H3>Bonus Awarded!</H3>
           <Label>
             {formatNumber(BURN_LIST[selectedTab].value)} VERSE contributed to{" "}
-            <Link
-              href={`https://verse.bitcoin.com/burn/${
-                isWallet ? "?origin=wallet" : ""
-              }`}
-              target={isWallet ? "_self" : "_blank"}
-              rel="noreferrer"
-            >
-              Burn Engine
-            </Link>
+            <BurnEngineLink />
           </Label>
           <Label>{BURN_LIST[selectedTab].title} skipped</Label>
           <Label>{formatNumber(newCookies * player.cps)} points added</Label>

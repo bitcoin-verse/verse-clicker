@@ -6,7 +6,7 @@ import Gear from "../Icons/Gear";
 // import Map from "../Icons/Map";
 import Leaderboard from "./Leaderboard";
 import Settings from "./Settings";
-import WelcomeContent from "../WelcomeModal/Content";
+import WelcomeContent from "../NotificationModal/Content";
 import Modal, { useModal } from "../Modal";
 
 const getModalContent = (close: () => void, content?: string) => {

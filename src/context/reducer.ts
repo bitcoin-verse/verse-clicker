@@ -24,6 +24,7 @@ import {
 } from "./reducers/purchaseAmount";
 import { SetSettingsAction, setSettings } from "./reducers/settings";
 import { resetGame } from "./reducers/reset";
+import { setBonusData, SetBonusDataAction } from "./reducers/bonusData";
 
 export type Action =
   | SetNetworkAction
@@ -38,6 +39,7 @@ export type Action =
   | SetSettingsAction
   | SetPurchaseAmountAction
   | SetLeaderboardUpdated
+  | SetBonusDataAction
   | { type: "RESET_GAME" };
 
 const reducer: Reducer<State, Action> = (state, action) => {
@@ -66,6 +68,8 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return setPurchaseAmount(state, action.payload);
     case "SET_SETTINGS":
       return setSettings(state, action.payload);
+    case "SET_BONUS_DATA":
+      return setBonusData(state, action.payload);
     default:
       return state;
   }
