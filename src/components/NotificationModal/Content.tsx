@@ -22,7 +22,11 @@ const Content: FC<Props> = ({ close, sidebar }) => {
         <BonusContent />
       ) : (
         <>
-          {!!player.cookies && !sidebar ? <ReturningUser /> : <NewUser />}
+          {sidebar ? (
+            <NewUser />
+          ) : (
+            <>{player.cookies ? <ReturningUser /> : <NewUser />}</>
+          )}
           <StyledButton onClick={close}>Play</StyledButton>
         </>
       )}
