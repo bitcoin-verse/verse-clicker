@@ -5,6 +5,7 @@ import { BuildingData } from "../context/reducers/building";
 import { useSocketCtx } from "../context/SocketContext";
 import { useDispatch } from "../context/store";
 import { ReturnData } from "../context/reducers/returnData";
+import { BonusData } from "../context/reducers/bonusData";
 
 const useSocketEvents = () => {
   const [loading, setLoading] = useState(true);
@@ -51,13 +52,19 @@ const useSocketEvents = () => {
       dispatch({ type: "SET_RETURN_DATA", payload: data });
     };
 
+    const onBonusNotif = (data: BonusData) => {
+      dispatch({ type: "SET_BONUS_DATA", payload: data });
+    };
+
     socket.on("welcome_back", onWelcomeBack);
+    socket.on("bonus", onBonusNotif);
     socket.on("info", onInfo);
     socket.on("leaderboard", onLeaderboard);
     socket.on("buildings_data", onBuildingsData);
 
     return () => {
       socket.off("welcome_back", onWelcomeBack);
+      socket.on("bonus", onBonusNotif);
       socket.off("info", onInfo);
       socket.off("leaderboard", onLeaderboard);
       socket.off("buildings_data", onBuildingsData);
