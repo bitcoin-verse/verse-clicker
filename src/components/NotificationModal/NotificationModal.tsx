@@ -4,7 +4,7 @@ import { useDispatch, useTrackedState } from "../../context/store";
 import Modal, { useModal } from "../Modal";
 import Content from "./Content";
 
-const WelcomeModal = () => {
+const NotificationModal = () => {
   const dispatch = useDispatch();
   const { returnData, bonusData } = useTrackedState();
   const { modalRef, showModal, close } = useModal();
@@ -31,4 +31,4 @@ const WelcomeModal = () => {
   );
 };
 
-export default WelcomeModal;
+export default NotificationModal;

@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import GameBoard from "../components/GameBoard/GameBoard";
 import Particles from "../components/Particles";
 
-import WelcomeModal from "../components/WelcomeModal/WelcomeModal";
+import NotificationModal from "../components/NotificationModal/NotificationModal";
 
 import Layout from "../components/Layout";
 
@@ -13,7 +13,7 @@ const Main: FC = () => {
     <Layout>
       <Particles />
      
-      <WelcomeModal />
+      <NotificationModal />
       <Header />
       <GameBoard />
       <Footer />
