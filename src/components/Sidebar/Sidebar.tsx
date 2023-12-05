@@ -6,7 +6,7 @@ import Gear from "../Icons/Gear";
 // import Map from "../Icons/Map";
 import Leaderboard from "./Leaderboard";
 import Settings from "./Settings";
-import WelcomeContent from "../NotificationModal/Content";
+import NotificationContent from "../NotificationModal/Content";
 import Modal, { useModal } from "../Modal";
 
 const getModalContent = (close: () => void, content?: string) => {
@@ -18,8 +18,8 @@ const getModalContent = (close: () => void, content?: string) => {
       };
     case "welcome":
       return {
-        title: "Welcome",
-        component: <WelcomeContent close={close} />,
+        title: "Verse Clicker",
+        component: <NotificationContent sidebar close={close} />,
       };
 
     /*   case "tour":
