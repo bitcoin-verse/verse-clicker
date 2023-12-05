@@ -51,7 +51,7 @@ const BonusContent = () => {
         target="_blank"
         rel="noreferrer"
       >
-        View on Etherscan
+        View on {isBurn ? "Etherscan" : "Polyscan"}
       </LinkButton>
     </>
   );

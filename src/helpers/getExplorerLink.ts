@@ -5,7 +5,7 @@ export const getTxExplorerLink = (chainId: number, hash?: string) => {
     case 5:
       return `https://goerli.etherscan.io/tx/${hash}`;
     case 137:
-      return `'https://polygonscan.com/tx/${hash}`;
+      return `https://polygonscan.com/tx/${hash}`;
 
     default:
       return "";
