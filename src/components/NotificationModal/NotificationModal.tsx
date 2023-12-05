@@ -11,7 +11,6 @@ const NotificationModal = () => {
 
   useEffect(() => {
     if ((returnData && returnData.seconds > 5) || bonusData) showModal();
-    return;
   }, [returnData, bonusData]);
 
   return (
