@@ -9,9 +9,10 @@ import BonusContent from "./BonusContent";
 
 interface Props {
   close: () => void;
+  sidebar?: boolean;
 }
 
-const Content: FC<Props> = ({ close }) => {
+const Content: FC<Props> = ({ close, sidebar }) => {
   const { player, network, bonusData } = useTrackedState();
 
   return (
@@ -21,7 +22,7 @@ const Content: FC<Props> = ({ close }) => {
         <BonusContent />
       ) : (
         <>
-          {!!player.cookies ? <ReturningUser /> : <NewUser />}
+          {!!player.cookies && !sidebar ? <ReturningUser /> : <NewUser />}
           <StyledButton onClick={close}>Play</StyledButton>
         </>
       )}
