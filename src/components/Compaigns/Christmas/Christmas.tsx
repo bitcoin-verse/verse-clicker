@@ -27,7 +27,7 @@ const Christmas = () => {
         <img src={tree} alt="Tree" height="100%" width="100%" />
       </CampaignButton>
 
-      <Modal title="Christmas Campaign" modalRef={modalRef}>
+      <Modal title="Merry Clickmas" modalRef={modalRef}>
         <ModalWrapper>
           <H3>HO! HO! HO!</H3>
           <Label>Get into the clickmas spirit by joining this campaign</Label>
