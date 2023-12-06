@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { colors } from "./colors";
 
 export const Button = styled.button<{
   $size?: "default" | "small" | "tiny";
@@ -20,43 +19,45 @@ export const Button = styled.button<{
 
   width: ${({ $fullWidth }) => ($fullWidth ? "100%" : "unset")};
 
-  ${({ $design: design }) => {
+  ${({ $design: design, theme }) => {
     switch (design) {
       case "secondary":
         return css`
-          color: ${colors.shade100};
-          background: linear-gradient(180deg, #425472 0%, #313e57 100%);
+          color: ${theme.buttons.secondary.text.base};
+          background: ${theme.buttons.secondary.background.base};
 
           &:hover,
           &:focus {
-            background: linear-gradient(180deg, #586f91 0%, #425472 100%);
+            color: ${theme.buttons.secondary.text.hover};
+            background: ${theme.buttons.secondary.background.hover};
           }
           &:active {
-            background: linear-gradient(180deg, #334059 0%, #425371 100%);
+            color: ${theme.buttons.secondary.text.active};
+            background: ${theme.buttons.secondary.background.active};
           }
           &:disabled {
-            background: #1a2231;
-            color: ${colors.shade50};
+            color: ${theme.buttons.secondary.text.disabled};
+            background: ${theme.buttons.secondary.background.disabled};
             cursor: default;
           }
         `;
       case "tertiary":
         return css`
-          color: ${colors.shade90};
-          background: #1a2231;
+          color: ${theme.buttons.tertiary.text.base};
+          background: ${theme.buttons.tertiary.background.base};
 
           &:hover,
           &:focus {
-            color: ${colors.shade100};
-            background: #313e57;
+            color: ${theme.buttons.tertiary.text.hover};
+            background: ${theme.buttons.tertiary.background.hover};
           }
           &:active {
-            color: ${colors.shade100};
-            background: #252d40;
+            color: ${theme.buttons.tertiary.text.active};
+            background: ${theme.buttons.tertiary.background.active};
           }
           &:disabled {
-            background: #1a2231;
-            color: ${colors.shade50};
+            color: ${theme.buttons.tertiary.text.disabled};
+            background: ${theme.buttons.tertiary.background.disabled};
             cursor: default;
           }
         `;
@@ -64,19 +65,21 @@ export const Button = styled.button<{
       case "primary":
       default:
         return css`
-          color: ${colors.shade100};
-          background: linear-gradient(180deg, #0ebef0 0%, #0085ff 100%);
+          color: ${theme.buttons.primary.text.base};
+          background: ${theme.buttons.primary.background.base};
 
           &:hover,
           &:focus {
-            background: linear-gradient(180deg, #31c9f4 0%, #2c96f6 100%);
+            color: ${theme.buttons.primary.text.hover};
+            background: ${theme.buttons.primary.background.hover};
           }
           &:active {
-            background: linear-gradient(180deg, #0189fe 0%, #2c96f6 100%);
+            color: ${theme.buttons.primary.text.active};
+            background: ${theme.buttons.primary.background.active};
           }
           &:disabled {
-            background: #1a2231;
-            color: ${colors.shade50};
+            color: ${theme.buttons.primary.text.disabled};
+            background: ${theme.buttons.primary.background.disabled};
             cursor: default;
           }
         `;

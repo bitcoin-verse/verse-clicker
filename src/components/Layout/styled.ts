@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
   
   html, body, div {
     color: white;
-
   }
 
   button {
@@ -20,16 +19,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const ContentsWrapper = styled.div<{
-  $showMoon?: boolean;
-  $background?: string;
-}>`
+export const ContentsWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 
-  background: ${({ $background }) => $background};
+  background: ${({ theme }) => theme.background};
   min-height: 100%;
   min-height: 100vh;
   min-height: 100svh;
