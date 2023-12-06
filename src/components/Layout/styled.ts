@@ -19,9 +19,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const ContentsWrapper = styled.div<{
-  $showMoon?: boolean;
-}>`
+export const ContentsWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;

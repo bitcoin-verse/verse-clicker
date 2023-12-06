@@ -1,9 +1,11 @@
 import { CustomTheme } from ".";
-import verseMoon from "../../assets/verse-polygon-moon.png";
+import moon from "../../assets/verse-polygon-moon.png";
+import halfMoon from "../../assets/half-moon-polygon.png";
 import { colors } from "../colors";
 
 export const Polygon: CustomTheme = {
-  moon: verseMoon,
+  moon,
+  halfMoon,
   background: "linear-gradient(to top, #030C14 50%, #8F58E7 100%)",
   buttons: {
     primary: {

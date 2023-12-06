@@ -1,9 +1,11 @@
 import { CustomTheme } from ".";
-import verseMoon from "../../assets/verse-moon.png";
+import moon from "../../assets/verse-moon.png";
+import halfMoon from "../../assets/half-moon.png";
 import { colors } from "../colors";
 
 export const Goerli: CustomTheme = {
-  moon: verseMoon,
+  moon,
+  halfMoon,
   background: "#030c14",
   buttons: {
     primary: {

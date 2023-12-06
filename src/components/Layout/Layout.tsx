@@ -5,17 +5,13 @@ import { useTrackedState } from "../../context/store";
 import { ThemeProvider } from "styled-components";
 import { themes } from "../themes";
 
-interface Props {
-  showMoon?: boolean;
-}
-
-const Layout: FC<PropsWithChildren<Props>> = ({ children, showMoon }) => {
+const Layout: FC<PropsWithChildren> = ({ children }) => {
   const { network } = useTrackedState();
 
   return (
     <ThemeProvider theme={themes[network]}>
       <AudioProvider>
-        <ContentsWrapper $showMoon={showMoon}>
+        <ContentsWrapper>
           <GlobalStyle />
           {children}
         </ContentsWrapper>

@@ -21,6 +21,7 @@ type ButtonTheme = {
 
 export type CustomTheme = {
   moon: string;
+  halfMoon: string;
   background: string;
   buttons: {
     primary: ButtonTheme;

@@ -1,9 +1,11 @@
 import { CustomTheme } from ".";
-import verseMoon from "../../assets/verse-moon.png";
+import moon from "../../assets/verse-moon.png";
+import halfMoon from "../../assets/half-moon.png";
 import { colors } from "../colors";
 
 export const Ethereum: CustomTheme = {
-  moon: verseMoon,
+  moon,
+  halfMoon,
   background: "linear-gradient(180deg, #020A10 0%, #10518D 100%)",
   buttons: {
     primary: {
