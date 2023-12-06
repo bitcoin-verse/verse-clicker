@@ -19,9 +19,8 @@ const Christmas = () => {
   const { address } = useAccount();
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
-  const campaign = useCampaignInfo("Christmas");
+  const { isActive, campaignInfo } = useCampaignInfo("Christmas");
 
-  console.log(campaign);
   return (
     <>
       <CampaignButton onClick={() => showModal()}>
@@ -33,20 +32,41 @@ const Christmas = () => {
           <H3>HO! HO! HO!</H3>
           <Label>Get into the clickmas spirit by joining this campaign</Label>
           <Label>Get to top of the leaderboard to win prizes</Label>
-          <Label>From: December 12th</Label>
-          <Label>To: December 25th</Label>
+          {campaignInfo && (
+            <>
+              <Label>
+                From:{" "}
+                {new Date(campaignInfo?.startDate).toLocaleString("us", {
+                  dateStyle: "medium",
+                  timeStyle: "medium",
+                })}
+              </Label>
+              <Label>
+                To:{" "}
+                {new Date(campaignInfo?.endDate).toLocaleString("us", {
+                  dateStyle: "medium",
+                  timeStyle: "medium",
+                })}
+              </Label>
+              <Label $color="secondary">
+                Times are localilsed so it should show time relative to you
+              </Label>
+            </>
+          )}
 
-          <Button
-            $size="small"
-            onClick={() => {
-              dispatch({ type: "RESET_GAME" });
-              dispatch({ type: "SET_NETWORK", payload: "Christmas" });
-              socket.emit("join", { address, chain: "Christmas" });
-              close();
-            }}
-          >
-            Start NOW
-          </Button>
+          {isActive && (
+            <Button
+              $size="small"
+              onClick={() => {
+                dispatch({ type: "RESET_GAME" });
+                dispatch({ type: "SET_NETWORK", payload: "Christmas" });
+                socket.emit("join", { address, chain: "Christmas" });
+                close();
+              }}
+            >
+              Start NOW
+            </Button>
+          )}
         </ModalWrapper>
       </Modal>
     </>
