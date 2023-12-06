@@ -3,7 +3,7 @@ import React, { FC, useEffect } from "react";
 import Main from "./views/Main";
 import { useAccount, useNetwork } from "wagmi";
 import NotConnected from "./views/NotConnected";
-import { useDispatch } from "./context/store";
+import { useDispatch, useTrackedState } from "./context/store";
 import { useSocketCtx } from "./context/SocketContext";
 import useSocketEvents from "./hooks/useSocketEvents";
 import useAmplitudeEvents from "./hooks/useAmplitudeEvents";
@@ -16,6 +16,7 @@ const App: FC = () => {
   const { loading, setLoading } = useSocketEvents();
 
   const { chain } = useNetwork();
+  const { network } = useTrackedState();
 
   const { status, address } = useAccount({
     onConnect: ({ address: addr }) => {
@@ -46,7 +47,10 @@ const App: FC = () => {
       socket.disconnect();
       return;
     }
-    dispatch({ type: "SET_NETWORK", payload: chain.name });
+    dispatch({
+      type: "SET_NETWORK",
+      payload: network === "Christmas" ? network : chain.name,
+    });
     socket.disconnect();
     socket.connect();
   }, [status, chain, address]);

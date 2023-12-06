@@ -12,13 +12,16 @@ import { Label } from "../../Label";
 import { Button } from "../../Button";
 import { useDispatch } from "../../../context/store";
 import { useSocketCtx } from "../../../context/SocketContext";
+import useCampaignInfo from "../../../hooks/useCampaignInfo";
 
 const Christmas = () => {
   const { modalRef, showModal, close } = useModal();
   const { address } = useAccount();
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
+  const campaign = useCampaignInfo("Christmas");
 
+  console.log(campaign);
   return (
     <>
       <CampaignButton onClick={() => showModal()}>
