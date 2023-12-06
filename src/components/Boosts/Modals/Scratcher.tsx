@@ -15,17 +15,17 @@ const Scratcher: FC = () => {
 
   return (
     <ModalWrapper>
-      <H3>Boost your points production with Scratch & Win tickets</H3>
+      <H3>Boost your points production by playing Verse Scratcher</H3>
       <Description style={{ textAlign: "left" }}>
         1. Buy a ticket
         <br />
-        2. Scratch the same number 3 times to win VERSE
+        2. Scratch
         <br />
         3. Claim your prize
       </Description>
       <Text>
-        Your Verse Clicker one-time bonus = your current points production rate
-        X your Scratch & Win prize amount
+        You will receive a one-time bonus equal to your current points
+        production rate multiplied by your Scratch & Win prize amount
       </Text>
       <LinkButton
         href={scratcherLink}

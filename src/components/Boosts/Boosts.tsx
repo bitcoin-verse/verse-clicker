@@ -84,7 +84,7 @@ const getModalContent = (content?: string) => {
       };
     case "scratcher":
       return {
-        title: "Scratch & Win",
+        title: "Verse Scratcher",
         component: <Scratcher />,
       };
     default:
