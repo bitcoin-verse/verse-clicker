@@ -8,7 +8,7 @@ import { BonusHeader, BonusRow } from "./styled";
 import { Title } from "../Title";
 import { colors } from "../colors";
 import verseIcon from "../../assets/verse-icon.png";
-import PointsIcon from "../Icons/PointsIcon";
+import PointsIcon from "../PointsIcon";
 import { TxData } from "../../context/reducers/returnData";
 
 /* const sample = {

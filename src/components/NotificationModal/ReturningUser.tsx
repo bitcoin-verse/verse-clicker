@@ -9,7 +9,7 @@ import { H3 } from "../H3";
 
 import { DataWrapper, Stats, Value } from "./styled";
 import BonusList from "./BonusList";
-import PointsIcon from "../Icons/PointsIcon";
+import PointsIcon from "../PointsIcon";
 
 const ReturningUser = () => {
   const { returnData } = useTrackedState();

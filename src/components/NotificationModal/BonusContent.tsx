@@ -4,7 +4,7 @@ import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getTxExplorerLink } from "../../helpers/getExplorerLink";
 import { H3 } from "../H3";
-import PointsIcon from "../Icons/PointsIcon";
+import PointsIcon from "../PointsIcon";
 import { Label } from "../Label";
 import { LinkButton } from "../LinkButton";
 import BurnEngineLink from "../Links/BurnEngineLink";
