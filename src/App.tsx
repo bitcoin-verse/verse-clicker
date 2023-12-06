@@ -3,10 +3,11 @@ import React, { FC, useEffect } from "react";
 import Main from "./views/Main";
 import { useAccount, useNetwork } from "wagmi";
 import NotConnected from "./views/NotConnected";
-import { useDispatch } from "./context/store";
+import { useDispatch, useTrackedState } from "./context/store";
 import { useSocketCtx } from "./context/SocketContext";
 import useSocketEvents from "./hooks/useSocketEvents";
 import useAmplitudeEvents from "./hooks/useAmplitudeEvents";
+import { useWeb3Modal } from "@web3modal/wagmi/react";
 const App: FC = () => {
   useAmplitudeEvents();
 
@@ -14,7 +15,8 @@ const App: FC = () => {
 
   const { socket, isConnected: isSocketConnected } = useSocketCtx();
   const { loading, setLoading } = useSocketEvents();
-
+  const { network } = useTrackedState();
+  const { open } = useWeb3Modal();
   const { chain } = useNetwork();
 
   const { status, address } = useAccount({
@@ -31,7 +33,8 @@ const App: FC = () => {
   });
 
   useEffect(() => {
-    if (status !== "connected" || !chain) return;
+    if (status !== "connected" || !chain || (network && network !== chain.name))
+      return;
     setLoading(true);
 
     dispatch({ type: "RESET_GAME" });
@@ -50,6 +53,13 @@ const App: FC = () => {
     socket.disconnect();
     socket.connect();
   }, [status, chain, address]);
+
+  useEffect(() => {
+    if (!network) return;
+    if (chain?.name !== network) {
+      open({ view: "Networks" });
+    }
+  }, [chain?.name, network]);
 
   return (
     <>
