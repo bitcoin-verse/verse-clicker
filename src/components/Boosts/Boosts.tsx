@@ -37,7 +37,7 @@ const boostList = (player: Player, chainId: number) => {
         {
           id: "scratcher",
           unlocked: true,
-          label: "Verse Scratcher",
+          label: "Scratch & Win",
           description: "Up to 1,000,000x",
         },
       ];
