@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
 
-import Star from "../../Icons/Star";
+import PointsIcon from "../../PointsIcon";
 
 import { Wrapper, Points, StatCount } from "./styled";
 import { Label } from "../../Label";
@@ -14,12 +14,12 @@ const PointsDisplay: FC = () => {
   return (
     <Wrapper>
       <Points>
-        <Star size={32} />
+        <PointsIcon size={32} />
         {formatNumber(player.cookies)}
       </Points>
       <StatCount>
         {formatNumber(player.cps)}
-        <Star size={16} />
+        <PointsIcon size={16} />
         <Label>per second</Label>
       </StatCount>
     </Wrapper>

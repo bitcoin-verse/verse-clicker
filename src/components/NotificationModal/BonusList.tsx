@@ -8,7 +8,7 @@ import { BonusHeader, BonusRow } from "./styled";
 import { Title } from "../Title";
 import { colors } from "../colors";
 import verseIcon from "../../assets/verse-icon.png";
-import Star from "../Icons/Star";
+import PointsIcon from "../Icons/PointsIcon";
 import { TxData } from "../../context/reducers/returnData";
 
 /* const sample = {
@@ -67,7 +67,7 @@ const BonusList: FC<Props> = ({ isBurn, txData }) => {
                 })}
               </div>
               <div>
-                {formatNumber(data.bonusBase)} <Star size="0.875rem" />
+                {formatNumber(data.bonusBase)} <PointsIcon size="0.875rem" />
               </div>
               <div>
                 {formatNumber(data.bonusTotal)}

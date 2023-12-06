@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Body, StarWrapper, YouBadge } from "./styled";
 import { formatNumber } from "../../../helpers/formatNumber";
 import Cursor from "../../Icons/Cursor";
-import Star from "../../Icons/Star";
+import PointsIcon from "../../PointsIcon";
 import useUsername from "../../../hooks/useUsername";
 import Marquee from "../../Marquee";
 
@@ -34,7 +34,7 @@ const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
       <div>
         {formatNumber(Number(item.Earned))}
         <StarWrapper>
-          <Star size="0.875rem" />
+          <PointsIcon size="0.875rem" />
         </StarWrapper>
       </div>
 
