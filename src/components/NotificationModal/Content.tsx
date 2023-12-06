@@ -4,8 +4,8 @@ import ReturningUser from "./ReturningUser";
 import NewUser from "./NewUser";
 import { Moon, StyledButton } from "./styled";
 import { useTrackedState } from "../../context/store";
-import { getMoonImage } from "../../helpers/getMoonImage";
 import BonusContent from "./BonusContent";
+import { useTheme } from "styled-components";
 
 interface Props {
   close: () => void;
@@ -13,11 +13,12 @@ interface Props {
 }
 
 const Content: FC<Props> = ({ close, sidebar }) => {
-  const { player, network, bonusData } = useTrackedState();
+  const { player, bonusData } = useTrackedState();
+  const { moon } = useTheme();
 
   return (
     <>
-      <Moon src={getMoonImage(network)} />
+      <Moon src={moon} />
       {bonusData ? (
         <BonusContent />
       ) : (
