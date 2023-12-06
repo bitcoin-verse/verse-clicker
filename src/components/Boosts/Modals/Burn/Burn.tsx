@@ -33,7 +33,7 @@ import getBurnEngineDetails from "../../../../contracts/getBurnEngineDetails";
 import LoadingStates from "./LoadingStates";
 import { useTrackedState } from "../../../../context/store";
 import { logAmplitudeEvent } from "../../../../helpers/analytics";
-import Star from "../../../Icons/Star";
+import PointsIcon from "../../../PointsIcon";
 import { formatNumber } from "../../../../helpers/formatNumber";
 import BurnEngineLink from "../../../Links/BurnEngineLink";
 
@@ -193,7 +193,7 @@ const Burn: FC = () => {
                   player.cps * calculateBurnBonus(selectedBurn.value),
                 )}{" "}
               </Label>
-              <Star size="0.75rem" />
+              <PointsIcon size="0.75rem" />
             </Price>
             <Divider />
             <Label $color="secondary">

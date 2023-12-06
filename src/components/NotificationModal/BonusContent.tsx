@@ -4,7 +4,7 @@ import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getTxExplorerLink } from "../../helpers/getExplorerLink";
 import { H3 } from "../H3";
-import Star from "../Icons/Star";
+import PointsIcon from "../Icons/PointsIcon";
 import { Label } from "../Label";
 import { LinkButton } from "../LinkButton";
 import BurnEngineLink from "../Links/BurnEngineLink";
@@ -44,7 +44,7 @@ const BonusContent = () => {
       )}
       <Label $color="secondary">Points received</Label>
       <Value>
-        {formatNumber(bonusData?.bonusTotal)} <Star size={16} />
+        {formatNumber(bonusData?.bonusTotal)} <PointsIcon size={16} />
       </Value>
       <LinkButton
         href={getTxExplorerLink(chainId, bonusData?.txHash)}

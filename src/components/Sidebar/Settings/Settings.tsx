@@ -14,10 +14,11 @@ import {
 } from "./styled";
 
 import { Points } from "../../GameBoard/PointsDisplay/styled";
-import Star from "../../Icons/Star";
 import SoundOff from "../../Icons/SoundOff";
 import SoundOn from "../../Icons/SoundOn";
 import Reset from "../../Icons/Reset";
+import PointsIcon from "../../PointsIcon";
+
 import { useSocketCtx } from "../../../context/SocketContext";
 import { useModal } from "../../Modal";
 import ConfirmModal from "./ConfirmModal";
@@ -57,7 +58,7 @@ const Settings: FC = () => {
       </Header>
 
       <Points style={{ alignSelf: "flex-start" }}>
-        <Star size={32} />
+        <PointsIcon size={32} />
         {formatNumber(player.cookies)}
       </Points>
 

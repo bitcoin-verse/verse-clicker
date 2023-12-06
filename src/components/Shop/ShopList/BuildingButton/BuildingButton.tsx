@@ -5,7 +5,7 @@ import { Amount, Button, Cost, Image } from "./styled";
 import { useTrackedState } from "../../../../context/store";
 import { Title } from "../../../Title";
 import { Text } from "../../../Text";
-import Star from "../../../Icons/Star";
+import PointsIcon from "../../../PointsIcon";
 import Building from "../../../../classes/Building";
 import { useProduction } from "../../../../hooks/useProduction";
 import { useSocketCtx } from "../../../../context/SocketContext";
@@ -105,7 +105,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
       <Cost $unaffordable={player.cookies < cost}>
         <span>x{amount || 1}</span>
         <div>
-          <Star size={12} />
+          <PointsIcon size={12} />
         </div>
         {formatNumber(cost)}
       </Cost>
