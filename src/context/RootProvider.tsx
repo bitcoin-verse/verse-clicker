@@ -34,7 +34,7 @@ const metadata: Web3ModalOptions["metadata"] = {
 const isDev = process.env.REACT_APP_DEV_ENV === "development";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  isDev ? [goerli, mainnet, polygon] : [mainnet],
+  isDev ? [goerli, mainnet, polygon] : [mainnet, polygon],
   [
     jsonRpcProvider({
       rpc: (chain) => {
@@ -95,7 +95,7 @@ createWeb3Modal({
   projectId,
   chains,
 
-  defaultChain: isDev ? goerli : mainnet,
+  // defaultChain: isDev ? goerli : mainnet,
   themeMode: "dark",
   featuredWalletIds: [
     "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
