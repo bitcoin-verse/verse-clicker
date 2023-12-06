@@ -13,7 +13,7 @@ import {
 } from "./styled";
 import { Title } from "../Title";
 import { Button } from "../Button";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useWeb3Modal, useWeb3ModalState } from "@web3modal/wagmi/react";
 import connectWallet from "../../assets/connect-wallet.png";
 import Modal, { useModal } from "../Modal";
 import Spinner from "../Icons/Spinner";
@@ -41,6 +41,7 @@ const Loading: FC = () => {
   const { status } = useAccount();
   const { disconnect } = useDisconnect();
   const { open } = useWeb3Modal();
+  const { open: isWeb3ModalOpen } = useWeb3ModalState();
   const { chains, switchNetwork } = useSwitchNetwork();
   const { chain } = useNetwork();
 
@@ -51,7 +52,10 @@ const Loading: FC = () => {
     if (status === "connected") {
       showModal();
     }
-  }, [status]);
+    if (isWeb3ModalOpen) {
+      close();
+    }
+  }, [status, network, isWeb3ModalOpen]);
 
   return (
     <>
