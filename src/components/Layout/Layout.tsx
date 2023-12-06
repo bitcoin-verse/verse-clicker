@@ -15,7 +15,7 @@ const getNetworkBackground = (network: NetworkName) => {
     case "Goerli":
     case "Ethereum":
     default:
-      return "#030c14;";
+      return "linear-gradient(180deg, #020A10 0%, #10518D 100%)";
   }
 };
 
