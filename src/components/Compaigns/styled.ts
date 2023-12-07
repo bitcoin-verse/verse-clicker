@@ -7,10 +7,12 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   right: 1rem;
-  top: 0;
+  top: 2rem;
+ 
 
   @media (min-width: 768px) {
     left: 1rem;
+    top: 0;
     right: initial;
     padding: 0.75rem;
   }
@@ -26,7 +28,7 @@ export const CampaignButton = styled.button`
   margin-bottom: 2rem;
 
   & > img {
-    filter: drop-shadow(0 0 0.75rem #6a1919);
+    filter: drop-shadow(0 0 0.75rem grey);
   }
 
   @media (min-width: 768px) {
