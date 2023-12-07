@@ -9,6 +9,7 @@ import { useSocketCtx } from "../../../context/SocketContext";
 import { ButtonWrapper, ClickButton, CookieWrapper, CpcClick } from "./styled";
 import { useAudio } from "../../../context/AudioProvider";
 import Sidebar from "../../Sidebar";
+import Campaigns from "../../Compaigns/Campaigns";
 
 const Cookie: FC = () => {
   const { playLaser } = useAudio();
@@ -108,6 +109,7 @@ const Cookie: FC = () => {
           disabled={status !== "connected"}
         />
       </ButtonWrapper>
+      <Campaigns />
       <Sidebar />
     </CookieWrapper>
   );
