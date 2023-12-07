@@ -12,14 +12,14 @@ import Sidebar from "../../Sidebar";
 import Campaigns from "../../Compaigns/Campaigns";
 
 const Cookie: FC = () => {
-  const { playLaser } = useAudio();
+  const { playLaser, playBells } = useAudio();
   const { socket } = useSocketCtx();
 
   const { disconnect } = useDisconnect();
   const { status } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
 
-  const { player } = useTrackedState();
+  const { player, gameMode } = useTrackedState();
   const [clickCount, setClickCount] = useState<number>(0);
 
   const countTimer = useRef<NodeJS.Timeout>();
@@ -93,7 +93,8 @@ const Cookie: FC = () => {
     socket.emit("click");
     animateCookieClick(e);
 
-    if (playLaser) playLaser();
+    if (gameMode === "Christmas" && playBells) playBells();
+    if (gameMode !== "Christmas" && playLaser) playLaser();
   };
 
   return (
