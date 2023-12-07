@@ -6,29 +6,39 @@ import sf3 from "../../../assets/snowflakes/snowflake-3.png";
 import sf4 from "../../../assets/snowflakes/snowflake-4.png";
 import sf5 from "../../../assets/snowflakes/snowflake-5.png";
 import sf6 from "../../../assets/snowflakes/snowflake-6.png";
+import santa from "../../../assets/santa.png";
 
 export const snow: RecursivePartial<IOptions> = {
+  background: {
+    color: "transparent",
+  },
   particles: {
     shape: {
-      type: "image",
+      type: "images",
       options: {
-        image: [
+        images: [
           {
+            src: sf1,
             name: "sf1",
           },
           {
+            src: sf2,
             name: "sf2",
           },
           {
+            src: sf3,
             name: "sf3",
           },
           {
+            src: sf4,
             name: "sf4",
           },
           {
+            src: sf5,
             name: "sf5",
           },
           {
+            src: sf6,
             name: "sf6",
           },
         ],
@@ -57,30 +67,66 @@ export const snow: RecursivePartial<IOptions> = {
     },
     wobble: { distance: 20, enable: !0, speed: { min: -5, max: 5 } },
   },
-  preload: [
-    {
-      src: sf1,
-      name: "sf1",
+  emitters: {
+    position: {
+      y: 50,
+      x: -10,
     },
-    {
-      src: sf2,
-      name: "sf2",
+    life: {
+      wait: true,
     },
-    {
-      src: sf3,
-      name: "sf3",
+    rate: {
+      delay: 45,
+      quantity: 1,
     },
-    {
-      src: sf4,
-      name: "sf4",
+    size: {
+      width: 0,
+      height: 0,
     },
-    {
-      src: sf5,
-      name: "sf5",
+    particles: {
+      shape: {
+        type: "images",
+        options: {
+          images: [
+            {
+              src: santa,
+              width: 596,
+              height: 200,
+            },
+          ],
+        },
+      },
+      size: {
+        value: 100,
+      },
+      move: {
+        speed: 10,
+        random: false,
+        straight: true,
+        direction: "right",
+        outModes: {
+          default: "none",
+          right: "destroy",
+        },
+      },
+      wobble: { distance: 0, enable: false },
+      rotate: {
+        animation: {
+          enable: false,
+          speed: 0,
+          sync: false,
+        },
+        direction: "random",
+        value: {
+          min: -10,
+          max: -10,
+        },
+      },
+      opacity: { value: { min: 0.5, max: 0.5 } },
+      zIndex: {
+        value: 0,
+      },
     },
-    {
-      src: sf6,
-      name: "sf6",
-    },
-  ],
+  },
+  detectRetina: true,
 };

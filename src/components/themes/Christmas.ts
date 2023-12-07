@@ -1,12 +1,12 @@
 import { CustomTheme } from ".";
 import present from "../../assets/present.png";
-import halfMoon from "../../assets/half-moon.png";
+import halfPresent from "../../assets/half-present.png";
 import { colors } from "../colors";
 // import background from "../../assets/christmas-bg.jpeg";
 
 export const Christmas: CustomTheme = {
   moon: present,
-  halfMoon,
+  halfMoon: halfPresent,
   background: `radial-gradient(#b72424, #492727)`,
   buttons: {
     primary: {

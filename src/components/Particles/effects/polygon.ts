@@ -88,7 +88,7 @@ export const polygonConfig: RecursivePartial<IOptions> = {
       wait: true,
     },
     rate: {
-      delay: 45,
+      delay: 5,
       quantity: 1,
     },
     size: {

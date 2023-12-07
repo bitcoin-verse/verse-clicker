@@ -112,12 +112,10 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
   const [content, setContent] = useState<string>();
   const { modalRef, showModal } = useModal();
   const { chain } = useNetwork();
-  const { player, gameMode: network } = useTrackedState();
+  const { player, gameMode } = useTrackedState();
 
   const modalContent = getModalContent(content);
   const interactiveBoosts = ["burn", "scratcher"];
-
-  if (network === "Christmas") return null;
 
   return (
     <Wrapper $mobileVersion={mobileVersion}>
@@ -125,7 +123,7 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
         <H4>Boost your points</H4>
         <BoostTiles>
           {chain &&
-            boostList(player, network).map((boost) => (
+            boostList(player, gameMode).map((boost) => (
               <BoostButton
                 key={boost.id}
                 onClick={() => {
