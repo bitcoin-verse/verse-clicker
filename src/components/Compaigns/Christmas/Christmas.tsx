@@ -1,5 +1,5 @@
 import React from "react";
-import { useAccount } from "wagmi";
+import { useAccount, useNetwork } from "wagmi";
 
 import { CampaignButton } from "../styled";
 
@@ -10,15 +10,18 @@ import { ModalWrapper } from "../../Boosts/styled";
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
 import { Button } from "../../Button";
-import { useDispatch } from "../../../context/store";
+import { useDispatch, useTrackedState } from "../../../context/store";
 import { useSocketCtx } from "../../../context/SocketContext";
 import useCampaignInfo from "../../../hooks/useCampaignInfo";
+import { GameMode } from "../../../context/reducers/network";
 
 const Christmas = () => {
   const { modalRef, showModal, close } = useModal();
   const { address } = useAccount();
+  const { chain } = useNetwork();
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
+  const { gameMode } = useTrackedState();
   const { isActive, campaignInfo } = useCampaignInfo("Christmas");
 
   return (
@@ -54,7 +57,7 @@ const Christmas = () => {
             </>
           )}
 
-          {isActive && (
+          {isActive && gameMode !== "Christmas" && (
             <Button
               $size="small"
               onClick={() => {
@@ -65,6 +68,29 @@ const Christmas = () => {
               }}
             >
               Start NOW
+            </Button>
+          )}
+          {gameMode === "Christmas" && (
+            <Button
+              $size="small"
+              onClick={() => {
+                if (
+                  !chain?.name ||
+                  !["Ethereum", "Polygon", "Goerli"].includes(chain.name)
+                ) {
+                  return;
+                }
+
+                dispatch({ type: "RESET_GAME" });
+                dispatch({
+                  type: "SET_GAME_MODE",
+                  payload: chain?.name as GameMode,
+                });
+                socket.emit("join", { address, chain: chain?.name });
+                close();
+              }}
+            >
+              Go back to {chain?.name}
             </Button>
           )}
         </ModalWrapper>
