@@ -20,7 +20,13 @@ export const createConfig = ({
         ...polygonConfig,
       };
     case "Christmas":
-      return snow;
+      return {
+        ...snow,
+        particles: {
+          ...snow.particles,
+          number: { ...snow.particles?.number, value: particlesNumber * 10 },
+        },
+      };
     case "Goerli":
       return goerliConfig;
     case "Ethereum":

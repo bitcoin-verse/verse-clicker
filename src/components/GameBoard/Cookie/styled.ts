@@ -18,17 +18,17 @@ export const ClickButton = styled.button`
   outline: none;
   cursor: pointer;
   background-image: url(${({ theme }) => theme.moon});
-  background-size: 99%;
+  background-size: auto 99%;
   background-position: center;
   background-repeat: no-repeat;
   pointer-events: none;
 
   &:hover {
-    background-size: 98%;
+    background-size: auto 98%;
   }
 
   &:active {
-    background-size: 100%;
+    background-size: auto 100%;
   }
 
   &::after {
