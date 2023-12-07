@@ -16,7 +16,7 @@ const App: FC = () => {
   const { loading, setLoading } = useSocketEvents();
 
   const { chain } = useNetwork();
-  const { gameMode: network } = useTrackedState();
+  const { gameMode } = useTrackedState();
 
   const { status, address } = useAccount({
     onConnect: ({ address: addr }) => {
@@ -47,10 +47,13 @@ const App: FC = () => {
       socket.disconnect();
       return;
     }
-    dispatch({
-      type: "SET_GAME_MODE",
-      payload: network === "Christmas" ? network : chain.name,
-    });
+
+    if (gameMode !== "Christmas") {
+      dispatch({
+        type: "SET_GAME_MODE",
+        payload: chain.name,
+      });
+    }
     socket.disconnect();
     socket.connect();
   }, [status, chain, address]);

@@ -36,7 +36,7 @@ export type State = {
 
 const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
-const network = search.get("campaign") as "Christmas";
+const gameMode = search.get("campaign");
 
 export const initialState: State = {
   isConnected: false,
@@ -56,7 +56,7 @@ export const initialState: State = {
     isFarming: false,
     isStaking: false,
   },
-  gameMode: network || "Ethereum",
+  gameMode: gameMode === "Christmas" ? gameMode : "Ethereum",
   purchaseAmount: 1,
   settings: { sound: true },
   isWallet,
