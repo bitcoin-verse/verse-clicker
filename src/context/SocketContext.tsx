@@ -9,7 +9,8 @@ import React, {
 } from "react";
 import { Socket, io } from "socket.io-client";
 import { useAccount, useNetwork } from "wagmi";
-import { useDispatch } from "./store";
+import { useDispatch, useTrackedState } from "./store";
+import { GameMode } from "./reducers/network";
 
 export interface SocketCtxState {
   socket: Socket;
@@ -22,10 +23,13 @@ export const SocketCtxContext = createContext<SocketCtxState>(
 
 export const useSocketCtx = () => useContext(SocketCtxContext);
 
+const activeCampaigns: GameMode[] = ["Christmas"];
+
 const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useDispatch();
   const { chain } = useNetwork();
   const { address } = useAccount();
+  const { gameMode } = useTrackedState();
 
   const socketRef = useRef(
     io(process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001", {
@@ -40,7 +44,11 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
       setIsConnected(true);
       if (!chain || !address) return;
       console.log("socket connected");
-      socketRef.current.emit("join", { address, chain: chain.name });
+      console.log(chain.name, gameMode);
+      if (!activeCampaigns.includes(gameMode)) {
+        dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
+      }
+      socketRef.current.emit("join", { address, chain: gameMode });
     };
 
     const onDisconnect = (e: unknown) => {
@@ -67,7 +75,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
 
       socketRef.current.disconnect();
     };
-  }, [address, chain]);
+  }, [address, chain, gameMode]);
 
   return (
     <SocketCtxContext.Provider

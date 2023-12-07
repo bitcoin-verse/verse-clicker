@@ -22,6 +22,7 @@ const Christmas = () => {
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
   const { gameMode } = useTrackedState();
+
   const { isActive, campaignInfo } = useCampaignInfo("Christmas");
 
   return (
@@ -64,6 +65,7 @@ const Christmas = () => {
                 dispatch({ type: "RESET_GAME" });
                 dispatch({ type: "SET_GAME_MODE", payload: "Christmas" });
                 socket.emit("join", { address, chain: "Christmas" });
+
                 close();
               }}
             >

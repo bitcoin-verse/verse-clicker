@@ -7,6 +7,7 @@ import { useDispatch, useTrackedState } from "./context/store";
 import { useSocketCtx } from "./context/SocketContext";
 import useSocketEvents from "./hooks/useSocketEvents";
 import useAmplitudeEvents from "./hooks/useAmplitudeEvents";
+
 const App: FC = () => {
   useAmplitudeEvents();
 
@@ -48,15 +49,9 @@ const App: FC = () => {
       return;
     }
 
-    if (gameMode !== "Christmas") {
-      dispatch({
-        type: "SET_GAME_MODE",
-        payload: chain.name,
-      });
-    }
     socket.disconnect();
     socket.connect();
-  }, [status, chain, address]);
+  }, [status, chain, address, gameMode]);
 
   return (
     <>
