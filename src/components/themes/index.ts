@@ -3,6 +3,7 @@ import { NetworkName } from "../../context/reducers/network";
 import { Ethereum } from "./Ethereum";
 import { Goerli } from "./Goerli";
 import { Polygon } from "./Polygon";
+import { Christmas } from "./Christmas";
 
 type ButtonTheme = {
   background: {
@@ -34,6 +35,7 @@ export const themes: Record<NetworkName, typeof Ethereum> = {
   Goerli,
   Ethereum,
   Polygon,
+  Christmas,
 };
 
 declare module "styled-components" {
