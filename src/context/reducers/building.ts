@@ -30,7 +30,7 @@ export const updateBuildings = (
   state: State,
   payload: UpdateBuildingsAction["payload"],
 ): State => {
-  const bldngs = buildings[state.network].map((b, i) => {
+  const bldngs = buildings[state.gameMode].map((b, i) => {
     return {
       ...b,
       amount: payload[i].amount,

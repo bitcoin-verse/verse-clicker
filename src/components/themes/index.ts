@@ -1,5 +1,5 @@
 import "styled-components";
-import { NetworkName } from "../../context/reducers/network";
+import { GameMode } from "../../context/reducers/network";
 import { Ethereum } from "./Ethereum";
 import { Goerli } from "./Goerli";
 import { Polygon } from "./Polygon";
@@ -31,7 +31,7 @@ export type CustomTheme = {
   };
 };
 
-export const themes: Record<NetworkName, typeof Ethereum> = {
+export const themes: Record<GameMode, typeof Ethereum> = {
   Goerli,
   Ethereum,
   Polygon,

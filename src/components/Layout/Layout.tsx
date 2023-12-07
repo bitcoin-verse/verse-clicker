@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import { themes } from "../themes";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-  const { network } = useTrackedState();
+  const { gameMode: network } = useTrackedState();
 
   return (
     <ThemeProvider theme={themes[network]}>

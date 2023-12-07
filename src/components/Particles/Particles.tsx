@@ -8,7 +8,7 @@ import { useTrackedState } from "../../context/store";
 const ReactParticles = lazy(() => import("react-particles"));
 
 const Particles: FC = () => {
-  const { buildings, network } = useTrackedState();
+  const { buildings, gameMode: network } = useTrackedState();
 
   const particlesInit = useCallback(
     async (engine: Engine) => {

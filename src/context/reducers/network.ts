@@ -1,17 +1,17 @@
 import buildings from "../../buildings";
 import { State } from "../store";
 
-export type NetworkName = "Ethereum" | "Polygon" | "Goerli" | "Christmas";
+export type GameMode = "Ethereum" | "Polygon" | "Goerli" | "Christmas";
 
-export type SetNetworkAction = { type: "SET_NETWORK"; payload: NetworkName };
+export type SetGameModeAction = { type: "SET_GAME_MODE"; payload: GameMode };
 
 export const setNetwork = (
   state: State,
-  payload: SetNetworkAction["payload"],
+  payload: SetGameModeAction["payload"],
 ): State => {
   return {
     ...state,
-    network: payload,
+    gameMode: payload,
     buildings: buildings[payload],
     currentBuilding: buildings[payload][0].name,
   };

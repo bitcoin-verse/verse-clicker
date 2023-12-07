@@ -23,10 +23,20 @@ import Clock from "../Icons/Clock";
 import { useNetwork } from "wagmi";
 import Scratcher from "./Modals/Scratcher";
 import { Player } from "../../context/reducers/player";
+import { GameMode } from "../../context/reducers/network";
 
-const boostList = (player: Player, chainId: number) => {
-  switch (chainId) {
-    case 137:
+const boostList = (player: Player, network: GameMode) => {
+  switch (network) {
+    case "Christmas":
+      return [
+        {
+          id: "scratcher",
+          unlocked: true,
+          label: "Scratch & Win",
+          description: "Up to 1,000,000x",
+        },
+      ];
+    case "Polygon":
       return [
         {
           id: "hold",
@@ -41,6 +51,8 @@ const boostList = (player: Player, chainId: number) => {
           description: "Up to 1,000,000x",
         },
       ];
+    case "Ethereum":
+    case "Goerli":
     default:
       return [
         {
@@ -100,7 +112,7 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
   const [content, setContent] = useState<string>();
   const { modalRef, showModal } = useModal();
   const { chain } = useNetwork();
-  const { player, network } = useTrackedState();
+  const { player, gameMode: network } = useTrackedState();
 
   const modalContent = getModalContent(content);
   const interactiveBoosts = ["burn", "scratcher"];
@@ -113,7 +125,7 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
         <H4>Boost your points</H4>
         <BoostTiles>
           {chain &&
-            boostList(player, chain.id).map((boost) => (
+            boostList(player, network).map((boost) => (
               <BoostButton
                 key={boost.id}
                 onClick={() => {

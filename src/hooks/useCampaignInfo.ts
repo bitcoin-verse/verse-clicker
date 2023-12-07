@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { NetworkName } from "../context/reducers/network";
+import { GameMode } from "../context/reducers/network";
 import axios from "axios";
 
 type CampaignInfo = { startDate: number; endDate: number };
 
-const useCampaignInfo = (campaign: NetworkName) => {
+const useCampaignInfo = (campaign: GameMode) => {
   const [campaignInfo, setCampaignInfo] = useState<CampaignInfo>();
   const [isActive, setIsActive] = useState<boolean>();
 

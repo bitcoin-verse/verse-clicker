@@ -59,7 +59,7 @@ const Christmas = () => {
               $size="small"
               onClick={() => {
                 dispatch({ type: "RESET_GAME" });
-                dispatch({ type: "SET_NETWORK", payload: "Christmas" });
+                dispatch({ type: "SET_GAME_MODE", payload: "Christmas" });
                 socket.emit("join", { address, chain: "Christmas" });
                 close();
               }}
