@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { GameMode } from "../context/reducers/network";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 type CampaignInfo = { startDate: number; endDate: number };
 
@@ -9,12 +9,17 @@ const useCampaignInfo = (campaign: GameMode) => {
   const [isActive, setIsActive] = useState<boolean>();
 
   const getInfo = async () => {
-    const { data } = await axios.get<CampaignInfo>(
-      `${
-        process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001"
-      }/campaign/${campaign}`,
-    );
-    setCampaignInfo(data);
+    try {
+      const { data } = await axios.get<CampaignInfo>(
+        `${
+          process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001"
+        }/campaign/${campaign}`,
+      );
+      setCampaignInfo(data);
+    } catch (e) {
+      const error = e as AxiosError;
+      console.log("Error getting campaign info for %s - ", campaign, error.message);
+    }
   };
 
   useEffect(() => {
