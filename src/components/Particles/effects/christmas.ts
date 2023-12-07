@@ -69,7 +69,7 @@ export const snow: RecursivePartial<IOptions> = {
   },
   emitters: {
     position: {
-      y: 50,
+      y: 80,
       x: -10,
     },
     life: {
@@ -103,7 +103,7 @@ export const snow: RecursivePartial<IOptions> = {
         speed: 10,
         random: false,
         straight: true,
-        direction: "right",
+        direction: -20,
         outModes: {
           default: "none",
           right: "destroy",
