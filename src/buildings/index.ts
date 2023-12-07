@@ -4,6 +4,7 @@ import Upgrade from "../classes/Upgrade";
 import ethBuildings from "./ethereum.json";
 import gethBuildings from "./goerli.json";
 import polyBuildings from "./polygon.json";
+import christmasBuildings from "./christmas.json";
 
 type BuildingJson = {
   name: string;
@@ -48,4 +49,5 @@ export default {
   Ethereum: generateBuildingsFromJson(ethBuildings),
   Polygon: generateBuildingsFromJson(polyBuildings),
   Goerli: generateBuildingsFromJson(gethBuildings),
+  Christmas: generateBuildingsFromJson(christmasBuildings),
 };

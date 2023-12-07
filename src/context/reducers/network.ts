@@ -1,7 +1,7 @@
 import buildings from "../../buildings";
 import { State } from "../store";
 
-export type NetworkName = "Ethereum" | "Polygon" | "Goerli";
+export type NetworkName = "Ethereum" | "Polygon" | "Goerli" | "Christmas";
 
 export type SetNetworkAction = { type: "SET_NETWORK"; payload: NetworkName };
 
