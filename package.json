@@ -11,7 +11,8 @@
     "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "audit:fix": "npx yarn-audit-fix",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "cross-env eslint './src'"
   },
   "eslintConfig": {
     "extends": [
