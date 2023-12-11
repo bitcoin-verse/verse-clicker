@@ -14,9 +14,6 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action
-
       # Checkout master branch
       - name: Checkout
         uses: actions/checkout@v2
