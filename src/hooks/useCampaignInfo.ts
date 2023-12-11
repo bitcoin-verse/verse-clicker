@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import { GameMode } from "../context/reducers/network";
 import axios, { AxiosError } from "axios";
-import { useNetwork } from "wagmi";
-import { useDispatch } from "../context/store";
 
 type CampaignInfo = { startDate: number; endDate: number };
 
 const useCampaignInfo = (campaign: GameMode) => {
-  const { chain } = useNetwork();
-  const dispatch = useDispatch();
   const [campaignInfo, setCampaignInfo] = useState<CampaignInfo>();
   const [isActive, setIsActive] = useState<boolean>();
 
@@ -46,7 +42,6 @@ const useCampaignInfo = (campaign: GameMode) => {
       setIsActive(true);
     } else {
       setIsActive(false);
-      dispatch({ type: "SET_GAME_MODE", payload: chain?.name as GameMode });
     }
 
     let timeout: NodeJS.Timeout;

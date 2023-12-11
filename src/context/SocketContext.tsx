@@ -46,6 +46,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
       console.log("socket connected");
       console.log(chain.name, gameMode);
       if (!activeCampaigns.includes(gameMode)) {
+        dispatch({ type: "RESET_GAME" });
         dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
       }
       socketRef.current.emit("join", { address, chain: gameMode });
