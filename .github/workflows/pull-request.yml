@@ -1,0 +1,41 @@
+name: Pull request checks
+
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, synchronize]
+    branches:
+      - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action
+
+      # Checkout master branch
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Sets node config
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          cache: "yarn"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # Run linter
+      - name: Test source
+        run: yarn lint
+
+      # Build package
+      - name: Build package
+        run: yarn build
