@@ -12,8 +12,8 @@ const useCampaignInfo = (campaign: GameMode) => {
     try {
       const { data } = await axios.get<CampaignInfo>(
         `${
-          process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001"
-        }/campaign/${campaign}`,
+          process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001/"
+        }campaign/${campaign}`,
       );
       setCampaignInfo(data);
     } catch (e) {
