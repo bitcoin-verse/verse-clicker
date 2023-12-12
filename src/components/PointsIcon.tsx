@@ -1,22 +1,24 @@
 import React, { FC } from "react";
-import { useChainId } from "wagmi";
 
 import Sparkle from "./Icons/Sparkle";
 import Star from "./Icons/Star";
+import { useTrackedState } from "../context/store";
+import Present from "./Icons/Present";
 
 interface Props {
   size?: number | string;
 }
 
 const PointsIcon: FC<Props> = ({ size }) => {
-  const chainId = useChainId();
+  const { gameMode } = useTrackedState();
 
-  switch (chainId) {
-    case 137:
+  switch (gameMode) {
+    case "Polygon":
       return <Sparkle size={size} />;
-
-    case 1:
-    case 5:
+    case "Christmas":
+      return <Present size={size} />;
+    case "Ethereum":
+    case "Goerli":
     default:
       return <Star size={size} />;
   }

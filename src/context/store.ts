@@ -6,7 +6,7 @@ import { Player } from "./reducers/player";
 import buildings from "../buildings";
 import { LeaderboardStats } from "./reducers/leaderboard";
 import Building from "../classes/Building";
-import { NetworkName } from "./reducers/network";
+import { GameMode } from "./reducers/network";
 import { ReturnData } from "./reducers/returnData";
 import { BonusData } from "./reducers/bonusData";
 
@@ -20,7 +20,7 @@ export type State = {
   buildings: Building[];
   currentBuilding?: string;
   returnData?: ReturnData;
-  network: NetworkName;
+  gameMode: GameMode;
   error?: string;
   purchaseAmount: number | "max";
   settings: {
@@ -36,6 +36,7 @@ export type State = {
 
 const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
+const gameMode = search.get("campaign");
 
 export const initialState: State = {
   isConnected: false,
@@ -55,7 +56,7 @@ export const initialState: State = {
     isFarming: false,
     isStaking: false,
   },
-  network: "Ethereum",
+  gameMode: gameMode === "Christmas" ? gameMode : "Ethereum",
   purchaseAmount: 1,
   settings: { sound: true },
   isWallet,

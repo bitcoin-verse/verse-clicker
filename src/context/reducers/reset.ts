@@ -4,9 +4,9 @@ import { State, initialState } from "../store";
 export const resetGame = (state: State): State => {
   return {
     ...initialState,
-    network: state.network,
+    gameMode: state.gameMode,
     settings: state.settings,
-    buildings: buildings[state.network],
+    buildings: buildings[state.gameMode],
     isWallet: state.isWallet,
   };
 };

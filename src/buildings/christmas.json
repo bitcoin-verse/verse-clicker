@@ -677,21 +677,21 @@
       },
       {
         "name": "Fusion Energy Reactors",
-        "cost": 1.80e23,
+        "cost": 1.8e23,
         "desc": "Power the factory with clean and highly efficient fusion reactors, significantly increasing the energy available for toy production, which is doubled.",
         "limit": 250,
         "owned": false
       },
       {
         "name": "Antigravity Transportation Systems",
-        "cost": 1.80e26,
+        "cost": 1.8e26,
         "desc": "Implement antigravity systems for material handling and toy movement, streamlining logistics and doubling output capacity.",
         "limit": 300,
         "owned": false
       },
       {
         "name": "Interdimensional Manufacturing Portal",
-        "cost": 1.80e29,
+        "cost": 1.8e29,
         "desc": "Open portals to parallel dimensions for accessing additional resources and manufacturing space, effectively doubling the factory's production capabilities.",
         "limit": 350,
         "owned": false

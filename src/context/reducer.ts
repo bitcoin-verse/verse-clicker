@@ -15,7 +15,7 @@ import {
   setLeaderboardStats,
   setLeaderboardUpdated,
 } from "./reducers/leaderboard";
-import { SetNetworkAction, setNetwork } from "./reducers/network";
+import { SetGameModeAction, setNetwork } from "./reducers/network";
 import { SetErrorAction, setError } from "./reducers/error";
 import { SetReturnDataAction, setReturnData } from "./reducers/returnData";
 import {
@@ -27,7 +27,7 @@ import { resetGame } from "./reducers/reset";
 import { setBonusData, SetBonusDataAction } from "./reducers/bonusData";
 
 export type Action =
-  | SetNetworkAction
+  | SetGameModeAction
   | SetPlayerAction
   | SetBuildingAction
   | SetLeaderboardStatsAction
@@ -46,7 +46,7 @@ const reducer: Reducer<State, Action> = (state, action) => {
   switch (action.type) {
     case "RESET_GAME":
       return resetGame(state);
-    case "SET_NETWORK":
+    case "SET_GAME_MODE":
       return setNetwork(state, action.payload);
     case "SET_PLAYER_DATA":
       return setPlayer(state, action.payload);
