@@ -3,10 +3,11 @@ import { GameMode } from "../context/reducers/network";
 import axios, { AxiosError } from "axios";
 
 type CampaignInfo = { startDate: number; endDate: number };
+export type CampaignPhase = "BEFORE" | "DURING" | "AFTER";
 
 const useCampaignInfo = (campaign: GameMode) => {
   const [campaignInfo, setCampaignInfo] = useState<CampaignInfo>();
-  const [isActive, setIsActive] = useState<boolean>();
+  const [campaignPhase, setCampaignPhase] = useState<CampaignPhase>("BEFORE");
 
   const getInfo = async () => {
     try {
@@ -39,15 +40,17 @@ const useCampaignInfo = (campaign: GameMode) => {
       Date.now() > campaignInfo.startDate &&
       Date.now() < campaignInfo.endDate
     ) {
-      setIsActive(true);
+      setCampaignPhase("DURING");
     } else {
-      setIsActive(false);
+      setCampaignPhase("AFTER");
     }
 
     let timeout: NodeJS.Timeout;
 
     // not started
     if (Date.now() < campaignInfo.startDate) {
+      setCampaignPhase("BEFORE");
+
       const msDiff = campaignInfo.startDate - Date.now();
 
       timeout = setTimeout(() => {
@@ -71,7 +74,7 @@ const useCampaignInfo = (campaign: GameMode) => {
     };
   }, [campaignInfo]);
 
-  return { campaignInfo, isActive };
+  return { campaignInfo, campaignPhase };
 };
 
 export default useCampaignInfo;
