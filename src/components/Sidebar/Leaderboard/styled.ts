@@ -77,6 +77,7 @@ export const Header = styled.div`
 export const StarWrapper = styled.div`
   & > svg {
     filter: drop-shadow(0px 2px 10px #ffb800);
+    transform: translateZ(0);
   }
 `;
 

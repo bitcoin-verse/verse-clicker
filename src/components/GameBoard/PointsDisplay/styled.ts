@@ -31,6 +31,7 @@ export const Points = styled.div`
   & > svg {
     filter: drop-shadow(0px 0.25rem 1.25rem #ffb800);
     margin-right: 0.5rem;
+    transform: translateZ(0);
   }
 `;
 
