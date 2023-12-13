@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useAccount, useNetwork } from "wagmi";
 
 import { CampaignButton } from "../styled";
@@ -7,12 +7,28 @@ import tree from "../../../assets/tree.png";
 import Modal, { useModal } from "../../Modal";
 
 import { ModalWrapper } from "../../Boosts/styled";
-import { Button } from "../../Button";
-import { useDispatch, useTrackedState } from "../../../context/store";
+import { useDispatch } from "../../../context/store";
 import { useSocketCtx } from "../../../context/SocketContext";
-import useCampaignInfo from "../../../hooks/useCampaignInfo";
+import useCampaignInfo, { CampaignPhase } from "../../../hooks/useCampaignInfo";
 import { GameMode } from "../../../context/reducers/network";
-import Content from "./Content";
+import Before from "./Before";
+import After from "./After";
+import During from "./During";
+
+const getCampaignContent = (
+  campaignPhase: CampaignPhase,
+  playCampaign: () => void,
+  switchChain: () => void,
+) => {
+  switch (campaignPhase) {
+    case "BEFORE":
+      return <Before />;
+    case "DURING":
+      return <During playCampaign={playCampaign} switchChain={switchChain} />;
+    case "AFTER":
+      return <After />;
+  }
+};
 
 const Christmas = () => {
   const { modalRef, showModal, close } = useModal();
@@ -20,9 +36,33 @@ const Christmas = () => {
   const { chain } = useNetwork();
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
-  const { gameMode } = useTrackedState();
 
-  const { campaignPhase, } = useCampaignInfo("Christmas");
+  const { campaignPhase } = useCampaignInfo("Christmas");
+
+  const playCampaign = useCallback(() => {
+    dispatch({ type: "RESET_GAME" });
+    dispatch({ type: "SET_GAME_MODE", payload: "Christmas" });
+    socket.emit("join", { address, chain: "Christmas" });
+
+    close();
+  }, []);
+
+  const switchChain = useCallback(() => {
+    if (
+      !chain?.name ||
+      !["Ethereum", "Polygon", "Goerli"].includes(chain.name)
+    ) {
+      return;
+    }
+
+    dispatch({ type: "RESET_GAME" });
+    dispatch({
+      type: "SET_GAME_MODE",
+      payload: chain?.name as GameMode,
+    });
+    socket.emit("join", { address, chain: chain?.name });
+    close();
+  }, []);
 
   return (
     <>
@@ -32,45 +72,7 @@ const Christmas = () => {
 
       <Modal title="Merry Clickmas" modalRef={modalRef}>
         <ModalWrapper>
-          <Content/>
-
-          {campaignPhase === "DURING" && gameMode !== "Christmas" && (
-            <Button
-              $size="small"
-              onClick={() => {
-                dispatch({ type: "RESET_GAME" });
-                dispatch({ type: "SET_GAME_MODE", payload: "Christmas" });
-                socket.emit("join", { address, chain: "Christmas" });
-
-                close();
-              }}
-            >
-              Start NOW
-            </Button>
-          )}
-          {gameMode === "Christmas" && (
-            <Button
-              $size="small"
-              onClick={() => {
-                if (
-                  !chain?.name ||
-                  !["Ethereum", "Polygon", "Goerli"].includes(chain.name)
-                ) {
-                  return;
-                }
-
-                dispatch({ type: "RESET_GAME" });
-                dispatch({
-                  type: "SET_GAME_MODE",
-                  payload: chain?.name as GameMode,
-                });
-                socket.emit("join", { address, chain: chain?.name });
-                close();
-              }}
-            >
-              Go back to {chain?.name}
-            </Button>
-          )}
+          {getCampaignContent(campaignPhase, playCampaign, switchChain)}
         </ModalWrapper>
       </Modal>
     </>
