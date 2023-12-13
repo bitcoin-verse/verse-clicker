@@ -54,6 +54,9 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const onDisconnect = (e: unknown) => {
       setIsConnected(false);
+      dispatch({ type: "RESET_GAME" });
+      if (!chain) return;
+      dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
       console.log("socket disconnected", e);
     };
 
