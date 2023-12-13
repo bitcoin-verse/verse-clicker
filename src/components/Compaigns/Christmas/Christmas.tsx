@@ -7,13 +7,12 @@ import tree from "../../../assets/tree.png";
 import Modal, { useModal } from "../../Modal";
 
 import { ModalWrapper } from "../../Boosts/styled";
-import { H3 } from "../../H3";
-import { Label } from "../../Label";
 import { Button } from "../../Button";
 import { useDispatch, useTrackedState } from "../../../context/store";
 import { useSocketCtx } from "../../../context/SocketContext";
 import useCampaignInfo from "../../../hooks/useCampaignInfo";
 import { GameMode } from "../../../context/reducers/network";
+import Content from "./Content";
 
 const Christmas = () => {
   const { modalRef, showModal, close } = useModal();
@@ -23,7 +22,7 @@ const Christmas = () => {
   const { socket } = useSocketCtx();
   const { gameMode } = useTrackedState();
 
-  const { isActive, campaignInfo } = useCampaignInfo("Christmas");
+  const { campaignPhase, } = useCampaignInfo("Christmas");
 
   return (
     <>
@@ -33,32 +32,9 @@ const Christmas = () => {
 
       <Modal title="Merry Clickmas" modalRef={modalRef}>
         <ModalWrapper>
-          <H3>HO! HO! HO!</H3>
-          <Label>Get into the clickmas spirit by joining this campaign</Label>
-          <Label>Get to top of the leaderboard to win prizes</Label>
-          {campaignInfo && (
-            <>
-              <Label>
-                From:{" "}
-                {new Date(campaignInfo?.startDate).toLocaleString("us", {
-                  dateStyle: "medium",
-                  timeStyle: "medium",
-                })}
-              </Label>
-              <Label>
-                To:{" "}
-                {new Date(campaignInfo?.endDate).toLocaleString("us", {
-                  dateStyle: "medium",
-                  timeStyle: "medium",
-                })}
-              </Label>
-              <Label $color="secondary">
-                Times are localilsed so it should show time relative to you
-              </Label>
-            </>
-          )}
+          <Content/>
 
-          {isActive && gameMode !== "Christmas" && (
+          {campaignPhase === "DURING" && gameMode !== "Christmas" && (
             <Button
               $size="small"
               onClick={() => {
