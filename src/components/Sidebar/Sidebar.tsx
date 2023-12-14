@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { SidebarButton, Wrapper } from "./styled";
 import Trophy from "../Icons/Trophy";
 import Info from "../Icons/Info";
@@ -7,16 +7,20 @@ import Gear from "../Icons/Gear";
 import Leaderboard from "./Leaderboard";
 import Settings from "./Settings";
 import NotificationContent from "../NotificationModal/Content";
-import Modal, { useModal } from "../Modal";
+import Modal from "../Modal";
+import {
+  SidebarModal,
+  useSidebarModalCtx,
+} from "../../context/SidebarModalContext";
 
-const getModalContent = (close: () => void, content?: string) => {
+const getModalContent = (close: () => void, content?: SidebarModal) => {
   switch (content) {
-    case "leaderboard":
+    case "LEADERBOARD":
       return {
         title: "Leaderboard",
         component: <Leaderboard />,
       };
-    case "welcome":
+    case "WELCOME":
       return {
         title: "Verse Clicker",
         component: <NotificationContent sidebar close={close} />,
@@ -25,7 +29,7 @@ const getModalContent = (close: () => void, content?: string) => {
     /*   case "tour":
       break; */
 
-    case "settings":
+    case "SETTINGS":
       return {
         title: "Account Information",
         component: <Settings />,
@@ -36,9 +40,8 @@ const getModalContent = (close: () => void, content?: string) => {
 };
 
 const Sidebar = () => {
-  const { modalRef, showModal, close } = useModal();
-  const [content, setContent] = useState<string>();
-
+  const { modalRef, showModal, close, content, setContent } =
+    useSidebarModalCtx();
   const modalContent = getModalContent(close, content);
 
   return (
@@ -46,7 +49,7 @@ const Sidebar = () => {
       <Wrapper>
         <SidebarButton
           onClick={() => {
-            setContent("leaderboard");
+            setContent("LEADERBOARD");
             showModal();
           }}
         >
@@ -54,7 +57,7 @@ const Sidebar = () => {
         </SidebarButton>
         <SidebarButton
           onClick={() => {
-            setContent("welcome");
+            setContent("WELCOME");
             showModal();
           }}
         >
@@ -65,7 +68,7 @@ const Sidebar = () => {
       </SidebarButton> */}
         <SidebarButton
           onClick={() => {
-            setContent("settings");
+            setContent("SETTINGS");
             showModal();
           }}
         >
