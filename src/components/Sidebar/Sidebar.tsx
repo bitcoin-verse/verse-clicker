@@ -7,7 +7,7 @@ import Gear from "../Icons/Gear";
 import Leaderboard from "./Leaderboard";
 import Settings from "./Settings";
 import NotificationContent from "../NotificationModal/Content";
-import Modal, { useModal } from "../Modal";
+import Modal from "../Modal";
 import {
   SidebarModal,
   useSidebarModalCtx,
