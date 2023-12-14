@@ -5,6 +5,7 @@ import { useTrackedState } from "../../../context/store";
 import { Button } from "../../Button";
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
+import { LinkButton } from "../../LinkButton";
 
 interface Props {
   playCampaign: () => void;
@@ -23,11 +24,15 @@ const During: FC<Props> = ({ playCampaign, switchChain }) => {
         win amazing rewards in VERSE. Ready, set, click!
       </Label>
       {gameMode === "Christmas" ? (
-        <Button onClick={switchChain}>Switch to {chain?.name}</Button>
+        <Button $fullWidth onClick={switchChain}>
+          Switch to {chain?.name}
+        </Button>
       ) : (
-        <Button onClick={playCampaign}>🎮 Start Clicking</Button>
+        <Button $fullWidth onClick={playCampaign}>
+          🎮 Start Clicking
+        </Button>
       )}
-      <Button>📖 Learn more</Button>
+      <LinkButton>📖 Learn more</LinkButton>
     </>
   );
 };
