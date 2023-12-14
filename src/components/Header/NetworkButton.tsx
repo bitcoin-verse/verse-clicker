@@ -4,10 +4,18 @@ import { Button, ButtonContent } from "./styled";
 
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { getNetworkImage } from "../../helpers/getNetworkImage";
+import { useTrackedState } from "../../context/store";
+import Christmas from "../Compaigns/Christmas";
 
 const NetworkButton = () => {
   const chainId = useChainId();
   const { open } = useWeb3Modal();
+  const { gameMode } = useTrackedState();
+
+  if (gameMode === "Christmas") {
+    return <Christmas isNetworkButton />;
+  }
+
   return (
     <Button
       onClick={() => {
