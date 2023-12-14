@@ -8,10 +8,12 @@ import verseLogo from "../../assets/verse-logo.png";
 import verseIcon from "../../assets/verse-icon.png";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useChainId } from "wagmi";
+import { useTrackedState } from "../../context/store";
 
 const Header: FC = () => {
   const chainId = useChainId();
   const { close } = useWeb3Modal();
+  const { gameMode } = useTrackedState();
 
   useEffect(() => {
     close();
@@ -24,7 +26,7 @@ const Header: FC = () => {
         <Icon src={verseIcon} alt="Icon" />
         <Logo src={verseLogo} alt="Logo" />
       </LogoWrapper>
-      <Title>Verse Clicker</Title>
+      <Title>Verse {gameMode === "Christmas" ? "Clickmas" : "Clicker"}</Title>
       <ConnectButton />
     </StyledHeader>
   );
