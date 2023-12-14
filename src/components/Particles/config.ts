@@ -24,7 +24,10 @@ export const createConfig = ({
         ...snow,
         particles: {
           ...snow.particles,
-          number: { ...snow.particles?.number, value: particlesNumber * 10 },
+          number: {
+            ...snow.particles?.number,
+            value: (particlesNumber || 1) * 10,
+          },
         },
       };
     case "Goerli":
