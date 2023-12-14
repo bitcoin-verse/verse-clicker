@@ -19,6 +19,7 @@ const getCampaignContent = (
   campaignPhase: CampaignPhase,
   playCampaign: () => void,
   switchChain: () => void,
+  close: () => void,
 ) => {
   switch (campaignPhase) {
     case "BEFORE":
@@ -26,7 +27,7 @@ const getCampaignContent = (
     case "DURING":
       return <During playCampaign={playCampaign} switchChain={switchChain} />;
     case "AFTER":
-      return <After />;
+      return <After closeCampaign={close} />;
   }
 };
 
@@ -72,7 +73,7 @@ const Christmas = () => {
 
       <Modal title="Merry Clickmas" modalRef={modalRef}>
         <ModalWrapper>
-          {getCampaignContent(campaignPhase, playCampaign, switchChain)}
+          {getCampaignContent(campaignPhase, playCampaign, switchChain, close)}
         </ModalWrapper>
       </Modal>
     </>

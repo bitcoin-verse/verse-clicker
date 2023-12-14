@@ -10,6 +10,7 @@ import { ButtonWrapper, ClickButton, CookieWrapper, CpcClick } from "./styled";
 import { useAudio } from "../../../context/AudioProvider";
 import Sidebar from "../../Sidebar";
 import Campaigns from "../../Compaigns/Campaigns";
+import SidebarModalProvider from "../../../context/SidebarModalContext";
 
 const Cookie: FC = () => {
   const { playLaser, playBells } = useAudio();
@@ -110,8 +111,10 @@ const Cookie: FC = () => {
           disabled={status !== "connected"}
         />
       </ButtonWrapper>
-      <Campaigns />
-      <Sidebar />
+      <SidebarModalProvider>
+        <Campaigns />
+        <Sidebar />
+      </SidebarModalProvider>
     </CookieWrapper>
   );
 };

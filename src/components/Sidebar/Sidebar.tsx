@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { SidebarButton, Wrapper } from "./styled";
 import Trophy from "../Icons/Trophy";
 import Info from "../Icons/Info";
@@ -8,9 +8,10 @@ import Leaderboard from "./Leaderboard";
 import Settings from "./Settings";
 import NotificationContent from "../NotificationModal/Content";
 import Modal, { useModal } from "../Modal";
-import { useSidebarModalCtx } from "../Compaigns/Christmas/After";
-
-export type SidebarModal = "LEADERBOARD" | "WELCOME" | "SETTINGS";
+import {
+  SidebarModal,
+  useSidebarModalCtx,
+} from "../../context/SidebarModalContext";
 
 const getModalContent = (close: () => void, content?: SidebarModal) => {
   switch (content) {
@@ -39,17 +40,9 @@ const getModalContent = (close: () => void, content?: SidebarModal) => {
 };
 
 const Sidebar = () => {
-  const { modalRef, showModal, close } = useModal();
-  const [content, setContent] = useState<SidebarModal>();
-  const { sidebarModal } = useSidebarModalCtx();
+  const { modalRef, showModal, close, content, setContent } =
+    useSidebarModalCtx();
   const modalContent = getModalContent(close, content);
-
-  useEffect(() => {
-    if (sidebarModal) {
-      setContent(sidebarModal);
-      showModal();
-    }
-  }, [sidebarModal]);
 
   return (
     <>

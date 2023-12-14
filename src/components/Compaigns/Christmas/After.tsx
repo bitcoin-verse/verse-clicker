@@ -1,33 +1,36 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { FC } from "react";
+import { useSidebarModalCtx } from "../../../context/SidebarModalContext";
 import { Button } from "../../Button";
 
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
-import { SidebarModal } from "../../Sidebar/Sidebar";
 
-interface ModalCtxState {
-  sidebarModal: SidebarModal | undefined;
+interface Props {
+  closeCampaign: () => void;
 }
 
-const ModalCtxContext = createContext<ModalCtxState>({} as ModalCtxState);
-
-export const useSidebarModalCtx = () => useContext(ModalCtxContext);
-
-const After = () => {
-  const [sidebarModal, setSidebarModal] = useState<SidebarModal>();
+const After: FC<Props> = ({ closeCampaign }) => {
+  const { setContent, showModal } = useSidebarModalCtx();
 
   return (
-    <ModalCtxContext.Provider value={{ sidebarModal }}>
+    <>
       <H3>🏆 Clickmas Has Concluded! 🏆</H3>
       <Label $color="secondary">
         Thank you for participating in Clickmas! The event may be over, but the
         excitement continues. Check out the leaderboard to see where you stand.
         Prizes will be paid out in January.
       </Label>
-      <Button $fullWidth onClick={() => setSidebarModal("LEADERBOARD")}>
+      <Button
+        $fullWidth
+        onClick={() => {
+          closeCampaign();
+          setContent("LEADERBOARD");
+          showModal();
+        }}
+      >
         🏅 See Leaderboard
       </Button>
-    </ModalCtxContext.Provider>
+    </>
   );
 };
 
