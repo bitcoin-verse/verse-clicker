@@ -6,12 +6,15 @@ import { Button } from "../../Button";
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
 import { LinkButton } from "../../LinkButton";
+import { CampaignInfo } from "../../../hooks/useCampaignInfo";
+import { Text } from "../../Text";
 
 interface Props {
   playCampaign: () => void;
   switchChain: () => void;
+  campaignInfo?: CampaignInfo;
 }
-const During: FC<Props> = ({ playCampaign, switchChain }) => {
+const During: FC<Props> = ({ playCampaign, switchChain, campaignInfo }) => {
   const { gameMode } = useTrackedState();
   const { chain } = useNetwork();
 
@@ -23,6 +26,11 @@ const During: FC<Props> = ({ playCampaign, switchChain }) => {
         The wait is over! Dive into the world of Verse Clicker, earn points, and
         win amazing rewards in VERSE. Ready, set, click!
       </Label>
+      {campaignInfo && (
+        <>
+          <Text>Ends: {new Date(campaignInfo.endDate).toLocaleString()}</Text>
+        </>
+      )}
       {gameMode === "Christmas" ? (
         <Button $fullWidth onClick={switchChain}>
           Switch to {chain?.name}
