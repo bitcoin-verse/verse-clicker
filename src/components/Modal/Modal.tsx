@@ -59,14 +59,14 @@ export const useModal = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
 
   const showModal = () => {
-    if (!modalRef || !modalRef.current) return;
     document.body.style.overflow = "hidden";
+    if (!modalRef || !modalRef.current) return;
     modalRef.current.showModal();
   };
 
   const close = () => {
-    if (!modalRef || !modalRef.current) return;
     document.body.style.overflow = "unset";
+    if (!modalRef || !modalRef.current) return;
     modalRef.current.close();
   };
 
