@@ -28,17 +28,17 @@ const Settings: FC = () => {
   const { address } = useAccount();
   const { chain } = useNetwork();
 
-  const { player, settings } = useTrackedState();
+  const { player, settings, gameMode } = useTrackedState();
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
   const { modalRef, showModal, close } = useModal();
 
   const resetScore = useCallback(() => {
-    if (!chain || !address) return;
-    socket.emit("wipe_save", { address, chain: chain.name });
+    if (!gameMode || !address) return;
+    socket.emit("wipe_save", { address, chain: gameMode });
     close();
     dispatch({ type: "RESET_GAME" });
-  }, []);
+  }, [gameMode, address]);
 
   return (
     <>
