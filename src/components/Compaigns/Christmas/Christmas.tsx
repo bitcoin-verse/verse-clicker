@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { FC, useCallback } from "react";
 import { useAccount, useNetwork } from "wagmi";
 
 import { CampaignButton } from "../styled";
@@ -15,7 +15,11 @@ import Before from "./Before";
 import After from "./After";
 import During from "./During";
 
-const Christmas = () => {
+interface Props {
+  isNetworkButton?: boolean;
+}
+
+const Christmas: FC<Props> = ({ isNetworkButton }) => {
   const { modalRef, showModal, close } = useModal();
   const { address } = useAccount();
   const { chain } = useNetwork();
@@ -51,11 +55,11 @@ const Christmas = () => {
 
   return (
     <>
-      <CampaignButton onClick={() => showModal()}>
+      <CampaignButton onClick={() => showModal()} $small={isNetworkButton}>
         <img src={tree} alt="Tree" height="100%" width="100%" />
       </CampaignButton>
 
-      <Modal title="Merry Clickmas" modalRef={modalRef}>
+      <Modal title="Merry Clickmas" modalRef={modalRef} overlayClose>
         <ModalWrapper>
           {campaignPhase === "BEFORE" && <Before campaignInfo={campaignInfo} />}
           {campaignPhase === "DURING" && (
