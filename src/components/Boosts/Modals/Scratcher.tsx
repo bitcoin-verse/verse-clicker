@@ -35,7 +35,7 @@ const Scratcher: FC = () => {
         <br />
         2. Have a greater than zero production rate
       </Text>
-      <WarningChip link="http://">
+      <WarningChip link="https://support.bitcoin.com/en/articles/8696947-verse-clicker-faq">
         Click here for detailed instructions
       </WarningChip>
       <LinkButton
