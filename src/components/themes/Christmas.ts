@@ -7,7 +7,7 @@ import { colors } from "../colors";
 export const Christmas: CustomTheme = {
   moon: present,
   halfMoon: halfPresent,
-  background: `radial-gradient(#b72424, #492727)`,
+  background: `radial-gradient(#0F8A5F, #003a26)`,
   buttons: {
     primary: {
       background: {
