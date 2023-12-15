@@ -35,6 +35,9 @@ const Loading: FC = () => {
     if (status === "connected") {
       showModal();
     }
+    return () => {
+      close();
+    };
   }, [status]);
 
   return (
