@@ -18,13 +18,23 @@ export const createConfig = ({
     case "Polygon":
       return {
         ...polygonConfig,
+        particles: {
+          ...polygonConfig.particles,
+          number: {
+            ...polygonConfig.particles?.number,
+            value: particlesNumber * 10,
+          },
+        },
       };
     case "Christmas":
       return {
         ...snow,
         particles: {
           ...snow.particles,
-          number: { ...snow.particles?.number, value: particlesNumber * 10 },
+          number: {
+            ...snow.particles?.number,
+            value: (particlesNumber || 1) * 10,
+          },
         },
       };
     case "Goerli":
