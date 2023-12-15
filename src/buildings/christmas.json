@@ -2,9 +2,9 @@
   {
     "name": "Jingle Bell Mouse",
     "desc": "Each click rings a tiny bell attached to the mouse, and with every jingle, a present magically appears.",
-    "cost": 50,
+    "cost": 12,
     "amount": 0,
-    "originalCost": 50,
+    "originalCost": 12,
     "multiplier": 1,
     "baseEffect": 1,
     "specialCPS": 0,
