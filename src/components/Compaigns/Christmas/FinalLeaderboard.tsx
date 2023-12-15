@@ -24,14 +24,17 @@ const FinalLeaderboard = () => {
 
   useEffect(() => {
     const getLeaderboard = async () => {
-      const { data } = await axios.get(
-        `${
-          process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001"
-        }/leaderboard/Christmas`,
-      );
+      try {
+        const { data } = await axios.get(
+          `${
+            process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001"
+          }/leaderboard/Christmas`,
+        );
 
-      setLeaderboardItems(data.players);
-      console.log(data.players);
+        setLeaderboardItems(data.players);
+      } catch (error) {
+        console.log("error getting leaderboard", error);
+      }
     };
 
     getLeaderboard();
