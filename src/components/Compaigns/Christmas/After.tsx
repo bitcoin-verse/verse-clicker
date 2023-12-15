@@ -1,16 +1,14 @@
 import React, { FC } from "react";
-import { useSidebarModalCtx } from "../../../context/SidebarModalContext";
 import { Button } from "../../Button";
 
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
+import Modal, { useModal } from "../../Modal";
 
-interface Props {
-  closeCampaign: () => void;
-}
+import FinalLeaderboard from "./FinalLeaderboard";
 
-const After: FC<Props> = ({ closeCampaign }) => {
-  const { setContent, showModal } = useSidebarModalCtx();
+const After: FC = () => {
+  const { modalRef, showModal } = useModal();
 
   return (
     <>
@@ -23,13 +21,15 @@ const After: FC<Props> = ({ closeCampaign }) => {
       <Button
         $fullWidth
         onClick={() => {
-          closeCampaign();
-          setContent("LEADERBOARD");
           showModal();
         }}
       >
         🏅 See Leaderboard
       </Button>
+
+      <Modal modalRef={modalRef} title="Clickmas Leaderboard">
+        <FinalLeaderboard />
+      </Modal>
     </>
   );
 };

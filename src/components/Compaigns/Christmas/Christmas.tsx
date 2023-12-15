@@ -69,7 +69,7 @@ const Christmas: FC<Props> = ({ isNetworkButton }) => {
               campaignInfo={campaignInfo}
             />
           )}
-          {campaignPhase === "AFTER" && <After closeCampaign={close} />}
+          {campaignPhase === "AFTER" && <After />}
         </ModalWrapper>
       </Modal>
     </>
