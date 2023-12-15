@@ -25,21 +25,32 @@ const ShortNumbers = [
 export const formatNumber = (num?: number) => {
   if (!num) return num ?? "";
   let formatted = "";
-  if (num >= 1000) {
+  if (num >= 10000) {
     for (let i = 0; i < ShortNumbers.length; i++) {
       const divider = Math.pow(10, (i + 1) * 3);
       if (num >= divider) {
         formatted =
           (Math.trunc((num / divider) * 1000) / 1000).toLocaleString(
             undefined,
-            { maximumFractionDigits: 1, minimumFractionDigits: 0 },
+            {
+              maximumFractionDigits: Math.abs(4 - ShortNumbers[i].length),
+              minimumFractionDigits: Math.abs(4 - ShortNumbers[i].length),
+            },
           ) + ShortNumbers[i];
       }
     }
     return formatted;
   }
+
+  if (num > 1000) {
+    return (Math.trunc(num * 10) / 10).toLocaleString(undefined, {
+      maximumFractionDigits: 0,
+      minimumFractionDigits: 0,
+    });
+  }
+
   return (Math.trunc(num * 10) / 10).toLocaleString(undefined, {
     maximumFractionDigits: 3,
-    minimumFractionDigits: 0,
+    minimumFractionDigits: 1,
   });
 };
