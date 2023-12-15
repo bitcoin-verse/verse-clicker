@@ -21,7 +21,7 @@ const adlist = [
   },
   {
     img: adSwap,
-    link: baseUrl,
+    link: `${baseUrl}swap/`,
     cta: "swap",
   },
   { img: adStaking, link: `${baseUrl}staking/eth/verse/`, cta: "stake" },
