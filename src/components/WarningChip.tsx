@@ -35,7 +35,7 @@ const WarningChip: FC<PropsWithChildren<Props>> = ({ children, link }) => {
   return (
     <Wrapper
       href={link}
-      {...(isWallet
+      {...(isWallet && link.includes("verse.bitcoin.com")
         ? {}
         : {
             target: "_blank",
