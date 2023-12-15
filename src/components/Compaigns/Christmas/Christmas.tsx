@@ -9,27 +9,11 @@ import Modal, { useModal } from "../../Modal";
 import { ModalWrapper } from "../../Boosts/styled";
 import { useDispatch } from "../../../context/store";
 import { useSocketCtx } from "../../../context/SocketContext";
-import useCampaignInfo, { CampaignPhase } from "../../../hooks/useCampaignInfo";
+import useCampaignInfo from "../../../hooks/useCampaignInfo";
 import { GameMode } from "../../../context/reducers/network";
 import Before from "./Before";
 import After from "./After";
 import During from "./During";
-
-const getCampaignContent = (
-  campaignPhase: CampaignPhase,
-  playCampaign: () => void,
-  switchChain: () => void,
-  close: () => void,
-) => {
-  switch (campaignPhase) {
-    case "BEFORE":
-      return <Before />;
-    case "DURING":
-      return <During playCampaign={playCampaign} switchChain={switchChain} />;
-    case "AFTER":
-      return <After closeCampaign={close} />;
-  }
-};
 
 const Christmas = () => {
   const { modalRef, showModal, close } = useModal();
@@ -38,7 +22,7 @@ const Christmas = () => {
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
 
-  const { campaignPhase } = useCampaignInfo("Christmas");
+  const { campaignPhase, campaignInfo } = useCampaignInfo("Christmas");
 
   const playCampaign = useCallback(() => {
     dispatch({ type: "RESET_GAME" });
@@ -73,7 +57,15 @@ const Christmas = () => {
 
       <Modal title="Merry Clickmas" modalRef={modalRef}>
         <ModalWrapper>
-          {getCampaignContent(campaignPhase, playCampaign, switchChain, close)}
+          {campaignPhase === "BEFORE" && <Before campaignInfo={campaignInfo} />}
+          {campaignPhase === "DURING" && (
+            <During
+              playCampaign={playCampaign}
+              switchChain={switchChain}
+              campaignInfo={campaignInfo}
+            />
+          )}
+          {campaignPhase === "AFTER" && <After closeCampaign={close} />}
         </ModalWrapper>
       </Modal>
     </>
