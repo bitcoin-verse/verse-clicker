@@ -1,7 +1,6 @@
 import React from "react";
 import { SidebarButton, Wrapper } from "./styled";
 import Trophy from "../Icons/Trophy";
-import Info from "../Icons/Info";
 import Gear from "../Icons/Gear";
 // import Map from "../Icons/Map";
 import Leaderboard from "./Leaderboard";
@@ -12,6 +11,7 @@ import {
   SidebarModal,
   useSidebarModalCtx,
 } from "../../context/SidebarModalContext";
+import Handshake from "../Icons/Handshake";
 
 const getModalContent = (close: () => void, content?: SidebarModal) => {
   switch (content) {
@@ -61,7 +61,7 @@ const Sidebar = () => {
             showModal();
           }}
         >
-          <Info size="1rem" />
+          <Handshake size="1rem" />
         </SidebarButton>
         {/* <SidebarButton>
         <Map size="1rem" />
