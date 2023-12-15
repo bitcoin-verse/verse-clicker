@@ -30,11 +30,16 @@ export const formatNumber = (num?: number) => {
       const divider = Math.pow(10, (i + 1) * 3);
       if (num >= divider) {
         formatted =
-          (Math.trunc((num / divider) * 1000) / 1000).toFixed(3) +
-          ShortNumbers[i];
+          (Math.trunc((num / divider) * 1000) / 1000).toLocaleString(
+            undefined,
+            { maximumFractionDigits: 1, minimumFractionDigits: 0 },
+          ) + ShortNumbers[i];
       }
     }
     return formatted;
   }
-  return (Math.trunc(num * 10) / 10).toFixed(1);
+  return (Math.trunc(num * 10) / 10).toLocaleString(undefined, {
+    maximumFractionDigits: 3,
+    minimumFractionDigits: 0,
+  });
 };
