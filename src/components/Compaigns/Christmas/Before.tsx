@@ -13,7 +13,7 @@ interface Props {
 const Before: FC<Props> = ({ campaignInfo }) => {
   return (
     <>
-      <H3>🌟 Clickmas is Coming Soon! 🌟</H3>
+      <H3>🌟 Clickmas is Coming! 🌟</H3>
       <Label>$1000 up for grabs! 💸</Label>
       <Label $color="secondary">
         Get ready for an epic holiday event! Clickmas, the ultimate clicking
