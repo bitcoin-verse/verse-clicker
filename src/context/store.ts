@@ -32,6 +32,7 @@ export type State = {
   leaderboardStats: LeaderboardStats;
   leaderboardUpdated?: number;
   bonusData?: BonusData;
+  showCampaignBanner?: boolean;
 };
 
 const search = new URLSearchParams(window.location.search);

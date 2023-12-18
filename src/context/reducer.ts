@@ -25,6 +25,10 @@ import {
 import { SetSettingsAction, setSettings } from "./reducers/settings";
 import { resetGame } from "./reducers/reset";
 import { setBonusData, SetBonusDataAction } from "./reducers/bonusData";
+import {
+  SetCampaignBannerAction,
+  setShowCampaignBanner,
+} from "./reducers/campaign";
 
 export type Action =
   | SetGameModeAction
@@ -40,6 +44,7 @@ export type Action =
   | SetPurchaseAmountAction
   | SetLeaderboardUpdated
   | SetBonusDataAction
+  | SetCampaignBannerAction
   | { type: "RESET_GAME" };
 
 const reducer: Reducer<State, Action> = (state, action) => {
@@ -70,6 +75,8 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return setSettings(state, action.payload);
     case "SET_BONUS_DATA":
       return setBonusData(state, action.payload);
+    case "SET_SHOW_CAMPAIGN_BANNER":
+      return setShowCampaignBanner(state, action.payload);
     default:
       return state;
   }
