@@ -30,6 +30,8 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
   const { chain } = useNetwork();
   const { address } = useAccount();
   const { gameMode } = useTrackedState();
+  const search = new URLSearchParams();
+  const campaign = search.get("campaign");
 
   const socketRef = useRef(
     io(process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001", {
@@ -45,10 +47,27 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
       if (!chain || !address) return;
       console.log("socket connected");
       console.log(chain.name, gameMode);
+
+      if (!campaign && gameMode === "Christmas") {
+        search.append("campaign", "Christmas");
+        dispatch({ type: "SET_GAME_MODE", payload: "Christmas" });
+        window.history.pushState(
+          "campaign=Christmas",
+          "",
+          `${window.location.origin}${window.location.pathname}?${search}`,
+        );
+      }
+
       if (!activeCampaigns.includes(gameMode)) {
         dispatch({ type: "RESET_GAME" });
         dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
+        window.history.pushState(
+          "",
+          "",
+          `${window.location.origin}${window.location.pathname}`,
+        );
       }
+
       socketRef.current.emit("join", { address, chain: gameMode });
     };
 
