@@ -38,7 +38,7 @@ const During: FC<Props> = ({ playCampaign, switchChain, campaignInfo }) => {
         📖 Learn more
       </LinkButton>
       {gameMode === "Christmas" ? (
-        <Button $fullWidth onClick={switchChain}>
+        <Button $fullWidth onClick={switchChain} $design="secondary">
           Back to {chain?.name}
         </Button>
       ) : (
