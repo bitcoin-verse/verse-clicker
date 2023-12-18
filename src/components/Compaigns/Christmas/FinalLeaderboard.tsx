@@ -27,8 +27,8 @@ const FinalLeaderboard = () => {
       try {
         const { data } = await axios.get(
           `${
-            process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001"
-          }/leaderboard/Christmas`,
+            process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001/"
+          }leaderboard/Christmas`,
         );
 
         setLeaderboardItems(data.players);
