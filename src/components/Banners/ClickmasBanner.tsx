@@ -10,7 +10,7 @@ const ClickmasBanner: FunctionComponent = () => {
   const dispatch = useDispatch();
 
   const link =
-    "https://medium.com/@Bitcoin_Com/verse-expands-to-polygon-eedafbc43ae0";
+    "https://medium.com/@Bitcoin_Com/get-ready-for-clickmas-where-clicks-turn-to-rewards-1000-up-for-grabs-e87438a9772b";
 
   const hideBanner = () => {
     dispatch({
