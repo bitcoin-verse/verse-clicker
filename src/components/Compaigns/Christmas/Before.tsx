@@ -28,7 +28,10 @@ const Before: FC<Props> = ({ campaignInfo }) => {
           <Text>Ends: {new Date(campaignInfo.endDate).toLocaleString()}</Text>
         </>
       )}
-      <LinkButton href="https://medium.com/@Bitcoin_Com/get-ready-for-clickmas-where-clicks-turn-to-rewards-1000-up-for-grabs-e87438a9772b">
+      <LinkButton
+        href="https://medium.com/@Bitcoin_Com/get-ready-for-clickmas-where-clicks-turn-to-rewards-1000-up-for-grabs-e87438a9772b"
+        target="_blank"
+      >
         📖 Learn more
       </LinkButton>
     </>
