@@ -8,7 +8,7 @@ import ClickmasBanner from "../Banners/ClickmasBanner";
 import useCampaignInfo from "../../hooks/useCampaignInfo";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-  const { gameMode: network, showCampaignBanner } = useTrackedState();
+  const { gameMode: network, showCampaignBanner = true } = useTrackedState();
   const { campaignPhase } = useCampaignInfo("Christmas");
 
   return (
