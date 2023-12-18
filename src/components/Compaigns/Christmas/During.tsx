@@ -31,21 +31,21 @@ const During: FC<Props> = ({ playCampaign, switchChain, campaignInfo }) => {
           <Text>Ends: {new Date(campaignInfo.endDate).toLocaleString()}</Text>
         </>
       )}
-      {gameMode === "Christmas" ? (
-        <Button $fullWidth onClick={switchChain}>
-          Switch to {chain?.name}
-        </Button>
-      ) : (
-        <Button $fullWidth onClick={playCampaign}>
-          🎮 Start Clicking
-        </Button>
-      )}
       <LinkButton
         href="https://medium.com/@Bitcoin_Com/get-ready-for-clickmas-where-clicks-turn-to-rewards-1000-up-for-grabs-e87438a9772b"
         target="_blank"
       >
         📖 Learn more
       </LinkButton>
+      {gameMode === "Christmas" ? (
+        <Button $fullWidth onClick={switchChain} $design="secondary">
+          Back to {chain?.name}
+        </Button>
+      ) : (
+        <Button $fullWidth onClick={playCampaign}>
+          🎮 Start Clicking
+        </Button>
+      )}
     </>
   );
 };
