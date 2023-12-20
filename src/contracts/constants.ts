@@ -5,6 +5,8 @@ export const VERSE_TOKEN_GOERLI_ADDRESS =
   "0x37D4203FaE62CCd7b1a78Ef58A5515021ED8FD84" as `0x${string}`;
 export const VERSE_TOKEN_POLYGON_ADDRESS =
   "0xc708d6f2153933daa50b2d0758955be0a93a8fec" as `0x${string}`;
+  export const VERSE_TOKEN_SEPOLIA_ADDRESS =
+  "0xc708d6f2153933daa50b2d0758955be0a93a8fec" as `0x${string}`;
 
 // VERSE Burn Engine Contracts
 export const VERSE_BURN_ENGINE_ETHEREUM_ADDRESS =
