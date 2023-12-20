@@ -39,7 +39,7 @@ const Christmas: FC<Props> = ({ isNetworkButton }) => {
   const switchChain = useCallback(() => {
     if (
       !chain?.name ||
-      !["Ethereum", "Polygon", "Goerli"].includes(chain.name)
+      !["Ethereum", "Polygon", "Goerli", "Sepolia"].includes(chain.name)
     ) {
       return;
     }
