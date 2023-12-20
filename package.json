@@ -41,7 +41,7 @@
   "dependencies": {
     "@amplitude/analytics-browser": "^2.3.5",
     "@web3modal/ethereum": "^2.7.1",
-    "@web3modal/wagmi": "^3.5.0",
+    "@web3modal/wagmi": "^3.4.0",
     "axios": "^1.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -53,7 +53,7 @@
     "use-reducer-async": "^2.1.1",
     "use-sound": "^4.0.1",
     "viem": "^1.19.1",
-    "wagmi": "^1.4.12"
+    "wagmi": "^1.4.7"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
