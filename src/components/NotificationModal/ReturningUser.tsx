@@ -10,6 +10,7 @@ import { H3 } from "../H3";
 import { DataWrapper, Stats, Value } from "./styled";
 import BonusList from "./BonusList";
 import PointsIcon from "../PointsIcon";
+import { Label } from "../Label";
 
 const ReturningUser = () => {
   const { returnData } = useTrackedState();
@@ -34,6 +35,7 @@ const ReturningUser = () => {
           </Value>
         </Stats>
       </DataWrapper>
+      <Label $color="secondary">12 hours maximum offline point production</Label>
 
       {returnData?.bonus.burn && returnData.bonus.burn.length > 0 && (
         <BonusList isBurn txData={returnData.bonus.burn} />
