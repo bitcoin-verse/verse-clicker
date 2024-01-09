@@ -49,6 +49,11 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
               http: "https://floral-empty-gas.matic.quiknode.pro/",
               webSocket: "wss://floral-empty-gas.matic.quiknode.pro/",
             };
+          case 11155111:
+            return {
+              http: "https://floral-empty-gas.matic.quiknode.pro/",
+              webSocket: "wss://floral-empty-gas.matic.quiknode.pro/",
+            };
           case 1:
           default:
             return {
