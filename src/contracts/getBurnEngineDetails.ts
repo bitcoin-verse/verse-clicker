@@ -2,6 +2,7 @@ import {
   VERSE_BURN_ENGINE_ETHEREUM_ADDRESS,
   VERSE_BURN_ENGINE_GOERLI_ADDRESS,
   VERSE_BURN_ENGINE_POLYGON_ADDRESS,
+  VERSE_BURN_ENGINE_SEPOLIA_ADDRESS,
 } from "./constants";
 
 const getBurnEngineDetails = (chainId?: number) => {
@@ -18,7 +19,10 @@ const getBurnEngineDetails = (chainId?: number) => {
       return {
         address: VERSE_BURN_ENGINE_POLYGON_ADDRESS,
       };
-
+    case 11155111:
+      return {
+        address: VERSE_BURN_ENGINE_SEPOLIA_ADDRESS,
+      };
     default:
       return undefined;
   }

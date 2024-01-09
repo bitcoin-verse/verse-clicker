@@ -19,6 +19,7 @@ const PointsIcon: FC<Props> = ({ size }) => {
       return <Present size={size} />;
     case "Ethereum":
     case "Goerli":
+    case "Sepolia":
     default:
       return <Star size={size} />;
   }

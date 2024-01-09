@@ -53,6 +53,7 @@ const boostList = (player: Player, network: GameMode) => {
       ];
     case "Ethereum":
     case "Goerli":
+    case "Sepolia":
     default:
       return [
         {

@@ -2,10 +2,12 @@ import {
   VERSE_TOKEN_ETHEREUM_ADDRESS,
   VERSE_TOKEN_GOERLI_ADDRESS,
   VERSE_TOKEN_POLYGON_ADDRESS,
+  VERSE_TOKEN_SEPOLIA_ADDRESS,
 } from "./constants";
 import verseEthereum from "./verseEthereum";
 import verseGoerli from "./verseGoerli";
 import versePolygon from "./versePolygon";
+import verseSepolia from "./verseSepolia";
 
 const getVerseTokenDetails = (chainId?: number) => {
   switch (chainId) {
@@ -23,6 +25,11 @@ const getVerseTokenDetails = (chainId?: number) => {
       return {
         address: VERSE_TOKEN_POLYGON_ADDRESS,
         abi: versePolygon as unknown as typeof verseEthereum,
+      };
+    case 11155111:
+      return {
+        address: VERSE_TOKEN_SEPOLIA_ADDRESS,
+        abi: verseSepolia as unknown as typeof verseEthereum,
       };
 
     default:

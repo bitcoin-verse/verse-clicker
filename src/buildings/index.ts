@@ -5,6 +5,7 @@ import ethBuildings from "./ethereum.json";
 import gethBuildings from "./goerli.json";
 import polyBuildings from "./polygon.json";
 import christmasBuildings from "./christmas.json";
+import sethBuildings from "./sepolia.json";
 
 type BuildingJson = {
   name: string;
@@ -50,4 +51,5 @@ export default {
   Polygon: generateBuildingsFromJson(polyBuildings),
   Goerli: generateBuildingsFromJson(gethBuildings),
   Christmas: generateBuildingsFromJson(christmasBuildings),
+  Sepolia: generateBuildingsFromJson(sethBuildings),
 };
