@@ -14,6 +14,7 @@ import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { ContextProvider } from "./store";
 import SocketCtxProvider from "./SocketContext";
+import { getNetworkImage } from "../helpers/getNetworkImage";
 
 const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
@@ -106,6 +107,10 @@ createWeb3Modal({
     "--w3m-color-mix": "#000000",
     "--w3m-accent": "linear-gradient(180deg, #0EBEF0 0%, #0085FF 100%)",
     "--w3m-font-family": "Barlow",
+  },
+  chainImages: {
+    5: getNetworkImage(5),
+    11155111: getNetworkImage(11155111),
   },
 });
 
