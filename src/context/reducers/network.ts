@@ -6,7 +6,8 @@ export type GameMode =
   | "Polygon"
   | "Goerli"
   | "Christmas"
-  | "Sepolia";
+  | "Sepolia"
+  | "LunarNewYear";
 
 export type SetGameModeAction = { type: "SET_GAME_MODE"; payload: GameMode };
 
