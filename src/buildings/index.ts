@@ -52,4 +52,5 @@ export default {
   Goerli: generateBuildingsFromJson(gethBuildings),
   Christmas: generateBuildingsFromJson(christmasBuildings),
   Sepolia: generateBuildingsFromJson(sethBuildings),
+  LunarNewYear: generateBuildingsFromJson(sethBuildings),
 };
