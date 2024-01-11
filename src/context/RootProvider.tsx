@@ -40,18 +40,22 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     jsonRpcProvider({
       rpc: (chain) => {
         switch (chain.id) {
-          case 5:
+          case 5: // goerli
             return {
               http: "https://rpc.ankr.com/eth_goerli",
               webSocket: `wss://ethereum-goerli.publicnode.com`,
             };
-          case 137:
-          case 11155111:
+          case 11155111: // sepolia
             return {
-              http: "https://floral-empty-gas.matic.quiknode.pro/",
-              webSocket: "wss://floral-empty-gas.matic.quiknode.pro/",
+              http: "https://floral-empty-gas.quiknode.pro",
+              webSocket: "wss://floral-empty-gas.quiknode.pro",
             };
-          case 1:
+          case 137: // polygon/matic
+            return {
+              http: "https://polished-dark-patron.quiknode.pro",
+              webSocket: "wss://polished-dark-patron.quiknode.pro",
+            };
+          case 1: // ethereum
           default:
             return {
               http: "https://wispy-solitary-darkness.quiknode.pro",
