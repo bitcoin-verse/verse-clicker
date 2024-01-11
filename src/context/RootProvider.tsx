@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren } from "react";
 
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { goerli, mainnet, polygon } from "wagmi/chains";
+import { goerli, mainnet, polygon, sepolia } from "wagmi/chains";
 import {
   createWeb3Modal,
   EIP6963Connector,
@@ -34,7 +34,7 @@ const metadata: Web3ModalOptions["metadata"] = {
 const isDev = process.env.REACT_APP_DEV_ENV === "development";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  isDev ? [goerli, mainnet, polygon] : [mainnet, polygon],
+  isDev ? [goerli, sepolia, mainnet, polygon] : [mainnet, polygon],
   [
     jsonRpcProvider({
       rpc: (chain) => {
@@ -45,6 +45,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
               webSocket: `wss://ethereum-goerli.publicnode.com`,
             };
           case 137:
+          case 11155111:
             return {
               http: "https://floral-empty-gas.matic.quiknode.pro/",
               webSocket: "wss://floral-empty-gas.matic.quiknode.pro/",

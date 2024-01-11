@@ -4,6 +4,7 @@ import { Ethereum } from "./Ethereum";
 import { Goerli } from "./Goerli";
 import { Polygon } from "./Polygon";
 import { Christmas } from "./Christmas";
+import { Sepolia } from "./Sepolia";
 
 type ButtonTheme = {
   background: {
@@ -36,6 +37,7 @@ export const themes: Record<GameMode, typeof Ethereum> = {
   Ethereum,
   Polygon,
   Christmas,
+  Sepolia,
 };
 
 declare module "styled-components" {

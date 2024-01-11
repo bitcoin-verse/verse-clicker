@@ -38,6 +38,7 @@ export const createConfig = ({
         },
       };
     case "Goerli":
+    case "Sepolia":
       return goerliConfig;
     case "Ethereum":
     default:

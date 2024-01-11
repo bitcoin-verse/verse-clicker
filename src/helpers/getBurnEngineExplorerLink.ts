@@ -10,7 +10,8 @@ export const getBurnEngineExplorerLink = (chainId: number) => {
       return `https://goerli.etherscan.io/address/${address}`;
     case 137:
       return `'https://polygonscan.com/address/${address}`;
-
+    case 11155111:
+      return `'https://sepolia.etherscan.io/address/${address}`;
     default:
       return "";
   }

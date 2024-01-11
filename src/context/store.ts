@@ -44,6 +44,7 @@ const gameModes: Record<string, GameMode> = {
   ethereum: "Ethereum",
   polygon: "Polygon",
   goerli: "Goerli",
+  sepolia: "Sepolia",
 };
 
 export const initialState: State = {
