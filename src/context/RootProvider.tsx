@@ -45,10 +45,6 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
               webSocket: `wss://ethereum-goerli.publicnode.com`,
             };
           case 137:
-            return {
-              http: "https://floral-empty-gas.matic.quiknode.pro/",
-              webSocket: "wss://floral-empty-gas.matic.quiknode.pro/",
-            };
           case 11155111:
             return {
               http: "https://floral-empty-gas.matic.quiknode.pro/",

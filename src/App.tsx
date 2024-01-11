@@ -42,7 +42,8 @@ const App: FC = () => {
       !(
         chain.name === "Ethereum" ||
         chain.name === "Polygon" ||
-        chain.name === "Goerli"
+        chain.name === "Goerli" ||
+        chain.name === "Sepolia"
       )
     ) {
       socket.disconnect();
