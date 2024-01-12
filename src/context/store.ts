@@ -45,7 +45,7 @@ const gameModes: Record<string, GameMode> = {
   polygon: "Polygon",
   goerli: "Goerli",
   sepolia: "Sepolia",
-  lunarNewYear: "LunarNewYear",
+  lunarnewyear: "LunarNewYear",
 };
 
 export const initialState: State = {
