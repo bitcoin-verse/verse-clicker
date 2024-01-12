@@ -14,6 +14,7 @@ const PointsIcon: FC<Props> = ({ size }) => {
 
   switch (gameMode) {
     case "Polygon":
+    case "LunarNewYear":
       return <Sparkle size={size} />;
     case "Christmas":
       return <Present size={size} />;

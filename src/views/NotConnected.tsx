@@ -5,11 +5,14 @@ import Layout from "../components/Layout";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer";
 import Particles from "../components/Particles";
+import { useTrackedState } from "../context/store";
 
 const NotConnected = () => {
+  const { gameMode } = useTrackedState();
+
   return (
     <Layout>
-      <Particles />
+      {gameMode !== "LunarNewYear" && <Particles />}
       <Header />
       <Loading />
       <Footer />

@@ -1,12 +1,13 @@
 import { CustomTheme } from ".";
-import present from "../../assets/present.png";
-import halfPresent from "../../assets/half-present.png";
+import dragon from "../../assets/dragon.png";
+import halfDragon from "../../assets/half-dragon.png";
+import dragonBg from "../../assets/dragon-bg.png";
 import { colors } from "../colors";
 
 export const LunarNewYear: CustomTheme = {
-  moon: present,
-  halfMoon: halfPresent,
-  background: `radial-gradient(#0F8A5F, #003a26)`,
+  moon: dragon,
+  halfMoon: halfDragon,
+  background: `url(${dragonBg}), radial-gradient(83.88% 83.88% at 33.5% 47.97%, rgba(3, 12, 20, 0) 0%, #030C14 100%);`,
   buttons: {
     primary: {
       background: {
