@@ -47,13 +47,13 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
             };
           case 11155111: // sepolia
             return {
-              http: "https://floral-empty-gas.quiknode.pro",
-              webSocket: "wss://floral-empty-gas.quiknode.pro",
+              http: "https://polished-dark-patron.quiknode.pro",
+              webSocket: "wss://polished-dark-patron.quiknode.pro",
             };
           case 137: // polygon/matic
             return {
-              http: "https://polished-dark-patron.quiknode.pro",
-              webSocket: "wss://polished-dark-patron.quiknode.pro",
+              http: "https://floral-empty-gas.quiknode.pro",
+              webSocket: "wss://floral-empty-gas.quiknode.pro",
             };
           case 1: // ethereum
           default:
