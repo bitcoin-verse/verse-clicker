@@ -23,7 +23,7 @@ export const SocketCtxContext = createContext<SocketCtxState>(
 
 export const useSocketCtx = () => useContext(SocketCtxContext);
 
-const activeCampaigns: GameMode[] = ["Christmas"];
+const activeCampaigns: GameMode[] = ["Christmas", "LunarNewYear"];
 
 const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useDispatch();
@@ -48,11 +48,11 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
       console.log("socket connected");
       console.log(chain.name, gameMode);
 
-      if (!campaign && gameMode === "Christmas") {
-        search.append("campaign", "Christmas");
-        dispatch({ type: "SET_GAME_MODE", payload: "Christmas" });
+      if (!campaign && activeCampaigns.includes(gameMode)) {
+        search.append("campaign", gameMode);
+        dispatch({ type: "SET_GAME_MODE", payload: gameMode });
         window.history.pushState(
-          "campaign=Christmas",
+          `campaign=${gameMode}`,
           "",
           `${window.location.origin}${window.location.pathname}?${search}`,
         );
