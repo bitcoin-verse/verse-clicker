@@ -7,12 +7,11 @@ import { useDispatch, useTrackedState } from "../../context/store";
 import useCampaignInfo from "../../hooks/useCampaignInfo";
 import { ModalWrapper } from "../Boosts/styled";
 import Modal, { useModal } from "../Modal";
-import { Wrapper, CampaignButton } from "./styled";
 import After from "./After";
 import Before from "./Before";
-import During from "./During";
-
 import christmasJson from "./Content/christmas.json";
+import During from "./During";
+import { CampaignButton, Wrapper } from "./styled";
 import { CampaignJson } from "./types";
 
 function getContent(gameMode: GameMode): CampaignJson {
