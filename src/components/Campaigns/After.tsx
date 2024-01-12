@@ -5,25 +5,27 @@ import { H3 } from "../H3";
 import { Label } from "../Label";
 import Modal, { useModal } from "../Modal";
 import FinalLeaderboard from "./FinalLeaderboard";
+import { AfterCampaignJson } from "./types";
 
-const After: FC = () => {
+interface Props {
+  content: AfterCampaignJson;
+}
+
+const After: FC<Props> = ({ content }) => {
   const { modalRef, showModal } = useModal();
 
   return (
     <>
-      <H3>🏆 Clickmas Has Concluded! 🏆</H3>
-      <Label $color="secondary">
-        Thank you for participating in Clickmas! The event may be over, but the
-        excitement continues. Check out the leaderboard to see where you stand.
-        Prizes will be paid out in January.
-      </Label>
+      <H3>{content.title}</H3>
+      <Label $color="secondary">{content.label2}</Label>
+
       <Button
         $fullWidth
         onClick={() => {
           showModal();
         }}
       >
-        🏅 See Leaderboard
+        {content.leaderboard}
       </Button>
 
       <Modal modalRef={modalRef} title="Clickmas Leaderboard">

@@ -12,18 +12,32 @@ import After from "./After";
 import Before from "./Before";
 import During from "./During";
 
+import christmasJson from "./Content/christmas.json";
+import { CampaignJson } from "./types";
+
+function getContent(gameMode: GameMode): CampaignJson {
+  switch (gameMode) {
+    case "Christmas":
+      return christmasJson;
+    default:
+      return christmasJson;
+  }
+}
+
 interface Props {
   isNetworkButton?: boolean;
 }
 
-const Christmas: FC<Props> = ({ isNetworkButton }) => {
+const Campaign: FC<Props> = ({ isNetworkButton }) => {
   const { modalRef, showModal, close } = useModal();
   const { address } = useAccount();
   const { chain } = useNetwork();
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
-
+  const { gameMode } = useTrackedState();
   const { campaignPhase, campaignInfo } = useCampaignInfo("Christmas");
+
+  const content = getContent(gameMode);
 
   const playCampaign = useCallback(() => {
     dispatch({ type: "RESET_GAME" });
@@ -53,20 +67,28 @@ const Christmas: FC<Props> = ({ isNetworkButton }) => {
   return (
     <Wrapper>
       <CampaignButton onClick={() => showModal()} $small={isNetworkButton}>
-        <img src={tree} alt="Tree" height="100%" width="100%" />
+        <img
+          src={require(`../../../src/assets/${content.image}`)}
+          alt={content.image}
+          height="100%"
+          width="100%"
+        />
       </CampaignButton>
 
-      <Modal title="Merry Clickmas" modalRef={modalRef} overlayClose>
+      <Modal title={content.title} modalRef={modalRef} overlayClose>
         <ModalWrapper>
-          {campaignPhase === "BEFORE" && <Before campaignInfo={campaignInfo} />}
+          {campaignPhase === "BEFORE" && (
+            <Before campaignInfo={campaignInfo} content={content.before} />
+          )}
           {campaignPhase === "DURING" && (
             <During
               playCampaign={playCampaign}
               switchChain={switchChain}
               campaignInfo={campaignInfo}
+              content={content.during}
             />
           )}
-          {campaignPhase === "AFTER" && <After />}
+          {campaignPhase === "AFTER" && <After content={content.after} />}
         </ModalWrapper>
       </Modal>
     </Wrapper>
