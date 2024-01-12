@@ -4,7 +4,7 @@ import { useChainId } from "wagmi";
 
 import { useTrackedState } from "../../context/store";
 import { getNetworkImage } from "../../helpers/getNetworkImage";
-import Christmas from "../Compaigns/Christmas";
+import Campaign from "../Campaigns/Campaign";
 import { Button, ButtonContent } from "./styled";
 
 const NetworkButton = () => {
@@ -13,7 +13,7 @@ const NetworkButton = () => {
   const { gameMode } = useTrackedState();
 
   if (gameMode === "Christmas") {
-    return <Christmas isNetworkButton />;
+    return <Campaign isNetworkButton />;
   }
 
   return (

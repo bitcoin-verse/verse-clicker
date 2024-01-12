@@ -2,12 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
-import Row from "../../Sidebar/Leaderboard/Row";
+import Row from "../Sidebar/Leaderboard/Row";
 import {
   Header,
   LeaderboardContent,
   LeaderboardWrapper,
-} from "../../Sidebar/Leaderboard/styled";
+} from "../Sidebar/Leaderboard/styled";
 
 const FinalLeaderboard = () => {
   const { address } = useAccount();

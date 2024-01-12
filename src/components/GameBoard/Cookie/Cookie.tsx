@@ -7,7 +7,7 @@ import SidebarModalProvider from "../../../context/SidebarModalContext";
 import { useSocketCtx } from "../../../context/SocketContext";
 import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
-import Campaigns from "../../Compaigns/Campaigns";
+import Campaign from "../../Campaigns/Campaign";
 import Sidebar from "../../Sidebar";
 import { ButtonWrapper, ClickButton, CookieWrapper, CpcClick } from "./styled";
 
@@ -111,7 +111,7 @@ const Cookie: FC = () => {
         />
       </ButtonWrapper>
       <SidebarModalProvider>
-        <Campaigns />
+        <Campaign />
         <Sidebar />
       </SidebarModalProvider>
     </CookieWrapper>
