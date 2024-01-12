@@ -1,12 +1,12 @@
 import React, { FC, useEffect } from "react";
-
-import Main from "./views/Main";
 import { useAccount, useNetwork } from "wagmi";
-import NotConnected from "./views/NotConnected";
-import { useDispatch, useTrackedState } from "./context/store";
+
 import { useSocketCtx } from "./context/SocketContext";
-import useSocketEvents from "./hooks/useSocketEvents";
+import { useDispatch, useTrackedState } from "./context/store";
 import useAmplitudeEvents from "./hooks/useAmplitudeEvents";
+import useSocketEvents from "./hooks/useSocketEvents";
+import Main from "./views/Main";
+import NotConnected from "./views/NotConnected";
 
 const App: FC = () => {
   useAmplitudeEvents();

@@ -1,13 +1,11 @@
 import React, { FC, useMemo } from "react";
-
 import { useAccount } from "wagmi";
+
 import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
-
 import Trophy from "../../Icons/Trophy";
-
-import { Content, Divider, Subtitle, TrophyWrapper, Wrapper } from "./styled";
 import { Label } from "../../Label";
+import { Content, Divider, Subtitle, TrophyWrapper, Wrapper } from "./styled";
 
 const Stats: FC = () => {
   const { player, leaderboardAddresses } = useTrackedState();

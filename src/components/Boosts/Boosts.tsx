@@ -1,15 +1,18 @@
 import React, { FC, useState } from "react";
+import { useNetwork } from "wagmi";
 
+import { GameMode } from "../../context/reducers/network";
+import { Player } from "../../context/reducers/player";
 import { useTrackedState } from "../../context/store";
-
+import { H4 } from "../H4";
+import Check from "../Icons/Check";
+import Clock from "../Icons/Clock";
 import Lock from "../Icons/Lock";
 import Modal, { useModal } from "../Modal";
-import { H4 } from "../H4";
-
 import Burn from "./Modals/Burn";
-import Hold from "./Modals/Hold";
 import Farm from "./Modals/Farm";
-
+import Hold from "./Modals/Hold";
+import Scratcher from "./Modals/Scratcher";
 import {
   BoostTiles,
   BoostButton,
@@ -18,12 +21,6 @@ import {
   Wrapper,
   Content,
 } from "./styled";
-import Check from "../Icons/Check";
-import Clock from "../Icons/Clock";
-import { useNetwork } from "wagmi";
-import Scratcher from "./Modals/Scratcher";
-import { Player } from "../../context/reducers/player";
-import { GameMode } from "../../context/reducers/network";
 
 const boostList = (player: Player, network: GameMode) => {
   switch (network) {

@@ -2,11 +2,9 @@ import React, { FC } from "react";
 
 import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
-
-import PointsIcon from "../../PointsIcon";
-
-import { Wrapper, Points, StatCount } from "./styled";
 import { Label } from "../../Label";
+import PointsIcon from "../../PointsIcon";
+import { Wrapper, Points, StatCount } from "./styled";
 
 const PointsDisplay: FC = () => {
   const { player } = useTrackedState();

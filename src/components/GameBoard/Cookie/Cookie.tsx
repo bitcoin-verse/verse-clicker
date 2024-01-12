@@ -1,16 +1,15 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from "react";
-import { useAccount, useDisconnect } from "wagmi";
 import { createRoot } from "react-dom/client";
+import { useAccount, useDisconnect } from "wagmi";
 
+import { useAudio } from "../../../context/AudioProvider";
+import SidebarModalProvider from "../../../context/SidebarModalContext";
+import { useSocketCtx } from "../../../context/SocketContext";
 import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
-
-import { useSocketCtx } from "../../../context/SocketContext";
-import { ButtonWrapper, ClickButton, CookieWrapper, CpcClick } from "./styled";
-import { useAudio } from "../../../context/AudioProvider";
-import Sidebar from "../../Sidebar";
 import Campaigns from "../../Compaigns/Campaigns";
-import SidebarModalProvider from "../../../context/SidebarModalContext";
+import Sidebar from "../../Sidebar";
+import { ButtonWrapper, ClickButton, CookieWrapper, CpcClick } from "./styled";
 
 const Cookie: FC = () => {
   const { playLaser, playBells } = useAudio();

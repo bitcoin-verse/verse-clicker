@@ -1,7 +1,7 @@
 import { CustomTheme } from ".";
+import dragonBg from "../../assets/dragon-bg.png";
 import dragon from "../../assets/dragon.png";
 import halfDragon from "../../assets/half-dragon.png";
-import dragonBg from "../../assets/dragon-bg.png";
 import { colors } from "../colors";
 
 export const LunarNewYear: CustomTheme = {

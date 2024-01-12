@@ -1,22 +1,21 @@
 import React, { FC, useCallback, useMemo } from "react";
 
-import { formatNumber } from "../../../../helpers/formatNumber";
-import { Amount, Button, Cost, Image } from "./styled";
-import { useTrackedState } from "../../../../context/store";
-import { Title } from "../../../Title";
-import { Text } from "../../../Text";
-import PointsIcon from "../../../PointsIcon";
+import placeholder from "../../../../assets/placeholder.png";
 import Building from "../../../../classes/Building";
-import { useProduction } from "../../../../hooks/useProduction";
+import { useAudio } from "../../../../context/AudioProvider";
 import { useSocketCtx } from "../../../../context/SocketContext";
+import { useTrackedState } from "../../../../context/store";
 import {
   getBuildingsCost,
   getMaxBuilding,
 } from "../../../../helpers/buildingHelpers";
-
-import placeholder from "../../../../assets/placeholder.png";
+import { formatNumber } from "../../../../helpers/formatNumber";
+import { useProduction } from "../../../../hooks/useProduction";
 import Marquee from "../../../Marquee";
-import { useAudio } from "../../../../context/AudioProvider";
+import PointsIcon from "../../../PointsIcon";
+import { Text } from "../../../Text";
+import { Title } from "../../../Title";
+import { Amount, Button, Cost, Image } from "./styled";
 
 interface Props {
   building: Building;

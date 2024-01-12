@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Player } from "../context/reducers/player";
-import { LeaderboardEvent } from "../context/reducers/leaderboard";
-import { BuildingData } from "../context/reducers/building";
+
 import { useSocketCtx } from "../context/SocketContext";
-import { useDispatch } from "../context/store";
-import { ReturnData } from "../context/reducers/returnData";
 import { BonusData } from "../context/reducers/bonusData";
+import { BuildingData } from "../context/reducers/building";
+import { LeaderboardEvent } from "../context/reducers/leaderboard";
+import { Player } from "../context/reducers/player";
+import { ReturnData } from "../context/reducers/returnData";
+import { useDispatch } from "../context/store";
 
 const useSocketEvents = () => {
   const [loading, setLoading] = useState(true);

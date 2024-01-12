@@ -1,4 +1,5 @@
 import { ISourceOptions } from "@tsparticles/engine";
+
 import verseMoon from "../../../assets/verse-moon.png";
 
 export const ethereumConfig: ISourceOptions = {

@@ -1,12 +1,11 @@
 import React, { FC } from "react";
 
-import { LinkButton } from "../../LinkButton";
-
-import { Description, ModalWrapper } from "../styled";
-import { H3 } from "../../H3";
-import { Text } from "../../Text";
 import { useTrackedState } from "../../../context/store";
+import { H3 } from "../../H3";
+import { LinkButton } from "../../LinkButton";
+import { Text } from "../../Text";
 import WarningChip from "../../WarningChip";
+import { Description, ModalWrapper } from "../styled";
 
 const Scratcher: FC = () => {
   const { isWallet } = useTrackedState();

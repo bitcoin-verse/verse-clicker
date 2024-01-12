@@ -1,8 +1,18 @@
 import React, { FC, useCallback } from "react";
 import { useAccount, useNetwork } from "wagmi";
+
+import { useSocketCtx } from "../../../context/SocketContext";
 import { useDispatch, useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
+import { getNetworkImage } from "../../../helpers/getNetworkImage";
 import truncateEthAddress from "../../../helpers/truncateEthAddress";
+import { Points } from "../../GameBoard/PointsDisplay/styled";
+import Reset from "../../Icons/Reset";
+import SoundOff from "../../Icons/SoundOff";
+import SoundOn from "../../Icons/SoundOn";
+import { useModal } from "../../Modal";
+import PointsIcon from "../../PointsIcon";
+import ConfirmModal from "./ConfirmModal";
 import {
   Avatar,
   Connected,
@@ -12,17 +22,6 @@ import {
   ButtonsWrapper,
   SettingsButton,
 } from "./styled";
-
-import { Points } from "../../GameBoard/PointsDisplay/styled";
-import SoundOff from "../../Icons/SoundOff";
-import SoundOn from "../../Icons/SoundOn";
-import Reset from "../../Icons/Reset";
-import PointsIcon from "../../PointsIcon";
-
-import { useSocketCtx } from "../../../context/SocketContext";
-import { useModal } from "../../Modal";
-import ConfirmModal from "./ConfirmModal";
-import { getNetworkImage } from "../../../helpers/getNetworkImage";
 
 const Settings: FC = () => {
   const { address } = useAccount();

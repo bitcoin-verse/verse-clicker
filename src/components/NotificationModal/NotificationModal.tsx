@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch, useTrackedState } from "../../context/store";
 
+import { useDispatch, useTrackedState } from "../../context/store";
 import Modal, { useModal } from "../Modal";
 import Content from "./Content";
 

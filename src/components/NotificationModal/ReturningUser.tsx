@@ -1,16 +1,15 @@
 import React from "react";
+
 import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import { formatSeconds } from "../../helpers/formatSeconds";
-
-import { Title } from "../Title";
-import Clock from "../Icons/Clock";
 import { H3 } from "../H3";
-
-import { DataWrapper, Stats, Value } from "./styled";
-import BonusList from "./BonusList";
-import PointsIcon from "../PointsIcon";
+import Clock from "../Icons/Clock";
 import { Label } from "../Label";
+import PointsIcon from "../PointsIcon";
+import { Title } from "../Title";
+import BonusList from "./BonusList";
+import { DataWrapper, Stats, Value } from "./styled";
 
 const ReturningUser = () => {
   const { returnData } = useTrackedState();
@@ -35,7 +34,9 @@ const ReturningUser = () => {
           </Value>
         </Stats>
       </DataWrapper>
-      <Label $color="secondary">12 hours maximum offline point production</Label>
+      <Label $color="secondary">
+        12 hours maximum offline point production
+      </Label>
 
       {returnData?.bonus.burn && returnData.bonus.burn.length > 0 && (
         <BonusList isBurn txData={returnData.bonus.burn} />

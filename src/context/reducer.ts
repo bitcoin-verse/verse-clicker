@@ -1,12 +1,17 @@
 import { Reducer } from "react";
-import { State } from "./store";
-import { SetPlayerAction, setPlayer } from "./reducers/player";
+
+import { setBonusData, SetBonusDataAction } from "./reducers/bonusData";
 import {
   SetBuildingAction,
   UpdateBuildingsAction,
   setBuilding,
   updateBuildings,
 } from "./reducers/building";
+import {
+  SetCampaignBannerAction,
+  setShowCampaignBanner,
+} from "./reducers/campaign";
+import { SetErrorAction, setError } from "./reducers/error";
 import {
   SetLeaderboardAddressesAction,
   SetLeaderboardStatsAction,
@@ -16,19 +21,15 @@ import {
   setLeaderboardUpdated,
 } from "./reducers/leaderboard";
 import { SetGameModeAction, setNetwork } from "./reducers/network";
-import { SetErrorAction, setError } from "./reducers/error";
-import { SetReturnDataAction, setReturnData } from "./reducers/returnData";
+import { SetPlayerAction, setPlayer } from "./reducers/player";
 import {
   SetPurchaseAmountAction,
   setPurchaseAmount,
 } from "./reducers/purchaseAmount";
-import { SetSettingsAction, setSettings } from "./reducers/settings";
 import { resetGame } from "./reducers/reset";
-import { setBonusData, SetBonusDataAction } from "./reducers/bonusData";
-import {
-  SetCampaignBannerAction,
-  setShowCampaignBanner,
-} from "./reducers/campaign";
+import { SetReturnDataAction, setReturnData } from "./reducers/returnData";
+import { SetSettingsAction, setSettings } from "./reducers/settings";
+import { State } from "./store";
 
 export type Action =
   | SetGameModeAction

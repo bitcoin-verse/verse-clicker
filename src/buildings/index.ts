@@ -1,10 +1,9 @@
 import Building from "../classes/Building";
 import Upgrade from "../classes/Upgrade";
-
+import christmasBuildings from "./christmas.json";
 import ethBuildings from "./ethereum.json";
 import gethBuildings from "./goerli.json";
 import polyBuildings from "./polygon.json";
-import christmasBuildings from "./christmas.json";
 import sethBuildings from "./sepolia.json";
 
 type BuildingJson = {

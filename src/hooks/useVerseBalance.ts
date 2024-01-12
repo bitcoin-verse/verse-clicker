@@ -1,4 +1,5 @@
 import { useAccount, useChainId, useContractRead } from "wagmi";
+
 import getVerseTokenDetails from "../contracts/getVerseTokenDetails";
 
 const useVerseBalance = () => {

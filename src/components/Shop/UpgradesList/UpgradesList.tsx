@@ -1,4 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
+
+import useUpgradesList from "../../../hooks/useUpgradesList";
+import UpgradeAll from "../../GameBoard/UpgradeAll";
+import CookiesDisplay from "../CookiesDisplay";
+import MobileTitle from "../MobileTitle";
 import UpgradeButton from "./UpgradeButton";
 import {
   NextUpgrade,
@@ -6,10 +11,6 @@ import {
   UpgradesWrapper,
   Wrapper,
 } from "./styled";
-import useUpgradesList from "../../../hooks/useUpgradesList";
-import MobileTitle from "../MobileTitle";
-import UpgradeAll from "../../GameBoard/UpgradeAll";
-import CookiesDisplay from "../CookiesDisplay";
 
 interface Props {
   toggleOpen: boolean;

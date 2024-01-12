@@ -1,17 +1,18 @@
 import React from "react";
-import { SidebarButton, Wrapper } from "./styled";
-import Trophy from "../Icons/Trophy";
-import Gear from "../Icons/Gear";
-// import Map from "../Icons/Map";
-import Leaderboard from "./Leaderboard";
-import Settings from "./Settings";
-import NotificationContent from "../NotificationModal/Content";
-import Modal from "../Modal";
+
 import {
   SidebarModal,
   useSidebarModalCtx,
 } from "../../context/SidebarModalContext";
+import Gear from "../Icons/Gear";
 import Handshake from "../Icons/Handshake";
+import Trophy from "../Icons/Trophy";
+import Modal from "../Modal";
+import NotificationContent from "../NotificationModal/Content";
+// import Map from "../Icons/Map";
+import Leaderboard from "./Leaderboard";
+import Settings from "./Settings";
+import { SidebarButton, Wrapper } from "./styled";
 
 const getModalContent = (close: () => void, content?: SidebarModal) => {
   switch (content) {

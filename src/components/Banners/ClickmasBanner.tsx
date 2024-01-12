@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from "react";
 
 import { useDispatch } from "../../context/store";
-
 import Cross from "../Icons/Cross";
-import { Wrapper } from "./styled";
 import { Link } from "../Link";
+import { Wrapper } from "./styled";
 
 const ClickmasBanner: FunctionComponent = () => {
   const dispatch = useDispatch();

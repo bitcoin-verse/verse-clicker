@@ -2,8 +2,8 @@ import React, { FC, PropsWithChildren, createContext, useContext } from "react";
 import useSound from "use-sound";
 import { PlayFunction } from "use-sound/dist/types";
 
-import laserSfx from "../assets/laser.wav";
 import buySfx from "../assets/cha-ching.wav";
+import laserSfx from "../assets/laser.wav";
 import sleighBellsSfx from "../assets/sleigh-bells.wav";
 import { useTrackedState } from "./store";
 

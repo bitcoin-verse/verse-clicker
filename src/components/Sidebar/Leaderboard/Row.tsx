@@ -1,10 +1,11 @@
 import React, { FC } from "react";
-import { Body, StarWrapper, YouBadge } from "./styled";
+
 import { formatNumber } from "../../../helpers/formatNumber";
-import Cursor from "../../Icons/Cursor";
-import PointsIcon from "../../PointsIcon";
 import useUsername from "../../../hooks/useUsername";
+import Cursor from "../../Icons/Cursor";
 import Marquee from "../../Marquee";
+import PointsIcon from "../../PointsIcon";
+import { Body, StarWrapper, YouBadge } from "./styled";
 
 interface Props {
   address: string;

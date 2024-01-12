@@ -1,11 +1,12 @@
 import "styled-components";
+
 import { GameMode } from "../../context/reducers/network";
+import { Christmas } from "./Christmas";
 import { Ethereum } from "./Ethereum";
 import { Goerli } from "./Goerli";
-import { Polygon } from "./Polygon";
-import { Christmas } from "./Christmas";
-import { Sepolia } from "./Sepolia";
 import { LunarNewYear } from "./LunarNewYear";
+import { Polygon } from "./Polygon";
+import { Sepolia } from "./Sepolia";
 
 type ButtonTheme = {
   background: {

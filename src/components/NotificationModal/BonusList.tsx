@@ -1,15 +1,15 @@
 import React, { FC, Fragment } from "react";
 import { useChainId } from "wagmi";
 
+import verseIcon from "../../assets/verse-icon.png";
+import { TxData } from "../../context/reducers/returnData";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getTxExplorerLink } from "../../helpers/getExplorerLink";
 import External from "../Icons/External";
-import { BonusHeader, BonusRow } from "./styled";
+import PointsIcon from "../PointsIcon";
 import { Title } from "../Title";
 import { colors } from "../colors";
-import verseIcon from "../../assets/verse-icon.png";
-import PointsIcon from "../PointsIcon";
-import { TxData } from "../../context/reducers/returnData";
+import { BonusHeader, BonusRow } from "./styled";
 
 /* const sample = {
   bonusBurnTxs: [

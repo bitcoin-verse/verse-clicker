@@ -1,7 +1,8 @@
 import React, { FC } from "react";
-import Tabs, { TabButton } from "../../Tabs";
-import Upgrades from "../../Icons/Upgrades";
+
 import Mouse from "../../Icons/Mouse";
+import Upgrades from "../../Icons/Upgrades";
+import Tabs, { TabButton } from "../../Tabs";
 
 interface Props {
   setSelectedTab: (tab: number) => void;

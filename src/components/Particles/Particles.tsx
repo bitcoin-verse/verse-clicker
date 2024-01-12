@@ -1,11 +1,13 @@
-import React, { FC, Suspense, useEffect, useMemo, useState } from "react";
 import {
   initParticlesEngine,
   Particles as ReactParticles,
 } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
-import { createConfig } from "./config";
+import { loadSlim } from "@tsparticles/slim";
+import React, { FC, Suspense, useEffect, useMemo, useState } from "react";
+
 import { useTrackedState } from "../../context/store";
+// if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
+import { createConfig } from "./config";
 
 const Particles: FC = () => {
   const { buildings, gameMode: network } = useTrackedState();

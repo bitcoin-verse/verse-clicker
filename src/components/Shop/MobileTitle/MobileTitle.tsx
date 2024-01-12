@@ -1,7 +1,8 @@
 import React, { FC } from "react";
+
 import { H2 } from "../../H2";
-import { CloseButton, ModalTitle } from "./styled";
 import Cross from "../../Icons/Cross";
+import { CloseButton, ModalTitle } from "./styled";
 
 interface Props {
   setIsOpen: (open: boolean) => void;

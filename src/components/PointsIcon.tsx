@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 
-import Sparkle from "./Icons/Sparkle";
-import Star from "./Icons/Star";
 import { useTrackedState } from "../context/store";
 import Present from "./Icons/Present";
+import Sparkle from "./Icons/Sparkle";
+import Star from "./Icons/Star";
 
 interface Props {
   size?: number | string;

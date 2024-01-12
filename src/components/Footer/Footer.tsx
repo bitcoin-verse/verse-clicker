@@ -1,4 +1,6 @@
 import React, { FC } from "react";
+
+import bcomLogo from "../../assets/bcom-logo.png";
 import {
   Content,
   Copyright,
@@ -8,8 +10,6 @@ import {
   LogoLinkWrapper,
   Wrapper,
 } from "./styled";
-
-import bcomLogo from "../../assets/bcom-logo.png";
 
 const links = [
   {

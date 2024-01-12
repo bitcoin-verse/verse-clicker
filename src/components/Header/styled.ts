@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { colors } from "../colors";
+
 import { H3 } from "../H3";
+import { colors } from "../colors";
 
 export const StyledHeader = styled.header`
   display: grid;
