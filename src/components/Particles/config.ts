@@ -29,7 +29,16 @@ export const createConfig = ({
         },
       };
     case "LunarNewYear":
-      return lunarNewYear;
+      return {
+        ...lunarNewYear,
+        particles: {
+          ...lunarNewYear.particles,
+          number: {
+            ...lunarNewYear.particles?.number,
+            value: (particlesNumber || 1) * 3,
+          },
+        },
+      };
     case "Christmas":
       return {
         ...snow,
