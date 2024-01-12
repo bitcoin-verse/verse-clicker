@@ -1,11 +1,11 @@
-import { useWeb3Modal } from "@web3modal/wagmi/react";
 import React from "react";
+import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useChainId } from "wagmi";
 
 import { useTrackedState } from "../../context/store";
 import { getNetworkImage } from "../../helpers/getNetworkImage";
-import Campaign from "../Campaigns";
 import { Button, ButtonContent } from "./styled";
+import Campaign from "../Campaigns/Campaign";
 
 const NetworkButton = () => {
   const chainId = useChainId();
