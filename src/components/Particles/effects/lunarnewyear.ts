@@ -5,25 +5,15 @@ import lanturn from "../../../assets/lanturn.png";
 export const lunarNewYear: ISourceOptions = {
   name: "React Multiple Images",
   particles: {
-    color: {
-      value: "#CCC",
-    },
     collisions: {
       enable: true,
-    },
-    links: {
-      blink: false,
-      color: "#fff",
-      consent: false,
-      distance: 150,
-      enable: false,
-      opacity: 0.6,
-      width: 1,
     },
     move: {
       enable: true,
       speed: 1,
+      direction: "top",
     },
+
     number: {
       density: {
         enable: true,
@@ -41,12 +31,34 @@ export const lunarNewYear: ISourceOptions = {
         max: 0.5,
       },
     },
+
+    tilt: {
+      direction: "clockwise",
+      enable: true,
+      value: { min: 0, max: 45 },
+      animation: {
+        enable: true,
+        speed: 5,
+        sync: false,
+      },
+    },
+    wobble: {
+      distance: {
+        min: 0,
+        max: 50,
+      },
+      enable: true,
+      speed: {
+        angle: { min: 0, max: 10 },
+        move: { min: 0.5, max: 1 },
+      },
+    },
     shape: {
       options: {
         image: [
           {
-            height: 579,
-            width: 370,
+            height: 486,
+            width: 393,
             replaceColor: true,
             src: lanturn,
 
