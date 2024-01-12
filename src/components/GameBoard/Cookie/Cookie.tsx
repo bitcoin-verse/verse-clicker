@@ -12,7 +12,7 @@ import Sidebar from "../../Sidebar";
 import { ButtonWrapper, ClickButton, CookieWrapper, CpcClick } from "./styled";
 
 const Cookie: FC = () => {
-  const { playLaser, playBells } = useAudio();
+  const { playLaser, playBells, playSymbol } = useAudio();
   const { socket } = useSocketCtx();
 
   const { disconnect } = useDisconnect();
@@ -94,7 +94,9 @@ const Cookie: FC = () => {
     animateCookieClick(e);
 
     if (gameMode === "Christmas" && playBells) playBells();
-    if (gameMode !== "Christmas" && playLaser) playLaser();
+    if (gameMode === "LunarNewYear" && playSymbol) playSymbol();
+    if (gameMode !== "Christmas" && gameMode !== "LunarNewYear" && playLaser)
+      playLaser();
   };
 
   return (
