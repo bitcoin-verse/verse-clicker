@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 
-import { CampaignInfo } from "../../../hooks/useCampaignInfo";
-import { H3 } from "../../H3";
-import { Label } from "../../Label";
-import { LinkButton } from "../../LinkButton";
-import { Text } from "../../Text";
+import { CampaignInfo } from "../../hooks/useCampaignInfo";
+import { H3 } from "../H3";
+import { Label } from "../Label";
+import { LinkButton } from "../LinkButton";
+import { Text } from "../Text";
 
 interface Props {
   campaignInfo?: CampaignInfo;

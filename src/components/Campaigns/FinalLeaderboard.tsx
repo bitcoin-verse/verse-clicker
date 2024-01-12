@@ -7,7 +7,7 @@ import {
   Header,
   LeaderboardContent,
   LeaderboardWrapper,
-} from "../../Sidebar/Leaderboard/styled";
+} from "../Sidebar/Leaderboard/styled";
 
 const FinalLeaderboard = () => {
   const { address } = useAccount();

@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import { useNetwork } from "wagmi";
 
-import { useTrackedState } from "../../../context/store";
-import { CampaignInfo } from "../../../hooks/useCampaignInfo";
-import { Button } from "../../Button";
-import { H3 } from "../../H3";
-import { Label } from "../../Label";
-import { LinkButton } from "../../LinkButton";
-import { Text } from "../../Text";
+import { useTrackedState } from "../../context/store";
+import { CampaignInfo } from "../../hooks/useCampaignInfo";
+import { Button } from "../Button";
+import { H3 } from "../H3";
+import { Label } from "../Label";
+import { LinkButton } from "../LinkButton";
+import { Text } from "../Text";
 
 interface Props {
   playCampaign: () => void;

@@ -1,14 +1,13 @@
 import React, { FC, useCallback } from "react";
 import { useAccount, useNetwork } from "wagmi";
 
-import tree from "../../../assets/tree.png";
-import { useSocketCtx } from "../../../context/SocketContext";
-import { GameMode } from "../../../context/reducers/network";
-import { useDispatch } from "../../../context/store";
-import useCampaignInfo from "../../../hooks/useCampaignInfo";
-import { ModalWrapper } from "../../Boosts/styled";
-import Modal, { useModal } from "../../Modal";
-import { CampaignButton } from "../styled";
+import { useSocketCtx } from "../../context/SocketContext";
+import { GameMode } from "../../context/reducers/network";
+import { useDispatch, useTrackedState } from "../../context/store";
+import useCampaignInfo from "../../hooks/useCampaignInfo";
+import { ModalWrapper } from "../Boosts/styled";
+import Modal, { useModal } from "../Modal";
+import { Wrapper, CampaignButton } from "./styled";
 import After from "./After";
 import Before from "./Before";
 import During from "./During";
@@ -52,7 +51,7 @@ const Christmas: FC<Props> = ({ isNetworkButton }) => {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <CampaignButton onClick={() => showModal()} $small={isNetworkButton}>
         <img src={tree} alt="Tree" height="100%" width="100%" />
       </CampaignButton>
@@ -70,8 +69,8 @@ const Christmas: FC<Props> = ({ isNetworkButton }) => {
           {campaignPhase === "AFTER" && <After />}
         </ModalWrapper>
       </Modal>
-    </>
+    </Wrapper>
   );
 };
 
-export default Christmas;
+export default Campaign;

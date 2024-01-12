@@ -1,1 +1,1 @@
-export { default } from "./Campaigns";
+export { default } from "./Campaign";
