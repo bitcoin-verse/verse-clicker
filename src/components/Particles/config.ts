@@ -4,6 +4,7 @@ import { GameMode } from "../../context/reducers/network";
 import { snow } from "./effects/christmas";
 import { ethereumConfig } from "./effects/ethereum";
 import { goerliConfig } from "./effects/goerli";
+import { lunarNewYear } from "./effects/lunarnewyear";
 import { polygonConfig } from "./effects/polygon";
 import { sepoliaConfig } from "./effects/sepolia";
 
@@ -24,6 +25,17 @@ export const createConfig = ({
           number: {
             ...polygonConfig.particles?.number,
             value: particlesNumber * 10,
+          },
+        },
+      };
+    case "LunarNewYear":
+      return {
+        ...lunarNewYear,
+        particles: {
+          ...lunarNewYear.particles,
+          number: {
+            ...lunarNewYear.particles?.number,
+            value: (particlesNumber || 1) * 3,
           },
         },
       };

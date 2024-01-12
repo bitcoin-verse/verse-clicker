@@ -7,7 +7,7 @@ import { colors } from "../colors";
 export const LunarNewYear: CustomTheme = {
   moon: dragon,
   halfMoon: halfDragon,
-  background: `url(${dragonBg}), radial-gradient(83.88% 83.88% at 33.5% 47.97%, rgba(3, 12, 20, 0) 0%, #030C14 100%);`,
+  background: `url(${dragonBg}), radial-gradient(83.88% 83.88% at 33.5% 47.97%, rgba(3, 12, 20, 0) 0%, #030C14 100%)`,
   buttons: {
     primary: {
       background: {
