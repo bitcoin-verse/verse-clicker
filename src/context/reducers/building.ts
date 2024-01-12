@@ -1,4 +1,5 @@
 import buildings from "../../buildings";
+import Building from "../../classes/Building";
 import { State } from "../store";
 
 export type SetBuildingAction = { type: "SET_BUILDING"; payload: string };
@@ -26,23 +27,32 @@ export type UpdateBuildingsAction = {
   payload: BuildingData[];
 };
 
+const notEmpty = <TValue>(value: TValue): value is NonNullable<TValue> => {
+  return value !== null && value !== undefined;
+};
+
 export const updateBuildings = (
   state: State,
   payload: UpdateBuildingsAction["payload"],
 ): State => {
-  const bldngs = buildings[state.gameMode].map((b, i) => {
-    return {
-      ...b,
-      amount: payload[i].amount,
-      cost: payload[i].cost,
-      locked: payload[i].locked,
-      multiplier: payload[i].multiplier,
-      upgrades: b.upgrades.map((u, ui) => ({
-        ...u,
-        owned: payload[i].upgrades[ui],
-      })),
-    };
-  });
+  const bldngs: Building[] = buildings[state.gameMode]
+    .map((b, i) => {
+      if (!payload[i]) {
+        return null;
+      }
+      return {
+        ...b,
+        amount: payload[i].amount,
+        cost: payload[i].cost,
+        locked: payload[i].locked,
+        multiplier: payload[i].multiplier,
+        upgrades: b.upgrades.map((u, ui) => ({
+          ...u,
+          owned: payload[i].upgrades[ui],
+        })),
+      };
+    })
+    .filter(notEmpty);
 
   return { ...state, buildings: bldngs };
 };

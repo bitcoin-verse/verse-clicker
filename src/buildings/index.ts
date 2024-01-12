@@ -3,6 +3,7 @@ import Upgrade from "../classes/Upgrade";
 import christmasBuildings from "./christmas.json";
 import ethBuildings from "./ethereum.json";
 import gethBuildings from "./goerli.json";
+import lunarNewYearBuildings from "./lunarNewYear.json";
 import polyBuildings from "./polygon.json";
 import sethBuildings from "./sepolia.json";
 
@@ -51,5 +52,5 @@ export default {
   Goerli: generateBuildingsFromJson(gethBuildings),
   Christmas: generateBuildingsFromJson(christmasBuildings),
   Sepolia: generateBuildingsFromJson(sethBuildings),
-  LunarNewYear: generateBuildingsFromJson(sethBuildings),
+  LunarNewYear: generateBuildingsFromJson(lunarNewYearBuildings),
 };
