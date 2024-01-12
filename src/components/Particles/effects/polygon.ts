@@ -1,8 +1,8 @@
-import type { IOptions, RecursivePartial } from "tsparticles-engine";
+import { ISourceOptions } from "@tsparticles/engine";
 
 import amongus from "../../../assets/cyan_amongus.png";
 
-export const polygonConfig: RecursivePartial<IOptions> = {
+export const polygonConfig: ISourceOptions = {
   style: {
     position: "absolute",
   },

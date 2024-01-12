@@ -1,6 +1,6 @@
-import type { IOptions, RecursivePartial } from "tsparticles-engine";
+import { ISourceOptions } from "@tsparticles/engine";
 
-export const goerliConfig: RecursivePartial<IOptions> = {
+export const goerliConfig: ISourceOptions = {
   style: {
     position: "absolute",
   },

@@ -1,10 +1,11 @@
-import type { IOptions, RecursivePartial } from "tsparticles-engine";
 import { GameMode } from "../../context/reducers/network";
 
 import { polygonConfig } from "./effects/polygon";
 import { ethereumConfig } from "./effects/ethereum";
 import { goerliConfig } from "./effects/goerli";
 import { snow } from "./effects/christmas";
+import { sepoliaConfig } from "./effects/sepolia";
+import { ISourceOptions } from "@tsparticles/engine";
 
 // handy place to get lots of configs... https://github.com/tsparticles/tsparticles/tree/main/utils/configs/src
 export const createConfig = ({
@@ -13,7 +14,7 @@ export const createConfig = ({
 }: {
   network: GameMode;
   particlesNumber: number;
-}): RecursivePartial<IOptions> => {
+}): ISourceOptions => {
   switch (network) {
     case "Polygon":
       return {
@@ -37,8 +38,9 @@ export const createConfig = ({
           },
         },
       };
-    case "Goerli":
     case "Sepolia":
+      return sepoliaConfig;
+    case "Goerli":
       return goerliConfig;
     case "Ethereum":
     default:
