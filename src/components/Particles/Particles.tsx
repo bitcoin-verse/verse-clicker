@@ -25,7 +25,7 @@ const Particles: FC = () => {
     const count = buildings.reduce((p, c) => (c.locked ? p : p + 1), 0) - 1;
     return count;
   }, [buildings]);
-
+  console.log(buildingsCount);
   if (init) {
     return (
       <Suspense>
@@ -37,7 +37,7 @@ const Particles: FC = () => {
           }}
           options={createConfig({
             network,
-            particlesNumber: buildingsCount * 5,
+            particlesNumber: (buildingsCount || 1) * 5,
           })}
         />
       </Suspense>
