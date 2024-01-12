@@ -45,6 +45,7 @@ const gameModes: Record<string, GameMode> = {
   polygon: "Polygon",
   goerli: "Goerli",
   sepolia: "Sepolia",
+  lunarnewyear: "LunarNewYear",
 };
 
 export const initialState: State = {
@@ -67,7 +68,7 @@ export const initialState: State = {
   },
   gameMode:
     gampaign && gameModes?.[gampaign.toLowerCase()]
-      ? gameModes[gampaign.toLowerCase()]
+      ? gameModes[gampaign.replace("-", "").toLowerCase()]
       : "Ethereum",
   purchaseAmount: 1,
   settings: { sound: true },
