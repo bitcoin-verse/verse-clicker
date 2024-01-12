@@ -47,8 +47,8 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
             };
           case 11155111: // sepolia
             return {
-              http: "https://polished-dark-patron.quiknode.pro",
-              webSocket: "wss://polished-dark-patron.quiknode.pro",
+              http: "https://holy-black-mountain.ethereum-sepolia.quiknode.pro/",
+              webSocket: "wss://holy-black-mountain.ethereum-sepolia.quiknode.pro/",
             };
           case 137: // polygon/matic
             return {
