@@ -4,6 +4,7 @@ import { GameMode } from "../../context/reducers/network";
 import { snow } from "./effects/christmas";
 import { ethereumConfig } from "./effects/ethereum";
 import { goerliConfig } from "./effects/goerli";
+import { lunarNewYear } from "./effects/lunarnewyear";
 import { polygonConfig } from "./effects/polygon";
 import { sepoliaConfig } from "./effects/sepolia";
 
@@ -27,6 +28,8 @@ export const createConfig = ({
           },
         },
       };
+    case "LunarNewYear":
+      return lunarNewYear;
     case "Christmas":
       return {
         ...snow,

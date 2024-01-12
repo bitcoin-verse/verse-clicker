@@ -6,14 +6,11 @@ import Header from "../components/Header/Header";
 import Layout from "../components/Layout";
 import NotificationModal from "../components/NotificationModal/NotificationModal";
 import Particles from "../components/Particles";
-import { useTrackedState } from "../context/store";
 
 const Main: FC = () => {
-  const { gameMode } = useTrackedState();
-
   return (
     <Layout>
-      {gameMode !== "LunarNewYear" && <Particles />}
+      <Particles />
       <NotificationModal />
       <Header />
       <GameBoard />

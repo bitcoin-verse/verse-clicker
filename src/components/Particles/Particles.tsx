@@ -4,6 +4,7 @@ import {
 } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import React, { FC, Suspense, useEffect, useMemo, useState } from "react";
+import { loadFull } from "tsparticles";
 
 import { useTrackedState } from "../../context/store";
 // if you are going to use `loadSlim`, install the "@tsparticles/slim" package too.
@@ -21,7 +22,8 @@ const Particles: FC = () => {
       // starting from v2 you can add only the features you need reducing the bundle size
       //await loadAll(engine);
       //await loadFull(engine);
-      await loadSlim(engine);
+      // await loadSlim(engine);
+      await loadFull(engine);
       //await loadBasic(engine);
     }).then(() => {
       setInit(true);
