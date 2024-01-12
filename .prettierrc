@@ -1,1 +1,8 @@
-{}
+{
+  "printWidth": 120,
+  "tabWidth": 2,
+  "useTabs": false,
+  "importOrderSeparation": true,
+  "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
+}
