@@ -1,7 +1,7 @@
-import type { IOptions, RecursivePartial } from "tsparticles-engine";
+import { ISourceOptions } from "@tsparticles/engine";
 import verseMoon from "../../../assets/verse-moon.png";
 
-export const ethereumConfig: RecursivePartial<IOptions> = {
+export const ethereumConfig: ISourceOptions = {
   style: {
     position: "absolute",
   },
@@ -12,7 +12,7 @@ export const ethereumConfig: RecursivePartial<IOptions> = {
       value: 10,
       density: {
         enable: true,
-        value_area: 400,
+        // value_area: 400,
       },
     },
     color: {
@@ -22,12 +22,13 @@ export const ethereumConfig: RecursivePartial<IOptions> = {
     shape: {
       type: "image",
 
-      polygon: {
-        nb_sides: 5,
-      },
-
-      image: {
-        src: verseMoon,
+      options: {
+        polygon: {
+          nb_sides: 5,
+        },
+        image: {
+          src: verseMoon,
+        },
       },
     },
 
@@ -43,26 +44,24 @@ export const ethereumConfig: RecursivePartial<IOptions> = {
       direction: "top",
       random: false,
       straight: false,
-      out_mode: "out",
-      bounce: false,
+      outModes: "out",
       attract: {
         enable: false,
-        rotateX: 600,
-        rotateY: 1200,
+        rotate: {
+          x: 600,
+          y: 1200,
+        },
       },
     },
-
     opacity: {
-      value: 0.6,
-      random: true,
-      anim: {
+      value: { min: 0.1, max: 0.6 },
+      animation: {
         enable: true,
         speed: 0.8,
-        opacity_min: 0.1,
+        mode: "random",
         sync: false,
       },
     },
-
     size: {
       value: { min: 8, max: 16 },
     },

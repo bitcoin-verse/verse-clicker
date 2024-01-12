@@ -1,5 +1,3 @@
-import type { IOptions, RecursivePartial } from "tsparticles-engine";
-
 import sf1 from "../../../assets/snowflakes/snowflake-1.png";
 import sf2 from "../../../assets/snowflakes/snowflake-2.png";
 import sf3 from "../../../assets/snowflakes/snowflake-3.png";
@@ -7,8 +5,9 @@ import sf4 from "../../../assets/snowflakes/snowflake-4.png";
 import sf5 from "../../../assets/snowflakes/snowflake-5.png";
 import sf6 from "../../../assets/snowflakes/snowflake-6.png";
 import santa from "../../../assets/santa.png";
+import { ISourceOptions } from "@tsparticles/engine";
 
-export const snow: RecursivePartial<IOptions> = {
+export const snow: ISourceOptions = {
   background: {
     color: "transparent",
   },

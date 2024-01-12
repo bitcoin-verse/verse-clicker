@@ -14,6 +14,7 @@ import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { ContextProvider } from "./store";
 import SocketCtxProvider from "./SocketContext";
+import { getNetworkImage } from "../helpers/getNetworkImage";
 
 const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
@@ -39,18 +40,22 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     jsonRpcProvider({
       rpc: (chain) => {
         switch (chain.id) {
-          case 5:
+          case 5: // goerli
             return {
               http: "https://rpc.ankr.com/eth_goerli",
               webSocket: `wss://ethereum-goerli.publicnode.com`,
             };
-          case 137:
-          case 11155111:
+          case 11155111: // sepolia
             return {
-              http: "https://floral-empty-gas.matic.quiknode.pro/",
-              webSocket: "wss://floral-empty-gas.matic.quiknode.pro/",
+              http: "https://holy-black-mountain.ethereum-sepolia.quiknode.pro/",
+              webSocket: "wss://holy-black-mountain.ethereum-sepolia.quiknode.pro/",
             };
-          case 1:
+          case 137: // polygon/matic
+            return {
+              http: "https://floral-empty-gas.quiknode.pro",
+              webSocket: "wss://floral-empty-gas.quiknode.pro",
+            };
+          case 1: // ethereum
           default:
             return {
               http: "https://wispy-solitary-darkness.quiknode.pro",
@@ -106,6 +111,10 @@ createWeb3Modal({
     "--w3m-color-mix": "#000000",
     "--w3m-accent": "linear-gradient(180deg, #0EBEF0 0%, #0085FF 100%)",
     "--w3m-font-family": "Barlow",
+  },
+  chainImages: {
+    5: getNetworkImage(5),
+    11155111: getNetworkImage(11155111),
   },
 });
 
