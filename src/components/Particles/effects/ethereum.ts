@@ -53,25 +53,15 @@ export const ethereumConfig: ISourceOptions = {
         },
       },
     },
-
     opacity: {
-      value: 0.6,
+      value: { min: 0.1, max: 0.6 },
       animation: {
         enable: true,
         speed: 0.8,
         mode: "random",
-        // opacity_min: 0.1,
         sync: false,
       },
-      // random: true,
-      /*   anim: {
-        enable: true,
-        speed: 0.8,
-        opacity_min: 0.1,
-        sync: false,
-      }, */
     },
-
     size: {
       value: { min: 8, max: 16 },
     },
