@@ -4,7 +4,7 @@ import { useChainId } from "wagmi";
 
 import { useTrackedState } from "../../context/store";
 import { getNetworkImage } from "../../helpers/getNetworkImage";
-import Christmas from "../Compaigns/Christmas";
+import Christmas from "../Campaigns/Christmas";
 import { Button, ButtonContent } from "./styled";
 
 const NetworkButton = () => {
