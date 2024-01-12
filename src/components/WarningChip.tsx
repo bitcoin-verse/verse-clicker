@@ -1,10 +1,11 @@
 import React, { FC, PropsWithChildren } from "react";
 import styled from "styled-components";
-import { colors } from "./colors";
+
+import { useTrackedState } from "../context/store";
+import { logAmplitudeEvent } from "../helpers/analytics";
 import ChevronLeft from "./Icons/ChevronLeft";
 import Info from "./Icons/Info";
-import { logAmplitudeEvent } from "../helpers/analytics";
-import { useTrackedState } from "../context/store";
+import { colors } from "./colors";
 
 const Wrapper = styled.a`
   background-color: ${colors.yellow25};

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useEnsName } from "wagmi";
+
 import truncateEthAddress from "../helpers/truncateEthAddress";
 
 const useUsername = (addr: string) => {

@@ -1,6 +1,7 @@
 import React, { FC } from "react";
-import Tabs, { TabButton } from "../../Tabs";
+
 import { useDispatch, useTrackedState } from "../../../context/store";
+import Tabs, { TabButton } from "../../Tabs";
 import { Wrapper } from "./styled";
 
 interface Props {

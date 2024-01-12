@@ -1,12 +1,13 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useAccount } from "wagmi";
+
+import Row from "../../Sidebar/Leaderboard/Row";
 import {
   Header,
   LeaderboardContent,
   LeaderboardWrapper,
 } from "../../Sidebar/Leaderboard/styled";
-import Row from "../../Sidebar/Leaderboard/Row";
-import { useAccount } from "wagmi";
-import axios from "axios";
 
 const FinalLeaderboard = () => {
   const { address } = useAccount();

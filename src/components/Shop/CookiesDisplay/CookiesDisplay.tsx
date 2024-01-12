@@ -1,6 +1,7 @@
 import React from "react";
-import { formatNumber } from "../../../helpers/formatNumber";
+
 import { useTrackedState } from "../../../context/store";
+import { formatNumber } from "../../../helpers/formatNumber";
 import PointsIcon from "../../PointsIcon";
 import { Wrapper } from "./styled";
 

@@ -1,6 +1,6 @@
 import { CustomTheme } from ".";
-import moon from "../../assets/verse-polygon-moon.png";
 import halfMoon from "../../assets/half-moon-polygon.png";
+import moon from "../../assets/verse-polygon-moon.png";
 import { colors } from "../colors";
 
 export const Polygon: CustomTheme = {

@@ -1,14 +1,15 @@
 import React, { FC } from "react";
-import { Label } from "../../../Label";
-import Spinner from "../../../Icons/Spinner";
-import { LinkButton } from "../../../LinkButton";
-import { H3 } from "../../../H3";
-import { formatNumber } from "../../../../helpers/formatNumber";
-import { BURN_LIST } from "./Burn";
-import { getTxExplorerLink } from "../../../../helpers/getExplorerLink";
 import { useChainId } from "wagmi";
+
 import { useTrackedState } from "../../../../context/store";
+import { formatNumber } from "../../../../helpers/formatNumber";
+import { getTxExplorerLink } from "../../../../helpers/getExplorerLink";
+import { H3 } from "../../../H3";
+import Spinner from "../../../Icons/Spinner";
+import { Label } from "../../../Label";
+import { LinkButton } from "../../../LinkButton";
 import BurnEngineLink from "../../../Links/BurnEngineLink";
+import { BURN_LIST } from "./Burn";
 
 interface Props {
   isPendingWallet: boolean;

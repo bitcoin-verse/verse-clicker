@@ -1,11 +1,11 @@
 import React, { FC } from "react";
+import { useTheme } from "styled-components";
 
-import ReturningUser from "./ReturningUser";
-import NewUser from "./NewUser";
-import { Moon, StyledButton } from "./styled";
 import { useTrackedState } from "../../context/store";
 import BonusContent from "./BonusContent";
-import { useTheme } from "styled-components";
+import NewUser from "./NewUser";
+import ReturningUser from "./ReturningUser";
+import { Moon, StyledButton } from "./styled";
 
 interface Props {
   close: () => void;

@@ -1,21 +1,18 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es6": true
   },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "react", "prettier"],
-  "extends": [
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
+  "extends": ["plugin:react/recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
   "parserOptions": {
+    "project": "./tsconfig.json",
     "ecmaVersion": "latest",
     "ecmaFeatures": {
       "jsx": true
@@ -24,6 +21,7 @@
   },
 
   "rules": {
+    "prettier/prettier": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
     "no-multiple-empty-lines": ["warn", { "max": 1 }]
   }

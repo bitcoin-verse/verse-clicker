@@ -1,10 +1,9 @@
 import React, { FC } from "react";
-import { Button } from "../../Button";
 
+import { Button } from "../../Button";
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
 import Modal, { useModal } from "../../Modal";
-
 import FinalLeaderboard from "./FinalLeaderboard";
 
 const After: FC = () => {

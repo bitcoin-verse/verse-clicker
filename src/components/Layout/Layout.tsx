@@ -1,11 +1,12 @@
 import React, { FC, PropsWithChildren } from "react";
-import { ContentsWrapper, GlobalStyle } from "./styled";
+import { ThemeProvider } from "styled-components";
+
 import { AudioProvider } from "../../context/AudioProvider";
 import { useTrackedState } from "../../context/store";
-import { ThemeProvider } from "styled-components";
-import { themes } from "../themes";
-import ClickmasBanner from "../Banners/ClickmasBanner";
 import useCampaignInfo from "../../hooks/useCampaignInfo";
+import ClickmasBanner from "../Banners/ClickmasBanner";
+import { themes } from "../themes";
+import { ContentsWrapper, GlobalStyle } from "./styled";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   const { gameMode: network, showCampaignBanner = true } = useTrackedState();

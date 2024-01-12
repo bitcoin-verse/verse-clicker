@@ -1,8 +1,8 @@
 import { Reducer } from "react";
 import { AsyncActionHandlers } from "use-reducer-async";
 
-import { State } from "./store";
 import { Action } from "./reducer";
+import { State } from "./store";
 
 export type AsyncAction = {
   type: "SAVE_GAME";

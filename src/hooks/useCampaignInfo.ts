@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import { GameMode } from "../context/reducers/network";
 import axios, { AxiosError } from "axios";
+import { useEffect, useState } from "react";
+
+import { GameMode } from "../context/reducers/network";
 
 export type CampaignInfo = { startDate: number; endDate: number };
 export type CampaignPhase = "BEFORE" | "DURING" | "AFTER";

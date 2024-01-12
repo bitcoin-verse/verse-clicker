@@ -1,11 +1,12 @@
+import { ISourceOptions } from "@tsparticles/engine";
+
+import santa from "../../../assets/santa.png";
 import sf1 from "../../../assets/snowflakes/snowflake-1.png";
 import sf2 from "../../../assets/snowflakes/snowflake-2.png";
 import sf3 from "../../../assets/snowflakes/snowflake-3.png";
 import sf4 from "../../../assets/snowflakes/snowflake-4.png";
 import sf5 from "../../../assets/snowflakes/snowflake-5.png";
 import sf6 from "../../../assets/snowflakes/snowflake-6.png";
-import santa from "../../../assets/santa.png";
-import { ISourceOptions } from "@tsparticles/engine";
 
 export const snow: ISourceOptions = {
   background: {

@@ -1,14 +1,13 @@
 import React, { FC, useEffect, useState } from "react";
-import { useTrackedState } from "../../../context/store";
 
+import { useTrackedState } from "../../../context/store";
+import useScreenWidth from "../../../hooks/useScreenWidth";
+import Advertisement from "../../Advertisement";
+import PurchaseAmount from "../../GameBoard/PurchaseAmount";
+import CookiesDisplay from "../CookiesDisplay";
+import MobileTitle from "../MobileTitle";
 import BuildingButton from "./BuildingButton";
 import { BuildingsWrapper, PurchaseButtons, Wrapper } from "./styled";
-
-import PurchaseAmount from "../../GameBoard/PurchaseAmount";
-import MobileTitle from "../MobileTitle";
-import CookiesDisplay from "../CookiesDisplay";
-import Advertisement from "../../Advertisement";
-import useScreenWidth from "../../../hooks/useScreenWidth";
 
 interface Props {
   toggleOpen: boolean;

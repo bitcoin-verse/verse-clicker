@@ -1,12 +1,11 @@
 import React, { FC, useEffect, useState } from "react";
+import styled from "styled-components";
 
+import adFarms from "../assets/ad-farms.png";
 import adLounge from "../assets/ad-lounge.png";
 import adPools from "../assets/ad-pools.png";
-import adSwap from "../assets/ad-swap.png";
 import adStaking from "../assets/ad-staking.png";
-import adFarms from "../assets/ad-farms.png";
-
-import styled from "styled-components";
+import adSwap from "../assets/ad-swap.png";
 import { useTrackedState } from "../context/store";
 import { logAmplitudeEvent } from "../helpers/analytics";
 

@@ -1,15 +1,16 @@
 import React from "react";
 import { useChainId } from "wagmi";
+
+import verseIcon from "../../assets/verse-icon.png";
 import { useTrackedState } from "../../context/store";
 import { formatNumber } from "../../helpers/formatNumber";
 import { getTxExplorerLink } from "../../helpers/getExplorerLink";
 import { H3 } from "../H3";
-import PointsIcon from "../PointsIcon";
 import { Label } from "../Label";
 import { LinkButton } from "../LinkButton";
 import BurnEngineLink from "../Links/BurnEngineLink";
 import ScratcherLink from "../Links/ScratcherLink";
-import verseIcon from "../../assets/verse-icon.png";
+import PointsIcon from "../PointsIcon";
 import { Value } from "./styled";
 
 const BonusContent = () => {

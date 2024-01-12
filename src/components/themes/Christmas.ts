@@ -1,6 +1,6 @@
 import { CustomTheme } from ".";
-import present from "../../assets/present.png";
 import halfPresent from "../../assets/half-present.png";
+import present from "../../assets/present.png";
 import { colors } from "../colors";
 
 export const Christmas: CustomTheme = {

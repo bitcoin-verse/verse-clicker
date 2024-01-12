@@ -1,14 +1,14 @@
 import { Dispatch, Reducer, useCallback, useEffect, useReducer } from "react";
 import { createContainer } from "react-tracked";
-import reducer, { Action } from "./reducer";
-import { Player } from "./reducers/player";
 
 import buildings from "../buildings";
-import { LeaderboardStats } from "./reducers/leaderboard";
 import Building from "../classes/Building";
-import { GameMode } from "./reducers/network";
-import { ReturnData } from "./reducers/returnData";
+import reducer, { Action } from "./reducer";
 import { BonusData } from "./reducers/bonusData";
+import { LeaderboardStats } from "./reducers/leaderboard";
+import { GameMode } from "./reducers/network";
+import { Player } from "./reducers/player";
+import { ReturnData } from "./reducers/returnData";
 
 const storageKey = "verse-clicker";
 

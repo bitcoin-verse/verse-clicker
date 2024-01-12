@@ -1,11 +1,12 @@
 import React, { FC, useCallback, useMemo } from "react";
-import { Button } from "../../Button";
-import { useSocketCtx } from "../../../context/SocketContext";
-import useUpgradesList from "../../../hooks/useUpgradesList";
-import { useTrackedState } from "../../../context/store";
-import { ModifiedUpgrade } from "../../Shop/UpgradesList/UpgradeButton";
 import styled from "styled-components";
+
 import { useAudio } from "../../../context/AudioProvider";
+import { useSocketCtx } from "../../../context/SocketContext";
+import { useTrackedState } from "../../../context/store";
+import useUpgradesList from "../../../hooks/useUpgradesList";
+import { Button } from "../../Button";
+import { ModifiedUpgrade } from "../../Shop/UpgradesList/UpgradeButton";
 
 export const Wrapper = styled.div<{ $show: boolean }>`
   display: ${({ $show }) => ($show ? "flex" : "none")};

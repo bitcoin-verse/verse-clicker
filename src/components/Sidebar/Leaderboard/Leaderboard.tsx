@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { memo } from "react-tracked";
+import { useAccount } from "wagmi";
 
 import { useTrackedState } from "../../../context/store";
-import { useAccount } from "wagmi";
+import { formatSeconds } from "../../../helpers/formatSeconds";
+import Row from "./Row";
 import {
   Header,
   LeaderboardContent,
   LeaderboardWrapper,
   Timer,
 } from "./styled";
-
-import Row from "./Row";
-import { formatSeconds } from "../../../helpers/formatSeconds";
 
 const Leaderboard = memo(() => {
   const { address } = useAccount();

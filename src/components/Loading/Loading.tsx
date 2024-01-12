@@ -1,7 +1,17 @@
+import { useWeb3Modal } from "@web3modal/wagmi/react";
 import React, { FC, useEffect } from "react";
+import { useTheme } from "styled-components";
 import { useAccount, useDisconnect, useNetwork, useSwitchNetwork } from "wagmi";
+
+import connectWallet from "../../assets/connect-wallet.png";
+import { useTrackedState } from "../../context/store";
+import { Button } from "../Button";
 import { H1 } from "../H1";
 import { H4 } from "../H4";
+import Spinner from "../Icons/Spinner";
+import { Label } from "../Label";
+import Modal, { useModal } from "../Modal";
+import { Title } from "../Title";
 // import { Link } from "../Link";
 import {
   ConnectWalletImage,
@@ -11,15 +21,6 @@ import {
   MoonImage,
   Wrapper,
 } from "./styled";
-import { Title } from "../Title";
-import { Button } from "../Button";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
-import connectWallet from "../../assets/connect-wallet.png";
-import Modal, { useModal } from "../Modal";
-import Spinner from "../Icons/Spinner";
-import { useTrackedState } from "../../context/store";
-import { Label } from "../Label";
-import { useTheme } from "styled-components";
 
 const Loading: FC = () => {
   const { status } = useAccount();

@@ -1,12 +1,11 @@
 import React, { FC } from "react";
-import Header from "../components/Header/Header";
+
 import Footer from "../components/Footer";
 import GameBoard from "../components/GameBoard/GameBoard";
-import Particles from "../components/Particles";
-
-import NotificationModal from "../components/NotificationModal/NotificationModal";
-
+import Header from "../components/Header/Header";
 import Layout from "../components/Layout";
+import NotificationModal from "../components/NotificationModal/NotificationModal";
+import Particles from "../components/Particles";
 import { useTrackedState } from "../context/store";
 
 const Main: FC = () => {

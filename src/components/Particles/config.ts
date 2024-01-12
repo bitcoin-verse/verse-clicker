@@ -1,11 +1,11 @@
-import { GameMode } from "../../context/reducers/network";
+import { ISourceOptions } from "@tsparticles/engine";
 
-import { polygonConfig } from "./effects/polygon";
+import { GameMode } from "../../context/reducers/network";
+import { snow } from "./effects/christmas";
 import { ethereumConfig } from "./effects/ethereum";
 import { goerliConfig } from "./effects/goerli";
-import { snow } from "./effects/christmas";
+import { polygonConfig } from "./effects/polygon";
 import { sepoliaConfig } from "./effects/sepolia";
-import { ISourceOptions } from "@tsparticles/engine";
 
 // handy place to get lots of configs... https://github.com/tsparticles/tsparticles/tree/main/utils/configs/src
 export const createConfig = ({

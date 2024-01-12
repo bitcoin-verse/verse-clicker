@@ -1,6 +1,6 @@
 import { CustomTheme } from ".";
-import moon from "../../assets/verse-moon.png";
 import halfMoon from "../../assets/half-moon.png";
+import moon from "../../assets/verse-moon.png";
 import { colors } from "../colors";
 
 export const Ethereum: CustomTheme = {

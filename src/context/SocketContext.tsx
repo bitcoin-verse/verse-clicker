@@ -9,8 +9,9 @@ import React, {
 } from "react";
 import { Socket, io } from "socket.io-client";
 import { useAccount, useNetwork } from "wagmi";
-import { useDispatch, useTrackedState } from "./store";
+
 import { GameMode } from "./reducers/network";
+import { useDispatch, useTrackedState } from "./store";
 
 export interface SocketCtxState {
   socket: Socket;

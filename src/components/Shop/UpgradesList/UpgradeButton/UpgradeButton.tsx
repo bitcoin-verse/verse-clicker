@@ -1,16 +1,14 @@
 import React, { FC, useCallback } from "react";
 
-import { Title } from "../../../Title";
-import { Text } from "../../../Text";
-import PointsIcon from "../../../PointsIcon";
-
-import { Button, Cost } from "./styled";
-import { useTrackedState } from "../../../../context/store";
 import Upgrade from "../../../../classes/Upgrade";
-import { formatNumber } from "../../../../helpers/formatNumber";
-import { useSocketCtx } from "../../../../context/SocketContext";
-
 import { useAudio } from "../../../../context/AudioProvider";
+import { useSocketCtx } from "../../../../context/SocketContext";
+import { useTrackedState } from "../../../../context/store";
+import { formatNumber } from "../../../../helpers/formatNumber";
+import PointsIcon from "../../../PointsIcon";
+import { Text } from "../../../Text";
+import { Title } from "../../../Title";
+import { Button, Cost } from "./styled";
 
 export type ModifiedUpgrade = Upgrade & {
   bIndex: number;

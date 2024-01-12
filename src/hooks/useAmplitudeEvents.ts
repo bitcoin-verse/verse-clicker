@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
 import { useWeb3ModalEvents } from "@web3modal/wagmi/react";
+import { useEffect, useState } from "react";
 import { useNetwork } from "wagmi";
+
 import { logAmplitudeEvent } from "../helpers/analytics";
 
 const useAmplitudeEvents = () => {

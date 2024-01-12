@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { LEADERBOARD } from "./endpoints";
 
 export type LeaderboardResponse = {

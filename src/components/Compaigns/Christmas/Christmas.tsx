@@ -1,18 +1,16 @@
 import React, { FC, useCallback } from "react";
 import { useAccount, useNetwork } from "wagmi";
 
-import { CampaignButton } from "../styled";
-
 import tree from "../../../assets/tree.png";
-import Modal, { useModal } from "../../Modal";
-
-import { ModalWrapper } from "../../Boosts/styled";
-import { useDispatch } from "../../../context/store";
 import { useSocketCtx } from "../../../context/SocketContext";
-import useCampaignInfo from "../../../hooks/useCampaignInfo";
 import { GameMode } from "../../../context/reducers/network";
-import Before from "./Before";
+import { useDispatch } from "../../../context/store";
+import useCampaignInfo from "../../../hooks/useCampaignInfo";
+import { ModalWrapper } from "../../Boosts/styled";
+import Modal, { useModal } from "../../Modal";
+import { CampaignButton } from "../styled";
 import After from "./After";
+import Before from "./Before";
 import During from "./During";
 
 interface Props {

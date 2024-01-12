@@ -1,20 +1,19 @@
-import React, { FC, PropsWithChildren } from "react";
-
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { goerli, mainnet, polygon, sepolia } from "wagmi/chains";
 import {
-  createWeb3Modal,
   EIP6963Connector,
   Web3ModalOptions,
+  createWeb3Modal,
 } from "@web3modal/wagmi/react";
+import React, { FC, PropsWithChildren } from "react";
+import { WagmiConfig, configureChains, createConfig } from "wagmi";
+import { goerli, mainnet, polygon, sepolia } from "wagmi/chains";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
+import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
-import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
-import { ContextProvider } from "./store";
-import SocketCtxProvider from "./SocketContext";
 import { getNetworkImage } from "../helpers/getNetworkImage";
+import SocketCtxProvider from "./SocketContext";
+import { ContextProvider } from "./store";
 
 const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
@@ -48,7 +47,8 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
           case 11155111: // sepolia
             return {
               http: "https://holy-black-mountain.ethereum-sepolia.quiknode.pro/",
-              webSocket: "wss://holy-black-mountain.ethereum-sepolia.quiknode.pro/",
+              webSocket:
+                "wss://holy-black-mountain.ethereum-sepolia.quiknode.pro/",
             };
           case 137: // polygon/matic
             return {

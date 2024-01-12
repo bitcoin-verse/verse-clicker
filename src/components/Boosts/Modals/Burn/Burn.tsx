@@ -1,41 +1,38 @@
 import React, { FC, useEffect, useState } from "react";
+import { formatEther, parseEther } from "viem";
 import {
   useAccount,
   useContractWrite,
   useNetwork,
   useWaitForTransaction,
 } from "wagmi";
-import { formatEther, parseEther } from "viem";
 
+import verseIcon from "../../../../assets/verse-icon.png";
 import { useSocketCtx } from "../../../../context/SocketContext";
-import useVerseBalance from "../../../../hooks/useVerseBalance";
+import { useTrackedState } from "../../../../context/store";
+import getBurnEngineDetails from "../../../../contracts/getBurnEngineDetails";
+import getVerseTokenDetails from "../../../../contracts/getVerseTokenDetails";
+import { logAmplitudeEvent } from "../../../../helpers/analytics";
+import { formatNumber } from "../../../../helpers/formatNumber";
 import { getBurnEngineExplorerLink } from "../../../../helpers/getBurnEngineExplorerLink";
+import useVerseBalance from "../../../../hooks/useVerseBalance";
+import { Container } from "../../../Container";
+import { H3 } from "../../../H3";
+import { Label } from "../../../Label";
+import { Link } from "../../../Link";
+import BurnEngineLink from "../../../Links/BurnEngineLink";
+import PointsIcon from "../../../PointsIcon";
+import Tabs, { TabButton } from "../../../Tabs";
+import WarningChip from "../../../WarningChip";
 import {
   Divider,
+  Footnote,
   Icon,
   ModalWrapper,
   Price,
   StyledButton,
-  Footnote,
 } from "../../styled";
-import { H3 } from "../../../H3";
-import { Container } from "../../../Container";
-import { Label } from "../../../Label";
-import { Link } from "../../../Link";
-
-import verseIcon from "../../../../assets/verse-icon.png";
-import Tabs, { TabButton } from "../../../Tabs";
-
-import WarningChip from "../../../WarningChip";
-
-import getVerseTokenDetails from "../../../../contracts/getVerseTokenDetails";
-import getBurnEngineDetails from "../../../../contracts/getBurnEngineDetails";
 import LoadingStates from "./LoadingStates";
-import { useTrackedState } from "../../../../context/store";
-import { logAmplitudeEvent } from "../../../../helpers/analytics";
-import PointsIcon from "../../../PointsIcon";
-import { formatNumber } from "../../../../helpers/formatNumber";
-import BurnEngineLink from "../../../Links/BurnEngineLink";
 
 export const BURN_LIST = [
   { title: "1 hour", value: 10000, hours: 1 },

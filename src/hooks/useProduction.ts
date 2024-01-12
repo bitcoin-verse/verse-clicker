@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import Building from "../classes/Building";
 
 export const useProduction = (building: Building) => {

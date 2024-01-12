@@ -1,4 +1,6 @@
 import React, { FC, PropsWithChildren, RefObject, useRef } from "react";
+
+import Cross from "../Icons/Cross";
 import {
   CloseButton,
   Dialog,
@@ -6,7 +8,6 @@ import {
   ModalTitle,
   TitleText,
 } from "./styled";
-import Cross from "../Icons/Cross";
 
 interface Props {
   modalRef: RefObject<HTMLDialogElement>;

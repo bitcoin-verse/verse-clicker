@@ -1,12 +1,15 @@
 import React, { FC, useState } from "react";
 
-import PointsDisplay from "./PointsDisplay/PointsDisplay";
-import Cookie from "./Cookie";
+import Advertisement from "../Advertisement";
 import Boosts from "../Boosts/Boosts";
-import Stats from "./Stats/Stats";
-
 import ShopList from "../Shop/ShopList";
 import UpgradesList from "../Shop/UpgradesList";
+import BuildingUpgradeTabs from "./BuildingUpgradeTabs";
+import Cookie from "./Cookie";
+import PointsDisplay from "./PointsDisplay/PointsDisplay";
+import PurchaseAmount from "./PurchaseAmount";
+import Stats from "./Stats/Stats";
+import UpgradeAll from "./UpgradeAll";
 import {
   MainSection,
   ShopSection,
@@ -14,10 +17,6 @@ import {
   TabContent,
   TabsWrapper,
 } from "./styled";
-import UpgradeAll from "./UpgradeAll";
-import BuildingUpgradeTabs from "./BuildingUpgradeTabs";
-import PurchaseAmount from "./PurchaseAmount";
-import Advertisement from "../Advertisement";
 
 const GameBoard: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);

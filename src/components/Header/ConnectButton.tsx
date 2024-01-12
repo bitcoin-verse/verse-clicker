@@ -1,16 +1,15 @@
-import React, { FC, useEffect, useState } from "react";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
-
+import React, { FC, useEffect, useState } from "react";
 import { useAccount, useEnsName } from "wagmi";
-import { Button as PrimaryButton } from "../Button";
 
-import truncateEthAddress from "../../helpers/truncateEthAddress";
-import wcLogo from "../../assets/wc-logo.png";
-import mmLogo from "../../assets/mm-logo.png";
 import bcomLogo from "../../assets/bcomconnect.png";
+import mmLogo from "../../assets/mm-logo.png";
+import wcLogo from "../../assets/wc-logo.png";
 import { useTrackedState } from "../../context/store";
-import { AddressHolder, Button, ButtonContent, ConnectWrapper } from "./styled";
+import truncateEthAddress from "../../helpers/truncateEthAddress";
+import { Button as PrimaryButton } from "../Button";
 import NetworkButton from "./NetworkButton";
+import { AddressHolder, Button, ButtonContent, ConnectWrapper } from "./styled";
 
 const ConnectButton: FC = () => {
   const { isWallet } = useTrackedState();
