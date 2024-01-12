@@ -1,6 +1,6 @@
 import { Reducer } from "react";
 
-import { setBonusData, SetBonusDataAction } from "./reducers/bonusData";
+import { SetBonusDataAction, setBonusData } from "./reducers/bonusData";
 import {
   SetBuildingAction,
   UpdateBuildingsAction,

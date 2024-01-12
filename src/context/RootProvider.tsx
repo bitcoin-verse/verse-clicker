@@ -1,10 +1,10 @@
 import {
-  createWeb3Modal,
   EIP6963Connector,
   Web3ModalOptions,
+  createWeb3Modal,
 } from "@web3modal/wagmi/react";
 import React, { FC, PropsWithChildren } from "react";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { WagmiConfig, configureChains, createConfig } from "wagmi";
 import { goerli, mainnet, polygon, sepolia } from "wagmi/chains";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";

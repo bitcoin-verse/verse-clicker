@@ -26,11 +26,11 @@ import Tabs, { TabButton } from "../../../Tabs";
 import WarningChip from "../../../WarningChip";
 import {
   Divider,
+  Footnote,
   Icon,
   ModalWrapper,
   Price,
   StyledButton,
-  Footnote,
 } from "../../styled";
 import LoadingStates from "./LoadingStates";
 

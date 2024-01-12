@@ -1,6 +1,6 @@
 import {
-  initParticlesEngine,
   Particles as ReactParticles,
+  initParticlesEngine,
 } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import React, { FC, Suspense, useEffect, useMemo, useState } from "react";

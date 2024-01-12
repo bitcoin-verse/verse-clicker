@@ -4,7 +4,7 @@ import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
 import { Label } from "../../Label";
 import PointsIcon from "../../PointsIcon";
-import { Wrapper, Points, StatCount } from "./styled";
+import { Points, StatCount, Wrapper } from "./styled";
 
 const PointsDisplay: FC = () => {
   const { player } = useTrackedState();

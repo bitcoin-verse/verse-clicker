@@ -14,12 +14,12 @@ import Farm from "./Modals/Farm";
 import Hold from "./Modals/Hold";
 import Scratcher from "./Modals/Scratcher";
 import {
-  BoostTiles,
-  BoostButton,
-  Label,
   Boost,
-  Wrapper,
+  BoostButton,
+  BoostTiles,
   Content,
+  Label,
+  Wrapper,
 } from "./styled";
 
 const boostList = (player: Player, network: GameMode) => {

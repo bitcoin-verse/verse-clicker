@@ -15,11 +15,11 @@ import PointsIcon from "../../PointsIcon";
 import ConfirmModal from "./ConfirmModal";
 import {
   Avatar,
+  ButtonsWrapper,
   Connected,
   Header,
   HeaderRow,
   NetworkImage,
-  ButtonsWrapper,
   SettingsButton,
 } from "./styled";
 
