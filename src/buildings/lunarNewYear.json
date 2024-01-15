@@ -1,7 +1,7 @@
 [
   {
     "name": "Lunar Mouse Clicker",
-    "desc": "A festive mouse adorned with Lunar New Year decorations. Click to generate firecrackers manually.",
+    "desc": "A festive mouse adorned with Lunar New Year decorations. Click to generate lanterns manually.",
     "cost": 8,
     "amount": 0,
     "originalCost": 8,
@@ -13,28 +13,28 @@
       {
         "name": "Jade Mouse Charm",
         "cost": 80,
-        "desc": "Enhances the mouse with a jade charm, symbolizing prosperity. Each click generates twice as many firecrackers. Cursors are twice as efficient.",
+        "desc": "Enhances the mouse with a jade charm, symbolizing prosperity. Each click generates twice as many lanterns. Cursors are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
         "name": "Red Envelope Magic",
         "cost": 800,
-        "desc": "Infuses the mouse with the luck of traditional red envelopes, doubling firecrackers produced per click. Cursors are twice as efficient.",
+        "desc": "Infuses the mouse with the luck of traditional red envelopes, doubling lanterns produced per click. Cursors are twice as efficient.",
         "limit": 1,
         "owned": false
       },
       {
         "name": "Lunar Lantern Light",
         "cost": 80000,
-        "desc": "A radiant lunar lantern lights up each click, multiplying the firecrackers produced. Cursors are twice as efficient.",
+        "desc": "A radiant lunar lantern lights up each click, multiplying the lanterns produced. Cursors are twice as efficient.",
         "limit": 10,
         "owned": false
       },
       {
         "name": "Fortune Coin Clicker",
         "cost": 800000,
-        "desc": "Attaches a fortune coin to the mouse, adding extra firecrackers with every click. Mouse and cursors gain +0.1 firecrackers for every non-cursor asset owned.",
+        "desc": "Attaches a fortune coin to the mouse, adding extra lanterns with every click. Mouse and cursors gain +0.1 lanterns for every non-cursor asset owned.",
         "limit": 25,
         "owned": false,
         "special": 0.1
@@ -42,7 +42,7 @@
       {
         "name": "Dragon's Breath Mechanism",
         "cost": 80000000,
-        "desc": "Empowers the mouse with the mythical dragon's breath, significantly increasing firecrackers per click. Mouse and cursors gain +0.5 firecrackers for every non-cursor asset owned.",
+        "desc": "Empowers the mouse with the mythical dragon's breath, significantly increasing lanterns per click. Mouse and cursors gain +0.5 lanterns for every non-cursor asset owned.",
         "limit": 50,
         "owned": false,
         "special": 0.5
@@ -50,7 +50,7 @@
       {
         "name": "Phoenix Feather Touch",
         "cost": 800000000,
-        "desc": "A touch of the immortal phoenix enhances clicks, creating a burst of additional firecrackers. Mouse and cursors gain +5 firecrackers for every non-cursor asset owned.",
+        "desc": "A touch of the immortal phoenix enhances clicks, creating a burst of additional lanterns. Mouse and cursors gain +5 lanterns for every non-cursor asset owned.",
         "limit": 100,
         "owned": false,
         "special": 5
@@ -58,7 +58,7 @@
       {
         "name": "Celestial Fireworks Display",
         "cost": 8000000000,
-        "desc": "Transforms the click into a celestial-level display, producing an array of firecrackers with each click. Mouse and cursors gain +50 firecrackers for every non-cursor asset owned.",
+        "desc": "Transforms the click into a celestial-level display, producing an array of lanterns with each click. Mouse and cursors gain +50 lanterns for every non-cursor asset owned.",
         "limit": 150,
         "owned": false,
         "special": 50
@@ -66,7 +66,7 @@
       {
         "name": "Eternal Ember Click",
         "cost": 80000000000,
-        "desc": "The mouse's click ignites an eternal ember, echoing the firecracker output of previous clicks. Mouse and cursors gain +500 firecrackers for every non-cursor asset owned.",
+        "desc": "The mouse's click ignites an eternal ember, echoing the lantern output of previous clicks. Mouse and cursors gain +500 lanterns for every non-cursor asset owned.",
         "limit": 200,
         "owned": false,
         "special": 500
@@ -74,7 +74,7 @@
       {
         "name": "Mystic Qilin's Spark",
         "cost": 80000000000000,
-        "desc": "Channels the mystical energy of the Qilin, causing some clicks to produce a spectacular burst of firecrackers. Mouse and cursors gain +500 firecrackers for every non-cursor asset owned.",
+        "desc": "Channels the mystical energy of the Qilin, causing some clicks to produce a spectacular burst of lanterns. Mouse and cursors gain +500 lanterns for every non-cursor asset owned.",
         "limit": 250,
         "owned": false,
         "special": 5000
@@ -82,7 +82,7 @@
       {
         "name": "Emperor's Golden Touch",
         "cost": 80000000000000000,
-        "desc": "Infused with the Emperor's touch, massively increasing the variety and number of firecrackers generated per click. Mouse and cursors gain +5000 firecrackers for every non-cursor asset owned.",
+        "desc": "Infused with the Emperor's touch, massively increasing the variety and number of lanterns generated per click. Mouse and cursors gain +5000 lanterns for every non-cursor asset owned.",
         "limit": 300,
         "owned": false,
         "special": 50000
@@ -92,8 +92,8 @@
     "image": "lunar/mouse.png"
   },
   {
-    "name": "Firecracker Assembly Line",
-    "desc": "An automated assembly line where skilled workers assemble firecrackers at an accelerated rate.",
+    "name": "Lantern Assembly Line",
+    "desc": "An automated assembly line where skilled workers assemble lanterns at an accelerated rate.",
     "cost": 80,
     "amount": 0,
     "originalCost": 80,
@@ -178,7 +178,7 @@
   },
   {
     "name": "Red Paper Mill",
-    "desc": "A paper mill that produces high-quality red paper for wrapping firecrackers and crafting intricate designs.",
+    "desc": "A paper mill that produces high-quality red paper for wrapping lanterns and crafting intricate designs.",
     "cost": 888,
     "amount": 0,
     "originalCost": 888,
@@ -263,7 +263,7 @@
   },
   {
     "name": "Vertical Supply Chain",
-    "desc": "Sources and delivers raw materials for firecracker production from the farthest reaches of the globe.",
+    "desc": "Sources and delivers raw materials for lantern production from the farthest reaches of the globe.",
     "cost": 8880,
     "amount": 0,
     "originalCost": 8880,
@@ -348,7 +348,7 @@
   },
   {
     "name": "Gigafactory",
-    "desc": "A giant factory that leverages cutting edge tech to churn out firecrackers at a global scale.",
+    "desc": "A giant factory that leverages cutting edge tech to churn out lanterns at a global scale.",
     "cost": 88800,
     "amount": 0,
     "originalCost": 88800,
@@ -433,7 +433,7 @@
   },
   {
     "name": "Celestial Fireworks Forge",
-    "desc": "An ancient forge located on the moon, harnessing lunar energy to create mystical firecrackers that glow with celestial light.",
+    "desc": "An ancient forge located on the moon, harnessing lunar energy to create mystical lanterns that glow with celestial light.",
     "cost": 8880000,
     "amount": 0,
     "originalCost": 8880000,
@@ -452,7 +452,7 @@
       {
         "name": "Astrological Alignment Calibrators",
         "cost": 70000000,
-        "desc": "Employs technology that aligns the forge with celestial bodies, enhancing the mystical qualities of the firecrackers.",
+        "desc": "Employs technology that aligns the forge with celestial bodies, enhancing the mystical qualities of the lanterns.",
         "limit": 5,
         "owned": false
       },
@@ -473,7 +473,7 @@
       {
         "name": "Stellar Dust Infusion",
         "cost": 7000000000000,
-        "desc": "Infuses firecrackers with rare stellar dust collected from space, greatly enhancing their glow and appeal.",
+        "desc": "Infuses lanterns with rare stellar dust collected from space, greatly enhancing their glow and appeal.",
         "limit": 100,
         "owned": false
       },
@@ -494,7 +494,7 @@
       {
         "name": "Galactic Core Synergy",
         "cost": 700000000000000000000,
-        "desc": "Aligns the forge with the energy of the galactic core, immensely boosting its mystical firecracker production.",
+        "desc": "Aligns the forge with the energy of the galactic core, immensely boosting its mystical lantern production.",
         "limit": 250,
         "owned": false
       },
@@ -518,7 +518,7 @@
   },
   {
     "name": "Stellar Factory Network",
-    "desc": "A network of factories orbiting stars throughout the galaxy, using stellar energy to power massive firecracker manufacturing operations.",
+    "desc": "A network of factories orbiting stars throughout the galaxy, using stellar energy to power massive lantern manufacturing operations.",
     "cost": 88800000,
     "amount": 0,
     "originalCost": 88800000,
@@ -544,7 +544,7 @@
       {
         "name": "Automated Nebula Harvesters",
         "cost": 10000000000,
-        "desc": "Deploys harvesters in nebulas to gather rare gases and materials, significantly enhancing firecracker quality and doubling output.",
+        "desc": "Deploys harvesters in nebulas to gather rare gases and materials, significantly enhancing lantern quality and doubling output.",
         "limit": 25,
         "owned": false
       },
@@ -603,7 +603,7 @@
   },
   {
     "name": "Galactic Trade Hub",
-    "desc": "A sprawling space station that trades resources with alien civilizations, vastly expanding firecracker production capabilities with exotic materials.",
+    "desc": "A sprawling space station that trades resources with alien civilizations, vastly expanding lantern production capabilities with exotic materials.",
     "cost": 880000000,
     "amount": 0,
     "originalCost": 880000000,
@@ -688,7 +688,7 @@
   },
   {
     "name": "Time-Loop Workshop",
-    "desc": "A workshop where time loops indefinitely, allowing workers to endlessly produce firecrackers without fatigue or resource depletion.",
+    "desc": "A workshop where time loops indefinitely, allowing workers to endlessly produce lanterns without fatigue or resource depletion.",
     "cost": 8800000000,
     "amount": 0,
     "originalCost": 8800000000,
@@ -773,7 +773,7 @@
   },
   {
     "name": "Quantum Cracker Collider",
-    "desc": "Utilizes quantum mechanics to collide particles at high speeds, spontaneously generating vast quantities of firecrackers from seemingly thin air.",
+    "desc": "Utilizes quantum mechanics to collide particles at high speeds, spontaneously generating vast quantities of lanterns from seemingly thin air.",
     "cost": 88800000000,
     "amount": 0,
     "originalCost": 88800000000,
@@ -799,7 +799,7 @@
       {
         "name": "Higgs Boson Manipulation Matrix",
         "cost": 37500000000000,
-        "desc": "Manipulates Higgs Boson particles to optimize firecracker creation, greatly increasing production speed and efficiency.",
+        "desc": "Manipulates Higgs Boson particles to optimize lantern creation, greatly increasing production speed and efficiency.",
         "limit": 25,
         "owned": false
       },
@@ -820,21 +820,21 @@
       {
         "name": "Hadron Resonance Amplifiers",
         "cost": 37500000000000000000,
-        "desc": "Amplifies hadron resonance to create firecrackers at a subatomic level, greatly boosting production rates and efficiency.",
+        "desc": "Amplifies hadron resonance to create lanterns at a subatomic level, greatly boosting production rates and efficiency.",
         "limit": 150,
         "owned": false
       },
       {
         "name": "Quantum Foam Fabricators",
         "cost": 3.75e22,
-        "desc": "Fabricates firecrackers using quantum foam, allowing for intricate and efficient designs, effectively doubling output.",
+        "desc": "Fabricates lanterns using quantum foam, allowing for intricate and efficient designs, effectively doubling output.",
         "limit": 200,
         "owned": false
       },
       {
         "name": "Planck Scale Production Units",
         "cost": 3.75e25,
-        "desc": "Operates at the Planck scale for ultimate precision and efficiency in firecracker production, doubling overall output.",
+        "desc": "Operates at the Planck scale for ultimate precision and efficiency in lantern production, doubling overall output.",
         "limit": 250,
         "owned": false
       },
@@ -943,7 +943,7 @@
   },
   {
     "name": "Universal Synthesizer",
-    "desc": "A megastructure tapping into the fabric of the universe itself, synthesizing firecrackers directly from the cosmic background radiation.",
+    "desc": "A megastructure tapping into the fabric of the universe itself, synthesizing lanterns directly from the cosmic background radiation.",
     "cost": 16000000000000,
     "amount": 0,
     "originalCost": 16000000000000,
@@ -1028,7 +1028,7 @@
   },
   {
     "name": "Multiverse Energy Matrix",
-    "desc": "The pinnacle of firecracker production, this transcendent facility draws energy from all dimensions of the multiverse, manifesting an infinite supply of firecrackers that ripple through realities.",
+    "desc": "The pinnacle of lantern production, this transcendent facility draws energy from all dimensions of the multiverse, manifesting an infinite supply of lanterns that ripple through realities.",
     "cost": 240000000000000,
     "amount": 0,
     "originalCost": 240000000000000,
