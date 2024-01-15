@@ -12,6 +12,8 @@ export type Player = {
   verseHolder: boolean;
   isFarming: boolean;
   isStaking: boolean;
+  clickBase: number;
+  productionBase: number;
 };
 
 export type SetPlayerAction = { type: "SET_PLAYER_DATA"; payload: Player };

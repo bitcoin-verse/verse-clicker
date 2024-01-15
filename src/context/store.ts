@@ -65,6 +65,8 @@ export const initialState: State = {
     verseHolder: false,
     isFarming: false,
     isStaking: false,
+    clickBase: 1,
+    productionBase: 1,
   },
   gameMode:
     gampaign && gameModes?.[gampaign.toLowerCase()]

@@ -10,6 +10,7 @@ export type TxData = {
 type BonusData = {
   burn: TxData[];
   scratcher: TxData[];
+  scratcherMint: TxData[];
 };
 
 export type ReturnData = {
