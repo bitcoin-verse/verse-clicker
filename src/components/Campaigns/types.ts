@@ -22,7 +22,6 @@ export interface AfterCampaignJson {
 }
 export interface CampaignJson {
   title: string;
-  image: string;
   before: BeforeCampaignJson;
   during: DuringCampaignJson;
   after: AfterCampaignJson;
