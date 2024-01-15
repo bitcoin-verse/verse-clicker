@@ -1,25 +1,29 @@
 import React, { FC, useCallback } from "react";
 import { useAccount, useNetwork } from "wagmi";
 
+import redEnvelope from "../../../src/assets/red-envelope.png";
 import { useSocketCtx } from "../../context/SocketContext";
 import { GameMode } from "../../context/reducers/network";
-import { useDispatch, useTrackedState } from "../../context/store";
+import { useDispatch } from "../../context/store";
 import useCampaignInfo from "../../hooks/useCampaignInfo";
 import { ModalWrapper } from "../Boosts/styled";
 import Modal, { useModal } from "../Modal";
 import After from "./After";
 import Before from "./Before";
 import christmasJson from "./Content/christmas.json";
+import lunarNewYearJson from "./Content/lunarnewyear.json";
 import During from "./During";
 import { CampaignButton, Wrapper } from "./styled";
 import { CampaignJson } from "./types";
 
-function getContent(gameMode: GameMode): CampaignJson {
-  switch (gameMode) {
+function getContent(campaign: GameMode): CampaignJson | null {
+  switch (campaign) {
     case "Christmas":
       return christmasJson;
+    case "LunarNewYear":
+      return lunarNewYearJson;
     default:
-      return christmasJson;
+      return null;
   }
 }
 
@@ -33,15 +37,14 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
   const { chain } = useNetwork();
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
-  const { gameMode } = useTrackedState();
-  const { campaignPhase, campaignInfo } = useCampaignInfo("Christmas");
+  const { campaignPhase, campaignInfo } = useCampaignInfo("LunarNewYear");
 
-  const content = getContent(gameMode);
+  const content = getContent("LunarNewYear");
 
   const playCampaign = useCallback(() => {
     dispatch({ type: "RESET_GAME" });
-    dispatch({ type: "SET_GAME_MODE", payload: "Christmas" });
-    socket.emit("join", { address, chain: "Christmas" });
+    dispatch({ type: "SET_GAME_MODE", payload: "LunarNewYear" });
+    socket.emit("join", { address, chain: "LunarNewYear" });
 
     close();
   }, []);
@@ -74,22 +77,24 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
         />
       </CampaignButton>
 
-      <Modal title={content.title} modalRef={modalRef} overlayClose>
-        <ModalWrapper>
-          {campaignPhase === "BEFORE" && (
-            <Before campaignInfo={campaignInfo} content={content.before} />
-          )}
-          {campaignPhase === "DURING" && (
-            <During
-              playCampaign={playCampaign}
-              switchChain={switchChain}
-              campaignInfo={campaignInfo}
-              content={content.during}
-            />
-          )}
-          {campaignPhase === "AFTER" && <After content={content.after} />}
-        </ModalWrapper>
-      </Modal>
+      {content && (
+        <Modal title={content.title} modalRef={modalRef} overlayClose>
+          <ModalWrapper>
+            {campaignPhase === "BEFORE" && (
+              <Before campaignInfo={campaignInfo} content={content.before} />
+            )}
+            {campaignPhase === "DURING" && (
+              <During
+                playCampaign={playCampaign}
+                switchChain={switchChain}
+                campaignInfo={campaignInfo}
+                content={content.during}
+              />
+            )}
+            {campaignPhase === "AFTER" && <After content={content.after} />}
+          </ModalWrapper>
+        </Modal>
+      )}
     </Wrapper>
   );
 };
