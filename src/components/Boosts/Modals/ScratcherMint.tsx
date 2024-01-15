@@ -23,7 +23,13 @@ const ScratcherMint: FC = () => {
         scratcher ticket purchased
       </Text>
       <Text $secondary>
-        NOTE: To receive a bonus you must purchase with same address used here
+        NOTE: To receive a bonus you must
+        <br />
+        1. Purchase with same address used here
+        <br />
+        2. Scratch and claim
+        <br />
+        3. Have a greater than zero production rate
       </Text>
       <WarningChip link="https://support.bitcoin.com/en/articles/8696947-verse-clicker-faq">
         Click here for detailed instructions

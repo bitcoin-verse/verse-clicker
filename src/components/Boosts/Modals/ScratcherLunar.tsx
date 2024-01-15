@@ -7,7 +7,7 @@ import { Text } from "../../Text";
 import WarningChip from "../../WarningChip";
 import { Description, ModalWrapper } from "../styled";
 
-const Scratcher: FC = () => {
+const ScratcherLunar: FC = () => {
   const { isWallet } = useTrackedState();
   const scratcherLink = `https://scratcher.verse.bitcoin.com/?campaign=lunar-new-year${
     isWallet ? "&origin=wallet" : ""
@@ -50,4 +50,4 @@ const Scratcher: FC = () => {
   );
 };
 
-export default Scratcher;
+export default ScratcherLunar;

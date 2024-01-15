@@ -13,6 +13,7 @@ import Burn from "./Modals/Burn";
 import Farm from "./Modals/Farm";
 import Hold from "./Modals/Hold";
 import Scratcher from "./Modals/Scratcher";
+import ScratcherLunar from "./Modals/ScratcherLunar";
 import ScratcherMint from "./Modals/ScratcherMint";
 import {
   Boost,
@@ -127,7 +128,7 @@ const getModalContent = (content?: string) => {
     case "scratcher-lunar":
       return {
         title: "Verse Scratcher",
-        component: <Scratcher />,
+        component: <ScratcherLunar />,
       };
     case "scratcher-mint":
       return {
