@@ -70,10 +70,11 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
     <Wrapper>
       <CampaignButton onClick={() => showModal()} $small={isNetworkButton}>
         <img
-          src={require(`../../../src/assets/${content.image}`)}
-          alt={content.image}
+          src={redEnvelope}
+          alt="red envelope"
           height="100%"
           width="100%"
+          style={{ borderRadius: "0 0 50% 50%" }}
         />
       </CampaignButton>
 
