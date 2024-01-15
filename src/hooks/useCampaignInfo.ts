@@ -35,8 +35,8 @@ const useCampaignInfo = (campaign: GameMode) => {
   useEffect(() => {
     // start timer to auto switch the game to active (or inactive)
     if (!campaignInfo) return;
-    console.log(new Date(campaignInfo.startDate).toISOString());
-    console.log(new Date(campaignInfo.endDate).toISOString());
+    // console.log(new Date(campaignInfo.startDate).toISOString());
+    // console.log(new Date(campaignInfo.endDate).toISOString());
     // started
     if (
       Date.now() > campaignInfo.startDate &&
