@@ -514,7 +514,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/forge.png"
+    "image": "lunar/mouse.png"
   },
   {
     "name": "Stellar Factory Network",
@@ -599,7 +599,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/factory.png"
+    "image": "lunar/mouse.png"
   },
   {
     "name": "Galactic Trade Hub",
@@ -684,7 +684,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/tradehub.png"
+    "image": "lunar/mouse.png"
   },
   {
     "name": "Time-Loop Workshop",
@@ -769,7 +769,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/workshop.png"
+    "image": "lunar/mouse.png"
   },
   {
     "name": "Quantum Cracker Collider",
@@ -854,7 +854,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/quantumcollider.png"
+    "image": "lunar/mouse.png"
   },
   {
     "name": "Dimensional Conduit Facility",
@@ -939,7 +939,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/dimensionalconduit.png"
+    "image": "lunar/mouse.png"
   },
   {
     "name": "Universal Synthesizer",
@@ -1024,7 +1024,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/universalsynthesizer.png"
+    "image": "lunar/mouse.png"
   },
   {
     "name": "Multiverse Energy Matrix",
@@ -1109,6 +1109,6 @@
       }
     ],
     "locked": true,
-    "image": "lunar/multiversematrix.png"
+    "image": "lunar/mouse.png"
   }
 ]
