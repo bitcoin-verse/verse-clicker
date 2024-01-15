@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react";
-import { GameMode } from "src/context/reducers/network";
 
 import { useDispatch } from "../../context/store";
 import Cross from "../Icons/Cross";
@@ -7,11 +6,7 @@ import { Link } from "../Link";
 import bannerJson from "./banner.json";
 import { Wrapper } from "./styled";
 
-interface Props {
-  gameMode: GameMode;
-}
-
-const Banner: FunctionComponent<Props> = ({ gameMode }) => {
+const Banner: FunctionComponent = () => {
   const dispatch = useDispatch();
   const campaign = bannerJson.find((banner) => banner.id === "LunarNewYear");
 

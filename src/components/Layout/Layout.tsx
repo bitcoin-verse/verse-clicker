@@ -17,9 +17,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
       <AudioProvider>
         <ContentsWrapper>
           <GlobalStyle />
-          {showCampaignBanner && campaignPhase !== "AFTER" && (
-            <Banner gameMode={network} />
-          )}
+          {showCampaignBanner && campaignPhase !== "AFTER" && <Banner />}
           {children}
         </ContentsWrapper>
       </AudioProvider>
