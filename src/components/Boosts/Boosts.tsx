@@ -13,6 +13,7 @@ import Burn from "./Modals/Burn";
 import Farm from "./Modals/Farm";
 import Hold from "./Modals/Hold";
 import Scratcher from "./Modals/Scratcher";
+import ScratcherMint from "./Modals/ScratcherMint";
 import {
   Boost,
   BoostButton,
@@ -46,6 +47,27 @@ const boostList = (player: Player, network: GameMode) => {
           unlocked: true,
           label: "Scratch & Win",
           description: "Up to 1,000,000x",
+        },
+      ];
+    case "LunarNewYear":
+      return [
+        {
+          id: "hold-lunar",
+          unlocked: player.verseHolder,
+          label: "Hold",
+          description: "8x clicks",
+        },
+        {
+          id: "scratcher-mint",
+          unlocked: true,
+          label: "Scratcher Buy",
+          description: "+1% production",
+        },
+        {
+          id: "scratcher-lunar",
+          unlocked: true,
+          label: "Scratcher Claim",
+          description: "Skip time",
         },
       ];
     case "Ethereum":
@@ -85,7 +107,12 @@ const getModalContent = (content?: string) => {
     case "hold":
       return {
         title: "Hold",
-        component: <Hold />,
+        component: <Hold rate={10} />,
+      };
+    case "hold-lunar":
+      return {
+        title: "Hold",
+        component: <Hold rate={8} />,
       };
     case "farm":
       return {
@@ -96,6 +123,16 @@ const getModalContent = (content?: string) => {
       return {
         title: "Verse Scratcher",
         component: <Scratcher />,
+      };
+    case "scratcher-lunar":
+      return {
+        title: "Verse Scratcher",
+        component: <Scratcher />,
+      };
+    case "scratcher-mint":
+      return {
+        title: "Scratcher Buy",
+        component: <ScratcherMint />,
       };
     default:
       return null;
@@ -113,7 +150,12 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
   const { player, gameMode } = useTrackedState();
 
   const modalContent = getModalContent(content);
-  const interactiveBoosts = ["burn", "scratcher"];
+  const interactiveBoosts = [
+    "burn",
+    "scratcher",
+    "scratcher-mint",
+    "scratcher-lunar",
+  ];
 
   return (
     <Wrapper $mobileVersion={mobileVersion}>
