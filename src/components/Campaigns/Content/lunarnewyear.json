@@ -1,25 +1,25 @@
 {
-    "title": "Merry Clickmas",
+    "title": "Happy New Year",
     "before": {
-        "title": "🌟 Clickmas is Coming! 🌟",
+        "title": "🌙 Lunaclick is Coming! 🌙",
         "label1": "$1000 up for grabs! 💸",
-        "label2": "Get ready for an epic holiday event! Clickmas, the ultimate clicking challenge, is almost here. Prepare to click, earn, and win big with VERSE!",
+        "label2": "Brace yourself for a spectacular Lunar New Year event! Lunaclick, the ultimate clicking challenge, is coming soon. Get set to click, earn, and win big with VERSE!",
         "start": "Starts: ",
         "end": "Ends: ",
         "learnMore": "📖 Learn more"
     },
     "during": {
-        "title": "🎉 Clickmas is Here! 🎉",
+        "title": "🎊 Lunaclick is Here! Join the Celebration! 🎊",
         "label1": "$1000 Prize Pool 🤑",
-        "label2": "The wait is over! Dive into the world of Verse Clicker, earn points, and win amazing rewards in VERSE. Ready, set, click!",
+        "label2": "The wait is over! Step into the festive world of Verse Clicker, accumulate points, and grab your chance to win exciting rewards in VERSE. Ready, set, click!",
         "end": "Ends: ",
         "learnMore": "📖 Learn more",
         "back": "Back to ",
         "play": "🎮 Start Clicking"
     },
     "after": {
-        "title": "🏆 Clickmas Has Concluded! 🏆",
-        "label2": " Thank you for participating in Clickmas! The event may be over, but the excitement continues. Check out the leaderboard to see where you stand. Prizes will be paid out in January.",
+        "title": "🏮 Lunaclick Has Concluded! 🏮",
+        "label2": "Thank you for participating in Lunaclick! The event may have ended, but the excitement lives on. Check out the leaderboard to see your ranking. Prizes will be paid out soon.",
         "leaderboard": "🏅 See Leaderboard"
     }
 }
