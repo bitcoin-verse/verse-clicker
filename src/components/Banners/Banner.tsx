@@ -3,13 +3,12 @@ import React, { FunctionComponent } from "react";
 import { useDispatch } from "../../context/store";
 import Cross from "../Icons/Cross";
 import { Link } from "../Link";
+import bannerJson from "./banner.json";
 import { Wrapper } from "./styled";
 
-const ClickmasBanner: FunctionComponent = () => {
+const Banner: FunctionComponent = () => {
   const dispatch = useDispatch();
-
-  const link =
-    "https://medium.com/@Bitcoin_Com/get-ready-for-clickmas-where-clicks-turn-to-rewards-1000-up-for-grabs-e87438a9772b";
+  const campaign = bannerJson.find((banner) => banner.id === "LunarNewYear");
 
   const hideBanner = () => {
     dispatch({
@@ -21,9 +20,8 @@ const ClickmasBanner: FunctionComponent = () => {
   return (
     <Wrapper>
       <div>
-        🎅 Merry Clickmas! 🎅 Turn clicks into rewards — $1000 up for grabs!
-        Contest period: Dec 22 - Jan 5 👉{" "}
-        <Link href={link} target="_blank">
+        {campaign?.text}
+        <Link href={campaign?.link} target="_blank">
           Learn more
         </Link>
       </div>
@@ -32,4 +30,4 @@ const ClickmasBanner: FunctionComponent = () => {
   );
 };
 
-export default ClickmasBanner;
+export default Banner;
