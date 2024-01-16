@@ -12,7 +12,9 @@ export const generateScratcherUrl = (isWallet: boolean, campaign?: string) => {
   if (campaign) query.append("campaign", campaign);
   if (isWallet) query.append("origin", "wallet");
 
-  return `${BASE_URL}?${query.toString()}`;
+  if (query.size > 0) return `${BASE_URL}?${query.toString()}`;
+
+  return BASE_URL;
 };
 
 export const generateFarmsUrl = (
@@ -20,13 +22,14 @@ export const generateFarmsUrl = (
   network: "eth",
   farm?: "verse-eth" | "usd-eth", // eg of farm path, we dont use in this project tho
 ) => {
+  const farmURL = `${VERSE_BASE_URL}farms/${network}/${farm ? `${farm}/` : ""}`;
   const query = new URLSearchParams();
 
   if (isWallet) query.append("origin", "wallet");
 
-  return `${VERSE_BASE_URL}farms/${network}/${
-    farm ? `${farm}/` : ""
-  }?${query.toString()}`;
+  if (query.size > 0) return `${farmURL}?${query.toString()}`;
+
+  return farmURL;
 };
 
 export const generateStakingUrl = (
@@ -34,20 +37,24 @@ export const generateStakingUrl = (
   network: "eth",
   coin: "verse",
 ) => {
+  const stakingURL = `${VERSE_BASE_URL}staking/${network}/${coin}/`;
   const query = new URLSearchParams();
 
   if (isWallet) query.append("origin", "wallet");
 
-  return `${VERSE_BASE_URL}staking/${network}/${coin}?${query.toString()}`;
+  if (query.size > 0) return `${stakingURL}?${query.toString()}`;
+
+  return stakingURL;
 };
 
 export const generateSwapUrl = (isWallet: boolean, coin: "verse") => {
   const query = new URLSearchParams();
+  const swapURL = `${VERSE_BASE_URL}swap/`;
 
   query.append("coin", coin);
   if (isWallet) query.append("origin", "wallet");
 
-  return `${VERSE_BASE_URL}swap/?${query.toString()}`;
+  return `${swapURL}?${query.toString()}`;
 };
 
 export const generateBuyUrl = (isWallet: boolean, coin: "verse") => {
