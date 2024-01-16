@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "cross-env GENERATE_SOURCEMAP=false react-scripts start",
-    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "cross-env CI=false GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "audit:fix": "npx yarn-audit-fix",
     "eject": "react-scripts eject",
