@@ -1,8 +1,9 @@
+import React, { ComponentPropsWithoutRef, FC, PropsWithChildren } from "react";
 import styled, { css } from "styled-components";
 
 import { colors } from "./colors";
 
-export const LinkButton = styled.a<{
+const StyledLinkButton = styled.a<{
   $design?: "primary" | "secondary";
 }>`
   border-radius: 6.25rem;
@@ -53,3 +54,28 @@ export const LinkButton = styled.a<{
     }
   }}
 `;
+
+interface Props extends ComponentPropsWithoutRef<"a"> {
+  design?: "primary" | "secondary";
+  newTab?: boolean;
+}
+
+export const LinkButton: FC<PropsWithChildren<Props>> = ({
+  children,
+  design = "primary",
+  newTab = false,
+}) => {
+  return (
+    <StyledLinkButton
+      $design={design}
+      {...(newTab
+        ? {}
+        : {
+            target: "_blank",
+            rel: "noreferrer",
+          })}
+    >
+      {children}
+    </StyledLinkButton>
+  );
+};
