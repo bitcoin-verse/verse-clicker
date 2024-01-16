@@ -73,13 +73,23 @@ const BonusList: FC<Props> = ({ txData, bonusType }) => {
                   dateStyle: "short",
                 })}
               </div>
-              <div>
-                {formatNumber(data.bonusBase)} <PointsIcon size="0.875rem" />
-              </div>
-              <div>
-                {formatNumber(data.bonusTotal)}
-                <img src={verseIcon} alt="Verse Icon" />
-              </div>
+              {bonusType === "scratcher-mint" && (
+                <div style={{ gridColumn: "2/4" }}>
+                  +{data.bonusBase}% production added
+                </div>
+              )}
+              {bonusType !== "scratcher-mint" && (
+                <>
+                  <div>
+                    {formatNumber(data.bonusBase)}{" "}
+                    <PointsIcon size="0.875rem" />
+                  </div>
+                  <div>
+                    {formatNumber(data.bonusTotal)}
+                    <img src={verseIcon} alt="Verse Icon" />
+                  </div>
+                </>
+              )}
               <a
                 href={getTxExplorerLink(chainId, data.txHash)}
                 target="_blank"
