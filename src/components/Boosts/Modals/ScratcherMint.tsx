@@ -25,8 +25,11 @@ const ScratcherMint: FC = () => {
         every <b>Lunar New Year scratcher</b> ticket purchased
       </Text>
       <Text $secondary>
-        NOTE: To receive a bonus, you must purchase with the same address used
-        here
+        NOTE: To receive a bonus, you must:
+        <br />
+        1. Purchase using the same address used here
+        <br />
+        2. Scratcher purchased must be a Lunar New Year scratcher
       </Text>
       <WarningChip link="https://support.bitcoin.com/en/articles/8696947-verse-clicker-faq">
         Tap here for detailed instructions

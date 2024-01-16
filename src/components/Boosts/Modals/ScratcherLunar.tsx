@@ -27,16 +27,19 @@ const ScratcherLunar: FC = () => {
       </Description>
       <Text>
         When you claim your Lunar New Year scratcher prize, you will receive a
-        one-time bonus equal to the square root of 100 times your current points
-        production rate multiplied by your Scratcher prize amount (Clicker bonus
-        = √win amount * 100 * production rate)
+        one-time bonus based on your prize amount
+        <br />
+        <br />
+        (Clicker bonus = √prize * 100 * production rate)
       </Text>
       <Text $secondary>
         NOTE: To receive a bonus, you must:
         <br />
-        1. Purchase, scratch, and claim using the same address used here
+        1. Purchase, scratch, & claim using the same address used here
         <br />
-        2. Have a greater than zero production rate
+        2. Scratcher purchased must be a Lunar New Year scratcher
+        <br />
+        3. Have a greater than zero production rate
       </Text>
       <WarningChip link="https://support.bitcoin.com/en/articles/8696947-verse-clicker-faq">
         Tap here for detailed instructions
