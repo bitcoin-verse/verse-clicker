@@ -34,10 +34,7 @@ const ScratcherMint: FC = () => {
         Tap here for detailed instructions
       </WarningChip>
 
-      <LinkButton
-        href={scratcherLink}
-        {...(isWallet ? {} : { target: "_blank", rel: "noreferrer" })}
-      >
+      <LinkButton href={scratcherLink} newTab={isWallet}>
         Scratch & Win
       </LinkButton>
     </ModalWrapper>

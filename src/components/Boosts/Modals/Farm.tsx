@@ -30,12 +30,7 @@ const Farm: FC = () => {
       )}
       <LinkButton
         href={generateFarmsUrl(isWallet, "eth")}
-        {...(isWallet
-          ? {}
-          : {
-              target: "_blank",
-              rel: "noreferrer",
-            })}
+        newTab={isWallet}
         onClick={() => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
@@ -47,14 +42,9 @@ const Farm: FC = () => {
         Farm {player.verseHolder ? "more " : ""}VERSE
       </LinkButton>
       <LinkButton
-        $design="secondary"
+        design="secondary"
         href={generateStakingUrl(isWallet, "eth", "verse")}
-        {...(isWallet
-          ? {}
-          : {
-              target: "_blank",
-              rel: "noreferrer",
-            })}
+        newTab={isWallet}
         onClick={() => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",

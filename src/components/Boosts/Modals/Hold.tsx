@@ -34,12 +34,7 @@ const Hold: FC<Props> = ({ rate }) => {
       )}
       <LinkButton
         href={generateBuyUrl(isWallet, "verse")}
-        {...(isWallet
-          ? {}
-          : {
-              target: "_blank",
-              rel: "noreferrer",
-            })}
+        newTab={isWallet}
         onClick={() => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
@@ -51,14 +46,9 @@ const Hold: FC<Props> = ({ rate }) => {
         Buy {player.verseHolder ? "more " : ""}VERSE
       </LinkButton>
       <LinkButton
-        $design="secondary"
+        design="secondary"
         href={generateSwapUrl(isWallet, "verse")}
-        {...(isWallet
-          ? {}
-          : {
-              target: "_blank",
-              rel: "noreferrer",
-            })}
+        newTab={isWallet}
         onClick={() => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
