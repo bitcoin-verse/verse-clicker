@@ -17,22 +17,17 @@ const ScratcherMint: FC = () => {
   return (
     <ModalWrapper>
       <H3>Boost your points production by playing Verse Scratcher</H3>
-      <Chip>Current multiplier: {player.productionBase * 100}%</Chip>
+      <Chip>Your current multiplier: {player.productionBase * 100}%</Chip>
       <Text>
-        You will receive +1% production rate increase for every Luanr New Year
-        scratcher ticket purchased
+        You will receive a 1% increase to your production rate multiplier for
+        every <b>Lunar New Year scratcher</b> ticket purchased
       </Text>
       <Text $secondary>
-        NOTE: To receive a bonus you must
-        <br />
-        1. Purchase with same address used here
-        <br />
-        2. Scratch and claim
-        <br />
-        3. Have a greater than zero production rate
+        NOTE: To receive a bonus, you must purchase with the same address used
+        here
       </Text>
       <WarningChip link="https://support.bitcoin.com/en/articles/8696947-verse-clicker-faq">
-        Click here for detailed instructions
+        Tap here for detailed instructions
       </WarningChip>
 
       <LinkButton
