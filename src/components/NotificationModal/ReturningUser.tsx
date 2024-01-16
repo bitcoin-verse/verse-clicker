@@ -39,11 +39,21 @@ const ReturningUser = () => {
       </Label>
 
       {returnData?.bonus.burn && returnData.bonus.burn.length > 0 && (
-        <BonusList isBurn txData={returnData.bonus.burn} />
+        <BonusList bonusType="burn" txData={returnData.bonus.burn} />
       )}
       {returnData?.bonus.scratcher && returnData.bonus.scratcher.length > 0 && (
-        <BonusList txData={returnData.bonus.scratcher} />
+        <BonusList
+          bonusType="scratcher-claim"
+          txData={returnData.bonus.scratcher}
+        />
       )}
+      {returnData?.bonus.scratcherMint &&
+        returnData.bonus.scratcherMint.length > 0 && (
+          <BonusList
+            bonusType="scratcher-mint"
+            txData={returnData.bonus.scratcherMint}
+          />
+        )}
     </>
   );
 };
