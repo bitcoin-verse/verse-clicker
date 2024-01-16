@@ -181,7 +181,13 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
                     {interactiveBoosts.includes(boost.id) ? (
                       <Clock size={14} />
                     ) : (
-                      <>{boost.unlocked ? <Check /> : <Lock />}</>
+                      <>
+                        {boost.unlocked ? (
+                          <Check size={14} />
+                        ) : (
+                          <Lock size={14} />
+                        )}
+                      </>
                     )}
                   </div>
                   <div>{boost.label}</div>

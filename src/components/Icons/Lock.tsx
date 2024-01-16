@@ -1,15 +1,14 @@
 import React, { FC } from "react";
 
 interface Props {
-  width?: number | string;
-  height?: number | string;
+  size?: number | string;
 }
 
-const Lock: FC<Props> = ({ width = 16, height = 17 }) => {
+const Lock: FC<Props> = ({ size = 16 }) => {
   return (
     <svg
-      width={width}
-      height={height}
+      width={size}
+      height={size}
       viewBox="0 0 16 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
