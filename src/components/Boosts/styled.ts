@@ -94,14 +94,19 @@ export const BoostButton = styled.button`
 `;
 
 export const Label = styled.div<{ $unlocked: boolean; $cta?: boolean }>`
-  color: ${({ $unlocked, $cta }) => {
-    if ($cta) return colors.primaryBlue100;
-    return $unlocked ? colors.green100 : colors.shade80;
-  }};
+  & > div {
+    display: flex;
+    align-items: center;
+    color: ${({ $unlocked, $cta }) => {
+      if ($cta) return colors.primaryBlue100;
+      return $unlocked ? colors.green100 : colors.shade80;
+    }};
+  }
+
   font-size: 1rem;
   font-weight: 600;
 
-  gap: 0.5rem;
+  gap: 0.25rem;
   display: flex;
   align-items: center;
 `;

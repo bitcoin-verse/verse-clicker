@@ -38,11 +38,11 @@ import { BonusHeader, BonusRow } from "./styled";
 }; */
 
 interface Props {
-  isBurn?: boolean;
   txData: TxData[];
+  bonusType: "burn" | "scratcher-claim" | "scratcher-mint";
 }
 
-const BonusList: FC<Props> = ({ isBurn, txData }) => {
+const BonusList: FC<Props> = ({ txData, bonusType }) => {
   const chainId = useChainId();
 
   return (
@@ -50,12 +50,19 @@ const BonusList: FC<Props> = ({ isBurn, txData }) => {
       <hr
         style={{ width: "100%", border: `0.025rem solid ${colors.shade60}` }}
       />
-      <Title>Burn Engine Contributions</Title>
+      {bonusType === "burn" && <Title>Burn Engine Contributions</Title>}
+      {bonusType === "scratcher-claim" && <Title>Verse Scratcher Claims</Title>}
+      {bonusType === "scratcher-mint" && <Title>Verse Scratcher Buys</Title>}
 
       <BonusRow>
         <BonusHeader>Date</BonusHeader>
-        <BonusHeader>Points</BonusHeader>
-        <BonusHeader>{isBurn ? "Contributed" : "Claimed"}</BonusHeader>
+        <BonusHeader>
+          {bonusType === "scratcher-mint" ? "" : "Points"}
+        </BonusHeader>
+        <BonusHeader>
+          {bonusType === "burn" && "Contributed"}
+          {bonusType === "scratcher-claim" && "Claimed"}
+        </BonusHeader>
         <BonusHeader>Tx</BonusHeader>
 
         {txData.map((data) => {
@@ -66,13 +73,23 @@ const BonusList: FC<Props> = ({ isBurn, txData }) => {
                   dateStyle: "short",
                 })}
               </div>
-              <div>
-                {formatNumber(data.bonusBase)} <PointsIcon size="0.875rem" />
-              </div>
-              <div>
-                {formatNumber(data.bonusTotal)}
-                <img src={verseIcon} alt="Verse Icon" />
-              </div>
+              {bonusType === "scratcher-mint" && (
+                <div style={{ gridColumn: "2/4" }}>
+                  +{data.bonusBase}% production added
+                </div>
+              )}
+              {bonusType !== "scratcher-mint" && (
+                <>
+                  <div>
+                    {formatNumber(data.bonusBase)}{" "}
+                    <PointsIcon size="0.875rem" />
+                  </div>
+                  <div>
+                    {formatNumber(data.bonusTotal)}
+                    <img src={verseIcon} alt="Verse Icon" />
+                  </div>
+                </>
+              )}
               <a
                 href={getTxExplorerLink(chainId, data.txHash)}
                 target="_blank"

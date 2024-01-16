@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, Suspense, lazy, useState } from "react";
 import { useNetwork } from "wagmi";
 
 import { GameMode } from "../../context/reducers/network";
@@ -9,10 +9,6 @@ import Check from "../Icons/Check";
 import Clock from "../Icons/Clock";
 import Lock from "../Icons/Lock";
 import Modal, { useModal } from "../Modal";
-import Burn from "./Modals/Burn";
-import Farm from "./Modals/Farm";
-import Hold from "./Modals/Hold";
-import Scratcher from "./Modals/Scratcher";
 import {
   Boost,
   BoostButton,
@@ -21,6 +17,13 @@ import {
   Label,
   Wrapper,
 } from "./styled";
+
+const Farm = lazy(() => import("./Modals/Farm"));
+const Hold = lazy(() => import("./Modals/Hold"));
+const Scratcher = lazy(() => import("./Modals/Scratcher"));
+const ScratcherLunar = lazy(() => import("./Modals/ScratcherLunar"));
+const ScratcherMint = lazy(() => import("./Modals/ScratcherMint"));
+const Burn = lazy(() => import("./Modals/Burn"));
 
 const boostList = (player: Player, network: GameMode) => {
   switch (network) {
@@ -46,6 +49,27 @@ const boostList = (player: Player, network: GameMode) => {
           unlocked: true,
           label: "Scratch & Win",
           description: "Up to 1,000,000x",
+        },
+      ];
+    case "LunarNewYear":
+      return [
+        {
+          id: "hold-lunar",
+          unlocked: player.verseHolder,
+          label: "Hold",
+          description: "8x clicks",
+        },
+        {
+          id: "scratcher-mint",
+          unlocked: true,
+          label: "Scratcher Buy",
+          description: "+1% production",
+        },
+        {
+          id: "scratcher-lunar",
+          unlocked: true,
+          label: "Scratcher Claim",
+          description: "Skip time",
         },
       ];
     case "Ethereum":
@@ -85,7 +109,12 @@ const getModalContent = (content?: string) => {
     case "hold":
       return {
         title: "Hold",
-        component: <Hold />,
+        component: <Hold rate={10} />,
+      };
+    case "hold-lunar":
+      return {
+        title: "Hold",
+        component: <Hold rate={8} />,
       };
     case "farm":
       return {
@@ -96,6 +125,16 @@ const getModalContent = (content?: string) => {
       return {
         title: "Verse Scratcher",
         component: <Scratcher />,
+      };
+    case "scratcher-lunar":
+      return {
+        title: "Scratcher Claim",
+        component: <ScratcherLunar />,
+      };
+    case "scratcher-mint":
+      return {
+        title: "Scratcher Buy",
+        component: <ScratcherMint />,
       };
     default:
       return null;
@@ -113,7 +152,12 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
   const { player, gameMode } = useTrackedState();
 
   const modalContent = getModalContent(content);
-  const interactiveBoosts = ["burn", "scratcher"];
+  const interactiveBoosts = [
+    "burn",
+    "scratcher",
+    "scratcher-mint",
+    "scratcher-lunar",
+  ];
 
   return (
     <Wrapper $mobileVersion={mobileVersion}>
@@ -133,12 +177,20 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
                   $unlocked={boost.unlocked}
                   $cta={interactiveBoosts.includes(boost.id)}
                 >
-                  {interactiveBoosts.includes(boost.id) ? (
-                    <Clock size={16} />
-                  ) : (
-                    <>{boost.unlocked ? <Check /> : <Lock />}</>
-                  )}
-                  {boost.label}
+                  <div>
+                    {interactiveBoosts.includes(boost.id) ? (
+                      <Clock size={14} />
+                    ) : (
+                      <>
+                        {boost.unlocked ? (
+                          <Check size={14} />
+                        ) : (
+                          <Lock size={14} />
+                        )}
+                      </>
+                    )}
+                  </div>
+                  <div>{boost.label}</div>
                 </Label>
                 <Boost $unlocked={boost.unlocked}>{boost.description}</Boost>
               </BoostButton>
@@ -150,7 +202,7 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
         onClose={() => setContent(undefined)}
         title={modalContent?.title}
       >
-        {modalContent?.component}
+        <Suspense>{modalContent?.component}</Suspense>
       </Modal>
     </Wrapper>
   );

@@ -8,16 +8,20 @@ import { Label } from "../../Label";
 import { LinkButton } from "../../LinkButton";
 import { ModalWrapper } from "../styled";
 
-const Hold: FC = () => {
+interface Props {
+  rate: number;
+}
+
+const Hold: FC<Props> = ({ rate }) => {
   const { player, isWallet } = useTrackedState();
 
   return (
     <ModalWrapper>
-      <Chip>10x boost</Chip>
+      <Chip>{rate}x boost</Chip>
       {player.verseHolder ? (
         <>
           <H3>You&#39;re currently holding VERSE</H3>
-          <Label $color="secondary">10x boost applied to your clicks</Label>
+          <Label $color="secondary">{rate}x boost applied to your clicks</Label>
         </>
       ) : (
         <>

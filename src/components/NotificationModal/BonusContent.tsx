@@ -20,7 +20,7 @@ const BonusContent = () => {
 
   return (
     <>
-      {isBurn ? (
+      {bonusData?.bonusType === "burn" && (
         <>
           <H3>Burn Bonus</H3>
           <Label $color="secondary">
@@ -31,9 +31,12 @@ const BonusContent = () => {
             <img src={verseIcon} height={20} width={20} />
           </Value>
         </>
-      ) : (
+      )}
+
+      {bonusData?.bonusType === "scratcher" && (
         <>
           <H3>Scratcher Bonus</H3>
+
           <Label $color="secondary">
             VERSE claimed in <ScratcherLink />
           </Label>
@@ -43,10 +46,24 @@ const BonusContent = () => {
           </Value>
         </>
       )}
-      <Label $color="secondary">Points received</Label>
-      <Value>
-        {formatNumber(bonusData?.bonusTotal)} <PointsIcon size={16} />
-      </Value>
+
+      {bonusData?.bonusType === "scratcher-mint" && (
+        <>
+          <H3>Scratcher Bonus</H3>
+          <Label $color="secondary">
+            Scratcher Minted! <ScratcherLink />
+          </Label>
+          <Value>Bonus {bonusData?.bonusBase}% production added</Value>
+        </>
+      )}
+      {bonusData?.bonusType !== "scratcher-mint" && (
+        <>
+          <Label $color="secondary">Points received</Label>
+          <Value>
+            {formatNumber(bonusData?.bonusTotal)} <PointsIcon size={16} />
+          </Value>
+        </>
+      )}
       <LinkButton
         href={getTxExplorerLink(chainId, bonusData?.txHash)}
         target="_blank"
