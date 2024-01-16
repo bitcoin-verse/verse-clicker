@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, Suspense, lazy, useState } from "react";
 import { useNetwork } from "wagmi";
 
 import { GameMode } from "../../context/reducers/network";
@@ -9,12 +9,6 @@ import Check from "../Icons/Check";
 import Clock from "../Icons/Clock";
 import Lock from "../Icons/Lock";
 import Modal, { useModal } from "../Modal";
-import Burn from "./Modals/Burn";
-import Farm from "./Modals/Farm";
-import Hold from "./Modals/Hold";
-import Scratcher from "./Modals/Scratcher";
-import ScratcherLunar from "./Modals/ScratcherLunar";
-import ScratcherMint from "./Modals/ScratcherMint";
 import {
   Boost,
   BoostButton,
@@ -23,6 +17,13 @@ import {
   Label,
   Wrapper,
 } from "./styled";
+
+const Farm = lazy(() => import("./Modals/Farm"));
+const Hold = lazy(() => import("./Modals/Hold"));
+const Scratcher = lazy(() => import("./Modals/Scratcher"));
+const ScratcherLunar = lazy(() => import("./Modals/ScratcherLunar"));
+const ScratcherMint = lazy(() => import("./Modals/ScratcherMint"));
+const Burn = lazy(() => import("./Modals/Burn"));
 
 const boostList = (player: Player, network: GameMode) => {
   switch (network) {
@@ -176,12 +177,14 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
                   $unlocked={boost.unlocked}
                   $cta={interactiveBoosts.includes(boost.id)}
                 >
-                  {interactiveBoosts.includes(boost.id) ? (
-                    <Clock size={16} />
-                  ) : (
-                    <>{boost.unlocked ? <Check /> : <Lock />}</>
-                  )}
-                  {boost.label}
+                  <div>
+                    {interactiveBoosts.includes(boost.id) ? (
+                      <Clock size={14} />
+                    ) : (
+                      <>{boost.unlocked ? <Check /> : <Lock />}</>
+                    )}
+                  </div>
+                  <div>{boost.label}</div>
                 </Label>
                 <Boost $unlocked={boost.unlocked}>{boost.description}</Boost>
               </BoostButton>
@@ -193,7 +196,7 @@ const Boosts: FC<Props> = ({ mobileVersion }) => {
         onClose={() => setContent(undefined)}
         title={modalContent?.title}
       >
-        {modalContent?.component}
+        <Suspense>{modalContent?.component}</Suspense>
       </Modal>
     </Wrapper>
   );
