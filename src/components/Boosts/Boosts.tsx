@@ -128,7 +128,7 @@ const getModalContent = (content?: string) => {
       };
     case "scratcher-lunar":
       return {
-        title: "Verse Scratcher",
+        title: "Scratcher Claim",
         component: <ScratcherLunar />,
       };
     case "scratcher-mint":
