@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { CURRENT_CAMPAIGN } from "src/constants";
 import { useNetwork } from "wagmi";
 
 import { useTrackedState } from "../../context/store";
@@ -43,7 +44,7 @@ const During: FC<Props> = ({
       >
         {content.learnMore}
       </LinkButton>
-      {gameMode === "Christmas" ? (
+      {gameMode === CURRENT_CAMPAIGN ? (
         <Button $fullWidth onClick={switchChain} $design="secondary">
           {content.back} {chain?.name}
         </Button>

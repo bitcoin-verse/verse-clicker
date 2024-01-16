@@ -8,6 +8,7 @@ import React, {
   useState,
 } from "react";
 import { Socket, io } from "socket.io-client";
+import { CURRENT_CAMPAIGN } from "src/constants";
 import { useAccount, useNetwork } from "wagmi";
 
 import { GameMode } from "./reducers/network";
@@ -23,8 +24,6 @@ export const SocketCtxContext = createContext<SocketCtxState>(
 );
 
 export const useSocketCtx = () => useContext(SocketCtxContext);
-
-const activeCampaigns: GameMode[] = ["Christmas", "LunarNewYear"];
 
 const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useDispatch();
@@ -49,7 +48,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
       console.log("socket connected");
       console.log(chain.name, gameMode);
 
-      if (!campaign && activeCampaigns.includes(gameMode)) {
+      if (!campaign && CURRENT_CAMPAIGN === gameMode) {
         search.append("campaign", gameMode);
         dispatch({ type: "SET_GAME_MODE", payload: gameMode });
         window.history.pushState(
@@ -59,7 +58,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
         );
       }
 
-      if (!activeCampaigns.includes(gameMode)) {
+      if (CURRENT_CAMPAIGN !== gameMode) {
         dispatch({ type: "RESET_GAME" });
         dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
         window.history.pushState(

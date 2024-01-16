@@ -15,6 +15,7 @@ import lunarNewYearJson from "./Content/lunarnewyear.json";
 import During from "./During";
 import { CampaignButton, Wrapper } from "./styled";
 import { CampaignJson } from "./types";
+import { CURRENT_CAMPAIGN } from "src/constants";
 
 function getContent(campaign: GameMode): CampaignJson | null {
   switch (campaign) {
@@ -37,14 +38,14 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
   const { chain } = useNetwork();
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
-  const { campaignPhase, campaignInfo } = useCampaignInfo("LunarNewYear");
+  const { campaignPhase, campaignInfo } = useCampaignInfo(CURRENT_CAMPAIGN);
 
-  const content = getContent("LunarNewYear");
+  const content = getContent(CURRENT_CAMPAIGN);
 
   const playCampaign = useCallback(() => {
     dispatch({ type: "RESET_GAME" });
-    dispatch({ type: "SET_GAME_MODE", payload: "LunarNewYear" });
-    socket.emit("join", { address, chain: "LunarNewYear" });
+    dispatch({ type: "SET_GAME_MODE", payload: CURRENT_CAMPAIGN });
+    socket.emit("join", { address, chain: CURRENT_CAMPAIGN });
 
     close();
   }, []);
