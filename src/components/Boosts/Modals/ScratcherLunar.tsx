@@ -15,7 +15,7 @@ const ScratcherLunar: FC = () => {
 
   return (
     <ModalWrapper>
-      <H3>Boost your points production by playing Verse Scratcher</H3>
+      <H3>Boost your points production by claiming Verse Scratcher prizes</H3>
       <Description style={{ textAlign: "left" }}>
         1. Buy a <b>Lunar New Year</b> ticket
         <br />

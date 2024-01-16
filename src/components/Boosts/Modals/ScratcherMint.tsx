@@ -16,7 +16,7 @@ const ScratcherMint: FC = () => {
 
   return (
     <ModalWrapper>
-      <H3>Boost your points production by playing Verse Scratcher</H3>
+      <H3>Boost your points production by buying Verse Scratchers</H3>
       <Chip>Your current multiplier: {player.productionBase * 100}%</Chip>
       <Text>
         You will receive a 1% increase to your production rate multiplier for
