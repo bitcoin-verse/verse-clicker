@@ -3,7 +3,7 @@ import {
   initParticlesEngine,
 } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import React, { FC, Suspense, useEffect, useMemo, useState } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 
 import { useTrackedState } from "../../context/store";
 import { createConfig } from "./config";
@@ -28,19 +28,17 @@ const Particles: FC = () => {
 
   if (init) {
     return (
-      <Suspense>
-        <ReactParticles
-          id="particles"
-          style={{
-            position: "absolute",
-            zIndex: -1,
-          }}
-          options={createConfig({
-            network,
-            particlesNumber: (buildingsCount || 1) * 5,
-          })}
-        />
-      </Suspense>
+      <ReactParticles
+        id="particles"
+        style={{
+          position: "absolute",
+          zIndex: -1,
+        }}
+        options={createConfig({
+          network,
+          particlesNumber: (buildingsCount || 1) * 5,
+        })}
+      />
     );
   }
 

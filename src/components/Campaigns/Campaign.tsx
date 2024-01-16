@@ -2,6 +2,7 @@ import React, { FC, useCallback } from "react";
 import { useAccount, useNetwork } from "wagmi";
 
 import redEnvelope from "../../../src/assets/red-envelope.png";
+import { CURRENT_CAMPAIGN } from "../..//constants";
 import { useSocketCtx } from "../../context/SocketContext";
 import { GameMode } from "../../context/reducers/network";
 import { useDispatch } from "../../context/store";
@@ -15,7 +16,6 @@ import lunarNewYearJson from "./Content/lunarnewyear.json";
 import During from "./During";
 import { CampaignButton, Wrapper } from "./styled";
 import { CampaignJson } from "./types";
-import { CURRENT_CAMPAIGN } from "src/constants";
 
 function getContent(campaign: GameMode): CampaignJson | null {
   switch (campaign) {

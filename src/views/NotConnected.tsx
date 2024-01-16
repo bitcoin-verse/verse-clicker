@@ -1,15 +1,18 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
 import Layout from "../components/Layout";
 import Loading from "../components/Loading";
-import Particles from "../components/Particles";
+
+const Particles = lazy(() => import("../components/Particles"));
 
 const NotConnected = () => {
   return (
     <Layout>
-      <Particles />
+      <Suspense>
+        <Particles />
+      </Suspense>
       <Header />
       <Loading />
       <Footer />
