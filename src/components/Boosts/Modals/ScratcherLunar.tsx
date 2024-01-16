@@ -15,17 +15,19 @@ const ScratcherLunar: FC = () => {
 
   return (
     <ModalWrapper>
-      <H3>Get instant bonus points by claiming Verse Scratcher prizes</H3>
+      <H3>
+        Get instant bonus points by claiming Lunar New Year scratcher prizes
+      </H3>
       <Description style={{ textAlign: "left" }}>
-        1. Buy a <b>Lunar New Year</b> ticket
+        1. Buy a <b>Lunar New Year</b> scratcher ticket
         <br />
         2. Scratch
         <br />
         3. Claim your prize
       </Description>
       <Text>
-        When you claim your Verse Scratcher prize, you will receive a one-time
-        bonus equal to the square root of 100 times your current points
+        When you claim your Lunar New Year scratcher prize, you will receive a
+        one-time bonus equal to the square root of 100 times your current points
         production rate multiplied by your Scratcher prize amount (Clicker bonus
         = √win amount * 100 * production rate)
       </Text>
@@ -34,7 +36,7 @@ const ScratcherLunar: FC = () => {
         <br />
         1. Purchase, scratch, and claim using the same address used here
         <br />
-        2. Have a great than zero production rate
+        2. Have a greater than zero production rate
       </Text>
       <WarningChip link="https://support.bitcoin.com/en/articles/8696947-verse-clicker-faq">
         Tap here for detailed instructions
