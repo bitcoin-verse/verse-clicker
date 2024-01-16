@@ -1,12 +1,13 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, Suspense, lazy, useEffect } from "react";
 import { useAccount, useNetwork } from "wagmi";
 
 import { useSocketCtx } from "./context/SocketContext";
 import { useDispatch, useTrackedState } from "./context/store";
 import useAmplitudeEvents from "./hooks/useAmplitudeEvents";
 import useSocketEvents from "./hooks/useSocketEvents";
-import Main from "./views/Main";
-import NotConnected from "./views/NotConnected";
+
+const Main = lazy(() => import("./views/Main"));
+const NotConnected = lazy(() => import("./views/NotConnected"));
 
 const App: FC = () => {
   useAmplitudeEvents();
@@ -55,13 +56,13 @@ const App: FC = () => {
   }, [status, chain, address, gameMode]);
 
   return (
-    <>
+    <Suspense>
       {status !== "connected" || loading || !isSocketConnected ? (
         <NotConnected />
       ) : (
         <Main />
       )}
-    </>
+    </Suspense>
   );
 };
 
