@@ -2,6 +2,7 @@ import React, { FC } from "react";
 
 import { useTrackedState } from "../../../context/store";
 import { logAmplitudeEvent } from "../../../helpers/analytics";
+import { generateFarmsUrl, generateStakingUrl } from "../../../helpers/links";
 import { Chip } from "../../Chip";
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
@@ -28,9 +29,7 @@ const Farm: FC = () => {
         </>
       )}
       <LinkButton
-        href={`https://verse.bitcoin.com/farms/eth/${
-          isWallet ? "?origin=wallet" : ""
-        }`}
+        href={generateFarmsUrl(isWallet, "eth")}
         {...(isWallet
           ? {}
           : {
@@ -41,9 +40,7 @@ const Farm: FC = () => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
             cta: "farm",
-            to: `https://verse.bitcoin.com/farms/eth/${
-              isWallet ? "?origin=wallet" : ""
-            }`,
+            to: generateFarmsUrl(isWallet, "eth"),
           });
         }}
       >
@@ -51,9 +48,7 @@ const Farm: FC = () => {
       </LinkButton>
       <LinkButton
         $design="secondary"
-        href={`https://verse.bitcoin.com/staking/eth/verse/${
-          isWallet ? "?origin=wallet" : ""
-        }`}
+        href={generateStakingUrl(isWallet, "eth", "verse")}
         {...(isWallet
           ? {}
           : {
@@ -64,9 +59,7 @@ const Farm: FC = () => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
             cta: "stake",
-            to: `https://verse.bitcoin.com/staking/eth/verse/${
-              isWallet ? "?origin=wallet" : ""
-            }`,
+            to: generateStakingUrl(isWallet, "eth", "verse"),
           });
         }}
       >

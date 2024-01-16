@@ -2,6 +2,7 @@ import React, { FC } from "react";
 
 import { useTrackedState } from "../../../context/store";
 import { logAmplitudeEvent } from "../../../helpers/analytics";
+import { generateBuyUrl, generateSwapUrl } from "../../../helpers/links";
 import { Chip } from "../../Chip";
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
@@ -32,11 +33,7 @@ const Hold: FC<Props> = ({ rate }) => {
         </>
       )}
       <LinkButton
-        href={
-          isWallet
-            ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
-            : `https://buy.bitcoin.com/verse/`
-        }
+        href={generateBuyUrl(isWallet, "verse")}
         {...(isWallet
           ? {}
           : {
@@ -47,9 +44,7 @@ const Hold: FC<Props> = ({ rate }) => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
             cta: "buy",
-            to: isWallet
-              ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
-              : `https://buy.bitcoin.com/verse/`,
+            to: generateBuyUrl(isWallet, "verse"),
           });
         }}
       >
@@ -57,9 +52,7 @@ const Hold: FC<Props> = ({ rate }) => {
       </LinkButton>
       <LinkButton
         $design="secondary"
-        href={`https://verse.bitcoin.com/swap/?coin=verse${
-          isWallet ? "&origin=wallet" : ""
-        }`}
+        href={generateSwapUrl(isWallet, "verse")}
         {...(isWallet
           ? {}
           : {
@@ -70,7 +63,7 @@ const Hold: FC<Props> = ({ rate }) => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
             cta: "swap",
-            to: `https://verse.bitcoin.com/swap/?coin=verse`,
+            to: generateSwapUrl(isWallet, "verse"),
           });
         }}
       >

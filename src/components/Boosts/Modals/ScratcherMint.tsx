@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 
 import { useTrackedState } from "../../../context/store";
+import { generateScratcherUrl } from "../../../helpers/links";
 import { Chip } from "../../Chip";
 import { H3 } from "../../H3";
 import { LinkButton } from "../../LinkButton";
@@ -10,9 +11,7 @@ import { ModalWrapper } from "../styled";
 
 const ScratcherMint: FC = () => {
   const { isWallet, player } = useTrackedState();
-  const scratcherLink = `https://scratcher.verse.bitcoin.com/?campaign=lunar-new-year${
-    isWallet ? "&origin=wallet" : ""
-  }`;
+  const scratcherLink = generateScratcherUrl(isWallet, "lunar-new-year");
 
   return (
     <ModalWrapper>
