@@ -43,7 +43,7 @@ const ScratcherLunar: FC = () => {
       <WarningChip link="https://support.bitcoin.com/en/articles/8696947-verse-clicker-faq">
         Tap here for detailed instructions
       </WarningChip>
-      <LinkButton href={scratcherLink} newTab={isWallet}>
+      <LinkButton href={scratcherLink} newTab={!isWallet}>
         Scratch & Win
       </LinkButton>
     </ModalWrapper>

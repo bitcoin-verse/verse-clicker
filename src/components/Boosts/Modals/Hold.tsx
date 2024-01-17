@@ -34,7 +34,7 @@ const Hold: FC<Props> = ({ rate }) => {
       )}
       <LinkButton
         href={generateBuyUrl(isWallet, "verse")}
-        newTab={isWallet}
+        newTab={!isWallet}
         onClick={() => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
@@ -48,7 +48,7 @@ const Hold: FC<Props> = ({ rate }) => {
       <LinkButton
         design="secondary"
         href={generateSwapUrl(isWallet, "verse")}
-        newTab={isWallet}
+        newTab={!isWallet}
         onClick={() => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",

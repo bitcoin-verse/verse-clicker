@@ -17,11 +17,11 @@ const LinkButton: FC<PropsWithChildren<Props>> = ({
     <StyledLinkButton
       $design={design}
       {...(newTab
-        ? {}
-        : {
+        ? {
             target: "_blank",
             rel: "noreferrer",
-          })}
+          }
+        : {})}
       {...rest}
     >
       {children}
