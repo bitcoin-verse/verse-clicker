@@ -1,25 +1,26 @@
 {
-    "title": "Merry Clickmas",
-    "before": {
-        "title": "🌟 Clickmas is Coming! 🌟",
-        "label1": "$1000 up for grabs! 💸",
-        "label2": "Get ready for an epic holiday event! Clickmas, the ultimate clicking challenge, is almost here. Prepare to click, earn, and win big with VERSE!",
-        "start": "Starts: ",
-        "end": "Ends: ",
-        "learnMore": "📖 Learn more"
-    },
-    "during": {
-        "title": "🎉 Clickmas is Here! 🎉",
-        "label1": "$1000 Prize Pool 🤑",
-        "label2": "The wait is over! Dive into the world of Verse Clicker, earn points, and win amazing rewards in VERSE. Ready, set, click!",
-        "end": "Ends: ",
-        "learnMore": "📖 Learn more",
-        "back": "Back to ",
-        "play": "🎮 Start Clicking"
-    },
-    "after": {
-        "title": "🏆 Clickmas Has Concluded! 🏆",
-        "label2": " Thank you for participating in Clickmas! The event may be over, but the excitement continues. Check out the leaderboard to see where you stand. Prizes will be paid out in January.",
-        "leaderboard": "🏅 See Leaderboard"
-    }
+  "title": "Merry Clickmas",
+  "before": {
+    "title": "🌟 Clickmas is Coming! 🌟",
+    "label1": "$1000 up for grabs! 💸",
+    "label2": "Get ready for an epic holiday event! Clickmas, the ultimate clicking challenge, is almost here. Prepare to click, earn, and win big with VERSE!",
+    "start": "Starts: ",
+    "end": "Ends: ",
+    "learnMore": "📖 Learn more"
+  },
+  "during": {
+    "title": "🎉 Clickmas is Here! 🎉",
+    "label1": "$1000 Prize Pool 🤑",
+    "label2": "The wait is over! Dive into the world of Verse Clicker, earn points, and win amazing rewards in VERSE. Ready, set, click!",
+    "end": "Ends: ",
+    "learnMore": "📖 Learn more",
+    "link": "https://medium.com/@Bitcoin_Com/get-ready-for-clickmas-where-clicks-turn-to-rewards-1000-up-for-grabs-e87438a9772b",
+    "back": "Back to ",
+    "play": "🎮 Start Clicking"
+  },
+  "after": {
+    "title": "🏆 Clickmas Has Concluded! 🏆",
+    "label2": " Thank you for participating in Clickmas! The event may be over, but the excitement continues. Check out the leaderboard to see where you stand. Prizes will be paid out in January.",
+    "leaderboard": "🏅 See Leaderboard"
+  }
 }
