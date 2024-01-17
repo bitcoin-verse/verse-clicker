@@ -1,25 +1,25 @@
 {
-    "title": "Happy New Year",
-    "before": {
-        "title": "🌙 Lunaclick is Coming! 🌙",
-        "label1": "$888 up for grabs! 💸",
-        "label2": "Brace yourself for a spectacular Lunar New Year event! Lunaclick, the ultimate clicking challenge, is coming soon. Get set to click, earn, and win big with VERSE!",
-        "start": "Starts: ",
-        "end": "Ends: ",
-        "learnMore": "📖 Learn more"
-    },
-    "during": {
-        "title": "🎊 Lunaclick is Here! Join the Celebration! 🎊",
-        "label1": "$888 Prize Pool 🤑",
-        "label2": "The wait is over! Step into the festive world of Verse Clicker, accumulate points, and grab your chance to win exciting rewards in VERSE. Ready, set, click!",
-        "end": "Ends: ",
-        "learnMore": "📖 Learn more",
-        "back": "Back to ",
-        "play": "🎮 Start Clicking"
-    },
-    "after": {
-        "title": "🏮 Lunaclick Has Concluded! 🏮",
-        "label2": "Thank you for participating in Lunaclick! The event may have ended, but the excitement lives on. Check out the leaderboard to see your ranking. Prizes will be paid out soon.",
-        "leaderboard": "🏅 See Leaderboard"
-    }
+  "title": "Happy New Year",
+  "before": {
+    "title": "🌙 Verse Clicker Lunar New Year Contest is Coming! 🌙",
+    "label1": "$888 up for grabs! 💸",
+    "label2": "Brace yourself for a spectacular Lunar New Year event! Verse Clicker Lunar New Year Contest, the ultimate clicking challenge, is coming soon. Get set to click, earn, and win big with VERSE!",
+    "start": "Starts: ",
+    "end": "Ends: ",
+    "learnMore": "📖 Learn more"
+  },
+  "during": {
+    "title": "🎊 Verse Clicker Lunar New Year Contest is Here! Join the Celebration! 🎊",
+    "label1": "$888 Prize Pool 🤑",
+    "label2": "The wait is over! Step into the festive world of Verse Clicker, accumulate points, and grab your chance to win exciting rewards in VERSE. Ready, set, click!",
+    "end": "Ends: ",
+    "learnMore": "📖 Learn more",
+    "back": "Back to ",
+    "play": "🎮 Start Clicking"
+  },
+  "after": {
+    "title": "🏮 Verse Clicker Lunar New Year Contest Has Concluded! 🏮",
+    "label2": "Thank you for participating in Verse Clicker Lunar New Year Contest! The event may have ended, but the excitement lives on. Check out the leaderboard to see your ranking. Prizes will be paid out soon.",
+    "leaderboard": "🏅 See Leaderboard"
+  }
 }
