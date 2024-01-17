@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 import { useTrackedState } from "../context/store";
-import Lanturn from "./Icons/Lanturn";
+import Lantern from "./Icons/Lantern";
 import Present from "./Icons/Present";
 import Sparkle from "./Icons/Sparkle";
 import Star from "./Icons/Star";
@@ -17,7 +17,7 @@ const PointsIcon: FC<Props> = ({ size }) => {
     case "Polygon":
       return <Sparkle size={size} />;
     case "LunarNewYear":
-      return <Lanturn size={size} />;
+      return <Lantern size={size} />;
     case "Christmas":
       return <Present size={size} />;
     case "Ethereum":

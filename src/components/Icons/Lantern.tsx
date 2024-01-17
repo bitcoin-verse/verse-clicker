@@ -4,7 +4,7 @@ interface Props {
   size?: number | string;
 }
 
-const Lanturn: FC<Props> = ({ size = 32 }) => {
+const Lantern: FC<Props> = ({ size = 32 }) => {
   return (
     <svg
       width={size}
@@ -74,4 +74,4 @@ const Lanturn: FC<Props> = ({ size = 32 }) => {
   );
 };
 
-export default Lanturn;
+export default Lantern;
