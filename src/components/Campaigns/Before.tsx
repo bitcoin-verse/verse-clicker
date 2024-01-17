@@ -30,7 +30,7 @@ const Before: FC<Props> = ({ campaignInfo, content }) => {
           </Text>
         </>
       )}
-      <LinkButton href={content.link} target="_blank">
+      <LinkButton href={content.link} newTab>
         {content.learnMore}
       </LinkButton>
     </>

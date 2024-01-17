@@ -38,7 +38,7 @@ const During: FC<Props> = ({
           </Text>
         </>
       )}
-      <LinkButton href={content.link} target="_blank">
+      <LinkButton href={content.link} newTab>
         {content.learnMore}
       </LinkButton>
       {gameMode === CURRENT_CAMPAIGN ? (

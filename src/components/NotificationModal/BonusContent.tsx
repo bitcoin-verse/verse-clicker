@@ -64,11 +64,7 @@ const BonusContent = () => {
           </Value>
         </>
       )}
-      <LinkButton
-        href={getTxExplorerLink(chainId, bonusData?.txHash)}
-        target="_blank"
-        rel="noreferrer"
-      >
+      <LinkButton href={getTxExplorerLink(chainId, bonusData?.txHash)} newTab>
         View on {isBurn ? "Etherscan" : "Polyscan"}
       </LinkButton>
     </>
