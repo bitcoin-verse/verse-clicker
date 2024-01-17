@@ -7,7 +7,7 @@ import { CampaignInfo } from "../../hooks/useCampaignInfo";
 import { Button } from "../Button";
 import { H3 } from "../H3";
 import { Label } from "../Label";
-import { LinkButton } from "../LinkButton";
+import LinkButton from "../LinkButton";
 import { Text } from "../Text";
 import { DuringCampaignJson } from "./types";
 

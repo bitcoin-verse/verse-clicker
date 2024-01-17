@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
-import { colors } from "./colors";
+import { colors } from "../colors";
 
-export const LinkButton = styled.a<{
+export const StyledLinkButton = styled.a<{
   $design?: "primary" | "secondary";
 }>`
   border-radius: 6.25rem;
@@ -10,6 +10,7 @@ export const LinkButton = styled.a<{
   width: 100%;
   text-decoration: none;
   font-weight: 600;
+  cursor: pointer;
 
   ${({ $design }) => {
     switch ($design) {

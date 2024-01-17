@@ -2,10 +2,11 @@ import React, { FC } from "react";
 
 import { useTrackedState } from "../../../context/store";
 import { logAmplitudeEvent } from "../../../helpers/analytics";
+import { generateBuyUrl, generateSwapUrl } from "../../../helpers/links";
 import { Chip } from "../../Chip";
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
-import { LinkButton } from "../../LinkButton";
+import LinkButton from "../../LinkButton";
 import { ModalWrapper } from "../styled";
 
 interface Props {
@@ -32,45 +33,27 @@ const Hold: FC<Props> = ({ rate }) => {
         </>
       )}
       <LinkButton
-        href={
-          isWallet
-            ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
-            : `https://buy.bitcoin.com/verse/`
-        }
-        {...(isWallet
-          ? {}
-          : {
-              target: "_blank",
-              rel: "noreferrer",
-            })}
+        href={generateBuyUrl(isWallet, "verse")}
+        newTab={!isWallet}
         onClick={() => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
             cta: "buy",
-            to: isWallet
-              ? "bitcoincom://buy/ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249cA82617eC3DfB2589c4c17ab7EC9765350a18"
-              : `https://buy.bitcoin.com/verse/`,
+            to: generateBuyUrl(isWallet, "verse"),
           });
         }}
       >
         Buy {player.verseHolder ? "more " : ""}VERSE
       </LinkButton>
       <LinkButton
-        $design="secondary"
-        href={`https://verse.bitcoin.com/swap/?coin=verse${
-          isWallet ? "&origin=wallet" : ""
-        }`}
-        {...(isWallet
-          ? {}
-          : {
-              target: "_blank",
-              rel: "noreferrer",
-            })}
+        design="secondary"
+        href={generateSwapUrl(isWallet, "verse")}
+        newTab={!isWallet}
         onClick={() => {
           logAmplitudeEvent({
             name: "verse clicker cta tapped",
             cta: "swap",
-            to: `https://verse.bitcoin.com/swap/?coin=verse`,
+            to: generateSwapUrl(isWallet, "verse"),
           });
         }}
       >

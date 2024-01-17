@@ -7,7 +7,7 @@ import { getTxExplorerLink } from "../../../../helpers/getExplorerLink";
 import { H3 } from "../../../H3";
 import Spinner from "../../../Icons/Spinner";
 import { Label } from "../../../Label";
-import { LinkButton } from "../../../LinkButton";
+import LinkButton from "../../../LinkButton";
 import BurnEngineLink from "../../../Links/BurnEngineLink";
 import { BURN_LIST } from "./Burn";
 

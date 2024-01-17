@@ -1,17 +1,16 @@
 import React, { FC } from "react";
 
 import { useTrackedState } from "../../../context/store";
+import { generateScratcherUrl } from "../../../helpers/links";
 import { H3 } from "../../H3";
-import { LinkButton } from "../../LinkButton";
+import LinkButton from "../../LinkButton";
 import { Text } from "../../Text";
 import WarningChip from "../../WarningChip";
 import { Description, ModalWrapper } from "../styled";
 
 const ScratcherLunar: FC = () => {
   const { isWallet } = useTrackedState();
-  const scratcherLink = `https://scratcher.verse.bitcoin.com/?campaign=lunar-new-year${
-    isWallet ? "&origin=wallet" : ""
-  }`;
+  const scratcherLink = generateScratcherUrl(isWallet, "lunar-new-year");
 
   return (
     <ModalWrapper>
@@ -44,10 +43,7 @@ const ScratcherLunar: FC = () => {
       <WarningChip link="https://support.bitcoin.com/en/articles/8696947-verse-clicker-faq">
         Tap here for detailed instructions
       </WarningChip>
-      <LinkButton
-        href={scratcherLink}
-        {...(isWallet ? {} : { target: "_blank", rel: "noreferrer" })}
-      >
+      <LinkButton href={scratcherLink} newTab={!isWallet}>
         Scratch & Win
       </LinkButton>
     </ModalWrapper>
