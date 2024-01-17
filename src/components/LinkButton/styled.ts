@@ -1,9 +1,8 @@
-import React, { ComponentPropsWithoutRef, FC, PropsWithChildren } from "react";
 import styled, { css } from "styled-components";
 
-import { colors } from "./colors";
+import { colors } from "../colors";
 
-const StyledLinkButton = styled.a<{
+export const StyledLinkButton = styled.a<{
   $design?: "primary" | "secondary";
 }>`
   border-radius: 6.25rem;
@@ -11,6 +10,7 @@ const StyledLinkButton = styled.a<{
   width: 100%;
   text-decoration: none;
   font-weight: 600;
+  cursor: pointer;
 
   ${({ $design }) => {
     switch ($design) {
@@ -54,28 +54,3 @@ const StyledLinkButton = styled.a<{
     }
   }}
 `;
-
-interface Props extends ComponentPropsWithoutRef<"a"> {
-  design?: "primary" | "secondary";
-  newTab?: boolean;
-}
-
-export const LinkButton: FC<PropsWithChildren<Props>> = ({
-  children,
-  design = "primary",
-  newTab = false,
-}) => {
-  return (
-    <StyledLinkButton
-      $design={design}
-      {...(newTab
-        ? {}
-        : {
-            target: "_blank",
-            rel: "noreferrer",
-          })}
-    >
-      {children}
-    </StyledLinkButton>
-  );
-};

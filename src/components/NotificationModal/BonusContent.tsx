@@ -7,7 +7,7 @@ import { formatNumber } from "../../helpers/formatNumber";
 import { getTxExplorerLink } from "../../helpers/getExplorerLink";
 import { H3 } from "../H3";
 import { Label } from "../Label";
-import { LinkButton } from "../LinkButton";
+import LinkButton from "../LinkButton";
 import BurnEngineLink from "../Links/BurnEngineLink";
 import ScratcherLink from "../Links/ScratcherLink";
 import PointsIcon from "../PointsIcon";

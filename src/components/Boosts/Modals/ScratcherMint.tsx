@@ -4,7 +4,7 @@ import { useTrackedState } from "../../../context/store";
 import { generateScratcherUrl } from "../../../helpers/links";
 import { Chip } from "../../Chip";
 import { H3 } from "../../H3";
-import { LinkButton } from "../../LinkButton";
+import LinkButton from "../../LinkButton";
 import { Text } from "../../Text";
 import WarningChip from "../../WarningChip";
 import { ModalWrapper } from "../styled";

@@ -6,7 +6,7 @@ import { generateFarmsUrl, generateStakingUrl } from "../../../helpers/links";
 import { Chip } from "../../Chip";
 import { H3 } from "../../H3";
 import { Label } from "../../Label";
-import { LinkButton } from "../../LinkButton";
+import LinkButton from "../../LinkButton";
 import { ModalWrapper } from "../styled";
 
 const Farm: FC = () => {
