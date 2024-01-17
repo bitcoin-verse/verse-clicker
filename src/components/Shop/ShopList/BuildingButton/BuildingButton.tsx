@@ -67,9 +67,13 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
 
   return (
     <Button
-      disabled={player.cookies < cost || building.locked}
-      $unaffordable={player.cookies < cost || building.locked}
-      $locked={building.locked}
+      disabled={
+        player.cookies < cost || (building.locked && !player.isGuildMember)
+      }
+      $unaffordable={
+        player.cookies < cost || (building.locked && !player.isGuildMember)
+      }
+      $locked={building.locked && !player.isGuildMember}
       onClick={() => {
         buyBuilding(amount);
       }}
@@ -78,7 +82,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
 
       <Image
         src={
-          building.locked
+          building.locked && !player.isGuildMember
             ? placeholder
             : require(`../../../../assets/buildings/${building.image}`)
         }
