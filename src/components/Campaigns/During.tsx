@@ -38,10 +38,7 @@ const During: FC<Props> = ({
           </Text>
         </>
       )}
-      <LinkButton
-        href="https://medium.com/@Bitcoin_Com/get-ready-for-clickmas-where-clicks-turn-to-rewards-1000-up-for-grabs-e87438a9772b"
-        target="_blank"
-      >
+      <LinkButton href={content.link} newTab>
         {content.learnMore}
       </LinkButton>
       {gameMode === CURRENT_CAMPAIGN ? (

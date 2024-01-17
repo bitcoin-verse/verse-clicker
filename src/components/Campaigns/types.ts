@@ -5,6 +5,7 @@ export interface BeforeCampaignJson {
   start: string;
   end: string;
   learnMore: string;
+  link: string;
 }
 export interface DuringCampaignJson {
   title: string;
@@ -12,6 +13,7 @@ export interface DuringCampaignJson {
   label2: string;
   end: string;
   learnMore: string;
+  link: string;
   back: string;
   play: string;
 }
