@@ -174,7 +174,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/stables.png"
+    "image": "lunar/assembly.png"
   },
   {
     "name": "Red Paper Mill",
@@ -259,7 +259,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/paper-mill.png"
   },
   {
     "name": "Vertical Supply Chain",
@@ -344,7 +344,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/supply.png"
   },
   {
     "name": "Gigafactory",
@@ -429,10 +429,10 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/gigafactory.png"
   },
   {
-    "name": "Celestial Fireworks Forge",
+    "name": "Celestial Lanterns Forge",
     "desc": "An ancient forge located on the moon, harnessing lunar energy to create mystical lanterns that glow with celestial light.",
     "cost": 8880000,
     "amount": 0,
@@ -514,7 +514,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/lanterns.png"
   },
   {
     "name": "Stellar Factory Network",
@@ -599,7 +599,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/factory.png"
   },
   {
     "name": "Galactic Trade Hub",
@@ -684,7 +684,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/trade-hub.png"
   },
   {
     "name": "Time-Loop Workshop",
@@ -769,10 +769,10 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/workshop.png"
   },
   {
-    "name": "Quantum Cracker Collider",
+    "name": "Quantum Lantern Collider",
     "desc": "Utilizes quantum mechanics to collide particles at high speeds, spontaneously generating vast quantities of lanterns from seemingly thin air.",
     "cost": 88800000000,
     "amount": 0,
@@ -854,7 +854,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/collider.png"
   },
   {
     "name": "Dimensional Conduit Facility",
@@ -939,7 +939,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/facility.png"
   },
   {
     "name": "Universal Synthesizer",
@@ -1024,7 +1024,7 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/synthesizer.png"
   },
   {
     "name": "Multiverse Energy Matrix",
@@ -1109,6 +1109,6 @@
       }
     ],
     "locked": true,
-    "image": "lunar/mouse.png"
+    "image": "lunar/matrix.png"
   }
 ]
