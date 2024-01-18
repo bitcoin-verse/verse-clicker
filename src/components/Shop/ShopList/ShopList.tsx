@@ -15,7 +15,7 @@ interface Props {
 }
 
 const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
-  const { buildings } = useTrackedState();
+  const { buildings, player } = useTrackedState();
   const [isOpen, setIsOpen] = useState(false);
   const width = useScreenWidth();
 
@@ -45,7 +45,12 @@ const ShopList: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
         </PurchaseButtons>
         <BuildingsWrapper>
           {buildings.map((building, i) => {
-            if (building.locked && buildings?.[i - 3]?.locked) return null;
+            if (
+              building.locked &&
+              !player.isGuildMember &&
+              buildings?.[i - 3]?.locked
+            )
+              return null;
 
             return (
               <BuildingButton

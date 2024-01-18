@@ -65,6 +65,7 @@ export const initialState: State = {
     verseHolder: false,
     isFarming: false,
     isStaking: false,
+    isGuildMember: false,
     clickBase: 1,
     productionBase: 1,
   },

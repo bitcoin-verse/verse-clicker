@@ -12,6 +12,7 @@ export type Player = {
   verseHolder: boolean;
   isFarming: boolean;
   isStaking: boolean;
+  isGuildMember: boolean;
   clickBase: number;
   productionBase: number;
 };
