@@ -24,6 +24,7 @@ const Scratcher = lazy(() => import("./Modals/Scratcher"));
 const ScratcherLunar = lazy(() => import("./Modals/ScratcherLunar"));
 const ScratcherMint = lazy(() => import("./Modals/ScratcherMint"));
 const Burn = lazy(() => import("./Modals/Burn"));
+const Lounge = lazy(() => import("./Modals/Lounge"));
 
 const boostList = (player: Player, network: GameMode) => {
   switch (network) {
@@ -58,6 +59,12 @@ const boostList = (player: Player, network: GameMode) => {
           unlocked: player.verseHolder,
           label: "Hold",
           description: "8x clicks",
+        },
+        {
+          id: "lounge",
+          unlocked: player.isGuildMember,
+          label: "Lounge",
+          description: "Unlock upgrades",
         },
         {
           id: "scratcher-mint",
@@ -135,6 +142,11 @@ const getModalContent = (content?: string) => {
       return {
         title: "Scratcher Buy",
         component: <ScratcherMint />,
+      };
+    case "lounge":
+      return {
+        title: "Verse Lounge",
+        component: <Lounge />,
       };
     default:
       return null;
