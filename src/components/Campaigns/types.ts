@@ -21,6 +21,7 @@ export interface AfterCampaignJson {
   title: string;
   label2: string;
   leaderboard: string;
+  leaderboardTitle: string;
 }
 export interface CampaignJson {
   title: string;

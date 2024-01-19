@@ -28,7 +28,7 @@ const After: FC<Props> = ({ content }) => {
         {content.leaderboard}
       </Button>
 
-      <Modal modalRef={modalRef} title="Clickmas Leaderboard">
+      <Modal modalRef={modalRef} title={content.leaderboardTitle}>
         <FinalLeaderboard />
       </Modal>
     </>

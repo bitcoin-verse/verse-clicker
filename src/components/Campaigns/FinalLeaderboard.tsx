@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
+import { CURRENT_CAMPAIGN } from "../../constants";
 import Row from "../Sidebar/Leaderboard/Row";
 import {
   Header,
@@ -29,7 +30,7 @@ const FinalLeaderboard = () => {
         const { data } = await axios.get(
           `${
             process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001/"
-          }leaderboard/Christmas`,
+          }leaderboard/${CURRENT_CAMPAIGN}`,
         );
 
         setLeaderboardItems(data.players);
