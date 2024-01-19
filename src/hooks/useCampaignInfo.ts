@@ -55,10 +55,8 @@ const useCampaignInfo = () => {
     ) {
       dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "DURING" } });
       const msDiff = campaignInfo.endDate - Date.now();
-      console.log("setting timeout for finished", msDiff);
 
       timeout.current = setTimeout(() => {
-        console.log("finished timeout reset");
         getInfo();
       }, msDiff);
     } else if (Date.now() > campaignInfo.endDate) {
@@ -66,9 +64,7 @@ const useCampaignInfo = () => {
     } else if (Date.now() < campaignInfo.startDate) {
       dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "BEFORE" } });
       const msDiff = campaignInfo.startDate - Date.now();
-      console.log("setting timeout for not started");
       timeout.current = setTimeout(() => {
-        console.log("not started timeout reset");
         getInfo();
       }, msDiff);
     }
