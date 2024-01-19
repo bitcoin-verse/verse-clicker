@@ -2,11 +2,10 @@ import React, { FC, useCallback } from "react";
 import { useAccount, useNetwork } from "wagmi";
 
 import redEnvelope from "../../../src/assets/red-envelope.png";
-import { CURRENT_CAMPAIGN } from "../..//constants";
+import { CURRENT_CAMPAIGN } from "../../constants";
 import { useSocketCtx } from "../../context/SocketContext";
 import { GameMode } from "../../context/reducers/network";
-import { useDispatch } from "../../context/store";
-import useCampaignInfo from "../../hooks/useCampaignInfo";
+import { useDispatch, useTrackedState } from "../../context/store";
 import { ModalWrapper } from "../Boosts/styled";
 import Modal, { useModal } from "../Modal";
 import After from "./After";
@@ -38,7 +37,9 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
   const { chain } = useNetwork();
   const dispatch = useDispatch();
   const { socket } = useSocketCtx();
-  const { campaignPhase, campaignInfo } = useCampaignInfo(CURRENT_CAMPAIGN);
+  const {
+    campaign: { campaignInfo, campaignPhase },
+  } = useTrackedState();
 
   const content = getContent(CURRENT_CAMPAIGN);
 

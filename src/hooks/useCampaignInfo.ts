@@ -1,82 +1,78 @@
 import axios, { AxiosError } from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
-import { GameMode } from "../context/reducers/network";
+import { CURRENT_CAMPAIGN } from "../constants";
+import { useSocketCtx } from "../context/SocketContext";
+import { useDispatch, useTrackedState } from "../context/store";
+import useSocketEvents from "./useSocketEvents";
 
 export type CampaignInfo = { startDate: number; endDate: number };
 export type CampaignPhase = "BEFORE" | "DURING" | "AFTER";
 
-const useCampaignInfo = (campaign: GameMode) => {
-  const [campaignInfo, setCampaignInfo] = useState<CampaignInfo>();
-  const [campaignPhase, setCampaignPhase] = useState<CampaignPhase>("BEFORE");
+const useCampaignInfo = () => {
+  const {
+    campaign: { campaignInfo },
+  } = useTrackedState();
+  const timeout = useRef<NodeJS.Timeout>();
+  const dispatch = useDispatch();
+  const { isConnected } = useSocketCtx();
+  const { loading } = useSocketEvents();
 
   const getInfo = async () => {
     try {
       const { data } = await axios.get<CampaignInfo>(
         `${
           process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001/"
-        }campaign/${campaign}`,
+        }campaign/${CURRENT_CAMPAIGN}`,
       );
-      setCampaignInfo(data);
+      dispatch({ type: "SET_CAMPAIGN", payload: { campaignInfo: data } });
     } catch (e) {
       const error = e as AxiosError;
       console.log(
         "Error getting campaign info for %s - ",
-        campaign,
+        CURRENT_CAMPAIGN,
         error.message,
       );
     }
   };
 
   useEffect(() => {
-    getInfo();
-  }, [campaign]);
-
-  useEffect(() => {
+    if (!isConnected || loading) {
+      return;
+    }
     // start timer to auto switch the game to active (or inactive)
-    if (!campaignInfo) return;
+    if (!campaignInfo) {
+      getInfo();
+      return;
+    }
     // console.log(new Date(campaignInfo.startDate).toISOString());
     // console.log(new Date(campaignInfo.endDate).toISOString());
+
     // started
     if (
-      Date.now() > campaignInfo.startDate &&
-      Date.now() < campaignInfo.endDate
+      Date.now() >= campaignInfo.startDate &&
+      Date.now() <= campaignInfo.endDate
     ) {
-      setCampaignPhase("DURING");
-    } else {
-      setCampaignPhase("AFTER");
-    }
-
-    let timeout: NodeJS.Timeout;
-
-    // not started
-    if (Date.now() < campaignInfo.startDate) {
-      setCampaignPhase("BEFORE");
-
-      const msDiff = campaignInfo.startDate - Date.now();
-
-      timeout = setTimeout(() => {
-        getInfo();
-      }, msDiff);
-      return;
-    }
-
-    // finished
-    if (Date.now() < campaignInfo.endDate) {
+      dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "DURING" } });
       const msDiff = campaignInfo.endDate - Date.now();
 
-      timeout = setTimeout(() => {
+      timeout.current = setTimeout(() => {
         getInfo();
       }, msDiff);
-      return;
+    } else if (Date.now() > campaignInfo.endDate) {
+      dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "AFTER" } });
+    } else if (Date.now() < campaignInfo.startDate) {
+      dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "BEFORE" } });
+      const msDiff = campaignInfo.startDate - Date.now();
+      timeout.current = setTimeout(() => {
+        getInfo();
+      }, msDiff);
     }
 
     return () => {
-      clearTimeout(timeout);
+      clearTimeout(timeout.current);
     };
-  }, [campaignInfo]);
-
-  return { campaignInfo, campaignPhase };
+  }, [campaignInfo, isConnected, loading]);
 };
 
 export default useCampaignInfo;

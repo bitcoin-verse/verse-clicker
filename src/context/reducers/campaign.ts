@@ -1,13 +1,21 @@
+import { CampaignInfo, CampaignPhase } from "../../hooks/useCampaignInfo";
 import { State } from "../store";
 
-export type SetCampaignBannerAction = {
-  type: "SET_SHOW_CAMPAIGN_BANNER";
-  payload?: boolean;
+export type SetCampaignAction = {
+  type: "SET_CAMPAIGN";
+  payload: {
+    campaignInfo?: CampaignInfo;
+    campaignPhase?: CampaignPhase;
+    showCampaignBanner?: boolean;
+  };
 };
 
-export const setShowCampaignBanner = (
+export const setCampaign = (
   state: State,
-  payload: SetCampaignBannerAction["payload"],
+  payload: SetCampaignAction["payload"],
 ): State => {
-  return { ...state, showCampaignBanner: payload };
+  return {
+    ...state,
+    campaign: { ...state.campaign, ...payload },
+  };
 };

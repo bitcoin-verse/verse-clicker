@@ -7,10 +7,7 @@ import {
   setBuilding,
   updateBuildings,
 } from "./reducers/building";
-import {
-  SetCampaignBannerAction,
-  setShowCampaignBanner,
-} from "./reducers/campaign";
+import { SetCampaignAction, setCampaign } from "./reducers/campaign";
 import { SetErrorAction, setError } from "./reducers/error";
 import {
   SetLeaderboardAddressesAction,
@@ -45,7 +42,7 @@ export type Action =
   | SetPurchaseAmountAction
   | SetLeaderboardUpdated
   | SetBonusDataAction
-  | SetCampaignBannerAction
+  | SetCampaignAction
   | { type: "RESET_GAME" };
 
 const reducer: Reducer<State, Action> = (state, action) => {
@@ -76,8 +73,8 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return setSettings(state, action.payload);
     case "SET_BONUS_DATA":
       return setBonusData(state, action.payload);
-    case "SET_SHOW_CAMPAIGN_BANNER":
-      return setShowCampaignBanner(state, action.payload);
+    case "SET_CAMPAIGN":
+      return setCampaign(state, action.payload);
     default:
       return state;
   }

@@ -3,6 +3,7 @@ import { createContainer } from "react-tracked";
 
 import buildings from "../buildings";
 import Building from "../classes/Building";
+import { CampaignInfo, CampaignPhase } from "../hooks/useCampaignInfo";
 import reducer, { Action } from "./reducer";
 import { BonusData } from "./reducers/bonusData";
 import { LeaderboardStats } from "./reducers/leaderboard";
@@ -32,7 +33,12 @@ export type State = {
   leaderboardStats: LeaderboardStats;
   leaderboardUpdated?: number;
   bonusData?: BonusData;
-  showCampaignBanner?: boolean;
+
+  campaign: {
+    campaignInfo?: CampaignInfo;
+    campaignPhase?: CampaignPhase;
+    showCampaignBanner?: boolean;
+  };
 };
 
 const search = new URLSearchParams(window.location.search);
@@ -78,6 +84,7 @@ export const initialState: State = {
   isWallet,
   leaderboardAddresses: [],
   leaderboardStats: [],
+  campaign: {},
 };
 
 const init = (): State => {
