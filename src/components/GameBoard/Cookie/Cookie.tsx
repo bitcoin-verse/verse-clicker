@@ -43,7 +43,7 @@ const Cookie: FC = () => {
             top: y,
           }}
         >
-          +{formatNumber(player.cpc)}
+          +{Number(formatNumber(player.cpc)).toFixed()}
         </CpcClick>,
       );
 
