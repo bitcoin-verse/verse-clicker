@@ -61,7 +61,7 @@ const Lounge: FC<Props> = ({ close }) => {
               });
             }}
           >
-            Become a Verse Lounge Guild Member
+            Become a Verse Lounge Member
           </LinkButton>
           <LinkButton
             design="secondary"
