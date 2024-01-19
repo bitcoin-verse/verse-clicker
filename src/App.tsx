@@ -4,6 +4,7 @@ import { useAccount, useNetwork } from "wagmi";
 import { useSocketCtx } from "./context/SocketContext";
 import { useDispatch, useTrackedState } from "./context/store";
 import useAmplitudeEvents from "./hooks/useAmplitudeEvents";
+import useCampaignInfo from "./hooks/useCampaignInfo";
 import useSocketEvents from "./hooks/useSocketEvents";
 
 const Main = lazy(() => import("./views/Main"));
@@ -11,6 +12,7 @@ const NotConnected = lazy(() => import("./views/NotConnected"));
 
 const App: FC = () => {
   useAmplitudeEvents();
+  useCampaignInfo();
 
   const dispatch = useDispatch();
 
