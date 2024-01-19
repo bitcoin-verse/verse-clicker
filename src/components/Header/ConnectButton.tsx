@@ -1,4 +1,4 @@
-import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useWeb3Modal, useWeb3ModalEvents } from "@web3modal/wagmi/react";
 import React, { FC, useEffect, useState } from "react";
 import { useAccount, useEnsName } from "wagmi";
 
@@ -14,10 +14,20 @@ import { AddressHolder, Button, ButtonContent, ConnectWrapper } from "./styled";
 const ConnectButton: FC = () => {
   const { isWallet } = useTrackedState();
   const { open } = useWeb3Modal();
+  const { data: web3ModalEvent } = useWeb3ModalEvents();
+
   const { address, isConnected, connector } = useAccount();
   const { data } = useEnsName({ address, chainId: 1 });
 
   const [providerLogo, setProviderLogo] = useState("");
+
+  // TEMPORARY WORKAROUND UNTIL THIS IS RESOLVED
+  // https://github.com/WalletConnect/web3modal/issues/1546
+  useEffect(() => {
+    if (web3ModalEvent.event === "CONNECT_ERROR") {
+      location.reload();
+    }
+  }, [web3ModalEvent]);
 
   useEffect(() => {
     const getLogo = async () => {
