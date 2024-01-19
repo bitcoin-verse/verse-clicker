@@ -1,5 +1,4 @@
 import React, { FC, PropsWithChildren } from "react";
-import { CURRENT_CAMPAIGN } from "src/constants";
 import { ThemeProvider } from "styled-components";
 
 import { AudioProvider } from "../../context/AudioProvider";
@@ -10,8 +9,12 @@ import { themes } from "../themes";
 import { ContentsWrapper, GlobalStyle } from "./styled";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-  const { gameMode: network, showCampaignBanner = true } = useTrackedState();
-  const { campaignPhase } = useCampaignInfo(CURRENT_CAMPAIGN);
+  const {
+    gameMode: network,
+    campaign: { showCampaignBanner = true, campaignPhase },
+  } = useTrackedState();
+
+  useCampaignInfo();
 
   return (
     <ThemeProvider theme={themes[network]}>

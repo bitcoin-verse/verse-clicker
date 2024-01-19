@@ -13,8 +13,8 @@ const Banner: FunctionComponent = () => {
 
   const hideBanner = () => {
     dispatch({
-      type: "SET_SHOW_CAMPAIGN_BANNER",
-      payload: false,
+      type: "SET_CAMPAIGN",
+      payload: { showCampaignBanner: false },
     });
   };
 
