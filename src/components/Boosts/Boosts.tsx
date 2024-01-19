@@ -24,6 +24,7 @@ const Scratcher = lazy(() => import("./Modals/Scratcher"));
 const ScratcherLunar = lazy(() => import("./Modals/ScratcherLunar"));
 const ScratcherMint = lazy(() => import("./Modals/ScratcherMint"));
 const Burn = lazy(() => import("./Modals/Burn"));
+const Lounge = lazy(() => import("./Modals/Lounge"));
 
 const boostList = (player: Player, network: GameMode) => {
   switch (network) {
@@ -58,6 +59,12 @@ const boostList = (player: Player, network: GameMode) => {
           unlocked: player.verseHolder,
           label: "Hold",
           description: "8x clicks",
+        },
+        {
+          id: "lounge",
+          unlocked: player.isGuildMember,
+          label: "Lounge",
+          description: "Unlock upgrades",
         },
         {
           id: "scratcher-mint",
@@ -99,7 +106,7 @@ const boostList = (player: Player, network: GameMode) => {
   }
 };
 
-const getModalContent = (content?: string) => {
+const getModalContent = (close: () => void, content?: string) => {
   switch (content) {
     case "burn":
       return {
@@ -136,6 +143,11 @@ const getModalContent = (content?: string) => {
         title: "Scratcher Buy",
         component: <ScratcherMint />,
       };
+    case "lounge":
+      return {
+        title: "Verse Lounge",
+        component: <Lounge close={close} />,
+      };
     default:
       return null;
   }
@@ -147,11 +159,11 @@ interface Props {
 
 const Boosts: FC<Props> = ({ mobileVersion }) => {
   const [content, setContent] = useState<string>();
-  const { modalRef, showModal } = useModal();
+  const { modalRef, showModal, close } = useModal();
   const { chain } = useNetwork();
   const { player, gameMode } = useTrackedState();
 
-  const modalContent = getModalContent(content);
+  const modalContent = getModalContent(close, content);
   const interactiveBoosts = [
     "burn",
     "scratcher",
