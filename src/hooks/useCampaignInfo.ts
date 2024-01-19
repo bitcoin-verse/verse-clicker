@@ -1,40 +1,43 @@
 import axios, { AxiosError } from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 
-import { GameMode } from "../context/reducers/network";
+import { CURRENT_CAMPAIGN } from "../constants";
+import { useDispatch, useTrackedState } from "../context/store";
 
 export type CampaignInfo = { startDate: number; endDate: number };
 export type CampaignPhase = "BEFORE" | "DURING" | "AFTER";
 
-const useCampaignInfo = (campaign: GameMode) => {
-  const [campaignInfo, setCampaignInfo] = useState<CampaignInfo>();
-  const [campaignPhase, setCampaignPhase] = useState<CampaignPhase>("BEFORE");
+const useCampaignInfo = () => {
+  const {
+    campaign: { campaignInfo },
+  } = useTrackedState();
 
-  const getInfo = async () => {
+  const dispatch = useDispatch();
+
+  const getInfo = useCallback(async () => {
     try {
       const { data } = await axios.get<CampaignInfo>(
         `${
           process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001/"
-        }campaign/${campaign}`,
+        }campaign/${CURRENT_CAMPAIGN}`,
       );
-      setCampaignInfo(data);
+      dispatch({ type: "SET_CAMPAIGN", payload: { campaignInfo: data } });
     } catch (e) {
       const error = e as AxiosError;
       console.log(
         "Error getting campaign info for %s - ",
-        campaign,
+        CURRENT_CAMPAIGN,
         error.message,
       );
     }
-  };
-
-  useEffect(() => {
-    getInfo();
-  }, [campaign]);
+  }, []);
 
   useEffect(() => {
     // start timer to auto switch the game to active (or inactive)
-    if (!campaignInfo) return;
+    if (!campaignInfo) {
+      getInfo();
+      return;
+    }
     // console.log(new Date(campaignInfo.startDate).toISOString());
     // console.log(new Date(campaignInfo.endDate).toISOString());
     // started
@@ -42,16 +45,16 @@ const useCampaignInfo = (campaign: GameMode) => {
       Date.now() > campaignInfo.startDate &&
       Date.now() < campaignInfo.endDate
     ) {
-      setCampaignPhase("DURING");
+      dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "DURING" } });
     } else {
-      setCampaignPhase("AFTER");
+      dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "AFTER" } });
     }
 
     let timeout: NodeJS.Timeout;
 
     // not started
     if (Date.now() < campaignInfo.startDate) {
-      setCampaignPhase("BEFORE");
+      dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "BEFORE" } });
 
       const msDiff = campaignInfo.startDate - Date.now();
 
@@ -75,8 +78,6 @@ const useCampaignInfo = (campaign: GameMode) => {
       clearTimeout(timeout);
     };
   }, [campaignInfo]);
-
-  return { campaignInfo, campaignPhase };
 };
 
 export default useCampaignInfo;
