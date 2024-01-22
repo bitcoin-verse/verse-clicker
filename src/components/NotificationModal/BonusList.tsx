@@ -69,7 +69,7 @@ const BonusList: FC<Props> = ({ txData, bonusType }) => {
           return (
             <Fragment key={data.txHash}>
               <div>
-                {new Date(data.date).toLocaleDateString("en-US", {
+                {new Date(data.date).toLocaleDateString(undefined, {
                   dateStyle: "short",
                 })}
               </div>
