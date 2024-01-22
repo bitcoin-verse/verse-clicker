@@ -5,7 +5,7 @@ import { colors } from "../colors";
 export const Wrapper = styled.div`
   box-sizing: border-box;
   grid-area: banner;
-  z-index: 100;
+  z-index: 1;
   width: 100%;
   background-color: ${colors.primaryBlue100};
   padding: 10px 16px;
