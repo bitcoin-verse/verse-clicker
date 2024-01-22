@@ -80,7 +80,7 @@ const Cookie: FC = () => {
       return;
     }
 
-    const isAutoClick = clickCount >= 30 ? true : false;
+    const isAutoClick = clickCount >= 29 ? true : false;
 
     setClickCount((c) => c + 1);
 
