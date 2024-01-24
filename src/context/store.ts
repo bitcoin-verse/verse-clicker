@@ -54,6 +54,9 @@ const gameModes: Record<string, GameMode> = {
   lunarnewyear: "LunarNewYear",
 };
 
+const gameMode =
+  gameModes?.[campaign?.replaceAll("-", "").toLowerCase() || "Ethereum"];
+
 export const initialState: State = {
   isConnected: false,
   verseHolder: false,
@@ -75,10 +78,7 @@ export const initialState: State = {
     clickBase: 1,
     productionBase: 1,
   },
-  gameMode:
-    campaign && gameModes?.[campaign.replaceAll("-", "").toLowerCase()]
-      ? gameModes[campaign.replaceAll("-", "").toLowerCase()]
-      : "Ethereum",
+  gameMode,
   purchaseAmount: 1,
   settings: { sound: true },
   isWallet,
