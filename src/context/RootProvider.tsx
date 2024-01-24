@@ -70,20 +70,29 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 const wagmiConfig = createConfig({
   autoConnect: true,
   connectors: [
-    ...chains.map(
-      (chain) =>
-        new WalletConnectConnector({
-          chains: [chain],
-          options: {
-            projectId,
-            showQrModal: false,
-            metadata,
-          },
-        }),
-    ),
     ...(isWallet
-      ? []
+      ? [
+          ...chains.map(
+            (chain) =>
+              new WalletConnectConnector({
+                chains: [chain],
+                options: {
+                  projectId,
+                  showQrModal: false,
+                  metadata,
+                },
+              }),
+          ),
+        ]
       : [
+          new WalletConnectConnector({
+            chains,
+            options: {
+              projectId,
+              showQrModal: false,
+              metadata,
+            },
+          }),
           new EIP6963Connector({ chains }),
           new InjectedConnector({
             chains,
