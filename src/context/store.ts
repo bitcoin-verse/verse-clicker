@@ -55,7 +55,8 @@ const gameModes: Record<string, GameMode> = {
 };
 
 const gameMode =
-  gameModes?.[campaign?.replaceAll("-", "").toLowerCase() || "Ethereum"];
+  gameModes?.[campaign?.replaceAll("-", "")?.toLowerCase() || "Ethereum"] ||
+  "Ethereum";
 
 export const initialState: State = {
   isConnected: false,
