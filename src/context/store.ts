@@ -43,7 +43,7 @@ export type State = {
 
 const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
-const gampaign = search.get("campaign");
+const campaign = search.get("campaign");
 
 const gameModes: Record<string, GameMode> = {
   christmas: "Christmas",
@@ -76,8 +76,8 @@ export const initialState: State = {
     productionBase: 1,
   },
   gameMode:
-    gampaign && gameModes?.[gampaign.toLowerCase()]
-      ? gameModes[gampaign.replace("-", "").toLowerCase()]
+    campaign && gameModes?.[campaign.toLowerCase()]
+      ? gameModes[campaign.replace("-", "").toLowerCase()]
       : "Ethereum",
   purchaseAmount: 1,
   settings: { sound: true },
