@@ -76,8 +76,8 @@ export const initialState: State = {
     productionBase: 1,
   },
   gameMode:
-    campaign && gameModes?.[campaign.toLowerCase()]
-      ? gameModes[campaign.replace("-", "").toLowerCase()]
+    campaign && gameModes?.[campaign.replaceAll("-", "").toLowerCase()]
+      ? gameModes[campaign.replaceAll("-", "").toLowerCase()]
       : "Ethereum",
   purchaseAmount: 1,
   settings: { sound: true },
