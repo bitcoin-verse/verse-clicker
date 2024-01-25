@@ -15,7 +15,7 @@ const ScratcherLunar: FC = () => {
   return (
     <ModalWrapper>
       <H3>
-        Get instant bonus points by claiming Lunar New Year scratcher prizes
+        Get instant bonus points by claiming Lunar New Year Scratcher prizes
       </H3>
       <Description style={{ textAlign: "left" }}>
         1. Buy a <b>Lunar New Year</b> scratcher ticket
@@ -25,7 +25,7 @@ const ScratcherLunar: FC = () => {
         3. Claim your prize
       </Description>
       <Text>
-        When you claim your Lunar New Year scratcher prize, you will receive a
+        When you claim your Lunar New Year Scratcher prize, you will receive a
         one-time bonus based on your prize amount
         <br />
         <br />
@@ -36,7 +36,7 @@ const ScratcherLunar: FC = () => {
         <br />
         1. Purchase, scratch, & claim using the same address used here
         <br />
-        2. Scratcher purchased must be a Lunar New Year scratcher
+        2. Scratcher purchased must be a Lunar New Year Scratcher
         <br />
         3. Have a greater than zero production rate
       </Text>
