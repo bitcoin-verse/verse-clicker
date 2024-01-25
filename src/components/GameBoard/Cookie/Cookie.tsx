@@ -33,6 +33,7 @@ const Cookie: FC = () => {
 
       const cpcContainer = document.createElement("div");
       const cpcRoot = createRoot(cpcContainer);
+      const cpc = player.cpc.toFixed();
 
       cpcRoot.render(
         <CpcClick
@@ -43,7 +44,7 @@ const Cookie: FC = () => {
             top: y,
           }}
         >
-          +{Number(formatNumber(player.cpc)).toFixed()}
+          +{formatNumber(Number(cpc))}
         </CpcClick>,
       );
 
