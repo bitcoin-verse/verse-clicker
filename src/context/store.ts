@@ -43,7 +43,7 @@ export type State = {
 
 const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
-const gampaign = search.get("campaign");
+const campaign = search.get("campaign");
 
 const gameModes: Record<string, GameMode> = {
   christmas: "Christmas",
@@ -53,6 +53,10 @@ const gameModes: Record<string, GameMode> = {
   sepolia: "Sepolia",
   lunarnewyear: "LunarNewYear",
 };
+
+const gameMode =
+  gameModes?.[campaign?.replaceAll("-", "")?.toLowerCase() || "Ethereum"] ||
+  "Ethereum";
 
 export const initialState: State = {
   isConnected: false,
@@ -75,10 +79,7 @@ export const initialState: State = {
     clickBase: 1,
     productionBase: 1,
   },
-  gameMode:
-    gampaign && gameModes?.[gampaign.toLowerCase()]
-      ? gameModes[gampaign.replace("-", "").toLowerCase()]
-      : "Ethereum",
+  gameMode,
   purchaseAmount: 1,
   settings: { sound: true },
   isWallet,
