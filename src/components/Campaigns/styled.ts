@@ -28,7 +28,9 @@ export const CampaignButton = styled.button<{ $small?: boolean }>`
   position: relative;
   z-index: 0;
   & > img {
+    width: 2.875rem;
     object-fit: contain;
+    animation: glow 1.4s ease-out infinite;
   }
 
   &::after {
@@ -63,4 +65,13 @@ export const CampaignButton = styled.button<{ $small?: boolean }>`
         width: 2.25rem;
       }
     `}
+
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 0 0 #ad2d2b;
+    }
+    100% {
+      box-shadow: 0 0 2rem 0 #ad2d2b;
+    }
+  }
 `;
