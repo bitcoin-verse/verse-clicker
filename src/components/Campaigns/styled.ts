@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const Wrapper = styled.div`
   position: absolute;
@@ -17,6 +17,15 @@ export const Wrapper = styled.div`
   }
 `;
 
+const glow = keyframes`
+  0% {
+    box-shadow: 0 0 0 0 #ad2d2b;
+  }
+  100% {
+    box-shadow: 0 0 2rem 0 #ad2d2b;
+  }
+`;
+
 export const CampaignButton = styled.button<{ $small?: boolean }>`
   background: none;
   height: 2rem;
@@ -28,7 +37,9 @@ export const CampaignButton = styled.button<{ $small?: boolean }>`
   position: relative;
   z-index: 0;
   & > img {
+    width: 2.875rem;
     object-fit: contain;
+    animation: 1s ${glow} infinite alternate;
   }
 
   &::after {
