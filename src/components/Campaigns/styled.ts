@@ -36,11 +36,6 @@ export const CampaignButton = styled.button<{ $small?: boolean }>`
   margin-bottom: 2rem;
   position: relative;
   z-index: 0;
-  & > img {
-    width: 2.875rem;
-    object-fit: contain;
-    animation: 1s ${glow} infinite alternate;
-  }
 
   &::after {
     content: "";
@@ -74,4 +69,12 @@ export const CampaignButton = styled.button<{ $small?: boolean }>`
         width: 2.25rem;
       }
     `}
+`;
+
+export const CampaignImg = styled.img`
+  height: 100%;
+  width: 80%;
+  border-radius: 5% 5% 50% 50%;
+  animation: 1s ${glow} infinite alternate;
+  object-fit: contain;
 `;
