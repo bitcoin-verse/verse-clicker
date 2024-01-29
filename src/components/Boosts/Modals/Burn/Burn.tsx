@@ -1,5 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
-import { formatEther, parseEther } from "viem";
+import LinkButton from "src/components/LinkButton";
+import { generateBurnEngineUrl } from "src/helpers/links";
+import { formatEther } from "viem";
 import {
   useAccount,
   useContractWrite,
@@ -10,7 +12,6 @@ import {
 import verseIcon from "../../../../assets/verse-icon.png";
 import { useSocketCtx } from "../../../../context/SocketContext";
 import { useTrackedState } from "../../../../context/store";
-import getBurnEngineDetails from "../../../../contracts/getBurnEngineDetails";
 import getVerseTokenDetails from "../../../../contracts/getVerseTokenDetails";
 import { logAmplitudeEvent } from "../../../../helpers/analytics";
 import { formatNumber } from "../../../../helpers/formatNumber";
@@ -24,14 +25,7 @@ import BurnEngineLink from "../../../Links/BurnEngineLink";
 import PointsIcon from "../../../PointsIcon";
 import Tabs, { TabButton } from "../../../Tabs";
 import WarningChip from "../../../WarningChip";
-import {
-  Divider,
-  Footnote,
-  Icon,
-  ModalWrapper,
-  Price,
-  StyledButton,
-} from "../../styled";
+import { Divider, Footnote, Icon, ModalWrapper, Price } from "../../styled";
 import LoadingStates from "./LoadingStates";
 
 export const BURN_LIST = [
@@ -61,7 +55,6 @@ const Burn: FC = () => {
   const [newCookies, setNewCookies] = useState<number>();
   const { player } = useTrackedState();
   const verseTokenDetails = getVerseTokenDetails(chain?.id);
-  const burnEngineDetails = getBurnEngineDetails(chain?.id);
 
   const [balanceData, setBalanceData] = useState<{
     formatted: string;
@@ -72,7 +65,6 @@ const Burn: FC = () => {
     data: txData,
     isLoading: isPendingWallet,
     isSuccess: isTxSent,
-    writeAsync,
   } = useContractWrite({
     address: verseTokenDetails?.address,
     abi: verseTokenDetails?.abi,
@@ -128,17 +120,6 @@ const Burn: FC = () => {
       socket.off("bonus", onBonus);
     };
   }, []);
-
-  const handleBurn = async (amount: number) => {
-    try {
-      if (!burnEngineDetails) return;
-      await writeAsync({
-        args: [burnEngineDetails.address, parseEther(amount.toString())],
-      });
-    } catch (error) {
-      console.log("Write error", error);
-    }
-  };
 
   return (
     <ModalWrapper>
@@ -213,12 +194,15 @@ const Burn: FC = () => {
             </WarningChip>
           )}
 
-          <StyledButton
-            onClick={() => handleBurn(selectedBurn?.value)}
-            disabled={insufficientVerse}
-          >
-            Contribute VERSE
-          </StyledButton>
+          {!insufficientVerse && (
+            <LinkButton
+              href={generateBurnEngineUrl(isWallet)}
+              target={isWallet ? "_self" : "_blank"}
+              rel="noreferrer"
+            >
+              Burn VERSE
+            </LinkButton>
+          )}
           <Footnote>
             <Label $color="secondary">
               This transaction will send the specified VERSE to{" "}

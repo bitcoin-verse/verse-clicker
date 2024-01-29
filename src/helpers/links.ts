@@ -75,3 +75,13 @@ export const generateBuyUrl = (isWallet: boolean, coin: "verse") => {
 
   return `${BASE_URL}${coin}`;
 };
+
+export const generateBurnEngineUrl = (isWallet: boolean) => {
+  const query = new URLSearchParams();
+
+  if (isWallet) query.append("origin", "wallet");
+
+  if (query.size > 0) return `${VERSE_BASE_URL}?${query.toString()}`;
+
+  return `${VERSE_BASE_URL}/burn`;
+};
