@@ -1,9 +1,15 @@
 import React, { FC, useEffect } from "react";
 import { useTheme } from "styled-components";
-import { useAccount, useDisconnect } from "wagmi";
+import {
+  useAccount,
+  useDisconnect,
+  useNetwork,
+  useSignMessage,
+  useSwitchNetwork,
+} from "wagmi";
 
 import connectWallet from "../../assets/connect-wallet.png";
-import { useTrackedState } from "../../context/store";
+import { useDispatch, useTrackedState } from "../../context/store";
 import { Button } from "../Button";
 import { H1 } from "../H1";
 import { H4 } from "../H4";
@@ -25,8 +31,12 @@ const Loading: FC = () => {
   const { status } = useAccount();
   const { disconnect } = useDisconnect();
   const { halfMoon } = useTheme();
+  const dispatch = useDispatch();
   const { modalRef, showModal, close } = useModal();
-  const { error } = useTrackedState();
+  const { error, settings, isWallet } = useTrackedState();
+  const { data, signMessage } = useSignMessage({
+    message: `I approve this device:  ${settings.sign?.uuid}`,
+  });
 
   useEffect(() => {
     if (status === "connected") {
@@ -36,6 +46,11 @@ const Loading: FC = () => {
       close();
     };
   }, [status]);
+
+  useEffect(() => {
+    if (!data) return;
+    dispatch({ type: "SET_SIGN_SIGNATURE", payload: data });
+  }, [data]);
 
   return (
     <>
@@ -74,6 +89,20 @@ const Loading: FC = () => {
                 }}
               >
                 Close
+              </Button>
+            </>
+          )}
+          {!settings.sign?.signature && (
+            <>
+              <Label>YOU MUST VERIFY OWNERSHIP!</Label>
+              <Button
+                $size="small"
+                $design="secondary"
+                onClick={() => {
+                  signMessage();
+                }}
+              >
+                Proove it you!
               </Button>
             </>
           )}

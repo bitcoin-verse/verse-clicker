@@ -1,6 +1,7 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { useAccount, useNetwork } from "wagmi";
+import { v4 as uuidv4 } from "uuid";
+import { useAccount, useNetwork, useSignMessage } from "wagmi";
 
 import { CURRENT_CAMPAIGN } from "./constants";
 import { useSocketCtx } from "./context/SocketContext";
@@ -38,8 +39,19 @@ const App: FC = () => {
   const { setLoading } = useSocketEvents();
 
   const { chain } = useNetwork();
+  const { gameMode, settings, campaign } = useTrackedState();
 
-  const { gameMode, campaign } = useTrackedState();
+  useEffect(() => {
+    if (!settings.sign?.uuid) {
+      const uuid = uuidv4();
+      dispatch({ type: "SET_SIGN_UUID", payload: uuid });
+    }
+    console.log("sign", settings.sign);
+
+    if (!settings.sign?.signature) {
+      console.log("MUST SIGN");
+    }
+  }, [settings.sign]);
 
   const { status, address } = useAccount({
     onConnect: ({ address: addr }) => {
@@ -59,6 +71,9 @@ const App: FC = () => {
     // setting the campaign query to match game mode
     const search = new URLSearchParams(location.search);
     const campaignQuery = search.get("campaign");
+
+    if (status !== "connected" || !chain || !socket) return;
+    setLoading(true);
 
     const newGameMode = getGameMode(campaignQuery);
     if (
@@ -107,9 +122,14 @@ const App: FC = () => {
       return;
     }
 
+    if (!settings.sign?.signature) {
+      socket.disconnect();
+      return;
+    }
+
     socket.disconnect();
     socket.connect();
-  }, [status, chain, address, gameMode]);
+  }, [status, chain, address, gameMode, settings.sign]);
 
   return (
     <Suspense>
