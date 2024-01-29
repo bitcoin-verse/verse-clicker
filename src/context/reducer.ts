@@ -26,6 +26,12 @@ import {
 import { resetGame } from "./reducers/reset";
 import { SetReturnDataAction, setReturnData } from "./reducers/returnData";
 import { SetSettingsAction, setSettings } from "./reducers/settings";
+import {
+  SetSignSignatureAction,
+  SetSignUuidAction,
+  setSignSignature,
+  setSignUuid,
+} from "./reducers/sign";
 import { State } from "./store";
 
 export type Action =
@@ -43,6 +49,8 @@ export type Action =
   | SetLeaderboardUpdated
   | SetBonusDataAction
   | SetCampaignAction
+  | SetSignUuidAction
+  | SetSignSignatureAction
   | { type: "RESET_GAME" };
 
 const reducer: Reducer<State, Action> = (state, action) => {
@@ -75,6 +83,10 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return setBonusData(state, action.payload);
     case "SET_CAMPAIGN":
       return setCampaign(state, action.payload);
+    case "SET_SIGN_UUID":
+      return setSignUuid(state, action.payload);
+    case "SET_SIGN_SIGNATURE":
+      return setSignSignature(state, action.payload);
     default:
       return state;
   }

@@ -11,6 +11,7 @@ import { LeaderboardStats } from "./reducers/leaderboard";
 import { GameMode } from "./reducers/network";
 import { Player } from "./reducers/player";
 import { ReturnData } from "./reducers/returnData";
+import { SignData } from "./reducers/sign";
 
 const storageKey = "verse-clicker";
 
@@ -28,6 +29,7 @@ export type State = {
   settings: {
     sound: boolean;
     campaignBanner: boolean;
+    sign?: SignData;
   };
   isWallet: boolean;
 
