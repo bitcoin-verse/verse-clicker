@@ -197,7 +197,7 @@ const Burn: FC = () => {
           {!insufficientVerse && (
             <LinkButton
               href={generateBurnEngineUrl(isWallet)}
-              newTab={isWallet}
+              newTab={!isWallet}
             >
               Burn VERSE
             </LinkButton>
