@@ -75,6 +75,7 @@ const Cookie: FC = () => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const { isTrusted } = e;
 
+    if (!socket) return;
     if (!isTrusted) {
       alert("Bad click... Get outa the console you script kiddy");
       return;
@@ -89,6 +90,7 @@ const Cookie: FC = () => {
       disconnect();
       return;
     }
+
 
     socket.emit("click");
     animateCookieClick(e);

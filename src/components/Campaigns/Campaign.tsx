@@ -41,13 +41,15 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
   const content = getContent(CURRENT_CAMPAIGN);
 
   const playCampaign = useCallback(() => {
+    if (!socket) return;
     dispatch({ type: "RESET_GAME" });
     dispatch({ type: "SET_GAME_MODE", payload: CURRENT_CAMPAIGN });
     close();
-  }, []);
+  }, [socket]);
 
   const switchChain = useCallback(() => {
     if (
+      !socket ||
       !chain?.name ||
       !["Ethereum", "Polygon", "Goerli", "Sepolia"].includes(chain.name)
     ) {
@@ -60,7 +62,7 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
       payload: chain?.name as GameMode,
     });
     close();
-  }, []);
+  }, [socket]);
 
   return (
     <Wrapper>

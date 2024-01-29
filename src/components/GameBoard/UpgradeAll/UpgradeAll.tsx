@@ -26,12 +26,16 @@ const UpgradeAll: FC<Props> = ({ mobileVersion = false }) => {
   const { playBuy } = useAudio();
   const upgradesList = useUpgradesList();
 
-  const buyUpgrade = useCallback((bIndex: number, uIndex: number) => {
-    socket.emit("buy_upgrade", {
-      building: bIndex,
-      upgrade: uIndex,
-    });
-  }, []);
+  const buyUpgrade = useCallback(
+    (bIndex: number, uIndex: number) => {
+      if (!socket) return;
+      socket.emit("buy_upgrade", {
+        building: bIndex,
+        upgrade: uIndex,
+      });
+    },
+    [socket],
+  );
 
   const availableUpgrades = useMemo(() => {
     let availableCookies = player.cookies;

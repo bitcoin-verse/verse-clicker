@@ -27,6 +27,7 @@ const UpgradeButton: FC<Props> = ({ upgrade }) => {
 
   const buyUpgrade = useCallback(
     (bIndex: number, uIndex: number) => {
+      if (!socket) return;
       socket.emit("buy_upgrade", {
         building: bIndex,
         upgrade: uIndex,
@@ -34,7 +35,7 @@ const UpgradeButton: FC<Props> = ({ upgrade }) => {
 
       if (playBuy) playBuy();
     },
-    [playBuy],
+    [playBuy, socket],
   );
 
   return (
