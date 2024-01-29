@@ -1,6 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-import LinkButton from "src/components/LinkButton";
-import { generateBurnEngineUrl } from "src/helpers/links";
 import { formatEther } from "viem";
 import {
   useAccount,
@@ -16,11 +14,13 @@ import getVerseTokenDetails from "../../../../contracts/getVerseTokenDetails";
 import { logAmplitudeEvent } from "../../../../helpers/analytics";
 import { formatNumber } from "../../../../helpers/formatNumber";
 import { getBurnEngineExplorerLink } from "../../../../helpers/getBurnEngineExplorerLink";
+import { generateBurnEngineUrl } from "../../../../helpers/links";
 import useVerseBalance from "../../../../hooks/useVerseBalance";
 import { Container } from "../../../Container";
 import { H3 } from "../../../H3";
 import { Label } from "../../../Label";
 import { Link } from "../../../Link";
+import LinkButton from "../../../LinkButton";
 import BurnEngineLink from "../../../Links/BurnEngineLink";
 import PointsIcon from "../../../PointsIcon";
 import Tabs, { TabButton } from "../../../Tabs";
@@ -197,8 +197,7 @@ const Burn: FC = () => {
           {!insufficientVerse && (
             <LinkButton
               href={generateBurnEngineUrl(isWallet)}
-              target={isWallet ? "_self" : "_blank"}
-              rel="noreferrer"
+              newTab={isWallet}
             >
               Burn VERSE
             </LinkButton>
