@@ -13,7 +13,7 @@ import Before from "./Before";
 import christmasJson from "./Content/christmas.json";
 import lunarNewYearJson from "./Content/lunarnewyear.json";
 import During from "./During";
-import { CampaignButton, Wrapper } from "./styled";
+import { CampaignButton, CampaignImg, Wrapper } from "./styled";
 import { CampaignJson } from "./types";
 
 function getContent(campaign: GameMode): CampaignJson | null {
@@ -71,13 +71,7 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
   return (
     <Wrapper>
       <CampaignButton onClick={() => showModal()} $small={isNetworkButton}>
-        <img
-          src={redEnvelope}
-          alt="red envelope"
-          height="100%"
-          width="100%"
-          style={{ borderRadius: "0 0 50% 50%" }}
-        />
+        <CampaignImg src={redEnvelope} alt="red envelope" />
       </CampaignButton>
 
       {content && (
