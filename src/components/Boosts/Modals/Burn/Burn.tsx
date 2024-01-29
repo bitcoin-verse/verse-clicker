@@ -3,7 +3,6 @@ import { formatEther } from "viem";
 import { useNetwork } from "wagmi";
 
 import verseIcon from "../../../../assets/verse-icon.png";
-import { useSocketCtx } from "../../../../context/SocketContext";
 import { useTrackedState } from "../../../../context/store";
 import { formatNumber } from "../../../../helpers/formatNumber";
 import { getBurnEngineExplorerLink } from "../../../../helpers/getBurnEngineExplorerLink";
@@ -39,11 +38,9 @@ const calculateBurnBonus = (burnAmount: number) => {
 };
 
 const Burn: FC = () => {
-  const { socket } = useSocketCtx();
   const { isWallet } = useTrackedState();
   const { chain } = useNetwork();
   const { data: readData, error } = useVerseBalance();
-  const [newCookies, setNewCookies] = useState<number>();
   const { player } = useTrackedState();
 
   const [balanceData, setBalanceData] = useState<{
@@ -62,17 +59,6 @@ const Burn: FC = () => {
     if (!readData) return;
     setBalanceData({ value: readData, formatted: formatEther(readData) });
   }, [readData, error]);
-
-  useEffect(() => {
-    const onBonus = (data: number) => {
-      setNewCookies(data);
-    };
-    socket.on("bonus", onBonus);
-
-    return () => {
-      socket.off("bonus", onBonus);
-    };
-  }, []);
 
   return (
     <ModalWrapper>
