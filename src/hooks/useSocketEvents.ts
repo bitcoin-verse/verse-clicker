@@ -15,6 +15,7 @@ const useSocketEvents = () => {
   const { socket } = useSocketCtx();
 
   useEffect(() => {
+    if (!socket) return;
     const onInfo = (payload: Player) => {
       setLoading(false);
       dispatch({ type: "SET_PLAYER_DATA", payload });
@@ -78,7 +79,7 @@ const useSocketEvents = () => {
       socket.off("buildings_data", onBuildingsData);
       socket.off("cheat", onCheat);
     };
-  }, []);
+  }, [socket]);
 
   return { loading, setLoading };
 };
