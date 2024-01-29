@@ -55,6 +55,7 @@
     "tsparticles": "^3.0.3",
     "use-reducer-async": "^2.1.1",
     "use-sound": "^4.0.1",
+    "uuid": "^9.0.1",
     "viem": "1.21.4",
     "wagmi": "1.4.13"
   },
@@ -68,6 +69,7 @@
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
+    "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
     "cross-env": "^7.0.3",
