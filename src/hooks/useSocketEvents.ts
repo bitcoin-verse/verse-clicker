@@ -6,10 +6,11 @@ import { BuildingData } from "../context/reducers/building";
 import { LeaderboardEvent } from "../context/reducers/leaderboard";
 import { Player } from "../context/reducers/player";
 import { ReturnData } from "../context/reducers/returnData";
-import { useDispatch } from "../context/store";
+import { useDispatch, useTrackedState } from "../context/store";
 
 const useSocketEvents = () => {
   const [loading, setLoading] = useState(true);
+  const { bonusData } = useTrackedState();
   const dispatch = useDispatch();
 
   const { socket } = useSocketCtx();
@@ -54,7 +55,7 @@ const useSocketEvents = () => {
     };
 
     const onBonusNotif = (data: BonusData) => {
-      dispatch({ type: "SET_BONUS_DATA", payload: data });
+      dispatch({ type: "SET_BONUS_DATA", payload: [...bonusData, data] });
     };
 
     const onCheat = (data: string) => {
