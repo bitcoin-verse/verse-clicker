@@ -10,7 +10,8 @@ const NotificationModal = () => {
   const { modalRef, showModal, close } = useModal();
 
   useEffect(() => {
-    if ((returnData && returnData.seconds > 5) || bonusData) showModal();
+    if ((returnData && returnData.seconds > 5) || bonusData.length > 0)
+      showModal();
   }, [returnData, bonusData]);
 
   return (
@@ -19,7 +20,7 @@ const NotificationModal = () => {
         modalRef={modalRef}
         onClose={() => {
           dispatch({ type: "SET_RETURN_DATA" });
-          dispatch({ type: "SET_BONUS_DATA" });
+          dispatch({ type: "SET_BONUS_DATA", payload: [] });
         }}
         title="Verse Clicker"
         overlayClose
