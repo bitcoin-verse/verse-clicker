@@ -22,7 +22,7 @@ const ShortNumbers = [
   "Vig",
 ];
 
-export const formatNumber = (num?: number) => {
+export const formatNumber = (num?: number, fractionDigits?: number) => {
   if (!num) return num ?? "";
   let formatted = "";
   if (num >= 10000) {
@@ -58,6 +58,6 @@ export const formatNumber = (num?: number) => {
 
   return (Math.trunc(num * 10) / 10).toLocaleString(undefined, {
     maximumFractionDigits: 3,
-    minimumFractionDigits: 1,
+    minimumFractionDigits: fractionDigits ?? 1,
   });
 };
