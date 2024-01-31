@@ -1,9 +1,8 @@
 import React, { FC, useCallback } from "react";
-import { useAccount, useNetwork } from "wagmi";
+import { useNetwork } from "wagmi";
 
 import redEnvelope from "../../../src/assets/red-envelope.png";
 import { CURRENT_CAMPAIGN } from "../../constants";
-import { useSocketCtx } from "../../context/SocketContext";
 import { GameMode } from "../../context/reducers/network";
 import { useDispatch, useTrackedState } from "../../context/store";
 import { ModalWrapper } from "../Boosts/styled";
@@ -33,10 +32,8 @@ interface Props {
 
 const Campaign: FC<Props> = ({ isNetworkButton }) => {
   const { modalRef, showModal, close } = useModal();
-  const { address } = useAccount();
   const { chain } = useNetwork();
   const dispatch = useDispatch();
-  const { socket } = useSocketCtx();
   const {
     campaign: { campaignInfo, campaignPhase },
   } = useTrackedState();
@@ -46,8 +43,6 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
   const playCampaign = useCallback(() => {
     dispatch({ type: "RESET_GAME" });
     dispatch({ type: "SET_GAME_MODE", payload: CURRENT_CAMPAIGN });
-    socket.emit("join", { address, chain: CURRENT_CAMPAIGN });
-
     close();
   }, []);
 
@@ -64,7 +59,6 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
       type: "SET_GAME_MODE",
       payload: chain?.name as GameMode,
     });
-    socket.emit("join", { address, chain: chain?.name });
     close();
   }, []);
 
