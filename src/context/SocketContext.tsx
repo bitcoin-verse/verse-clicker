@@ -10,7 +10,6 @@ import React, {
 import { Socket, io } from "socket.io-client";
 import { useAccount, useNetwork } from "wagmi";
 
-import { GameMode } from "./reducers/network";
 import { useDispatch, useTrackedState } from "./store";
 
 export interface SocketCtxState {
@@ -50,7 +49,6 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
     const onDisconnect = (e: unknown) => {
       setIsConnected(false);
       dispatch({ type: "RESET_GAME" });
-      dispatch({ type: "SET_GAME_MODE", payload: chain?.name as GameMode });
       console.log("socket disconnected", e);
     };
 
