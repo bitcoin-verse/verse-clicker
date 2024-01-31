@@ -1,8 +1,11 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
 import { useAccount, useNetwork } from "wagmi";
 
+import { CURRENT_CAMPAIGN } from "./constants";
 import { useSocketCtx } from "./context/SocketContext";
+import { GameMode } from "./context/reducers/network";
 import { useDispatch, useTrackedState } from "./context/store";
+import { getGameMode } from "./helpers/gameMode";
 import useAmplitudeEvents from "./hooks/useAmplitudeEvents";
 import useCampaignInfo from "./hooks/useCampaignInfo";
 import useSocketEvents from "./hooks/useSocketEvents";
@@ -20,12 +23,14 @@ const App: FC = () => {
   const { loading, setLoading } = useSocketEvents();
 
   const { chain } = useNetwork();
+
   const { gameMode } = useTrackedState();
 
   const { status, address } = useAccount({
     onConnect: ({ address: addr }) => {
       if (!addr) return;
       console.log("Web3 Connected");
+
       setLoading(false);
     },
     onDisconnect: () => {
@@ -36,10 +41,32 @@ const App: FC = () => {
   });
 
   useEffect(() => {
-    if (status !== "connected" || !chain) return;
-    setLoading(true);
+    // setting the compain query to match game mode
+    const search = new URLSearchParams(location.search);
+    const campaignQuery = search.get("campaign");
 
+    const newGameMode = getGameMode(campaignQuery);
+    if (
+      !campaignQuery ||
+      campaignQuery !== gameMode ||
+      newGameMode !== gameMode
+    ) {
+      search.set("campaign", gameMode);
+      const url = `${window.location.origin}${window.location.pathname}?${search}`;
+      window.history.pushState("", "", url);
+    }
+
+    if (status !== "connected" || !chain) return;
+
+    setLoading(true);
     dispatch({ type: "RESET_GAME" });
+
+    if (gameMode !== CURRENT_CAMPAIGN && gameMode !== chain.name) {
+      console.log("Setting game mode", newGameMode, gameMode);
+      dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
+      socket.disconnect();
+      return;
+    }
 
     if (
       !(
@@ -49,6 +76,7 @@ const App: FC = () => {
         chain.name === "Sepolia"
       )
     ) {
+      console.log("Wrong chain", chain.name);
       socket.disconnect();
       return;
     }
