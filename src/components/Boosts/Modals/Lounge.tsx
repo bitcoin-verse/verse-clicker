@@ -63,20 +63,6 @@ const Lounge: FC<Props> = ({ close }) => {
           >
             Become a Verse Lounge Member
           </LinkButton>
-          <LinkButton
-            design="secondary"
-            href={VERSE_MARKETS_DEEPLINK}
-            newTab
-            onClick={() => {
-              logAmplitudeEvent({
-                name: "verse clicker cta tapped",
-                cta: "markets",
-                to: VERSE_MARKETS_DEEPLINK,
-              });
-            }}
-          >
-            Get VERSE
-          </LinkButton>
         </>
       )}
     </ModalWrapper>
