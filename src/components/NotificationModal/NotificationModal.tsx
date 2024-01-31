@@ -20,7 +20,7 @@ const NotificationModal = () => {
         modalRef={modalRef}
         onClose={() => {
           dispatch({ type: "SET_RETURN_DATA" });
-          dispatch({ type: "SET_BONUS_DATA", payload: [] });
+          dispatch({ type: "SET_BONUS_DATA" });
         }}
         title="Verse Clicker"
         overlayClose

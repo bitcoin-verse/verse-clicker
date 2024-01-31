@@ -11,12 +11,13 @@ export type BonusData = {
 
 export type SetBonusDataAction = {
   type: "SET_BONUS_DATA";
-  payload: BonusData[];
+  payload?: BonusData;
 };
 
 export const setBonusData = (
   state: State,
-  payload: SetBonusDataAction["payload"],
+  payload?: SetBonusDataAction["payload"],
 ): State => {
-  return { ...state, bonusData: payload };
+  if (!payload) return { ...state, bonusData: [] };
+  return { ...state, bonusData: [...state.bonusData, payload] };
 };
