@@ -30,7 +30,7 @@ const ScratcherMint: FC = () => {
         <br />
         2. Scratcher purchased must be a Lunar New Year Scratcher
       </Text>
-      <WarningChip link="https://support.bitcoin.com/en/articles/8829750-verse-clicker-lunar-new-year-contest-faq">
+      <WarningChip link="https://support.bitcoin.com/en/articles/8889148-verse-clicker-lunar-new-year-contest">
         Tap here for detailed instructions
       </WarningChip>
 
