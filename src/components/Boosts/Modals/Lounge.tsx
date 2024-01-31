@@ -1,9 +1,5 @@
 import React, { FC } from "react";
-import {
-  GUILD_URL,
-  VERSE_LOUNGE_URL,
-  VERSE_MARKETS_DEEPLINK,
-} from "src/constants";
+import { GUILD_URL, VERSE_LOUNGE_URL } from "src/constants";
 
 import { useTrackedState } from "../../../context/store";
 import { logAmplitudeEvent } from "../../../helpers/analytics";
