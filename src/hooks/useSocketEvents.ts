@@ -54,7 +54,10 @@ const useSocketEvents = () => {
     };
 
     const onBonusNotif = (data: BonusData) => {
-      dispatch({ type: "SET_BONUS_DATA", payload: data });
+      dispatch({
+        type: "SET_BONUS_DATA",
+        payload: { ...data, date: Date.now() },
+      });
     };
 
     const onCheat = (data: string) => {

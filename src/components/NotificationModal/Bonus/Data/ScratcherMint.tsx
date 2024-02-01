@@ -1,6 +1,7 @@
 import React, { FC, Fragment } from "react";
 import PointsIcon from "src/components/PointsIcon";
 import { Title } from "src/components/Title";
+import { BonusData } from "src/context/reducers/bonusData";
 import { TxData } from "src/context/reducers/returnData";
 import { formatNumber } from "src/helpers/formatNumber";
 import { getTxExplorerLink } from "src/helpers/getExplorerLink";
@@ -11,10 +12,10 @@ import External from "../../../Icons/External";
 import { BonusHeader, BonusRow } from "../../styled";
 
 interface Props {
-  txData: TxData[];
+  bonusData: TxData[] | BonusData[] | undefined;
 }
 
-const ScratcherMint: FC<Props> = ({ txData }) => {
+const ScratcherMint: FC<Props> = ({ bonusData }) => {
   const chainId = useChainId();
 
   return (
@@ -25,7 +26,7 @@ const ScratcherMint: FC<Props> = ({ txData }) => {
         <BonusHeader>Points</BonusHeader>
         <BonusHeader>Tx</BonusHeader>
 
-        {txData.map((data) => {
+        {bonusData?.map((data) => {
           return (
             <Fragment key={data.txHash}>
               <div>

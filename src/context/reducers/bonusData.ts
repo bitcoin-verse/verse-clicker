@@ -7,6 +7,7 @@ export type BonusData = {
   bonusBase: number;
   bonusTotal: number;
   txHash: string;
+  date: number;
 };
 
 export type SetBonusDataAction = {

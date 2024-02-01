@@ -8,7 +8,7 @@ import Clock from "../../Icons/Clock";
 import { Label } from "../../Label";
 import PointsIcon from "../../PointsIcon";
 import { Title } from "../../Title";
-import BonusList from "../Bonus/BonusList";
+import MultipleBonus from "../Bonus/MultipleBonus";
 import { DataWrapper, Stats, Value } from "../styled";
 
 const ReturningUser = () => {
@@ -39,17 +39,17 @@ const ReturningUser = () => {
       </Label>
 
       {returnData?.bonus.burn && returnData.bonus.burn.length > 0 && (
-        <BonusList bonusType="burn" txData={returnData.bonus.burn} />
+        <MultipleBonus bonusType="burn" txData={returnData.bonus.burn} />
       )}
       {returnData?.bonus.scratcher && returnData.bonus.scratcher.length > 0 && (
-        <BonusList
+        <MultipleBonus
           bonusType="scratcher-claim"
           txData={returnData.bonus.scratcher}
         />
       )}
       {returnData?.bonus.scratcherMint &&
         returnData.bonus.scratcherMint.length > 0 && (
-          <BonusList
+          <MultipleBonus
             bonusType="scratcher-mint"
             txData={returnData.bonus.scratcherMint}
           />

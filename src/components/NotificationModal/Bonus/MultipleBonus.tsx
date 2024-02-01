@@ -1,38 +1,55 @@
 import React, { FC } from "react";
 import { BonusData } from "src/context/reducers/bonusData";
-import { useChainId } from "wagmi";
 
-import { getTxExplorerLink } from "../../../helpers/getExplorerLink";
-import { H3 } from "../../H3";
-import { Label } from "../../Label";
-import LinkButton from "../../LinkButton";
-import ScratcherLink from "../../Links/ScratcherLink";
-import { Value } from "../styled";
+import { TxData } from "../../../context/reducers/returnData";
+import { colors } from "../../colors";
+import Burn from "./Data/Burn";
+import ScratcherClaim from "./Data/ScratcherClaim";
+import ScratcherMint from "./Data/ScratcherMint";
+
+/* const sample = {
+  bonusBurnTxs: [
+    {
+      date: 1701136345476,
+      burnAmount: 10000,
+      txHash:
+        "0x96c370bd3a32aa3658405b0ff74205ed91870efc1aded99389a90d451f4b5227",
+      bonusAmount: 35396640,
+    },
+    {
+      date: 1701136345476,
+      burnAmount: 10000,
+      txHash:
+        "0x96c370bd3a32aa3658405b0ff74205ed91870efc1aded99389a90d451f4b5227",
+      bonusAmount: 35396640,
+    },
+    {
+      date: 1701136345476,
+      burnAmount: 10000,
+      txHash:
+        "0x96c370bd3a32aa3658405b0ff74205ed91870efc1aded99389a90d451f4b5227",
+      bonusAmount: 35396640,
+    },
+  ],
+}; */
 
 interface Props {
-  bonusData: BonusData[];
+  txData?: TxData[];
+  bonusData?: BonusData[];
+  bonusType?: "burn" | "scratcher-claim" | "scratcher-mint";
 }
 
-const MultipleBonus: FC<Props> = ({ bonusData }) => {
-  const chainId = useChainId();
+const MultipleBonus: FC<Props> = ({ txData, bonusData, bonusType }) => {
+  const bonus = txData ?? bonusData;
 
   return (
     <>
-      {bonusData.map(
-        (data) =>
-          data.bonusType === "scratcher-mint" && (
-            <>
-              <H3>Scratcher Bonus</H3>
-              <Label $color="secondary">
-                Scratcher minted in <ScratcherLink />
-              </Label>
-              <Value>Bonus {data.bonusBase}% production added</Value>
-              <LinkButton href={getTxExplorerLink(chainId, data.txHash)} newTab>
-                View on Polyscan
-              </LinkButton>
-            </>
-          ),
-      )}
+      <hr
+        style={{ width: "100%", border: `0.025rem solid ${colors.shade60}` }}
+      />
+      {bonusType === "burn" && <Burn bonusData={bonus} />}
+      {bonusType === "scratcher-claim" && <ScratcherClaim bonusData={bonus} />}
+      {bonusType === "scratcher-mint" && <ScratcherMint bonusData={bonus} />}
     </>
   );
 };
