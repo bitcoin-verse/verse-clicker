@@ -3,6 +3,7 @@ import { createContainer } from "react-tracked";
 
 import buildings from "../buildings";
 import Building from "../classes/Building";
+import { getGameMode } from "../helpers/gameMode";
 import { CampaignInfo, CampaignPhase } from "../hooks/useCampaignInfo";
 import reducer, { Action } from "./reducer";
 import { BonusData } from "./reducers/bonusData";
@@ -41,22 +42,11 @@ export type State = {
   };
 };
 
-const search = new URLSearchParams(window.location.search);
+const search = new URLSearchParams(location.search);
 const isWallet = search.get("origin") === "wallet";
 const campaign = search.get("campaign");
 
-const gameModes: Record<string, GameMode> = {
-  christmas: "Christmas",
-  ethereum: "Ethereum",
-  polygon: "Polygon",
-  goerli: "Goerli",
-  sepolia: "Sepolia",
-  lunarnewyear: "LunarNewYear",
-};
-
-const gameMode =
-  gameModes?.[campaign?.replaceAll("-", "")?.toLowerCase() || "Ethereum"] ||
-  "Ethereum";
+const gameMode = getGameMode(campaign);
 
 export const initialState: State = {
   isConnected: false,
