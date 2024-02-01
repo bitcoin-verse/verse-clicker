@@ -1,15 +1,15 @@
 import React from "react";
 
-import { useTrackedState } from "../../context/store";
-import { formatNumber } from "../../helpers/formatNumber";
-import { formatSeconds } from "../../helpers/formatSeconds";
-import { H3 } from "../H3";
-import Clock from "../Icons/Clock";
-import { Label } from "../Label";
-import PointsIcon from "../PointsIcon";
-import { Title } from "../Title";
-import BonusList from "./BonusList";
-import { DataWrapper, Stats, Value } from "./styled";
+import { useTrackedState } from "../../../context/store";
+import { formatNumber } from "../../../helpers/formatNumber";
+import { formatSeconds } from "../../../helpers/formatSeconds";
+import { H3 } from "../../H3";
+import Clock from "../../Icons/Clock";
+import { Label } from "../../Label";
+import PointsIcon from "../../PointsIcon";
+import { Title } from "../../Title";
+import BonusList from "../Bonus/BonusList";
+import { DataWrapper, Stats, Value } from "../styled";
 
 const ReturningUser = () => {
   const { returnData } = useTrackedState();

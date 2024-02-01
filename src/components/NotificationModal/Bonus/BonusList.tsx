@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 
-import { TxData } from "../../context/reducers/returnData";
-import { colors } from "../colors";
-import Burn from "./Content/Burn";
-import ScratcherClaim from "./Content/ScratcherClaim";
-import ScratcherMint from "./Content/ScratcherMint";
+import { TxData } from "../../../context/reducers/returnData";
+import { colors } from "../../colors";
+import Burn from "./Data/Burn";
+import ScratcherClaim from "./Data/ScratcherClaim";
+import ScratcherMint from "./Data/ScratcherMint";
 
 /* const sample = {
   bonusBurnTxs: [

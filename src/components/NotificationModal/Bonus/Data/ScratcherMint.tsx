@@ -6,23 +6,23 @@ import { formatNumber } from "src/helpers/formatNumber";
 import { getTxExplorerLink } from "src/helpers/getExplorerLink";
 import { useChainId } from "wagmi";
 
-import verseIcon from "../../../assets/verse-icon.png";
-import External from "../../Icons/External";
-import { BonusHeader, BonusRow } from "../styled";
+import verseIcon from "../../../../assets/verse-icon.png";
+import External from "../../../Icons/External";
+import { BonusHeader, BonusRow } from "../../styled";
 
 interface Props {
   txData: TxData[];
 }
 
-const Burn: FC<Props> = ({ txData }) => {
+const ScratcherMint: FC<Props> = ({ txData }) => {
   const chainId = useChainId();
 
   return (
     <>
-      <Title>Burn Engine Contributions</Title>
+      <Title>Verse Scratcher Buys</Title>
       <BonusRow>
         <BonusHeader>Date</BonusHeader>
-        <BonusHeader>Contributed</BonusHeader>
+        <BonusHeader>Points</BonusHeader>
         <BonusHeader>Tx</BonusHeader>
 
         {txData.map((data) => {
@@ -55,4 +55,4 @@ const Burn: FC<Props> = ({ txData }) => {
   );
 };
 
-export default Burn;
+export default ScratcherMint;

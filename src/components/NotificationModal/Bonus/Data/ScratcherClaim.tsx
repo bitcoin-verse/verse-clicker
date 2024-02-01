@@ -6,23 +6,23 @@ import { formatNumber } from "src/helpers/formatNumber";
 import { getTxExplorerLink } from "src/helpers/getExplorerLink";
 import { useChainId } from "wagmi";
 
-import verseIcon from "../../../assets/verse-icon.png";
-import External from "../../Icons/External";
-import { BonusHeader, BonusRow } from "../styled";
+import verseIcon from "../../../../assets/verse-icon.png";
+import External from "../../../Icons/External";
+import { BonusHeader, BonusRow } from "../../styled";
 
 interface Props {
   txData: TxData[];
 }
 
-const ScratcherMint: FC<Props> = ({ txData }) => {
+const ScratcherClaim: FC<Props> = ({ txData }) => {
   const chainId = useChainId();
 
   return (
     <>
-      <Title>Verse Scratcher Buys</Title>
+      <Title>Verse Scratcher Claims</Title>
       <BonusRow>
         <BonusHeader>Date</BonusHeader>
-        <BonusHeader>Points</BonusHeader>
+        <BonusHeader>Claimed</BonusHeader>
         <BonusHeader>Tx</BonusHeader>
 
         {txData.map((data) => {
@@ -55,4 +55,4 @@ const ScratcherMint: FC<Props> = ({ txData }) => {
   );
 };
 
-export default ScratcherMint;
+export default ScratcherClaim;
