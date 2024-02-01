@@ -41,7 +41,7 @@ const App: FC = () => {
   });
 
   useEffect(() => {
-    // setting the compain query to match game mode
+    // setting the campaign query to match game mode
     const search = new URLSearchParams(location.search);
     const campaignQuery = search.get("campaign");
 
