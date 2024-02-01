@@ -1,15 +1,10 @@
-import React, { FC, Fragment } from "react";
-import { useChainId } from "wagmi";
+import React, { FC } from "react";
 
-import verseIcon from "../../assets/verse-icon.png";
 import { TxData } from "../../context/reducers/returnData";
-import { formatNumber } from "../../helpers/formatNumber";
-import { getTxExplorerLink } from "../../helpers/getExplorerLink";
-import External from "../Icons/External";
-import PointsIcon from "../PointsIcon";
-import { Title } from "../Title";
 import { colors } from "../colors";
-import { BonusHeader, BonusRow } from "./styled";
+import Burn from "./Content/Burn";
+import ScratcherClaim from "./Content/ScratcherClaim";
+import ScratcherMint from "./Content/ScratcherMint";
 
 /* const sample = {
   bonusBurnTxs: [
@@ -43,64 +38,14 @@ interface Props {
 }
 
 const BonusList: FC<Props> = ({ txData, bonusType }) => {
-  const chainId = useChainId();
-
   return (
     <>
       <hr
         style={{ width: "100%", border: `0.025rem solid ${colors.shade60}` }}
       />
-      {bonusType === "burn" && <Title>Burn Engine Contributions</Title>}
-      {bonusType === "scratcher-claim" && <Title>Verse Scratcher Claims</Title>}
-      {bonusType === "scratcher-mint" && <Title>Verse Scratcher Buys</Title>}
-
-      <BonusRow>
-        <BonusHeader>Date</BonusHeader>
-        <BonusHeader>
-          {bonusType === "scratcher-mint" ? "" : "Points"}
-        </BonusHeader>
-        <BonusHeader>
-          {bonusType === "burn" && "Contributed"}
-          {bonusType === "scratcher-claim" && "Claimed"}
-        </BonusHeader>
-        <BonusHeader>Tx</BonusHeader>
-
-        {txData.map((data) => {
-          return (
-            <Fragment key={data.txHash}>
-              <div>
-                {new Date(data.date).toLocaleDateString(undefined, {
-                  dateStyle: "short",
-                })}
-              </div>
-              {bonusType === "scratcher-mint" && (
-                <div style={{ gridColumn: "2/4" }}>
-                  +{data.bonusBase}% production added
-                </div>
-              )}
-              {bonusType !== "scratcher-mint" && (
-                <>
-                  <div>
-                    {formatNumber(data.bonusBase)}{" "}
-                    <PointsIcon size="0.875rem" />
-                  </div>
-                  <div>
-                    {formatNumber(data.bonusTotal)}
-                    <img src={verseIcon} alt="Verse Icon" />
-                  </div>
-                </>
-              )}
-              <a
-                href={getTxExplorerLink(chainId, data.txHash)}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <External size="0.875rem" />
-              </a>
-            </Fragment>
-          );
-        })}
-      </BonusRow>
+      {bonusType === "burn" && <Burn txData={txData} />}
+      {bonusType === "scratcher-claim" && <ScratcherClaim txData={txData} />}
+      {bonusType === "scratcher-mint" && <ScratcherMint txData={txData} />}
     </>
   );
 };
