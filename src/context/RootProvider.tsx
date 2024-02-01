@@ -33,6 +33,17 @@ const metadata: Web3ModalOptions["metadata"] = {
 
 const isDev = process.env.REACT_APP_DEV_ENV === "development";
 
+const {
+  REACT_APP_GOERLI_NODE_HTTP_URL,
+  REACT_APP_GOERLI_NODE_WSS_URL,
+  REACT_APP_SEPOLIA_NODE_HTTP_URL,
+  REACT_APP_SEPOLIA_NODE_WSS_URL,
+  REACT_APP_POLYGON_NODE_HTTP_URL,
+  REACT_APP_POLYGON_NODE_WSS_URL,
+  REACT_APP_ETHEREUM_NODE_HTTP_URL,
+  REACT_APP_ETHEREUM_NODE_WSS_URL,
+} = process.env;
+
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   isDev ? [goerli, sepolia, mainnet, polygon] : [mainnet, polygon],
   [
@@ -41,25 +52,24 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
         switch (chain.id) {
           case 5: // goerli
             return {
-              http: "https://rpc.ankr.com/eth_goerli",
-              webSocket: `wss://ethereum-goerli.publicnode.com`,
+              http: REACT_APP_GOERLI_NODE_HTTP_URL,
+              webSocket: REACT_APP_GOERLI_NODE_WSS_URL,
             };
           case 11155111: // sepolia
             return {
-              http: "https://holy-black-mountain.ethereum-sepolia.quiknode.pro/",
-              webSocket:
-                "wss://holy-black-mountain.ethereum-sepolia.quiknode.pro/",
+              http: REACT_APP_SEPOLIA_NODE_HTTP_URL,
+              webSocket: REACT_APP_SEPOLIA_NODE_WSS_URL,
             };
           case 137: // polygon/matic
             return {
-              http: "https://floral-empty-gas.quiknode.pro",
-              webSocket: "wss://floral-empty-gas.quiknode.pro",
+              http: REACT_APP_POLYGON_NODE_HTTP_URL,
+              webSocket: REACT_APP_POLYGON_NODE_WSS_URL,
             };
           case 1: // ethereum
           default:
             return {
-              http: "https://fittest-dry-card.quiknode.pro/",
-              webSocket: "wss://fittest-dry-card.quiknode.pro/",
+              http: REACT_APP_ETHEREUM_NODE_HTTP_URL,
+              webSocket: REACT_APP_ETHEREUM_NODE_WSS_URL,
             };
         }
       },
