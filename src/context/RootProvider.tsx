@@ -58,8 +58,8 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
           case 1: // ethereum
           default:
             return {
-              http: "https://wispy-solitary-darkness.quiknode.pro",
-              webSocket: "wss://wispy-solitary-darkness.quiknode.pro",
+              http: "https://fittest-dry-card.quiknode.pro/",
+              webSocket: "wss://fittest-dry-card.quiknode.pro/",
             };
         }
       },
