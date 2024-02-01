@@ -4,6 +4,7 @@ export type SetSettingsAction = {
   type: "SET_SETTINGS";
   payload?: {
     sound?: boolean;
+    campaignBanner?: boolean;
   };
 };
 

@@ -27,6 +27,7 @@ export type State = {
   purchaseAmount: number | "max";
   settings: {
     sound: boolean;
+    campaignBanner: boolean;
   };
   isWallet: boolean;
 
@@ -71,7 +72,7 @@ export const initialState: State = {
   },
   gameMode,
   purchaseAmount: 1,
-  settings: { sound: true },
+  settings: { sound: true, campaignBanner: true },
   isWallet,
   leaderboardAddresses: [],
   leaderboardStats: [],
