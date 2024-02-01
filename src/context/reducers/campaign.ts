@@ -6,7 +6,6 @@ export type SetCampaignAction = {
   payload: {
     campaignInfo?: CampaignInfo;
     campaignPhase?: CampaignPhase;
-    showCampaignBanner?: boolean;
   };
 };
 

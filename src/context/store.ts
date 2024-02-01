@@ -39,7 +39,6 @@ export type State = {
   campaign: {
     campaignInfo?: CampaignInfo;
     campaignPhase?: CampaignPhase;
-    showCampaignBanner?: boolean;
   };
 };
 
