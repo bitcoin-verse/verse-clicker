@@ -47,6 +47,7 @@ const Leaderboard: FC = () => {
       <TabsContainer>
         <Tabs
           center
+          mobileVersion
           tabs={GAME_MODES.map((button, i) => (
             <TabButton
               key={i}
