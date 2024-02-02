@@ -1,4 +1,5 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { useAccount, useNetwork } from "wagmi";
 
 import { CURRENT_CAMPAIGN } from "./constants";
@@ -9,9 +10,21 @@ import { logAmplitudeEvent } from "./helpers/analytics";
 import { getGameMode } from "./helpers/gameMode";
 import useCampaignInfo from "./hooks/useCampaignInfo";
 import useSocketEvents from "./hooks/useSocketEvents";
+import Leaderboard from "./views/Leaderboard";
 
 const Main = lazy(() => import("./views/Main"));
 const NotConnected = lazy(() => import("./views/NotConnected"));
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main />,
+  },
+  {
+    path: "/leaderboard",
+    element: <Leaderboard />,
+  },
+]);
 
 const App: FC = () => {
   useCampaignInfo();
@@ -100,7 +113,7 @@ const App: FC = () => {
       {status !== "connected" || loading || !isSocketConnected ? (
         <NotConnected />
       ) : (
-        <Main />
+        <RouterProvider router={router} />
       )}
     </Suspense>
   );

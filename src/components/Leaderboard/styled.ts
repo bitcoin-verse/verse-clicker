@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const LeaderboardWrapper = styled.div`
-  margin: auto;
-  width: 100%;
+  margin: 0 auto auto auto;
+  width: 90%;
   flex-direction: column;
   display: flex;
   justify-content: space-between;
@@ -16,7 +16,7 @@ export const LeaderboardContent = styled.div`
   @media (min-width: 768px) {
     margin-right: -1.5rem;
     padding: 0.25rem 0 0 0;
-    max-height: 22rem;
+    max-height: 90vh;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
@@ -85,9 +85,7 @@ export const Timer = styled.div`
   font-size: 0.875rem;
   font-weight: 400;
   color: #899bb5;
-  position: absolute;
-  top: 4rem;
-  left: 2rem;
+  text-align: center;
 `;
 
 export const Body = styled.div`

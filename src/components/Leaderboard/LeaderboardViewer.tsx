@@ -1,16 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
-import { CURRENT_CAMPAIGN } from "../../constants";
-import Row from "../Leaderboard/Row";
-import {
-  Header,
-  LeaderboardContent,
-  LeaderboardWrapper,
-} from "../Leaderboard/styled";
+import { GameMode } from "../../context/reducers/network";
+import Row from "./Row";
+import { Header, LeaderboardContent, LeaderboardWrapper } from "./styled";
 
-const FinalLeaderboard = () => {
+interface Props {
+  gameMode: GameMode;
+}
+
+const LeaderboardViewer: FC<Props> = ({ gameMode }) => {
   const { address } = useAccount();
 
   const [leaderboardItems, setLeaderboardItems] = useState<
@@ -30,7 +30,7 @@ const FinalLeaderboard = () => {
         const { data } = await axios.get(
           `${
             process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001/"
-          }leaderboard/${CURRENT_CAMPAIGN}`,
+          }leaderboard/${gameMode}`,
         );
 
         setLeaderboardItems(data.players);
@@ -40,7 +40,7 @@ const FinalLeaderboard = () => {
     };
 
     getLeaderboard();
-  }, []);
+  }, [gameMode]);
 
   return (
     <LeaderboardWrapper>
@@ -83,4 +83,4 @@ const FinalLeaderboard = () => {
   );
 };
 
-export default FinalLeaderboard;
+export default LeaderboardViewer;
