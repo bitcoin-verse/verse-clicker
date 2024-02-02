@@ -86,7 +86,10 @@ const init = (): State => {
     const persistedState = JSON.parse(stored);
     // validate preloadedState if necessary
 
-    return { ...initialState, ...persistedState };
+    return {
+      ...initialState,
+      settings: { ...initialState.settings, ...persistedState.settings },
+    };
   } catch (e) {
     // ignore
   }
@@ -104,7 +107,7 @@ const useValue = (): readonly [State, Dispatch<Action>] => {
   useEffect(() => {
     const persistedState = { settings: state.settings };
     window.localStorage.setItem(storageKey, JSON.stringify(persistedState));
-  }, [state]);
+  }, [state.settings]);
 
   /* useEffect(() => {
     console.log("state", state);
