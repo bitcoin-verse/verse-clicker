@@ -27,6 +27,7 @@ export type State = {
   purchaseAmount: number | "max";
   settings: {
     sound: boolean;
+    campaignBanner: boolean;
   };
   isWallet: boolean;
 
@@ -38,7 +39,6 @@ export type State = {
   campaign: {
     campaignInfo?: CampaignInfo;
     campaignPhase?: CampaignPhase;
-    showCampaignBanner?: boolean;
   };
 };
 
@@ -71,7 +71,7 @@ export const initialState: State = {
   },
   gameMode,
   purchaseAmount: 1,
-  settings: { sound: true },
+  settings: { sound: true, campaignBanner: true },
   isWallet,
   leaderboardAddresses: [],
   leaderboardStats: [],
@@ -84,9 +84,22 @@ const init = (): State => {
     if (!stored) throw new Error("localstorage not found");
 
     const persistedState = JSON.parse(stored);
-    // validate preloadedState if necessary
 
-    return { ...initialState, ...persistedState };
+    const settings = {
+      sound:
+        typeof persistedState?.settings?.sound === "boolean"
+          ? persistedState.settings.sound
+          : initialState.settings.sound,
+      campaignBanner:
+        typeof persistedState?.settings?.campaignBanner === "boolean"
+          ? persistedState.settings.campaignBanner
+          : initialState.settings.campaignBanner,
+    };
+
+    return {
+      ...initialState,
+      settings,
+    };
   } catch (e) {
     // ignore
   }
@@ -104,7 +117,7 @@ const useValue = (): readonly [State, Dispatch<Action>] => {
   useEffect(() => {
     const persistedState = { settings: state.settings };
     window.localStorage.setItem(storageKey, JSON.stringify(persistedState));
-  }, [state]);
+  }, [state.settings]);
 
   /* useEffect(() => {
     console.log("state", state);

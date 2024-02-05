@@ -10,7 +10,8 @@ import { ContentsWrapper, GlobalStyle } from "./styled";
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   const {
     gameMode: network,
-    campaign: { showCampaignBanner = true, campaignPhase },
+    campaign: { campaignPhase },
+    settings: { campaignBanner },
   } = useTrackedState();
 
   return (
@@ -18,7 +19,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
       <AudioProvider>
         <ContentsWrapper>
           <GlobalStyle />
-          {showCampaignBanner && campaignPhase !== "AFTER" && <Banner />}
+          {campaignBanner && campaignPhase !== "AFTER" && <Banner />}
           {children}
         </ContentsWrapper>
       </AudioProvider>
