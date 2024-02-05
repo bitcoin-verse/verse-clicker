@@ -19,7 +19,7 @@ const Content: FC<Props> = ({ close, sidebar }) => {
   return (
     <>
       <Moon src={moon} />
-      {bonusData ? (
+      {bonusData.length > 0 ? (
         <BonusContent />
       ) : (
         <>
