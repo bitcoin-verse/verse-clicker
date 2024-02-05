@@ -33,7 +33,7 @@ const Scratcher: FC = () => {
         <br />
         2. Have a greater than zero production rate
       </Text>
-      <WarningChip link="https://support.bitcoin.com/en/articles/8889148-verse-clicker-lunar-new-year-contest">
+      <WarningChip link="https://support.bitcoin.com/en/articles/8696947-verse-clicker-faq">
         Tap here for detailed instructions
       </WarningChip>
       <LinkButton href={scratcherLink} newTab={!isWallet}>
