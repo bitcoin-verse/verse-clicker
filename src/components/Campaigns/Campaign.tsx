@@ -3,6 +3,7 @@ import { useNetwork } from "wagmi";
 
 import redEnvelope from "../../../src/assets/red-envelope.png";
 import { CURRENT_CAMPAIGN } from "../../constants";
+import { useSocketCtx } from "../../context/SocketContext";
 import { GameMode } from "../../context/reducers/network";
 import { useDispatch, useTrackedState } from "../../context/store";
 import { ModalWrapper } from "../Boosts/styled";
@@ -14,6 +15,8 @@ import lunarNewYearJson from "./Content/lunarnewyear.json";
 import During from "./During";
 import { CampaignButton, CampaignImg, Wrapper } from "./styled";
 import { CampaignJson } from "./types";
+
+const { socket } = useSocketCtx();
 
 function getContent(campaign: GameMode): CampaignJson | null {
   switch (campaign) {
