@@ -22,7 +22,11 @@ const ReturningUser = () => {
           <Title $secondary>You were away for</Title>
           <Value>
             <Clock />
-            {returnData && <H3>{formatSeconds(returnData.seconds)}</H3>}
+            <H3>
+              {returnData && returnData.seconds > 1
+                ? formatSeconds(returnData.seconds)
+                : "1s"}
+            </H3>
           </Value>
         </Stats>
 
