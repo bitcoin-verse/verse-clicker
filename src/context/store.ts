@@ -84,11 +84,21 @@ const init = (): State => {
     if (!stored) throw new Error("localstorage not found");
 
     const persistedState = JSON.parse(stored);
-    // validate preloadedState if necessary
+
+    const settings = {
+      sound:
+        typeof persistedState?.settings?.sound === "boolean"
+          ? persistedState.settings.sound
+          : initialState.settings.sound,
+      campaignBanner:
+        typeof persistedState?.settings?.campaignBanner === "boolean"
+          ? persistedState.settings.campaignBanner
+          : initialState.settings.campaignBanner,
+    };
 
     return {
       ...initialState,
-      settings: { ...initialState.settings, ...persistedState.settings },
+      settings,
     };
   } catch (e) {
     // ignore
