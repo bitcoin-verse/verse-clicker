@@ -30,7 +30,7 @@ const Loading: FC = () => {
   const { chain } = useNetwork();
   const { halfMoon } = useTheme();
   const { modalRef, showModal, close } = useModal();
-  const { error } = useTrackedState();
+  const { error, isWallet } = useTrackedState();
 
   useEffect(() => {
     if (status === "connected") {
@@ -60,7 +60,11 @@ const Loading: FC = () => {
             <Button
               $size="small"
               onClick={() => {
-                open({ view: "Networks" });
+                if (isWallet) {
+                  open();
+                } else {
+                  open({ view: "Networks" });
+                }
               }}
             >
               Connect Wallet
