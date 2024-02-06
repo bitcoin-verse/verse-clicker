@@ -53,7 +53,7 @@ const BonusContent = () => {
           <Label $color="secondary">
             Scratcher Minted! <ScratcherLink />
           </Label>
-          <Value>Bonus {bonusData?.bonusBase}% production added</Value>
+          <Value>Bonus {bonusData?.bonusBase * 100}% production added</Value>
         </>
       )}
       {bonusData?.bonusType !== "scratcher-mint" && (
