@@ -56,7 +56,7 @@ const SingleBonus: FC<Props> = ({ bonusData }) => {
           <Label $color="secondary">
             Scratcher minted in <ScratcherLink />
           </Label>
-          <Value>Bonus {bonusData.bonusBase}% production added</Value>
+          <Value>Bonus {bonusData.bonusBase * 100}% production added</Value>
         </>
       )}
       {bonusData.bonusType !== "scratcher-mint" && (
