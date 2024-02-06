@@ -67,7 +67,6 @@ export const generateSwapUrl = (
   const swapURL = `${VERSE_BASE_URL}swap/`;
 
   query.append("coin", coin);
-  if (isWallet) query.append("origin", "wallet");
 
   return `${swapURL}?${query.toString()}`;
 };
