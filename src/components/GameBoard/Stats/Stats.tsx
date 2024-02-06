@@ -39,9 +39,7 @@ const Stats: FC = () => {
         </div>
         <div>
           <Label $color="secondary">Clicked</Label>
-          <Subtitle>
-            {Number(formatNumber(player.stats.Clicked)).toFixed()}
-          </Subtitle>
+          <Subtitle>{formatNumber(player.stats.Clicked, 0)}</Subtitle>
         </div>
         <div>
           <Label $color="secondary">Spent</Label>
