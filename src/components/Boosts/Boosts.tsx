@@ -20,6 +20,7 @@ import {
 
 const Farm = lazy(() => import("./Modals/Farm"));
 const Hold = lazy(() => import("./Modals/Hold"));
+const HoldLunar = lazy(() => import("./Modals/HoldLunar"));
 const Scratcher = lazy(() => import("./Modals/Scratcher"));
 const ScratcherLunar = lazy(() => import("./Modals/ScratcherLunar"));
 const ScratcherMint = lazy(() => import("./Modals/ScratcherMint"));
@@ -121,7 +122,7 @@ const getModalContent = (close: () => void, content?: string) => {
     case "hold-lunar":
       return {
         title: "Hold",
-        component: <Hold rate={8} />,
+        component: <HoldLunar rate={8} />,
       };
     case "farm":
       return {
