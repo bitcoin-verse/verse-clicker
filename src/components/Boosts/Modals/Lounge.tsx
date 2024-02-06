@@ -12,7 +12,7 @@ interface Props {
   close: () => void;
 }
 const Lounge: FC<Props> = ({ close }) => {
-  const { player } = useTrackedState();
+  const { player, isWallet } = useTrackedState();
 
   return (
     <ModalWrapper>
@@ -24,7 +24,7 @@ const Lounge: FC<Props> = ({ close }) => {
           </Label>
           <LinkButton
             href={VERSE_LOUNGE_URL}
-            newTab
+            newTab={!isWallet}
             onClick={() => {
               logAmplitudeEvent({
                 name: "verse clicker cta tapped",
