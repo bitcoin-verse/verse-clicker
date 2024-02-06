@@ -47,7 +47,22 @@ export const generateStakingUrl = (
   return stakingURL;
 };
 
-export const generateSwapUrl = (isWallet: boolean, coin: "verse") => {
+export const generateSwapUrl = (
+  isWallet: boolean,
+  coin: "verse" | "fxVerse",
+) => {
+  if (isWallet) {
+    const URL_DEEPLINK = `bitcoincom://swap/BTC_BLOCKCHAIN-BTC_PROTOCOL-BTC/`;
+    const deeplinks = {
+      verse:
+        "ETH_BLOCKCHAIN-ERC_20_PROTOCOL-0x249ca82617ec3dfb2589c4c17ab7ec9765350a18",
+      fxVerse:
+        "MATIC_BLOCKCHAIN-ERC_20_PROTOCOL-0xc708d6f2153933daa50b2d0758955be0a93a8fec",
+    };
+
+    return `${URL_DEEPLINK}${deeplinks[coin]}`;
+  }
+
   const query = new URLSearchParams();
   const swapURL = `${VERSE_BASE_URL}swap/`;
 
