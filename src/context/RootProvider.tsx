@@ -90,7 +90,8 @@ const wagmiConfig = createConfig({
         metadata,
       },
     }),
-        ]
+    ...(isWallet
+      ? []
       : [
           new WalletConnectConnector({
             chains,
