@@ -84,7 +84,7 @@ const wagmiConfig = createConfig({
   connectors: [
     ...(isWallet
       ? [
-          new WalletConnectConnector({
+    new WalletConnectConnector({
             chains: [
               chains.find((i) => i.id === gameModeDefaultChain) || chains[0],
             ],
