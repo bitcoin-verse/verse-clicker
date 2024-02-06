@@ -82,19 +82,16 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 const wagmiConfig = createConfig({
   autoConnect: true,
   connectors: [
+    new WalletConnectConnector({
+      chains,
+      options: {
+        projectId,
+        showQrModal: false,
+        metadata,
+      },
+    }),
     ...(isWallet
-      ? [
-          new WalletConnectConnector({
-            chains: [
-              chains.find((i) => i.id === gameModeDefaultChain) || chains[0],
-            ],
-            options: {
-              projectId,
-              showQrModal: false,
-              metadata,
-            },
-          }),
-        ]
+      ? []
       : [
           new WalletConnectConnector({
             chains,
@@ -123,8 +120,7 @@ createWeb3Modal({
   wagmiConfig,
   projectId,
   chains,
-
-  // defaultChain: isDev ? goerli : mainnet,
+  defaultChain: chains.find((i) => i.id === gameModeDefaultChain),
   themeMode: "dark",
   featuredWalletIds: [
     "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
