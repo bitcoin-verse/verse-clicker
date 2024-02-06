@@ -16,7 +16,6 @@ import During from "./During";
 import { CampaignButton, CampaignImg, Wrapper } from "./styled";
 import { CampaignJson } from "./types";
 
-const { socket } = useSocketCtx();
 
 function getContent(campaign: GameMode): CampaignJson | null {
   switch (campaign) {
@@ -34,6 +33,7 @@ interface Props {
 }
 
 const Campaign: FC<Props> = ({ isNetworkButton }) => {
+  const { socket } = useSocketCtx();
   const { modalRef, showModal, close } = useModal();
   const { chain } = useNetwork();
   const dispatch = useDispatch();

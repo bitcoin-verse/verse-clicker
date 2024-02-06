@@ -50,6 +50,12 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
         query: { uuid: sign.uuid, signature: sign.signature, address },
       },
     );
+
+    return () => {
+      if (socketRef.current) {
+        socketRef.current.disconnect();
+      }
+    };
   }, [sign]);
 
   useEffect(() => {
@@ -78,7 +84,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
       });
     };
 
-    // socketRef.current.connect();
+    socketRef.current.connect();
     socketRef.current.on("connect", onConnect);
     socketRef.current.on("disconnect", onDisconnect);
     socketRef.current.on("connect_error", onError);

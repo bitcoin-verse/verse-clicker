@@ -9,6 +9,7 @@ import { GameMode } from "./context/reducers/network";
 import { useDispatch, useTrackedState } from "./context/store";
 import { getGameMode } from "./helpers/gameMode";
 import useCampaignInfo from "./hooks/useCampaignInfo";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 import useSocketEvents from "./hooks/useSocketEvents";
 import Leaderboard from "./views/Leaderboard";
 import ProtectedRoute from "./views/ProtectedRoute";
@@ -35,18 +36,19 @@ const App: FC = () => {
 
   const dispatch = useDispatch();
 
-  const { socket } = useSocketCtx();
-  const { setLoading } = useSocketEvents();
+  const { socket, isConnected: isSocketConnected } = useSocketCtx();
+  const { loading, setLoading } = useSocketEvents();
+  const { getStorageItem, setStorageItem } = useLocalStorage();
 
   const { chain } = useNetwork();
   const { gameMode, settings, campaign } = useTrackedState();
 
   useEffect(() => {
     if (!settings.sign?.uuid) {
-      const uuid = uuidv4();
+      const uuid = getStorageItem("uuid") || uuidv4();
       dispatch({ type: "SET_SIGN_UUID", payload: uuid });
+      setStorageItem("uuid", uuid || "");
     }
-    console.log("sign", settings.sign);
 
     if (!settings.sign?.signature) {
       console.log("MUST SIGN");

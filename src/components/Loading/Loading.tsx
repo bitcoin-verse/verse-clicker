@@ -10,6 +10,7 @@ import {
 
 import connectWallet from "../../assets/connect-wallet.png";
 import { useDispatch, useTrackedState } from "../../context/store";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { Button } from "../Button";
 import { H1 } from "../H1";
 import { H4 } from "../H4";
@@ -17,6 +18,7 @@ import ConnectButton from "../Header/ConnectButton";
 import Spinner from "../Icons/Spinner";
 import { Label } from "../Label";
 import Modal, { useModal } from "../Modal";
+import { ButtonsWrapper } from "../Sidebar/Settings/styled";
 import { Title } from "../Title";
 import {
   ConnectWalletImage,
@@ -31,12 +33,22 @@ const Loading: FC = () => {
   const { status } = useAccount();
   const { disconnect } = useDisconnect();
   const { halfMoon } = useTheme();
+  const { getStorageItem, setStorageItem } = useLocalStorage();
   const dispatch = useDispatch();
   const { modalRef, showModal, close } = useModal();
   const { error, settings, isWallet } = useTrackedState();
   const { data, signMessage } = useSignMessage({
     message: `I approve this device:  ${settings.sign?.uuid}`,
   });
+
+  useEffect(() => {
+    if (!!getStorageItem("signature") && !!getStorageItem("uuid")) {
+      dispatch({
+        type: "SET_SIGN_SIGNATURE",
+        payload: getStorageItem("signature"),
+      });
+    }
+  }, []);
 
   useEffect(() => {
     if (status === "connected") {
@@ -50,6 +62,7 @@ const Loading: FC = () => {
   useEffect(() => {
     if (!data) return;
     dispatch({ type: "SET_SIGN_SIGNATURE", payload: data });
+    setStorageItem("signature", data);
   }, [data]);
 
   return (
@@ -94,15 +107,12 @@ const Loading: FC = () => {
           )}
           {!settings.sign?.signature && (
             <>
-              <Label>YOU MUST VERIFY OWNERSHIP!</Label>
               <Button
-                $size="small"
-                $design="secondary"
                 onClick={() => {
                   signMessage();
                 }}
               >
-                Proove it you!
+                Verify Ownership
               </Button>
             </>
           )}
