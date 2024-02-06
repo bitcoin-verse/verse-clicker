@@ -82,18 +82,14 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 const wagmiConfig = createConfig({
   autoConnect: true,
   connectors: [
-    ...(isWallet
-      ? [
     new WalletConnectConnector({
-            chains: [
-              chains.find((i) => i.id === gameModeDefaultChain) || chains[0],
-            ],
-            options: {
-              projectId,
-              showQrModal: false,
-              metadata,
-            },
-          }),
+      chains,
+      options: {
+        projectId,
+        showQrModal: false,
+        metadata,
+      },
+    }),
         ]
       : [
           new WalletConnectConnector({
