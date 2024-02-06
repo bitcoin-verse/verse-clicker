@@ -75,7 +75,7 @@ const BonusList: FC<Props> = ({ txData, bonusType }) => {
               </div>
               {bonusType === "scratcher-mint" && (
                 <div style={{ gridColumn: "2/4" }}>
-                  +{data.bonusBase * 100}% production added
+                  +{data.bonusBase}% production added
                 </div>
               )}
               {bonusType !== "scratcher-mint" && (
