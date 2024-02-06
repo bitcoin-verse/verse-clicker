@@ -123,8 +123,7 @@ createWeb3Modal({
   wagmiConfig,
   projectId,
   chains,
-
-  // defaultChain: isDev ? goerli : mainnet,
+  defaultChain: chains.find((i) => i.id === gameModeDefaultChain),
   themeMode: "dark",
   featuredWalletIds: [
     "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
