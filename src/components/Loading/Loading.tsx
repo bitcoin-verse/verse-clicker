@@ -1,11 +1,7 @@
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import React, { FC, useEffect } from "react";
 import { useTheme } from "styled-components";
-import {
-  useAccount,
-  useDisconnect,
-  /*  useNetwork, useSwitchNetwork */
-} from "wagmi";
+import { useAccount, useDisconnect, useNetwork, useSwitchNetwork } from "wagmi";
 
 import connectWallet from "../../assets/connect-wallet.png";
 import { useTrackedState } from "../../context/store";
@@ -16,7 +12,6 @@ import Spinner from "../Icons/Spinner";
 import { Label } from "../Label";
 import Modal, { useModal } from "../Modal";
 import { Title } from "../Title";
-// import { Link } from "../Link";
 import {
   ConnectWalletImage,
   ConnectionWrapper,
@@ -30,8 +25,8 @@ const Loading: FC = () => {
   const { status } = useAccount();
   const { disconnect } = useDisconnect();
   const { open } = useWeb3Modal();
-  // const { chains, switchNetwork } = useSwitchNetwork();
-  // const { chain } = useNetwork();
+  const { chains, switchNetwork } = useSwitchNetwork();
+  const { chain } = useNetwork();
   const { halfMoon } = useTheme();
   const { modalRef, showModal, close } = useModal();
   const { error, isWallet } = useTrackedState();
@@ -54,7 +49,6 @@ const Loading: FC = () => {
             Click for Verse points, climb the leaderboard! Join the Verse
             community and experience a world of endless clicking fun.
           </H4>
-          {/* <Link href="https://boo">Learn More</Link> */}
         </ContentsWrapper>
         <ConnectionWrapper>
           <ConnectWalletImage src={connectWallet} alt="Connect Wallet" />
@@ -82,7 +76,7 @@ const Loading: FC = () => {
         <ModalContent>
           <Spinner />
           <Title>Loading...</Title>
-          {/* {chain?.unsupported && (
+          {chain?.unsupported && (
             <>
               <Label $color="warning">Unsupported network</Label>
               {chains.map(({ name, id }) => (
@@ -98,7 +92,7 @@ const Loading: FC = () => {
                 </Button>
               ))}
             </>
-          )} */}
+          )}
           {error && (
             <>
               <Label $color="warning">{error}</Label>

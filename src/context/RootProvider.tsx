@@ -11,14 +11,14 @@ import { InjectedConnector } from "wagmi/connectors/injected";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
-// import { getGameModeDefaultChain } from "../helpers/gameMode";
+import { getGameModeDefaultChain } from "../helpers/gameMode";
 import { getNetworkImage } from "../helpers/getNetworkImage";
 import SocketCtxProvider from "./SocketContext";
 import { ContextProvider } from "./store";
 
 const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
-// const gameModeDefaultChain = getGameModeDefaultChain(search.get("campaign"));
+const gameModeDefaultChain = getGameModeDefaultChain(search.get("campaign"));
 
 const projectId = "1184cb8e8109ec7c4a9425c56b494e5e";
 
@@ -82,19 +82,30 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 const wagmiConfig = createConfig({
   autoConnect: true,
   connectors: [
-    ...chains.map(
-      (chain) =>
-        new WalletConnectConnector({
-          chains: [chain],
-          options: {
-            projectId,
-            showQrModal: false,
-            metadata,
-          },
-        }),
-    ),
+    // ...chains.map(
+    //   (chain) =>
+    //     new WalletConnectConnector({
+    //       chains: [chain],
+    //       options: {
+    //         projectId,
+    //         showQrModal: false,
+    //         metadata,
+    //       },
+    //     }),
+    // ),
     ...(isWallet
-      ? []
+      ? [
+          new WalletConnectConnector({
+            chains: [
+              chains.find((i) => i.id === gameModeDefaultChain) || chains[0],
+            ],
+            options: {
+              projectId,
+              showQrModal: false,
+              metadata,
+            },
+          }),
+        ]
       : [
           new EIP6963Connector({ chains }),
           new InjectedConnector({
