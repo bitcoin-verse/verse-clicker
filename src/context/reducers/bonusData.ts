@@ -1,6 +1,6 @@
 import { State } from "../store";
 
-type TBonus = "burn" | "scratcher" | "scratcher-mint";
+export type TBonus = "burn" | "scratcher" | "scratcher-mint";
 
 export type BonusData = {
   bonusType: TBonus;

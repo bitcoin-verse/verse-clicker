@@ -47,7 +47,7 @@ const ReturningUser = () => {
       )}
       {returnData?.bonus.scratcher && returnData.bonus.scratcher.length > 0 && (
         <MultipleBonus
-          bonusType="scratcher-claim"
+          bonusType="scratcher"
           txData={returnData.bonus.scratcher}
         />
       )}

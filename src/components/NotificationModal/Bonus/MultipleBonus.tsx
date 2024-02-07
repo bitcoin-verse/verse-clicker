@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { BonusData } from "src/context/reducers/bonusData";
+import { BonusData, TBonus } from "src/context/reducers/bonusData";
 
 import { TxData } from "../../../context/reducers/returnData";
 import { colors } from "../../colors";
@@ -36,7 +36,7 @@ import ScratcherMint from "./Data/ScratcherMint";
 interface Props {
   txData?: TxData[];
   bonusData?: BonusData[];
-  bonusType?: "burn" | "scratcher-claim" | "scratcher-mint";
+  bonusType?: TBonus;
 }
 
 const MultipleBonus: FC<Props> = ({ txData, bonusData, bonusType }) => {
@@ -48,7 +48,7 @@ const MultipleBonus: FC<Props> = ({ txData, bonusData, bonusType }) => {
         style={{ width: "100%", border: `0.025rem solid ${colors.shade60}` }}
       />
       {bonusType === "burn" && <Burn bonusData={bonus} />}
-      {bonusType === "scratcher-claim" && <ScratcherClaim bonusData={bonus} />}
+      {bonusType === "scratcher" && <ScratcherClaim bonusData={bonus} />}
       {bonusType === "scratcher-mint" && <ScratcherMint bonusData={bonus} />}
     </>
   );
