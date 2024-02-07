@@ -14,6 +14,10 @@ import { DataWrapper, Stats, Value } from "../styled";
 
 const ReturningUser = () => {
   const { returnData } = useTrackedState();
+  const noBonus =
+    returnData?.bonus?.burn.length === 0 ||
+    returnData?.bonus?.scratcher.length === 0 ||
+    returnData?.bonus?.scratcherMint.length === 0;
 
   return (
     <>
@@ -42,7 +46,8 @@ const ReturningUser = () => {
       <Label $color="secondary">
         12 hours maximum offline point production
       </Label>
-      {returnData?.bonus && (
+
+      {noBonus && (
         <hr
           style={{ width: "100%", border: `0.025rem solid ${colors.shade60}` }}
         />
