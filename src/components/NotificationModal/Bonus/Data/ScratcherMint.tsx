@@ -1,13 +1,10 @@
 import React, { FC, Fragment } from "react";
-import PointsIcon from "src/components/PointsIcon";
 import { Title } from "src/components/Title";
 import { BonusData } from "src/context/reducers/bonusData";
 import { TxData } from "src/context/reducers/returnData";
-import { formatNumber } from "src/helpers/formatNumber";
 import { getTxExplorerLink } from "src/helpers/getExplorerLink";
 import { useChainId } from "wagmi";
 
-import verseIcon from "../../../../assets/verse-icon.png";
 import External from "../../../Icons/External";
 import { BonusHeader, BonusRow } from "../../styled";
 
@@ -24,6 +21,7 @@ const ScratcherMint: FC<Props> = ({ bonusData }) => {
       <BonusRow>
         <BonusHeader>Date</BonusHeader>
         <BonusHeader>Points</BonusHeader>
+        <BonusHeader></BonusHeader>
         <BonusHeader>Tx</BonusHeader>
 
         {bonusData?.map((data) => {
@@ -34,12 +32,8 @@ const ScratcherMint: FC<Props> = ({ bonusData }) => {
                   dateStyle: "short",
                 })}
               </div>
-              <div>
-                {formatNumber(data.bonusBase)} <PointsIcon size="0.875rem" />
-              </div>
-              <div>
-                {formatNumber(data.bonusTotal)}
-                <img src={verseIcon} alt="Verse Icon" />
+              <div style={{ gridColumn: "2/4" }}>
+                +{data.bonusBase * 100}% production added
               </div>
               <a
                 href={getTxExplorerLink(chainId, data.txHash)}

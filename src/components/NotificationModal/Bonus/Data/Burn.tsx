@@ -23,6 +23,7 @@ const Burn: FC<Props> = ({ bonusData }) => {
       <Title>Burn Engine Contributions</Title>
       <BonusRow>
         <BonusHeader>Date</BonusHeader>
+        <BonusHeader>Points</BonusHeader>
         <BonusHeader>Contributed</BonusHeader>
         <BonusHeader>Tx</BonusHeader>
 

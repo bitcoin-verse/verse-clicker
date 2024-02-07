@@ -23,6 +23,7 @@ const ScratcherClaim: FC<Props> = ({ bonusData }) => {
       <Title>Verse Scratcher Claims</Title>
       <BonusRow>
         <BonusHeader>Date</BonusHeader>
+        <BonusHeader>Points</BonusHeader>
         <BonusHeader>Claimed</BonusHeader>
         <BonusHeader>Tx</BonusHeader>
 
