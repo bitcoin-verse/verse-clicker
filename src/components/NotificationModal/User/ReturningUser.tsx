@@ -1,4 +1,5 @@
 import React from "react";
+import { colors } from "src/components/colors";
 
 import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
@@ -41,7 +42,11 @@ const ReturningUser = () => {
       <Label $color="secondary">
         12 hours maximum offline point production
       </Label>
-
+      {returnData?.bonus && (
+        <hr
+          style={{ width: "100%", border: `0.025rem solid ${colors.shade60}` }}
+        />
+      )}
       {returnData?.bonus.burn && returnData.bonus.burn.length > 0 && (
         <MultipleBonus bonusType="burn" txData={returnData.bonus.burn} />
       )}

@@ -12,7 +12,10 @@ const BonusContent = () => {
       {bonusData.length === 1 ? (
         <SingleBonus bonusData={bonusData[0]} />
       ) : (
-        <MultipleBonus bonusData={bonusData} />
+        <MultipleBonus
+          bonusData={bonusData}
+          bonusType={bonusData[0].bonusType}
+        />
       )}
     </>
   );

@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { BonusData, TBonus } from "src/context/reducers/bonusData";
 
 import { TxData } from "../../../context/reducers/returnData";
-import { colors } from "../../colors";
 import Burn from "./Data/Burn";
 import ScratcherClaim from "./Data/ScratcherClaim";
 import ScratcherMint from "./Data/ScratcherMint";
@@ -44,9 +43,6 @@ const MultipleBonus: FC<Props> = ({ txData, bonusData, bonusType }) => {
 
   return (
     <>
-      <hr
-        style={{ width: "100%", border: `0.025rem solid ${colors.shade60}` }}
-      />
       {bonusType === "burn" && <Burn bonusData={bonus} />}
       {bonusType === "scratcher" && <ScratcherClaim bonusData={bonus} />}
       {bonusType === "scratcher-mint" && <ScratcherMint bonusData={bonus} />}
