@@ -22,11 +22,17 @@ const Before: FC<Props> = ({ campaignInfo, content }) => {
         <>
           <Text>
             {content.start}
-            {new Date(campaignInfo.startDate).toLocaleString()}
+            {new Date(campaignInfo.startDate).toLocaleString(undefined, {
+              dateStyle: "short",
+              timeStyle: "long",
+            })}{" "}
           </Text>
           <Text>
             {content.end}
-            {new Date(campaignInfo.endDate).toLocaleString()}
+            {new Date(campaignInfo.endDate).toLocaleString(undefined, {
+              dateStyle: "short",
+              timeStyle: "long",
+            })}{" "}
           </Text>
         </>
       )}
