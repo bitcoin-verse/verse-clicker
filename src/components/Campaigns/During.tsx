@@ -34,7 +34,11 @@ const During: FC<Props> = ({
       {campaignInfo && (
         <>
           <Text>
-            {content.end} {new Date(campaignInfo.endDate).toLocaleString()}
+            {content.end}
+            {new Date(campaignInfo.endDate).toLocaleString(undefined, {
+              dateStyle: "short",
+              timeStyle: "long",
+            })}
           </Text>
         </>
       )}
