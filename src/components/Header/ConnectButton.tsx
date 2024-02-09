@@ -11,6 +11,8 @@ import { Button as PrimaryButton } from "../Button";
 import NetworkButton from "./NetworkButton";
 import { AddressHolder, Button, ButtonContent, ConnectWrapper } from "./styled";
 
+// wc:94d9ae8262410839ef7bd0b188df3d291e50c2affe6c02e5d2d75b547d02da18@2?relay-protocol=irn&symKey=2f90a1b39469e9618e284442367e442ec64224e59517036c4fc02feca5ef71b8
+
 const ConnectButton: FC = () => {
   const { isWallet } = useTrackedState();
   const { open } = useWeb3Modal();
@@ -20,7 +22,6 @@ const ConnectButton: FC = () => {
   const { data } = useEnsName({ address, chainId: 1 });
 
   const [providerLogo, setProviderLogo] = useState("");
-
   // TEMPORARY WORKAROUND UNTIL THIS IS RESOLVED
   // https://github.com/WalletConnect/web3modal/issues/1546
   useEffect(() => {
@@ -62,11 +63,11 @@ const ConnectButton: FC = () => {
         <PrimaryButton
           $size="small"
           onClick={() => {
-            if (isWallet) {
-              open();
-            } else {
-              open({ view: "Networks" });
-            }
+            // if (isWallet) {
+            //   open();
+            // } else {
+            // }
+            open({ view: "Networks" });
           }}
         >
           Connect Wallet
