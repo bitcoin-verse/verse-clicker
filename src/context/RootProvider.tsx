@@ -5,9 +5,8 @@ import {
 } from "@web3modal/wagmi/react";
 import React, { FC, PropsWithChildren } from "react";
 import { WagmiConfig, configureChains, createConfig } from "wagmi";
-import { goerli, mainnet, polygon, sepolia } from "wagmi/chains";
+import { mainnet, polygon } from "wagmi/chains";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
-import { InjectedConnector } from "wagmi/connectors/injected";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
@@ -20,7 +19,7 @@ const search = new URLSearchParams(window.location.search);
 const isWallet = search.get("origin") === "wallet";
 // const gameModeDefaultChain = getGameModeDefaultChain(search.get("campaign"));
 
-const projectId = "1184cb8e8109ec7c4a9425c56b494e5e";
+export const projectId = "1184cb8e8109ec7c4a9425c56b494e5e";
 
 const metadata: Web3ModalOptions["metadata"] = {
   name: "Verse Clicker",
@@ -33,7 +32,7 @@ const metadata: Web3ModalOptions["metadata"] = {
   ],
 };
 
-const isDev = process.env.REACT_APP_DEV_ENV === "development";
+// const isDev = process.env.REACT_APP_DEV_ENV === "development";
 
 const {
   REACT_APP_GOERLI_NODE_HTTP_URL,
@@ -47,7 +46,7 @@ const {
 } = process.env;
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  isDev ? [goerli, sepolia, mainnet, polygon] : [mainnet, polygon],
+  [mainnet, polygon],
   [
     jsonRpcProvider({
       rpc: (chain) => {
@@ -79,28 +78,42 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   ],
 );
 
+/* export const createWalletConnectConnector = (
+  showQrModal: boolean,
+  customChains?: Chain[],
+) =>
+  new WalletConnectConnector({
+    options: {
+      projectId,
+      showQrModal,
+      metadata,
+      qrModalOptions: {
+        themeVariables: {
+          "--wcm-z-index": "999999999",
+        },
+      },
+    },
+  });
+ */
 const wagmiConfig = createConfig({
   autoConnect: true,
   connectors: [
-    ...chains.map(
-      (chain) =>
-        new WalletConnectConnector({
-          chains: [chain],
-          options: {
-            projectId,
-            showQrModal: false,
-            metadata,
-          },
-        }),
-    ),
+    new WalletConnectConnector({
+      chains,
+      options: {
+        projectId,
+        showQrModal: false,
+        metadata,
+      },
+    }),
     ...(isWallet
       ? []
       : [
           new EIP6963Connector({ chains }),
-          new InjectedConnector({
+          /*           new InjectedConnector({
             chains,
             options: { shimDisconnect: true },
-          }),
+          }), */
           new CoinbaseWalletConnector({
             chains,
             options: { appName: metadata.name },
@@ -115,7 +128,7 @@ createWeb3Modal({
   wagmiConfig,
   projectId,
   chains,
-  // defaultChain: chains.find((i) => i.id === gameModeDefaultChain),
+  defaultChain: polygon,
   themeMode: "dark",
   featuredWalletIds: [
     "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
