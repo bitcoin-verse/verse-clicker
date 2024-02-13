@@ -1,10 +1,12 @@
-name: Deploy master to CF (dev.clicker.verse.bitcoin.com)
+name: Deploy to DEV (dev.clicker.verse.bitcoin.com)
 on:
   repository_dispatch:
     types: [manual-deployment]
   push:
     branches:
       - master
+  workflow_dispatch:
+
 env:
   REACT_APP_WEBSOCKET_SERVER: ${{ secrets.REACT_APP_WEBSOCKET_SERVER }}
   REACT_APP_PUBLIC_URL: ${{ secrets.PUBLIC_URL_DEV }}
