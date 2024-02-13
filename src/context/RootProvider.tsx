@@ -4,10 +4,9 @@ import {
   createWeb3Modal,
 } from "@web3modal/wagmi/react";
 import React, { FC, PropsWithChildren } from "react";
-import { Chain, WagmiConfig, configureChains, createConfig } from "wagmi";
-import { goerli, mainnet, polygon, sepolia } from "wagmi/chains";
+import { WagmiConfig, configureChains, createConfig } from "wagmi";
+import { mainnet, polygon } from "wagmi/chains";
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
-import { InjectedConnector } from "wagmi/connectors/injected";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
@@ -33,7 +32,7 @@ const metadata: Web3ModalOptions["metadata"] = {
   ],
 };
 
-const isDev = process.env.REACT_APP_DEV_ENV === "development";
+// const isDev = process.env.REACT_APP_DEV_ENV === "development";
 
 const {
   REACT_APP_GOERLI_NODE_HTTP_URL,
@@ -47,7 +46,7 @@ const {
 } = process.env;
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  isDev ? [mainnet, polygon, goerli, sepolia] : [mainnet, polygon],
+  [mainnet, polygon],
   [
     jsonRpcProvider({
       rpc: (chain) => {
@@ -100,6 +99,7 @@ const wagmiConfig = createConfig({
   autoConnect: true,
   connectors: [
     new WalletConnectConnector({
+      chains,
       options: {
         projectId,
         showQrModal: false,
