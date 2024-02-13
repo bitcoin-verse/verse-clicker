@@ -1,4 +1,4 @@
-name: Deploy master to CF (dev.clicker.verse.bitcoin.com)
+name: Deploy to DEV (dev.clicker.verse.bitcoin.com)
 on:
   repository_dispatch:
     types: [manual-deployment]
