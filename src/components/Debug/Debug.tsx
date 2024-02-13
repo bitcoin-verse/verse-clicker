@@ -1,9 +1,7 @@
 import { WalletConnectModal } from "@walletconnect/modal";
 import { useWeb3Modal, useWeb3ModalState } from "@web3modal/wagmi/react";
 import React, { FC } from "react";
-import { WatchEventReturnType } from "viem";
 import {
-  useChainId,
   useConnect,
   useDisconnect,
   useNetwork,
@@ -14,17 +12,16 @@ import {
 import { projectId } from "../../context/RootProvider";
 
 const Debug: FC<{ closeModal: () => void }> = ({ closeModal }) => {
-  const { signMessage, data } = useSignMessage({
+  const { signMessage, data: signData } = useSignMessage({
     message: "LMB",
   });
 
   const { open } = useWeb3Modal();
   const { selectedNetworkId } = useWeb3ModalState();
-  const { switchNetwork } = useSwitchNetwork();
+  const { switchNetwork, chains } = useSwitchNetwork();
   const { connect, connectors } = useConnect();
   const { disconnect } = useDisconnect();
-  const { chains, chain } = useNetwork();
-
+  const { chain } = useNetwork();
   return (
     <div
       style={{
@@ -131,7 +128,7 @@ const Debug: FC<{ closeModal: () => void }> = ({ closeModal }) => {
       >
         Sign Message
       </button>
-      {data && (
+      {signData && (
         <div
           style={{
             maxWidth: "100%",
@@ -139,7 +136,7 @@ const Debug: FC<{ closeModal: () => void }> = ({ closeModal }) => {
             overflow: "hidden",
           }}
         >
-          {data}
+          {signData}
         </div>
       )}
       <hr />
