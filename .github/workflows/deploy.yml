@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+
 env:
   REACT_APP_WEBSOCKET_SERVER: ${{ secrets.REACT_APP_WEBSOCKET_SERVER }}
   REACT_APP_PUBLIC_URL: ${{ secrets.PUBLIC_URL_DEV }}
