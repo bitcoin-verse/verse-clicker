@@ -13,5 +13,6 @@ export const resetGame = (state: State): State => {
     settings: state.settings,
     buildings: buildings[gameMode],
     isWallet: state.isWallet,
+    error: state.error,
   };
 };
