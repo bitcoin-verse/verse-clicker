@@ -57,18 +57,23 @@ const useSocketEvents = () => {
       dispatch({ type: "SET_BONUS_DATA", payload: data });
     };
 
+    const onCheat = (data: string) => {
+      dispatch({ type: "SET_ERROR", payload: data });
+    };
+
     socket.on("welcome_back", onWelcomeBack);
     socket.on("bonus", onBonusNotif);
     socket.on("info", onInfo);
     socket.on("leaderboard", onLeaderboard);
     socket.on("buildings_data", onBuildingsData);
-
+    socket.on("cheat", onCheat);
     return () => {
       socket.off("welcome_back", onWelcomeBack);
-      socket.on("bonus", onBonusNotif);
+      socket.off("bonus", onBonusNotif);
       socket.off("info", onInfo);
       socket.off("leaderboard", onLeaderboard);
       socket.off("buildings_data", onBuildingsData);
+      socket.off("cheat", onCheat);
     };
   }, []);
 

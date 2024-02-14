@@ -43,13 +43,14 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
 
       socketRef.current.emit("join", { address, chain: gameMode });
       setIsConnected(true);
+      dispatch({ type: "SET_ERROR" });
       console.log("Socket connected", chain.name, gameMode);
     };
 
     const onDisconnect = (e: unknown) => {
       setIsConnected(false);
       dispatch({ type: "RESET_GAME" });
-      console.log("socket disconnected", e);
+      console.log("Socket disconnected", e);
     };
 
     const onError = (e: unknown) => {
