@@ -108,6 +108,7 @@ const Loading: FC = () => {
                 onClick={() => {
                   disconnect();
                   close();
+                  location.reload();
                 }}
               >
                 Close
