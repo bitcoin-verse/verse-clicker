@@ -1,4 +1,3 @@
-import { useWeb3Modal } from "@web3modal/wagmi/react";
 import React, { FC, useEffect } from "react";
 import { useTheme } from "styled-components";
 import {
@@ -12,6 +11,7 @@ import { useTrackedState } from "../../context/store";
 import { Button } from "../Button";
 import { H1 } from "../H1";
 import { H4 } from "../H4";
+import ConnectButton from "../Header/ConnectButton";
 import Spinner from "../Icons/Spinner";
 import { Label } from "../Label";
 import Modal, { useModal } from "../Modal";
@@ -29,12 +29,11 @@ import {
 const Loading: FC = () => {
   const { status } = useAccount();
   const { disconnect } = useDisconnect();
-  const { open } = useWeb3Modal();
   // const { chains, switchNetwork } = useSwitchNetwork();
   // const { chain } = useNetwork();
   const { halfMoon } = useTheme();
   const { modalRef, showModal, close } = useModal();
-  const { error, isWallet } = useTrackedState();
+  const { error } = useTrackedState();
 
   useEffect(() => {
     if (status === "connected") {
@@ -60,20 +59,8 @@ const Loading: FC = () => {
           <ConnectWalletImage src={connectWallet} alt="Connect Wallet" />
 
           <Title>Please connect your wallet to access Verse Clicker</Title>
-          <div>
-            <Button
-              $size="small"
-              onClick={() => {
-                if (isWallet) {
-                  open();
-                } else {
-                  open({ view: "Networks" });
-                }
-              }}
-            >
-              Connect Wallet
-            </Button>
-          </div>
+
+          <ConnectButton />
         </ConnectionWrapper>
       </Wrapper>
       <MoonImage src={halfMoon} alt="Verse Moon" />
