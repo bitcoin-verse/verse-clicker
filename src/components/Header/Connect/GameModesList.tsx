@@ -45,7 +45,7 @@ const GameModesList: FC<Props> = ({ close }) => {
     <>
       {gameModeList.map((game) => (
         <Button
-          key={game.id}
+          key={game.label}
           $size="small"
           $design="tertiary"
           onClick={async () => {

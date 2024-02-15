@@ -28,7 +28,7 @@ const Header: FC = () => {
       <Title>Verse {gameMode === "Christmas" ? "Clickmas" : "Clicker"}</Title>
       <ConnectWrapper>
         <GameModeButton />
-        <ConnectButton />
+        <ConnectButton connectText="Connect" />
       </ConnectWrapper>
     </StyledHeader>
   );

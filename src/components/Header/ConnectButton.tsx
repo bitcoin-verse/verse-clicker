@@ -12,9 +12,13 @@ import ConnectorsList from "./Connect/ConnectorsList";
 import { getGameModeDetails } from "./Connect/GameModesList";
 import { AddressHolder, Button, ButtonContent } from "./styled";
 
-const ConnectButton: FC = () => {
+interface Props {
+  connectText: string;
+}
+
+const ConnectButton: FC<Props> = ({ connectText }) => {
   const { isWallet, gameMode } = useTrackedState();
-  const { connectAsync, connectors } = useConnect();
+  const { connectAsync, connectors, status } = useConnect();
   const { address, isConnected, connector } = useAccount();
   const { data } = useEnsName({ address, chainId: 1 });
   const { disconnect } = useDisconnect();
@@ -56,26 +60,12 @@ const ConnectButton: FC = () => {
     getLogo();
   }, [connector]);
 
-  useEffect(() => {
-    connectors[0].on("message", (ev) => {
-      if (
-        ev.type === "display_uri" &&
-        typeof ev.data === "string" &&
-        isWallet
-      ) {
-        window.location.replace(`bitcoincom://wc?uri=${ev.data}`);
-      }
-    });
-    return () => {
-      connectors[0].off("message");
-    };
-  }, [connectors, isWallet]);
-
   return (
     <>
       {isConnected ? (
         <Button
           type="button"
+          disabled={status === "loading"}
           onClick={() => {
             // open();
             disconnect();
@@ -107,7 +97,7 @@ const ConnectButton: FC = () => {
             }
           }}
         >
-          Connect Wallet
+          {connectText}
         </PrimaryButton>
       )}
 

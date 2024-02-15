@@ -60,7 +60,7 @@ const Loading: FC = () => {
 
           <Title>Please connect your wallet to access Verse Clicker</Title>
 
-          <ConnectButton />
+          <ConnectButton connectText="Connect Wallet" />
         </ConnectionWrapper>
       </Wrapper>
       <MoonImage src={halfMoon} alt="Verse Moon" />

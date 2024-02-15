@@ -12,7 +12,6 @@ interface Props {
 }
 
 const getConnectorIcon = (name: string) => {
-  console.log(name);
   switch (name) {
     case "WalletConnect":
       return wcLogo;

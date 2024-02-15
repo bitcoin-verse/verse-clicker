@@ -7,7 +7,7 @@ import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 import { useTrackedState } from "./store";
 
-const projectId = "1184cb8e8109ec7c4a9425c56b494e5e";
+const projectId = "8000cda0f00ad8e06049c5e030ddaa4c";
 
 const {
   REACT_APP_POLYGON_NODE_HTTP_URL,
@@ -62,30 +62,42 @@ const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
       ],
     );
 
+    const walletConnectConnector = new WalletConnectConnector({
+      chains,
+      options: {
+        projectId,
+        showQrModal: isWallet ? false : true,
+        metadata,
+        qrModalOptions: {
+          themeMode: "dark",
+          themeVariables: {
+            // "--wcm-overlay-backdrop-filter": "0.4",
+            // "--wcm-background-color": "transparent",
+            "--wcm-overlay-background-color": "rgba(0, 0, 0, 0.3)",
+            "--wcm-font-family": "Barlow",
+          },
+          explorerRecommendedWalletIds: [
+            "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
+          ],
+        },
+      },
+    });
+
+    walletConnectConnector.on("message", (ev) => {
+      if (
+        ev.type === "display_uri" &&
+        typeof ev.data === "string" &&
+        isWallet
+      ) {
+        window.location.replace(`bitcoincom://wc?uri=${ev.data}`);
+      }
+    });
+
     return createConfig({
       autoConnect: true,
 
       connectors: [
-        new WalletConnectConnector({
-          chains,
-          options: {
-            projectId,
-            showQrModal: isWallet ? false : true,
-            metadata,
-            qrModalOptions: {
-              themeMode: "dark",
-              themeVariables: {
-                // "--wcm-overlay-backdrop-filter": "0.4",
-                // "--wcm-background-color": "transparent",
-                "--wcm-overlay-background-color": "rgba(0, 0, 0, 0.3)",
-                "--wcm-font-family": "Barlow",
-              },
-              explorerRecommendedWalletIds: [
-                "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
-              ],
-            },
-          },
-        }),
+        walletConnectConnector,
         ...(isWallet
           ? []
           : [
