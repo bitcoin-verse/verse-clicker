@@ -1,16 +1,14 @@
-import { useWeb3ModalEvents } from "@web3modal/wagmi/react";
 import { useEffect, useState } from "react";
 import { useNetwork } from "wagmi";
 
 import { logAmplitudeEvent } from "../helpers/analytics";
 
 const useAmplitudeEvents = () => {
-  const { data: web3ModalEvents } = useWeb3ModalEvents();
   const { chain } = useNetwork();
 
   const [connectOption, setConnectOption] = useState<string>();
 
-  useEffect(() => {
+  /* useEffect(() => {
     switch (web3ModalEvents.event) {
       case "MODAL_OPEN":
         logAmplitudeEvent({
@@ -47,7 +45,7 @@ const useAmplitudeEvents = () => {
       default:
         break;
     }
-  }, [web3ModalEvents]);
+  }, [web3ModalEvents]); */
 };
 
 export default useAmplitudeEvents;
