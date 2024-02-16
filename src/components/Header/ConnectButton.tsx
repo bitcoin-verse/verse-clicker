@@ -1,11 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import {
-  useAccount,
-  useConnect,
-  useDisconnect,
-  useEnsName,
-  useNetwork,
-} from "wagmi";
+import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
 
 import bcomLogo from "../../assets/bcomconnect.png";
 import mmLogo from "../../assets/mm-logo.png";
