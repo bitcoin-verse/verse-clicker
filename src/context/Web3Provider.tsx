@@ -28,16 +28,6 @@ const metadata = {
   icons: [`${REACT_APP_PUBLIC_URL || url}verse-moon.png`],
 };
 
-/* featuredWalletIds: [
-  "107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c",
-],
-
-themeVariables: {
-  "--w3m-color-mix": "#000000",
-  "--w3m-accent": "linear-gradient(180deg, #0EBEF0 0%, #0085FF 100%)",
-  "--w3m-font-family": "Barlow",
-}, */
-
 const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
   const { isWallet } = useTrackedState();
   const config = useMemo(() => {
@@ -70,13 +60,9 @@ const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
         projectId,
         showQrModal: isWallet ? false : true,
         metadata,
-
         qrModalOptions: {
           themeMode: "dark",
-
           themeVariables: {
-            // "--wcm-overlay-backdrop-filter": "0.4",
-            // "--wcm-background-color": "transparent",
             "--wcm-overlay-background-color": "rgba(0, 0, 0, 0.3)",
             "--wcm-font-family": "Barlow",
           },
@@ -93,17 +79,13 @@ const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
         typeof ev.data === "string" &&
         isWallet
       ) {
-        // "bitcoincom://wc?uri=wc%3A9eeb69fcb0cd2abe3fbd2826f8c59df3a63e7cb4125dc1da551b2c0c0fd16692%402%3Frelay-protocol%3Dirn%26symKey%3Db2716f639653df307fcbb5a406b08c1a0be396f04f9f890ef9a04edad58c9918";
         const wcUrl = `bitcoincom://wc?uri=${encodeURIComponent(ev.data)}`;
-        console.log(wcUrl, ev.data);
         location.href = wcUrl;
-        // open(wcUrl);
       }
     });
 
     return createConfig({
       autoConnect: true,
-
       connectors: [
         walletConnectConnector,
         ...(isWallet

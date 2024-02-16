@@ -37,12 +37,6 @@ const gameModeList: {
     icon: lnySrc,
     networks: [137, 1],
   },
-  /*   {
-    id: "LunarNewYear",
-    label: "Lunar New Year (ETH)",
-    icon: lnySrc,
-    network: 1,
-  }, */
 ];
 
 export const getGameModeDetails = (game: GameMode) => {
