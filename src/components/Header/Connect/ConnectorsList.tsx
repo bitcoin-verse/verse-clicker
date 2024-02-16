@@ -5,7 +5,9 @@ import injectedLogo from "../../../assets/injected.svg";
 import mmLogo from "../../../assets/mm-logo.png";
 import rabbyLogo from "../../../assets/rabby.svg";
 import wcLogo from "../../../assets/wc-logo.png";
+import { useTrackedState } from "../../../context/store";
 import { Button } from "../../Button";
+import { getGameModeDetails } from "./GameModesList";
 
 interface Props {
   closeModal: () => void;
@@ -26,6 +28,7 @@ const getConnectorIcon = (name: string) => {
 
 const ConnectorsList: FC<Props> = ({ closeModal }) => {
   const { connect, connectors } = useConnect();
+  const { gameMode } = useTrackedState();
   return (
     <>
       {connectors.map((connector) => {
@@ -36,7 +39,7 @@ const ConnectorsList: FC<Props> = ({ closeModal }) => {
             $design="tertiary"
             onClick={() => {
               connect({
-                chainId: 1,
+                chainId: getGameModeDetails(gameMode)?.network,
                 connector,
               });
               if (connector.id === "walletConnect") {

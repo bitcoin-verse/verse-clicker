@@ -17,16 +17,16 @@ const gameModeList: {
   { id: "Polygon", label: "Polygon", icon: getNetworkImage(137), network: 137 },
   {
     id: "LunarNewYear",
-    label: "Lunar New Year (MATIC)",
+    label: "Lunar New Year",
     icon: lnySrc,
     network: 137,
   },
-  {
+  /*   {
     id: "LunarNewYear",
     label: "Lunar New Year (ETH)",
     icon: lnySrc,
     network: 1,
-  },
+  }, */
 ];
 
 export const getGameModeDetails = (game: GameMode) => {
