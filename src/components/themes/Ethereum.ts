@@ -47,7 +47,7 @@ export const Ethereum: CustomTheme = {
         base: colors.shade90,
         hover: colors.shade100,
         active: colors.shade100,
-        disabled: colors.shade50,
+        disabled: colors.shade60,
       },
     },
   },

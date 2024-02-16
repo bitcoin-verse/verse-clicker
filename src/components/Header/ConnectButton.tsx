@@ -84,7 +84,7 @@ const ConnectButton: FC<Props> = ({ connectText }) => {
             try {
               if (isWallet) {
                 const client = await connectAsync({
-                  chainId: getGameModeDetails(gameMode)?.network,
+                  chainId: getGameModeDetails(gameMode)?.networks[0],
                   connector: connectors[0],
                 });
 

@@ -39,7 +39,7 @@ const ConnectorsList: FC<Props> = ({ closeModal }) => {
             $design="tertiary"
             onClick={() => {
               connect({
-                chainId: getGameModeDetails(gameMode)?.network,
+                chainId: getGameModeDetails(gameMode)?.networks[0],
                 connector,
               });
               if (connector.id === "walletConnect") {

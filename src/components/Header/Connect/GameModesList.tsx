@@ -11,15 +11,25 @@ const gameModeList: {
   id: GameMode;
   label: string;
   icon: string;
-  network: number;
+  networks: number[];
 }[] = [
-  { id: "Ethereum", label: "Ethereum", icon: getNetworkImage(1), network: 1 },
-  { id: "Polygon", label: "Polygon", icon: getNetworkImage(137), network: 137 },
+  {
+    id: "Ethereum",
+    label: "Ethereum",
+    icon: getNetworkImage(1),
+    networks: [1],
+  },
+  {
+    id: "Polygon",
+    label: "Polygon",
+    icon: getNetworkImage(137),
+    networks: [137],
+  },
   {
     id: "LunarNewYear",
     label: "Lunar New Year",
     icon: lnySrc,
-    network: 137,
+    networks: [137, 1],
   },
   /*   {
     id: "LunarNewYear",
@@ -36,6 +46,10 @@ export const getGameModeDetails = (game: GameMode) => {
 interface Props {
   close: () => void;
 }
+
+const isAvailabe = (arr1: number[], arr2: number[]) => {
+  return arr1.filter((e) => arr2.indexOf(e) !== -1).length > 0;
+};
 
 const GameModesList: FC<Props> = ({ close }) => {
   const dispatch = useDispatch();
@@ -66,41 +80,45 @@ const GameModesList: FC<Props> = ({ close }) => {
 
   return (
     <>
-      {gameModeList.map((game) => (
-        <Button
-          key={game.label}
-          $size="small"
-          $design="tertiary"
-          disabled={
-            isConnected &&
-            chainId !== game.network &&
-            !availableNetworks.includes(game.network)
-          }
-          onClick={async () => {
-            try {
-              if (
-                chainId !== game.network &&
-                switchNetworkAsync !== undefined
-              ) {
-                await switchNetworkAsync(game.network);
-              }
-              dispatch({ type: "SET_GAME_MODE", payload: game.id });
-              close();
-            } catch (error) {}
-          }}
-        >
-          <img src={game.icon} alt={game.id} height={24} width={24} />
-          <div
-            style={{
-              marginLeft: "0.5rem",
-              color: "inherit",
-              background: "inherit",
+      {gameModeList.map((game) => {
+        return (
+          <Button
+            key={game.label}
+            $size="small"
+            $design="tertiary"
+            disabled={
+              isConnected &&
+              !game.networks.includes(chainId) &&
+              !isAvailabe(game.networks, availableNetworks)
+            }
+            onClick={async () => {
+              try {
+                if (
+                  !game.networks.includes(chainId) &&
+                  switchNetworkAsync !== undefined
+                ) {
+                  await switchNetworkAsync(
+                    game.networks.find((n) => n !== chainId),
+                  );
+                }
+                dispatch({ type: "SET_GAME_MODE", payload: game.id });
+                close();
+              } catch (error) {}
             }}
           >
-            {game.label}
-          </div>
-        </Button>
-      ))}
+            <img src={game.icon} alt={game.id} height={24} width={24} />
+            <div
+              style={{
+                marginLeft: "0.5rem",
+                color: "inherit",
+                background: "inherit",
+              }}
+            >
+              {game.label}
+            </div>
+          </Button>
+        );
+      })}
       <div />
       {isConnected && (
         <Button
