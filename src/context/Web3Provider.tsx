@@ -2,9 +2,9 @@ import React, { FC, PropsWithChildren, useMemo } from "react";
 import { WagmiConfig, configureChains, createConfig } from "wagmi";
 import { mainnet, polygon } from "wagmi/chains";
 import { InjectedConnector } from "wagmi/connectors/injected";
-import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
+import { WalletConnectConnector } from "./WalletConnectConnector";
 import { useTrackedState } from "./store";
 
 // Pauls projectId for testing
@@ -42,7 +42,7 @@ const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
   const { isWallet } = useTrackedState();
   const config = useMemo(() => {
     const { chains, publicClient, webSocketPublicClient } = configureChains(
-      [mainnet, polygon],
+      [polygon, mainnet],
       [
         jsonRpcProvider({
           rpc: (chain) => {
@@ -70,8 +70,10 @@ const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
         projectId,
         showQrModal: isWallet ? false : true,
         metadata,
+
         qrModalOptions: {
           themeMode: "dark",
+
           themeVariables: {
             // "--wcm-overlay-backdrop-filter": "0.4",
             // "--wcm-background-color": "transparent",
@@ -91,7 +93,11 @@ const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
         typeof ev.data === "string" &&
         isWallet
       ) {
-        window.location.replace(`bitcoincom://wc?uri=${ev.data}`);
+        // "bitcoincom://wc?uri=wc%3A9eeb69fcb0cd2abe3fbd2826f8c59df3a63e7cb4125dc1da551b2c0c0fd16692%402%3Frelay-protocol%3Dirn%26symKey%3Db2716f639653df307fcbb5a406b08c1a0be396f04f9f890ef9a04edad58c9918";
+        const wcUrl = `bitcoincom://wc?uri=${encodeURIComponent(ev.data)}`;
+        console.log(wcUrl, ev.data);
+        location.href = wcUrl;
+        // open(wcUrl);
       }
     });
 
