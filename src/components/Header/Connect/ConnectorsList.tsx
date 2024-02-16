@@ -6,6 +6,7 @@ import mmLogo from "../../../assets/mm-logo.png";
 import rabbyLogo from "../../../assets/rabby.svg";
 import wcLogo from "../../../assets/wc-logo.png";
 import { useTrackedState } from "../../../context/store";
+import { logAmplitudeEvent } from "../../../helpers/analytics";
 import { Button } from "../../Button";
 import { getGameModeDetails } from "./GameModesList";
 
@@ -27,8 +28,9 @@ const getConnectorIcon = (name: string) => {
 };
 
 const ConnectorsList: FC<Props> = ({ closeModal }) => {
-  const { connect, connectors } = useConnect();
+  const { connectAsync, connectors } = useConnect();
   const { gameMode } = useTrackedState();
+
   return (
     <>
       {connectors.map((connector) => {
@@ -37,13 +39,26 @@ const ConnectorsList: FC<Props> = ({ closeModal }) => {
             key={connector.id}
             $size="small"
             $design="tertiary"
-            onClick={() => {
-              connect({
-                chainId: getGameModeDetails(gameMode)?.networks[0],
-                connector,
-              });
-              if (connector.id === "walletConnect") {
-                closeModal();
+            onClick={async () => {
+              try {
+                logAmplitudeEvent({
+                  name: "connect wallet option selected",
+                  blockchain: gameMode,
+                  connectOption: connector.name,
+                });
+                await connectAsync({
+                  chainId: getGameModeDetails(gameMode)?.networks[0],
+                  connector,
+                });
+                if (connector.id === "walletConnect") {
+                  closeModal();
+                }
+              } catch (error) {
+                logAmplitudeEvent({
+                  name: "connect wallet result",
+                  blockchain: gameMode,
+                  success: false,
+                });
               }
             }}
           >

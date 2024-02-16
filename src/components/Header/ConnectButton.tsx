@@ -1,10 +1,17 @@
 import React, { FC, useEffect, useState } from "react";
-import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
+import {
+  useAccount,
+  useConnect,
+  useDisconnect,
+  useEnsName,
+  useNetwork,
+} from "wagmi";
 
 import bcomLogo from "../../assets/bcomconnect.png";
 import mmLogo from "../../assets/mm-logo.png";
 import wcLogo from "../../assets/wc-logo.png";
 import { useTrackedState } from "../../context/store";
+import { logAmplitudeEvent } from "../../helpers/analytics";
 import truncateEthAddress from "../../helpers/truncateEthAddress";
 import { Button as PrimaryButton } from "../Button";
 import Modal, { useModal } from "../Modal";
@@ -73,6 +80,10 @@ const ConnectButton: FC<Props> = ({ connectText }) => {
           $size="small"
           onClick={async () => {
             try {
+              logAmplitudeEvent({
+                name: "connect wallet clicked",
+                blockchain: gameMode,
+              });
               if (isWallet) {
                 const client = await connectAsync({
                   chainId: getGameModeDetails(gameMode)?.networks[0],
