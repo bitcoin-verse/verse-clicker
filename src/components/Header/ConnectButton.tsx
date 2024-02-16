@@ -1,33 +1,29 @@
-import { useWeb3Modal, useWeb3ModalEvents } from "@web3modal/wagmi/react";
 import React, { FC, useEffect, useState } from "react";
-import { useAccount, useEnsName } from "wagmi";
+import { useAccount, useConnect, useEnsName } from "wagmi";
 
 import bcomLogo from "../../assets/bcomconnect.png";
 import mmLogo from "../../assets/mm-logo.png";
 import wcLogo from "../../assets/wc-logo.png";
 import { useTrackedState } from "../../context/store";
+import { logAmplitudeEvent } from "../../helpers/analytics";
 import truncateEthAddress from "../../helpers/truncateEthAddress";
 import { Button as PrimaryButton } from "../Button";
-import NetworkButton from "./NetworkButton";
-import { AddressHolder, Button, ButtonContent, ConnectWrapper } from "./styled";
+import Modal, { useModal } from "../Modal";
+import ConnectorsList from "./Connect/ConnectorsList";
+import { getGameModeDetails } from "./Connect/GameModesList";
+import { AddressHolder, Button, ButtonContent } from "./styled";
 
-const ConnectButton: FC = () => {
-  const { isWallet } = useTrackedState();
-  const { open } = useWeb3Modal();
-  const { data: web3ModalEvent } = useWeb3ModalEvents();
+interface Props {
+  connectText: string;
+}
 
+const ConnectButton: FC<Props> = ({ connectText }) => {
+  const { isWallet, gameMode } = useTrackedState();
+  const { connectAsync, connectors, status } = useConnect();
   const { address, isConnected, connector } = useAccount();
   const { data } = useEnsName({ address, chainId: 1 });
-
   const [providerLogo, setProviderLogo] = useState("");
-
-  // TEMPORARY WORKAROUND UNTIL THIS IS RESOLVED
-  // https://github.com/WalletConnect/web3modal/issues/1546
-  useEffect(() => {
-    if (web3ModalEvent.event === "CONNECT_ERROR") {
-      location.reload();
-    }
-  }, [web3ModalEvent]);
+  const { modalRef, showModal, close: closeModal } = useModal();
 
   useEffect(() => {
     const getLogo = async () => {
@@ -56,40 +52,54 @@ const ConnectButton: FC = () => {
     getLogo();
   }, [connector]);
 
-  if (!isConnected)
-    return (
-      <ConnectWrapper>
+  return (
+    <>
+      {isConnected ? (
+        <Button
+          type="button"
+          disabled={status === "loading"}
+          onClick={() => {
+            showModal();
+          }}
+        >
+          <ButtonContent $logo={providerLogo}>
+            <AddressHolder>
+              {data ? data : truncateEthAddress(address || "")}
+            </AddressHolder>
+          </ButtonContent>
+        </Button>
+      ) : (
         <PrimaryButton
           $size="small"
-          onClick={() => {
-            if (isWallet) {
-              open();
-            } else {
-              open({ view: "Networks" });
+          onClick={async () => {
+            try {
+              logAmplitudeEvent({
+                name: "connect wallet clicked",
+                blockchain: gameMode,
+              });
+              if (isWallet) {
+                const client = await connectAsync({
+                  chainId: getGameModeDetails(gameMode)?.networks[0],
+                  connector: connectors[0],
+                });
+
+                console.log(client);
+              } else {
+                showModal();
+              }
+            } catch (error) {
+              console.log("rrr", (error as Error).message);
             }
           }}
         >
-          Connect Wallet
+          {connectText}
         </PrimaryButton>
-      </ConnectWrapper>
-    );
+      )}
 
-  return (
-    <ConnectWrapper>
-      <NetworkButton />
-      <Button
-        type="button"
-        onClick={() => {
-          open();
-        }}
-      >
-        <ButtonContent $logo={providerLogo}>
-          <AddressHolder>
-            {data ? data : truncateEthAddress(address || "")}
-          </AddressHolder>
-        </ButtonContent>
-      </Button>
-    </ConnectWrapper>
+      <Modal modalRef={modalRef} title="Connect Wallet" overlayClose>
+        <ConnectorsList closeModal={closeModal} />
+      </Modal>
+    </>
   );
 };
 

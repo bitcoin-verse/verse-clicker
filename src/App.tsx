@@ -5,8 +5,8 @@ import { CURRENT_CAMPAIGN } from "./constants";
 import { useSocketCtx } from "./context/SocketContext";
 import { GameMode } from "./context/reducers/network";
 import { useDispatch, useTrackedState } from "./context/store";
+import { logAmplitudeEvent } from "./helpers/analytics";
 import { getGameMode } from "./helpers/gameMode";
-import useAmplitudeEvents from "./hooks/useAmplitudeEvents";
 import useCampaignInfo from "./hooks/useCampaignInfo";
 import useSocketEvents from "./hooks/useSocketEvents";
 
@@ -14,7 +14,6 @@ const Main = lazy(() => import("./views/Main"));
 const NotConnected = lazy(() => import("./views/NotConnected"));
 
 const App: FC = () => {
-  useAmplitudeEvents();
   useCampaignInfo();
 
   const dispatch = useDispatch();
@@ -26,7 +25,7 @@ const App: FC = () => {
 
   const { gameMode } = useTrackedState();
 
-  const { status, address } = useAccount({
+  const { status, address, connector } = useAccount({
     onConnect: ({ address: addr }) => {
       if (!addr) return;
       console.log("Web3 Connected");
@@ -84,6 +83,17 @@ const App: FC = () => {
     socket.disconnect();
     socket.connect();
   }, [status, chain, address, gameMode]);
+
+  useEffect(() => {
+    if (status === "connected" && !loading) {
+      logAmplitudeEvent({
+        name: "connect wallet result",
+        blockchain: gameMode,
+        connectOption: connector.name,
+        success: true,
+      });
+    }
+  }, [status, loading]);
 
   return (
     <Suspense>

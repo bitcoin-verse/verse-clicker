@@ -1,22 +1,22 @@
-import { useWeb3Modal } from "@web3modal/wagmi/react";
-import React, { FC, useEffect } from "react";
-import { useChainId } from "wagmi";
+import React, { FC } from "react";
 
 import verseIcon from "../../assets/verse-icon.png";
 import verseLogo from "../../assets/verse-logo.png";
 import { useTrackedState } from "../../context/store";
 import ChevronLeft from "../Icons/ChevronLeft";
 import ConnectButton from "./ConnectButton";
-import { Icon, Logo, LogoWrapper, StyledHeader, Title } from "./styled";
+import GameModeButton from "./GameModeButton";
+import {
+  ConnectWrapper,
+  Icon,
+  Logo,
+  LogoWrapper,
+  StyledHeader,
+  Title,
+} from "./styled";
 
 const Header: FC = () => {
-  const chainId = useChainId();
-  const { close } = useWeb3Modal();
   const { gameMode } = useTrackedState();
-
-  useEffect(() => {
-    close();
-  }, [chainId]);
 
   return (
     <StyledHeader>
@@ -26,7 +26,10 @@ const Header: FC = () => {
         <Logo src={verseLogo} alt="Logo" />
       </LogoWrapper>
       <Title>Verse {gameMode === "Christmas" ? "Clickmas" : "Clicker"}</Title>
-      <ConnectButton />
+      <ConnectWrapper>
+        <GameModeButton />
+        <ConnectButton connectText="Connect" />
+      </ConnectWrapper>
     </StyledHeader>
   );
 };

@@ -1,22 +1,17 @@
-import { useWeb3Modal } from "@web3modal/wagmi/react";
 import React, { FC, useEffect } from "react";
 import { useTheme } from "styled-components";
-import {
-  useAccount,
-  useDisconnect,
-  /*  useNetwork, useSwitchNetwork */
-} from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 
 import connectWallet from "../../assets/connect-wallet.png";
 import { useTrackedState } from "../../context/store";
 import { Button } from "../Button";
 import { H1 } from "../H1";
 import { H4 } from "../H4";
+import ConnectButton from "../Header/ConnectButton";
 import Spinner from "../Icons/Spinner";
 import { Label } from "../Label";
 import Modal, { useModal } from "../Modal";
 import { Title } from "../Title";
-// import { Link } from "../Link";
 import {
   ConnectWalletImage,
   ConnectionWrapper,
@@ -29,12 +24,9 @@ import {
 const Loading: FC = () => {
   const { status } = useAccount();
   const { disconnect } = useDisconnect();
-  const { open } = useWeb3Modal();
-  // const { chains, switchNetwork } = useSwitchNetwork();
-  // const { chain } = useNetwork();
   const { halfMoon } = useTheme();
   const { modalRef, showModal, close } = useModal();
-  const { error, isWallet } = useTrackedState();
+  const { error } = useTrackedState();
 
   useEffect(() => {
     if (status === "connected") {
@@ -54,26 +46,13 @@ const Loading: FC = () => {
             Click for Verse points, climb the leaderboard! Join the Verse
             community and experience a world of endless clicking fun.
           </H4>
-          {/* <Link href="https://boo">Learn More</Link> */}
         </ContentsWrapper>
         <ConnectionWrapper>
           <ConnectWalletImage src={connectWallet} alt="Connect Wallet" />
 
           <Title>Please connect your wallet to access Verse Clicker</Title>
-          <div>
-            <Button
-              $size="small"
-              onClick={() => {
-                if (isWallet) {
-                  open();
-                } else {
-                  open({ view: "Networks" });
-                }
-              }}
-            >
-              Connect Wallet
-            </Button>
-          </div>
+
+          <ConnectButton connectText="Connect Wallet" />
         </ConnectionWrapper>
       </Wrapper>
       <MoonImage src={halfMoon} alt="Verse Moon" />
@@ -82,23 +61,6 @@ const Loading: FC = () => {
         <ModalContent>
           <Spinner />
           <Title>Loading...</Title>
-          {/* {chain?.unsupported && (
-            <>
-              <Label $color="warning">Unsupported network</Label>
-              {chains.map(({ name, id }) => (
-                <Button
-                  key={id}
-                  $size="small"
-                  $design="secondary"
-                  onClick={() => {
-                    if (switchNetwork) switchNetwork(id);
-                  }}
-                >
-                  Switch to {name}
-                </Button>
-              ))}
-            </>
-          )} */}
           {error && (
             <>
               <Label $color="warning">{error}</Label>
