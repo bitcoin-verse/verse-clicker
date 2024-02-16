@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { useAccount, useChainId, useSwitchNetwork } from "wagmi";
+import { useAccount, useChainId, useDisconnect, useSwitchNetwork } from "wagmi";
 
 import lnySrc from "../../../assets/lanturn.png";
 import { GameMode } from "../../../context/reducers/network";
@@ -40,6 +40,7 @@ interface Props {
 const GameModesList: FC<Props> = ({ close }) => {
   const dispatch = useDispatch();
   const { isConnected, connector } = useAccount();
+  const { disconnect } = useDisconnect();
   const chainId = useChainId();
   const { switchNetworkAsync } = useSwitchNetwork();
 
@@ -100,6 +101,18 @@ const GameModesList: FC<Props> = ({ close }) => {
           </div>
         </Button>
       ))}
+      <div />
+      {isConnected && (
+        <Button
+          $size="small"
+          $design="secondary"
+          onClick={() => {
+            disconnect();
+          }}
+        >
+          Disconnect
+        </Button>
+      )}
     </>
   );
 };
