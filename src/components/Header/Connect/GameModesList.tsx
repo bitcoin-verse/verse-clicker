@@ -1,9 +1,9 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useAccount, useChainId, useSwitchNetwork } from "wagmi";
 
 import lnySrc from "../../../assets/lanturn.png";
 import { GameMode } from "../../../context/reducers/network";
-import { useDispatch, useTrackedState } from "../../../context/store";
+import { useDispatch } from "../../../context/store";
 import { getNetworkImage } from "../../../helpers/getNetworkImage";
 import { Button } from "../../Button";
 
@@ -39,12 +39,29 @@ interface Props {
 
 const GameModesList: FC<Props> = ({ close }) => {
   const dispatch = useDispatch();
-  const { isWallet } = useTrackedState();
-  const { isConnected } = useAccount();
+  const { isConnected, connector } = useAccount();
   const chainId = useChainId();
   const { switchNetworkAsync } = useSwitchNetwork();
 
-  console.log();
+  const [availableNetworks, setAvailableNetworks] = useState<number[]>([]);
+
+  useEffect(() => {
+    const getAvailableNetworks = async () => {
+      const provider = await connector?.getProvider();
+      if (provider?.session) {
+        const namespaceChains: string[] =
+          provider.session?.namespaces?.eip155?.chains || [];
+
+        setAvailableNetworks(
+          namespaceChains.map((c) => Number(c.replace("eip155:", ""))),
+        );
+      } else {
+        setAvailableNetworks([1, 137]);
+      }
+    };
+
+    getAvailableNetworks();
+  }, [connector]);
 
   return (
     <>
@@ -53,7 +70,11 @@ const GameModesList: FC<Props> = ({ close }) => {
           key={game.label}
           $size="small"
           $design="tertiary"
-          disabled={isConnected && chainId !== game.network}
+          disabled={
+            isConnected &&
+            chainId !== game.network &&
+            !availableNetworks.includes(game.network)
+          }
           onClick={async () => {
             try {
               if (
