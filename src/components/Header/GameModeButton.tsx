@@ -15,6 +15,7 @@ const GameModeButton: FC = () => {
   } = useModal();
   const { gameMode } = useTrackedState();
   const chainId = useChainId();
+
   return (
     <>
       <Button>

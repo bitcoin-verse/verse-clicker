@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useConnect } from "wagmi";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
 
 import injectedLogo from "../../../assets/injected.svg";
 import mmLogo from "../../../assets/mm-logo.png";
@@ -30,7 +30,16 @@ const getConnectorIcon = (name: string) => {
 const ConnectorsList: FC<Props> = ({ closeModal }) => {
   const { connectAsync, connectors } = useConnect();
   const { gameMode } = useTrackedState();
+  const { disconnect } = useDisconnect();
+  const { isConnected } = useAccount();
 
+  if (isConnected) {
+    return (
+      <Button $size="small" onClick={() => disconnect()}>
+        Disconnect
+      </Button>
+    );
+  }
   return (
     <>
       {connectors.map((connector) => {

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { useAccount, useConnect, useDisconnect, useEnsName } from "wagmi";
+import { useAccount, useConnect, useEnsName } from "wagmi";
 
 import bcomLogo from "../../assets/bcomconnect.png";
 import mmLogo from "../../assets/mm-logo.png";
@@ -22,7 +22,6 @@ const ConnectButton: FC<Props> = ({ connectText }) => {
   const { connectAsync, connectors, status } = useConnect();
   const { address, isConnected, connector } = useAccount();
   const { data } = useEnsName({ address, chainId: 1 });
-  const { disconnect } = useDisconnect();
   const [providerLogo, setProviderLogo] = useState("");
   const { modalRef, showModal, close: closeModal } = useModal();
 
@@ -60,7 +59,7 @@ const ConnectButton: FC<Props> = ({ connectText }) => {
           type="button"
           disabled={status === "loading"}
           onClick={() => {
-            disconnect();
+            showModal();
           }}
         >
           <ButtonContent $logo={providerLogo}>
