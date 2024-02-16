@@ -7,9 +7,8 @@ import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 import { WalletConnectConnector } from "./WalletConnectConnector";
 import { useTrackedState } from "./store";
 
-// Pauls projectId for testing
-// const projectId = "8000cda0f00ad8e06049c5e030ddaa4c";
-const projectId = "1184cb8e8109ec7c4a9425c56b494e5e";
+// const projectId = "8000cda0f00ad8e06049c5e030ddaa4c"; // Paul
+const projectId = "1184cb8e8109ec7c4a9425c56b494e5e"; // Bcom
 
 const {
   REACT_APP_POLYGON_NODE_HTTP_URL,
