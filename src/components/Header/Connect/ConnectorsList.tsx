@@ -46,13 +46,13 @@ const ConnectorsList: FC<Props> = ({ closeModal }) => {
                   blockchain: gameMode,
                   connectOption: connector.name,
                 });
+                if (connector.id === "walletConnect") {
+                  closeModal();
+                }
                 await connectAsync({
                   chainId: getGameModeDetails(gameMode)?.networks[0],
                   connector,
                 });
-                if (connector.id === "walletConnect") {
-                  closeModal();
-                }
               } catch (error) {
                 logAmplitudeEvent({
                   name: "connect wallet result",
