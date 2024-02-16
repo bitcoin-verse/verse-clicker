@@ -25,14 +25,6 @@ const ConnectButton: FC<Props> = ({ connectText }) => {
   const [providerLogo, setProviderLogo] = useState("");
   const { modalRef, showModal, close: closeModal } = useModal();
 
-  // TEMPORARY WORKAROUND UNTIL THIS IS RESOLVED
-  // https://github.com/WalletConnect/web3modal/issues/1546
-  /*   useEffect(() => {
-    if (web3ModalEvent.event === "CONNECT_ERROR") {
-      location.reload();
-    }
-  }, [web3ModalEvent]); */
-
   useEffect(() => {
     const getLogo = async () => {
       if (isWallet) {
@@ -67,7 +59,6 @@ const ConnectButton: FC<Props> = ({ connectText }) => {
           type="button"
           disabled={status === "loading"}
           onClick={() => {
-            // open();
             disconnect();
           }}
         >
