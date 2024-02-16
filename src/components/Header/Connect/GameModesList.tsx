@@ -115,7 +115,8 @@ const GameModesList: FC<Props> = ({ close }) => {
                 background: "inherit",
               }}
             >
-              {game.label} {game.id === "LunarNewYear" && `(${chain?.name})`}
+              {game.label}{" "}
+              {game.id === "LunarNewYear" && isConnected && `(${chain?.name})`}
             </div>
           </Button>
         );
