@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { useChainId, useSwitchNetwork } from "wagmi";
+import { useAccount, useChainId, useSwitchNetwork } from "wagmi";
 
 import lnySrc from "../../../assets/lanturn.png";
 import { GameMode } from "../../../context/reducers/network";
-import { useDispatch } from "../../../context/store";
+import { useDispatch, useTrackedState } from "../../../context/store";
 import { getNetworkImage } from "../../../helpers/getNetworkImage";
 import { Button } from "../../Button";
 
@@ -39,8 +39,13 @@ interface Props {
 
 const GameModesList: FC<Props> = ({ close }) => {
   const dispatch = useDispatch();
+  const { isWallet } = useTrackedState();
+  const { isConnected } = useAccount();
   const chainId = useChainId();
   const { switchNetworkAsync } = useSwitchNetwork();
+
+  console.log();
+
   return (
     <>
       {gameModeList.map((game) => (
@@ -48,6 +53,7 @@ const GameModesList: FC<Props> = ({ close }) => {
           key={game.label}
           $size="small"
           $design="tertiary"
+          disabled={isConnected && chainId !== game.network}
           onClick={async () => {
             try {
               if (
@@ -62,7 +68,15 @@ const GameModesList: FC<Props> = ({ close }) => {
           }}
         >
           <img src={game.icon} alt={game.id} height={24} width={24} />
-          <div style={{ marginLeft: "0.5rem" }}>{game.label}</div>
+          <div
+            style={{
+              marginLeft: "0.5rem",
+              color: "inherit",
+              background: "inherit",
+            }}
+          >
+            {game.label}
+          </div>
         </Button>
       ))}
     </>
