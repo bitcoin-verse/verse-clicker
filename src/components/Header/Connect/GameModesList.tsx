@@ -1,5 +1,11 @@
 import React, { FC, useEffect, useState } from "react";
-import { useAccount, useChainId, useDisconnect, useSwitchNetwork } from "wagmi";
+import {
+  useAccount,
+  useChainId,
+  useDisconnect,
+  useNetwork,
+  useSwitchNetwork,
+} from "wagmi";
 
 import lnySrc from "../../../assets/lanturn.png";
 import { GameMode } from "../../../context/reducers/network";
@@ -56,6 +62,7 @@ const GameModesList: FC<Props> = ({ close }) => {
   const { isConnected, connector } = useAccount();
   const { disconnect } = useDisconnect();
   const chainId = useChainId();
+  const { chain } = useNetwork();
   const { switchNetworkAsync } = useSwitchNetwork();
 
   const [availableNetworks, setAvailableNetworks] = useState<number[]>([]);
@@ -114,7 +121,7 @@ const GameModesList: FC<Props> = ({ close }) => {
                 background: "inherit",
               }}
             >
-              {game.label}
+              {game.label} {game.id === "LunarNewYear" && `(${chain?.name})`}
             </div>
           </Button>
         );
