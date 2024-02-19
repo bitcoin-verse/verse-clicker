@@ -13,7 +13,7 @@ import { useAccount, useNetwork } from "wagmi";
 import { useDispatch, useTrackedState } from "./store";
 
 export interface SocketCtxState {
-  socket?: Socket;
+  socket: Socket;
   isConnected: boolean;
 }
 
@@ -31,40 +31,27 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
     gameMode,
     settings: { sign },
   } = useTrackedState();
-  const search = new URLSearchParams();
-  const campaign = search.get("campaign");
 
-  const socketRef = useRef<Socket>();
+  const socketRef = useRef(
+    io(process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001", {
+      autoConnect: false,
+    }),
+  );
 
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
-    if (!sign?.signature || !sign?.uuid) {
-      return;
-    }
-
-    socketRef.current = io(
-      process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001",
-      {
-        autoConnect: false,
-        query: { uuid: sign.uuid, signature: sign.signature, address },
-      },
-    );
-
-    return () => {
-      if (socketRef.current) {
-        socketRef.current.disconnect();
-      }
-    };
-  }, [sign]);
-
-  useEffect(() => {
-    if (!socketRef.current) return;
-
     const onConnect = () => {
-      if (!chain || !address || !socketRef.current) return;
+      if (!chain || !address) return;
 
-      socketRef.current.emit("join", { address, chain: gameMode });
+      console.log(sign);
+
+      socketRef.current.emit("join", {
+        address,
+        chain: gameMode,
+        uuid: sign?.uuid,
+        signature: sign?.signature,
+      });
       setIsConnected(true);
       dispatch({ type: "SET_ERROR" });
       console.log("Socket connected", chain.name, gameMode);
@@ -84,19 +71,18 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
       });
     };
 
-    socketRef.current.connect();
+    // socketRef.current.connect();
     socketRef.current.on("connect", onConnect);
     socketRef.current.on("disconnect", onDisconnect);
     socketRef.current.on("connect_error", onError);
     return () => {
-      if (!socketRef.current) return;
       socketRef.current.off("connect", onConnect);
       socketRef.current.off("disconnect", onDisconnect);
       socketRef.current.off("connect_error", onError);
 
       socketRef.current.disconnect();
     };
-  }, [address, chain, gameMode, sign?.signature, sign?.uuid, socketRef]);
+  }, [address, chain, gameMode, sign]);
 
   return (
     <SocketCtxContext.Provider

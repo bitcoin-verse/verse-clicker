@@ -97,6 +97,10 @@ const init = (): State => {
         typeof persistedState?.settings?.campaignBanner === "boolean"
           ? persistedState.settings.campaignBanner
           : initialState.settings.campaignBanner,
+      sign:
+        typeof persistedState?.settings?.sign === "object"
+          ? persistedState.settings.sign
+          : initialState.settings.sign,
     };
 
     return {
