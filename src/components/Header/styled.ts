@@ -34,9 +34,6 @@ export const LogoWrapper = styled.a`
 export const Title = styled(H3)`
   grid-area: title;
   text-align: left;
-  @media (min-width: 0px) {
-    font-size: 3.5vw;
-  }
   @media (min-width: 768px) {
     text-align: center;
     font-size: 1rem;

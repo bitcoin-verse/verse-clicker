@@ -43,7 +43,7 @@ const Leaderboard: FC = () => {
         <Particles />
       </Suspense>
       <NotificationModal />
-      <Header pageTitle="Leaderboard" />
+      <Header />
       <TabsContainer>
         <Tabs
           center
