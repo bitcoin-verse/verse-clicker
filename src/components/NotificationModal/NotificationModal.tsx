@@ -10,8 +10,8 @@ const NotificationModal = () => {
   const { modalRef, showModal, close } = useModal();
 
   useEffect(() => {
-    if ((returnData && returnData.seconds > 5) || bonusData) showModal();
-  }, [returnData, bonusData]);
+    if (returnData || bonusData.length > 0) showModal();
+  }, [returnData?.seconds, bonusData]);
 
   return (
     <>

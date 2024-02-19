@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Description } from "./styled";
+import { Description } from "../styled";
 
 const NewUser = () => {
   return (

@@ -34,7 +34,7 @@ export type State = {
   leaderboardAddresses: string[];
   leaderboardStats: LeaderboardStats;
   leaderboardUpdated?: number;
-  bonusData?: BonusData;
+  bonusData: BonusData[];
 
   campaign: {
     campaignInfo?: CampaignInfo;
@@ -75,6 +75,7 @@ export const initialState: State = {
   isWallet,
   leaderboardAddresses: [],
   leaderboardStats: [],
+  bonusData: [],
   campaign: {},
 };
 

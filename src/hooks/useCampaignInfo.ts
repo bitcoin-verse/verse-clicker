@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { CURRENT_CAMPAIGN } from "../constants";
 import { useSocketCtx } from "../context/SocketContext";
 import { useDispatch, useTrackedState } from "../context/store";
-import useSocketEvents from "./useSocketEvents";
 
 export type CampaignInfo = { startDate: number; endDate: number };
 export type CampaignPhase = "BEFORE" | "DURING" | "AFTER";
@@ -16,7 +15,6 @@ const useCampaignInfo = () => {
   const timeout = useRef<NodeJS.Timeout>();
   const dispatch = useDispatch();
   const { isConnected } = useSocketCtx();
-  const { loading } = useSocketEvents();
 
   const getInfo = async () => {
     try {
@@ -37,7 +35,7 @@ const useCampaignInfo = () => {
   };
 
   useEffect(() => {
-    if (!isConnected || loading) {
+    if (!isConnected) {
       return;
     }
     // start timer to auto switch the game to active (or inactive)
@@ -72,7 +70,7 @@ const useCampaignInfo = () => {
     return () => {
       clearTimeout(timeout.current);
     };
-  }, [campaignInfo, isConnected, loading]);
+  }, [campaignInfo, isConnected]);
 };
 
 export default useCampaignInfo;
