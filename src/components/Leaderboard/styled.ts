@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const LeaderboardWrapper = styled.div`
-  margin: 0 auto 1rem auto;
+  margin: 0 auto auto auto;
   width: 90%;
   flex-direction: column;
   display: flex;
