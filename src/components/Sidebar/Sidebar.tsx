@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 import {
   SidebarModal,
@@ -10,11 +9,18 @@ import Handshake from "../Icons/Handshake";
 import Trophy from "../Icons/Trophy";
 import Modal from "../Modal";
 import NotificationContent from "../NotificationModal/Content";
+// import Map from "../Icons/Map";
+import Leaderboard from "./Leaderboard";
 import Settings from "./Settings";
 import { SidebarButton, Wrapper } from "./styled";
 
 const getModalContent = (close: () => void, content?: SidebarModal) => {
   switch (content) {
+    case "LEADERBOARD":
+      return {
+        title: "Leaderboard",
+        component: <Leaderboard />,
+      };
     case "WELCOME":
       return {
         title: "Verse Clicker",
@@ -35,7 +41,6 @@ const getModalContent = (close: () => void, content?: SidebarModal) => {
 };
 
 const Sidebar = () => {
-  const navigate = useNavigate();
   const { modalRef, showModal, close, content, setContent } =
     useSidebarModalCtx();
   const modalContent = getModalContent(close, content);
@@ -45,7 +50,8 @@ const Sidebar = () => {
       <Wrapper>
         <SidebarButton
           onClick={() => {
-            navigate("/leaderboard");
+            setContent("LEADERBOARD");
+            showModal();
           }}
         >
           <Trophy size="1rem" />
