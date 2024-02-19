@@ -14,10 +14,10 @@ import { DataWrapper, Stats, Value } from "../styled";
 
 const ReturningUser = () => {
   const { returnData } = useTrackedState();
-  const noBonus =
-    returnData?.bonus?.burn.length === 0 ||
-    returnData?.bonus?.scratcher.length === 0 ||
-    returnData?.bonus?.scratcherMint.length === 0;
+  const hasBonus =
+    returnData?.bonus?.burn.length !== 0 ||
+    returnData?.bonus?.scratcher.length !== 0 ||
+    returnData?.bonus?.scratcherMint.length !== 0;
 
   return (
     <>
@@ -47,7 +47,7 @@ const ReturningUser = () => {
         12 hours maximum offline point production
       </Label>
 
-      {noBonus && (
+      {hasBonus && (
         <hr
           style={{ width: "100%", border: `0.025rem solid ${colors.shade60}` }}
         />
