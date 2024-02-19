@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
 import { CURRENT_CAMPAIGN } from "../../constants";
-import Row from "../Leaderboard/Row";
+import Row from "../Sidebar/Leaderboard/Row";
 import {
   Header,
   LeaderboardContent,
   LeaderboardWrapper,
-} from "../Leaderboard/styled";
+} from "../Sidebar/Leaderboard/styled";
 
 const FinalLeaderboard = () => {
   const { address } = useAccount();

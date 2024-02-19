@@ -36,7 +36,6 @@ export const Title = styled(H3)`
   text-align: left;
   @media (min-width: 768px) {
     text-align: center;
-    font-size: 1rem;
   }
 `;
 
