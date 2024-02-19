@@ -11,14 +11,18 @@ import { getGameMode } from "./helpers/gameMode";
 import useCampaignInfo from "./hooks/useCampaignInfo";
 import useSocketEvents from "./hooks/useSocketEvents";
 import Leaderboard from "./views/Leaderboard";
+import ProtectedRoute from "./views/ProtectedRoute";
 
 const Main = lazy(() => import("./views/Main"));
-const NotConnected = lazy(() => import("./views/NotConnected"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: (
+      <ProtectedRoute>
+        <Main />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/leaderboard",
@@ -31,8 +35,8 @@ const App: FC = () => {
 
   const dispatch = useDispatch();
 
-  const { socket, isConnected: isSocketConnected } = useSocketCtx();
-  const { loading, setLoading } = useSocketEvents();
+  const { socket } = useSocketCtx();
+  const { setLoading } = useSocketEvents();
 
   const { chain } = useNetwork();
 
@@ -110,11 +114,7 @@ const App: FC = () => {
 
   return (
     <Suspense>
-      {status !== "connected" || loading || !isSocketConnected ? (
-        <NotConnected />
-      ) : (
-        <RouterProvider router={router} />
-      )}
+      <RouterProvider router={router} />
     </Suspense>
   );
 };
