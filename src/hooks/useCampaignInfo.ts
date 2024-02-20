@@ -10,7 +10,7 @@ export type CampaignPhase = "BEFORE" | "DURING" | "AFTER";
 
 const useCampaignInfo = () => {
   const {
-    campaign: { campaignInfo },
+    campaign: { campaignInfo, campaignPhase },
   } = useTrackedState();
   const timeout = useRef<NodeJS.Timeout>();
   const dispatch = useDispatch();
@@ -24,6 +24,20 @@ const useCampaignInfo = () => {
         }campaign/${CURRENT_CAMPAIGN}`,
       );
       dispatch({ type: "SET_CAMPAIGN", payload: { campaignInfo: data } });
+
+      if (Date.now() >= data.startDate && Date.now() <= data.endDate) {
+        dispatch({
+          type: "SET_CAMPAIGN",
+          payload: { campaignPhase: "DURING" },
+        });
+      } else if (Date.now() > data.endDate) {
+        dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "AFTER" } });
+      } else if (Date.now() < data.startDate) {
+        dispatch({
+          type: "SET_CAMPAIGN",
+          payload: { campaignPhase: "BEFORE" },
+        });
+      }
     } catch (e) {
       const error = e as AxiosError;
       console.log(
@@ -38,29 +52,24 @@ const useCampaignInfo = () => {
     if (!isConnected) {
       return;
     }
-    // start timer to auto switch the game to active (or inactive)
+
     if (!campaignInfo) {
       getInfo();
       return;
     }
-    // console.log(new Date(campaignInfo.startDate).toISOString());
-    // console.log(new Date(campaignInfo.endDate).toISOString());
+  }, [campaignInfo, isConnected]);
 
-    // started
-    if (
-      Date.now() >= campaignInfo.startDate &&
-      Date.now() <= campaignInfo.endDate
-    ) {
-      dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "DURING" } });
+  useEffect(() => {
+    if (!campaignInfo) {
+      return;
+    }
+
+    if (campaignPhase === "DURING") {
       const msDiff = campaignInfo.endDate - Date.now();
-
       timeout.current = setTimeout(() => {
         getInfo();
       }, msDiff);
-    } else if (Date.now() > campaignInfo.endDate) {
-      dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "AFTER" } });
-    } else if (Date.now() < campaignInfo.startDate) {
-      dispatch({ type: "SET_CAMPAIGN", payload: { campaignPhase: "BEFORE" } });
+    } else if (campaignPhase === "BEFORE") {
       const msDiff = campaignInfo.startDate - Date.now();
       timeout.current = setTimeout(() => {
         getInfo();
@@ -70,7 +79,7 @@ const useCampaignInfo = () => {
     return () => {
       clearTimeout(timeout.current);
     };
-  }, [campaignInfo, isConnected]);
+  }, [campaignInfo, campaignPhase]);
 };
 
 export default useCampaignInfo;
