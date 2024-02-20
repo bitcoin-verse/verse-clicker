@@ -7,7 +7,7 @@ import {
   useSwitchNetwork,
 } from "wagmi";
 
-import lnySrc from "../../../assets/lanturn.png";
+// import lnySrc from "../../../assets/lanturn.png";
 import { GameMode } from "../../../context/reducers/network";
 import { useDispatch } from "../../../context/store";
 import { getNetworkImage } from "../../../helpers/getNetworkImage";
@@ -31,12 +31,12 @@ const gameModeList: {
     icon: getNetworkImage(137),
     networks: [137],
   },
-  {
+  /*   {
     id: "LunarNewYear",
     label: "Lunar New Year",
     icon: lnySrc,
     networks: [137, 1],
-  },
+  }, */
 ];
 
 export const getGameModeDetails = (game: GameMode) => {
