@@ -23,7 +23,7 @@ const App: FC = () => {
 
   const { chain } = useNetwork();
 
-  const { gameMode } = useTrackedState();
+  const { gameMode, campaign } = useTrackedState();
 
   const { status, address, connector } = useAccount({
     onConnect: ({ address: addr }) => {
@@ -62,6 +62,17 @@ const App: FC = () => {
 
     if (gameMode !== CURRENT_CAMPAIGN && gameMode !== chain.name) {
       console.log("Setting game mode", newGameMode, gameMode);
+      dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
+      socket.disconnect();
+      return;
+    }
+
+    if (
+      status === "connected" &&
+      gameMode === CURRENT_CAMPAIGN &&
+      campaign.campaignPhase !== "DURING"
+    ) {
+      console.log("Not in campaign period");
       dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
       socket.disconnect();
       return;
