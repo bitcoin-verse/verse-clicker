@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const LeaderboardWrapper = styled.div`
   margin: 0 auto auto auto;
-  width: 100%;
+  width: 98%;
   flex-direction: column;
   display: flex;
   justify-content: space-between;
