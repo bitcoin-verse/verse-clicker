@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { colors } from "../colors";
+
 export const LeaderboardWrapper = styled.div`
   margin: 0 auto auto auto;
   width: 98%;
@@ -16,7 +18,7 @@ export const LeaderboardWrapper = styled.div`
   }
 `;
 
-export const LeaderboardContent = styled.div`
+export const StyledLeaderboardContent = styled.div`
   @media (min-width: 768px) {
     margin-right: -1.5rem;
     padding: 0.25rem 0 0 0;
@@ -29,11 +31,20 @@ export const LeaderboardContent = styled.div`
       border-radius: 0.5rem;
       right: -1.5rem;
     }
-
     &::-webkit-scrollbar-thumb {
       background-color: #313e57;
       border-radius: 0.5rem;
     }
+  }
+`;
+
+export const Description = styled.div`
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: ${colors.shade80};
+
+  & > span {
+    color: ${colors.white};
   }
 `;
 

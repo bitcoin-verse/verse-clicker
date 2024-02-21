@@ -3,9 +3,9 @@ import React, { FC, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
 import { GameMode } from "../../context/reducers/network";
-import { Description } from "../NotificationModal/styled";
-import Row from "./Row";
-import { Header, LeaderboardContent, LeaderboardWrapper } from "./styled";
+import EmptyLeaderboard from "./EmptyLeaderboard";
+import LeaderboardContent from "./LeaderboardContent";
+import { Header, LeaderboardWrapper } from "./styled";
 
 interface Props {
   gameMode: GameMode;
@@ -55,42 +55,14 @@ const LeaderboardViewer: FC<Props> = ({ gameMode }) => {
       ) : (
         <></>
       )}
-      <LeaderboardContent>
-        {leaderboardItems.length ? (
-          leaderboardItems?.map(({ address: addr, stats }, index) => {
-            if (index >= 25) {
-              if (addr === address) {
-                return (
-                  <Row
-                    key={addr}
-                    address={addr}
-                    index="..."
-                    isUser={addr === address}
-                    stats={stats}
-                  />
-                );
-              }
-
-              return null;
-            }
-
-            return (
-              <Row
-                key={addr}
-                address={addr}
-                index={index + 1}
-                isUser={addr === address}
-                stats={stats}
-              />
-            );
-          })
-        ) : (
-          <Description style={{ textAlign: "center" }}>
-            Ghost town here.
-            <br /> Out-click the competition and claim your throne!
-          </Description>
-        )}
-      </LeaderboardContent>
+      {leaderboardItems.length ? (
+        <LeaderboardContent
+          leaderboardItems={leaderboardItems}
+          userAddress={address}
+        />
+      ) : (
+        <EmptyLeaderboard />
+      )}
     </LeaderboardWrapper>
   );
 };
