@@ -45,7 +45,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
     }
 
     return getMaxBuilding(player.cookies, building.cost);
-  }, [player.cookies, building.cost]);
+  }, [purchaseAmount, player.cookies, building.cost]);
 
   const farmStakingMultiplier = player.isFarming || player.isStaking ? 2 : 1;
 
