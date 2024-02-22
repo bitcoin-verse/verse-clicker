@@ -26,15 +26,17 @@ const LeaderboardContent: FC<LeaderboardContentProps> = ({
       {leaderboardItems.map(({ address, stats }, index) => {
         const isUser = address === userAddress;
         const indexDisplay = index >= 25 && isUser ? "..." : index + 1;
-        return (
-          <Row
-            key={address}
-            address={address}
-            index={indexDisplay.toString()}
-            isUser={isUser}
-            stats={stats}
-          />
-        );
+        if (index < 25 || (index >= 25 && isUser)) {
+          return (
+            <Row
+              key={address}
+              address={address}
+              index={indexDisplay.toString()}
+              isUser={isUser}
+              stats={stats}
+            />
+          );
+        }
       })}
     </StyledLeaderboardContent>
   );
