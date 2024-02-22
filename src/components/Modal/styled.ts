@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { isLiteMode } from "../../helpers/liteMode";
+
 export const Dialog = styled.dialog`
   border: none;
   border-radius: 1rem;
@@ -15,10 +17,14 @@ export const Dialog = styled.dialog`
   outline: none;
   background: #030c14;
 
-  &::backdrop {
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(0.2rem);
-  }
+  ${() =>
+    !isLiteMode &&
+    `
+    &::backdrop {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(0.2rem);
+    }
+  `}
 
   overscroll-behavior: none;
 
