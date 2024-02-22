@@ -5,6 +5,7 @@ declare module ".*wav";
 declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: "development" | "production" | "test";
+    REACT_APP_LITE_MODE: "true" | "false";
     PUBLIC_URL: string;
     REACT_APP_PUBLIC_URL: string;
     REACT_APP_VERSE_BASE_URL: string;
