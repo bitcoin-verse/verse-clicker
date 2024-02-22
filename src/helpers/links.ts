@@ -1,4 +1,4 @@
-const isDev = process.env.REACT_APP_DEV_ENV === "development";
+export const isDev = process.env.REACT_APP_DEV_ENV === "development";
 const VERSE_BASE_URL =
   process.env.REACT_APP_VERSE_BASE_URL || "https://verse.bitcoin.com/";
 

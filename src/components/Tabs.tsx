@@ -18,7 +18,7 @@ const TabsWrapper = styled.div<{
     background: linear-gradient(180deg, #425472 0%, #313e57 100%);
     padding: 0.25rem;
     border-radius: 2.25rem;
-    gap: 0.5rem;
+    gap: 0.3rem;
     width: fit-content;
     align-self: ${({ $center }) => ($center ? "center" : "flex-end")};
   }
@@ -56,7 +56,7 @@ export const TabButton = styled.button<{
     padding: 0.5rem;
     border-radius: 2.25rem;
 
-    font-size: 0.875rem;
+    font-size: min(2.5vw, 0.875rem);
 
     cursor: pointer;
 

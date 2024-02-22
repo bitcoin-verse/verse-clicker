@@ -1,31 +1,47 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { useAccount, useNetwork } from "wagmi";
 
 import { CURRENT_CAMPAIGN } from "./constants";
 import { useSocketCtx } from "./context/SocketContext";
 import { GameMode } from "./context/reducers/network";
 import { useDispatch, useTrackedState } from "./context/store";
-import { logAmplitudeEvent } from "./helpers/analytics";
 import { getGameMode } from "./helpers/gameMode";
 import useCampaignInfo from "./hooks/useCampaignInfo";
 import useSocketEvents from "./hooks/useSocketEvents";
+import Leaderboard from "./views/Leaderboard";
+import ProtectedRoute from "./views/ProtectedRoute";
 
 const Main = lazy(() => import("./views/Main"));
-const NotConnected = lazy(() => import("./views/NotConnected"));
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <ProtectedRoute>
+        <Main />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/leaderboard",
+    element: <Leaderboard />,
+  },
+]);
 
 const App: FC = () => {
   useCampaignInfo();
 
   const dispatch = useDispatch();
 
-  const { socket, isConnected: isSocketConnected } = useSocketCtx();
-  const { loading, setLoading } = useSocketEvents();
+  const { socket } = useSocketCtx();
+  const { setLoading } = useSocketEvents();
 
   const { chain } = useNetwork();
 
   const { gameMode, campaign } = useTrackedState();
 
-  const { status, address, connector } = useAccount({
+  const { status, address } = useAccount({
     onConnect: ({ address: addr }) => {
       if (!addr) return;
       console.log("Web3 Connected");
@@ -95,24 +111,9 @@ const App: FC = () => {
     socket.connect();
   }, [status, chain, address, gameMode]);
 
-  useEffect(() => {
-    if (status === "connected" && !loading) {
-      logAmplitudeEvent({
-        name: "connect wallet result",
-        blockchain: gameMode,
-        connectOption: connector.name,
-        success: true,
-      });
-    }
-  }, [status, loading]);
-
   return (
     <Suspense>
-      {status !== "connected" || loading || !isSocketConnected ? (
-        <NotConnected />
-      ) : (
-        <Main />
-      )}
+      <RouterProvider router={router} />
     </Suspense>
   );
 };
