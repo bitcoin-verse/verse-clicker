@@ -51,17 +51,31 @@ const Leaderboard = memo(() => {
         {leaderboardAddresses?.map((addr, index) => {
           const item = leaderboardStats[index];
 
-          if (index < 25 || (index >= 25 && addr === address)) {
-            return (
-              <Row
-                key={addr}
-                address={addr}
-                index={index >= 25 ? "..." : index + 1}
-                isUser={addr === address}
-                stats={item}
-              />
-            );
+          if (index >= 25) {
+            if (addr === address) {
+              return (
+                <Row
+                  key={addr}
+                  address={addr}
+                  index="..."
+                  isUser={addr === address}
+                  stats={item}
+                />
+              );
+            }
+
+            return null;
           }
+
+          return (
+            <Row
+              key={addr}
+              address={addr}
+              index={index + 1}
+              isUser={addr === address}
+              stats={item}
+            />
+          );
         })}
       </LeaderboardContent>
     </LeaderboardWrapper>
