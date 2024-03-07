@@ -11,7 +11,7 @@ import {
   getAddress,
   numberToHex,
 } from "viem";
-import { type Chain, polygon } from "viem/chains";
+import { type Chain } from "viem/chains";
 import { Connector, ConnectorData, WalletClient, mainnet } from "wagmi";
 
 export type Storage = {
@@ -274,6 +274,12 @@ export class WalletConnectConnector extends Connector<
         method: "wallet_switchEthereumChain",
         params: [{ chainId: numberToHex(chainId) }],
       });
+
+      const accounts = await this.#provider?.enable();
+
+      if (accounts) {
+        this.onAccountsChanged(accounts);
+      }
 
       return chain;
     } catch (error) {
