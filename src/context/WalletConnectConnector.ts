@@ -275,6 +275,12 @@ export class WalletConnectConnector extends Connector<
         params: [{ chainId: numberToHex(chainId) }],
       });
 
+      const accounts = await this.#provider?.enable();
+
+      if (accounts) {
+        this.onAccountsChanged(accounts);
+      }
+
       return chain;
     } catch (error) {
       const message =
@@ -428,6 +434,7 @@ export class WalletConnectConnector extends Connector<
   protected onChainChanged = (chainId: number | string) => {
     const id = Number(chainId);
     const unsupported = this.isChainUnsupported(id);
+
     this.emit("change", { chain: { id, unsupported } });
   };
 
