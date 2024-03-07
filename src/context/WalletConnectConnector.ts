@@ -11,7 +11,7 @@ import {
   getAddress,
   numberToHex,
 } from "viem";
-import { type Chain, polygon } from "viem/chains";
+import { type Chain } from "viem/chains";
 import { Connector, ConnectorData, WalletClient, mainnet } from "wagmi";
 
 export type Storage = {
