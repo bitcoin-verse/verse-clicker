@@ -434,7 +434,6 @@ export class WalletConnectConnector extends Connector<
   protected onChainChanged = (chainId: number | string) => {
     const id = Number(chainId);
     const unsupported = this.isChainUnsupported(id);
-
     this.emit("change", { chain: { id, unsupported } });
   };
 
