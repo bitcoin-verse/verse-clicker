@@ -1,5 +1,6 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useTheme } from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 import { useAccount, useDisconnect, useSignMessage } from "wagmi";
 
 import connectWallet from "../../assets/connect-wallet.png";
@@ -22,24 +23,20 @@ import {
 } from "./styled";
 
 const Loading: FC = () => {
-  const { status } = useAccount();
+  const { status, address } = useAccount();
   const { disconnect } = useDisconnect();
   const { halfMoon } = useTheme();
   const dispatch = useDispatch();
   const { modalRef, showModal, close } = useModal();
   const { error, settings, isWallet } = useTrackedState();
-  const { data, signMessage } = useSignMessage({
-    message: `I approve this device:  ${settings.sign?.uuid}`,
-  });
+  const [deviceUuid, setDeviceUuid] = useState(
+    settings.sign[0]?.uuid || uuidv4(),
+  );
 
-  useEffect(() => {
-    if (!!settings.sign?.signature && !!settings.sign?.uuid) {
-      dispatch({
-        type: "SET_SIGN_SIGNATURE",
-        payload: settings.sign?.signature,
-      });
-    }
-  }, []);
+  // use same uuid for same device to avoid confusion, if not, then use generated uuid
+  const { data, signMessage } = useSignMessage({
+    message: `I approve this device:  ${deviceUuid}`,
+  });
 
   useEffect(() => {
     if (status === "connected") {
@@ -52,7 +49,10 @@ const Loading: FC = () => {
 
   useEffect(() => {
     if (!data) return;
-    dispatch({ type: "SET_SIGN_SIGNATURE", payload: data });
+    dispatch({
+      type: "ADD_SIGN_DATA_ELEMENT",
+      payload: { signature: data, address, uuid: deviceUuid },
+    });
   }, [data]);
 
   return (
@@ -95,7 +95,7 @@ const Loading: FC = () => {
               </Button>
             </>
           )}
-          {!settings.sign?.signature && (
+          {!settings.sign?.find((signData) => address == signData.address) && (
             <>
               <Button
                 onClick={() => {

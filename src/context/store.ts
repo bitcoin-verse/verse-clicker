@@ -31,7 +31,7 @@ export type State = {
   settings: {
     sound: boolean;
     campaignBanner: boolean;
-    sign?: SignData;
+    sign: SignData[];
   };
   isWallet: boolean;
 
@@ -75,7 +75,7 @@ export const initialState: State = {
   },
   gameMode,
   purchaseAmount: 1,
-  settings: { sound: true, campaignBanner: true, sign: { uuid: uuidv4() } },
+  settings: { sound: true, campaignBanner: true, sign: [] },
   isWallet,
   leaderboardAddresses: [],
   leaderboardStats: [],

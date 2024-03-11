@@ -109,7 +109,7 @@ const App: FC = () => {
       return;
     }
 
-    if (!settings.sign?.signature) {
+    if (!settings.sign?.find((signData) => address === signData.address)) {
       socket.disconnect();
       return;
     }
