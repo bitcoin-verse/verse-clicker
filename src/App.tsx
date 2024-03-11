@@ -1,6 +1,5 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import { useAccount, useNetwork } from "wagmi";
 
 import { CURRENT_CAMPAIGN } from "./constants";
@@ -9,7 +8,6 @@ import { GameMode } from "./context/reducers/network";
 import { useDispatch, useTrackedState } from "./context/store";
 import { getGameMode } from "./helpers/gameMode";
 import useCampaignInfo from "./hooks/useCampaignInfo";
-import { useLocalStorage } from "./hooks/useLocalStorage";
 import useSocketEvents from "./hooks/useSocketEvents";
 import Leaderboard from "./views/Leaderboard";
 import ProtectedRoute from "./views/ProtectedRoute";
@@ -38,17 +36,11 @@ const App: FC = () => {
 
   const { socket } = useSocketCtx();
   const { setLoading } = useSocketEvents();
-  const { getStorageItem } = useLocalStorage();
 
   const { chain } = useNetwork();
   const { gameMode, settings, campaign } = useTrackedState();
 
   useEffect(() => {
-    if (!settings.sign?.uuid) {
-      const uuid = getStorageItem("uuid") || uuidv4();
-      dispatch({ type: "SET_SIGN_UUID", payload: uuid });
-    }
-
     if (!settings.sign?.signature) {
       console.log("MUST SIGN");
     }

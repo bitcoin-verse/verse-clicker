@@ -1,10 +1,12 @@
 import { Dispatch, Reducer, useCallback, useEffect, useReducer } from "react";
 import { createContainer } from "react-tracked";
+import { v4 as uuidv4 } from "uuid";
 
 import buildings from "../buildings";
 import Building from "../classes/Building";
 import { getGameMode } from "../helpers/gameMode";
 import { CampaignInfo, CampaignPhase } from "../hooks/useCampaignInfo";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import reducer, { Action } from "./reducer";
 import { BonusData } from "./reducers/bonusData";
 import { LeaderboardStats } from "./reducers/leaderboard";
@@ -73,7 +75,7 @@ export const initialState: State = {
   },
   gameMode,
   purchaseAmount: 1,
-  settings: { sound: true, campaignBanner: true },
+  settings: { sound: true, campaignBanner: true, sign: { uuid: uuidv4() } },
   isWallet,
   leaderboardAddresses: [],
   leaderboardStats: [],
@@ -83,7 +85,8 @@ export const initialState: State = {
 
 const init = (): State => {
   try {
-    const stored = window.localStorage.getItem(storageKey);
+    const { getStorageItem } = useLocalStorage();
+    const stored = getStorageItem(storageKey);
     if (!stored) throw new Error("localstorage not found");
 
     const persistedState = JSON.parse(stored);
