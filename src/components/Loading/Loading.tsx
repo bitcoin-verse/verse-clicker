@@ -28,7 +28,7 @@ const Loading: FC = () => {
   const { halfMoon } = useTheme();
   const dispatch = useDispatch();
   const { modalRef, showModal, close } = useModal();
-  const { error, settings, isWallet } = useTrackedState();
+  const { error, settings } = useTrackedState();
   const [deviceUuid, setDeviceUuid] = useState(
     settings.sign[0]?.uuid || uuidv4(),
   );
