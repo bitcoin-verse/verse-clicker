@@ -14,6 +14,7 @@ interface Props {
   title?: string;
   onClose?: () => void;
   overlayClose?: boolean;
+  contentStyles?: React.CSSProperties;
 }
 
 const Modal: FC<PropsWithChildren<Props>> = ({
@@ -22,6 +23,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
   title,
   onClose,
   overlayClose,
+  contentStyles,
   ...rest
 }) => {
   const close = () => {
@@ -51,7 +53,7 @@ const Modal: FC<PropsWithChildren<Props>> = ({
           </CloseButton>
         </ModalTitle>
       )}
-      <ModalContent>{children}</ModalContent>
+      <ModalContent style={contentStyles}>{children}</ModalContent>
     </Dialog>
   );
 };

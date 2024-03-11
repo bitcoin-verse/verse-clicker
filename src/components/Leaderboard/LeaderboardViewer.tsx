@@ -3,16 +3,28 @@ import React, { FC, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
 import { GameMode } from "../../context/reducers/network";
+import { H3 } from "../H3";
+import { getGameModeDetails } from "../Header/Connect/GameModesList";
+import Chevron from "../Icons/Chevron";
+import Modal, { useModal } from "../Modal";
 import EmptyLeaderboard from "./EmptyLeaderboard";
 import LeaderboardContent from "./LeaderboardContent";
-import { Header, LeaderboardWrapper } from "./styled";
+import OptionsList from "./OptionsList";
+import { Button, ButtonContent } from "./styled";
+import { Header, LeaderboardWrapper, TableHeader } from "./styled";
 
 interface Props {
-  gameMode: GameMode;
+  selectedGameMode: GameMode;
+  gameModes: { label: string; value: GameMode }[];
 }
 
-const LeaderboardViewer: FC<Props> = ({ gameMode }) => {
+const LeaderboardViewer: FC<Props> = ({ gameModes, selectedGameMode }) => {
   const { address } = useAccount();
+  const {
+    modalRef: leaderboardGameModesModalRef,
+    showModal: showGameModes,
+    close: closeGameModes,
+  } = useModal();
 
   const [leaderboardItems, setLeaderboardItems] = useState<
     {
@@ -31,7 +43,7 @@ const LeaderboardViewer: FC<Props> = ({ gameMode }) => {
         const { data } = await axios.get(
           `${
             process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001/"
-          }leaderboard/${gameMode}`,
+          }leaderboard/${selectedGameMode}`,
         );
 
         setLeaderboardItems(data.players);
@@ -41,17 +53,33 @@ const LeaderboardViewer: FC<Props> = ({ gameMode }) => {
     };
 
     getLeaderboard();
-  }, [gameMode]);
+  }, [selectedGameMode]);
 
   return (
     <LeaderboardWrapper>
+      <Header>
+        <H3>Leaderboard</H3>
+        <Button>
+          <ButtonContent
+            onClick={() => {
+              showGameModes();
+            }}
+            $logo={getGameModeDetails(selectedGameMode)?.icon || ""}
+            style={{
+              background: `linear-gradient(180deg, #425472 0%, #313e57 100%)`,
+            }}
+          >
+            {selectedGameMode} <Chevron rotateDeg={-90} />
+          </ButtonContent>
+        </Button>
+      </Header>
       {leaderboardItems.length ? (
-        <Header>
+        <TableHeader>
           <div />
           <div>Address</div>
           <div>Clicks</div>
           <div>Earned</div>
-        </Header>
+        </TableHeader>
       ) : (
         <></>
       )}
@@ -63,6 +91,14 @@ const LeaderboardViewer: FC<Props> = ({ gameMode }) => {
       ) : (
         <EmptyLeaderboard />
       )}
+      <Modal
+        modalRef={leaderboardGameModesModalRef}
+        title="Select Game"
+        overlayClose
+        contentStyles={{ gap: "0", padding: "0 0 5rem 0" }}
+      >
+        <OptionsList options={gameModes} />
+      </Modal>
     </LeaderboardWrapper>
   );
 };
