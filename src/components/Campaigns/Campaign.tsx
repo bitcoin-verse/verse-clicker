@@ -16,7 +16,6 @@ import During from "./During";
 import { CampaignButton, CampaignImg, Wrapper } from "./styled";
 import { CampaignJson } from "./types";
 
-
 function getContent(campaign: GameMode): CampaignJson | null {
   switch (campaign) {
     case "Christmas":

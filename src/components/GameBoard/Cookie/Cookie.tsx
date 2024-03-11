@@ -91,7 +91,6 @@ const Cookie: FC = () => {
       return;
     }
 
-
     socket.emit("click");
     animateCookieClick(e);
 
