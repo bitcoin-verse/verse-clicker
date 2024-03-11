@@ -1,7 +1,7 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import { useAccount, useNetwork, useSignMessage } from "wagmi";
+import { useAccount, useNetwork } from "wagmi";
 
 import { CURRENT_CAMPAIGN } from "./constants";
 import { useSocketCtx } from "./context/SocketContext";
@@ -38,7 +38,7 @@ const App: FC = () => {
 
   const { socket } = useSocketCtx();
   const { setLoading } = useSocketEvents();
-  const { getStorageItem, setStorageItem } = useLocalStorage();
+  const { getStorageItem } = useLocalStorage();
 
   const { chain } = useNetwork();
   const { gameMode, settings, campaign } = useTrackedState();
@@ -47,7 +47,6 @@ const App: FC = () => {
     if (!settings.sign?.uuid) {
       const uuid = getStorageItem("uuid") || uuidv4();
       dispatch({ type: "SET_SIGN_UUID", payload: uuid });
-      setStorageItem("uuid", uuid || "");
     }
 
     if (!settings.sign?.signature) {
