@@ -101,6 +101,7 @@ const Loading: FC = () => {
                 onClick={() => {
                   signMessage();
                 }}
+                $size="small"
               >
                 Verify Ownership
               </Button>
