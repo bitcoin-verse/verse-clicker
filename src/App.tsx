@@ -36,8 +36,8 @@ const App: FC = () => {
 
   const dispatch = useDispatch();
 
-  const { socket, isConnected: isSocketConnected } = useSocketCtx();
-  const { loading, setLoading } = useSocketEvents();
+  const { socket } = useSocketCtx();
+  const { setLoading } = useSocketEvents();
   const { getStorageItem, setStorageItem } = useLocalStorage();
 
   const { chain } = useNetwork();
