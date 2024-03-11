@@ -44,8 +44,6 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
     const onConnect = () => {
       if (!chain || !address) return;
 
-      console.log(sign);
-
       socketRef.current.emit("join", {
         address,
         chain: gameMode,

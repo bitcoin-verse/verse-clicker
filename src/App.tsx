@@ -40,12 +40,6 @@ const App: FC = () => {
   const { chain } = useNetwork();
   const { gameMode, settings, campaign } = useTrackedState();
 
-  useEffect(() => {
-    if (!settings.sign?.signature) {
-      console.log("MUST SIGN");
-    }
-  }, [settings.sign]);
-
   const { status, address } = useAccount({
     onConnect: ({ address: addr }) => {
       if (!addr) return;
