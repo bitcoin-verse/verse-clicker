@@ -30,7 +30,6 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
 
   const buyBuilding = useCallback(
     (amount: number) => {
-      if (!socket) return;
       socket.emit("buy_building", { index, amount });
       if (playBuy) playBuy();
     },

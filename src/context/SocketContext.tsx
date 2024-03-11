@@ -47,8 +47,8 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
       socketRef.current.emit("join", {
         address,
         chain: gameMode,
-        uuid: sign?.find((s) => s.address === address)?.uuid,
-        signature: sign?.find((s) => s.address === address)?.signature,
+        uuid: sign[address].uuid,
+        signature: sign[address].signature,
       });
       setIsConnected(true);
       dispatch({ type: "SET_ERROR" });
@@ -70,7 +70,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
     };
 
     // socketRef.current.connect();
-    if (!sign?.find((s) => s.address === address)) {
+    if (!address || !sign[address]) {
       setIsConnected(false);
       dispatch({ type: "RESET_GAME" });
       console.log("Socket disconnected");

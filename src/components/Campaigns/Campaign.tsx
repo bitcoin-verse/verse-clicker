@@ -43,7 +43,6 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
   const content = getContent(CURRENT_CAMPAIGN);
 
   const playCampaign = useCallback(() => {
-    if (!socket) return;
     dispatch({ type: "RESET_GAME" });
     dispatch({ type: "SET_GAME_MODE", payload: CURRENT_CAMPAIGN });
     close();

@@ -2,7 +2,7 @@ import { State } from "../store";
 
 export type SignData = {
   uuid?: string;
-  address?: string;
+  address: string;
   signature?: string;
 };
 
@@ -13,22 +13,23 @@ export type SetSignSignatureAction = {
 };
 
 export type AddSignDataElementAction = {
-  type: "ADD_SIGN_DATA_ELEMENT";
-  payload: SignData;
+  type: "ADD_SIGN_DATA";
+  payload: {
+    address: string;
+    uuid?: string;
+    signature?: string;
+  };
 };
 
 export const addSignDataElement = (
   state: State,
   payload: AddSignDataElementAction["payload"],
 ): State => {
-  const { address } = payload;
-  const hasAddress = state.settings.sign?.find((sd) => sd.address === address);
-
-  if (hasAddress) {
-    return state;
-  }
-
-  const newSignData = [...state.settings.sign, payload];
+  const { address, uuid, signature } = payload;
+  const newSignData = {
+    ...state.settings.sign,
+    [address]: { uuid, signature, address },
+  };
 
   return {
     ...state,

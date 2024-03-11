@@ -28,7 +28,6 @@ const UpgradeAll: FC<Props> = ({ mobileVersion = false }) => {
 
   const buyUpgrade = useCallback(
     (bIndex: number, uIndex: number) => {
-      if (!socket) return;
       socket.emit("buy_upgrade", {
         building: bIndex,
         upgrade: uIndex,

@@ -85,7 +85,7 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return setBonusData(state, action.payload);
     case "SET_CAMPAIGN":
       return setCampaign(state, action.payload);
-    case "ADD_SIGN_DATA_ELEMENT":
+    case "ADD_SIGN_DATA":
       return addSignDataElement(state, action.payload);
     default:
       return state;
