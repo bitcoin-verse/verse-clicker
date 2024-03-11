@@ -85,8 +85,7 @@ export const initialState: State = {
 
 const init = (): State => {
   try {
-    const { getStorageItem } = useLocalStorage();
-    const stored = getStorageItem(storageKey);
+    const stored = window.localStorage.getItem(storageKey);
     if (!stored) throw new Error("localstorage not found");
 
     const persistedState = JSON.parse(stored);
