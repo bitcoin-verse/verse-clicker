@@ -34,7 +34,7 @@ const UpgradeButton: FC<Props> = ({ upgrade }) => {
 
       if (playBuy) playBuy();
     },
-    [playBuy],
+    [playBuy, socket],
   );
 
   return (

@@ -1,9 +1,10 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useTheme } from "styled-components";
-import { useAccount, useDisconnect } from "wagmi";
+import { useAccount, useDisconnect, useSignMessage } from "wagmi";
 
 import connectWallet from "../../assets/connect-wallet.png";
-import { useTrackedState } from "../../context/store";
+import { useDispatch, useTrackedState } from "../../context/store";
+import { getFirstUuid } from "../../helpers/getUuid";
 import { Button } from "../Button";
 import { H1 } from "../H1";
 import { H4 } from "../H4";
@@ -22,11 +23,18 @@ import {
 } from "./styled";
 
 const Loading: FC = () => {
-  const { status } = useAccount();
+  const { status, address } = useAccount();
   const { disconnect } = useDisconnect();
   const { halfMoon } = useTheme();
+  const dispatch = useDispatch();
   const { modalRef, showModal, close } = useModal();
-  const { error } = useTrackedState();
+  const { error, settings } = useTrackedState();
+  const [deviceUuid, setDeviceUuid] = useState(getFirstUuid(settings.sign));
+
+  // use same uuid for same device to avoid confusion, if not, then use generated uuid
+  const { data, signMessage } = useSignMessage({
+    message: `I approve this device:  ${deviceUuid}`,
+  });
 
   useEffect(() => {
     if (status === "connected") {
@@ -36,6 +44,14 @@ const Loading: FC = () => {
       close();
     };
   }, [status]);
+
+  useEffect(() => {
+    if (!data) return;
+    dispatch({
+      type: "ADD_SIGN_DATA",
+      payload: { signature: data, address: address || "", uuid: deviceUuid },
+    });
+  }, [data]);
 
   return (
     <>
@@ -74,6 +90,18 @@ const Loading: FC = () => {
                 }}
               >
                 Close
+              </Button>
+            </>
+          )}
+          {!settings.sign[address || ""] && (
+            <>
+              <Button
+                onClick={() => {
+                  signMessage();
+                }}
+                $size="small"
+              >
+                Verify Ownership
               </Button>
             </>
           )}

@@ -27,7 +27,10 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
   const dispatch = useDispatch();
   const { chain } = useNetwork();
   const { address } = useAccount();
-  const { gameMode } = useTrackedState();
+  const {
+    gameMode,
+    settings: { sign },
+  } = useTrackedState();
 
   const socketRef = useRef(
     io(process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001", {
@@ -41,7 +44,12 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
     const onConnect = () => {
       if (!chain || !address) return;
 
-      socketRef.current.emit("join", { address, chain: gameMode });
+      socketRef.current.emit("join", {
+        address,
+        chain: gameMode,
+        uuid: sign[address].uuid,
+        signature: sign[address].signature,
+      });
       setIsConnected(true);
       dispatch({ type: "SET_ERROR" });
       console.log("Socket connected", chain.name, gameMode);
@@ -62,6 +70,11 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
     };
 
     // socketRef.current.connect();
+    if (!address || !sign[address]) {
+      setIsConnected(false);
+      dispatch({ type: "RESET_GAME" });
+      console.log("Socket disconnected");
+    }
     socketRef.current.on("connect", onConnect);
     socketRef.current.on("disconnect", onDisconnect);
     socketRef.current.on("connect_error", onError);
@@ -72,7 +85,7 @@ const SocketCtxProvider: FC<PropsWithChildren> = ({ children }) => {
 
       socketRef.current.disconnect();
     };
-  }, [address, chain, gameMode]);
+  }, [address, chain, gameMode, sign]);
 
   return (
     <SocketCtxContext.Provider

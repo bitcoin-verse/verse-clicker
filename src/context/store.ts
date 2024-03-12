@@ -11,6 +11,7 @@ import { LeaderboardStats } from "./reducers/leaderboard";
 import { GameMode } from "./reducers/network";
 import { Player } from "./reducers/player";
 import { ReturnData } from "./reducers/returnData";
+import { SignData } from "./reducers/sign";
 
 const storageKey = "verse-clicker";
 
@@ -28,6 +29,7 @@ export type State = {
   settings: {
     sound: boolean;
     campaignBanner: boolean;
+    sign: Record<string, SignData>;
   };
   isWallet: boolean;
 
@@ -71,7 +73,7 @@ export const initialState: State = {
   },
   gameMode,
   purchaseAmount: 1,
-  settings: { sound: true, campaignBanner: true },
+  settings: { sound: true, campaignBanner: true, sign: {} },
   isWallet,
   leaderboardAddresses: [],
   leaderboardStats: [],
@@ -95,6 +97,10 @@ const init = (): State => {
         typeof persistedState?.settings?.campaignBanner === "boolean"
           ? persistedState.settings.campaignBanner
           : initialState.settings.campaignBanner,
+      sign:
+        typeof persistedState?.settings?.sign === "object"
+          ? persistedState.settings.sign
+          : initialState.settings.sign,
     };
 
     return {

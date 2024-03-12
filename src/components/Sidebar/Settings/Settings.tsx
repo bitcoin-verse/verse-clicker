@@ -33,7 +33,7 @@ const Settings: FC = () => {
   const { modalRef, showModal, close } = useModal();
 
   const resetScore = useCallback(() => {
-    if (!gameMode || !address) return;
+    if (!gameMode || !address || !socket) return;
     socket.emit("wipe_save", { address, chain: gameMode });
     close();
     dispatch({ type: "RESET_GAME" });

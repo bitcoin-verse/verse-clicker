@@ -38,8 +38,7 @@ const App: FC = () => {
   const { setLoading } = useSocketEvents();
 
   const { chain } = useNetwork();
-
-  const { gameMode, campaign } = useTrackedState();
+  const { gameMode, settings, campaign } = useTrackedState();
 
   const { status, address } = useAccount({
     onConnect: ({ address: addr }) => {
@@ -59,6 +58,9 @@ const App: FC = () => {
     // setting the campaign query to match game mode
     const search = new URLSearchParams(location.search);
     const campaignQuery = search.get("campaign");
+
+    if (status !== "connected" || !chain || !socket) return;
+    setLoading(true);
 
     const newGameMode = getGameMode(campaignQuery);
     if (
@@ -107,9 +109,14 @@ const App: FC = () => {
       return;
     }
 
+    if (!settings.sign[address]) {
+      socket.disconnect();
+      return;
+    }
+
     socket.disconnect();
     socket.connect();
-  }, [status, chain, address, gameMode]);
+  }, [status, chain, address, gameMode, settings.sign]);
 
   return (
     <Suspense>

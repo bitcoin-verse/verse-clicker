@@ -33,7 +33,7 @@ export const BuildingButton: FC<Props> = ({ building, index }) => {
       socket.emit("buy_building", { index, amount });
       if (playBuy) playBuy();
     },
-    [building, index, playBuy],
+    [building, index, playBuy, socket],
   );
 
   const { amount, cost } = useMemo(() => {
