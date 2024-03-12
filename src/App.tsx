@@ -10,6 +10,7 @@ import { getGameMode } from "./helpers/gameMode";
 import useCampaignInfo from "./hooks/useCampaignInfo";
 import useSocketEvents from "./hooks/useSocketEvents";
 import Leaderboard from "./views/Leaderboard";
+import Prestige from "./views/Prestige";
 import ProtectedRoute from "./views/ProtectedRoute";
 
 const Main = lazy(() => import("./views/Main"));
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/leaderboard",
     element: <Leaderboard />,
+  },
+  {
+    path: "/prestige",
+    element: <Prestige />,
   },
 ]);
 
