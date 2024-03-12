@@ -101,7 +101,11 @@ const Leaderboard: FC = () => {
           ))}
         />
       </TabsContainer>
-      <LeaderboardViewer gameModes={GAME_MODES} selectedGameMode={gameMode} />
+      <LeaderboardViewer
+        gameModes={GAME_MODES}
+        setGameMode={setGameMode}
+        selectedGameMode={gameMode}
+      />
       <Footer />
     </Layout>
   );

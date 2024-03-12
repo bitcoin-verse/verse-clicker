@@ -1,10 +1,13 @@
 import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
 
+import { GameMode } from "../../context/reducers/network";
+
 interface Option {
   label: string;
   icon?: ReactNode;
   tags?: string[];
+  value: GameMode;
 }
 
 interface OptionsListProps {
@@ -24,13 +27,14 @@ const OptionContainer = styled.div`
 `;
 
 const OptionIcon = styled.span`
-  margin-right: 8px;
+  margin-right: 0px;
   margin-left: 16px;
 `;
 
 const OptionLabel = styled.span`
   margin-left: 16px;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1rem;
 `;
 
 const OptionTagsWrapper = styled.div`
@@ -41,11 +45,12 @@ const OptionTagsWrapper = styled.div`
 `;
 
 const OptionTag = styled.span`
-  background-color: #2e3a4f;
-  padding: 4px 8px;
-  border-radius: 8px;
+  background-color: rgb(54, 134, 247);
+  padding: 4px;
+  border-radius: 4px;
   margin-right: 4px;
   font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
   color: #fff;
 `;
@@ -61,7 +66,7 @@ const OptionsList: FC<OptionsListProps> = ({ options, onOptionClick }) => {
     <>
       {options.map((option) => (
         <OptionContainer
-          key={option.label}
+          key={option.value}
           onClick={() => handleOptionClick(option)}
         >
           {option.icon && <OptionIcon>{option.icon}</OptionIcon>}

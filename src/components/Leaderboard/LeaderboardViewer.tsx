@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 import { useAccount } from "wagmi";
 
 import { GameMode } from "../../context/reducers/network";
@@ -15,11 +15,25 @@ import { Header, LeaderboardWrapper, TableHeader } from "./styled";
 
 interface Props {
   selectedGameMode: GameMode;
-  gameModes: { label: string; value: GameMode }[];
+  gameModes: {
+    label: string;
+    value: GameMode;
+    icon?: React.ReactNode;
+    tags?: string[];
+  }[];
+  setGameMode: (gameMode: GameMode) => void;
 }
 
-const LeaderboardViewer: FC<Props> = ({ gameModes, selectedGameMode }) => {
+const LeaderboardViewer: FC<Props> = ({
+  gameModes,
+  selectedGameMode,
+  setGameMode,
+}) => {
   const { address } = useAccount();
+  const selectedGameModeOption = useMemo(
+    () => gameModes.find((gm) => gm.value === selectedGameMode),
+    [selectedGameMode],
+  );
   const {
     modalRef: leaderboardGameModesModalRef,
     showModal: showGameModes,
@@ -59,18 +73,9 @@ const LeaderboardViewer: FC<Props> = ({ gameModes, selectedGameMode }) => {
     <LeaderboardWrapper>
       <Header>
         <H3>Leaderboard</H3>
-        <Button>
-          <ButtonContent
-            onClick={() => {
-              showGameModes();
-            }}
-            $logo={getGameModeDetails(selectedGameMode)?.icon || ""}
-            style={{
-              background: `linear-gradient(180deg, #425472 0%, #313e57 100%)`,
-            }}
-          >
-            {selectedGameMode} <Chevron rotateDeg={-90} />
-          </ButtonContent>
+        <Button onClick={() => showGameModes()}>
+          {selectedGameModeOption?.icon} {selectedGameModeOption?.label}{" "}
+          <Chevron rotateDeg={-90} />
         </Button>
       </Header>
       {leaderboardItems.length ? (
@@ -97,7 +102,13 @@ const LeaderboardViewer: FC<Props> = ({ gameModes, selectedGameMode }) => {
         overlayClose
         contentStyles={{ gap: "0", padding: "0 0 5rem 0" }}
       >
-        <OptionsList options={gameModes} />
+        <OptionsList
+          options={gameModes}
+          onOptionClick={(option) => {
+            setGameMode(option.value);
+            closeGameModes();
+          }}
+        />
       </Modal>
     </LeaderboardWrapper>
   );

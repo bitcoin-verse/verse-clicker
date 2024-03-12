@@ -76,6 +76,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
+  gap: 10px;
 `;
 export const TableHeader = styled.div`
   display: grid;
@@ -102,7 +103,17 @@ export const Button = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  margin-left: 0.5rem;
+  background: linear-gradient(180deg, #425472 0%, #313e57 100%);
+
+  border-radius: 2.25rem;
+  height: 2.25rem;
+  padding: 0.25rem;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: ${colors.white};
 `;
 
 export const ButtonContent = styled.div<{ $logo: string }>`
