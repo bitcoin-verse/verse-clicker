@@ -3,7 +3,6 @@ import { useNetwork } from "wagmi";
 
 import redEnvelope from "../../../src/assets/red-envelope.png";
 import { CURRENT_CAMPAIGN } from "../../constants";
-import { useSocketCtx } from "../../context/SocketContext";
 import { GameMode } from "../../context/reducers/network";
 import { useDispatch, useTrackedState } from "../../context/store";
 import { ModalWrapper } from "../Boosts/styled";
@@ -32,7 +31,6 @@ interface Props {
 }
 
 const Campaign: FC<Props> = ({ isNetworkButton }) => {
-  const { socket } = useSocketCtx();
   const { modalRef, showModal, close } = useModal();
   const { chain } = useNetwork();
   const dispatch = useDispatch();
@@ -46,11 +44,10 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
     dispatch({ type: "RESET_GAME" });
     dispatch({ type: "SET_GAME_MODE", payload: CURRENT_CAMPAIGN });
     close();
-  }, [socket]);
+  }, []);
 
   const switchChain = useCallback(() => {
     if (
-      !socket ||
       !chain?.name ||
       !["Ethereum", "Polygon", "Goerli", "Sepolia"].includes(chain.name)
     ) {
@@ -63,7 +60,7 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
       payload: chain?.name as GameMode,
     });
     close();
-  }, [socket]);
+  }, []);
 
   return (
     <Wrapper>
