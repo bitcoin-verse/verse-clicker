@@ -20,8 +20,8 @@ export const LeaderboardWrapper = styled.div`
 `;
 
 export const StyledLeaderboardContent = styled.div`
+  margin: 0 2rem;
   @media (min-width: 768px) {
-    margin: 0 2rem;
     max-height: 90vh;
     overflow-y: auto;
 
@@ -88,8 +88,9 @@ export const TableHeader = styled.div`
   text-align: right;
   padding-right: 1.5rem;
 
-  & > :nth-child(1),
-  & > :nth-child(2) {
+  & > :nth-child(2),
+  & > :nth-child(3),
+  & > :nth-child(4) {
     text-align: left;
   }
 

@@ -11,22 +11,21 @@ import Matic from "../components/Icons/Matic";
 import Layout from "../components/Layout";
 import LeaderboardViewer from "../components/Leaderboard/LeaderboardViewer";
 import NotificationModal from "../components/NotificationModal/NotificationModal";
-import Tabs, { TabButton } from "../components/Tabs";
 import { GameMode } from "../context/reducers/network";
 import { isDev } from "../helpers/links";
 
 const Particles = lazy(() => import("../components/Particles"));
 
-const Leaderboard: FC = () => {
-  const Image = styled.img`
-    grid-area: img;
-    height: 30px;
-    width: 30px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 0.75rem;
-  `;
+const Image = styled.img`
+  grid-area: img;
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.75rem;
+`;
 
+const Leaderboard: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const BASE_GAME_MODES: Array<{
     label: string;
@@ -74,33 +73,11 @@ const Leaderboard: FC = () => {
     setSearchParams({ ...searchParams, option: gameMode });
   }, [gameMode]);
 
-  const TabsContainer = styled.div`
-    margin: 20px auto;
-    z-index: 1000;
-  `;
-
   return (
     <Layout>
       <Suspense>{/* <Particles /> */}</Suspense>
       <NotificationModal />
       <Header />
-      <TabsContainer>
-        <Tabs
-          center
-          mobileVersion
-          tabs={GAME_MODES.map((button, i) => (
-            <TabButton
-              key={i}
-              $mobileVersion
-              $isSelected={gameMode === button.value}
-              type="button"
-              onClick={() => setGameMode(button.value)}
-            >
-              {button.label}
-            </TabButton>
-          ))}
-        />
-      </TabsContainer>
       <LeaderboardViewer
         gameModes={GAME_MODES}
         setGameMode={setGameMode}
