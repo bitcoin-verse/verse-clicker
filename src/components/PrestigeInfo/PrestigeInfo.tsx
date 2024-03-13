@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { formatEther } from "viem";
 import {
   useAccount,
@@ -15,13 +15,33 @@ import getVerseTokenDetails from "../../contracts/getVerseTokenDetails";
 import getPrestigeData from "../../helpers/getPrestigeData";
 import getPrestigeSignature from "../../helpers/getPrestigeSignature";
 import { H1 } from "../H1";
+import { Wrapper } from "./styled";
 
-const PrestigeInfo: FC = () => {
+interface Props {
+  toggleOpen?: boolean;
+  setToggleOpen?: (open: boolean) => void;
+}
+
+const UNLOCK_MULTIPLIER = [0.05, 0.25, 0.5, 0.75, 1];
+
+const UNLOCKS = [
+  {
+    label: "5%",
+    cost: 11,
+  },
+  { label: "25%", cost: 1111 },
+  { label: "50%", cost: 111111 },
+  { label: "75%", cost: 11111111 },
+  { label: "100%", cost: 1111111111 },
+];
+
+const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
   const { address } = useAccount();
   const chainId = useChainId();
   const { gameMode, player } = useTrackedState();
   const prestigeContractDetails = getPrestigeDetails(chainId);
   const verseContractDetails = getVerseTokenDetails(chainId);
+  const [isOpen, setIsOpen] = useState(false);
 
   const { data, refetch } = useContractReads({
     contracts: [
@@ -76,17 +96,44 @@ const PrestigeInfo: FC = () => {
     getTokenData();
   }, [data]);
 
+  useEffect(() => {
+    if (toggleOpen && setToggleOpen) {
+      setIsOpen(true);
+
+      setToggleOpen(false);
+    }
+  }, [toggleOpen]);
+
   return (
-    <div style={{ flex: 1, zIndex: 1, background: "black" }}>
+    <Wrapper $isOpen={isOpen}>
       <H1>Prestige</H1>
-      <div>{address}</div>
+
+      <div>Your prestige: {player.prestige.level}</div>
+      <div>Prestige level: {player.prestige.level}%</div>
       <div>
-        Prestige Level: {data?.[0]?.result?.toString()} {player.prestige}
+        Unlocked multiplier: {UNLOCK_MULTIPLIER[player.prestige.unlocked]}%
       </div>
-      <div>Nonce: {data?.[1]?.result?.toString()}</div>
+      <div>
+        Effective multiplier:{" "}
+        {UNLOCK_MULTIPLIER[player.prestige.unlocked] *
+          (player.prestige.level / 100)}
+        %
+      </div>
 
-      <div>Allowance: {formatEther((data?.[2].result as bigint) || 0n)}</div>
+      {UNLOCKS.map((c, i) => {
+        if (i < player.prestige.unlocked) return;
 
+        return (
+          <button
+            type="button"
+            key={c.label}
+            disabled={player.prestige.unlocked < i || player.cookies < c.cost}
+          >
+            Unlock {c.label} for {c.cost} points
+          </button>
+        );
+      })}
+      <hr />
       <button
         type="button"
         onClick={async () => {
@@ -105,7 +152,7 @@ const PrestigeInfo: FC = () => {
         Prestige
       </button>
       <div>Status: {status}</div>
-    </div>
+    </Wrapper>
   );
 };
 

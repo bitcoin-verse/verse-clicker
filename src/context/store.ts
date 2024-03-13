@@ -70,7 +70,7 @@ export const initialState: State = {
     isGuildMember: false,
     clickBase: 1,
     productionBase: 1,
-    prestige: 0,
+    prestige: { level: 0, unlocked: 0 },
   },
   gameMode,
   purchaseAmount: 1,

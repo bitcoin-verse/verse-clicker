@@ -15,7 +15,7 @@ export type Player = {
   isGuildMember: boolean;
   clickBase: number;
   productionBase: number;
-  prestige: number;
+  prestige: { level: number; unlocked: number };
 };
 
 export type SetPlayerAction = { type: "SET_PLAYER_DATA"; payload: Player };
