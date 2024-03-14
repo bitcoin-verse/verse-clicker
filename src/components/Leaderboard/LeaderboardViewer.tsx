@@ -72,7 +72,6 @@ const LeaderboardViewer: FC<Props> = ({
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    // Perform any additional logic for fetching data for the new page
   };
   useEffect(() => {
     let cancelRequest: CancelTokenSource | null = null;
