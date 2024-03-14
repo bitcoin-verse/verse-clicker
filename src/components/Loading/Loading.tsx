@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 import { useTheme } from "styled-components";
 import { useAccount, useDisconnect, useSignMessage } from "wagmi";
 
@@ -7,6 +7,7 @@ import { useDispatch, useTrackedState } from "../../context/store";
 import { getFirstUuid } from "../../helpers/getUuid";
 import { Button } from "../Button";
 import { H1 } from "../H1";
+import { H2 } from "../H2";
 import { H4 } from "../H4";
 import ConnectButton from "../Header/ConnectButton";
 import Spinner from "../Icons/Spinner";
@@ -29,10 +30,15 @@ const Loading: FC = () => {
   const dispatch = useDispatch();
   const { modalRef, showModal, close } = useModal();
   const { error, settings } = useTrackedState();
-  const [deviceUuid, setDeviceUuid] = useState(getFirstUuid(settings.sign));
+
+  const deviceUuid = getFirstUuid(settings.sign);
 
   // use same uuid for same device to avoid confusion, if not, then use generated uuid
-  const { data, signMessage } = useSignMessage({
+  const {
+    data,
+    signMessage,
+    status: signStatus,
+  } = useSignMessage({
     message: `I approve this device:  ${deviceUuid}`,
   });
 
@@ -76,7 +82,17 @@ const Loading: FC = () => {
       <Modal modalRef={modalRef}>
         <ModalContent>
           <Spinner />
-          <Title>Loading...</Title>
+          {!settings.sign[address || ""] ? (
+            <>
+              <H2>Verify Ownership</H2>
+              <Label>
+                Sign a message with your wallet to verify ownership of your
+                account
+              </Label>
+            </>
+          ) : (
+            <Title>Loading...</Title>
+          )}
           {error && (
             <>
               <Label $color="warning">{error}</Label>
@@ -100,8 +116,11 @@ const Loading: FC = () => {
                   signMessage();
                 }}
                 $size="small"
+                disabled={signStatus === "loading"}
               >
-                Verify Ownership
+                {signStatus === "loading"
+                  ? "Confirm in wallet"
+                  : "Sign request"}
               </Button>
             </>
           )}
