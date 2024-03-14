@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-import { formatEther } from "viem";
 import {
   useAccount,
   useChainId,
@@ -8,7 +7,6 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 
-import { useSocketCtx } from "../../context/SocketContext";
 import { useTrackedState } from "../../context/store";
 import { PRESTIGE_SEPOLIA_ADDRESS } from "../../contracts/constants";
 import getPrestigeDetails from "../../contracts/getPrestigeDetails.ts";
@@ -17,6 +15,7 @@ import { formatNumber } from "../../helpers/formatNumber";
 import getPrestigeData from "../../helpers/getPrestigeData";
 import getPrestigeSignature from "../../helpers/getPrestigeSignature";
 import { H1 } from "../H1";
+import Unlocks from "./Unlocks";
 import { Wrapper } from "./styled";
 
 interface Props {
@@ -24,23 +23,9 @@ interface Props {
   setToggleOpen?: (open: boolean) => void;
 }
 
-const UNLOCK_MULTIPLIER = [0, 0.05, 0.25, 0.5, 0.75, 1];
-
-const UNLOCKS = [
-  {
-    label: "5%",
-    cost: 11,
-  },
-  { label: "25%", cost: 1111 },
-  { label: "50%", cost: 111111 },
-  { label: "75%", cost: 11111111 },
-  { label: "100%", cost: 1111111111 },
-];
-
 const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
   const { address } = useAccount();
   const chainId = useChainId();
-  const { socket } = useSocketCtx();
   const { gameMode, player } = useTrackedState();
   const prestigeContractDetails = getPrestigeDetails(chainId);
   const verseContractDetails = getVerseTokenDetails(chainId);
@@ -112,33 +97,8 @@ const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
       <H1>Prestige</H1>
 
       <div>Your prestige: {player.prestige.level}</div>
-      <div>Prestige multiplier: {player.prestige.level}%</div>
-      <div>
-        Effective multiplier:{" "}
-        {UNLOCK_MULTIPLIER[player.prestige.unlocked] * player.prestige.level}%
-      </div>
-      <hr />
-      <div>
-        Multiplier unlocked: {UNLOCK_MULTIPLIER[player.prestige.unlocked] * 100}
-        %
-      </div>
 
-      {UNLOCKS.map((c, i) => {
-        if (i < player.prestige.unlocked) return;
-
-        return (
-          <button
-            type="button"
-            key={c.label}
-            onClick={() => {
-              socket.emit("prestige_upgrade", { room: gameMode });
-            }}
-            disabled={player.prestige.unlocked < i || player.cookies < c.cost}
-          >
-            Unlock {c.label} for {formatNumber(c.cost)} points
-          </button>
-        );
-      })}
+      {player.prestige.level > 0 && <Unlocks />}
       <hr />
       <button
         type="button"
@@ -157,6 +117,9 @@ const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
       >
         Prestige
       </button>
+      <div>
+        Next prestige: {formatNumber(player.prestige.cost, 3)} total earned
+      </div>
       <div>Status: {status}</div>
     </Wrapper>
   );
