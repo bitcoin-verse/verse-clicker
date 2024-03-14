@@ -1,12 +1,11 @@
 import React, { FC } from "react";
+import styled from "styled-components";
 
-import smallCookieSrc from "../../assets/small-cookie.png";
+import VerseMoon from "../../components/Icons/VerseMoon";
 import { formatNumber } from "../../helpers/formatNumber";
 import useUsername from "../../hooks/useUsername";
-import Cursor from "../Icons/Cursor";
 import Marquee from "../Marquee";
-import PointsIcon from "../PointsIcon";
-import { Body, StarWrapper, YouBadge } from "./styled";
+import { Body, YouBadge } from "./styled";
 
 interface Props {
   address: string;
@@ -19,6 +18,15 @@ interface Props {
   };
 }
 
+const Earned = styled.div`
+  display: flex;
+  & > :nth-child(1) {
+    min-width: 1.9rem;
+    max-width: 2rem;
+    width: 2rem;
+  }
+`;
+
 const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
   const userName = useUsername(address);
 
@@ -30,10 +38,10 @@ const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
         <div>{userName}</div>
       </Marquee>
 
-      <div>
-        <img src={smallCookieSrc} width={32} height={32} />
+      <Earned>
+        <VerseMoon width={"100%"} height={"100%"} />
         {formatNumber(Number(item.Earned))}
-      </div>
+      </Earned>
       <div>{formatNumber(Number(item.Clicked))}</div>
 
       {isUser && (

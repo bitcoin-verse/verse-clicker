@@ -169,22 +169,28 @@ export const Body = styled.div`
   font-weight: 600;
 
   grid-template-columns: 0.5rem auto 5.5rem 5.5rem;
+  align-items: center;
   gap: 0.75rem;
 
   & > ${YouBadge} {
     position: absolute;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
-  & > :nth-child(3),
-  & > :nth-child(4) {
+  & > :nth-child(3) {
     display: flex;
     gap: 0.25rem;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
     font-family: monospace;
+  }
+
+  & > :nth-child(4) {
+    display: flex;
+    font-family: monospace;
+    gap: 0.25rem;
+    justify-content: flex-end;
   }
 
   @media (min-width: 768px) {
