@@ -39,7 +39,7 @@ const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
       </Marquee>
 
       <Earned>
-        <VerseMoon width={"100%"} height={"100%"} />
+        <VerseMoon style={{ filter: "drop-shadow(0px 3px 9px #0085FF)" }} />
         {formatNumber(Number(item.Earned))}
       </Earned>
       <div>{formatNumber(Number(item.Clicked))}</div>

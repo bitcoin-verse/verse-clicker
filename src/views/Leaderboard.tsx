@@ -10,7 +10,6 @@ import Ethereum from "../components/Icons/Ethereum";
 import Matic from "../components/Icons/Matic";
 import Layout from "../components/Layout";
 import LeaderboardViewer from "../components/Leaderboard/LeaderboardViewer";
-import NotificationModal from "../components/NotificationModal/NotificationModal";
 import { GameMode } from "../context/reducers/network";
 import { isDev } from "../helpers/links";
 

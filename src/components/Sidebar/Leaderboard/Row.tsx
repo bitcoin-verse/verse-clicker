@@ -4,7 +4,6 @@ import styled from "styled-components";
 import VerseMoon from "../../../components/Icons/VerseMoon";
 import { formatNumber } from "../../../helpers/formatNumber";
 import useUsername from "../../../hooks/useUsername";
-import Cursor from "../../Icons/Cursor";
 import Marquee from "../../Marquee";
 import { Body, YouBadge } from "./styled";
 
@@ -40,7 +39,7 @@ const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
       </Marquee>
 
       <Earned>
-        <VerseMoon />
+        <VerseMoon style={{ filter: "drop-shadow(0px 3px 9px #0085FF)" }} />
         {formatNumber(Number(item.Earned))}
       </Earned>
       <div>{formatNumber(Number(item.Clicked))}</div>

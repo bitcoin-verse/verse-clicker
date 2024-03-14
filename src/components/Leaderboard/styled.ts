@@ -161,6 +161,7 @@ export const Timer = styled.div`
 
 export const Body = styled.div`
   position: relative;
+  margin: 0.45rem 0;
   display: grid;
   width: 100%;
 
