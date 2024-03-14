@@ -55,16 +55,15 @@ export const YouBadge = styled.div`
   align-items: center;
   grid-area: none;
 
-  top: -1.25rem;
-
-  right: 12.5rem;
-  padding: 0.25rem 0.5rem;
+  top: -1.8rem;
+  left: 7.25rem;
+  padding: 0.85rem 1.5rem;
   flex: 0;
   height: 1.5rem;
   width: 1.5rem;
   z-index: 999;
 
-  border-radius: 50%;
+  border-radius: 30px;
   color: #c5cedb;
   background: linear-gradient(180deg, #425472 0%, #313e57 100%);
 `;

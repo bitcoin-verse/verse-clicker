@@ -76,7 +76,6 @@ const Leaderboard: FC = () => {
   return (
     <Layout>
       <Suspense>{/* <Particles /> */}</Suspense>
-      <NotificationModal />
       <Header />
       <LeaderboardViewer
         gameModes={GAME_MODES}

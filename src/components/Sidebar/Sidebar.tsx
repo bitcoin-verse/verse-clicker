@@ -19,6 +19,8 @@ const getModalContent = (close: () => void, content?: SidebarModal) => {
     case "LEADERBOARD":
       return {
         title: "Leaderboard",
+        modalContentStyles: { gap: "0", padding: "0 1rem 3rem 1rem" },
+        modalDialogStyles: { maxWidth: "31.25rem" },
         component: <Leaderboard />,
       };
     case "WELCOME":
@@ -80,6 +82,8 @@ const Sidebar = () => {
         modalRef={modalRef}
         onClose={() => setContent(undefined)}
         title={modalContent?.title}
+        contentStyles={modalContent?.modalContentStyles}
+        dialogStyles={modalContent?.modalDialogStyles}
         overlayClose
       >
         {modalContent?.component}

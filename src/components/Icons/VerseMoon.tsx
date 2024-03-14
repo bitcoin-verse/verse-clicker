@@ -19,12 +19,7 @@ const VerseMoon: FC<VerseMoonProps> = ({ ...rest }) => {
       {...rest}
     >
       <g filter="url(#filter0_dd_1369_4498)">
-        <circle
-          cx="22"
-          cy="24.3477"
-          r="11.8857"
-          fill="url(#paint0_linear_1369_4498)"
-        />
+        <circle cx="22" cy="24.3477" r="11.8857" fill="url(#paintBlueCircle)" />
         <path
           opacity="0.5"
           fillRule="evenodd"
@@ -162,7 +157,7 @@ const VerseMoon: FC<VerseMoonProps> = ({ ...rest }) => {
           />
         </filter>
         <linearGradient
-          id="paint0_linear_1369_4498"
+          id="paintBlueCircle"
           x1="22"
           y1="12.462"
           x2="22"

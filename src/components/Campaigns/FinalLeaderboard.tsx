@@ -5,9 +5,9 @@ import { useAccount } from "wagmi";
 import { CURRENT_CAMPAIGN } from "../../constants";
 import Row from "../Sidebar/Leaderboard/Row";
 import {
-  Header,
   LeaderboardContent,
   LeaderboardWrapper,
+  TableHeader,
 } from "../Sidebar/Leaderboard/styled";
 
 const FinalLeaderboard = () => {
@@ -44,12 +44,12 @@ const FinalLeaderboard = () => {
 
   return (
     <LeaderboardWrapper>
-      <Header>
+      <TableHeader>
         <div />
         <div>Address</div>
         <div>Clicks</div>
         <div>Earned</div>
-      </Header>
+      </TableHeader>
       <LeaderboardContent>
         {leaderboardItems?.map(({ address: addr, stats }, index) => {
           if (index >= 25) {

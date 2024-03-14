@@ -68,7 +68,7 @@ const LeaderboardViewer: FC<Props> = ({
   const [leaderboardItems, setLeaderboardItems] = useState<DataItem[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [pageSize, setPageSize] = useState(3);
+  const [pageSize, setPageSize] = useState(20);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

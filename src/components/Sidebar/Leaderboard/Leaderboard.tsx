@@ -8,9 +8,9 @@ import { formatSeconds } from "../../../helpers/formatSeconds";
 import { Button } from "../../Button";
 import Row from "./Row";
 import {
-  Header,
   LeaderboardContent,
   LeaderboardWrapper,
+  TableHeader,
   Timer,
 } from "./styled";
 
@@ -42,12 +42,12 @@ const Leaderboard = memo(() => {
   return (
     <LeaderboardWrapper>
       {updated && <Timer>Last update: {updated} ago</Timer>}
-      <Header>
+      <TableHeader>
         <div />
         <div>Address</div>
-        <div>Clicks</div>
         <div>Earned</div>
-      </Header>
+        <div>Clicks</div>
+      </TableHeader>
 
       <LeaderboardContent>
         {leaderboardAddresses?.map((addr, index) => {

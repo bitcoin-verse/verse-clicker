@@ -46,7 +46,7 @@ const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
 
       {isUser && (
         <>
-          <YouBadge>🌟</YouBadge>
+          <YouBadge>You</YouBadge>
         </>
       )}
     </Body>
