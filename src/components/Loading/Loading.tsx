@@ -86,7 +86,8 @@ const Loading: FC = () => {
             <>
               <H2>Verify Ownership</H2>
               <Label>
-                Sign a message with your wallet to account verify ownership
+                Sign a message with your wallet to verify ownership of your
+                account
               </Label>
             </>
           ) : (
