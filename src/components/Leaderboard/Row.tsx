@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 
+import smallCookieSrc from "../../assets/small-cookie.png";
 import { formatNumber } from "../../helpers/formatNumber";
 import useUsername from "../../hooks/useUsername";
 import Cursor from "../Icons/Cursor";
@@ -30,14 +31,10 @@ const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
       </Marquee>
 
       <div>
-        {formatNumber(Number(item.Clicked))} <Cursor size="0.875rem" />
-      </div>
-      <div>
+        <img src={smallCookieSrc} width={32} height={32} />
         {formatNumber(Number(item.Earned))}
-        <StarWrapper>
-          <PointsIcon size="0.875rem" />
-        </StarWrapper>
       </div>
+      <div>{formatNumber(Number(item.Clicked))}</div>
 
       {isUser && (
         <>

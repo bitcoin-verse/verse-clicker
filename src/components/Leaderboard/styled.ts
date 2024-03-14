@@ -80,7 +80,7 @@ export const Header = styled.div`
 `;
 export const TableHeader = styled.div`
   display: grid;
-  grid-template-columns: 1rem auto 5rem 5rem;
+  grid-template-columns: 1rem auto 9rem 1rem;
   margin: 1rem 2rem;
 
   font-size: 0.875rem;
@@ -164,7 +164,6 @@ export const Body = styled.div`
   position: relative;
   display: grid;
   width: 100%;
-  margin-bottom: 1rem;
 
   font-size: 0.875rem;
   font-weight: 600;
@@ -189,6 +188,5 @@ export const Body = styled.div`
   }
 
   @media (min-width: 768px) {
-    padding-right: 1.5rem;
   }
 `;

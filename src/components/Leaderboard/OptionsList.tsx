@@ -28,7 +28,7 @@ const OptionContainer = styled.div`
 
 const OptionIcon = styled.span`
   margin-right: 0px;
-  margin-left: 16px;
+  margin-left: 2rem;
 `;
 
 const OptionLabel = styled.span`
@@ -48,7 +48,7 @@ const OptionTag = styled.span`
   background-color: rgb(54, 134, 247);
   padding: 4px;
   border-radius: 4px;
-  margin-right: 4px;
+  margin-right: 2rem;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;

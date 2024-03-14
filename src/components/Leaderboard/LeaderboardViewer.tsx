@@ -135,8 +135,8 @@ const LeaderboardViewer: FC<Props> = ({
         <TableHeader>
           <div />
           <div>Address</div>
-          <div>Clicks</div>
           <div>Earned</div>
+          <div>Clicks</div>
         </TableHeader>
       ) : (
         <></>
@@ -159,7 +159,8 @@ const LeaderboardViewer: FC<Props> = ({
         modalRef={leaderboardGameModesModalRef}
         title="Select Game"
         overlayClose
-        contentStyles={{ gap: "0", padding: "0 0 5rem 0" }}
+        contentStyles={{ gap: "0", padding: "0 0 3rem 0" }}
+        dialogStyles={{ maxWidth: "31.25rem" }}
       >
         <OptionsList
           options={gameModes}
