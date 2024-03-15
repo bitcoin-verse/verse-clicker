@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { useTheme } from "styled-components";
+import { verifyMessage } from "viem";
 import { useAccount, useDisconnect, useSignMessage } from "wagmi";
 
 import connectWallet from "../../assets/connect-wallet.png";
@@ -33,13 +34,15 @@ const Loading: FC = () => {
 
   const [deviceUuid] = useState(getFirstUuid(settings.sign));
 
+  const message = `I approve this device:  ${deviceUuid}`;
+
   // use same uuid for same device to avoid confusion, if not, then use generated uuid
   const {
     data,
     signMessage,
     status: signStatus,
   } = useSignMessage({
-    message: `I approve this device:  ${deviceUuid}`,
+    message,
   });
 
   useEffect(() => {
@@ -52,10 +55,38 @@ const Loading: FC = () => {
   }, [status]);
 
   useEffect(() => {
+    const verifySig = async () => {
+      if (!address) return;
+
+      if (!settings.sign[address]) return;
+      const { signature } = settings.sign?.[address];
+
+      const valid = await verifyMessage({
+        address,
+        message,
+        signature: (signature || 0n) as `0x${string}`,
+      });
+
+      if (valid) {
+        console.log("VALIDDDD");
+      } else {
+        console.log("INVALIIIIIDD");
+        dispatch({ type: "RESET_SIGN_DATA", payload: address });
+      }
+    };
+    verifySig();
+  }, [settings.sign]);
+
+  useEffect(() => {
     if (!data) return;
+
     dispatch({
       type: "ADD_SIGN_DATA",
-      payload: { signature: data, address: address || "", uuid: deviceUuid },
+      payload: {
+        signature: data,
+        address: address || "",
+        uuid: deviceUuid,
+      },
     });
   }, [data]);
 

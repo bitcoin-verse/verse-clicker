@@ -11,6 +11,7 @@ export type SetSignSignatureAction = {
   type: "SET_SIGN_SIGNATURE";
   payload: string;
 };
+export type ResetSignData = { type: "RESET_SIGN_DATA"; payload: string };
 
 export type AddSignDataElementAction = {
   type: "ADD_SIGN_DATA";
@@ -18,6 +19,25 @@ export type AddSignDataElementAction = {
     address: string;
     uuid?: string;
     signature?: string;
+  };
+};
+
+export const resetSignData = (
+  state: State,
+  payload: ResetSignData["payload"],
+) => {
+  const signData = { ...state.settings.sign };
+
+  delete signData[payload];
+
+  return {
+    ...state,
+    settings: {
+      ...state.settings,
+      sign: {
+        ...signData,
+      },
+    },
   };
 };
 
