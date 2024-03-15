@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useTheme } from "styled-components";
 import { useAccount, useDisconnect, useSignMessage } from "wagmi";
 
@@ -31,7 +31,7 @@ const Loading: FC = () => {
   const { modalRef, showModal, close } = useModal();
   const { error, settings } = useTrackedState();
 
-  const deviceUuid = getFirstUuid(settings.sign);
+  const [deviceUuid] = useState(getFirstUuid(settings.sign));
 
   // use same uuid for same device to avoid confusion, if not, then use generated uuid
   const {
