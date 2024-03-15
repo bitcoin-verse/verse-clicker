@@ -5,7 +5,7 @@ import { colors } from "../colors";
 export const LeaderboardWrapper = styled.div`
   margin: 0 auto auto auto;
   width: 98%;
-  max-width: 646px;
+  max-width: 40rem;
   flex-direction: column;
   display: flex;
   justify-content: space-between;
