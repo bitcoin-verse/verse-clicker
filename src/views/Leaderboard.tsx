@@ -2,8 +2,8 @@ import React, { FC, Suspense, lazy, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import clickmasIconSrc from "../assets/clickmas-icon.png";
-import lunarIconSrc from "../assets/lunar-icon.png";
+import lunarIconSrc from "../assets/red-envelope.png";
+import clickmasIconSrc from "../assets/tree.png";
 import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
 import Ethereum from "../components/Icons/Ethereum";
@@ -37,13 +37,13 @@ const Leaderboard: FC = () => {
     {
       label: "Christmas",
       value: "Christmas",
-      icon: <Image src={lunarIconSrc} />,
+      icon: <Image src={clickmasIconSrc} />,
       tags: ["Campaign"],
     },
     {
       label: "Lunar New Year",
       value: "LunarNewYear",
-      icon: <Image src={clickmasIconSrc} />,
+      icon: <Image src={lunarIconSrc} />,
       tags: ["Campaign"],
     },
   ];
