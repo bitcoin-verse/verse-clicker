@@ -13,9 +13,8 @@ export const LeaderboardWrapper = styled.div`
 `;
 
 export const LeaderboardContent = styled.div`
+  margin: 0 0.5rem 1rem 0.5rem;
   @media (min-width: 768px) {
-    margin-right: -1.5rem;
-    padding: 0.25rem 0 0 0;
     max-height: 22rem;
     overflow-y: auto;
 
@@ -25,7 +24,6 @@ export const LeaderboardContent = styled.div`
       border-radius: 0.5rem;
       right: -1.5rem;
     }
-
     &::-webkit-scrollbar-thumb {
       background-color: #313e57;
       border-radius: 0.5rem;
@@ -40,32 +38,32 @@ export const YouBadge = styled.div`
   align-items: center;
   grid-area: none;
 
-  top: -1.25rem;
-
-  right: 12.5rem;
-  padding: 0.25rem 0.5rem;
+  top: -1.8rem;
+  left: 7.25rem;
+  padding: 0.85rem 1.5rem;
   flex: 0;
   height: 1.5rem;
   width: 1.5rem;
   z-index: 999;
 
-  border-radius: 50%;
+  border-radius: 2rem;
   color: #c5cedb;
   background: linear-gradient(180deg, #425472 0%, #313e57 100%);
 `;
 
-export const Header = styled.div`
+export const TableHeader = styled.div`
   display: grid;
-  grid-template-columns: 1rem auto 5rem 5rem;
+  grid-template-columns: 0rem auto 8.5rem 0rem;
+  margin: 1rem 1.6rem;
 
   font-size: 0.875rem;
   font-weight: 600;
   text-align: right;
-  margin-bottom: 1rem;
   padding-right: 1.5rem;
 
-  & > :nth-child(1),
-  & > :nth-child(2) {
+  & > :nth-child(2),
+  & > :nth-child(3),
+  & > :nth-child(4) {
     text-align: left;
   }
 
@@ -92,33 +90,38 @@ export const Timer = styled.div`
 
 export const Body = styled.div`
   position: relative;
+  margin: 0.45rem 0;
   display: grid;
   width: 100%;
-  margin-bottom: 1rem;
 
   font-size: 0.875rem;
   font-weight: 600;
 
   grid-template-columns: 0.5rem auto 5.5rem 5.5rem;
+  align-items: center;
   gap: 0.75rem;
 
   & > ${YouBadge} {
     position: absolute;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
-  & > :nth-child(3),
-  & > :nth-child(4) {
+  & > :nth-child(3) {
     display: flex;
     gap: 0.25rem;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
     font-family: monospace;
   }
 
+  & > :nth-child(4) {
+    display: flex;
+    font-family: monospace;
+    gap: 0.25rem;
+    justify-content: flex-end;
+  }
+
   @media (min-width: 768px) {
-    padding-right: 1.5rem;
   }
 `;

@@ -2,29 +2,60 @@ import React, { FC, Suspense, lazy, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
+import lunarIconSrc from "../assets/red-envelope.png";
+import clickmasIconSrc from "../assets/tree.png";
 import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
+import Ethereum from "../components/Icons/Ethereum";
+import Matic from "../components/Icons/Matic";
 import Layout from "../components/Layout";
 import LeaderboardViewer from "../components/Leaderboard/LeaderboardViewer";
-import NotificationModal from "../components/NotificationModal/NotificationModal";
-import Tabs, { TabButton } from "../components/Tabs";
 import { GameMode } from "../context/reducers/network";
 import { isDev } from "../helpers/links";
 
 const Particles = lazy(() => import("../components/Particles"));
 
+const Image = styled.img`
+  grid-area: img;
+  height: 1.875rem;
+  width: 1.875rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.75rem;
+`;
+
 const Leaderboard: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const BASE_GAME_MODES: Array<{ label: string; value: GameMode }> = [
-    { label: "Ethereum", value: "Ethereum" },
-    { label: "Polygon", value: "Polygon" },
-    { label: "Christmas", value: "Christmas" },
-    { label: "Lunar New Year", value: "LunarNewYear" },
+  const BASE_GAME_MODES: Array<{
+    label: string;
+    value: GameMode;
+    icon?: React.ReactNode;
+    tags?: string[];
+  }> = [
+    { label: "Ethereum", value: "Ethereum", icon: <Ethereum /> },
+    { label: "Polygon", value: "Polygon", icon: <Matic /> },
+    {
+      label: "Christmas",
+      value: "Christmas",
+      icon: <Image src={clickmasIconSrc} />,
+      tags: ["Campaign"],
+    },
+    {
+      label: "Lunar New Year",
+      value: "LunarNewYear",
+      icon: <Image src={lunarIconSrc} />,
+      tags: ["Campaign"],
+    },
   ];
 
-  const DEV_GAME_MODES: Array<{ label: string; value: GameMode }> = [
-    { label: "Goerli", value: "Goerli" },
-    { label: "Sepolia", value: "Sepolia" },
+  const DEV_GAME_MODES: Array<{
+    label: string;
+    value: GameMode;
+    icon?: React.ReactNode;
+    tags?: string[];
+  }> = [
+    { label: "Goerli", value: "Goerli", icon: <Ethereum /> },
+    { label: "Sepolia", value: "Sepolia", icon: <Ethereum /> },
   ];
 
   const GAME_MODES: Array<{ label: string; value: GameMode }> = isDev
@@ -41,36 +72,17 @@ const Leaderboard: FC = () => {
     setSearchParams({ ...searchParams, option: gameMode });
   }, [gameMode]);
 
-  const TabsContainer = styled.div`
-    margin: 20px auto;
-    z-index: 1000;
-  `;
-
   return (
     <Layout>
       <Suspense>
         <Particles />
       </Suspense>
-      <NotificationModal />
       <Header />
-      <TabsContainer>
-        <Tabs
-          center
-          mobileVersion
-          tabs={GAME_MODES.map((button, i) => (
-            <TabButton
-              key={i}
-              $mobileVersion
-              $isSelected={gameMode === button.value}
-              type="button"
-              onClick={() => setGameMode(button.value)}
-            >
-              {button.label}
-            </TabButton>
-          ))}
-        />
-      </TabsContainer>
-      <LeaderboardViewer gameMode={gameMode} />
+      <LeaderboardViewer
+        gameModes={GAME_MODES}
+        setGameMode={setGameMode}
+        selectedGameMode={gameMode}
+      />
       <Footer />
     </Layout>
   );

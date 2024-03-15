@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { memo } from "react-tracked";
 import { useAccount } from "wagmi";
 
 import { useTrackedState } from "../../../context/store";
 import { formatSeconds } from "../../../helpers/formatSeconds";
+import { Button } from "../../Button";
 import Row from "./Row";
 import {
-  Header,
   LeaderboardContent,
   LeaderboardWrapper,
+  TableHeader,
   Timer,
 } from "./styled";
 
@@ -18,7 +20,7 @@ const Leaderboard = memo(() => {
     useTrackedState();
 
   const [updated, setUpdated] = useState("");
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (!leaderboardUpdated) return;
 
@@ -40,12 +42,12 @@ const Leaderboard = memo(() => {
   return (
     <LeaderboardWrapper>
       {updated && <Timer>Last update: {updated} ago</Timer>}
-      <Header>
+      <TableHeader>
         <div />
         <div>Address</div>
-        <div>Clicks</div>
         <div>Earned</div>
-      </Header>
+        <div>Clicks</div>
+      </TableHeader>
 
       <LeaderboardContent>
         {leaderboardAddresses?.map((addr, index) => {
@@ -78,6 +80,13 @@ const Leaderboard = memo(() => {
           );
         })}
       </LeaderboardContent>
+      <Button
+        $design="secondary"
+        type="button"
+        onClick={() => navigate("/leaderboard")}
+      >
+        View More
+      </Button>
     </LeaderboardWrapper>
   );
 });

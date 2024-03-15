@@ -1,11 +1,11 @@
 import React, { FC } from "react";
+import styled from "styled-components";
 
+import VerseMoon from "../../../components/Icons/VerseMoon";
 import { formatNumber } from "../../../helpers/formatNumber";
 import useUsername from "../../../hooks/useUsername";
-import Cursor from "../../Icons/Cursor";
 import Marquee from "../../Marquee";
-import PointsIcon from "../../PointsIcon";
-import { Body, StarWrapper, YouBadge } from "./styled";
+import { Body, YouBadge } from "./styled";
 
 interface Props {
   address: string;
@@ -18,6 +18,15 @@ interface Props {
   };
 }
 
+const Earned = styled.div`
+  display: flex;
+  & > :nth-child(1) {
+    min-width: 1.9rem;
+    max-width: 2rem;
+    width: 2rem;
+  }
+`;
+
 const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
   const userName = useUsername(address);
 
@@ -29,19 +38,17 @@ const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
         <div>{userName}</div>
       </Marquee>
 
-      <div>
-        {formatNumber(Number(item.Clicked))} <Cursor size="0.875rem" />
-      </div>
-      <div>
+      <Earned>
+        <VerseMoon
+          style={{ filter: "drop-shadow(0rem 0.1875rem 0.5625rem #0085FF)" }}
+        />
         {formatNumber(Number(item.Earned))}
-        <StarWrapper>
-          <PointsIcon size="0.875rem" />
-        </StarWrapper>
-      </div>
+      </Earned>
+      <div>{formatNumber(Number(item.Clicked))}</div>
 
       {isUser && (
         <>
-          <YouBadge>🌟</YouBadge>
+          <YouBadge>You</YouBadge>
         </>
       )}
     </Body>
