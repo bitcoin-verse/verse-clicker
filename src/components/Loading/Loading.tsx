@@ -70,7 +70,6 @@ const Loading: FC = () => {
       if (valid) {
         console.log("VALIDDDD");
       } else {
-        console.log("INVALIIIIIDD");
         dispatch({ type: "RESET_SIGN_DATA", payload: address });
       }
     };
