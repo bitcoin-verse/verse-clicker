@@ -68,7 +68,6 @@ const Loading: FC = () => {
       });
 
       if (valid) {
-        console.log("VALIDDDD");
       } else {
         dispatch({ type: "RESET_SIGN_DATA", payload: address });
       }
