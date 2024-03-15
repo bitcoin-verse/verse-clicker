@@ -17,8 +17,8 @@ const Particles = lazy(() => import("../components/Particles"));
 
 const Image = styled.img`
   grid-area: img;
-  height: 30px;
-  width: 30px;
+  height: 1.875rem;
+  width: 1.875rem;
   object-fit: cover;
   object-position: center;
   border-radius: 0.75rem;

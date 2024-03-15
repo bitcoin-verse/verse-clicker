@@ -63,7 +63,7 @@ export const YouBadge = styled.div`
   width: 1.5rem;
   z-index: 999;
 
-  border-radius: 30px;
+  border-radius: 2rem;
   color: #c5cedb;
   background: linear-gradient(180deg, #425472 0%, #313e57 100%);
 `;
@@ -75,7 +75,7 @@ export const Header = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
 `;
 export const TableHeader = styled.div`
   display: grid;
@@ -112,7 +112,7 @@ export const Button = styled.button`
   overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.3125rem;
   color: ${colors.white};
 `;
 
@@ -126,7 +126,7 @@ export const ButtonContent = styled.div<{ $logo: string }>`
   overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
 
   &::before {
     content: "";

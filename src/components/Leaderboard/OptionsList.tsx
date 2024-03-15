@@ -19,7 +19,7 @@ const OptionContainer = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  padding: 16px 0px;
+  padding: 1rem 0;
   cursor: pointer;
   &:hover {
     background-color: #333;
@@ -29,10 +29,12 @@ const OptionContainer = styled.div`
 const OptionIcon = styled.span`
   margin-right: 0px;
   margin-left: 2rem;
+  vertical-align: middle;
+  line-height: 0;
 `;
 
 const OptionLabel = styled.span`
-  margin-left: 16px;
+  margin-left: 1rem;
   font-weight: 600;
   font-size: 1rem;
 `;
@@ -41,13 +43,13 @@ const OptionTagsWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
-  margin-right: 4px;
+  margin-right: 0.25rem;
 `;
 
 const OptionTag = styled.span`
   background-color: rgb(54, 134, 247);
-  padding: 4px;
-  border-radius: 4px;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
   margin-right: 2rem;
   font-size: 0.75rem;
   font-weight: 700;

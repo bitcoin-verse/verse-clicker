@@ -13,7 +13,7 @@ const PaginationContainer = styled.div`
 const ChevronWrapper = styled.button`
   background-color: transparent;
   color: ${colors.shade80};
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -38,12 +38,12 @@ const ChevronWrapper = styled.button`
 const PageButton = styled.button`
   background-color: transparent;
   color: ${colors.shade80};
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 14px;
-  margin: 4px 2px;
+  font-size: 0.875rem;
+  margin: 0.25rem 0.125rem;
   cursor: pointer;
   border: none;
   border-radius: 8px;
@@ -60,7 +60,7 @@ const PageButton = styled.button`
 `;
 
 const EllipsisSpan = styled.span`
-  margin: 10px 8px;
+  margin: 0.625rem 0.5rem;
   color: ${colors.shade80};
 `;
 

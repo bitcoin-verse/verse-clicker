@@ -46,7 +46,7 @@ export const YouBadge = styled.div`
   width: 1.5rem;
   z-index: 999;
 
-  border-radius: 30px;
+  border-radius: 2rem;
   color: #c5cedb;
   background: linear-gradient(180deg, #425472 0%, #313e57 100%);
 `;
