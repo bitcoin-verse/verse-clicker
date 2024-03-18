@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
+import { maxUint256 } from "viem";
 import {
   useAccount,
   useChainId,
@@ -61,6 +62,11 @@ const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
     functionName: "increasePrestigeLevel",
   });
 
+  const { writeAsync: writeAuthorize } = useContractWrite({
+    ...verseContractDetails,
+    functionName: "approve",
+  });
+
   const { status } = useWaitForTransaction(writeData);
 
   useEffect(() => {
@@ -73,15 +79,20 @@ const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
     console.log(data);
 
     const getTokenData = async () => {
-      if (!data || typeof data?.[3].result !== "string") return;
+      if (!data) return;
 
-      const level = await getPrestigeData(data[3].result, 0);
-      const points = await getPrestigeData(data[3].result, 1);
-
-      console.log(level, points);
+      if (typeof data[3].result === "string") {
+        const level = await getPrestigeData(data?.[3]?.result, 0);
+        const points = await getPrestigeData(data?.[3]?.result, 1);
+        console.log(level, points);
+      }
     };
 
     getTokenData();
+  }, [data]);
+
+  const allowance = useMemo(() => {
+    return data?.[2].result;
   }, [data]);
 
   useEffect(() => {
@@ -102,6 +113,7 @@ const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
       <hr />
       <button
         type="button"
+        disabled={player.cookies < player.prestige.cost || !allowance}
         onClick={async () => {
           if (!address) return;
           const signData = await getPrestigeSignature(address, gameMode);
@@ -116,6 +128,20 @@ const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
         }}
       >
         Prestige
+      </button>
+      <button
+        type="button"
+        onClick={async () => {
+          if (!prestigeContractDetails) return;
+
+          const tx = await writeAuthorize({
+            args: [prestigeContractDetails.address, maxUint256],
+          });
+
+          console.log(tx);
+        }}
+      >
+        Authorize VERSE
       </button>
       <div>
         Next prestige: {formatNumber(player.prestige.cost, 3)} total earned
