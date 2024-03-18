@@ -6,6 +6,7 @@ import { CURRENT_CAMPAIGN } from "./constants";
 import { useSocketCtx } from "./context/SocketContext";
 import { GameMode } from "./context/reducers/network";
 import { useDispatch, useTrackedState } from "./context/store";
+import { isBuildingValid } from "./helpers/buildingHelpers";
 import { getGameMode } from "./helpers/gameMode";
 import useCampaignInfo from "./hooks/useCampaignInfo";
 import useSocketEvents from "./hooks/useSocketEvents";
@@ -38,7 +39,7 @@ const App: FC = () => {
   const { setLoading } = useSocketEvents();
 
   const { chain } = useNetwork();
-  const { gameMode, settings, campaign } = useTrackedState();
+  const { gameMode, settings, campaign, buildings } = useTrackedState();
 
   const { status, address } = useAccount({
     onConnect: ({ address: addr }) => {
@@ -80,9 +81,19 @@ const App: FC = () => {
 
     if (gameMode !== CURRENT_CAMPAIGN && gameMode !== chain.name) {
       console.log("Setting game mode", newGameMode, gameMode);
-      dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
+
+      if (!isBuildingValid(buildings, chain.name)) {
+        search.set("campaign", "Ethereum");
+        const url = `${window.location.origin}${window.location.pathname}?${search}`;
+        window.history.pushState("", "", url);
+        if (address) {
+          dispatch({ type: "RESET_SIGN_DATA", payload: address });
+        }
+        console.log("Invalid game mode", chain.name);
+      } else {
+        dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
+      }
       socket.disconnect();
-      return;
     }
 
     if (

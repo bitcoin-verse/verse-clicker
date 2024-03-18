@@ -67,8 +67,7 @@ const Loading: FC = () => {
         signature: (signature || 0n) as `0x${string}`,
       });
 
-      if (valid) {
-      } else {
+      if (!valid) {
         dispatch({ type: "RESET_SIGN_DATA", payload: address });
       }
     };
