@@ -13,7 +13,7 @@ import { PRESTIGE_SEPOLIA_ADDRESS } from "../../contracts/constants";
 import getPrestigeDetails from "../../contracts/getPrestigeDetails.ts";
 import getVerseTokenDetails from "../../contracts/getVerseTokenDetails";
 import { formatNumber } from "../../helpers/formatNumber";
-import getPrestigeData from "../../helpers/getPrestigeData";
+// import getPrestigeData from "../../helpers/getPrestigeData";
 import getPrestigeSignature from "../../helpers/getPrestigeSignature";
 import { H1 } from "../H1";
 import Unlocks from "./Unlocks";
@@ -75,7 +75,7 @@ const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
     }
   }, [status]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     console.log(data);
 
     const getTokenData = async () => {
@@ -89,7 +89,7 @@ const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
     };
 
     getTokenData();
-  }, [data]);
+  }, [data]); */
 
   const allowance = useMemo(() => {
     return data?.[2].result;
@@ -105,7 +105,7 @@ const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
 
   return (
     <Wrapper $isOpen={isOpen}>
-      <H1>Prestige</H1>
+      <H1>Current Prestige</H1>
 
       <div>Your prestige: {player.prestige.level}</div>
 
@@ -129,22 +129,27 @@ const PrestigeInfo: FC<Props> = ({ toggleOpen, setToggleOpen }) => {
       >
         Prestige
       </button>
-      <button
-        type="button"
-        onClick={async () => {
-          if (!prestigeContractDetails) return;
+      {!allowance && (
+        <button
+          type="button"
+          onClick={async () => {
+            if (!prestigeContractDetails) return;
 
-          const tx = await writeAuthorize({
-            args: [prestigeContractDetails.address, maxUint256],
-          });
+            const tx = await writeAuthorize({
+              args: [prestigeContractDetails.address, maxUint256],
+            });
 
-          console.log(tx);
-        }}
-      >
-        Authorize VERSE
-      </button>
+            console.log(tx);
+          }}
+        >
+          Authorize VERSE spend
+        </button>
+      )}
+      <div>Available Prestige: {player.prestige.amounts.availableAmount}</div>
+
       <div>
-        Next prestige: {formatNumber(player.prestige.cost, 3)} total earned
+        Next prestige requirement:{" "}
+        {formatNumber(player.prestige.amounts.nextCost, 3)} total earned
       </div>
       <div>Status: {status}</div>
     </Wrapper>
