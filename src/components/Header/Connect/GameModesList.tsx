@@ -31,12 +31,6 @@ const gameModeList: {
     icon: getNetworkImage(137),
     networks: [137],
   },
-  /*   {
-    id: "LunarNewYear",
-    label: "Lunar New Year",
-    icon: lnySrc,
-    networks: [137, 1],
-  }, */
 ];
 
 export const getGameModeDetails = (game: GameMode) => {
@@ -56,7 +50,6 @@ const GameModesList: FC<Props> = ({ close }) => {
   const { isConnected, connector } = useAccount();
   const { disconnect } = useDisconnect();
   const chainId = useChainId();
-  const { chain } = useNetwork();
   const { switchNetworkAsync } = useSwitchNetwork();
 
   const [availableNetworks, setAvailableNetworks] = useState<number[]>([]);
@@ -115,7 +108,7 @@ const GameModesList: FC<Props> = ({ close }) => {
                 background: "inherit",
               }}
             >
-              {game.label} {isConnected && `(${chain?.name})`}
+              {game.label}
             </div>
           </Button>
         );
