@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 import verseIcon from "../../assets/verse-icon.png";
 import verseLogo from "../../assets/verse-logo.png";
@@ -17,10 +18,11 @@ import {
 
 const Header: FC = () => {
   const { gameMode } = useTrackedState();
+  const navigate = useNavigate();
 
   return (
     <StyledHeader>
-      <LogoWrapper href="https://verse.bitcoin.com">
+      <LogoWrapper onClick={() => navigate(-1)}>
         <ChevronLeft />
         <Icon src={verseIcon} alt="Icon" />
         <Logo src={verseLogo} alt="Logo" />

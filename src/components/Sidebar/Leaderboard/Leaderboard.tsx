@@ -16,8 +16,12 @@ import {
 
 const Leaderboard = memo(() => {
   const { address } = useAccount();
-  const { leaderboardAddresses, leaderboardStats, leaderboardUpdated } =
-    useTrackedState();
+  const {
+    leaderboardAddresses,
+    leaderboardStats,
+    leaderboardUpdated,
+    gameMode,
+  } = useTrackedState();
 
   const [updated, setUpdated] = useState("");
   const navigate = useNavigate();
@@ -83,7 +87,7 @@ const Leaderboard = memo(() => {
       <Button
         $design="secondary"
         type="button"
-        onClick={() => navigate("/leaderboard")}
+        onClick={() => navigate(`/leaderboard?option=${gameMode}`)}
       >
         View More
       </Button>
