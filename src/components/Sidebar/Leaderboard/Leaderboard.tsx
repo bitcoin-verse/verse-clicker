@@ -57,7 +57,7 @@ const Leaderboard = memo(() => {
         {leaderboardAddresses?.map((addr, index) => {
           const item = leaderboardStats[index];
 
-          if (index >= 25) {
+          if (index >= 10) {
             if (addr === address) {
               return (
                 <Row
