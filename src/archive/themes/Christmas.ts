@@ -1,7 +1,7 @@
-import { CustomTheme } from ".";
 import halfPresent from "../../assets/half-present.png";
 import present from "../../assets/present.png";
-import { colors } from "../colors";
+import { colors } from "../../components/colors";
+import { CustomTheme } from "../../components/themes";
 
 export const Christmas: CustomTheme = {
   moon: present,

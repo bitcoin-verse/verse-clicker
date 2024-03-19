@@ -7,19 +7,19 @@ import SidebarModalProvider from "../../../context/SidebarModalContext";
 import { useSocketCtx } from "../../../context/SocketContext";
 import { useTrackedState } from "../../../context/store";
 import { formatNumber } from "../../../helpers/formatNumber";
-import Campaign from "../../Campaigns/Campaign";
+// import Campaign from "../../Campaigns/Campaign";
 import Sidebar from "../../Sidebar";
 import { ButtonWrapper, ClickButton, CookieWrapper, CpcClick } from "./styled";
 
 const Cookie: FC = () => {
-  const { playLaser, playBells, playSymbol } = useAudio();
+  const { playLaser } = useAudio();
   const { socket } = useSocketCtx();
 
   const { disconnect } = useDisconnect();
   const { status } = useAccount();
   const wrapperRef = useRef<HTMLButtonElement | null>(null);
 
-  const { player, gameMode } = useTrackedState();
+  const { player } = useTrackedState();
   const [clickCount, setClickCount] = useState<number>(0);
 
   const countTimer = useRef<NodeJS.Timeout>();
@@ -93,10 +93,9 @@ const Cookie: FC = () => {
     socket.emit("click");
     animateCookieClick(e);
 
-    if (gameMode === "Christmas" && playBells) playBells();
-    if (gameMode === "LunarNewYear" && playSymbol) playSymbol();
-    if (gameMode !== "Christmas" && gameMode !== "LunarNewYear" && playLaser)
+    if (playLaser) {
       playLaser();
+    }
   };
 
   return (
@@ -113,7 +112,7 @@ const Cookie: FC = () => {
         />
       </ButtonWrapper>
       <SidebarModalProvider>
-        <Campaign />
+        {/* <Campaign /> */}
         <Sidebar />
       </SidebarModalProvider>
     </CookieWrapper>

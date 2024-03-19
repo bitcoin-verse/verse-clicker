@@ -1,10 +1,7 @@
 import "styled-components";
 
 import { GameMode } from "../../context/reducers/network";
-import { Christmas } from "./Christmas";
 import { Ethereum } from "./Ethereum";
-import { Goerli } from "./Goerli";
-import { LunarNewYear } from "./LunarNewYear";
 import { Polygon } from "./Polygon";
 import { Sepolia } from "./Sepolia";
 
@@ -35,12 +32,9 @@ export type CustomTheme = {
 };
 
 export const themes: Record<GameMode, typeof Ethereum> = {
-  Goerli,
   Ethereum,
   Polygon,
-  Christmas,
   Sepolia,
-  LunarNewYear,
 };
 
 declare module "styled-components" {

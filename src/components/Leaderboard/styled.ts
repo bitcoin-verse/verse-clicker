@@ -4,7 +4,7 @@ import { colors } from "../colors";
 
 export const LeaderboardWrapper = styled.div`
   margin: 0 auto auto auto;
-  width: 98%;
+  width: 100%;
   max-width: 40rem;
   flex-direction: column;
   display: flex;
@@ -14,14 +14,21 @@ export const LeaderboardWrapper = styled.div`
   border-radius: 1rem;
   padding: 1rem 0;
   z-index: 1000;
+  /* 
   @media (min-width: 768px) {
     width: 90%;
-  }
+  } */
 `;
 
 export const StyledLeaderboardContent = styled.div`
-  margin: 0 2rem;
+  margin: 0 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   @media (min-width: 768px) {
+    margin: 0 2rem;
     max-height: 90vh;
     overflow-y: auto;
 
@@ -55,7 +62,7 @@ export const YouBadge = styled.div`
   align-items: center;
   grid-area: none;
 
-  top: -1.8rem;
+  top: -1.275rem;
   left: 7.25rem;
   padding: 0.85rem 1.5rem;
   flex: 0;
@@ -77,10 +84,12 @@ export const Header = styled.div`
   align-items: center;
   gap: 0.625rem;
 `;
+
 export const TableHeader = styled.div`
   display: grid;
+
   grid-template-columns: 1rem auto 9rem 1rem;
-  margin: 1rem 2rem;
+  margin: 1rem;
 
   font-size: 0.875rem;
   font-weight: 600;
@@ -161,7 +170,7 @@ export const Timer = styled.div`
 
 export const Body = styled.div`
   position: relative;
-  margin: 0.45rem 0;
+  margin: 0.5rem 0;
   display: grid;
   width: 100%;
 
@@ -169,6 +178,7 @@ export const Body = styled.div`
   font-weight: 600;
 
   grid-template-columns: 0.5rem auto 5.5rem 5.5rem;
+
   align-items: center;
   gap: 0.75rem;
 

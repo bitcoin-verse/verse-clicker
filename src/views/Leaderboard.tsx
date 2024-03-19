@@ -10,7 +10,7 @@ import Ethereum from "../components/Icons/Ethereum";
 import Matic from "../components/Icons/Matic";
 import Layout from "../components/Layout";
 import LeaderboardViewer from "../components/Leaderboard/LeaderboardViewer";
-import { GameMode } from "../context/reducers/network";
+import { GameMode, LeaderboardGameMode } from "../context/reducers/network";
 import { isDev } from "../helpers/links";
 
 const Particles = lazy(() => import("../components/Particles"));
@@ -28,7 +28,7 @@ const Leaderboard: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const BASE_GAME_MODES: Array<{
     label: string;
-    value: GameMode;
+    value: LeaderboardGameMode;
     icon?: React.ReactNode;
     tags?: string[];
   }> = [
@@ -53,12 +53,9 @@ const Leaderboard: FC = () => {
     value: GameMode;
     icon?: React.ReactNode;
     tags?: string[];
-  }> = [
-    { label: "Goerli", value: "Goerli", icon: <Ethereum /> },
-    { label: "Sepolia", value: "Sepolia", icon: <Ethereum /> },
-  ];
+  }> = [{ label: "Sepolia", value: "Sepolia", icon: <Ethereum /> }];
 
-  const GAME_MODES: Array<{ label: string; value: GameMode }> = isDev
+  const GAME_MODES: Array<{ label: string; value: LeaderboardGameMode }> = isDev
     ? [...BASE_GAME_MODES, ...DEV_GAME_MODES]
     : [...BASE_GAME_MODES];
 
@@ -69,7 +66,8 @@ const Leaderboard: FC = () => {
     GAME_MODES.find((gm) => gm.value === searchParams.get("option"))?.value ||
     "Ethereum";
 
-  const [gameMode, setGameMode] = useState<GameMode>(defaultGameMode);
+  const [gameMode, setGameMode] =
+    useState<LeaderboardGameMode>(defaultGameMode);
 
   useEffect(() => {
     const option = searchParams.get("option");

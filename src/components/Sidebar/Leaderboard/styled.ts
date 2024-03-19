@@ -14,6 +14,10 @@ export const LeaderboardWrapper = styled.div`
 
 export const LeaderboardContent = styled.div`
   margin: 0 0.5rem 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   @media (min-width: 768px) {
     max-height: 22rem;
     overflow-y: auto;
@@ -38,7 +42,7 @@ export const YouBadge = styled.div`
   align-items: center;
   grid-area: none;
 
-  top: -1.8rem;
+  top: -1.275rem;
   left: 7.25rem;
   padding: 0.85rem 1.5rem;
   flex: 0;
@@ -90,10 +94,11 @@ export const Timer = styled.div`
 
 export const Body = styled.div`
   position: relative;
-  margin: 0.45rem 0;
+  margin: 0.5rem 0;
   display: grid;
   width: 100%;
 
+  flex: 1;
   font-size: 0.875rem;
   font-weight: 600;
 

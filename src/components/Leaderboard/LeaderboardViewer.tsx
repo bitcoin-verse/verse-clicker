@@ -2,7 +2,8 @@ import axios, { AxiosResponse, CancelTokenSource } from "axios";
 import React, { FC, useEffect, useMemo, useState } from "react";
 import { useAccount } from "wagmi";
 
-import { GameMode } from "../../context/reducers/network";
+import { LEADERBOARD_PAGE_SIZE } from "../../constants";
+import { LeaderboardGameMode } from "../../context/reducers/network";
 import Pagination from "../../views/Pagination";
 import { H3 } from "../H3";
 import Chevron from "../Icons/Chevron";
@@ -15,14 +16,14 @@ import { Button } from "./styled";
 import { Header, LeaderboardWrapper, TableHeader } from "./styled";
 
 interface Props {
-  selectedGameMode: GameMode;
+  selectedGameMode: LeaderboardGameMode;
   gameModes: {
     label: string;
-    value: GameMode;
+    value: LeaderboardGameMode;
     icon?: React.ReactNode;
     tags?: string[];
   }[];
-  setGameMode: (gameMode: GameMode) => void;
+  setGameMode: (gameMode: LeaderboardGameMode) => void;
 }
 
 interface Stats {
@@ -68,7 +69,6 @@ const LeaderboardViewer: FC<Props> = ({
   const [leaderboardItems, setLeaderboardItems] = useState<DataItem[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [pageSize, setPageSize] = useState(20);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -90,8 +90,12 @@ const LeaderboardViewer: FC<Props> = ({
         const { data }: AxiosResponse<Response> = await axios.get<Response>(
           `${
             process.env.REACT_APP_WEBSOCKET_SERVER || "http://localhost:3001/"
-          }leaderboard/v2/${selectedGameMode}?pageOffset=${currentPage - 1}&pageSize=${pageSize}`,
+          }leaderboard/v2/${selectedGameMode}`,
           {
+            params: {
+              pageOffset: currentPage - 1,
+              pageSize: LEADERBOARD_PAGE_SIZE,
+            },
             cancelToken: cancelRequest.token,
           },
         );
@@ -118,7 +122,7 @@ const LeaderboardViewer: FC<Props> = ({
         cancelRequest.cancel("Component unmounted, canceling request");
       }
     };
-  }, [selectedGameMode, currentPage, pageSize]);
+  }, [selectedGameMode, currentPage]);
 
   return (
     <LeaderboardWrapper>
@@ -150,7 +154,7 @@ const LeaderboardViewer: FC<Props> = ({
       )}
       <Pagination
         data={leaderboardData}
-        pageSize={pageSize}
+        pageSize={LEADERBOARD_PAGE_SIZE}
         currentPage={currentPage}
         onPageChange={handlePageChange}
       />
