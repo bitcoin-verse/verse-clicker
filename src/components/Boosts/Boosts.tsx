@@ -29,15 +29,6 @@ const Lounge = lazy(() => import("./Modals/Lounge"));
 
 const boostList = (player: Player, network: GameMode) => {
   switch (network) {
-    case "Christmas":
-      return [
-        {
-          id: "scratcher",
-          unlocked: true,
-          label: "Scratch & Win",
-          description: "Up to 1,000,000x",
-        },
-      ];
     case "Polygon":
       return [
         {
@@ -53,35 +44,8 @@ const boostList = (player: Player, network: GameMode) => {
           description: "Up to 1,000,000x",
         },
       ];
-    case "LunarNewYear":
-      return [
-        {
-          id: "hold-lunar",
-          unlocked: player.verseHolder,
-          label: "Hold",
-          description: "8x clicks",
-        },
-        {
-          id: "lounge",
-          unlocked: player.isGuildMember,
-          label: "Lounge",
-          description: "Unlock upgrades",
-        },
-        {
-          id: "scratcher-mint",
-          unlocked: true,
-          label: "Scratcher Buy",
-          description: "+1% production",
-        },
-        {
-          id: "scratcher-lunar",
-          unlocked: true,
-          label: "Scratcher Claim",
-          description: "Skip time",
-        },
-      ];
+
     case "Ethereum":
-    case "Goerli":
     case "Sepolia":
     default:
       return [

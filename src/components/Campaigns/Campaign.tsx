@@ -9,18 +9,12 @@ import { ModalWrapper } from "../Boosts/styled";
 import Modal, { useModal } from "../Modal";
 import After from "./After";
 import Before from "./Before";
-import christmasJson from "./Content/christmas.json";
-import lunarNewYearJson from "./Content/lunarnewyear.json";
 import During from "./During";
 import { CampaignButton, CampaignImg, Wrapper } from "./styled";
 import { CampaignJson } from "./types";
 
-function getContent(campaign: GameMode): CampaignJson | null {
+function getContent(campaign?: GameMode): CampaignJson | null {
   switch (campaign) {
-    case "Christmas":
-      return christmasJson;
-    case "LunarNewYear":
-      return lunarNewYearJson;
     default:
       return null;
   }
@@ -41,6 +35,7 @@ const Campaign: FC<Props> = ({ isNetworkButton }) => {
   const content = getContent(CURRENT_CAMPAIGN);
 
   const playCampaign = useCallback(() => {
+    if (!CURRENT_CAMPAIGN) return;
     dispatch({ type: "RESET_GAME" });
     dispatch({ type: "SET_GAME_MODE", payload: CURRENT_CAMPAIGN });
     close();

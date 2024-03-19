@@ -1,13 +1,8 @@
 import buildings from "../../buildings";
 import { State } from "../store";
 
-export type GameMode =
-  | "Ethereum"
-  | "Polygon"
-  | "Goerli"
-  | "Christmas"
-  | "Sepolia"
-  | "LunarNewYear";
+export type GameMode = "Ethereum" | "Polygon" | "Sepolia";
+export type LeaderboardGameMode = GameMode | "Christmas" | "LunarNewYear";
 
 export type SetGameModeAction = { type: "SET_GAME_MODE"; payload: GameMode };
 

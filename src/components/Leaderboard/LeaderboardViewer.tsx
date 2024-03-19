@@ -3,7 +3,7 @@ import React, { FC, useEffect, useMemo, useState } from "react";
 import { useAccount } from "wagmi";
 
 import { LEADERBOARD_PAGE_SIZE } from "../../constants";
-import { GameMode } from "../../context/reducers/network";
+import { LeaderboardGameMode } from "../../context/reducers/network";
 import Pagination from "../../views/Pagination";
 import { H3 } from "../H3";
 import Chevron from "../Icons/Chevron";
@@ -16,14 +16,14 @@ import { Button } from "./styled";
 import { Header, LeaderboardWrapper, TableHeader } from "./styled";
 
 interface Props {
-  selectedGameMode: GameMode;
+  selectedGameMode: LeaderboardGameMode;
   gameModes: {
     label: string;
-    value: GameMode;
+    value: LeaderboardGameMode;
     icon?: React.ReactNode;
     tags?: string[];
   }[];
-  setGameMode: (gameMode: GameMode) => void;
+  setGameMode: (gameMode: LeaderboardGameMode) => void;
 }
 
 interface Stats {

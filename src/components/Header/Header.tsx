@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import verseIcon from "../../assets/verse-icon.png";
 import verseLogo from "../../assets/verse-logo.png";
-import { useTrackedState } from "../../context/store";
 import ChevronLeft from "../Icons/ChevronLeft";
 import ConnectButton from "./ConnectButton";
 import GameModeButton from "./GameModeButton";
@@ -17,7 +16,6 @@ import {
 } from "./styled";
 
 const Header: FC = () => {
-  const { gameMode } = useTrackedState();
   const navigate = useNavigate();
 
   return (
@@ -27,7 +25,7 @@ const Header: FC = () => {
         <Icon src={verseIcon} alt="Icon" />
         <Logo src={verseLogo} alt="Logo" />
       </LogoWrapper>
-      <Title>Verse {gameMode === "Christmas" ? "Clickmas" : "Clicker"}</Title>
+      <Title>Verse Clicker</Title>
       <ConnectWrapper>
         <GameModeButton />
         <ConnectButton connectText="Connect" />

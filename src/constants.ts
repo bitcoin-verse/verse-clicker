@@ -3,7 +3,7 @@ import { GameMode } from "./context/reducers/network";
 const VERSE_BASE_URL =
   process.env.REACT_APP_VERSE_BASE_URL || "https://verse.bitcoin.com/";
 
-export const CURRENT_CAMPAIGN: GameMode = "LunarNewYear";
+export const CURRENT_CAMPAIGN: GameMode | undefined = undefined;
 
 export const GUILD_URL = "https://guild.xyz/verse";
 export const VERSE_MARKETS_DEEPLINK =

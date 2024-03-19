@@ -1,13 +1,13 @@
 import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
 
-import { GameMode } from "../../context/reducers/network";
+import { LeaderboardGameMode } from "../../context/reducers/network";
 
 interface Option {
   label: string;
   icon?: ReactNode;
   tags?: string[];
-  value: GameMode;
+  value: LeaderboardGameMode;
 }
 
 interface OptionsListProps {
