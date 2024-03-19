@@ -20,6 +20,7 @@ interface Props {
 
 const Earned = styled.div`
   display: flex;
+
   & > :nth-child(1) {
     min-width: 1.9rem;
     max-width: 2rem;
@@ -40,6 +41,7 @@ const Row: FC<Props> = ({ address, isUser, index, stats: item }) => {
 
       <Earned>
         <VerseMoon
+          size={18}
           style={{ filter: "drop-shadow(0rem 0.1875rem 0.5625rem #0085FF)" }}
         />
         {formatNumber(Number(item.Earned))}
