@@ -22,11 +22,12 @@ export const StyledHeader = styled.header`
   }
 `;
 
-export const LogoWrapper = styled.a`
+export const LogoWrapper = styled.div`
   display: flex;
   flex: 0;
   align-items: center;
   grid-area: logo;
+  cursor: pointer;
   color: ${colors.shade80};
   text-decoration: none;
 `;

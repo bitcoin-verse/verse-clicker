@@ -62,11 +62,21 @@ const Leaderboard: FC = () => {
     ? [...BASE_GAME_MODES, ...DEV_GAME_MODES]
     : [...BASE_GAME_MODES];
 
+  const isValidGameMode = (option: string | null) =>
+    GAME_MODES.some((gm) => gm.value === option);
+
   const defaultGameMode =
     GAME_MODES.find((gm) => gm.value === searchParams.get("option"))?.value ||
     "Ethereum";
 
   const [gameMode, setGameMode] = useState<GameMode>(defaultGameMode);
+
+  useEffect(() => {
+    const option = searchParams.get("option");
+    if (option !== gameMode && isValidGameMode(option)) {
+      setGameMode(option as GameMode);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     setSearchParams({ ...searchParams, option: gameMode });
