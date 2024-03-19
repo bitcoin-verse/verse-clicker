@@ -1,12 +1,12 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { useAccount, useNetwork } from "wagmi";
+import { useAccount, useDisconnect, useNetwork } from "wagmi";
 
+import buildings from "./buildings";
 import { CURRENT_CAMPAIGN } from "./constants";
 import { useSocketCtx } from "./context/SocketContext";
 import { GameMode } from "./context/reducers/network";
 import { useDispatch, useTrackedState } from "./context/store";
-import { isBuildingValid } from "./helpers/buildingHelpers";
 import { getGameMode } from "./helpers/gameMode";
 import useCampaignInfo from "./hooks/useCampaignInfo";
 import useSocketEvents from "./hooks/useSocketEvents";
@@ -37,9 +37,10 @@ const App: FC = () => {
 
   const { socket } = useSocketCtx();
   const { setLoading } = useSocketEvents();
+  const { disconnect } = useDisconnect();
 
   const { chain } = useNetwork();
-  const { gameMode, settings, campaign, buildings } = useTrackedState();
+  const { gameMode, settings, campaign } = useTrackedState();
 
   const { status, address } = useAccount({
     onConnect: ({ address: addr }) => {
@@ -63,6 +64,18 @@ const App: FC = () => {
     if (status !== "connected" || !chain || !socket) return;
     setLoading(true);
 
+    if (!(chain.name in buildings)) {
+      console.warn(
+        "Looks like you were connected to an invalid network. Please reconnect to a valid one",
+      );
+      setLoading(false);
+      dispatch({ type: "RESET_GAME" });
+      dispatch({ type: "RESET_SIGN_DATA", payload: address });
+      disconnect();
+      socket.disconnect();
+      return;
+    }
+
     const newGameMode = getGameMode(campaignQuery);
     if (
       !campaignQuery ||
@@ -81,19 +94,9 @@ const App: FC = () => {
 
     if (gameMode !== CURRENT_CAMPAIGN && gameMode !== chain.name) {
       console.log("Setting game mode", newGameMode, gameMode);
-
-      if (!isBuildingValid(buildings, chain.name)) {
-        search.set("campaign", "Ethereum");
-        const url = `${window.location.origin}${window.location.pathname}?${search}`;
-        window.history.pushState("", "", url);
-        if (address) {
-          dispatch({ type: "RESET_SIGN_DATA", payload: address });
-        }
-        console.log("Invalid game mode", chain.name);
-      } else {
-        dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
-      }
+      dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
       socket.disconnect();
+      return;
     }
 
     if (

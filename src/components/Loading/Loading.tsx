@@ -99,7 +99,6 @@ const Loading: FC = () => {
         </ContentsWrapper>
         <ConnectionWrapper>
           <ConnectWalletImage src={connectWallet} alt="Connect Wallet" />
-
           <Title>Please connect your wallet to access Verse Clicker</Title>
 
           <ConnectButton connectText="Connect Wallet" />

@@ -25,10 +25,3 @@ export const getMaxBuilding = (cookies: number, baseCost: number) => {
 
   return { amount: amount - 1, cost: getBuildingsCost(amount - 1, baseCost) };
 };
-
-export const isBuildingValid = (
-  buildings: Building[],
-  buildingName: string,
-): boolean => {
-  return buildings.some((building) => building.name === buildingName);
-};
