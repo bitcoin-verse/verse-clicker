@@ -1,13 +1,12 @@
-import { CustomTheme } from ".";
-import dragonBg from "../../assets/dragon-bg.png";
-import dragon from "../../assets/dragon.png";
-import halfDragon from "../../assets/half-dragon.png";
-import { colors } from "../colors";
+import halfMoon from "../../assets/half-moon.png";
+import moon from "../../assets/verse-moon.png";
+import { colors } from "../../components/colors";
+import { CustomTheme } from "../../components/themes";
 
-export const LunarNewYear: CustomTheme = {
-  moon: dragon,
-  halfMoon: halfDragon,
-  background: `url(${dragonBg}), radial-gradient(83.88% 83.88% at 33.5% 47.97%, rgba(3, 12, 20, 0) 0%, #030C14 100%)`,
+export const Goerli: CustomTheme = {
+  moon,
+  halfMoon,
+  background: "#030c14",
   buttons: {
     primary: {
       background: {
