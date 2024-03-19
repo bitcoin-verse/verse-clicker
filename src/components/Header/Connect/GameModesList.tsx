@@ -1,13 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
-import {
-  useAccount,
-  useChainId,
-  useDisconnect,
-  useNetwork,
-  useSwitchNetwork,
-} from "wagmi";
+import { useAccount, useChainId, useDisconnect, useSwitchNetwork } from "wagmi";
 
-// import lnySrc from "../../../assets/lanturn.png";
 import { GameMode } from "../../../context/reducers/network";
 import { useDispatch } from "../../../context/store";
 import { getNetworkImage } from "../../../helpers/getNetworkImage";
