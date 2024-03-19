@@ -67,8 +67,7 @@ const Loading: FC = () => {
         signature: (signature || 0n) as `0x${string}`,
       });
 
-      if (valid) {
-      } else {
+      if (!valid) {
         dispatch({ type: "RESET_SIGN_DATA", payload: address });
       }
     };
@@ -100,7 +99,6 @@ const Loading: FC = () => {
         </ContentsWrapper>
         <ConnectionWrapper>
           <ConnectWalletImage src={connectWallet} alt="Connect Wallet" />
-
           <Title>Please connect your wallet to access Verse Clicker</Title>
 
           <ConnectButton connectText="Connect Wallet" />

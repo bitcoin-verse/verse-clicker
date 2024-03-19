@@ -1,7 +1,8 @@
 import React, { FC, Suspense, lazy, useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { useAccount, useNetwork } from "wagmi";
+import { useAccount, useDisconnect, useNetwork } from "wagmi";
 
+import buildings from "./buildings";
 import { CURRENT_CAMPAIGN } from "./constants";
 import { useSocketCtx } from "./context/SocketContext";
 import { GameMode } from "./context/reducers/network";
@@ -36,6 +37,7 @@ const App: FC = () => {
 
   const { socket } = useSocketCtx();
   const { setLoading } = useSocketEvents();
+  const { disconnect } = useDisconnect();
 
   const { chain } = useNetwork();
   const { gameMode, settings, campaign } = useTrackedState();
@@ -61,6 +63,18 @@ const App: FC = () => {
 
     if (status !== "connected" || !chain || !socket) return;
     setLoading(true);
+
+    if (!(chain.name in buildings)) {
+      console.warn(
+        "Looks like you were connected to an invalid network. Please reconnect to a valid one",
+      );
+      setLoading(false);
+      dispatch({ type: "RESET_GAME" });
+      dispatch({ type: "RESET_SIGN_DATA", payload: address });
+      disconnect();
+      socket.disconnect();
+      return;
+    }
 
     const newGameMode = getGameMode(campaignQuery);
     if (
