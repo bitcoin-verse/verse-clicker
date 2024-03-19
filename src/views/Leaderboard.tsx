@@ -79,7 +79,7 @@ const Leaderboard: FC = () => {
   }, [searchParams]);
 
   useEffect(() => {
-    setSearchParams({ ...searchParams, option: gameMode });
+    setSearchParams({ ...searchParams, option: gameMode }, { replace: true });
   }, [gameMode]);
 
   return (
