@@ -89,7 +89,7 @@ export const TableHeader = styled.div`
   display: grid;
 
   grid-template-columns: 1rem auto 9rem 1rem;
-  margin: 1rem 1rem;
+  margin: 1rem;
 
   font-size: 0.875rem;
   font-weight: 600;
