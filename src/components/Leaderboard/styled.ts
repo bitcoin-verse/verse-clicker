@@ -105,6 +105,10 @@ export const TableHeader = styled.div`
   & > div {
     color: #899bb5;
   }
+
+  @media (min-width: 768px) {
+    margin: 1rem 2rem;
+  }
 `;
 
 export const Button = styled.button`
