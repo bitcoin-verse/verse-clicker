@@ -6,7 +6,7 @@ Users will be able to make in-game purchases to improve their click-rate and add
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run
 
 ### `yarn start`
 
