@@ -2,6 +2,7 @@ import React, { FC, PropsWithChildren, useMemo } from "react";
 import { WagmiConfig, configureChains, createConfig } from "wagmi";
 import { mainnet, polygon } from "wagmi/chains";
 import { InjectedConnector } from "wagmi/connectors/injected";
+import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 import { WalletConnectConnector } from "./WalletConnectConnector";
@@ -90,6 +91,7 @@ const Web3Provider: FC<PropsWithChildren> = ({ children }) => {
         ...(isWallet
           ? []
           : [
+              new MetaMaskConnector(),
               new InjectedConnector({
                 chains,
                 options: {
