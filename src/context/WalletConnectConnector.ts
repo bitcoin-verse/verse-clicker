@@ -161,7 +161,6 @@ export class WalletConnectConnector extends Connector<
       const id = await this.getChainId();
       const unsupported = this.isChainUnsupported(id);
 
-      console.log(provider);
       return {
         account,
         chain: { id, unsupported },
