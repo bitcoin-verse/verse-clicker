@@ -40,9 +40,18 @@ const ConnectorsList: FC<Props> = ({ closeModal }) => {
       </Button>
     );
   }
+
   return (
     <>
       {connectors.map((connector) => {
+        if (
+          (connector.id === "injected" && connector.name === "MetaMask") ||
+          (connector.id === "injected" && connector.name === "Injected") ||
+          !connector.ready
+        ) {
+          return null;
+        }
+
         return (
           <Button
             key={connector.id}
