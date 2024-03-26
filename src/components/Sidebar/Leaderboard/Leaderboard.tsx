@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { memo } from "react-tracked";
 import { useAccount } from "wagmi";
@@ -14,7 +14,11 @@ import {
   Timer,
 } from "./styled";
 
-const Leaderboard = memo(() => {
+interface Props {
+  close: () => void;
+}
+
+const Leaderboard = memo(({ close }: Props) => {
   const { address } = useAccount();
   const {
     leaderboardAddresses,
@@ -25,6 +29,7 @@ const Leaderboard = memo(() => {
 
   const [updated, setUpdated] = useState("");
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!leaderboardUpdated) return;
 
@@ -87,7 +92,10 @@ const Leaderboard = memo(() => {
       <Button
         $design="secondary"
         type="button"
-        onClick={() => navigate(`/leaderboard?option=${gameMode}`)}
+        onClick={() => {
+          close();
+          navigate(`/leaderboard?option=${gameMode}`);
+        }}
       >
         View More
       </Button>
