@@ -21,7 +21,7 @@ const getModalContent = (close: () => void, content?: SidebarModal) => {
         title: "Leaderboard",
         modalContentStyles: { gap: "0", padding: "0 1rem 1.5rem 1rem" },
         modalDialogStyles: { maxWidth: "31.25rem" },
-        component: <Leaderboard />,
+        component: <Leaderboard close={close} />,
       };
     case "WELCOME":
       return {
