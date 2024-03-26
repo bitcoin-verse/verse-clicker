@@ -119,7 +119,6 @@ export class WalletConnectConnector extends Connector<
 
   async connect({ chainId, pairingTopic }: ConnectConfig = {}) {
     try {
-      console.log("connect", chainId, pairingTopic);
       let targetChainId = chainId;
       if (!targetChainId) {
         const store = this.storage?.getItem<StorageStoreData>(STORE_KEY);
@@ -131,6 +130,7 @@ export class WalletConnectConnector extends Connector<
       if (!targetChainId) throw new Error("No chains found on connector.");
 
       const provider = await this.getProvider();
+
       this.#setupListeners();
 
       const isChainsStale = this.#isChainsStale();
@@ -178,6 +178,7 @@ export class WalletConnectConnector extends Connector<
     try {
       await provider.disconnect();
     } catch (error) {
+      window.indexedDB.deleteDatabase("WALLET_CONNECT_V2_INDEXED_DB");
       if (!/No matching key/i.test((error as Error).message)) throw error;
     } finally {
       this.#removeListeners();
@@ -312,7 +313,6 @@ export class WalletConnectConnector extends Connector<
         showQrModal = true,
         qrModalOptions,
         metadata,
-        relayUrl,
       } = this.options;
       this.#provider = await EthereumProvider.init({
         showQrModal,
@@ -328,7 +328,6 @@ export class WalletConnectConnector extends Connector<
           ]),
         ),
         metadata,
-        relayUrl,
       });
     }
   }
