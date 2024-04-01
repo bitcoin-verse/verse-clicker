@@ -78,9 +78,8 @@ const App: FC = () => {
 
     const newGameMode = getGameMode(campaignQuery);
     if (
-      !campaignQuery ||
-      campaignQuery !== gameMode ||
-      newGameMode !== gameMode
+      location.pathname === "/" &&
+      (!campaignQuery || campaignQuery !== gameMode || newGameMode !== gameMode)
     ) {
       search.set("campaign", gameMode);
       const url = `${window.location.origin}${window.location.pathname}?${search}`;
