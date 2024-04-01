@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAccount, useChainId, useDisconnect, useSwitchNetwork } from "wagmi";
 
 import { GameMode } from "../../../context/reducers/network";
@@ -40,6 +41,8 @@ const isAvailabe = (arr1: number[], arr2: number[]) => {
 
 const GameModesList: FC<Props> = ({ close }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { isConnected, connector } = useAccount();
   const { disconnect } = useDisconnect();
   const chainId = useChainId();
@@ -88,6 +91,14 @@ const GameModesList: FC<Props> = ({ close }) => {
                     game.networks.find((n) => n !== chainId),
                   );
                 }
+                const search = new URLSearchParams(location.search);
+                search.set("campaign", game.id);
+                const url = `/?${search.toString()}`;
+
+                navigate(url, {
+                  replace: true,
+                });
+
                 dispatch({ type: "SET_GAME_MODE", payload: game.id });
                 close();
               } catch (error) {}
