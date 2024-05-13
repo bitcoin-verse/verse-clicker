@@ -38,13 +38,16 @@
   "resolutions": {
     "nth-check": "2.0.1",
     "postcss": "8.4.31",
-    "follow-redirects": "1.15.6"
+    "follow-redirects": "1.15.6",
+    "webpack-dev-middleware": "5.3.4",
+    "ejs": "3.1.10",
+    "express": "4.19.2",
+    "@solana/web3.js": "1.88.1"
   },
   "dependencies": {
     "@amplitude/analytics-browser": "^2.3.8",
     "@tsparticles/engine": "^3.0.3",
     "@tsparticles/react": "^3.0.0",
-    "@web3modal/wagmi": "^3.5.6",
     "axios": "^1.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
