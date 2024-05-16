@@ -20,7 +20,7 @@ interface Props {
 const ConnectButton: FC<Props> = ({ connectText }) => {
   const { isWallet, gameMode } = useTrackedState();
   const { connectAsync, connectors, status } = useConnect();
-  const { address, isConnected, connector } = useAccount();
+  const { address, isConnected, connector, isConnecting } = useAccount();
   const { data } = useEnsName({ address, chainId: 1 });
   const [providerLogo, setProviderLogo] = useState("");
   const { modalRef, showModal, close: closeModal } = useModal();
@@ -71,6 +71,7 @@ const ConnectButton: FC<Props> = ({ connectText }) => {
       ) : (
         <PrimaryButton
           $size="small"
+          disabled={isConnecting}
           onClick={async () => {
             try {
               logAmplitudeEvent({
