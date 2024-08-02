@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 
+import adAirdrop from "../assets/ad-airdrop.png";
 import adFarms from "../assets/ad-farms.png";
 import adLounge from "../assets/ad-lounge.png";
 import adPools from "../assets/ad-pools.png";
@@ -28,6 +29,11 @@ const adlist = [
     img: adFarms,
     link: `${baseUrl}farms/eth/`,
     cta: "farm",
+  },
+  {
+    img: adAirdrop,
+    link: "https://airdrop.verse.bitcoin.com/",
+    cta: "airdrop",
   },
 ];
 
