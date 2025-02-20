@@ -4,6 +4,7 @@ import { GameMode } from "../../context/reducers/network";
 import { Ethereum } from "./Ethereum";
 import { Polygon } from "./Polygon";
 import { Sepolia } from "./Sepolia";
+import { Rewards } from "./Rewards";
 
 type ButtonTheme = {
   background: {
@@ -35,6 +36,7 @@ export const themes: Record<GameMode, typeof Ethereum> = {
   Ethereum,
   Polygon,
   Sepolia,
+  Rewards,
 };
 
 declare module "styled-components" {

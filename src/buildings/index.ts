@@ -3,6 +3,7 @@ import Upgrade from "../classes/Upgrade";
 import ethBuildings from "./ethereum.json";
 import polyBuildings from "./polygon.json";
 import sethBuildings from "./sepolia.json";
+import rewardsBuildings from "./rewards.json";
 
 type BuildingJson = {
   name: string;
@@ -47,4 +48,5 @@ export default {
   Ethereum: generateBuildingsFromJson(ethBuildings),
   Polygon: generateBuildingsFromJson(polyBuildings),
   Sepolia: generateBuildingsFromJson(sethBuildings),
+  Rewards: generateBuildingsFromJson(rewardsBuildings),
 };

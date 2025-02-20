@@ -4,6 +4,7 @@ const gameModes: Record<string, GameMode> = {
   ethereum: "Ethereum",
   polygon: "Polygon",
   sepolia: "Sepolia",
+  rewards: "Rewards",
 };
 
 const gameModeDefaultChain: Record<string, number> = {
