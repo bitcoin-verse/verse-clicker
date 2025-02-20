@@ -91,7 +91,7 @@ const App: FC = () => {
     setLoading(true);
     dispatch({ type: "RESET_GAME" });
 
-    if (gameMode !== CURRENT_CAMPAIGN && (gameMode !== chain.name && gameMode !== "Rewards")) {
+    if (gameMode !== CURRENT_CAMPAIGN && gameMode !== chain.name && gameMode !== "Rewards") {
       console.log("Setting game mode", newGameMode, gameMode);
       dispatch({ type: "SET_GAME_MODE", payload: chain.name as GameMode });
       socket.disconnect();
