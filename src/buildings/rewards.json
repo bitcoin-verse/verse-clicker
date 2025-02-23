@@ -2,11 +2,11 @@
     {
       "name": "Cursor",
       "desc": "Basic tool for acquiring points",
-      "cost": 15,
+      "cost": 45,
       "amount": 0,
-      "originalCost": 15,
+      "originalCost": 45,
       "multiplier": 1,
-      "baseEffect": 0.1,
+      "baseEffect": 0.01,
       "specialCPS": 0,
       "effect": 0,
       "upgrades": [
@@ -110,11 +110,11 @@
     {
       "name": "Basic Blockchain",
       "desc": "Early blockchain technology.",
-      "cost": 100,
+      "cost": 300,
       "amount": 0,
-      "originalCost": 100,
+      "originalCost": 300,
       "multiplier": 1,
-      "baseEffect": 1,
+      "baseEffect": 0.1,
       "specialCPS": 0,
       "effect": 0,
       "upgrades": [
@@ -202,11 +202,11 @@
     {
       "name": "Advanced Blockchain",
       "desc": "Smart-contract enabled blockchains.",
-      "cost": 1100,
+      "cost": 3300,
       "amount": 0,
-      "originalCost": 1100,
+      "originalCost": 3300,
       "multiplier": 1,
-      "baseEffect": 8,
+      "baseEffect": 0.8,
       "specialCPS": 0,
       "effect": 0,
       "upgrades": [
@@ -294,11 +294,11 @@
     {
       "name": "VTS Participant",
       "desc": "VERSE Token Sale (VTS) participants are visionary individuals.",
-      "cost": 12000,
+      "cost": 36000,
       "amount": 0,
-      "originalCost": 12000,
+      "originalCost": 36000,
       "multiplier": 1,
-      "baseEffect": 47,
+      "baseEffect": 4.7,
       "specialCPS": 0,
       "effect": 0,
       "upgrades": [
@@ -386,11 +386,11 @@
     {
       "name": "Junior Dev",
       "desc": "Beginning to work with Verse technologies.",
-      "cost": 130000,
+      "cost": 390000,
       "amount": 0,
-      "originalCost": 130000,
+      "originalCost": 390000,
       "multiplier": 1,
-      "baseEffect": 260,
+      "baseEffect": 26,
       "specialCPS": 0,
       "effect": 0,
       "upgrades": [
@@ -478,11 +478,11 @@
     {
       "name": "Senior Dev",
       "desc": "Their skills appear to be magic to lesser Devs.",
-      "cost": 1400000,
+      "cost": 4200000,
       "amount": 0,
-      "originalCost": 1400000,
+      "originalCost": 4200000,
       "multiplier": 1,
-      "baseEffect": 1400,
+      "baseEffect": 140,
       "specialCPS": 0,
       "effect": 0,
       "upgrades": [
@@ -570,11 +570,11 @@
     {
       "name": "DApps",
       "desc": "Decentralized Applications within the Verse ecosystem.",
-      "cost": 20000000,
+      "cost": 60000000,
       "amount": 0,
-      "originalCost": 20000000,
+      "originalCost": 60000000,
       "multiplier": 1,
-      "baseEffect": 7800,
+      "baseEffect": 780,
       "specialCPS": 0,
       "effect": 0,
       "upgrades": [
@@ -662,11 +662,11 @@
     {
       "name": "Integration",
       "desc": "VERSE token and Verse DApps integrated into everyday life.",
-      "cost": 330000000,
+      "cost": 990000000,
       "amount": 0,
-      "originalCost": 330000000,
+      "originalCost": 990000000,
       "multiplier": 1,
-      "baseEffect": 44000,
+      "baseEffect": 4400,
       "specialCPS": 0,
       "effect": 0,
       "upgrades": [
@@ -754,11 +754,11 @@
     {
       "name": "Renaissance",
       "desc": "A period of rapid acceleration of societal norms and values.",
-      "cost": 5100000000,
+      "cost": 15300000000,
       "amount": 0,
-      "originalCost": 5100000000,
+      "originalCost": 15300000000,
       "multiplier": 1,
-      "baseEffect": 260000,
+      "baseEffect": 26000,
       "specialCPS": 0,
       "effect": 0,
       "upgrades": [

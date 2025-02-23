@@ -25,6 +25,9 @@ const ShortNumbers = [
 export const formatNumber = (num?: number, fractionDigits?: number) => {
   if (!num) return num ?? "";
   let formatted = "";
+  if (num < 1) {
+    return num.toFixed(2).replace(/\.?0+$/, "");
+  }
   if (num >= 10000) {
     for (let i = 0; i < ShortNumbers.length; i++) {
       const divider = Math.pow(10, (i + 1) * 3);
