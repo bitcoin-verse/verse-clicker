@@ -46,6 +46,12 @@ const Leaderboard: FC = () => {
       icon: <Image src={lunarIconSrc} />,
       tags: ["Campaign"],
     },
+    {
+      label: "Rewards Campaign",
+      value: "Rewards",
+      icon: <Matic />,
+      tags: ["Campaign"],
+    },
   ];
 
   const DEV_GAME_MODES: Array<{

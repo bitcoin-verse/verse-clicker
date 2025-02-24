@@ -20,6 +20,7 @@ import {
 
 const Farm = lazy(() => import("./Modals/Farm"));
 const Hold = lazy(() => import("./Modals/Hold"));
+const HoldRewards = lazy(() => import("./Modals/HoldRewards"));
 const HoldLunar = lazy(() => import("./Modals/HoldLunar"));
 const Scratcher = lazy(() => import("./Modals/Scratcher"));
 const ScratcherLunar = lazy(() => import("./Modals/ScratcherLunar"));
@@ -44,7 +45,15 @@ const boostList = (player: Player, network: GameMode) => {
           description: "Up to 1,000,000x",
         },
       ];
-
+    case "Rewards":
+      return [
+        {
+          id: "hold-rewards",
+          unlocked: player.verseHolder,
+          label: "Hold",
+          description: "Hold 100K+ VERSE for 2x clicks, 1M+ for 5x, and 2M+ for 10x.",
+        },
+      ];
     case "Ethereum":
     case "Sepolia":
     default:
@@ -87,6 +96,11 @@ const getModalContent = (close: () => void, content?: string) => {
       return {
         title: "Hold",
         component: <HoldLunar rate={8} />,
+      };
+    case "hold-rewards":
+      return {
+        title: "Hold",
+        component: <HoldRewards/>,
       };
     case "farm":
       return {
