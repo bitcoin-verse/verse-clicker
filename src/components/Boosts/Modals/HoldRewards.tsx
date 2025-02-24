@@ -22,7 +22,7 @@ const HoldRewards: FC = () => {
         </>
       ) : (
         <>
-          <H3>You&#39;re currently not holding any VERSE</H3>
+          <H3>Need at least 100k Verse</H3>
           <Label $color="secondary">
             Buy or Swap VERSE to boost your point production
           </Label>
